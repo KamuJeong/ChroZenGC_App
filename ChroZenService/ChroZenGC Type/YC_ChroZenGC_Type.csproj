@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D93C1E09-79FD-4180-8303-3A20F269CD16}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YC_ChroZenGC_Type</RootNamespace>
+    <AssemblyName>YC_ChroZenGC_Type</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\ConcurrentList.cs" />
+    <Compile Include="Models\MergedPacket\LCD\T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ.cs" />
+    <Compile Include="Models\MergedPacket\LCD\T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE.cs" />
+    <Compile Include="Models\MergedPacket\LCD\T_PACKCODE_CHROZEN_LCD_DIAG.cs" />
+    <Compile Include="Models\MergedPacket\LCD\T_PACKCODE_CHROZEN_LCD_SIGNAL.cs" />
+    <Compile Include="Models\MergedPacket\LCD\T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK.cs" />
+    <Compile Include="Models\MergedPacket\LCD\T_PACKCODE_LCD_COMMAND.cs" />
+    <Compile Include="Models\MergedPacket\LCD\T_PACKCODE_LCD_COMMAND_TYPE_AUX.cs" />
+    <Compile Include="Models\MergedPacket\LCD\T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.cs" />
+    <Compile Include="Models\MergedPacket\LCD\T_PACKCODE_LCD_COMMAND_TYPE_DET.cs" />
+    <Compile Include="Models\MergedPacket\LCD\T_PACKCODE_LCD_COMMAND_TYPE_INLET.cs" />
+    <Compile Include="Models\MergedPacket\LCD\T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL.cs" />
+    <Compile Include="Models\MergedPacket\LCD\T_PACKCODE_LCD_COMMAND_TYPE_TEMP.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_AUX_APC_SETTING.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_AUX_TEMP_SETTING.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_COMMAND.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_DET_SETTING.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_DET_SIGNAL_SETTING.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_INLET_SETTING.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_OVEN_SETTING.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_SIGNAL.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_SLFEMSG.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_SPECIAL_FUNCTION.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_SYSTEM_CONFIG.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_SYSTEM_INFORM.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_SYSTEM_STATE.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_TIME_CTRL_SETTING.cs" />
+    <Compile Include="Models\MergedPacket\T_PACKCODE_CHROZEN_VALVE_SETTING.cs" />
+    <Compile Include="Models\MergedPacket\W_CHROZEN_GC_PACKET_WITH_PACKCODE.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_APC_FLOW_PRGM.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_APC_PRESS_PRGM.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_APC_SENSOR_VOLTAGE.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_LCD_COMMAND.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_LCD_SIGNAL_DATA.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_SIGNAL_CALIBRATION_DATA.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_SYSTEM_LCD_Diag.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_TEMP_CALIBRATION.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_YL6700GC_APC_AUX_Calib_Write.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_YL6700GC_APC_Calib_Read.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_YL6700GC_APC_Calib_Write.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_YL6700GC_APC_DET_Calib_Write.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_YL6700GC_APC_INLET_Calib_Write.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_YL6700GC_AUX_ACT.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_YL6700GC_LCD_SIGNAL.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_YL6700GC_TEMP_CALIB_VALUE.cs" />
+    <Compile Include="Models\PacketModel\RootModel\LCD\T_YL6700GC_VOLTAGE_CHECK.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_CHROZEN_AUXAPC_SETTING.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_CHROZEN_AUXTEMP_SETTING.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_CHROZEN_COLUMN_CONDITION_FUNCTION.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_CHROZEN_DET.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_CHROZEN_GC_APC_FLOW.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_CHROZEN_GC_COMMAND.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_CHROZEN_GC_DIAGNOSIS.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_CHROZEN_GC_FLOW_READY.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_CHROZEN_GC_LOGDATA.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_CHROZEN_GC_OVEN.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_CHROZEN_GC_SELFMSG.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_CHROZEN_GC_SIGNAL.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_CHROZEN_GC_STATE.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_CHROZEN_GC_SYSTEM_CONFIG.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_CHROZEN_GC_SYSTEM_INFORM.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_CHROZEN_GC_TEMP_READY.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_CHROZEN_INLET.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_CHROZEN_RUNSTART_FUNCTION.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_CHROZEN_SPECIAL_FUNCTION.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_CHROZEN_VALVE_SETTING.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_DET_SIGNAL_DATA.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_DET_SIGNAL_SETTING.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_HEADER_PACKET.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_INLET_TEMP_PRGM.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_INST_INFORM.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_LCD_AUXAPC_SETTING.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_OVEN_PRGM.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_POSTRUN_FUNCTION.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_REMOTE_ACCESS_FUNCTION.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_SIGNAL_PRGM.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_SYSTEM_CONFIG.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_SYSTEM_TIME.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_TCD_POLAR_PRGM.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_TIME_CONTROL_TYPE.cs" />
+    <Compile Include="Models\PacketModel\RootModel\T_TIME_CTRL_SETTING.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_VALVE_CONFIG.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_VALVE_PRGM.cs" />
+    <Compile Include="Models\PacketModel\ChildModel\T_CHROZEN_GC_DEV_TEMP.cs" />
+    <Compile Include="Models\YC_CommonModel.cs" />
+    <Compile Include="Const\YC_Const.cs" />
+    <Compile Include="Util\YC_Type_Util.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
