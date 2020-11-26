@@ -1,0 +1,13 @@
+﻿<Grid x:Class="ChroZenService.met_log"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             xmlns:cvt="clr-namespace:ChroZenService"
+             
+             HeightRequest="465" WidthRequest="980">
+    <Grid>
+            
+    </Grid>
+</Grid>

@@ -1,0 +1,658 @@
+﻿<Grid x:Class="ChroZenService.system_config"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             xmlns:cvt="clr-namespace:ChroZenService"
+             x:Name="uc"
+             
+             HeightRequest="1114" WidthRequest="540">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="69" />
+            <RowDefinition Height="910" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="120" />
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="TextColor" Value="#a19e9e" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+        </Grid.Resources>
+
+        <Frame x:Name="page_1" Grid.Row="1" IsVisible="{Binding Source=_btnPrevNext, Path=IsToggled }"
+                Background="Transparent">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="5" />
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                </Grid.Resources>
+                <!--//-->
+                <Frame Grid.Row="0" Style="{StaticResource GroupBK}" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Inlet Front"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_inlet_one" Text="Capillary"  
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="1" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Inlet Center"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_inlet_two" Text="Not Installed"  
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="2" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Inlet Rear"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_inlet_three" Text="Packed"  
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="3" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Detector Front"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_detlet_one" Text="FID"  
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="4" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Detector Center"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_detlet_two" Text="TCD"  
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="5" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Detector Rear"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_detlet_three" Text="Not Installed"  
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="6" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Methanizer"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_methanizer" Text="Not Installed"  
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="7" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="AuxAPC 1"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Switch x:Name="btn_apc1" Style="{StaticResource OnOffBtn}" IsToggled="True" Margin="0, -11, 0, -11" HorizontalOptions="Start" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="8" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="AuxAPC 2"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Switch x:Name="btn_apc2" Style="{StaticResource OnOffBtn}" IsToggled="True" Margin="0, -11, 0, -11" HorizontalOptions="Start" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="9" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="AuxAPC 3"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Switch x:Name="btn_apc3" Style="{StaticResource OnOffBtn}" IsToggled="True" Margin="0, -11, 0, -11" HorizontalOptions="Start" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="10" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Cryogenic"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_cryogenic" Text="Not Installed"  
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="11" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Aux1/Aux2"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_auxtemp_one" Text="Not Installed" Style="{StaticResource HTX2}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="3" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="4">
+                            <Label x:Name="label_auxtemp_two" Text="Not Installed" Style="{StaticResource HTX2}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="12" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Aux3/Aux4"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_auxtemp_three" Text="Not Installed" Style="{StaticResource HTX2}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="3" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="4">
+                            <Label x:Name="label_auxtemp_four" Text="Not Installed" Style="{StaticResource HTX2}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="13" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Aux5/Aux6"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_auxtemp_five" Text="Not Installed" Style="{StaticResource HTX2}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="3" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="4">
+                            <Label x:Name="label_auxtemp_six" Text="Not Installed" Style="{StaticResource HTX2}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="14" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Aux7/Aux8"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_auxtemp_seven" Text="Not Installed" Style="{StaticResource HTX2}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="3" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="4">
+                            <Label x:Name="label_auxtemp_eight" Text="Not Installed" Style="{StaticResource HTX2}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+
+
+                <!--//-->
+                <Frame Grid.Row="15" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Multi Value 1"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_multivalve_one" Text="Not Installed"  
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="16" Style="{StaticResource GroupBK}" Margin="0, 3, 0, 3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame>
+                            <Label Text="Multi Value 2"  HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Style="{StaticResource LineRT}" />
+                        <Frame Grid.Column="2">
+                            <Label x:Name="label_multivalve_two" Text="Installed"  
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+            </Grid>
+        </Frame>
+        
+        <Frame x:Name="page_2" Grid.Row="1" Padding="0, 10, 40, 0" IsVisible="{Binding Source=_btnPrevNext, Path=IsToggled }"
+                Background="Transparent">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="540" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Frame Grid.Row="0" Style="{StaticResource GroupBK}" Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="VerticalOptions" Value="Center" />
+                                <Setter Property="TextColor" Value="#a8acc4" />
+                                <Setter Property="FontSize" Value="25" />
+                            </Style>
+                        </Grid.Resources>
+                        <Frame Grid.ColumnSpan="5" Style="{StaticResource LineBT}" />
+                        <Frame Grid.RowSpan="11" Style="{StaticResource LineRT}" />
+
+                        <Frame Grid.Row="0"></Frame>
+                        <Frame Grid.Row="0" Grid.Column="1">
+                            <Label Text="Type1" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="2">
+                            <Label Text="Port" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="3">
+                            <StackLayout>
+                                <Label Text="Vol" HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="(㎕ or ㏄)" FontSize="11" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="4">
+                            <Label Text="Type2" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="1" Padding="0, 0, 15, 0">
+                            <Label Text="Valve1" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="3">
+                            <Picker x:Name="combo_valve1_type1"  />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_valve1_port" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="3" Padding="3">
+                            <Editor x:Name="label_valve1_vol" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="4" Padding="3">
+                            <Picker x:Name="combo_valve1_type2"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="2" Padding="0, 0, 15, 0">
+                            <Label Text="Valve2" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="1" Padding="3">
+                            <Picker x:Name="combo_valve2_type1"  />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_valve2_port" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="3" Padding="3">
+                            <Editor x:Name="label_valve2_vol" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="4" Padding="3">
+                            <Picker x:Name="combo_valve2_type2"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="3" Padding="0, 0, 15, 0">
+                            <Label Text="Valve3" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="1" Padding="3">
+                            <Picker x:Name="combo_valve3_type1"  />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_valve3_port" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="3" Padding="3">
+                            <Editor x:Name="label_valve3_vol" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="4" Padding="3">
+                            <Picker x:Name="combo_valve3_type2"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="4" Padding="0, 0, 15, 0">
+                            <Label Text="Valve4" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="4" Grid.Column="1" Padding="3">
+                            <Picker x:Name="combo_valve4_type1"  />
+                        </Frame>
+                        <Frame Grid.Row="4" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_valve4_port" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="4" Grid.Column="3" Padding="3">
+                            <Editor x:Name="label_valve4_vol" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="4" Grid.Column="4" Padding="3">
+                            <Picker x:Name="combo_valve4_type2"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="5" Padding="0, 0, 15, 0">
+                            <Label Text="Valve5" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="5" Grid.Column="1" Padding="3">
+                            <Picker x:Name="combo_valve5_type1"  />
+                        </Frame>
+                        <Frame Grid.Row="5" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_valve5_port" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="5" Grid.Column="3" Padding="3">
+                            <Editor x:Name="label_valve5_vol" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="5" Grid.Column="4" Padding="3">
+                            <Picker x:Name="combo_valve5_type2"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="6" Padding="0, 0, 15, 0">
+                            <Label Text="Valve6" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="6" Grid.Column="1" Padding="3">
+                            <Picker x:Name="combo_valve6_type1"  />
+                        </Frame>
+                        <Frame Grid.Row="6" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_valve6_port" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="6" Grid.Column="3" Padding="3">
+                            <Editor x:Name="label_valve6_vol" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="6" Grid.Column="4" Padding="3">
+                            <Picker x:Name="combo_valve6_type2"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="7" Padding="0, 0, 15, 0">
+                            <Label Text="Valve7" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="7" Grid.Column="1" Padding="3">
+                            <Picker x:Name="combo_valve7_type1"  />
+                        </Frame>
+                        <Frame Grid.Row="7" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_valve7_port" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="7" Grid.Column="3" Padding="3">
+                            <Editor x:Name="label_valve7_vol" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="7" Grid.Column="4" Padding="3">
+                            <Picker x:Name="combo_valve7_type2"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="8" Padding="0, 0, 15, 0">
+                            <Label Text="Valve8" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="8" Grid.Column="1" Padding="3">
+                            <Picker x:Name="combo_valve8_type1"  />
+                        </Frame>
+                        <Frame Grid.Row="8" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_valve8_port" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="8" Grid.Column="3" Padding="3">
+                            <Editor x:Name="label_valve8_vol" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="8" Grid.Column="4" Padding="3">
+                            <Picker x:Name="combo_valve8_type2"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="9" Padding="0, 0, 15, 0">
+                            <Label Text="Multi1" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="9" Grid.Column="1" Padding="3">
+                            <Picker x:Name="combo_multi1_type1"  />
+                        </Frame>
+                        <Frame Grid.Row="9" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_multi1_port" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="9" Grid.Column="3" Padding="3">
+                            <Editor x:Name="label_multi1_vol" Style="{StaticResource TB-N}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="10" Padding="0, 0, 15, 0">
+                            <Label Text="Multi2" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="10" Grid.Column="1" Padding="3">
+                            <Picker x:Name="combo_multi2_type1"  />
+                        </Frame>
+                        <Frame Grid.Row="10" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_multi2_port" Style="{StaticResource TB-N}" />
+                        </Frame>
+                        <Frame Grid.Row="10" Grid.Column="3" Padding="3">
+                            <Editor x:Name="label_multi2_vol" Style="{StaticResource TB-N}" />
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Row="2" Style="{StaticResource GroupBK}" Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Padding="0, 0, 20, 0" Style="{StaticResource LineRT}">
+                            <Label Text="Cryogenic"  
+                                       HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="5, 5, 25, 5">
+                            <Picker x:Name="combo_cryogenic"  />
+                        </Frame>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </Frame>
+
+
+
+        <Frame Grid.Row="3">
+            <Switch x:Name="_btnPrevNext" Style="{StaticResource NextPrevBtn}" IsToggled="False" />
+        </Frame>
+    </Grid>
+</Grid>

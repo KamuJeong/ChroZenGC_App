@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+    <?xaml-comp compile="true" ?>
+    <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:cvt="clr-namespace:ChroZenService"
+                    >
+
+    <Style TargetType="{x:Type Label}" x:Key="TSL">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="TextColor" Value="#ffffff" />
+        <Setter Property="FontAttributes" Value="Normal" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+
+  
+    <ControlTemplate x:Key="PickerSwitch" >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="30" />
+            </Grid.ColumnDefinitions>
+            <Frame
+                  x:Name="Frame" 
+                  Grid.ColumnSpan="2"
+                  CornerRadius="0"
+                  Background="#ffffff"
+                   />
+            <Frame 
+                  Grid.Column="0"
+                  CornerRadius="0" 
+                  Background="#ffffff" 
+                 />
+            <Polygon 
+                  x:Name="Arrow"
+                  Grid.Column="1"     
+                  Fill="Black"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  Points="0,0 5,5,10,0"
+                />
+        </Grid>
+        <!--<ControlTemplate.Triggers>
+            <Trigger Property="Switch.IsMouseOver" Value="true">
+                <Setter Property="Frame" Property="Background" Value="#808080" />
+            </Trigger>
+            <Trigger Property="Switch.IsToggled" Value="true">
+                <Setter Property="Frame" Property="Background" Value="#E0E0E0" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Frame" Property="Background" Value="#EEEEEE" />
+                <Setter Property="Frame" Property="OutlineColor" Value="#AAAAAA" />
+                <Setter Property="TextColor" Value="#888888"/>
+                <Setter Property="Arrow" Property="Fill" Value="#888888" />
+            </Trigger>
+        </ControlTemplate.Triggers>-->
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="PickerEditor" >
+        <Frame x:Name="PART_ContentHost" InputTransparent="True" Background="#ffffff" />
+    </ControlTemplate>
+
+    <!--<Style x:Key="SS" TargetType="{x:Type Picker}">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="ScrollView.HorizontalScrollBarIsVisible" Value="Auto"/>
+        <Setter Property="ScrollView.VerticalScrollBarIsVisible" Value="Auto"/>
+        <Setter Property="ScrollView.CanContentScroll" Value="true"/>
+        <Setter Property="MinWidth" Value="40"/>
+        <Setter Property="MinHeight" Value="15"/>
+        <Setter Property="TextColor" Value="#000000"/>
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate >
+                    <Grid>
+                        <Switch  
+                            x:Name="Switch" 
+                            Template="{StaticResource PickerSwitch}" 
+                            Grid.Column="2" 
+                            InputTransparent="True" 
+                            IsToggled ="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                            >
+                        </Switch>
+                        <ContentPresenter x:Name="ContentSite" InputTransparent="True"  Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            Margin="3,3,23,3"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start" />
+                        <Editor x:Name="PART_EditableEditor"
+                            Style="{x:Null}" 
+                            Template="{StaticResource PickerEditor}" 
+                            HorizontalOptions="Start" 
+                            VerticalOptions="Center" 
+                            Margin="3,3,23,3"
+                            InputTransparent="false" 
+                            Background="#ffffff"
+                            TextColor="#000000" 
+                            IsVisible="False"
+                            IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                        <Popup 
+                            x:Name="Popup"
+                            Placement="Bottom"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                            AllowsTransparency="True" 
+                            InputTransparent="true"
+                            PopupAnimation="Slide">
+
+                            <Grid x:Name="DropDown"            
+                              MinimumWidthRequest="{TemplateBinding ActualWidth}"                              
+                                <Frame 
+                                x:Name="DropDownFrame"
+                                Background="#2d2d37"
+                                OutlineColor="#888888"/>
+                                <ScrollView Margin="4,6,4,6" >
+                                    <StackLayout  />
+                                </ScrollView>
+                            </Grid>
+                        </Popup>
+                        <Grid.Triggers>
+                            <Trigger Property="HasItems" Value="false">
+                                <Setter TargetName="DropDownFrame" Property="MinHeight" Value="95"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="TextColor" Value="#888888"/>
+                            </Trigger>
+                            <Trigger Property="IsGrouping" Value="true">
+                                <Setter Property="ScrollView.CanContentScroll" Value="false"/>
+                            </Trigger>
+                            <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
+                                <Setter TargetName="DropDownFrame" Property="CornerRadius" Value="0"/>
+                                <Setter TargetName="DropDownFrame" Property="Margin" Value="0,2,0,0"/>
+                            </Trigger>
+                            <Trigger Property="IsEditable"  Value="true">
+                                <Setter Property="IsTabStop" Value="false"/>
+                                <Setter TargetName="PART_EditableEditor" Property="IsVisible" Value="Visible"/>
+                                <Setter TargetName="ContentSite" Property="IsVisible" Value="Hidden"/>
+                            </Trigger>
+                        </Grid.Triggers>
+                    </Grid>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+        </Style.Triggers>
+    </Style>-->
+
+    <Style x:Key="MetSS" TargetType="{x:Type Picker}" >
+        <!--<Setter Property="FontSize" Value="14" />-->
+    </Style>
+
+</ResourceDictionary>

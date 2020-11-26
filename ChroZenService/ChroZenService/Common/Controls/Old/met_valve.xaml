@@ -1,0 +1,173 @@
+﻿<Grid x:Class="ChroZenService.met_valve"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             xmlns:cvt="clr-namespace:ChroZenService"
+             
+                x:Name="uc"
+             HeightRequest="465" WidthRequest="980">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition />            
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Label" BasedOn="{StaticResource HTX}">
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+        </Grid.Resources>
+
+        <Frame Grid.Column="0" Padding="5" Background="Transparent">
+            <StackLayout>
+                <Frame Grid.Row="0" Style="{StaticResource MetGroupBK}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition  />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Frame Grid.RowSpan="11" Style="{StaticResource LineRT}" />
+
+                        <!--//-->
+                        <Frame Grid.Row="0" Style="{StaticResource LineBT}" Padding="5">
+                            <Label Text="No." 
+                                    VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource LineBT}" Padding="15, 5, 15, 5">
+                            <Label Text="Initial State" 
+                                    VerticalOptions="Center" HorizontalOptions="Start"/>
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="1" Style="{StaticResource LineBT}" Padding="5">
+                            <Label Text="1" 
+                                    VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" Style="{StaticResource LineBT}" Padding="5, 3">
+                            <Switch x:Name="btn1" IsToggled="{Binding Path=MM.InitState1, Source=uc}" Style="{StaticResource MetOnOffBtn}" HorizontalOptions="Start" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="2" Style="{StaticResource LineBT}" Padding="5">
+                            <Label Text="2" 
+                                    VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="1" Style="{StaticResource LineBT}" Padding="5, 3">
+                            <Switch x:Name="btn2" IsToggled="{Binding Path=MM.InitState2, Source=uc}"  Style="{StaticResource MetOnOffBtn}" 
+                                          HorizontalOptions="Start" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="3" Style="{StaticResource LineBT}" Padding="5">
+                            <Label Text="3" 
+                                    VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="1" Style="{StaticResource LineBT}" Padding="5, 3">
+                            <Switch x:Name="btn3" IsToggled="{Binding Path=MM.InitState3, Source=uc}"  Style="{StaticResource MetOnOffBtn}" HorizontalOptions="Start" VerticalOptions="End" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="4" Style="{StaticResource LineBT}" Padding="5">
+                            <Label Text="4" 
+                                    VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="4" Grid.Column="1" Style="{StaticResource LineBT}" Padding="5, 3">
+                            <Switch x:Name="btn4" IsToggled="{Binding Path=MM.InitState4, Source=uc}"  Style="{StaticResource MetOnOffBtn}" HorizontalOptions="Start" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="5" Style="{StaticResource LineBT}" Padding="5">
+                            <Label Text="5" 
+                                    VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="5" Grid.Column="1" Style="{StaticResource LineBT}" Padding="5, 3">
+                            <Switch x:Name="btn5" IsToggled="{Binding Path=MM.InitState5, Source=uc}"  Style="{StaticResource MetOnOffBtn}" HorizontalOptions="Start" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="6" Style="{StaticResource LineBT}" Padding="5">
+                            <Label Text="6" 
+                                    VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="6" Grid.Column="1" Style="{StaticResource LineBT}" Padding="5, 3">
+                            <Switch x:Name="btn6" IsToggled="{Binding Path=MM.InitState6, Source=uc}"  Style="{StaticResource MetOnOffBtn}" HorizontalOptions="Start" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="7" Style="{StaticResource LineBT}" Padding="5">
+                            <Label Text="7" 
+                                    VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="7" Grid.Column="1" Style="{StaticResource LineBT}" Padding="5, 3">
+                            <Switch x:Name="btn7" IsToggled="{Binding Path=MM.InitState7, Source=uc}"  Style="{StaticResource MetOnOffBtn}" HorizontalOptions="Start" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="8" Style="{StaticResource LineBT}" Padding="5">
+                            <Label Text="8" 
+                                    VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="8" Grid.Column="1" Style="{StaticResource LineBT}" Padding="5, 3">
+                            <Switch x:Name="btn8" IsToggled="{Binding Path=MM.InitState8, Source=uc}"  Style="{StaticResource MetOnOffBtn}" HorizontalOptions="Start" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="9" Style="{StaticResource LineBT}" Padding="5">
+                            <Label Text="Multi 1" 
+                                    VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="9" Grid.Column="1" Style="{StaticResource LineBT}" Padding="75, 3, 75, 3">
+                            <Editor x:Name="label_multi1" Text="{Binding Path=MM.MultiInitState1, Source=uc}" Style="{StaticResource MetTX}"
+                                    VerticalOptions="Center" HorizontalOptions="Start"/>
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="10" Style="{StaticResource LineBT}" Padding="5">
+                            <Label Text="Multi 2" 
+                                    VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="10" Grid.Column="1" Style="{StaticResource LineBT}" Padding="75, 3, 75, 3">
+                            <Editor x:Name="label_multi2" Text="{Binding Path=MM.MultiInitState2, Source=uc}" Style="{StaticResource MetTX}"
+                                    VerticalOptions="Center" HorizontalOptions="Start"/>
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </Frame>
+
+        <Frame Grid.Column="1" Padding="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Grid.RowSpan="2" Style="{StaticResource LineRT}" Margin="0, 0, -15, 0" />
+                <Frame Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource MetGroupBK}" Padding="5">
+                    <ListView x:Name="_lst" Background="Transparent" 
+                              VerticalScrollBarVisibility="Always"
+                              HorizontalScrollBarVisibility="Never">
+                           
+                    </ListView>
+                </Frame>
+            </Grid>
+        </Frame>
+        
+        
+    </Grid>
+</Grid>

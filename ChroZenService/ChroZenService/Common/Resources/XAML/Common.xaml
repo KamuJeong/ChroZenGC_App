@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+    <?xaml-comp compile="true" ?>
+    <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:cvt="clr-namespace:ChroZenService"
+                    >   
+
+
+    <!--<cvt:VToIsVisibleConverter x:Key="VToV" />
+    <cvt:VToBoolConverter x:Key="VToB" />-->    
+    <cvt:XToMarginConverter x:Key="XToM" />
+    <cvt:NToMarginConverter x:Key="NToM" />
+    <cvt:ByteToBoolConverter x:Key="BToB" />
+    <cvt:FloatToBoolConverter x:Key="FToB" />
+    <cvt:FloatToStringConverter x:Key="F2S" />
+    <!--<cvt:IndexConverter x:Key="INDX" />
+    <cvt:RowNumberConverter x:Key="INDX1" />-->
+    <cvt:OnOffConverter x:Key="ONOFF" />
+    <cvt:FunctionToSelectedIndex x:Key="F2I" />
+    <cvt:TimeFuncToTextVisibleConverter x:Key="TF2V" />
+    <!--<cvt:OvenPrgmToBoolConverter x:Key="OFToB" />-->
+    <cvt:ByteToIntConverter x:Key="B2I" />    
+
+    <Style x:Key="GroupBK" TargetType="{x:Type Frame}" >
+        <Setter Property="BorderColor" Value="Transparent"/>
+        <Setter Property="CornerRadius" Value="18"/>
+        <Setter Property="Padding" Value="18, 10, 18, 10"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Color="#25242a" Offset="0" />
+                        <GradientStop Color="#1b1a1f" Offset="1" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MetGroupBK" TargetType="{x:Type Frame}" BasedOn="{StaticResource GroupBK}">
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="10, 5"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderColor" Value="#3d3e46"/>
+    </Style>
+
+    <Style x:Key="BlankBK" TargetType="{x:Type Frame}">
+        <Setter Property="BorderColor" Value="Transparent" />
+    </Style>
+
+    <Style x:Key="LineBT" TargetType="{x:Type Frame}">
+        <Setter Property="BorderColor" Value="#3d3e46" />
+    </Style>
+
+    <Style x:Key="LineRT" TargetType="{x:Type Frame}">
+        <Setter Property="BorderColor" Value="#3d3e46" />
+    </Style>
+
+
+    <!--<ControlTemplate x:Key="ListViewItemControlStyle1" >
+        <Frame Background="{TemplateBinding Background}"  BorderColor="Transparent">
+            <GridViewRowPresenter Content="{TemplateBinding Content}"
+           Columns="{TemplateBinding GridView.ColumnCollection}"/>
+        </Frame>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ListViewItemControlStyle1-MouseOver" >
+        <Frame Background="#000000" FrameThickness="0" BorderColor="Transparent">
+            <GridViewRowPresenter Content="{TemplateBinding Content}"
+           Columns="{TemplateBinding GridView.ColumnCollection}"/>
+        </Frame>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ListViewItemControlStyle1-Selected" >
+        <Frame Background="#000000"  BorderColor="Transparent">
+            <GridViewRowPresenter Content="{TemplateBinding Content}"
+           Columns="{TemplateBinding GridView.ColumnCollection}"/>
+        </Frame>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ListViewItemControlStyle1-alter" >
+        <Frame Background="Transparent" >
+            <GridViewRowPresenter Content="{TemplateBinding Content}"
+           Columns="{TemplateBinding GridView.ColumnCollection}"  />
+        </Frame>
+    </ControlTemplate>-->
+
+</ResourceDictionary>

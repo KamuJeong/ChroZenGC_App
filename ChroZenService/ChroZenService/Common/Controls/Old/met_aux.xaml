@@ -1,0 +1,632 @@
+﻿<Grid x:Class="ChroZenService.met_aux"
+                       x:Name="uc"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             xmlns:cvt="clr-namespace:ChroZenService"
+             
+             HeightRequest="465" WidthRequest="980">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Label" BasedOn="{StaticResource HTX}">
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+        </Grid.Resources>
+
+        <Frame Padding="5, 5, 0, 5">
+            <StackLayout>
+                <Frame HeightRequest="285" Grid.Row="0" Style="{StaticResource MetGroupBK}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Frame Grid.ColumnSpan="3" Style="{StaticResource LineBT}" />
+                        <Frame Grid.RowSpan="9" Style="{StaticResource LineRT}" />
+
+                        <!--//-->
+                        <Frame Grid.Row="0" Padding="1">
+
+                        </Frame>
+
+                        <Frame Grid.Row="0" Grid.Column="1"  Padding="1">
+                            <Label Text="On/Off" HorizontalOptions="Center" />
+                        </Frame>
+
+                        <Frame Grid.Row="0" Grid.Column="2"  Padding="1">
+                            <Label Text="Setting(℃)" HorizontalOptions="Center"/>
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="1" Padding="5, 0, 15, 0">
+                            <Label Text="Aux 1" HorizontalOptions="End"/>
+                        </Frame>
+
+                        <Frame Grid.Row="1" Grid.Column="1"  Padding="1">
+                            <Switch x:Name="btn_aux1" IsToggled="{Binding Path=MT.TempOnoff1, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+
+                        <Frame Grid.Row="1" Grid.Column="2"  Padding="1">
+                            <Editor Text="{Binding Path=MT.TempSet1, Source=uc}" 
+                                    IsEnabled="{Binding Source=btn_aux1, Path=IsToggled}"
+                                    x:Name="label_set_aux1" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="2" Padding="5, 0, 15, 0">
+                            <Label Text="Aux 2" 
+                                       VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Frame>
+
+                        <Frame Grid.Row="2" Grid.Column="1"  Padding="1">
+                            <Switch x:Name="btn_aux2" IsToggled="{Binding Path=MT.TempOnoff2, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+
+                        <Frame Grid.Row="2" Grid.Column="2"  Padding="1">
+                            <Editor Text="{Binding Path=MT.TempSet2, Source=uc}" 
+                                               IsEnabled="{Binding Source=btn_aux2, Path=IsToggled}"
+                                               x:Name="label_set_aux2" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="3" Padding="5, 0, 15, 0">
+                            <Label Text="Aux 3" 
+                                       VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Frame>
+
+                        <Frame Grid.Row="3" Grid.Column="1"  Padding="1">
+                            <Switch x:Name="btn_aux3" IsToggled="{Binding Path=MT.TempOnoff3, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+
+                        <Frame Grid.Row="3" Grid.Column="2"  Padding="1">
+                            <Editor  Text="{Binding Path=MT.TempSet3, Source=uc}" 
+                                               IsEnabled="{Binding Source=btn_aux3, Path=IsToggled}"
+                                               x:Name="label_set_aux3" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="4" Padding="5, 0, 15, 0">
+                            <Label Text="Methanizer" 
+                                       VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Frame>
+
+                        <Frame Grid.Row="4" Grid.Column="1"  Padding="1">
+                            <Switch x:Name="btn_aux4" IsToggled="{Binding Path=MT.TempOnoff4, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+
+                        <Frame Grid.Row="4" Grid.Column="2"  Padding="1">
+                            <Editor  Text="{Binding Path=MT.TempSet4, Source=uc}" 
+                                               IsEnabled="{Binding Source=btn_aux4, Path=IsToggled}"
+                                               x:Name="label_set_meth" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="5" Padding="5, 0, 15, 0">
+                            <Label Text="Aux 5" 
+                                       VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Frame>
+
+                        <Frame Grid.Row="5" Grid.Column="1"  Padding="1">
+                            <Switch x:Name="btn_aux5" IsToggled="{Binding Path=MT.TempOnoff5, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+
+                        <Frame Grid.Row="5" Grid.Column="2"  Padding="1">
+                            <Editor  Text="{Binding Path=MT.TempSet5, Source=uc}" 
+                                               IsEnabled="{Binding Source=btn_aux5, Path=IsToggled}"
+                                               x:Name="label_set_aux5" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="6" Padding="5, 0, 15, 0">
+                            <Label Text="Aux 6" 
+                                       VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Frame>
+
+                        <Frame Grid.Row="6" Grid.Column="1"  Padding="1">
+                            <Switch x:Name="btn_aux6" IsToggled="{Binding Path=MT.TempOnoff6, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+
+                        <Frame Grid.Row="6" Grid.Column="2"  Padding="1">
+                            <Editor  Text="{Binding Path=MT.TempSet6, Source=uc}" 
+                                               IsEnabled="{Binding Source=btn_aux6, Path=IsToggled}"
+                                               x:Name="label_set_aux6" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="7" Padding="5, 0, 15, 0">
+                            <Label Text="Aux 7" 
+                                       VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Frame>
+
+                        <Frame Grid.Row="7" Grid.Column="1"  Padding="1">
+                            <Switch x:Name="btn_aux7" IsToggled="{Binding Path=MT.TempOnoff7, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+
+                        <Frame Grid.Row="7" Grid.Column="2"  Padding="1">
+                            <Editor   Text="{Binding Path=MT.TempSet7, Source=uc}" 
+                                               IsEnabled="{Binding Source=btn_aux7, Path=IsToggled}"
+                                               x:Name="label_set_aux7" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="8" Padding="5, 0, 15, 0">
+                            <Label Text="Aux 8" 
+                                       VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Frame>
+
+                        <Frame Grid.Row="8" Grid.Column="1"  Padding="1">
+                            <Switch x:Name="btn_aux8" IsToggled="{Binding Path=MT.TempOnoff8, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+
+                        <Frame Grid.Row="8" Grid.Column="2"  Padding="1">
+                            <Editor  Text="{Binding Path=MT.TempSet8, Source=uc}" 
+                                               IsEnabled="{Binding Source=btn_aux8, Path=IsToggled}"
+                                               x:Name="label_set_aux8" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+
+                <Frame HeightRequest="5" />
+
+
+            </StackLayout>
+        </Frame>
+
+        <Frame Grid.Column="1" Padding="5, 5, 0, 5">
+            <StackLayout>
+                <Frame HeightRequest="30" Padding="5">
+                    <Label Text="Ext IO"  TextColor="#ffffff" />
+                </Frame>
+
+                <Frame HeightRequest="130" Style="{StaticResource MetGroupBK}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Frame Padding="0, 0, 5, 0">
+                            <Label Text="Start pulse width" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Row="1"  Padding="0, 0, 5, 0">
+                            <Label Text="Timed Event" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="2" Padding="0, 0, 5, 0">
+                            <Label Text="Time1" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="3" Padding="0, 0, 5, 0">
+                            <Label Text="Time2" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Column="1" Padding="3">
+                            <Editor x:Name="label_time" Style="{StaticResource MetTB-S}" 
+                                      
+                                       Text="{Binding Path=MSF.Remote.Time, Source=uc, Converter={StaticResource F2S}, ConverterParameter=0}" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" Padding="3">
+                            <Switch x:Name="btn_timedevent" IsToggled="{Binding Path=MSF.Remote.Onoff, Source=uc}" 
+                                      Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="1" Padding="3">
+                            <Editor x:Name="label_time1" 
+                                       IsEnabled="{Binding Path=IsToggled, Source=btn_timedevent}"
+                                       Text="{Binding Path=MSF.Remote.EventTime1, Source=uc, Converter={StaticResource F2S}, ConverterParameter=0}"
+                                       Style="{StaticResource MetTB-S}" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="1" Padding="3">
+                            <Editor x:Name="label_time2" 
+                                       IsEnabled="{Binding Path=IsToggled, Source=btn_timedevent}"
+                                       Text="{Binding Path=MSF.Remote.EventTime2, Source=uc, Converter={StaticResource F2S}, ConverterParameter=0}"
+                                       Style="{StaticResource MetTB-S}" />
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </Frame>
+
+        <Frame Grid.Column="2" Padding="5, 5, 0, 5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="170" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="140" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="140" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Frame Grid.Row="0" Style="{StaticResource MetGroupBK}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Frame Grid.ColumnSpan="3" Style="{StaticResource LineBT}" />
+                        <Frame Grid.RowSpan="5" Style="{StaticResource LineRT}" />
+
+                        <Frame Grid.Column="0" />
+                        <Frame Grid.Column="1">
+                            <Label Text="On/Off"  
+                                    HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Frame>
+
+                        <Frame Grid.Column="2">
+                            <Label Text="Set (㎖/min)"  
+                                    HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Frame>
+                        <!--//-->
+                        <Frame Grid.Row="1" Grid.Column="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Aux APC 1" Style="{StaticResource HTX2}" 
+                                    HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Padding="3">
+                            <Picker SelectedIndex="{Binding Path=M1.AuxGas, Source=uc}" x:Name="combo_aux1" Style="{StaticResource MetSS}" Margin="0,0,1,0">
+                                <Picker.Items>
+                                    <x:String>N2</x:String>
+                                    <x:String>He</x:String>
+                                    <x:String>H2</x:String>
+                                    <x:String>Ar</x:String>
+                                    <x:String>ArCH4</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="2" Grid.Column="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Flow 1"  
+                                    HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="1" Padding="3">
+                            <Switch x:Name="btn_apc1_flow1" IsToggled="{Binding Path=M1.FlowOnoff1, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_aux1_set_flow1" 
+                                           IsEnabled="{Binding Source=btn_apc1_flow1, Path=IsToggled}"
+                                           Text="{Binding Path=M1.FlowSet1, Source=uc}" Style="{StaticResource MetTB-N}"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="3" Grid.Column="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Flow 2"  
+                                    HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="1" Padding="3">
+                            <Switch x:Name="btn_apc1_flow2" IsToggled="{Binding Path=M1.FlowOnoff2, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_aux1_set_flow2" 
+                                           IsEnabled="{Binding Source=btn_apc1_flow2, Path=IsToggled}"
+                                           Text="{Binding Path=M1.FlowSet2, Source=uc}" Style="{StaticResource MetTB-N}"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="4" Grid.Column="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Flow 3"  
+                                    HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="4" Grid.Column="1" Padding="3">
+                            <Switch x:Name="btn_apc1_flow3" IsToggled="{Binding Path=M1.FlowOnoff3, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="4" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_aux1_set_flow3" 
+                                           IsEnabled="{Binding Source=btn_apc1_flow3, Path=IsToggled}"
+                                           Text="{Binding Path=M1.FlowSet3, Source=uc}" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <Frame x:Name="bdr_apc1" Grid.ColumnSpan="3" Grid.RowSpan="5" IsVisible="False" >
+                            <Frame.Background>
+                                <SolidColorBrush Color="Black" />
+                            </Frame.Background>
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Row="2" Style="{StaticResource MetGroupBK}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Frame Grid.ColumnSpan="3" Style="{StaticResource LineBT}" />
+                        <Frame Grid.RowSpan="5" Style="{StaticResource LineRT}" />
+                        <!--//-->
+                        <Frame Grid.Row="0" Grid.Column="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Aux APC 2" Style="{StaticResource HTX2}" 
+                                    HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Padding="3">
+                            <Picker SelectedIndex="{Binding Path=M2.AuxGas, Source=uc}" x:Name="combo_aux2" Style="{StaticResource MetSS}" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>N2</x:String>
+                                        <x:String>He</x:String>
+                                        <x:String>H2</x:String>
+                                        <x:String>Ar</x:String>
+                                        <x:String>ArCH4</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="1" Grid.Column="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Flow 1"  
+                                    HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="3">
+                            <Switch x:Name="btn_apc2_flow1" IsToggled="{Binding Path=M2.FlowOnoff1, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_aux2_set_flow1" 
+                                           IsEnabled="{Binding Source=btn_apc2_flow1, Path=IsToggled}"
+                                           Text="{Binding Path=M2.FlowSet1, Source=uc}" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="2" Grid.Column="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Flow 2"  
+                                    HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="1" Padding="3">
+                            <Switch x:Name="btn_apc2_flow2" IsToggled="{Binding Path=M2.FlowOnoff2, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_aux2_set_flow2" 
+                                           IsEnabled="{Binding Source=btn_apc2_flow2, Path=IsToggled}"
+                                           Text="{Binding Path=M2.FlowSet2, Source=uc}" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="3" Grid.Column="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Flow 3"  
+                                    HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="1" Padding="3">
+                            <Switch x:Name="btn_apc2_flow3" IsToggled="{Binding Path=M2.FlowOnoff3, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="2" Padding="3">
+                            <Editor  x:Name="label_aux2_set_flow3" 
+                                           IsEnabled="{Binding Source=btn_apc2_flow3, Path=IsToggled}"
+                                           Text="{Binding Path=M2.FlowSet3, Source=uc}" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <Frame x:Name="bdr_apc2" Grid.ColumnSpan="3" Grid.RowSpan="5"  IsVisible="False">
+                            <Frame.Background>
+                                <SolidColorBrush Color="Black"  />
+                            </Frame.Background>
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Row="4" Style="{StaticResource MetGroupBK}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Frame Grid.ColumnSpan="3" Style="{StaticResource LineBT}" />
+                        <Frame Grid.RowSpan="5" Style="{StaticResource LineRT}" />
+
+                        <Frame Grid.Row="0" Grid.Column="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Aux APC 3" Style="{StaticResource HTX2}" 
+                                    HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Padding="3">
+                            <Picker SelectedIndex="{Binding Path=M3.AuxGas, Source=uc}" x:Name="combo_aux3" Style="{StaticResource MetSS}" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>N2</x:String>
+                                        <x:String>He</x:String>
+                                        <x:String>H2</x:String>
+                                        <x:String>Ar</x:String>
+                                        <x:String>ArCH4</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="1" Grid.Column="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Flow 1"  
+                                    HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="3">
+                            <Switch x:Name="btn_apc3_flow1" IsToggled="{Binding Path=M3.FlowOnoff1, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_aux3_set_flow1" 
+                                           IsEnabled="{Binding Source=btn_apc3_flow1, Path=IsToggled}"
+                                           Text="{Binding Path=M3.FlowSet1, Source=uc}" Style="{StaticResource MetTB-N}"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="2" Grid.Column="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Flow 2"  
+                                    HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="1" Padding="3">
+                            <Switch x:Name="btn_apc3_flow2" IsToggled="{Binding Path=M3.FlowOnoff2, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="2" Padding="3">
+                            <Editor x:Name="label_aux3_set_flow2" 
+                                           IsEnabled="{Binding Source=btn_apc3_flow2, Path=IsToggled}"
+                                           Text="{Binding Path=M3.FlowSet2, Source=uc}" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="3" Grid.Column="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Flow 3"  
+                                    HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="1" Padding="3">
+                            <Switch x:Name="btn_apc3_flow3" IsToggled="{Binding Path=M3.FlowOnoff3, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="2" Padding="3">
+                            <Editor  x:Name="label_aux3_set_flow3" 
+                                           IsEnabled="{Binding Source=btn_apc3_flow3, Path=IsToggled}"
+                                           Text="{Binding Path=M3.FlowSet3, Source=uc}" Style="{StaticResource MetTB-N}" />
+                        </Frame>
+
+                        <Frame x:Name="bdr_apc3" Grid.ColumnSpan="3" Grid.RowSpan="5" IsVisible="False">
+                            <Frame.Background>
+                                <SolidColorBrush Color="Black" />
+                            </Frame.Background>
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+            </Grid>
+        </Frame>
+    </Grid>
+</Grid>

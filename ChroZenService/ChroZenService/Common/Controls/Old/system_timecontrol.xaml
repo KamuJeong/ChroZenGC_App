@@ -1,0 +1,64 @@
+﻿<Grid x:Class="ChroZenService.System_timecontrol"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             xmlns:cvt="clr-namespace:ChroZenService"
+             x:Name="uc"
+             
+             HeightRequest="1114" WidthRequest="540">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="69" />
+            <RowDefinition Height="1030" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="#a8acc4" />
+                <Setter Property="FontSize" Value="21" />
+            </Style>
+        </Grid.Resources>
+        <Frame Grid.Row="1" Padding="0, 20, 35, 20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="80" />
+                </Grid.RowDefinitions>
+                <Frame Style="{StaticResource LineRT}" />
+                <Frame Grid.Row="0" Grid.ColumnSpan="2"  Style="{StaticResource GroupBK}" Padding="5" Background="Transparent">
+                    <ListView x:Name="_lst" Background="Transparent" 
+                              VerticalScrollBarVisibility="Never">
+                       
+                       
+                    </ListView>
+                </Frame>
+
+                <Frame Grid.Row="2" Grid.ColumnSpan="2" Padding="5, 30, 5, 20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Frame Grid.Column="0">
+                            <Button x:Name="btnUp" Style="{StaticResource UpDownButton}" Text="▲     Up" />
+                        </Frame>
+                        <Frame Grid.Column="1" Background="#ffffff" Margin="0, 5" />
+                        <Frame Grid.Column="2">
+                            <Button x:Name="btnDn" Style="{StaticResource UpDownButton}" Text="Down     ▼" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </Frame>
+    </Grid>
+</Grid>

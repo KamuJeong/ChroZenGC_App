@@ -1,0 +1,171 @@
+﻿<Grid x:Class="ChroZenService.signal_x"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             
+             HeightRequest="1100" WidthRequest="540">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="355" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0" Style="{StaticResource GroupBK}" Padding="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Frame Grid.RowSpan="2" Style="{StaticResource LineRT}" />
+                <Frame >
+                    <Label Text="Signal Zero" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="5">
+                    <Editor x:Name="label_signal_zero" Style="{StaticResource TB}"  />
+                </Frame>
+                <!--//-->
+                <Frame Grid.Row="1" >
+                    <Label Text="Sensitivity" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1" Padding="5">
+                    <Editor x:Name="label_sensitivity" Style="{StaticResource TB}"  />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="2" Style="{StaticResource GroupBK}" Padding="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame>
+                    <Label Text="Signal Change" Style="{StaticResource HTX}" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="5">
+                    <Switch x:Name="btn_signalchange" Style="{StaticResource OnOffBtn}" HorizontalOptions="Start" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="3" Padding="10" 
+                        IsVisible="{Binding Source=btn3SignalChange, Path=IsToggled}">
+            <Label Text="Signal Program" Style="{StaticResource HTX}" TextColor="#ffffff" FontAttributes="Bold" />
+        </Frame>
+
+        <Frame Grid.Row="4" Padding="5" Style="{StaticResource GroupBK}" 
+                        IsVisible="{Binding Source=btn3SignalChange, Path=IsToggled}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="87" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Frame Grid.ColumnSpan="3" Style="{StaticResource LineBT}" />
+                <Frame Grid.RowSpan="7" Style="{StaticResource LineRT}" />
+
+                <Frame>
+                    <Label Text="No." Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
+                <Frame Grid.Column="1">
+                    <Label Text="Time(min)" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
+                <Frame Grid.Column="2">
+                    <Label Text="Source" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
+                <!--//-->
+                <Frame Grid.Row="1">
+                    <Label Text="Init" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1">
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="2" Padding="5">
+                    <Picker x:Name="combo_source_0"  />
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="2">
+                    <Label Text="1" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="1" Padding="5">
+                    <Editor x:Name="label_time_1" Style="{StaticResource TB-N}" />
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="2" Padding="5">
+                    <Picker x:Name="combo_source_1"  />
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="3">
+                    <Label Text="2" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
+                <Frame Grid.Row="3" Grid.Column="1" Padding="5">
+                    <Editor x:Name="label_time_2" Style="{StaticResource TB-N}" />
+                </Frame>
+                <Frame Grid.Row="3" Grid.Column="2" Padding="5">
+                    <Picker x:Name="combo_source_2"  />
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="4">
+                    <Label Text="3" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
+                <Frame Grid.Row="4" Grid.Column="1" Padding="5">
+                    <Editor x:Name="label_time_3" Style="{StaticResource TB-N}" />
+                </Frame>
+                <Frame Grid.Row="4" Grid.Column="2" Padding="5">
+                    <Picker x:Name="combo_source_3"  />
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="5">
+                    <Label Text="4" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
+                <Frame Grid.Row="5" Grid.Column="1" Padding="5">
+                    <Editor x:Name="label_time_4" Style="{StaticResource TB-N}" />
+                </Frame>
+                <Frame Grid.Row="5" Grid.Column="2" Padding="5">
+                    <Picker x:Name="combo_source_4"  />
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="6">
+                    <Label Text="5" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
+                <Frame Grid.Row="6" Grid.Column="1" Padding="5">
+                    <Editor x:Name="label_time_5" Style="{StaticResource TB-N}" />
+                </Frame>
+                <Frame Grid.Row="6" Grid.Column="2" Padding="5">
+                    <Picker x:Name="combo_source_5"  />
+                </Frame>
+            </Grid>
+        </Frame>
+    </Grid>
+</Grid>

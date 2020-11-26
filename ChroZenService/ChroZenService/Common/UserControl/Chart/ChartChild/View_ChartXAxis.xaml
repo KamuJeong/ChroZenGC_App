@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:YL_ChartAxisBase xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             xmlns:SK="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             x:Class="ChroZenService.View_ChartXAxis"  >
+    <ContentView.Content>
+        <!--<Line X1="0" X2="470" Y1="0" Y2="0" Stroke="Orange" StrokeThickness="2"/>-->
+        <SK:SKCanvasView x:Name="sKCanvasViewXAxis" IgnorePixelScaling="True"></SK:SKCanvasView>
+    </ContentView.Content>
+</local:YL_ChartAxisBase>

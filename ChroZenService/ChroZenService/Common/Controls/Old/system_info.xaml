@@ -1,0 +1,164 @@
+﻿<Grid x:Class="ChroZenService.system_info"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             xmlns:cvt="clr-namespace:ChroZenService"
+             x:Name="uc"
+             
+             HeightRequest="1114" WidthRequest="540">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="69" />
+            <RowDefinition Height="1030" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Frame Grid.Row="1" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="62" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="62" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="62" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="62" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="62" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="62" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="62" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <!--//-->
+                <Frame Grid.Row="0" Style="{StaticResource GroupBK}" Padding="15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Style="{StaticResource LineRT}">
+                            <Label Text="Model" Style="{StaticResource HTX}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="15, 0, 0, 0">
+                            <Label x:Name="label_model" Text="Model" Style="{StaticResource HTX}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>                        
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="2" Style="{StaticResource GroupBK}" Padding="15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Style="{StaticResource LineRT}">
+                            <Label Text="Version" Style="{StaticResource HTX}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="15, 0, 0, 0">
+                            <Label x:Name="label_version" Text="Version" Style="{StaticResource HTX}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="4" Style="{StaticResource GroupBK}" Padding="15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Style="{StaticResource LineRT}">
+                            <Label Text="Serial No." Style="{StaticResource HTX}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="15, 0, 0, 0">
+                            <Editor x:Name="label_serial_no" Text="Serial No."  
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="6" Style="{StaticResource GroupBK}" Padding="15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Style="{StaticResource LineRT}">
+                            <Label Text="IPAddress" Style="{StaticResource HTX}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="15, 0, 0, 0">
+                            <Editor x:Name="label_ip_address" Text="IPAddress" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="8" Style="{StaticResource GroupBK}" Padding="15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Style="{StaticResource LineRT}">
+                            <Label Text="Netmask" Style="{StaticResource HTX}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="15, 0, 0, 0">
+                            <Editor x:Name="label_netmask" Text="255.255.255.0"  
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="10" Style="{StaticResource GroupBK}" Padding="15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Style="{StaticResource LineRT}">
+                            <Label Text="Gateway" Style="{StaticResource HTX}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="15, 0, 0, 0">
+                            <Editor x:Name="label_gateway" Text="10.10.10.254" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!--//-->
+                <Frame Grid.Row="12" Style="{StaticResource GroupBK}" Padding="15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Style="{StaticResource LineRT}">
+                            <Label Text="Port No." Style="{StaticResource HTX}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="15, 0, 0, 0">
+                            <Label x:Name="label_port_no" Text="4242" Style="{StaticResource HTX}" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+            </Grid>
+        </Frame>
+    </Grid>
+</Grid>

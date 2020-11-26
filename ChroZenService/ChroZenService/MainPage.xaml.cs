@@ -12,6 +12,14 @@ namespace ChroZenService
         public MainPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this,false);
+
+            TCPManager.ConnectDevice("192.168.254.194", 4242);
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             xmlns:SK="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             x:Class="ChroZenService.YL_Chart" WidthRequest="570" HeightRequest="275">
+    <RelativeLayout>
+        <Grid x:Name="drawGrid">
+            <!--회색 가이드 선-->
+            <Grid x:Name="gridGuideLineHolder">
+                <Line X1="0" X2="570" Y1="235" Y2="235" Stroke="Gray"/>
+                <Line X1="50" X2="50" Y1="0" Y2="275" Stroke="Gray"/>
+                <Line X1="520" X2="520" Y1="0" Y2="275" Stroke="Gray"/>
+            </Grid>
+            <!--Axis-->
+            <Grid x:Name="gridChartAxis">
+                <!--Signal Label-->
+                <Label Text="Signal&#x0a;(mV)" HorizontalTextAlignment="Start" Margin="5,10,0,0" TextColor="{StaticResource CS_COLOR_WHITE_0}"/>
+                <!--Temperature Label-->
+                <Label Text="Temp&#x0a;(°C)" HorizontalTextAlignment="Start" Margin="525,10,0,0" TextColor="{StaticResource CS_COLOR_WHITE_0}"/>
+                <!--Time Label-->
+                <Label Text="Time (min)" HorizontalTextAlignment="Center" Margin="0,245,0,0" TextColor="{StaticResource CS_COLOR_WHITE_0}"/>
+                <!--X Axis-->
+                <!--<Line X1="50" X2="520" Y1="235" Y2="235" Stroke="Orange" StrokeThickness="2"/>-->
+                <local:View_ChartXAxis WidthRequest="470" HeightRequest="20" Margin="50,234,0,20" ChartRawData="{Binding ViewModel_MainChart.ChartElementRawData}" />
+                <!--Y Axis : Temperature-->
+                <!--<Line X1="520" X2="520" Y1="40" Y2="235" Stroke="Green" StrokeThickness="2"/>-->
+                <local:View_ChartYAxis WidthRequest="50" HeightRequest="235" Margin="0,40,0,00" HorizontalOptions="Start" ChartRawData="{Binding ViewModel_MainChart.ChartElementRawData}" ChartAxisType="Y_SIGNAL" />
+                <!--Y Axis : Signal-->
+                <!--<Line X1="50" X2="50" Y1="40" Y2="235" Stroke="White" StrokeThickness="2"/>-->
+                <local:View_ChartYAxis WidthRequest="50" HeightRequest="235" Margin="519,40,0,00" HorizontalOptions="Start" ChartRawData="{Binding ViewModel_MainChart.ChartElementRawData}" ChartAxisType="Y_TEMPERATURE" />
+            </Grid>
+            <!--Chart area : Grid line and data-->
+            <Grid x:Name="gridChart">
+                <SK:SKCanvasView x:Name="sKCanvasViewChart" WidthRequest="470" HeightRequest="235"></SK:SKCanvasView>
+            </Grid>
+            <!--사용자 인터페이스 요소-->
+            <Grid x:Name="gridUI">
+                <Button  WidthRequest="50" HeightRequest="40" BackgroundColor="#11aa0000" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Button  WidthRequest="50" HeightRequest="40" Margin="0,235,0,0" BackgroundColor="#1100aa00" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Image Margin="0,40,0,0" WidthRequest="50" HeightRequest="195" VerticalOptions="Start" HorizontalOptions="Start" >
+                    <Image.GestureRecognizers>
+                        <PanGestureRecognizer PanUpdated="Axis_PanUpdated"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Margin="50,40,0,0" WidthRequest="470" HeightRequest="195" VerticalOptions="Start" HorizontalOptions="Start" >
+                    <Image.GestureRecognizers>
+                        <PanGestureRecognizer PanUpdated="Chart_PanUpdated"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </Grid>
+    </RelativeLayout>
+</ContentView>

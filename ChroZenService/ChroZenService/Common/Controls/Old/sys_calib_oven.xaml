@@ -1,0 +1,99 @@
+﻿<Grid x:Class="ChroZenService.sys_calib_oven"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             
+             HeightRequest="1030" WidthRequest="413">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="140" />
+            <RowDefinition Height="50" />
+            <RowDefinition  />
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="TextColor" Value="#a19e9e" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+        </Grid.Resources>
+        <Frame Grid.Row="0" >
+            <Label Text="Temp Calibration"  FontSize="28" TextColor="#ffffff" VerticalOptions="End" />
+        </Frame>
+
+        <Frame Grid.Row="1" Style="{StaticResource GroupBK}" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Frame Style="{StaticResource LineBT}" Grid.ColumnSpan="4" />
+                <Frame Style="{StaticResource LineRT}" Grid.RowSpan="3" />
+                <Frame Grid.Column="1">
+                    <Label Text="Act" HorizontalOptions="Center" />
+                </Frame>
+                <Frame Grid.Column="2">
+                    <Label Text="Set" HorizontalOptions="Center" />
+                </Frame>
+                <Frame Grid.Column="3">
+                    <Label Text="Measured" HorizontalOptions="Center" />
+                </Frame>
+
+                <Frame Grid.Row="1">
+                    <Label Text="T1" HorizontalOptions="Center" />
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1" Padding="3">
+                    <Editor x:Name="label_t1_act" Style="{StaticResource TB-N}" IsEnabled="False" />
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="2" Padding="3">
+                    <Editor x:Name="label_t1_set" Style="{StaticResource TB-N}" />
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="3" Padding="3">
+                    <Editor x:Name="label_t1_mea" Style="{StaticResource TB-N}" />
+                </Frame>
+
+                <Frame Grid.Row="2">
+                    <Label Text="T2" HorizontalOptions="Center" />
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="1" Padding="3">
+                    <Editor x:Name="label_t2_act" Style="{StaticResource TB-N}" IsEnabled="False" />
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="2" Padding="3">
+                    <Editor x:Name="label_t2_set" Style="{StaticResource TB-N}" />
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="3" Padding="3">
+                    <Editor x:Name="label_t2_mea" Style="{StaticResource TB-N}" />
+                </Frame>
+
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="2" Padding="0, 5, 0, 5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Frame Padding="3">
+                    <Button x:Name="btn_reset" Style="{StaticResource ResetButton}" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="3">
+                    <Button x:Name="btn_apply" Style="{StaticResource ApplyButton}" />
+                </Frame>
+
+            </Grid>
+        </Frame>
+
+
+    </Grid>
+</Grid>

@@ -1,0 +1,442 @@
+﻿<Grid x:Class="ChroZenService.met_fid"
+                       x:Name="uc"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             xmlns:cvt="clr-namespace:ChroZenService"
+             
+             HeightRequest="465" WidthRequest="980">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Label" BasedOn="{StaticResource HTX}">
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+        </Grid.Resources>
+
+        <Frame Grid.Column="0" Padding="5, 5, 0, 5">
+            <StackLayout>
+                <Frame HeightRequest="130" Style="{StaticResource MetGroupBK}" Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Frame Grid.RowSpan="4" Style="{StaticResource LineRT}" />
+                        <!--//-->
+                        <Frame Grid.Row="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Make up Gas"  HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" Padding="1">
+                            <Picker SelectedIndex="{Binding Path=MM.Makeupgas, Source=uc}" x:Name="combo_makeup" Style="{StaticResource MetSS}">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>N2</x:String>
+                                        <x:String>He</x:String>
+                                        <x:String>H2</x:String>
+                                        <x:String>Ar</x:String>
+                                        <x:String>ArCH4</x:String>                                        
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="1" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Connection"  HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="1">
+                            <Picker SelectedIndex="{Binding Path=MM.Connection, Source=uc}" x:Name="combo_connect" Style="{StaticResource MetSS}">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Inlet Front</x:String>
+                                        <x:String>Inlet Center</x:String>
+                                        <x:String>Inlet Rear</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="2" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Block Select"  HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="1" Padding="1">
+                            <Picker SelectedIndex="{Binding Path=MM.BlockSelect, Source=uc}" x:Name="combo_block" Style="{StaticResource MetSS}">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>0</x:String>
+                                        <x:String>1</x:String>
+                                        <x:String>2</x:String>
+                                        <x:String>3</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="3" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Signal Range"  HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="1" Padding="1">
+                            <Picker SelectedIndex="{Binding Path=MM.Signalrange, Source=uc}" x:Name="combo_signal" Style="{StaticResource MetSS}" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>0</x:String>
+                                        <x:String>1</x:String>
+                                        <x:String>2</x:String>
+                                        <x:String>3</x:String>
+                                        <x:String>4</x:String>
+                                        <x:String>5</x:String>
+                                        <x:String>6</x:String>
+                                        <x:String>7</x:String>
+                                        <x:String>8</x:String>
+                                        <x:String>9</x:String>
+                                        <x:String>10</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+                <Frame HeightRequest="5" />
+                <Frame HeightRequest="130"  Style="{StaticResource MetGroupBK}" Padding="5" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Frame Grid.RowSpan="4" Style="{StaticResource LineRT}" />
+                        <!--//-->
+                        <Frame Grid.Row="0" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Lit Offset"  HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" Padding="1">
+                            <Editor Text="{Binding Path=MM.Litoffset, Source=uc}" x:Name="label_offset"                                           
+                                            Style="{StaticResource MetTB}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="1" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Ignite Delay"  HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="1">
+                            <Editor Text="{Binding Path=MM.Ignitedelay, Source=uc}" x:Name="label_delay" Style="{StaticResource MetTB}"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="2" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Ignite Flow"  HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="1" Padding="1">
+                            <Editor Text="{Binding Path=MM.Igniteflow, Source=uc}" 
+                                           x:Name="label_flow"  Style="{StaticResource MetTB}"  />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="3" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Ignite Temp"  HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="1" Padding="1">
+                            <Editor Text="{Binding Path=MM.Ignitetemp, Source=uc}" 
+                                           x:Name="label_temp"  Style="{StaticResource MetTB}"  />
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+                <Frame HeightRequest="5" />
+                <Frame HeightRequest="40" Style="{StaticResource MetGroupBK}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <!--//-->
+                        <Frame >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Signal Autozero"  HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1">
+                            <Switch IsToggled="{Binding Path=MM.Autozero, Source=uc}" x:Name="btn_autozero" Style="{StaticResource MetOnOffBtn}"  />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+            </StackLayout>
+        </Frame>
+
+        <Frame Grid.Column="1" Padding="5, 5, 0, 5">
+            <StackLayout>
+                <Frame HeightRequest="200" Style="{StaticResource MetGroupBK}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Frame Grid.ColumnSpan="3" Style="{StaticResource LineBT}" />
+                        <Frame Grid.RowSpan="6" Style="{StaticResource LineRT}" />
+
+                        <Frame Grid.Column="1">
+                            <Label Text="On/Off"  HorizontalOptions="Center"  />
+                        </Frame>
+                        <Frame Grid.Column="2">
+                            <Label Text="Setting" HorizontalOptions="Center" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="1" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Temperature"  
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="15, 1, 0, 1">
+                            <Switch x:Name="btn_temp" IsToggled="{Binding Path=MM.TempOnoff, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="2" Padding="15, 1, 0, 1">
+                            <Editor IsEnabled="{Binding Source=btn_temp, Path=IsToggled}" 
+                                           Text="{Binding Path=MM.TempSet, Source=uc}" 
+                                           x:Name="label_temp_set" Style="{StaticResource MetTB}"   />
+                        </Frame>
+                        <!--//-->
+
+                        <!--//-->
+                        <Frame Grid.Row="2" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Air"  
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Row="2" Grid.Column="1" Padding="15, 1, 0, 1">
+                            <Switch x:Name="btn_flow1" IsToggled="{Binding Path=MM.FlowOnoff1, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="2" Padding="15, 1, 0, 1">
+                            <Editor IsEnabled="{Binding Source=btn_flow1, Path=IsToggled}" 
+                                           Text="{Binding Path=MM.FlowSet1, Source=uc}"
+                                           x:Name="label_air_set" Style="{StaticResource MetTB-S}"   />
+                        </Frame>
+                        <!--//-->
+
+                        <!--//-->
+                        <Frame Grid.Row="3" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="H2"  
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Row="3" Grid.Column="1" Padding="15, 1, 0, 1">
+                            <Switch x:Name="btn_flow3" IsToggled="{Binding Path=MM.FlowOnoff3, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="2" Padding="15, 1, 0, 1">
+                            <Editor  IsEnabled="{Binding Source=btn_flow3, Path=IsToggled}" 
+                                            Text="{Binding Path=MM.FlowSet3, Source=uc}" 
+                                            x:Name="label_h2_set" Style="{StaticResource MetTB-S}"   />
+                        </Frame>
+                        <!--//-->
+
+                        <!--//-->
+                        <Frame Grid.Row="4" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Make up"  
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Row="4" Grid.Column="1" Padding="15, 1, 0, 1">
+                            <Switch x:Name="btn_flow2" IsToggled="{Binding Path=MM.FlowOnoff2, Source=uc}" Style="{StaticResource MetOnOffBtn}" />
+                        </Frame>
+                        <Frame Grid.Row="4" Grid.Column="2" Padding="15, 1, 0, 1">
+                            <Editor IsEnabled="{Binding Source=btn_flow2, Path=IsToggled}" Text="{Binding Path=MM.FlowSet2, Source=uc}" 
+                                           x:Name="label_makeup_set" Style="{StaticResource MetTB}"  />
+                        </Frame>
+                        <!--//-->
+
+                        <!--//-->
+                        <!--<Frame Grid.Row="5" Padding="0 0 15 0">
+                            <Label Text="Signal"  
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Padding="15, 1, 0, 1">
+                            <Editor x:Name="label_signal" Style="{StaticResource MetTU}"  />
+                        </Frame>-->
+                        <!--//-->
+                    </Grid>
+                </Frame>
+                <Frame HeightRequest="5" />
+                <Frame HeightRequest="70" Style="{StaticResource MetGroupBK}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Frame Grid.RowSpan="2" Style="{StaticResource LineRT}" />
+
+                        <Frame >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Electrometer"  HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="1">
+                            <Switch IsToggled="{Binding Path=MM.Electrometer, Source=uc}" x:Name="btn_electrometer" Style="{StaticResource MetOnOffBtn}"  />
+                        </Frame>
+
+                        <Frame Grid.Row="1" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Top>0</Thickness.Top>
+                                    <Thickness.Right>15</Thickness.Right>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Auto ignition"  HorizontalOptions="End" VerticalOptions="Center" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="1">
+                            <Switch IsToggled="{Binding Path=MM.AutoIgnition, Source=uc}" x:Name="btn_autoignition" Style="{StaticResource MetOnOffBtn}"  />
+                        </Frame>
+
+                    </Grid>
+
+                </Frame>
+            </StackLayout>
+        </Frame>
+    </Grid>
+
+</Grid>

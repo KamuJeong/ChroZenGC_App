@@ -1,8 +1,468 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cvt="clr-namespace:ChroZenService"
+             xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.App">
     <Application.Resources>
+        <Color x:Key="CS_COLOR_ROOT_BACKGROUND" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ff2d2d37</x:String>
+            </x:Arguments>
+        </Color>
+        <Color x:Key="CS_COLOR_BLACK_0" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ff000000</x:String>
+            </x:Arguments>
+        </Color>
+        <Color x:Key="CS_COLOR_WHITE_0" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ffffffff</x:String>
+            </x:Arguments>
+        </Color>
+        <Color x:Key="CS_COLOR_GRAY_0" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ffcccccc</x:String>
+            </x:Arguments>
+        </Color>
+        <Color x:Key="CS_COLOR_GREEN_0" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ff03c04a</x:String>
+            </x:Arguments>
+        </Color>
+        <FileImageSource x:Key="IMG_CONFIG_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
+        <FileImageSource x:Key="IMG_SYSTEM_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
+        <!--<cvt:VToIsVisibleConverter x:Key="VToV" />
+    <cvt:VToBoolConverter x:Key="VToB" />-->
+        <!--
+        <cvt:VToVisibilityConverter x:Key="VToV" />
+        <cvt:XToMarginConverter x:Key="XToM" />
+        <cvt:NToMarginConverter x:Key="NToM" />
+        <cvt:ByteToBoolConverter x:Key="BToB" />
+        <cvt:FloatToBoolConverter x:Key="FToB" />
+        <cvt:FloatToStringConverter x:Key="F2S" />
+        -->
+        <!--<cvt:IndexConverter x:Key="INDX" />
+    <cvt:RowNumberConverter x:Key="INDX1" />-->
+        <!--
+        <cvt:OnOffConverter x:Key="ONOFF" />
+        <cvt:FunctionToSelectedIndex x:Key="F2I" />
+        <cvt:TimeFuncToTextVisibleConverter x:Key="TF2V" />
+        -->
+        <!--<cvt:OvenPrgmToBoolConverter x:Key="OFToB" />-->
+        <!--
+        <cvt:ByteToIntConverter x:Key="B2I" />
+        
+        
+        <Style x:Key="GroupBK" TargetType="{x:Type Frame}" >
+            <Setter Property="BorderColor" Value="Transparent"/>
+            <Setter Property="CornerRadius" Value="18"/>
+            <Setter Property="Padding" Value="18, 10, 18, 10"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Color="#25242a" Offset="0" />
+                            <GradientStop Color="#1b1a1f" Offset="1" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
+        <Style x:Key="MetGroupBK" TargetType="{x:Type Frame}" BasedOn="{StaticResource GroupBK}">
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="10, 5, 10, 5"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderColor" Value="#3d3e46"/>
+        </Style>
+
+        <Style x:Key="BlankBK" TargetType="{x:Type Frame}">
+            <Setter Property="BorderColor" Value="Transparent" />
+        </Style>
+
+        <Style x:Key="LineBT" TargetType="{x:Type Frame}">
+            <Setter Property="BorderColor" Value="#3d3e46" />
+        </Style>
+
+        <Style x:Key="LineRT" TargetType="{x:Type Frame}">
+            <Setter Property="BorderColor" Value="#3d3e46" />
+        </Style>
+
+
+        -->
+        <!--<ControlTemplate x:Key="ListViewItemControlStyle1" >
+        <Frame Background="{TemplateBinding Background}"  BorderColor="Transparent">
+            <GridViewRowPresenter Content="{TemplateBinding Content}"
+           Columns="{TemplateBinding GridView.ColumnCollection}"/>
+        </Frame>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ListViewItemControlStyle1-MouseOver" >
+        <Frame Background="#000000" FrameThickness="0" BorderColor="Transparent">
+            <GridViewRowPresenter Content="{TemplateBinding Content}"
+           Columns="{TemplateBinding GridView.ColumnCollection}"/>
+        </Frame>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ListViewItemControlStyle1-Selected" >
+        <Frame Background="#000000"  BorderColor="Transparent">
+            <GridViewRowPresenter Content="{TemplateBinding Content}"
+           Columns="{TemplateBinding GridView.ColumnCollection}"/>
+        </Frame>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ListViewItemControlStyle1-alter" >
+        <Frame Background="Transparent" >
+            <GridViewRowPresenter Content="{TemplateBinding Content}"
+           Columns="{TemplateBinding GridView.ColumnCollection}"  />
+        </Frame>
+    </ControlTemplate>-->
+        <!--
+
+        <Style x:Key="stl_btnBase" TargetType="{x:Type Button}" >
+            -->
+        <!--<Setter Property="Cursor" Value="Hand" />-->
+        <!--
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+
+        <Style x:Key="UpDownButton" TargetType="{x:Type Button}" BasedOn="{StaticResource stl_btnBase}" >
+         
+        </Style>
+
+        <Style x:Key="StartButton" TargetType="{x:Type Button}" BasedOn="{StaticResource stl_btnBase}" >
+        
+        </Style>
+
+        <Style x:Key="StopButton" TargetType="{x:Type Button}" BasedOn="{StaticResource stl_btnBase}" >
+          
+        </Style>
+
+        <Style x:Key="ResetButton" TargetType="{x:Type Button}" BasedOn="{StaticResource stl_btnBase}" >
+          
+        </Style>
+
+        <Style x:Key="ApplyButton" TargetType="{x:Type Button}" BasedOn="{StaticResource stl_btnBase}" >
+            
+        </Style>
+
+        <Style x:Key="TransparentButton" TargetType="{x:Type Button}" >
+            -->
+        <!--<Setter Property="Cursor" Value="Hand" />-->
+        <!--
+            <Setter Property="Background" Value="Transparent"/>
+            
+        </Style>
+
+        <Style x:Key="BtnX" TargetType="{x:Type Button}"   BasedOn="{StaticResource stl_btnBase}">
+            <Setter Property="FontSize" Value="12" />
+           
+        </Style>
+
+        <Style x:Key="TemperatureBtn" TargetType="{x:Type Button}"   BasedOn="{StaticResource stl_btnBase}">
+           
+        </Style>
+
+        <Style x:Key="HomeBtn" TargetType="{x:Type Button}"   BasedOn="{StaticResource stl_btnBase}">
+            
+        </Style>
+
+        <Style x:Key="InfBtn" TargetType="{x:Type Button}"   BasedOn="{StaticResource stl_btnBase}">
+           
+        </Style>
+
+        <Style x:Key="CloseWinBtn" TargetType="{x:Type Button}"   BasedOn="{StaticResource stl_btnBase}">
+            
+        </Style>
+
+        <Style x:Key="MaxWinBtn" TargetType="{x:Type Button}"   BasedOn="{StaticResource stl_btnBase}">
+           
+        </Style>
+
+        <Style x:Key="StartStop" TargetType="{x:Type Switch}" >
+            -->
+        <!--<Setter Property="Cursor" Value="Hand" />-->
+        <!--
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+          
+        </Style>
+
+        <Style x:Key="OnOffBtn" TargetType="{x:Type Switch}" >
+            -->
+        <!--<Setter Property="Cursor" Value="Hand" />-->
+        <!--
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="WidthRequest" Value="190"/>
+            <Setter Property="HeightRequest" Value="40"/>
+           
+        </Style>
+
+        <Style x:Key="MetOnOffBtn" TargetType="{x:Type Switch}" BasedOn="{StaticResource OnOffBtn}">
+            <Setter Property="HeightRequest" Value="20" />
+            <Setter Property="WidthRequest" Value="75" />
+        </Style>
+
+        <Style x:Key="NextPrevBtn" TargetType="{x:Type Switch}" >
+            -->
+        <!--<Setter Property="Cursor" Value="Hand" />-->
+        <!--
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+         
+        </Style>
+
+        <Style x:Key="TabButton" TargetType="{x:Type RadioButton}" >
+            -->
+        <!--<Setter Property="Cursor" Value="Hand" />-->
+        <!--
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            
+        </Style>
+
+        <Style x:Key="TabButtonM" TargetType="{x:Type RadioButton}" >
+            -->
+        <!--<Setter Property="Cursor" Value="Hand" />-->
+        <!--
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+           
+        </Style>
+
+        <Style x:Key="TabL" TargetType="{x:Type RadioButton}" >
+            -->
+        <!--<Setter Property="Cursor" Value="Hand" />-->
+        <!--
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+           
+        </Style>
+
+        <Style x:Key="TabL1" TargetType="{x:Type RadioButton}" >
+            -->
+        <!--<Setter Property="Cursor" Value="Hand" />-->
+        <!--
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+          
+        </Style>
+
+
+        <Style x:Key="TabH" TargetType="{x:Type RadioButton}" >
+            -->
+        <!--<Setter Property="Cursor" Value="Hand" />-->
+        <!--
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+          
+        </Style>
+
+
+        <ControlTemplate x:Key="PickerSwitch" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="30" />
+                </Grid.ColumnDefinitions>
+                <Frame
+                  x:Name="Frame" 
+                  Grid.ColumnSpan="2"
+                  CornerRadius="0"
+                  Background="#ffffff"
+                   />
+                <Frame 
+                  Grid.Column="0"
+                  CornerRadius="0" 
+                  Background="#ffffff" 
+                 />
+                <Polygon 
+                  x:Name="Arrow"
+                  Grid.Column="1"     
+                  Fill="Black"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  Points="0,0 5,5,10,0"
+                />
+            </Grid>
+            -->
+        <!--<ControlTemplate.Triggers>
+            <Trigger Property="Switch.IsMouseOver" Value="true">
+                <Setter Property="Frame" Property="Background" Value="#808080" />
+            </Trigger>
+            <Trigger Property="Switch.IsToggled" Value="true">
+                <Setter Property="Frame" Property="Background" Value="#E0E0E0" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Frame" Property="Background" Value="#EEEEEE" />
+                <Setter Property="Frame" Property="OutlineColor" Value="#AAAAAA" />
+                <Setter Property="TextColor" Value="#888888"/>
+                <Setter Property="Arrow" Property="Fill" Value="#888888" />
+            </Trigger>
+        </ControlTemplate.Triggers>-->
+        <!--
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="PickerEditor" >
+            <Frame x:Name="PART_ContentHost" InputTransparent="True" Background="#ffffff" />
+        </ControlTemplate>
+
+        -->
+        <!--<Style x:Key="SS" TargetType="{x:Type Picker}">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="ScrollView.HorizontalScrollBarIsVisible" Value="Auto"/>
+        <Setter Property="ScrollView.VerticalScrollBarIsVisible" Value="Auto"/>
+        <Setter Property="ScrollView.CanContentScroll" Value="true"/>
+        <Setter Property="MinWidth" Value="40"/>
+        <Setter Property="MinHeight" Value="15"/>
+        <Setter Property="TextColor" Value="#000000"/>
+        <Setter Property="FontFamily" Value="{StaticResource DefaultFont}" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate >
+                    <Grid>
+                        <Switch  
+                            x:Name="Switch" 
+                            Template="{StaticResource PickerSwitch}" 
+                            Grid.Column="2" 
+                            InputTransparent="True" 
+                            IsToggled ="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                            >
+                        </Switch>
+                        <ContentPresenter x:Name="ContentSite" InputTransparent="True"  Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            Margin="3,3,23,3"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start" />
+                        <Editor x:Name="PART_EditableEditor"
+                            Style="{x:Null}" 
+                            Template="{StaticResource PickerEditor}" 
+                            HorizontalOptions="Start" 
+                            VerticalOptions="Center" 
+                            Margin="3,3,23,3"
+                            InputTransparent="false" 
+                            Background="#ffffff"
+                            TextColor="#000000" 
+                            IsVisible="False"
+                            IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                        <Popup 
+                            x:Name="Popup"
+                            Placement="Bottom"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                            AllowsTransparency="True" 
+                            InputTransparent="true"
+                            PopupAnimation="Slide">
+
+                            <Grid x:Name="DropDown"            
+                              MinimumWidthRequest="{TemplateBinding ActualWidth}"                              
+                                <Frame 
+                                x:Name="DropDownFrame"
+                                Background="#2d2d37"
+                                OutlineColor="#888888"/>
+                                <ScrollView Margin="4,6,4,6" >
+                                    <StackLayout  />
+                                </ScrollView>
+                            </Grid>
+                        </Popup>
+                        <Grid.Triggers>
+                            <Trigger Property="HasItems" Value="false">
+                                <Setter TargetName="DropDownFrame" Property="MinHeight" Value="95"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="TextColor" Value="#888888"/>
+                            </Trigger>
+                            <Trigger Property="IsGrouping" Value="true">
+                                <Setter Property="ScrollView.CanContentScroll" Value="false"/>
+                            </Trigger>
+                            <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
+                                <Setter TargetName="DropDownFrame" Property="CornerRadius" Value="0"/>
+                                <Setter TargetName="DropDownFrame" Property="Margin" Value="0,2,0,0"/>
+                            </Trigger>
+                            <Trigger Property="IsEditable"  Value="true">
+                                <Setter Property="IsTabStop" Value="false"/>
+                                <Setter TargetName="PART_EditableEditor" Property="IsVisible" Value="Visible"/>
+                                <Setter TargetName="ContentSite" Property="IsVisible" Value="Hidden"/>
+                            </Trigger>
+                        </Grid.Triggers>
+                    </Grid>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+        </Style.Triggers>
+    </Style>-->
+        <!--
+
+        <Style x:Key="MetSS" TargetType="{x:Type Picker}" >
+            -->
+        <!--<Setter Property="FontSize" Value="14" />-->
+        <!--
+        </Style>
+       
+        <Style x:Key="HTX" TargetType="{x:Type Label}">
+            <Setter Property="TextColor" Value="#a8acc4" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="HTX1" TargetType="{x:Type Label}" BasedOn="{StaticResource HTX}">
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+
+        <Style x:Key="HTX2" TargetType="{x:Type Label}" BasedOn="{StaticResource HTX}">
+            <Setter Property="TextColor" Value="#ffffff" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+
+        <Style x:Key="HTX3" TargetType="{x:Type Label}" BasedOn="{StaticResource HTX2}">
+            <Setter Property="FontSize" Value="25" />
+        </Style>
+
+
+        <Style TargetType="{x:Type Editor}" x:Key="TB"  />
+        <Style TargetType="{x:Type Editor}" x:Key="MetTB" BasedOn="{StaticResource TB}" />
+        <Style TargetType="{x:Type Editor}" x:Key="TB-N"  />
+        <Style TargetType="{x:Type Editor}" x:Key="KeyTB-N" BasedOn="{StaticResource TB-N}" />
+        <Style TargetType="{x:Type Editor}" x:Key="MetTB-N" BasedOn="{StaticResource TB-N}" />
+        <Style TargetType="{x:Type Editor}" x:Key="TB-S"  />
+        <Style TargetType="{x:Type Editor}" x:Key="MetTB-S" BasedOn="{StaticResource TB-S}" />
+        <Style TargetType="{x:Type Editor}" x:Key="TU"  />
+        <Style TargetType="{x:Type Editor}" x:Key="MetTU" BasedOn="{StaticResource TU}" />
+        <Style TargetType="{x:Type Editor}" x:Key="TU-N"  />
+        <Style TargetType="{x:Type Editor}" x:Key="MetTU-N" BasedOn="{StaticResource TU-N}" />
+        <Style TargetType="{x:Type Editor}" x:Key="TU-S"  />
+        <Style TargetType="{x:Type Editor}" x:Key="MetTU-S" BasedOn="{StaticResource TU-S}" />
+
+        <Style TargetType="{x:Type Label}" x:Key="TSL"  />
+
+        <Style TargetType="{x:Type Editor}" x:Key="TS"  />
+
+        <Style TargetType="{x:Type Editor}" x:Key="TX" />
+
+        <Style TargetType="{x:Type Editor}" x:Key="MetTX" BasedOn="{StaticResource TX}" />-->
+        <ControlTemplate x:Key="CT_MainPageButton">
+            <Frame BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
+                   BackgroundColor="Transparent"
+                   WidthRequest="100"
+                   HeightRequest="50"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

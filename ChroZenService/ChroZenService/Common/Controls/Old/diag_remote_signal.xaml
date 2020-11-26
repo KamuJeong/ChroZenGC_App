@@ -1,0 +1,147 @@
+﻿<Grid x:Class="ChroZenService.diag_remote_signal"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+              
+             xmlns:local="clr-namespace:ChroZenService"             
+             HeightRequest="1110" WidthRequest="540">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="11*" />
+            <RowDefinition Height="80" />
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="#a8acc4" />
+                <Setter Property="FontSize" Value="21" />
+            </Style>
+        </Grid.Resources>
+        <Frame Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" >
+                    <Label Text="Start OUT(TP4)" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Switch x:Name="btn_tp4" Style="{StaticResource OnOffBtn}" IsEnabled="False" HorizontalOptions="Start" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="1" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" >
+                    <Label Text="Start OUT(TP6)" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Switch x:Name="btn_tp6" Style="{StaticResource OnOffBtn}" IsEnabled="False" HorizontalOptions="Start" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="2" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="Signal Front" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_signal_f" Text="Signal OFF" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="3" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="Signal Center" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_signal_c" Text="Signal OFF" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="4" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="Signal Rear" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_signal_r" Text="None" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="5" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="State LED" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_state_led" Text="OFF" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="6" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="LED Button" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_led_bt" Text="OFF" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="0" Padding="10">
+                    <Button Style="{StaticResource StartButton}" x:Name="btnStart" Text="START" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="10">
+                    <Button Style="{StaticResource StopButton}" x:Name="btnStop" Text="STOP" />
+                </Frame>
+
+            </Grid>
+        </Frame>
+    </Grid>
+</Grid>

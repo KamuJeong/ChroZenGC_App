@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+    <?xaml-comp compile="true" ?>
+    <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    >
+
+    <Style x:Key="stl_btnBase" TargetType="{x:Type Button}" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="UpDownButton" TargetType="{x:Type Button}" BasedOn="{StaticResource stl_btnBase}" >
+        
+    </Style>
+
+    <Style x:Key="StartButton" TargetType="{x:Type Button}" BasedOn="{StaticResource stl_btnBase}" >
+      
+    </Style>
+
+    <Style x:Key="StopButton" TargetType="{x:Type Button}" BasedOn="{StaticResource stl_btnBase}" >
+        
+    </Style>
+
+    <Style x:Key="ResetButton" TargetType="{x:Type Button}" BasedOn="{StaticResource stl_btnBase}" >
+     
+    </Style>
+
+    <Style x:Key="ApplyButton" TargetType="{x:Type Button}" BasedOn="{StaticResource stl_btnBase}" >
+     
+    </Style>
+
+    <Style x:Key="TransparentButton" TargetType="{x:Type Button}" >
+        <Setter Property="Background" Value="Transparent"/>
+     
+    </Style>
+
+    <Style x:Key="BtnX" TargetType="{x:Type Button}"   BasedOn="{StaticResource stl_btnBase}">        
+        <Setter Property="FontSize" Value="12" />
+       
+    </Style>
+
+    <Style x:Key="TemperatureBtn" TargetType="{x:Type Button}"   BasedOn="{StaticResource stl_btnBase}">
+      
+    </Style>
+
+    <Style x:Key="HomeBtn" TargetType="{x:Type Button}"   BasedOn="{StaticResource stl_btnBase}">
+       
+    </Style>
+
+    <Style x:Key="InfBtn" TargetType="{x:Type Button}"   BasedOn="{StaticResource stl_btnBase}">
+       
+    </Style>
+
+    <Style x:Key="CloseWinBtn" TargetType="{x:Type Button}"   BasedOn="{StaticResource stl_btnBase}">
+        
+    </Style>
+
+    <Style x:Key="MaxWinBtn" TargetType="{x:Type Button}"   BasedOn="{StaticResource stl_btnBase}">
+        
+    </Style>
+
+    <Style x:Key="StartStop" TargetType="{x:Type Switch}" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+       
+    </Style>
+
+    <Style x:Key="OnOffBtn" TargetType="{x:Type Switch}" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Width" Value="190"/>
+        <Setter Property="Height" Value="40"/>
+       
+    </Style>
+
+    <Style x:Key="MetOnOffBtn" TargetType="{x:Type Switch}" BasedOn="{StaticResource OnOffBtn}">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Width" Value="75" />
+    </Style>
+
+    <Style x:Key="NextPrevBtn" TargetType="{x:Type Switch}" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+       
+    </Style>
+
+    <Style x:Key="TabButton" TargetType="{x:Type RadioButton}" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        
+    </Style>
+
+    <Style x:Key="TabButtonM" TargetType="{x:Type RadioButton}" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+       
+    </Style>
+
+    <Style x:Key="TabL" TargetType="{x:Type RadioButton}" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+       
+    </Style>
+
+    <Style x:Key="TabL1" TargetType="{x:Type RadioButton}" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+       
+    </Style>
+
+
+    <Style x:Key="TabH" TargetType="{x:Type RadioButton}" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+       
+    </Style>
+
+</ResourceDictionary>

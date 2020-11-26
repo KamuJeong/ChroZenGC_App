@@ -2,13 +2,367 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
-             x:Class="ChroZenService.MainPage">
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Class="ChroZenService.MainPage"
+             WidthRequest="600"
+             HeightRequest="945">
+    <ContentPage.BindingContext>
+        <local:ViewModelMainPage/>
+    </ContentPage.BindingContext>
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+        <Grid BackgroundColor="{StaticResource CS_COLOR_ROOT_BACKGROUND}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="275"/>
+                <RowDefinition Height="410"/>
+                <RowDefinition Height="85"/>
+            </Grid.RowDefinitions>        
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+            <!--Header-->
+            <Grid Grid.Row="0"  BackgroundColor="{StaticResource CS_COLOR_BLACK_0}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="246"/>
+                    <ColumnDefinition Width="166"/>
+                    <ColumnDefinition Width="188"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="{Binding ViewModel_MainTop.CHROZEN_GC_STATE_String}" FontSize="24"  TextColor="{StaticResource CS_COLOR_GRAY_0}" HorizontalOptions="FillAndExpand" Margin="10,10,0,0"/>
+                <Label Grid.Column="1" Text="09:53:09" FontSize="24"  TextColor="{StaticResource CS_COLOR_WHITE_0}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0"/>
+                <Label Grid.Column="2" FontSize="24" TextColor="{StaticResource CS_COLOR_GRAY_0}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+            </Grid>
+            <Grid Grid.Row="3" Margin="5" HorizontalOptions="Center">
+                <local:YL_Chart WidthRequest="570"  ChartRawData="{Binding ViewModel_MainChart.ChartElementRawData}" />
+            </Grid>
+            <!--Main Center Image Backgournd Layer-->
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="193"/>
+                    <ColumnDefinition Width="194"/>
+                    <ColumnDefinition Width="193"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="home_side1.png" Aspect="Fill" Visibility="{Binding ViewModel_MainSide_Left.IsTopDetVisible}"/>
+                <Image Grid.Column="0" Source="home_side2.png" Aspect="Fill" Visibility="{Binding ViewModel_MainSide_Left.IsCenterDetVisible}"/>
+                <Image Grid.Column="0" Source="home_side3.png" Aspect="Fill" Visibility="{Binding ViewModel_MainSide_Left.IsBottomDetVisible}"/>
+                <Image Grid.Column="1" Source="home_center.png" Aspect="Fill" />
+                <Image Grid.Column="2" Source="home_side1.png" Aspect="Fill" Visibility="{Binding ViewModel_MainSide_Left.IsTopDetVisible}"/>
+                <Image Grid.Column="2" Source="home_side2.png" Aspect="Fill" Visibility="{Binding ViewModel_MainSide_Left.IsCenterDetVisible}"/>
+                <Image Grid.Column="2" Source="home_side3.png" Aspect="Fill" Visibility="{Binding ViewModel_MainSide_Left.IsBottomDetVisible}"/>
+            </Grid>
+            <!--Main Center Control Layer-->
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="193"/>
+                    <ColumnDefinition Width="194"/>
+                    <ColumnDefinition Width="193"/>
+                </Grid.ColumnDefinitions>
+                <!--Left-->
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="{Binding ViewModel_MainSide_Left.SelectedItemHeight}"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="{Binding ViewModel_MainSide_Left.SelectedItemHeight}"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="{Binding ViewModel_MainSide_Left.SelectedItemHeight}"/>
+                    </Grid.RowDefinitions>
+                    <RadioButton IsChecked="{Binding ViewModel_MainSide_Left.IsTopDetVisible" BackGroundColor="#11aa0000" Grid.Column="0" Margin="20,5,0,0" HorizontalOptions="Center" VerticalOptions="Top"/>
+                    <RadioButton IsChecked="{Binding ViewModel_MainSide_Left.IsCenterDetVisible" BackGroundColor="#1100aa00" Grid.Column="0" Margin="25,5,0,0" HorizontalOptions="Center" VerticalOptions="Top"/>
+                    <RadioButton IsChecked="{Binding ViewModel_MainSide_Left.IsBottomDetVisible" BackGroundColor="#11aa00aa" Grid.Column="0" Margin="30,5,0,0" HorizontalOptions="Center" VerticalOptions="Top"/>
+                </Grid>
+                
+                <!--Center-->
+                <Grid Grid.Column="1">
+                    <Label Grid.Column="1" Margin="0,120,0,0" TextColor="{StaticResource CS_COLOR_GREEN_0}" Text="{Binding ViewModel_MainCenter.OvenTemperature}" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Start" FontSize="23"/>
+                </Grid>
+                
+                <!--Right-->
+                <Grid Grid.Column="2">
+                    
+                </Grid>
+            </Grid>
+            <!--Footer-->
+            <Grid Grid.Row="5" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="240" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Home window" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource CS_COLOR_WHITE_0}" VerticalOptions="Center" />
+                <ImageButton Grid.Column="2" WidthRequest="80" HeightRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Source ="btn_bot_02.png" Command="{Binding SelectSystemMenu}"/>
+                <ImageButton Grid.Column="3" WidthRequest="80" HeightRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Source="btn_bot_03.png" Command="{Binding SelectConfigMenu}"/>
+            </Grid>
 
+            <!--
+            <Grid Grid.Row="2" Background="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+                <Frame Padding="30, 10">
+                    <Label Text="{Binding FootString, Source=mainWnd}" 
+                               FontSize="22" FontAttributes="Bold" TextColor="#ffffff" 
+                               VerticalOptions="Center" />
+                </Frame>
+                <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
+                    <Button x:Name="btnHome" 
+                            Style="{StaticResource HomeBtn}" WidthRequest="80" HeightRequest="80" 
+                            IsVisible="{Binding Source=mainWnd, Path=SelectedLayerIndex, Converter={StaticResource VToV}, ConverterParameter=1|2|3}" />
+                    <Button x:Name="btnGC" 
+                            Style="{StaticResource InfBtn}" WidthRequest="80" HeightRequest="80"  
+                            IsVisible="{Binding Source=mainWnd, Path=SelectedLayerIndex, Converter={StaticResource VToV}, ConverterParameter=0}" />
+                    <Button x:Name="btnSystem"  Margin="20, 0, 20, 0" 
+                            Style="{StaticResource TemperatureBtn}" WidthRequest="80" HeightRequest="80" />
+                </StackLayout>
+            </Grid>
+            -->
+        </Grid>
+    </AbsoluteLayout>
+    <!--<Grid Background="#2d2d37">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="53"/>
+                <RowDefinition Height="1114"/>
+                <RowDefinition Height="113"/>
+            </Grid.RowDefinitions>
+
+            -->
+    <!--// HEADER -->
+    <!--
+            <Grid Grid.Row="0" Background="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="346" />
+                    <ColumnDefinition Width="166" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="0" Grid.ColumnSpan="4"  Padding="20,7">
+                    <Label x:Name="label_state" Text="Not Ready" FontSize="28"  TextColor="#cccccc" HorizontalOptions="FillAndExpand" />
+                </Frame>
+
+                <Frame Grid.Column="0" Grid.ColumnSpan="4"  >
+                    <Label Text="" FontSize="28"  TextColor="#cccccc" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                </Frame>
+
+                <Frame Grid.Column="1" >
+                    <Label x:Name="label_now_time" FontSize="28" TextColor="#cccccc" HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                            />
+                </Frame>
+
+                <Frame Grid.Column="3" Padding="5">
+                    <StackLayout Orientation="Horizontal">
+                        <Button x:Name="btnMax" Style="{StaticResource MaxWinBtn}" Margin="5, 0" />
+                        <Button x:Name="btnExit" Style="{StaticResource CloseWinBtn}"  Margin="5, 0" />
+                    </StackLayout>
+                </Frame>
+            </Grid>
+            -->
+    <!--// HEADER END -->
+    <!--// Information  2 -->
+    <!--
+            <Grid Grid.Row="1" IsVisible="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="43" />
+                    <ColumnDefinition Width="148" />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="555" />
+                    <ColumnDefinition Width="24" />
+                </Grid.ColumnDefinitions>
+                <Image HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill" Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/bg_info.png"/>
+                
+                <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" IsVisible="{Binding Source=btnInformation, Path=IsChecked}">
+                    <Image Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/side_top.png"  HorizontalOptions="End" VerticalOptions="Start" Margin="0, 69, 0 ,0"/>
+                </Frame>
+                <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" IsVisible="{Binding SelectedN, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=1|2|3|4|5|6|7|8}">
+                    <Image Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/side_mid.png"  HorizontalOptions="End" VerticalOptions="Start" Margin="{Binding SelectedN, Source=mainWnd, Converter={StaticResource NToM}}"/>
+                </Frame>
+
+                <Frame Grid.Column="1">
+                    -->
+    <!--- Button 영역 -->
+    <!--
+                    <Grid x:Name="xMenuInf">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="69"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <RadioButton Grid.Row="1" Text="Information" x:Name="btnInformation" GroupName="xMenuInfBtn" Style="{StaticResource TabL1}"  IsChecked="True" />
+                        <RadioButton Grid.Row="2" Text="Config" x:Name="btnConfig" GroupName="xMenuInfBtn" Style="{StaticResource TabL1}"   />
+                        <RadioButton Grid.Row="3" Text="Settings" x:Name="btnSettings" GroupName="xMenuInfBtn" Style="{StaticResource TabL1}"   />
+                        <RadioButton Grid.Row="4" Text="Diagnostics" x:Name="btnDiagnostics" GroupName="xMenuInfBtn" Style="{StaticResource TabL1}"  />
+                        <RadioButton Grid.Row="5" Text="Calibration" x:Name="btnCalibration" GroupName="xMenuInfBtn" Style="{StaticResource TabL1}"   />
+                        <RadioButton Grid.Row="6" Text="Time&#10;Control" x:Name="btnTimeControl" GroupName="xMenuInfBtn" Style="{StaticResource TabL1}" />
+                        <RadioButton Grid.Row="7" Text="Method" x:Name="btnMethod" GroupName="xMenuInfBtn" Style="{StaticResource TabL1}"  IsVisible="False"  />
+
+                    </Grid>
+                </Frame>
+
+                <ctl:system_info Grid.Column="3" x:Name="_informationCtrl" IsVisible="{Binding SelectedN, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=0}"  />
+                <ctl:system_config Grid.Column="3" x:Name="_configCtrl" IsVisible="{Binding SelectedN, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=1}"  />
+                <ctl:system_special Grid.Column="3" x:Name="_settingsCtrl" IsVisible="{Binding SelectedN, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=2}"  />
+                <ctl:system_diagnostics Grid.Column="3" x:Name="_diagnosticsCtrl" IsVisible="{Binding SelectedN, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=3}"  />
+                <ctl:system_calibration Grid.Column="3" x:Name="_calibrationCtrl" IsVisible="{Binding SelectedN, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=4}"  />
+                <ctl:System_timecontrol Grid.Column="3" x:Name="_timecontrolCtrl" IsVisible="{Binding SelectedN, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=5}"  />
+                <ctl:system_method Grid.Column="3" x:Name="_methodCtrl" IsVisible="{Binding SelectedN, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=6}"  />
+            </Grid>
+            -->
+    <!--// Information-->
+    <!--// home -->
+    <!--
+            <Frame Grid.Row="1" IsVisible="False">
+                <ctl:monitor_ready x:Name="_homeCtrl"  />
+            </Frame>
+            -->
+    <!--// not read-->
+    <!--
+            <Frame Grid.Row="1" IsVisible="False">
+                <ctl:monitor_not_ready x:Name="_monitorCtrl"  />
+            </Frame>
+            -->
+    <!-- // -->
+
+    <!--//GC MENU  1-->
+    <!--
+            <Grid Grid.Row="1" IsVisible="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="53" />
+                    <ColumnDefinition Width="138" />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="555" />
+                    <ColumnDefinition Width="24" />
+                </Grid.ColumnDefinitions>
+                <Image HorizontalOptions="Center" VerticalOptions="Center"  Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/bg.png"/>
+
+                <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" IsVisible="{Binding SelectedX, Source=mainWnd, Converter={StaticResource VToV}, ConverterParameter=0}">
+                    <Image Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/side_top.png"  HorizontalOptions="End" VerticalOptions="Start" Margin="0, 69, 0, 0"/>
+                </Frame>
+                <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" IsVisible="{Binding SelectedX, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=1|2|3|4|5|6|7|8}">
+                    <Image Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/side_mid.png"  HorizontalOptions="End" VerticalOptions="Start" Margin="{Binding SelectedX, Source=mainWnd, Converter={StaticResource XToM}}"/>
+                </Frame>
+                <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" IsVisible="{Binding SelectedX, Source=mainWnd, Converter={StaticResource VToV}, ConverterParameter=9}">
+                    <Image Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/side_bot.png"  HorizontalOptions="End" VerticalOptions="Start" Margin="0, 999, 0, 0"/>
+                </Frame>
+                <Frame Grid.Column="1">
+                    -->
+    <!--- Button 영역 -->
+    <!--
+                    <Grid x:Name="xMenu">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="69"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <RadioButton Grid.Row="1" x:Name="btnOven" Text="Oven" GroupName="xMenuBtn" Style="{StaticResource TabL}" IsChecked="True" />
+                        <RadioButton Grid.Row="3" x:Name="btnFI" Text="Front&#10;Inlet" GroupName="xMenuBtn" Style="{StaticResource TabL}"  />
+                        <RadioButton Grid.Row="4" x:Name="btnCI" Text="Center&#10;Inlet" GroupName="xMenuBtn" Style="{StaticResource TabL}"  />
+                        <RadioButton Grid.Row="5" x:Name="btnRI" Text="Rear&#10;Inlet" GroupName="xMenuBtn" Style="{StaticResource TabL}"  />
+
+                        <RadioButton Grid.Row="7" x:Name="btnFD" Text="Front&#10;Detector" GroupName="xMenuBtn" Style="{StaticResource TabL}"  />
+                        <RadioButton Grid.Row="8" x:Name="btnCD" Text="Center&#10;Detector" GroupName="xMenuBtn" Style="{StaticResource TabL}"  />
+                        <RadioButton Grid.Row="9" x:Name="btnRD" Text="Rear&#10;Detector" GroupName="xMenuBtn" Style="{StaticResource TabL}"  />
+
+                        <RadioButton Grid.Row="11" x:Name="btnSignal" Text="Signal" GroupName="xMenuBtn" Style="{StaticResource TabL}"  />
+                        <RadioButton Grid.Row="12" x:Name="btnValve" Text="Valve" GroupName="xMenuBtn" Style="{StaticResource TabL}"  />
+                        <RadioButton Grid.Row="13" x:Name="btnAux" Text="Aux" GroupName="xMenuBtn" Style="{StaticResource TabL}"  />
+                    </Grid>
+                </Frame>
+
+                <Frame x:Name="bdr_oven" Grid.Column="3" IsVisible="{Binding SelectedX, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=0}">
+                    <ctl:gc_oven Grid.Column="3" x:Name="_ovenCtrl"   />
+                </Frame>
+                <Frame x:Name="bdr_fi" Grid.Column="3" IsVisible="{Binding SelectedX, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=1}">
+
+                </Frame>
+                <Frame x:Name="bdr_ci" Grid.Column="3" IsVisible="{Binding SelectedX, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=2}">
+
+                </Frame>
+
+                <Frame x:Name="bdr_ri" Grid.Column="3" IsVisible="{Binding SelectedX, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=3}">
+
+                </Frame>
+
+                <Frame x:Name="bdr_fd" Grid.Column="3" IsVisible="{Binding SelectedX, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=4}">
+
+                </Frame>
+
+                <Frame x:Name="bdr_cd" Grid.Column="3" IsVisible="{Binding SelectedX, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=5}">
+
+                </Frame>
+
+                <Frame x:Name="bdr_rd" Grid.Column="3" IsVisible="{Binding SelectedX, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=6}">
+
+                </Frame>
+
+                <Frame x:Name="bdr_signal" Grid.Column="3" IsVisible="{Binding SelectedX, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=7}">
+
+                </Frame>
+
+                <Frame x:Name="bdr_valve" Grid.Column="3" IsVisible="{Binding SelectedX, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=8}">
+
+                </Frame>
+
+                <Frame x:Name="bdr_aux" Grid.Column="3" IsVisible="{Binding SelectedX, Source=mainWnd ,Converter={StaticResource VToV}, ConverterParameter=9}">
+
+                </Frame>
+
+            </Grid>
+            -->
+    <!--//GC MENU-->
+
+
+    <!--// FOOTER-->
+    <!--
+            <Grid Grid.Row="2" Background="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+                <Frame Padding="30, 10">
+                    <Label Text="{Binding FootString, Source=mainWnd}" 
+                               FontSize="22" FontAttributes="Bold" TextColor="#ffffff" 
+                               VerticalOptions="Center" />
+                </Frame>
+                <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
+                    <Button x:Name="btnHome" 
+                            Style="{StaticResource HomeBtn}" WidthRequest="80" HeightRequest="80" 
+                            IsVisible="{Binding Source=mainWnd, Path=SelectedLayerIndex, Converter={StaticResource VToV}, ConverterParameter=1|2|3}" />
+                    <Button x:Name="btnGC" 
+                            Style="{StaticResource InfBtn}" WidthRequest="80" HeightRequest="80"  
+                            IsVisible="{Binding Source=mainWnd, Path=SelectedLayerIndex, Converter={StaticResource VToV}, ConverterParameter=0}" />
+                    <Button x:Name="btnSystem"  Margin="20, 0, 20, 0" 
+                            Style="{StaticResource TemperatureBtn}" WidthRequest="80" HeightRequest="80" />
+                </StackLayout>
+            </Grid>
+            -->
+    <!--// FOOTER END-->
+
+    <!--// ERROR -->
+    <!--
+            <Frame x:Name="bdr_error" Grid.RowSpan="3" IsVisible="False">
+
+            </Frame>
+        </Grid>-->
+    <!--</AbsoluteLayout>-->
 </ContentPage>

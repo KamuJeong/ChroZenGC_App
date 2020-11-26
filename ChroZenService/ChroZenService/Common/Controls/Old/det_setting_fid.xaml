@@ -1,0 +1,143 @@
+﻿<Grid x:Class="ChroZenService.det_setting_fid"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             
+             VerticalOptions="Start"
+             HeightRequest="450" WidthRequest="540">
+
+    <Frame HeightRequest="435" Style="{StaticResource GroupBK}" Padding="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="170" />
+                <ColumnDefinition Width="170" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="110" />
+            </Grid.RowDefinitions>
+            <Frame Grid.ColumnSpan="3" Style="{StaticResource LineBT}" />
+            <Frame Grid.RowSpan="6" Style="{StaticResource LineRT}" />
+
+            <Frame Grid.Column="1">
+                <Label Text="Actural" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="Center" />
+            </Frame>
+            <Frame Grid.Column="2">
+                <Label Text="Setting" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="Center" />
+            </Frame>
+
+            <!--//-->
+            <Frame Grid.Row="1" >
+                <Label Text="Temperature" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.Column="1" >
+                <Editor x:Name="label_temp_act" Style="{StaticResource TU-S}"  />
+            </Frame>
+            <Frame Grid.Row="1" Grid.Column="2" >
+                <Editor x:Name="label_temp_set" Text="0" Style="{StaticResource TB-S}"   />
+            </Frame>
+            <!--//-->
+
+            <!--//-->
+            <Frame Grid.Row="2" >
+                <Label Text="Air" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+            </Frame>
+
+            <Frame Grid.Row="2" Grid.Column="1" >
+                <Editor x:Name="label_air_act" Style="{StaticResource TU-S}" Text="0"  />
+            </Frame>
+            <Frame Grid.Row="2" Grid.Column="2" >
+                <Editor x:Name="label_air_set" Style="{StaticResource TB-S}"  />
+            </Frame>
+            <!--//-->
+
+            <!--//-->
+            <Frame Grid.Row="3" >
+                <Label Text="H2" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+            </Frame>
+
+            <Frame Grid.Row="3" Grid.Column="1" >
+                <Editor x:Name="label_h2_act" Style="{StaticResource TU-S}" />
+            </Frame>
+            <Frame Grid.Row="3" Grid.Column="2" >
+                <Editor x:Name="label_h2_set" Style="{StaticResource TB-S}"  />
+            </Frame>
+            <!--//-->
+
+            <!--//-->
+            <Frame Grid.Row="4" >
+                <Label Text="Make up" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+            </Frame>
+
+            <Frame Grid.Row="4" Grid.Column="1" >
+                <Editor x:Name="label_makeup_act" Style="{StaticResource TU-S}"  />
+            </Frame>
+            <Frame Grid.Row="4" Grid.Column="2" >
+                <Editor x:Name="label_makeup_set" Style="{StaticResource TB-S}" Text="0"  />
+            </Frame>
+            <!--//-->
+
+            <!--//-->
+            <Frame Grid.Row="5" >
+                <Label Text="Signal" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+            </Frame>
+
+            <Frame Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" >
+                <Editor x:Name="label_signal" Style="{StaticResource TU}" />
+            </Frame>
+            <!--//-->
+
+            <Frame Grid.Row="6" Grid.ColumnSpan="3" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Frame Grid.RowSpan="2" Style="{StaticResource LineRT}" />
+
+                    <Frame >
+                        <Frame.Padding>
+                            <Thickness >
+                                <Thickness.Left>0</Thickness.Left>
+                                <Thickness.Right>0</Thickness.Right>
+                                <Thickness.Top>15</Thickness.Top>
+                                <Thickness.Bottom>0</Thickness.Bottom>
+                            </Thickness>
+                        </Frame.Padding>
+                        <Label Text="Electrometer" Style="{StaticResource HTX}" HorizontalOptions="End" VerticalOptions="Center" />
+                    </Frame>
+                    <Frame Grid.Column="1" Padding="1">
+                        <Switch x:Name="btn_electrometer" Style="{StaticResource OnOffBtn}"  />
+                    </Frame>
+
+                    <Frame Grid.Row="1" >
+                        <Label Text="Auto ignition" Style="{StaticResource HTX}" HorizontalOptions="End" VerticalOptions="Center" />
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="1" Padding="1">
+                        <Switch x:Name="btn_autoignition" Style="{StaticResource OnOffBtn}"  />
+                    </Frame>
+
+                </Grid>
+
+            </Frame>
+        </Grid>
+    </Frame>
+</Grid>

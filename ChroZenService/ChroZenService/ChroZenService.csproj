@@ -10,16 +10,118 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+    <None Remove="Common\Resources\Images\bg.png" />
+    <None Remove="Common\Resources\Images\bg_info.png" />
+    <None Remove="Common\Resources\Images\book_20.png" />
+    <None Remove="Common\Resources\Images\Brukerlogo.png" />
+    <None Remove="Common\Resources\Images\btnTemperature.png" />
+    <None Remove="Common\Resources\Images\btnTemperatureHover.png" />
+    <None Remove="Common\Resources\Images\btn_bot_01.png" />
+    <None Remove="Common\Resources\Images\btn_bot_02.png" />
+    <None Remove="Common\Resources\Images\btn_bot_03.png" />
+    <None Remove="Common\Resources\Images\btn_bot_11.png" />
+    <None Remove="Common\Resources\Images\btn_bot_12.png" />
+    <None Remove="Common\Resources\Images\btn_bot_13.png" />
+    <None Remove="Common\Resources\Images\btn_off.png" />
+    <None Remove="Common\Resources\Images\btn_off.svg" />
+    <None Remove="Common\Resources\Images\btn_on.png" />
+    <None Remove="Common\Resources\Images\btn_on.svg" />
+    <None Remove="Common\Resources\Images\calib_stop.jpg" />
+    <None Remove="Common\Resources\Images\chrozen.gif" />
+    <None Remove="Common\Resources\Images\chrozen.jpg" />
+    <None Remove="Common\Resources\Images\Closebox.png" />
+    <None Remove="Common\Resources\Images\close_pop.png" />
+    <None Remove="Common\Resources\Images\compass_bg.png" />
+    <None Remove="Common\Resources\Images\flash_20%402x.png" />
+    <None Remove="Common\Resources\Images\home_center.png" />
+    <None Remove="Common\Resources\Images\home_side1.png" />
+    <None Remove="Common\Resources\Images\home_side2.png" />
+    <None Remove="Common\Resources\Images\home_side3.png" />
+    <None Remove="Common\Resources\Images\ico_01.png" />
+    <None Remove="Common\Resources\Images\ico_02.png" />
+    <None Remove="Common\Resources\Images\ico_03.png" />
+    <None Remove="Common\Resources\Images\logo.png" />
+    <None Remove="Common\Resources\Images\MinusGray.png" />
+    <None Remove="Common\Resources\Images\MinusGrayHover.png" />
+    <None Remove="Common\Resources\Images\monitor_error.jpg" />
+    <None Remove="Common\Resources\Images\monitor_warning.jpg" />
+    <None Remove="Common\Resources\Images\PlusGray.png" />
+    <None Remove="Common\Resources\Images\PlusGrayHover.png" />
+    <None Remove="Common\Resources\Images\reset_20.png" />
+    <None Remove="Common\Resources\Images\right_bg.png" />
+    <None Remove="Common\Resources\Images\right_btn01.png" />
+    <None Remove="Common\Resources\Images\right_btn02.png" />
+    <None Remove="Common\Resources\Images\settings_20.png" />
+    <None Remove="Common\Resources\Images\side_bot.png" />
+    <None Remove="Common\Resources\Images\side_mid.png" />
+    <None Remove="Common\Resources\Images\side_top.png" />
+    <None Remove="Common\Resources\Images\start.png" />
+    <None Remove="Common\Resources\Images\temperature_30.png" />
+    <None Remove="Common\Resources\Images\toggle_off.png" />
+    <None Remove="Common\Resources\Images\toggle_off.svg" />
+    <None Remove="Common\Resources\Images\toggle_on.png" />
+    <None Remove="Common\Resources\Images\toggle_on.svg" />
+    <None Remove="Common\Resources\Images\Warning.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Resources\Images\" />
-    <Folder Include="Common\Resources\XAML\" />
-    <Folder Include="Common\UserControl\" />
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\Child\" />
-    <Folder Include="View\View\" />
+    <EmbeddedResource Include="Common\Resources\Images\bg.png" />
+    <EmbeddedResource Include="Common\Resources\Images\bg_info.png" />
+    <EmbeddedResource Include="Common\Resources\Images\book_20.png" />
+    <EmbeddedResource Include="Common\Resources\Images\Brukerlogo.png" />
+    <EmbeddedResource Include="Common\Resources\Images\btnTemperature.png" />
+    <EmbeddedResource Include="Common\Resources\Images\btnTemperatureHover.png" />
+    <EmbeddedResource Include="Common\Resources\Images\btn_bot_01.png" />
+    <EmbeddedResource Include="Common\Resources\Images\btn_bot_02.png" />
+    <Content Include="Common\Resources\Images\btn_bot_03.png" />
+    <EmbeddedResource Include="Common\Resources\Images\btn_bot_11.png" />
+    <EmbeddedResource Include="Common\Resources\Images\btn_bot_12.png" />
+    <EmbeddedResource Include="Common\Resources\Images\btn_bot_13.png" />
+    <EmbeddedResource Include="Common\Resources\Images\btn_off.png" />
+    <EmbeddedResource Include="Common\Resources\Images\btn_off.svg" />
+    <EmbeddedResource Include="Common\Resources\Images\btn_on.png" />
+    <EmbeddedResource Include="Common\Resources\Images\btn_on.svg" />
+    <EmbeddedResource Include="Common\Resources\Images\calib_stop.jpg" />
+    <EmbeddedResource Include="Common\Resources\Images\chrozen.gif" />
+    <EmbeddedResource Include="Common\Resources\Images\chrozen.jpg" />
+    <EmbeddedResource Include="Common\Resources\Images\Closebox.png" />
+    <EmbeddedResource Include="Common\Resources\Images\close_pop.png" />
+    <EmbeddedResource Include="Common\Resources\Images\compass_bg.png" />
+    <EmbeddedResource Include="Common\Resources\Images\flash_20@2x.png" />
+    <EmbeddedResource Include="Common\Resources\Images\home_center.png" />
+    <EmbeddedResource Include="Common\Resources\Images\home_side1.png" />
+    <EmbeddedResource Include="Common\Resources\Images\home_side2.png" />
+    <EmbeddedResource Include="Common\Resources\Images\home_side3.png" />
+    <EmbeddedResource Include="Common\Resources\Images\ico_01.png" />
+    <EmbeddedResource Include="Common\Resources\Images\ico_02.png" />
+    <EmbeddedResource Include="Common\Resources\Images\ico_03.png" />
+    <EmbeddedResource Include="Common\Resources\Images\logo.png" />
+    <EmbeddedResource Include="Common\Resources\Images\MinusGray.png" />
+    <EmbeddedResource Include="Common\Resources\Images\MinusGrayHover.png" />
+    <EmbeddedResource Include="Common\Resources\Images\monitor_error.jpg" />
+    <EmbeddedResource Include="Common\Resources\Images\monitor_warning.jpg" />
+    <EmbeddedResource Include="Common\Resources\Images\PlusGray.png" />
+    <EmbeddedResource Include="Common\Resources\Images\PlusGrayHover.png" />
+    <EmbeddedResource Include="Common\Resources\Images\reset_20.png" />
+    <EmbeddedResource Include="Common\Resources\Images\right_bg.png" />
+    <EmbeddedResource Include="Common\Resources\Images\right_btn01.png" />
+    <EmbeddedResource Include="Common\Resources\Images\right_btn02.png" />
+    <EmbeddedResource Include="Common\Resources\Images\settings_20.png" />
+    <EmbeddedResource Include="Common\Resources\Images\side_bot.png" />
+    <EmbeddedResource Include="Common\Resources\Images\side_mid.png" />
+    <EmbeddedResource Include="Common\Resources\Images\side_top.png" />
+    <EmbeddedResource Include="Common\Resources\Images\start.png" />
+    <EmbeddedResource Include="Common\Resources\Images\temperature_30.png" />
+    <EmbeddedResource Include="Common\Resources\Images\toggle_off.png" />
+    <EmbeddedResource Include="Common\Resources\Images\toggle_off.svg" />
+    <EmbeddedResource Include="Common\Resources\Images\toggle_on.png" />
+    <EmbeddedResource Include="Common\Resources\Images\toggle_on.svg" />
+    <EmbeddedResource Include="Common\Resources\Images\Warning.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,11 +129,40 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Common\UserControl\Chart\ChartChild\View_ChartXAxis.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\UserControl\Chart\ChartChild\View_ChartYAxis.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\UserControl\Chart\YL_Chart.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\View\View_MainSide.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\Resources\XAML\ImageButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\Resources\XAML\InputBox.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\Resources\XAML\TextStyle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\Resources\XAML\Common.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="View\Page\ConfigPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Page\SystemPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\UserControl\Common\" />
+    <Folder Include="Common\UserControl\MainPage\" />
   </ItemGroup>
 </Project>

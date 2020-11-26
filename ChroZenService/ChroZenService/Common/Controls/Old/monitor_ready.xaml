@@ -1,0 +1,557 @@
+﻿<Grid x:Class="ChroZenService.monitor_ready"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             xmlns:cvt="clr-namespace:ChroZenService"
+            
+             x:Name="uc"
+             
+             HeightRequest="1114" WidthRequest="800">
+
+    
+    <Grid x:Name="_mainGrid" Background="#2d2d37">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="74"/>
+            <RowDefinition Height="74"/>
+            <RowDefinition Height="354"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Frame Grid.Row="0">
+            <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
+                 <Label Text="Runtime"  Style="{StaticResource HTX}" FontSize="33"  TextColor="#ffffff"  />
+                <Editor x:Name="label_runtime"  Style="{StaticResource TU-N}" WidthRequest="340"  />
+                <Label Text="min"  Style="{StaticResource HTX}" FontSize="20"  >
+                    <Label.Margin>
+                        <Thickness >
+                            <Thickness.Left>10</Thickness.Left>
+                            <Thickness.Right>0</Thickness.Right>
+                            <Thickness.Top>0</Thickness.Top>
+                            <Thickness.Bottom>0</Thickness.Bottom>
+                        </Thickness>
+                    </Label.Margin>
+                </Label>
+            </StackLayout>
+        </Frame>
+
+        <Frame Grid.Row="1" Padding="10">
+            <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
+                <Label Text="Runstart"  Style="{StaticResource HTX}" FontSize="22" TextColor="#ffffff"  />
+                <Editor x:Name="label_runstart"  Style="{StaticResource TU}" Text="Runstart"  WidthRequest="300"  />
+            </StackLayout>
+        </Frame>
+
+        <Frame Grid.Row="2" Padding="40, 0, 40, 0">
+            <loc:monitor_chart x:Name="_chartCtrl" />
+        </Frame>
+        
+        <!--// 하단 계기판-->
+        <Frame Grid.Row="3" Padding="35, 15, 35, 25">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="258" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="0"  IsVisible="{Binding Source=homeL1, Path=IsToggled}">
+                    <Image Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/home_side1.png"  />
+                </Frame>
+                <Frame Grid.Column="0"  IsVisible="{Binding Source=homeL2, Path=IsToggled}">
+                    <Image Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/home_side2.png"  />
+                </Frame>
+                <Frame Grid.Column="0"  IsVisible="{Binding Source=homeL3, Path=IsToggled}">
+                    <Image Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/home_side3.png"  />
+                </Frame>
+
+                <Frame Grid.Column="0">
+                    <StackLayout>
+                        <RadioButton Text="Capillary" x:Name="homeL1" Style="{StaticResource TabH}" GroupName="homeL" HeightRequest="55" WidthRequest="180" Margin="5" IsChecked="True"></RadioButton>
+                        <Frame HeightRequest="370" Padding="30, 20" 
+                                IsVisible="{Binding Source=homeL1, Path=IsToggled}">
+                            <StackLayout>
+                                <Frame Padding="5, 15">
+                                    <Label x:Name="label_fi_gas" Style="{StaticResource HTX}" Text="N2" HorizontalOptions="Center" />
+                                </Frame>
+                                <Frame Padding="5, 15">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="6*" />
+                                            <ColumnDefinition Width="4*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame BorderColor="White"  Margin="10, 0, 5, 0">
+                                            <Label x:Name="label_fi_flow" Text="0.00" Style="{StaticResource HTX3}" TextColor="White" HorizontalOptions="End"/>
+                                        </Frame>
+                                        <Frame Grid.Column="1">
+                                            <Label Text="ml/min" Style="{StaticResource HTX}" FontSize="20" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                                <Frame Padding="5, 15">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="6*" />
+                                            <ColumnDefinition Width="4*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame  BorderColor="White"  Margin="10, 0, 5, 0">
+                                            <Label x:Name="label_fi_press" Style="{StaticResource HTX}" TextColor="White" Text="0.00" HorizontalOptions="End"/>
+                                        </Frame>
+                                        <Frame Grid.Column="1">
+                                            <Label Text="psi" Style="{StaticResource HTX}" FontSize="20" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                                <Frame Padding="5, 30, 5, 10">
+                                    <Label x:Name="label_fi_ctrl" Text="Const.Flow" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                </Frame>
+                                <Frame Padding="5, 10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame >
+                                            <Label Text="Split" Style="{StaticResource HTX}" HorizontalOptions="End" />
+                                        </Frame>
+                                        <Frame Grid.Column="1"  BorderColor="White"  Margin="10, 0, 10, 0">
+                                            <Label x:Name="label_fi_split" Style="{StaticResource HTX}" TextColor="White" Text="1 / 20" HorizontalOptions="Center"/>
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </Frame>
+                        <RadioButton x:Name="homeL2" Style="{StaticResource TabH}" GroupName="homeL" HeightRequest="55" WidthRequest="180" Text="Not Installed" Margin="5" ></RadioButton>
+                        <Frame HeightRequest="370"  Padding="30, 20, 30, 20"  
+                                IsVisible="{Binding Source=homeL2, Path=IsToggled}">
+                            <StackLayout>
+                                <Frame Padding="5, 15, 5, 15">
+                                    <Label x:Name="label_ci_gas" Style="{StaticResource HTX}" Text="N2" HorizontalOptions="Center" />
+                                </Frame>
+                                <Frame Padding="5, 15, 5, 15">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="6*" />
+                                            <ColumnDefinition Width="4*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame BorderColor="White" Margin="10, 0, 5, 0">
+                                            <Label x:Name="label_ci_flow" Text="0.00" Style="{StaticResource HTX3}" TextColor="White" HorizontalOptions="End"/>
+                                        </Frame>
+                                        <Frame Grid.Column="1">
+                                            <Label Text="ml/min" Style="{StaticResource HTX}" FontSize="20" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                                <Frame Padding="5, 15, 5, 15">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="6*" />
+                                            <ColumnDefinition Width="4*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame  BorderColor="White"  Margin="10, 0, 5, 0">
+                                            <Label x:Name="label_ci_press" Style="{StaticResource HTX}" TextColor="White" Text="0.00" HorizontalOptions="End"/>
+                                        </Frame>
+                                        <Frame Grid.Column="1">
+                                            <Label Text="psi" Style="{StaticResource HTX}" FontSize="20" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                                <Frame Padding="5, 30, 5, 10">
+                                    <Label x:Name="label_ci_ctrl" Text="Const.Flow" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                </Frame>
+                                <Frame Padding="5, 10, 5, 10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame >
+                                            <Label Text="Split" Style="{StaticResource HTX}" HorizontalOptions="End" />
+                                        </Frame>
+                                        <Frame Grid.Column="1"  BorderColor="White"  Margin="10, 0, 10, 0">
+                                            <Label x:Name="label_ci_split" Style="{StaticResource HTX}" TextColor="White" Text="1 / 20" HorizontalOptions="Center"/>
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </Frame>
+                        <RadioButton x:Name="homeL3" Style="{StaticResource TabH}" GroupName="homeL" HeightRequest="55" WidthRequest="180" Margin="5" Text="Not Installed"></RadioButton>
+                        <Frame HeightRequest="370" Padding="30, 20, 30, 20"
+                                IsVisible="{Binding Source=homeL3, Path=IsToggled}">
+                            <StackLayout>
+                                <Frame Padding="5, 15, 5, 15">
+                                    <Label x:Name="label_ri_gas" Style="{StaticResource HTX}" Text="N2" HorizontalOptions="Center" />
+                                </Frame>
+                                <Frame Padding="5, 15, 5, 15">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="6*" />
+                                            <ColumnDefinition Width="4*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame BorderColor="White"  Margin="10, 0, 5, 0">
+                                            <Label x:Name="label_ri_flow" Text="0.00" Style="{StaticResource HTX3}" TextColor="White" HorizontalOptions="End"/>
+                                        </Frame>
+                                        <Frame Grid.Column="1">
+                                            <Label Text="ml/min" Style="{StaticResource HTX}" FontSize="20" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                                <Frame Padding="5, 15, 5, 15">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="6*" />
+                                            <ColumnDefinition Width="4*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame  BorderColor="White"  Margin="10, 0, 5, 0">
+                                            <Label x:Name="label_ri_press" Style="{StaticResource HTX}" TextColor="White" Text="0.00" HorizontalOptions="End"/>
+                                        </Frame>
+                                        <Frame Grid.Column="1">
+                                            <Label Text="psi" Style="{StaticResource HTX}" FontSize="20" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                                <Frame Padding="5, 30, 5, 10">
+                                    <Label x:Name="label_ri_ctrl" Text="Const.Flow" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                </Frame>
+                                <Frame Padding="5, 10, 5, 10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame >
+                                            <Label Text="Split" Style="{StaticResource HTX}" HorizontalOptions="End" />
+                                        </Frame>
+                                        <Frame Grid.Column="1"  BorderColor="White"  Margin="10, 0, 10, 0">
+                                            <Label x:Name="label_ri_split" Style="{StaticResource HTX}" TextColor="White" Text="1 / 20" HorizontalOptions="Center"/>
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+
+                        </Frame>                        
+                    </StackLayout>                    
+                </Frame>
+                
+                <!--// center-->
+                <Frame Grid.Column="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="99"/>
+                            <RowDefinition Height="390"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <!--<Grid.Background>
+                            <ImageBrush ImageSource="{StaticResource homeDrawingImage}" Stretch="Uniform" />
+                        </Grid.Background>-->
+                        
+
+                        <Frame Grid.Column="0" BorderColor="#ffffff"  CornerRadius="15" Background="Transparent" Margin="14, 16, 2, 10" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="4*" />
+                                </Grid.ColumnDefinitions>
+                                <Frame Grid.ColumnSpan="2">
+                                    <Label x:Name="label_inl_nm" Text="Inlet" HorizontalOptions="Center" Style="{StaticResource HTX3}"  />
+                                </Frame>
+                                <Frame Grid.Row="1">
+                                    <Label x:Name="label_inl_temp" Text="0" Style="{StaticResource HTX3}" HorizontalOptions="End" TextColor="Green" />
+                                </Frame>
+                                <Frame Grid.Row="1" Grid.Column="1" Padding="0, 0, 10, 0">
+                                    <Label Text="℃" Style="{StaticResource HTX3}" HorizontalOptions="End" TextColor="White" />
+                                </Frame>
+                            </Grid>                            
+                        </Frame>
+                        <Frame Grid.Column="0">
+                            <Button x:Name="btn_inlet" Style="{StaticResource TransparentButton}" Margin="10, 20, 5, 10" />
+                        </Frame>
+
+                        <Frame Grid.Column="1" BorderColor="#ffffff"  CornerRadius="15" Background="Transparent" Margin="2, 16, 17, 10" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="4*" />
+                                </Grid.ColumnDefinitions>
+                                    
+                                <Frame>
+                                    <Label x:Name="label_det_nm" Text="Det" HorizontalOptions="Center" Style="{StaticResource HTX3}"  />
+                                </Frame>
+                                <Frame Grid.Row="1">
+                                    <Label x:Name="label_det_temp" Text="0" Style="{StaticResource HTX3}" HorizontalOptions="End" TextColor="Green" />
+                                </Frame>
+                                <Frame Grid.Row="1" Grid.Column="1" Padding="0, 0, 10, 0">
+                                    <Label Text="℃" Style="{StaticResource HTX3}" HorizontalOptions="End" TextColor="White" />
+                                </Frame>
+                            </Grid>
+                        </Frame>
+
+                        <Frame Grid.Column="1">
+                            <Button x:Name="btn_det" Style="{StaticResource TransparentButton}" Margin="0, 20, 20, 10" />
+                        </Frame>
+
+                        <Frame Grid.ColumnSpan="2" Grid.Row="1" Padding="0, 77, 95, 0">
+                            <Label x:Name="label_oven_temp" Style="{StaticResource HTX3}" Text="100" VerticalOptions="Start" HorizontalOptions="End" TextColor="Green" />
+                        </Frame>
+
+                        <Frame Grid.ColumnSpan="2" Grid.Row="1"  Padding="0, 0, 0, 310">
+                            <Label Text="Oven" HorizontalOptions="Center" Style="{StaticResource HTX3}" FontSize="34"  />
+                        </Frame>
+
+                        <Frame Grid.ColumnSpan="2" Grid.Row="1"  Padding="30, 10, 30, 30">
+                            <Button x:Name="btn_oven" Style="{StaticResource TransparentButton}" />
+                        </Frame>
+
+                        <Frame Grid.ColumnSpan="3" Grid.Row="2" BorderColor="#ffffff"  CornerRadius="11" Background="Transparent" Margin="41, 2, 40, 35" />
+                        <Frame Grid.ColumnSpan="3" Grid.Row="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Frame HorizontalOptions="End" Padding="0, 10, 10, 0">
+                                    <Label Style="{StaticResource HTX3}" Text="Step" VerticalOptions="Start"  />
+                                </Frame>
+                                <Frame Grid.Column="1" HorizontalOptions="Start" Padding="10, 10, 0, 0">
+                                    <Label x:Name="label_step" Style="{StaticResource HTX3}" Text="0" VerticalOptions="Start"  />
+                                </Frame>
+                            </Grid>
+                            
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Column="2"  IsVisible="{Binding Source=homeR2, Path=IsToggled}">
+                    <Image Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/home_side2.png"  />
+                </Frame>
+                <Frame Grid.Column="2"  IsVisible="{Binding Source=homeR3, Path=IsToggled}">
+                    <Image Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/home_side3.png"  />
+                </Frame>
+                <Frame Grid.Column="2"  IsVisible="{Binding Source=homeR1, Path=IsToggled}">
+                    <Image Source="pack://application:,,,/ChrozenGC.MVVM;component/Images/home_side1.png"  />
+                </Frame>
+
+                <Frame Grid.Column="2">
+                    <StackLayout>
+                        <RadioButton Text="FID" x:Name="homeR1" Style="{StaticResource TabH}" GroupName="homeR" HeightRequest="55" WidthRequest="180" Margin="5" IsChecked="True"></RadioButton>
+                        <Frame HeightRequest="370" Padding="20" 
+                                IsVisible="{Binding Source=homeR1, Path=IsToggled}">
+                            <StackLayout>
+                                <Frame Padding="10, 40">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="6*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame BorderColor="White" Margin="10, 0, 5, 0">
+                                            <Label x:Name="label_fd_signal" Style="{StaticResource HTX}" TextColor="White" Text="12" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Column="1">
+                                            <Label x:Name="label_fd_signal_nm" Text="nA" Style="{StaticResource HTX}" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame x:Name="bdr_fd_flow1" Padding="15, 30, 0, 0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Padding="10, 0, 0, 0">
+                                            <Label x:Name="label_fd_flow1_nm" Text="Air" 
+                                               Style="{StaticResource HTX}" />
+                                        </Frame>
+                                        <Frame Grid.Column="1" BorderColor="White"  Margin="0, 0, 5, 0">
+                                            <Label x:Name="label_fd_flow1"  Style="{StaticResource HTX}" TextColor="White"  HorizontalOptions="Center" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame x:Name="bdr_fd_flow2" Padding="15, 30, 0, 0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Padding="10, 0, 0, 0">
+                                            <Label x:Name="label_fd_flow2_nm" Text="Mkup" 
+                                               Style="{StaticResource HTX}" />
+                                        </Frame>
+                                        <Frame Grid.Column="1" BorderColor="White"  Margin="0, 0, 5, 0">
+                                            <Label x:Name="label_fd_flow2"  Style="{StaticResource HTX}" TextColor="White"  HorizontalOptions="Center" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame x:Name="bdr_fd_flow3" Padding="15, 30, 0, 0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Padding="10, 0, 0, 0">
+                                            <Label x:Name="label_fd_flow3_nm" Text="H2" 
+                                               Style="{StaticResource HTX}" />
+                                        </Frame>
+                                        <Frame Grid.Column="1" BorderColor="White"  Margin="0, 0, 5, 0">
+                                            <Label x:Name="label_fd_flow3"  Style="{StaticResource HTX}" TextColor="White"  HorizontalOptions="Center" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </Frame>
+                        <RadioButton x:Name="homeR2" Style="{StaticResource TabH}" GroupName="homeR" HeightRequest="55" WidthRequest="180" Margin="5" Text="Not Installed"></RadioButton>
+                        <Frame HeightRequest="370" Padding="20"
+                                IsVisible="{Binding Source=homeR2, Path=IsToggled}">
+                            <StackLayout>
+                                <Frame Padding="10, 40">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="6*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame BorderColor="White"  Margin="10, 0, 5, 0">
+                                            <Label x:Name="label_cd_signal" Style="{StaticResource HTX}" TextColor="White" Text="12" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Column="1">
+                                            <Label x:Name="label_cd_signal_nm" Text="nA" Style="{StaticResource HTX}" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame x:Name="bdr_cd_flow1" Padding="15, 30, 0, 0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Padding="10, 0, 0, 0">
+                                            <Label x:Name="label_cd_flow1_nm" Text="Air" 
+                                               Style="{StaticResource HTX}" />
+                                        </Frame>
+                                        <Frame Grid.Column="1" BorderColor="White" Margin="0, 0, 5, 0">
+                                            <Label x:Name="label_cd_flow1"  Style="{StaticResource HTX}" TextColor="White"  HorizontalOptions="Center" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame x:Name="bdr_cd_flow2" Padding="15, 30, 0, 0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Padding="10, 0, 0, 0">
+                                            <Label x:Name="label_cd_flow2_nm" Text="Mkup" 
+                                               Style="{StaticResource HTX}" />
+                                        </Frame>
+                                        <Frame Grid.Column="1" BorderColor="White"  Margin="0, 0, 5, 0">
+                                            <Label x:Name="label_cd_flow2"  Style="{StaticResource HTX}" TextColor="White"  HorizontalOptions="Center" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame x:Name="bdr_cd_flow3" Padding="15, 30, 0, 0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Padding="10, 0, 0, 0">
+                                            <Label x:Name="label_cd_flow3_nm" Text="H2" 
+                                               Style="{StaticResource HTX}" />
+                                        </Frame>
+                                        <Frame Grid.Column="1" BorderColor="White" Margin="0, 0, 5, 0">
+                                            <Label x:Name="label_cd_flow3"  Style="{StaticResource HTX}" TextColor="White"  HorizontalOptions="Center" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </Frame>
+                        <RadioButton x:Name="homeR3" Style="{StaticResource TabH}" GroupName="homeR" HeightRequest="55" WidthRequest="180" Margin="5" Text="Not Installed"></RadioButton>
+                        <Frame HeightRequest="370" Padding="20"  
+                                IsVisible="{Binding Source=homeR3, Path=IsToggled}">
+                            <StackLayout>
+                                <Frame Padding="10, 40">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="6*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame BorderColor="White" Margin="10, 0, 5, 0">
+                                            <Label x:Name="label_rd_signal" Style="{StaticResource HTX}" TextColor="White" Text="12" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Column="1">
+                                            <Label x:Name="label_rd_signal_nm" Text="nA" Style="{StaticResource HTX}" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame x:Name="bdr_rd_flow1" Padding="15, 30, 0, 0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Padding="10, 0, 0, 0">
+                                            <Label x:Name="label_rd_flow1_nm" Text="Air" 
+                                               Style="{StaticResource HTX}" />
+                                        </Frame>
+                                        <Frame Grid.Column="1" BorderColor="White" Margin="0, 0, 5, 0">
+                                            <Label x:Name="label_rd_flow1"  Style="{StaticResource HTX}" TextColor="White"  HorizontalOptions="Center" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame x:Name="bdr_rd_flow2" Padding="15, 30, 0, 0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Padding="10, 0, 0, 0">
+                                            <Label x:Name="label_rd_flow2_nm" Text="Mkup" 
+                                               Style="{StaticResource HTX}" />
+                                        </Frame>
+                                        <Frame Grid.Column="1" BorderColor="White" Margin="0, 0, 5, 0">
+                                            <Label x:Name="label_rd_flow2"  Style="{StaticResource HTX}" TextColor="White"  HorizontalOptions="Center" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame x:Name="bdr_rd_flow3" Padding="15, 30, 0, 0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Padding="10, 0, 0, 0">
+                                            <Label x:Name="label_rd_flow3_nm" Text="H2" 
+                                               Style="{StaticResource HTX}" />
+                                        </Frame>
+                                        <Frame Grid.Column="1" BorderColor="White" Margin="0, 0, 5, 0">
+                                            <Label x:Name="label_rd_flow3"  Style="{StaticResource HTX}" TextColor="White"  HorizontalOptions="Center" />
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </Frame>
+    </Grid>
+</Grid>

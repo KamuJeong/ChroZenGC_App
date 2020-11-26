@@ -1,0 +1,146 @@
+﻿<Grid x:Class="ChroZenService.det_setting_ecd"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             
+             HeightRequest="450" WidthRequest="540" Background="Transparent">
+    <StackLayout>
+        <Frame HeightRequest="160" Style="{StaticResource GroupBK}" Padding="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="170" />
+                <ColumnDefinition Width="170" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Frame Grid.ColumnSpan="3" Style="{StaticResource LineBT}" />
+            <Frame Grid.RowSpan="6" Style="{StaticResource LineRT}" />
+
+            <Frame Grid.Column="1">
+                <Label Text="Actural" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="Center" />
+            </Frame>
+            <Frame Grid.Column="2">
+                <Label Text="Setting" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="Center" />
+            </Frame>
+
+            <!--//-->
+            <Frame Grid.Row="1" >
+                <Label Text="Temperature" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.Column="1" >
+                <Editor x:Name="label_temp_act" Style="{StaticResource TU}"   />
+            </Frame>
+            <Frame Grid.Row="1" Grid.Column="2" >
+                <Editor x:Name="label_temp_set" Style="{StaticResource TB-S}"   />
+            </Frame>
+            <!--//-->
+
+
+            <!--//-->
+            <Frame Grid.Row="2">
+                <Label Text="Make up" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+            </Frame>
+
+            <Frame Grid.Row="2" Grid.Column="1" >
+                <Editor x:Name="label_makeup_act" Style="{StaticResource TU-S}"  />
+            </Frame>
+            <Frame Grid.Row="2" Grid.Column="2" >
+                    <Frame.Padding>
+                        <Thickness >
+                            <Thickness.Left>15</Thickness.Left>
+                            <Thickness.Right>3</Thickness.Right>
+                            <Thickness.Top>0</Thickness.Top>
+                            <Thickness.Bottom>3</Thickness.Bottom>
+                        </Thickness>
+                    </Frame.Padding>
+                    <Editor x:Name="label_makeup_set" Style="{StaticResource TB-S}"  />
+            </Frame>
+            <!--//-->
+        </Grid>
+    </Frame>
+
+        <Frame HeightRequest="110" Style="{StaticResource GroupBK}" Padding="10" >
+            <Frame.Margin>
+                <Thickness >
+                    <Thickness.Left>0</Thickness.Left>
+                    <Thickness.Right>20</Thickness.Right>
+                    <Thickness.Top>0</Thickness.Top>
+                    <Thickness.Bottom>0</Thickness.Bottom>
+                </Thickness>
+            </Frame.Margin>
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="170" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <!--//-->
+            <Frame Style="{StaticResource LineRT}" Grid.Row="0" >
+                    <Frame.Padding>
+                        <Thickness >
+                            <Thickness.Left>0</Thickness.Left>
+                            <Thickness.Right>0</Thickness.Right>
+                            <Thickness.Top>15</Thickness.Top>
+                            <Thickness.Bottom>0</Thickness.Bottom>
+                        </Thickness>
+                    </Frame.Padding>
+                    <Label Text="Signal" Style="{StaticResource HTX}" 
+                                       VerticalOptions="Center" HorizontalOptions="End" />
+            </Frame>
+
+            <Frame Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" >
+                    <Frame.Padding>
+                        <Thickness >
+                            <Thickness.Left>15</Thickness.Left>
+                            <Thickness.Right>3</Thickness.Right>
+                            <Thickness.Top>0</Thickness.Top>
+                            <Thickness.Bottom>3</Thickness.Bottom>
+                        </Thickness>
+                    </Frame.Padding>
+                    <Editor x:Name="label_signal" Style="{StaticResource TU}"  />
+            </Frame>
+            <!--//-->
+            <Frame Grid.Row="2" Style="{StaticResource LineRT}" Grid.ColumnSpan="2">
+                    <Label Text="Electrometer" Style="{StaticResource HTX}" 
+                           HorizontalOptions="Start"  VerticalOptions="Center">
+                        <Label.Margin>
+                            <Thickness >
+                                <Thickness.Left>65</Thickness.Left>
+                                <Thickness.Right>0</Thickness.Right>
+                                <Thickness.Top>0</Thickness.Top>
+                                <Thickness.Bottom>0</Thickness.Bottom>
+                            </Thickness>
+                        </Label.Margin>
+                    </Label>
+            </Frame>
+            <Frame Grid.Row="2" Grid.Column="2" Padding="1">
+                    <Switch x:Name="btn_electrometer" HorizontalOptions="Start" Style="{StaticResource OnOffBtn}">
+                        <Switch.Margin>
+                            <Thickness >
+                                <Thickness.Left>30</Thickness.Left>
+                                <Thickness.Right>30</Thickness.Right>
+                                <Thickness.Top>0</Thickness.Top>
+                                <Thickness.Bottom>0</Thickness.Bottom>
+                            </Thickness>
+                        </Switch.Margin>
+                    </Switch>
+            </Frame>
+        </Grid>
+
+    </Frame>
+    </StackLayout>
+</Grid>

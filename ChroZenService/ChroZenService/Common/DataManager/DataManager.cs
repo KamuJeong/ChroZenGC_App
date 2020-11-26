@@ -7,6 +7,11 @@ namespace ChroZenService
 {
     public static class DataManager
     {
+        public static class RunState
+        {
+            public static bool IsDeviceRun;
+        }
+
         #region Received
 
         public static T_PACKCODE_CHROZEN_SYSTEM_INFORM t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received = T_PACKCODE_CHROZEN_SYSTEM_INFORMManager.InitiatedInstance;

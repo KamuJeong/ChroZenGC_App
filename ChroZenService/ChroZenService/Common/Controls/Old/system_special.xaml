@@ -1,0 +1,206 @@
+﻿<Grid x:Class="ChroZenService.system_special"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             xmlns:cvt="clr-namespace:ChroZenService"
+             x:Name="uc"
+             
+             HeightRequest="1114" WidthRequest="540">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="69" />
+            <RowDefinition Height="1030" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Frame Grid.Row="1" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="270" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="160" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="VerticalOptions" Value="Center" />
+                        <Setter Property="TextColor" Value="#a8acc4" />
+                        <Setter Property="FontSize" Value="25" />
+                    </Style>
+                </Grid.Resources>
+                <Frame Grid.Row="0" Style="{StaticResource GroupBK}">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Column Condition" Margin="35, 0, 0, 0" />
+                        <Button x:Name="btn_column_condition" Text="START" WidthRequest="185" Margin="50, 3, 0, 3" Style="{StaticResource StartButton}" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Row="2" Style="{StaticResource GroupBK}" Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Frame Style="{StaticResource LineRT}" Grid.RowSpan="6" />
+
+                        <!--//-->
+                        <Frame Grid.Row="0" Padding="0, 0, 15, 0">
+                            <Label Text="Init Temp" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" Padding="30, 3">
+                            <Editor x:Name="label_fInitTemp"  Style="{StaticResource TB}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="1" Padding="0, 0, 15, 0">
+                            <Label Text="Init Time" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="30, 3">
+                            <Editor x:Name="label_fInitTime" Style="{StaticResource TB}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="2" Padding="0, 0, 15, 0">
+                            <Label Text="Rate" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="1" Padding="30, 3">
+                            <Editor x:Name="label_fRate"  Style="{StaticResource TB}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="3" Padding="0, 0, 15, 0">
+                            <Label Text="Final Temp" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="3" Grid.Column="1" Padding="30, 3">
+                            <Editor x:Name="label_fFinalTemp"  Style="{StaticResource TB}" />
+                        </Frame>
+
+                        <!--//-->
+                        <Frame Grid.Row="4" Padding="0, 0, 15, 0">
+                            <Label Text="Final Time" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="4" Grid.Column="1" Padding="30, 3">
+                            <Editor x:Name="label_fFinalTime" Style="{StaticResource TB}" />
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Row="4" Style="{StaticResource GroupBK}" Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Padding="20, 0, 0, 0">
+                            <Label Text="Remote Access" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="3">
+                            <Switch x:Name="btn_remote" Style="{StaticResource OnOffBtn}" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Row="6" Style="{StaticResource GroupBK}" Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Frame Style="{StaticResource LineRT}" Grid.RowSpan="3" />
+                        <Frame Grid.Row="0" Padding="0, 0, 15, 0">
+                            <Label Text="Remote Time" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" Padding="30, 3">
+                            <Editor x:Name="label_remote_time"  Style="{StaticResource TB}" IsEnabled="False" />
+                        </Frame>
+
+                        <Frame Grid.Row="1" Padding="0, 0, 15, 0">
+                            <Label Text="Remote event 1" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="30, 3">
+                            <Editor x:Name="label_remote_event1" Style="{StaticResource TB}" IsEnabled="False" />
+                        </Frame>
+
+                        <Frame Grid.Row="2" Padding="0, 0, 15, 0">
+                            <Label Text="Remote event 2" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="1" Padding="30, 3">
+                            <Editor x:Name="label_remote_event2" Style="{StaticResource TB}" IsEnabled="False" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Row="8" Style="{StaticResource GroupBK}" Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="6*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                            <Label Text="Install Date" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                            <Editor x:Name="label_install_date"  Text="2019.01.01" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Row="10" Style="{StaticResource GroupBK}" Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="6*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                            <Label Text="Date" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                            <Editor x:Name="label_date"  Text="2019.12.12" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Row="12" Style="{StaticResource GroupBK}" Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="6*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                            <Label Text="Time" />
+                        </Frame>
+                        <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                            <Editor x:Name="label_time"  Text="16:49:06" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+            </Grid>
+        </Frame>    
+    </Grid>
+</Grid>

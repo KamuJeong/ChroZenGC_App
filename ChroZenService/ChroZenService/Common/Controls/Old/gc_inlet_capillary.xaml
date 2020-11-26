@@ -1,0 +1,1082 @@
+﻿<Grid x:Class="ChroZenService.gc_inlet_capillary"
+             x:Name="uc"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              
+              
+             xmlns:loc="clr-namespace:ChroZenService"
+             
+             HeightRequest="1114" WidthRequest="540">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="69" />
+            <RowDefinition Height="1030" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Center" Margin="0, 0, 25, -1">
+            <RadioButton x:Name="btnTabConfig" Text="Config" Style="{StaticResource TabButton}" 
+                         IsChecked="True"
+                         WidthRequest="250" Margin="0, 10, 0, 0" />
+            <RadioButton x:Name="btnTabSetting" Text="Settings" Style="{StaticResource TabButton}" 
+                         WidthRequest="250" Margin="0, 10, 0, 0"  />
+        </StackLayout>
+
+        <!--//Config Tab-->
+        <Frame x:Name="_configTab" Grid.Row="1" Padding="0, 0, 30, 0"
+                IsVisible="{Binding Source=btnTabConfig, Path=IsToggled}"
+                Background="Transparent">
+            <StackLayout>
+                <Frame HeightRequest="174" Grid.Row="1" Style="{StaticResource GroupBK}" 
+                        Padding="5, 15, 5, 15" Margin="0, 20, 0, 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Frame Style="{StaticResource LineRT}" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Right>0</Thickness.Right>
+                                    <Thickness.Top>15</Thickness.Top>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Carrier Gas" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Column="1" Padding="10, 3, 10, 3">
+                            <Picker x:Name="combo_carrier_gas"  >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>N2</x:String>
+                                        <x:String>He</x:String>
+                                        <x:String>H2</x:String>
+                                        <x:String>Ar</x:String>
+                                        <x:String>ArCH4</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Frame>
+
+                        <Frame Grid.Row="1" Style="{StaticResource LineRT}" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Right>0</Thickness.Right>
+                                    <Thickness.Top>15</Thickness.Top>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="UPC mode" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="10, 3, 10, 3">
+                            <Picker x:Name="combo_apc_mode" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Constant Flow</x:String>
+                                        <x:String>Constant Press</x:String>
+                                        <x:String>Program Flow</x:String>
+                                        <x:String>Program Press</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Frame>
+
+                        <Frame Grid.Row="2" Style="{StaticResource LineRT}" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Right>0</Thickness.Right>
+                                    <Thickness.Top>15</Thickness.Top>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Connection" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Row="2" Grid.Column="1" Padding="10, 3, 10, 3">
+                            <Picker x:Name="combo_connection" SelectedIndex="0" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Det Front</x:String>
+                                        <x:String>Det Center</x:String>
+                                        <x:String>Det Rear</x:String>
+                                        <x:String>MSD</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+
+                <Frame HeightRequest="50" Padding="30, 0, 0, 5">
+                    <Label Style="{StaticResource HTX}" TextColor="#ffffff" FontAttributes="Bold" Text="Column Setup" VerticalOptions="End" />
+                </Frame>
+
+                <Frame HeightRequest="174" Style="{StaticResource GroupBK}" Padding="5, 15, 5, 15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Frame Style="{StaticResource LineRT}" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Right>0</Thickness.Right>
+                                    <Thickness.Top>15</Thickness.Top>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Length" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Column="1" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>15</Thickness.Left>
+                                    <Thickness.Right>3</Thickness.Right>
+                                    <Thickness.Top>30</Thickness.Top>
+                                    <Thickness.Bottom>3</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Editor x:Name="label_length"  Style="{StaticResource TB}" />
+                        </Frame>
+
+                        <Frame Grid.Row="1" Style="{StaticResource LineRT}" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Right>0</Thickness.Right>
+                                    <Thickness.Top>15</Thickness.Top>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="I.D." Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>15</Thickness.Left>
+                                    <Thickness.Right>3</Thickness.Right>
+                                    <Thickness.Top>30</Thickness.Top>
+                                    <Thickness.Bottom>3</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Editor x:Name="label_id"  Style="{StaticResource TB}" />
+                        </Frame>
+
+                        <Frame Grid.Row="2" Style="{StaticResource LineRT}" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Right>0</Thickness.Right>
+                                    <Thickness.Top>15</Thickness.Top>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Film Thickness" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="1" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>15</Thickness.Left>
+                                    <Thickness.Right>3</Thickness.Right>
+                                    <Thickness.Top>30</Thickness.Top>
+                                    <Thickness.Bottom>3</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Editor x:Name="label_thickness"  Style="{StaticResource TB}" />
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+
+                <Frame HeightRequest="50" Padding="30, 0, 0, 5">
+                    <Label Style="{StaticResource HTX}"  TextColor="#ffffff" Text="Gas Saver Mode" VerticalOptions="End" />
+                </Frame>
+
+                <Frame HeightRequest="174" Style="{StaticResource GroupBK}"  Padding="5, 15, 5, 15" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Frame Style="{StaticResource LineRT}" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Right>0</Thickness.Right>
+                                    <Thickness.Top>10</Thickness.Top>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Gas Saver" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Column="1" Padding="15, 3, 0, 3">
+                            <Switch x:Name="btn_gas_saver" Style="{StaticResource OnOffBtn}" HorizontalOptions="Start" />
+                        </Frame>
+
+                        <Frame Grid.Row="1" Style="{StaticResource LineRT}" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Right>0</Thickness.Right>
+                                    <Thickness.Top>15</Thickness.Top>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Flow" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Row="1" Grid.Column="1" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>15</Thickness.Left>
+                                    <Thickness.Right>3</Thickness.Right>
+                                    <Thickness.Top>45</Thickness.Top>
+                                    <Thickness.Bottom>3</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Editor x:Name="label_flow" Style="{StaticResource TB}"  
+                                           IsEnabled="{Binding Path=IsToggled, Source=btn_gas_saver}" />
+                        </Frame>
+
+                        <Frame Grid.Row="2" Style="{StaticResource LineRT}" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Right>0</Thickness.Right>
+                                    <Thickness.Top>15</Thickness.Top>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Time" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Row="2" Grid.Column="1" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>15</Thickness.Left>
+                                    <Thickness.Right>3</Thickness.Right>
+                                    <Thickness.Top>45</Thickness.Top>
+                                    <Thickness.Bottom>3</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Editor x:Name="label_time" Style="{StaticResource TB}" 
+                                           IsEnabled="{Binding Path=IsToggled, Source=btn_gas_saver}" />
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+
+                <Frame HeightRequest="20" />
+
+                <Frame HeightRequest="174" Style="{StaticResource GroupBK}"  >
+                    <Frame.Padding>
+                        <Thickness >
+                            <Thickness.Left>5</Thickness.Left>
+                            <Thickness.Right>15</Thickness.Right>
+                            <Thickness.Top>5</Thickness.Top>
+                            <Thickness.Bottom>15</Thickness.Bottom>
+                        </Thickness>
+                    </Frame.Padding>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Frame Style="{StaticResource LineRT}" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Right>0</Thickness.Right>
+                                    <Thickness.Top>15</Thickness.Top>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Pressure Correct" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Column="1" Padding="15, 3, 0, 3">
+                            <Switch x:Name="btn_correct" Style="{StaticResource OnOffBtn}" HorizontalOptions="Start" />
+                        </Frame>
+
+                        <Frame Grid.Row="1" Style="{StaticResource LineRT}" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Right>0</Thickness.Right>
+                                    <Thickness.Top>15</Thickness.Top>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Pressure Correct Value" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Row="1" Grid.Column="1" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>15</Thickness.Left>
+                                    <Thickness.Right>3</Thickness.Right>
+                                    <Thickness.Top>45</Thickness.Top>
+                                    <Thickness.Bottom>3</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Editor x:Name="label_correct"  Style="{StaticResource TB}"  IsEnabled="False" />
+                        </Frame>
+
+                        <Frame Grid.Row="2" Style="{StaticResource LineRT}" >
+                            <Frame.Padding>
+                                <Thickness >
+                                    <Thickness.Left>0</Thickness.Left>
+                                    <Thickness.Right>0</Thickness.Right>
+                                    <Thickness.Top>15</Thickness.Top>
+                                    <Thickness.Bottom>0</Thickness.Bottom>
+                                </Thickness>
+                            </Frame.Padding>
+                            <Label Text="Vacuum Correct" Style="{StaticResource HTX}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Frame>
+
+                        <Frame Grid.Row="2" Grid.Column="1" Padding="15, 3, 45, 3">
+                            <Switch x:Name="btn_vacuum" Style="{StaticResource OnOffBtn}" HorizontalOptions="Start" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+            </StackLayout>
+        </Frame>
+
+        <Frame x:Name="_settingTab" Grid.Row="1"
+                IsVisible="{Binding Source=btnTabSetting, Path=IsToggled}" 
+                Background="Transparent">
+            <Frame.Padding>
+                <Thickness >
+                    <Thickness.Left>0</Thickness.Left>
+                    <Thickness.Right>0</Thickness.Right>
+                    <Thickness.Top>20</Thickness.Top>
+                    <Thickness.Bottom>0</Thickness.Bottom>
+                </Thickness>
+            </Frame.Padding>
+            <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="120" />
+                    </Grid.RowDefinitions>
+                    <Frame IsVisible="{Binding Source=btnPrevNext, Path=IsToggled, ConverterParameter=N}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="112" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="258" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="120" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="520" />
+                            <ColumnDefinition Width="20" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="1" Grid.Column="0" Style="{StaticResource GroupBK}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="167" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Frame Grid.Row="0" Grid.ColumnSpan="4" Style="{StaticResource LineBT}" />
+                                <Frame Grid.Column="1">
+                                    <Label Text="Actual" Style="{StaticResource HTX}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="2">
+                                    <Label Text="Setting" Style="{StaticResource HTX}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Frame>
+
+                                <Frame Grid.RowSpan="2" Grid.Column="0" Style="{StaticResource LineRT}" />
+
+                                <Label Grid.Row="2" Text="Temperature" Style="{StaticResource HTX}" HorizontalOptions="Center" VerticalOptions="Center" />
+
+                                <Frame Grid.Column="1" Grid.Row="1" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>5</Thickness.Left>
+                                            <Thickness.Right>5</Thickness.Right>
+                                            <Thickness.Top>5</Thickness.Top>
+                                            <Thickness.Bottom>0</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Editor x:Name="label_temp_act" Style="{StaticResource TU}" />
+                                </Frame>
+                                <Frame Grid.Column="2" Grid.Row="1" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>5</Thickness.Left>
+                                            <Thickness.Right>5</Thickness.Right>
+                                            <Thickness.Top>5</Thickness.Top>
+                                            <Thickness.Bottom>0</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Editor x:Name="label_temp_set" Style="{StaticResource TB}"  />
+                                </Frame>
+
+                            </Grid>
+                        </Frame>
+
+                        <Frame Grid.Row="3" Grid.Column="0" Style="{StaticResource GroupBK}" Padding="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="240"/>
+                                    <ColumnDefinition Width="248"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame  Style="{StaticResource LineRT}">
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>20</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Style="{StaticResource HTX}" Text="Injection Mode" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="1" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>15</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Picker x:Name="combo_injection"   >
+                                        <Picker.ItemsSource>
+                                            <x:Array Type="{x:Type x:String}">
+                                                <x:String>Split</x:String>
+                                                <x:String>Splitless</x:String>
+                                                <x:String>Pulsed Split</x:String>
+                                                <x:String>Pulsed Splitless</x:String>
+                                            </x:Array>
+                                        </Picker.ItemsSource>
+                                    </Picker>
+                                </Frame>
+                            </Grid>
+                        </Frame>
+
+                        <Frame Grid.Row="5" Grid.Column="0" Style="{StaticResource GroupBK}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="167"/>
+                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Frame Grid.Column="0" Grid.Row="0" Style="{StaticResource LineRT}" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>0</Thickness.Left>
+                                            <Thickness.Right>0</Thickness.Right>
+                                            <Thickness.Top>15</Thickness.Top>
+                                            <Thickness.Bottom>0</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Text="Column Flow" Style="{StaticResource HTX}" HorizontalOptions="End" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="1" Grid.Row="0" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>10</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Editor x:Name="label_column_act"  Style="{StaticResource TU-S}" />
+                                </Frame>
+                                <Frame Grid.Column="2" Grid.Row="0">
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>10</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Editor   Style="{StaticResource TB-S}" 
+                                          x:Name="label_column_set" />
+                                </Frame>
+
+                                <Frame Grid.Column="0" Grid.Row="1" Style="{StaticResource LineRT}" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>0</Thickness.Left>
+                                            <Thickness.Right>0</Thickness.Right>
+                                            <Thickness.Top>15</Thickness.Top>
+                                            <Thickness.Bottom>0</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Text="Pressure" Style="{StaticResource HTX}" HorizontalOptions="End" VerticalOptions="Center" />
+                                </Frame>
+
+                                <Frame Grid.Column="1" Grid.Row="1" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>10</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Editor  Style="{StaticResource TU-S}" 
+                                           x:Name="label_pressure_act" />
+                                </Frame>
+                                <Frame Grid.Column="2" Grid.Row="1" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>10</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Editor  Style="{StaticResource TB-S}" IsEnabled="False" 
+                                           x:Name="label_pressure_set" />
+                                </Frame>
+
+                                <Frame Grid.Column="0" Grid.Row="2" Style="{StaticResource LineRT}" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>0</Thickness.Left>
+                                            <Thickness.Right>0</Thickness.Right>
+                                            <Thickness.Top>15</Thickness.Top>
+                                            <Thickness.Bottom>0</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Text="Total Flow" Style="{StaticResource HTX}" HorizontalOptions="End" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="1" Grid.Row="2" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>10</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Editor  Style="{StaticResource TU-S}" 
+                                          x:Name="label_total_act" />
+                                </Frame>
+                                <Frame Grid.Column="2" Grid.Row="2" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>10</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Editor  Style="{StaticResource TB-S}" 
+                                                  x:Name="label_total_set" />
+                                </Frame>
+
+                                <Frame Grid.Column="0" Grid.Row="3" Style="{StaticResource LineRT}" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>0</Thickness.Left>
+                                            <Thickness.Right>0</Thickness.Right>
+                                            <Thickness.Top>15</Thickness.Top>
+                                            <Thickness.Bottom>0</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Text="Split Flow" Style="{StaticResource HTX}" HorizontalOptions="End" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="1" Grid.Row="3" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>10</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Editor  Style="{StaticResource TU-S}" x:Name="label_split_act" />
+                                </Frame>
+                                <Frame Grid.Column="2" Grid.Row="3" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>10</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Editor  Style="{StaticResource TB-S}" x:Name="label_split_set"   />
+                                </Frame>
+
+
+                                <Frame Grid.Column="0" Grid.Row="4" Style="{StaticResource LineRT}">
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>0</Thickness.Left>
+                                            <Thickness.Right>0</Thickness.Right>
+                                            <Thickness.Top>15</Thickness.Top>
+                                            <Thickness.Bottom>0</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Text="Velocity" Style="{StaticResource HTX}" HorizontalOptions="End" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>10</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Editor  Style="{StaticResource TU-S}" x:Name="label_velocity" />
+                                </Frame>
+                            </Grid>
+                        </Frame>
+
+                        <Frame Grid.Row="7" Grid.Column="0" Style="{StaticResource GroupBK}" Padding="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="240"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame Style="{StaticResource LineRT}" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>20</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Style="{StaticResource HTX}" Text="Split Ratio" 
+                                       VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="1" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>15</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Text="1 /" Style="{StaticResource HTX}" 
+                                       HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="2" Padding="3">
+                                    <Editor Style="{StaticResource TB-N}" HorizontalOptions="Center" x:Name="label_split_ratio" />
+                                </Frame>
+                            </Grid>
+                        </Frame>
+
+                        <Frame Grid.Row="9" Grid.Column="0" Style="{StaticResource GroupBK}" Padding="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="240"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame Style="{StaticResource LineRT}" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>20</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Style="{StaticResource HTX}" Text="Pulsed Pressure" 
+                                       VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="1" Padding="3">
+                                    <Editor Style="{StaticResource TB}"  x:Name="label_pulsed_pressure" />
+                                </Frame>
+                            </Grid>
+                        </Frame>
+
+                        <Frame Grid.Row="11" Grid.Column="0" Style="{StaticResource GroupBK}" Padding="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="240"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame Style="{StaticResource LineRT}" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>20</Thickness.Left>
+                                            <Thickness.Right>3</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Style="{StaticResource HTX}" Text="Split On Time" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="1" Padding="3">
+                                    <Editor Style="{StaticResource TB}" x:Name="label_split_time" />
+                                </Frame>
+                            </Grid>
+                        </Frame>
+
+                        <Frame Grid.Row="13" Grid.Column="0" Style="{StaticResource GroupBK}" Padding="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="240"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame Style="{StaticResource LineRT}" >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>20</Thickness.Left>
+                                            <Thickness.Right>20</Thickness.Right>
+                                            <Thickness.Top>3</Thickness.Top>
+                                            <Thickness.Bottom>3</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Style="{StaticResource HTX}" Text="Pulsed Time" 
+                                       HorizontalOptions="Start" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="1" Padding="3">
+                                    <Editor Style="{StaticResource TB}" x:Name="label_pulsed_time" />
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                    <Frame IsVisible="{Binding Source=btnPrevNext, Path=IsToggled}">
+                        <StackLayout>
+
+                            <!--flow-->
+                        <Frame HeightRequest="360" IsVisible="{Binding Source=combo_apc_mode, Path=SelectedIndex, Converter={StaticResource VToV}, ConverterParameter=2}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="310" />
+                                </Grid.RowDefinitions>
+                                <Frame >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>20</Thickness.Left>
+                                            <Thickness.Right>20</Thickness.Right>
+                                            <Thickness.Top>0</Thickness.Top>
+                                            <Thickness.Bottom>0</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Text="Programed Flow" Style="{StaticResource HTX}"  TextColor="#ffffff" />
+                                </Frame>
+                                <Frame Grid.Row="1" Style="{StaticResource GroupBK}" Padding="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="45" />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Style="{StaticResource LineBT}" Grid.ColumnSpan="4" />
+                                        <Frame Style="{StaticResource LineRT}" Grid.RowSpan="7" />
+
+                                        <Frame Grid.Row="0" Grid.Column="0">
+                                            <Label Text="No." Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="0" Grid.Column="1">
+                                            <Label Text="Rate" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="0" Grid.Column="2">
+                                            <Label Text="Final Flow&#10; (㎖/min)" FontSize="18" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="0" Grid.Column="3">
+                                            <Label Text="Final Time&#10;    (min)" FontSize="18" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+
+                                        <Frame Grid.Row="1" Grid.Column="0" Padding="3">
+                                            <Label Text="Init" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="1" Grid.Column="1" Padding="3">
+
+                                        </Frame>
+                                        <Frame Grid.Row="1" Grid.Column="2" Padding="3">
+                                            <Editor x:Name="label_flow_0" Style="{StaticResource TB-N}"  />
+                                        </Frame>
+                                        <Frame Grid.Row="1" Grid.Column="3" Padding="3">
+                                            <Editor x:Name="label_time_0" Style="{StaticResource TB-N}" />
+                                        </Frame>
+
+                                        <Frame Grid.Row="2" Grid.Column="0" Padding="3">
+                                            <Label Text="1" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="2" Grid.Column="1" Padding="3">
+                                            <Editor x:Name="label_rate_1" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="2" Grid.Column="2" Padding="3">
+                                            <Editor x:Name="label_flow_1" Style="{StaticResource TB-N}"  />
+                                        </Frame>
+                                        <Frame Grid.Row="2" Grid.Column="3" Padding="3">
+                                            <Editor x:Name="label_time_1" Style="{StaticResource TB-N}" />
+                                        </Frame>
+
+                                        <Frame Grid.Row="3" Grid.Column="0" Padding="3">
+                                            <Label Text="2" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="3" Grid.Column="1" Padding="3">
+                                            <Editor x:Name="label_rate_2" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="3" Grid.Column="2" Padding="3">
+                                            <Editor x:Name="label_flow_2" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="3" Grid.Column="3" Padding="3">
+                                            <Editor x:Name="label_time_2" Style="{StaticResource TB-N}"  />
+                                        </Frame>
+
+                                        <Frame Grid.Row="4" Grid.Column="0" Padding="3">
+                                            <Label Text="3" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="4" Grid.Column="1" Padding="3">
+                                            <Editor x:Name="label_rate_3" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="4" Grid.Column="2" Padding="3">
+                                            <Editor x:Name="label_flow_3" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="4" Grid.Column="3" Padding="3">
+                                            <Editor x:Name="label_time_3" Style="{StaticResource TB-N}" />
+                                        </Frame>
+
+                                        <Frame Grid.Row="5" Grid.Column="0" Padding="3">
+                                            <Label Text="4" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="5" Grid.Column="1" Padding="3">
+                                            <Editor x:Name="label_rate_4" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="5" Grid.Column="2" Padding="3">
+                                            <Editor x:Name="label_flow_4" Style="{StaticResource TB-N}"  />
+                                        </Frame>
+                                        <Frame Grid.Row="5" Grid.Column="3" Padding="3">
+                                            <Editor x:Name="label_time_4" Style="{StaticResource TB-N}" />
+                                        </Frame>
+
+                                        <Frame Grid.Row="6" Grid.Column="0" Padding="3">
+                                            <Label Text="5" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="6" Grid.Column="1" Padding="3">
+                                            <Editor x:Name="label_rate_5" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="6" Grid.Column="2" Padding="3">
+                                            <Editor x:Name="label_flow_5" Style="{StaticResource TB-N}"  />
+                                        </Frame>
+                                        <Frame Grid.Row="6" Grid.Column="3" Padding="3">
+                                            <Editor x:Name="label_time_5" Style="{StaticResource TB-N}" />
+                                        </Frame>
+
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </Frame>
+
+                            <!--- press -->
+                        <Frame HeightRequest="360" IsVisible="{Binding Source=combo_apc_mode, Path=SelectedIndex, Converter={StaticResource VToV}, ConverterParameter=3}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="310" />
+                                </Grid.RowDefinitions>
+                                <Frame >
+                                    <Frame.Padding>
+                                        <Thickness >
+                                            <Thickness.Left>20</Thickness.Left>
+                                            <Thickness.Right>20</Thickness.Right>
+                                            <Thickness.Top>0</Thickness.Top>
+                                            <Thickness.Bottom>0</Thickness.Bottom>
+                                        </Thickness>
+                                    </Frame.Padding>
+                                    <Label Text="Programed Press" Style="{StaticResource HTX}"  TextColor="#ffffff" />
+                                </Frame>
+                                <Frame Grid.Row="1" Style="{StaticResource GroupBK}" Padding="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="45" />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Style="{StaticResource LineBT}" Grid.ColumnSpan="4" />
+                                        <Frame Style="{StaticResource LineRT}" Grid.RowSpan="7" />
+
+                                        <Frame Grid.Row="0" Grid.Column="0">
+                                            <Label Text="No." Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="0" Grid.Column="1">
+                                            <Label Text="Rate" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="0" Grid.Column="2">
+                                            <Label Text="Final Press&#10; (psi)" FontSize="18" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="0" Grid.Column="3">
+                                            <Label Text="Final Time&#10;    (min)" FontSize="18" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+
+                                        <Frame Grid.Row="1" Grid.Column="0" Padding="3">
+                                            <Label Text="Init" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="1" Grid.Column="1" Padding="3">
+
+                                        </Frame>
+                                        <Frame Grid.Row="1" Grid.Column="2" Padding="3">
+                                            <Editor x:Name="label_press_flow_0" Style="{StaticResource TB-N}"  />
+                                        </Frame>
+                                        <Frame Grid.Row="1" Grid.Column="3" Padding="3">
+                                            <Editor x:Name="label_press_time_0" Style="{StaticResource TB-N}" />
+                                        </Frame>
+
+                                        <Frame Grid.Row="2" Grid.Column="0" Padding="3">
+                                            <Label Text="1" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="2" Grid.Column="1" Padding="3">
+                                            <Editor x:Name="label_press_rate_1" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="2" Grid.Column="2" Padding="3">
+                                            <Editor x:Name="label_press_flow_1" Style="{StaticResource TB-N}"  />
+                                        </Frame>
+                                        <Frame Grid.Row="2" Grid.Column="3" Padding="3">
+                                            <Editor x:Name="label_press_time_1" Style="{StaticResource TB-N}" />
+                                        </Frame>
+
+                                        <Frame Grid.Row="3" Grid.Column="0" Padding="3">
+                                            <Label Text="2" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="3" Grid.Column="1" Padding="3">
+                                            <Editor x:Name="label_press_rate_2" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="3" Grid.Column="2" Padding="3">
+                                            <Editor x:Name="label_press_flow_2" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="3" Grid.Column="3" Padding="3">
+                                            <Editor x:Name="label_press_time_2" Style="{StaticResource TB-N}"  />
+                                        </Frame>
+
+                                        <Frame Grid.Row="4" Grid.Column="0" Padding="3">
+                                            <Label Text="3" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="4" Grid.Column="1" Padding="3">
+                                            <Editor x:Name="label_press_rate_3" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="4" Grid.Column="2" Padding="3">
+                                            <Editor x:Name="label_press_flow_3" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="4" Grid.Column="3" Padding="3">
+                                            <Editor x:Name="label_press_time_3" Style="{StaticResource TB-N}" />
+                                        </Frame>
+
+                                        <Frame Grid.Row="5" Grid.Column="0" Padding="3">
+                                            <Label Text="4" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="5" Grid.Column="1" Padding="3">
+                                            <Editor x:Name="label_press_rate_4" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="5" Grid.Column="2" Padding="3">
+                                            <Editor x:Name="label_press_flow_4" Style="{StaticResource TB-N}"  />
+                                        </Frame>
+                                        <Frame Grid.Row="5" Grid.Column="3" Padding="3">
+                                            <Editor x:Name="label_press_time_4" Style="{StaticResource TB-N}" />
+                                        </Frame>
+
+                                        <Frame Grid.Row="6" Grid.Column="0" Padding="3">
+                                            <Label Text="5" Style="{StaticResource HTX}" HorizontalOptions="Center" />
+                                        </Frame>
+                                        <Frame Grid.Row="6" Grid.Column="1" Padding="3">
+                                            <Editor x:Name="label_press_rate_5" Style="{StaticResource TB-N}" />
+                                        </Frame>
+                                        <Frame Grid.Row="6" Grid.Column="2" Padding="3">
+                                            <Editor x:Name="label_press_flow_5" Style="{StaticResource TB-N}"  />
+                                        </Frame>
+                                        <Frame Grid.Row="6" Grid.Column="3" Padding="3">
+                                            <Editor x:Name="label_press_time_5" Style="{StaticResource TB-N}" />
+                                        </Frame>
+
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                            
+                    </StackLayout>
+                    </Frame>
+
+                    <Frame Grid.Row="1">
+                        <Switch x:Name="btnPrevNext" Style="{StaticResource NextPrevBtn}"   />
+                    </Frame>
+                </Grid>
+            </Frame>
+
+
+    </Grid>
+</Grid>

@@ -1,0 +1,359 @@
+﻿<Grid x:Class="ChroZenService.diag_power_monitor"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:loc="clr-namespace:ChroZenService"
+             HeightRequest="1110" WidthRequest="540"
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="80" />
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="#a8acc4" />
+                <Setter Property="FontSize" Value="21" />
+            </Style>
+        </Grid.Resources>
+
+        <Frame Grid.Row="0" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" >
+                    <Label Text="MAIN +5.0V" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_v50d" Text="-0.000" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="1" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="MAIN -5.0V" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_n50v" Text="-0.000" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="2" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="MAIN +12.0V" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_v12p" Text="-0.000" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="3" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="MAIN +24.0V" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_v24p" Text="-0.000" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="4" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="UPC INJ +2.5V" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_apc_inj_v25d" Text="-0.000 / -0.000 / -0.000" FontSize="18" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="5" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="UPC INJ +3.3V" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_apc_inj_v33d" Text="-0.000 / -0.000 / -0.000" FontSize="18" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="6" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="UPC INJ +5.0V" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_apc_inj_v50d" Text="-0.000 / -0.000 / -0.000" FontSize="18" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+
+        <Frame Grid.Row="7" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="UPC INJ +24.0V" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_apc_inj_v24" Text="-0.000 / -0.000 / -0.000" FontSize="18" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="8" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="UPC INJ F_Sensor" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_apc_inj_F_Sen" Text="-0.000 / -0.000 / -0.000" FontSize="18" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="9" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="UPC INJ P_Sensor" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_apc_inj_P_Sen" Text="-0.000 / -0.000 / -0.000" FontSize="18" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="10" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="UPC DET +2.5V" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_apc_det_v25d" Text="-0.000" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="11" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="UPC DET +3.3V" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_apc_det_v33d" Text="-0.000" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="12" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="UPC DET P_Sensor" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_apc_det_P_Sen" Text="-0.000" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+
+        <Frame Grid.Row="13" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="UPC AUX +2.5V" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_apc_aux_v25d" Text="-0.000" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="14" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="UPC AUX +3.3V" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_apc_aux_v33d" Text="-0.000" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="15" Style="{StaticResource GroupBK}" Padding="1" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource LineRT}" Padding="20, 0, 0, 0">
+                    <Label Text="UPC AUX P_Sensor" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="20, 0, 0, 0">
+                    <Label x:Name="label_apc_aux_P_Sen" Text="-0.000" />
+                </Frame>
+                <Frame Grid.Column="2" Padding="20, 0, 0, 0">
+                    <Label Text="V" />
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="18">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="0" Padding="10">
+                    <Button Style="{StaticResource StartButton}" x:Name="btnStart" Text="START" />
+                </Frame>
+                <Frame Grid.Column="1" Padding="10">
+                    <Button Style="{StaticResource StopButton}" x:Name="btnStop" Text="STOP" />
+                </Frame>
+
+            </Grid>
+        </Frame>
+    </Grid>
+</Grid>
