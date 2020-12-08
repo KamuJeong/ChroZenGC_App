@@ -10,6 +10,12 @@ namespace ChroZenService
         public static class RunState
         {
             public static bool IsDeviceRun;
+            public enum E_CHART_DRAW_STATE
+            {
+                DRAW,
+                STOP
+            }
+            public static E_CHART_DRAW_STATE e_CHART_DRAW_STATE = E_CHART_DRAW_STATE.STOP;
         }
 
         #region Received

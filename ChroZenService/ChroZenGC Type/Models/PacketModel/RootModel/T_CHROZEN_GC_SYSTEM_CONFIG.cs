@@ -17,21 +17,21 @@ namespace YC_ChroZenGC_Type
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
         public byte[] btInlet;             // Inlet1~3의 종류 [YC_Const.INLET_SLOT_COUNT]
                                            // (0:Not Install / 1 : Capillary / 2 : Packed / 3 : OnColumn)
-        public enum INLET_TYPE
+        public enum E_INLET_TYPE
         {
-            NOT_INSTALLED,
-            CAPILLARY,
-            PACKED,
-            ON_COLUMN
+            Not_Installed,
+            Capillary,
+            Packed,
+            On_Column
         }
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
         public byte[] btDet;                //  Detector1~3의 종류 [DET_SLOT_COUNT]
                                             //  (0:Not Install / 1:FID / 2:TCD / 3:FPD / 4:NPD / 5:ECD
                                             //  / 6:PFPD / 7:PDD / 8:FPD / 9:NPD / A: uTCD / B: uECD)
 
-        public enum DET_TYPE
+        public enum E_DET_TYPE
         {
-            NOT_INSTALLED,
+            Not_Installed,
             FID,
             TCD,
             FPD_Not_used,

@@ -25,6 +25,11 @@ namespace YC_ChroZenGC_Type
         public byte bTempOnoff;                            // 히터 ON / OFF(0:OFF / 1 : ON) // default : OFF        
         public float fInitTime;                            // 초기유지시간(0~9999min / default = 10min)
         public byte btMode;                                // 오븐작동모드(0:Iso-thermal(등온) / 1:Program Mode)
+        public enum E_OVEN_MODE
+        {
+            ISO_THREMAL,
+            PROGRAM_MODE
+        }
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
         public T_OVEN_PRGM[] Prgm;                         // [OVEN_PRGM_CNT]
                                                            // OVEN_PRGM_CNT = 25

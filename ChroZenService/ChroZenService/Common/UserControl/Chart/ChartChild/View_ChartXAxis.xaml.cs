@@ -15,15 +15,41 @@ namespace ChroZenService
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class View_ChartXAxis : YL_ChartAxisBase
     {
+        public static readonly BindableProperty AxisLabelsProperty =
+BindableProperty.Create("AxisLabels", typeof(ObservableCollection<YL_ChartTick>), typeof(View_ChartXAxis),
+    defaultValue: new ObservableCollection<YL_ChartTick> { new YL_ChartTick() },
+    propertyChanged: onAxisLabelsPropertyChanged
+    , defaultBindingMode: BindingMode.TwoWay);
+
+        public ObservableCollection<YL_ChartTick> AxisLabels
+        {
+            get { return (ObservableCollection<YL_ChartTick>)GetValue(AxisLabelsProperty); }
+            set { SetValue(AxisLabelsProperty, value); }
+        }
+
+        private static void onAxisLabelsPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (newValue != null)
+            {
+                (bindable as View_ChartXAxis).AxisLabels = (ObservableCollection<YL_ChartTick>)newValue;
+            }
+        }
+
         public View_ChartXAxis()
         {
             InitializeComponent();
 
-            
             sKCanvasViewXAxis.PaintSurface += OnCanvasViewPaintSurface;
-            EventManager.onRawDataUpdated += ChartRawDataUpdated;
-            EventManager.onChartDeltaChanged += ChartDeltaChangedEventHandler;
             EventManager.onMethodUpdated += MethodUpdatedEventHandler;
+            EventManager.onTemperatureUpdated += TemperatureUpdatedEventHandler;
+        }
+
+        private void TemperatureUpdatedEventHandler()
+        {
+            //Task.Factory.StartNew(() => {
+                sKCanvasViewXAxis.InvalidateSurface();
+            //});
+            
         }
 
         private void MethodUpdatedEventHandler()
@@ -53,64 +79,155 @@ namespace ChroZenService
             SKPaint paint = new SKPaint();
 
             paint.Color = new SKColor(0xff, 0xa5, 0x0, 0xff);
-            canvas.DrawLine(0, 0, 470, 0, paint);
 
-            float fXAxisOffset = -1;
-            float fXAxisLengthForDraw = 470 + fXAxisOffset;
-            int nTotalTickCount = 45;
-            int nMajorTickInterval = 5;
-            float[] dMajorTicks = new float[nTotalTickCount / nMajorTickInterval];
+            float fChartWidth = 470;
+            canvas.DrawLine(0, 0, fChartWidth, 0, paint);
 
-            for (int i = 0; i < nTotalTickCount; i++)
+            AxisLabels = ChartHelper.GetLabels(ChartHelper.E_LABEL_TYPE.X);
+
+            float fXAxisMaxVal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTotalRunTime;
+
+            //minor tick당 pixel 수
+            float fXAxisUnit = fChartWidth / fXAxisMaxVal;
+
+            //major tick당 pixel 수
+            float fXMinorTickInterval = fXAxisMaxVal / AxisLabels.Count * fXAxisUnit;
+            float fXMajotTickInterval = fXMinorTickInterval * ChroZenService_Const.MinorTicksPerMajorTick;
+
+            float fMajorTickHeight = 10;
+            float fMinorTickHeight = 5;
+            float fStartY = -1;
+
+            SKPoint startPoint = new SKPoint();
+            SKPoint endPoint = new SKPoint();
+
+            label0.IsVisible = false;
+            label1.IsVisible = false;
+            label2.IsVisible = false;
+            label3.IsVisible = false;
+            label4.IsVisible = false;
+            label5.IsVisible = false;
+            label6.IsVisible = false;
+            label7.IsVisible = false;
+            label8.IsVisible = false;
+
+            float fTextXOffset = -10;
+            float fTextYOffest = -2;
+
+            for (int i = 0; i < AxisLabels.Count; i++)
             {
-                //Major tick draw
-                if (i % 5 == 0)
+                //Draw Major Tick 
+                if (i % ChroZenService_Const.MinorTicksPerMajorTick == 0)
                 {
-                    int nMajorTickIndex = i / 5;
-                    dMajorTicks[nMajorTickIndex] = (fXAxisLengthForDraw / (float)(dMajorTicks.Length - 1)) * nMajorTickIndex;
-                    canvas.DrawLine(dMajorTicks[nMajorTickIndex], 0, dMajorTicks[nMajorTickIndex], 10, paint);
+                    int nMajorTickIndex = i / ChroZenService_Const.MinorTicksPerMajorTick;
+                    startPoint.X = fXMajotTickInterval * nMajorTickIndex;
+                    startPoint.Y = fStartY;
+                    endPoint.X = fXMajotTickInterval * nMajorTickIndex;
+                    endPoint.Y = fStartY + fMajorTickHeight;
+                    canvas.DrawLine(startPoint, endPoint, paint);
+
+                    SKPoint textPoint = new SKPoint();
+                    textPoint.X = endPoint.X + fTextXOffset;
+                    textPoint.Y = endPoint.Y + fTextYOffest;
+                    Thickness textMargin = new Thickness(textPoint.X, textPoint.Y, 0, 0);
+
+                    switch (nMajorTickIndex)
+                    {
+                        case 0:
+                            {
+                                label0.IsVisible = true;
+                                label0.Text = AxisLabels[i].TickLabel;
+                                label0.Margin = textMargin;
+                            }
+                            break;
+                        case 1:
+                            {
+                                label1.IsVisible = true;
+                                label1.Text = AxisLabels[i].TickLabel;
+                                label1.Margin = textMargin;
+                            }
+                            break;
+                        case 2:
+                            {
+                                label2.IsVisible = true;
+                                label2.Text = AxisLabels[i].TickLabel;
+                                label2.Margin = textMargin;
+                            }
+                            break;
+                        case 3:
+                            {
+                                label3.IsVisible = true;
+                                label3.Text = AxisLabels[i].TickLabel;
+                                label3.Margin = textMargin;
+                            }
+                            break;
+                        case 4:
+                            {
+                                label4.IsVisible = true;
+                                label4.Text = AxisLabels[i].TickLabel;
+                                label4.Margin = textMargin;
+                            }
+                            break;
+                        case 5:
+                            {
+                                label5.IsVisible = true;
+                                label5.Text = AxisLabels[i].TickLabel;
+                                label5.Margin = textMargin;
+                            }
+                            break;
+                        case 6:
+                            {
+                                label6.IsVisible = true;
+                                label6.Text = AxisLabels[i].TickLabel;
+                                label6.Margin = textMargin;
+                            }
+                            break;
+                        case 7:
+                            {
+                                label7.IsVisible = true;
+                                label7.Text = AxisLabels[i].TickLabel;
+                                label7.Margin = textMargin;
+                            }
+                            break;
+                        case 8:
+                            {
+                                label8.IsVisible = true;
+                                label8.Text = AxisLabels[i].TickLabel;
+                                label8.Margin = textMargin;
+                            }
+                            break;
+                    }
                 }
-                //Major tick draw
-                else if (i <= 40)
+                //Draw Minor Tick
+                else
                 {
-                    float fMinorTickX = (fXAxisLengthForDraw / (float)(40)) * i;
-                    canvas.DrawLine(fMinorTickX, 0, fMinorTickX, 5, paint);
+                    canvas.DrawLine(fXMinorTickInterval * i
+                        , fStartY, fXMinorTickInterval * i, fStartY + fMinorTickHeight, paint);
                 }
             }
 
-            //canvas.DrawLine(0, 0, 0, 10, paint);
-            //canvas.DrawLine(58.75f, 0, 58.75f, 10, paint);
-            //canvas.DrawLine(117.5f, 0, 117.5f, 10, paint);
-            //canvas.DrawLine(176.25f, 0, 176.25f, 10, paint);
-            //canvas.DrawLine(235, 0, 235, 10, paint);
-            //canvas.DrawLine(293.75f, 0, 293.75f, 10, paint);
-            //canvas.DrawLine(352.5f, 0, 352.5f, 10, paint);
-            //canvas.DrawLine(411.25f, 0, 411.25f, 10, paint);
-            //canvas.DrawLine(469, 0, 469, 10, paint);
-        }
+            //float fXAxisOffset = -1;
+            //float fXAxisLengthForDraw = 470 + fXAxisOffset;
+            //int nTotalTickCount = 45;
+            //int nMajorTickInterval = 5;
+            //float[] dMajorTicks = new float[nTotalTickCount / nMajorTickInterval];
 
-        private void ChartDeltaChangedEventHandler(ChroZenService_Const.CHART_DELTA_TYPE cHART_DELTA_TYPE, double deltaX, double deltaY)
-        {
-            Debug.WriteLine(string.Format("View_ChartXAxis : XAxis Y Delta Changed To={0}, DeltaType={1}", deltaY, cHART_DELTA_TYPE.ToString()));
-        }
-
-        public override void ChartRawDataUpdated()
-        {
-            //ChartRawData를 필터하여 
-            //MajorTicksAndLables에 할당 후
-            //전시 갱신
-            //X축 MajorTick 필터 조건
-            //1 Runtime 취득 (unit : min) : OvenProgram이 있을 때 OvenProgram 종료 시, 없을 때 Oven 설정 시
-            //2 Major tick count 취득 : 최대 8, 최소 3
-            //2.1 Major tick count 결정 조건 : 
-
-            
-
-            Debug.WriteLine(string.Format("View_ChartXAxis : ChartRawData.RawDataTemperature.Count={0}", ChartRawData.yC_ChartElementRawDataTemperature.RawData.Count));
-            Debug.WriteLine(string.Format("View_ChartXAxis : ChartRawData.RawDataDetector_Front.Count={0}", ChartRawData.yC_ChartElementRawDataDetector[0].RawData.Count));
-            Debug.WriteLine(string.Format("View_ChartXAxis : ChartRawData.RawDataDetector_Center.Count={0}", ChartRawData.yC_ChartElementRawDataDetector[1].RawData.Count));
-            Debug.WriteLine(string.Format("View_ChartXAxis : ChartRawData.RawDataDetector_Rear.Count={0}", ChartRawData.yC_ChartElementRawDataDetector[2].RawData.Count));
-            Debug.WriteLine(string.Format("View_ChartXAxis : ChartRawData.RawDataTimeStamp.Count={0}", ChartRawData.yC_ChartElementRawDataTimeStamp.RawData.Count));
+            //for (int i = 0; i < nTotalTickCount; i++)
+            //{
+            //    //Major tick draw
+            //    if (i % 5 == 0)
+            //    {
+            //        int nMajorTickIndex = i / 5;
+            //        dMajorTicks[nMajorTickIndex] = (fXAxisLengthForDraw / (float)(dMajorTicks.Length - 1)) * nMajorTickIndex;
+            //        canvas.DrawLine(dMajorTicks[nMajorTickIndex], 0, dMajorTicks[nMajorTickIndex], 10, paint);
+            //    }
+            //    //Major tick draw
+            //    else if (i <= 40)
+            //    {
+            //        float fMinorTickX = (fXAxisLengthForDraw / (float)(40)) * i;
+            //        canvas.DrawLine(fMinorTickX, 0, fMinorTickX, 5, paint);
+            //    }
+            //}
         }
     }
 }

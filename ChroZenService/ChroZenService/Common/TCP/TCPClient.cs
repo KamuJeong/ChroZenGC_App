@@ -11,10 +11,9 @@ using static YC_ChroZenGC_Type.YC_Const;
 
 namespace ChroZenService
 {
-    public static class TCPManager 
+    public class TCPManager : IDisposable
     {
-
-        static Queue<W_CHROZEN_GC_PACKET_WITH_PACKCODE> receivedAsyncPACKCODE_queue = new Queue<W_CHROZEN_GC_PACKET_WITH_PACKCODE>();
+        Queue<W_CHROZEN_GC_PACKET_WITH_PACKCODE> receivedAsyncPACKCODE_queue = new Queue<W_CHROZEN_GC_PACKET_WITH_PACKCODE>();
 
         /// <summary>
         /// TCP 동기/비동기 순차 실행 : 초기 상태 대기 해제
@@ -22,8 +21,8 @@ namespace ChroZenService
         /// Set : 대기 해제
         /// </summary>
         //public static ManualResetEvent TcpManualResetEvent = new ManualResetEvent(true);
-        static bool _bIsSync = false;
-        public static bool bIsSync
+        bool _bIsSync = false;
+        public bool bIsSync
         {
             get { return _bIsSync; }
             set
@@ -31,18 +30,18 @@ namespace ChroZenService
                 if (value == true)
                 {
                     Debug.WriteLine("=====================================SyncReceive=========================================");
-                    TraceManager.AddLog("=====================================SyncReceive=========================================");
+                    //Debug.WriteLine("=====================================SyncReceive=========================================");
                 }
                 else
                 {
                     Debug.WriteLine("=====================================AsyncReceive=========================================");
-                    TraceManager.AddLog("=====================================AsyncReceive=========================================");
+                    //Debug.WriteLine("=====================================AsyncReceive=========================================");
                 }
                 _bIsSync = value;
             }
         }
 
-        public static bool IsSocketConnected
+        public bool IsSocketConnected
         {
             get
             {
@@ -52,32 +51,32 @@ namespace ChroZenService
             }
         }
 
-        static Socket Socket_Client_DeviceInterface;
+        Socket Socket_Client_DeviceInterface;
 
-        static TCPManager()
+        public TCPManager()
         {
             InitTCP();
             InitQueue();
             AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
         }
 
-        private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        private void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
             bIsThreadQueueProceed = false;
         }
-        public static void KillQueueThread()
+        public void KillQueueThread()
         {
             bIsThreadQueueProceed = false;
         }
 
-        static Thread threadQueue;
-        static bool bIsThreadQueueProceed = true;
-        private static void InitQueue()
+        Thread threadQueue;
+        bool bIsThreadQueueProceed = true;
+        private void InitQueue()
         {
             threadQueue = new Thread(new ThreadStart(delegate
             {
                 Thread.CurrentThread.Priority = ThreadPriority.Highest;
-                TraceManager.AddLog(string.Format("ChroZen GC Process={0}, TCPClient : received PACKCODE queue pumping thread start", Process.GetCurrentProcess().ProcessName));
+                Debug.WriteLine(string.Format("ChroZen GC Process={0}, TCPClient : received PACKCODE queue pumping thread start", Process.GetCurrentProcess().ProcessName));
 
                 while (bIsThreadQueueProceed)
                 {
@@ -87,8 +86,8 @@ namespace ChroZenService
                         while (receivedAsyncPACKCODE_queue.Count > 0)
                         {
                             W_CHROZEN_GC_PACKET_WITH_PACKCODE wrappedPACKCODE = receivedAsyncPACKCODE_queue.Dequeue();
-                                //동기식 처리가 필요한 경우 이벤트 처리
-                                switch (wrappedPACKCODE.packcode)
+                            //동기식 처리가 필요한 경우 이벤트 처리
+                            switch (wrappedPACKCODE.packcode)
                             {
                                 case E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_INFORM:
                                     {
@@ -107,6 +106,7 @@ namespace ChroZenService
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_INLET_SETTING:
                                     {
+                                        Debug.WriteLine(string.Format("{0} {1}", wrappedPACKCODE.packcode.ToString(), ((T_PACKCODE_CHROZEN_INLET_SETTING)wrappedPACKCODE.packet).packet.btPortNo));
                                         switch (((T_PACKCODE_CHROZEN_INLET_SETTING)wrappedPACKCODE.packet).packet.btPortNo)
                                         {
                                             case 0:
@@ -236,24 +236,24 @@ namespace ChroZenService
                             }
 
                             EventManager.PACKCODE_ReceivceEvent(wrappedPACKCODE.packcode, wrappedPACKCODE.packet);
-                                //비동기식 빠른 처리가 필요한 경우 쓰레드 처리
-                            }
+                            //비동기식 빠른 처리가 필요한 경우 쓰레드 처리
+                        }
                     }
                     catch (Exception ee)
                     {
-                        TraceManager.AddLog(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
+                        Debug.WriteLine(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
                     }
                 }
-                TraceManager.AddLog(string.Format("Chrozen GC : Process={0} TCPClient: Queue thread died", Process.GetCurrentProcess().ProcessName));
+                Debug.WriteLine(string.Format("Chrozen GC : Process={0} TCPClient: Queue thread died", Process.GetCurrentProcess().ProcessName));
             }));
             threadQueue.Start();
         }
-        private static void RestartQueueThread()
+        private void RestartQueueThread()
         {
             try
             {
                 threadQueue.Abort();
-                TraceManager.AddLog(string.Format("Chrozen GC : Process={0} : TCPClient: RestartQueueThread -> threadQueue aborted.", Process.GetCurrentProcess().ProcessName));
+                Debug.WriteLine(string.Format("Chrozen GC : Process={0} : TCPClient: RestartQueueThread -> threadQueue aborted.", Process.GetCurrentProcess().ProcessName));
             }
             catch (Exception e)
             {
@@ -265,7 +265,7 @@ namespace ChroZenService
             }
         }
 
-        public static void InitTCP()
+        public void InitTCP()
         {
             try
             {
@@ -275,12 +275,12 @@ namespace ChroZenService
             catch (Exception ee)
             {
                 ReConnect();
-                TraceManager.AddLog(string.Format("TCPManager:InitTCP{0}r\n{1}", ee.StackTrace, ee.Message));
+                Debug.WriteLine(string.Format("TCPManager:InitTCP{0}r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("{0}\r\n{1}", ee.StackTrace, ee.Message));
             }
         }
 
-        public static void Disconnect()
+        public void Disconnect()
         {
             try
             {
@@ -288,7 +288,7 @@ namespace ChroZenService
             }
             catch (Exception e)
             {
-                TraceManager.AddLog(string.Format("e.Message={0}, e.StackTrace={1}", e.Message, e.StackTrace));
+                Debug.WriteLine(string.Format("e.Message={0}, e.StackTrace={1}", e.Message, e.StackTrace));
             }
             try
             {
@@ -296,7 +296,7 @@ namespace ChroZenService
             }
             catch (Exception e)
             {
-                TraceManager.AddLog(string.Format("e.Message={0}, e.StackTrace={1}", e.Message, e.StackTrace));
+                Debug.WriteLine(string.Format("e.Message={0}, e.StackTrace={1}", e.Message, e.StackTrace));
             }
             try
             {
@@ -304,12 +304,12 @@ namespace ChroZenService
             }
             catch (Exception e)
             {
-                TraceManager.AddLog(string.Format("e.Message={0}, e.StackTrace={1}", e.Message, e.StackTrace));
+                Debug.WriteLine(string.Format("e.Message={0}, e.StackTrace={1}", e.Message, e.StackTrace));
             }
 
-            TraceManager.AddLog(string.Format("TCPClient:Disconnect"));
+            Debug.WriteLine(string.Format("TCPClient:Disconnect"));
         }
-        public static void ReConnect()
+        public void ReConnect()
         {
             try
             {
@@ -330,7 +330,7 @@ namespace ChroZenService
                     }
                     finally
                     {
-                        TraceManager.AddLog("TCPClient : Disconnect and ReConnect");
+                        Debug.WriteLine("TCPClient : Disconnect and ReConnect");
                         EventManager.DisconnectedEvent();
 
                         InitTCP();
@@ -340,7 +340,7 @@ namespace ChroZenService
                 }
                 //else
                 {
-                    //TraceManager.AddLog("TCPClient : Disconnect and ReConnect");
+                    //Debug.WriteLine("TCPClient : Disconnect and ReConnect");
                     //YC_EventManager.ConnectErrorEvent();
 
                     //YC_EventManager.SocketReConnectedEvent();
@@ -348,14 +348,14 @@ namespace ChroZenService
             }
             catch (Exception ee)
             {
-                TraceManager.AddLog(string.Format("TCPManager:ReConnect{0}r\n{1}", ee.StackTrace, ee.Message));
+                Debug.WriteLine(string.Format("TCPManager:ReConnect{0}r\n{1}", ee.StackTrace, ee.Message));
             }
         }
 
 
-        static string _ip;
-        static int _port;
-        public static void ConnectDevice(string ip, int port)
+        string _ip;
+        int _port;
+        public void ConnectDevice(string ip, int port)
         {
             try
             {
@@ -367,12 +367,12 @@ namespace ChroZenService
             catch (Exception ee)
             {
                 ReConnect();
-                TraceManager.AddLog(string.Format("TCPManager:ConnectDevice{0}r\n{1}", ee.StackTrace, ee.Message));
+                Debug.WriteLine(string.Format("TCPManager:ConnectDevice{0}r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("{0}\r\n{1}", ee.StackTrace, ee.Message));
             }
         }
 
-        private static void ChrogenInterface_ConnectCallback(IAsyncResult ar)
+        private void ChrogenInterface_ConnectCallback(IAsyncResult ar)
         {
             try
             {
@@ -386,10 +386,10 @@ namespace ChroZenService
                     //t_CHROZEN_GC_SYSTEM_INFORM.Model = YC_Util.StringToCharArray("PUMP ver. 1.0.0", 32);
                     //t_CHROZEN_GC_SYSTEM_INFORM.nVersion = 100;
 
-                    TraceManager.AddLog("INFORM SET 송신");
+                    Debug.WriteLine("INFORM SET 송신");
 
                     System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : Connected"));
-                    TraceManager.AddLog("TCPClient : Connected");
+                    Debug.WriteLine("TCPClient : Connected");
                     //YC_EventManager.ConnectSuccessEvent();
                     Receive(Socket_Client_DeviceInterface);
                 }
@@ -397,7 +397,7 @@ namespace ChroZenService
             }
             catch (Exception ee)
             {
-                TraceManager.AddLog(string.Format("TCPManager:ChrogenInterface_ConnectCallback{0}r\n{1}", ee.StackTrace, ee.Message));
+                Debug.WriteLine(string.Format("TCPManager:ChrogenInterface_ConnectCallback{0}r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("{0}\r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : Connect Error"));
             }
@@ -406,12 +406,12 @@ namespace ChroZenService
                 if (!Socket_Client_DeviceInterface.Connected)
                 {
                     ReConnect();
-                    TraceManager.AddLog("Exception : TCPClient.ChrogenInterface_ConnectCallback");
+                    Debug.WriteLine("Exception : TCPClient.ChrogenInterface_ConnectCallback");
                 }
             }
         }
 
-        public static void ReceiveAsync()
+        public void ReceiveAsync()
         {
             try
             {
@@ -422,11 +422,11 @@ namespace ChroZenService
             catch (Exception e)
             {
 
-                TraceManager.AddLog(string.Format("ReceiveAsync err : {0}, {1}", e.StackTrace, e.Message));
+                Debug.WriteLine(string.Format("ReceiveAsync err : {0}, {1}", e.StackTrace, e.Message));
             }
         }
 
-        private static void Receive(Socket client)
+        private void Receive(Socket client)
         {
             try
             {
@@ -441,14 +441,14 @@ namespace ChroZenService
             catch (Exception ee)
             {
                 ReConnect();
-                TraceManager.AddLog("Exception : TCPClient.Receive");
-                TraceManager.AddLog(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
+                Debug.WriteLine("Exception : TCPClient.Receive");
+                Debug.WriteLine(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("{0}\r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : Receive Error"));
             }
         }
 
-        private static void ReceiveSync(byte[] rawBytes, int readCount)
+        private void ReceiveSync(byte[] rawBytes, int readCount)
         {
             try
             {
@@ -492,13 +492,16 @@ namespace ChroZenService
             }
             catch (Exception ee)
             {
-                TraceManager.AddLog(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
+                Debug.WriteLine(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("{0}\r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : ReceiveCallback Error"));
             }
         }
 
-        private static void ReceiveCallback(IAsyncResult ar)
+        byte[] reserveBytes = new byte[16000];
+        int nReservedCount;
+
+        private void ReceiveCallback(IAsyncResult ar)
         {
             try
             {
@@ -517,9 +520,19 @@ namespace ChroZenService
                             if (bytesRead > 0)
                             {
                                 byte[] dissectedPacket = new byte[bytesRead];
-                                //바이트 배열을 읽은 수 만큼 state.lengthedBuffer에 복사
-                                Array.Copy(state.rawBuffer, dissectedPacket, bytesRead);
-
+                                if (nReservedCount > 0)
+                                {
+                                    dissectedPacket = new byte[bytesRead + nReservedCount];
+                                    Array.Copy(reserveBytes, 0, dissectedPacket, 0, nReservedCount);
+                                    Array.Copy(state.rawBuffer, 0, dissectedPacket, nReservedCount, bytesRead);
+                                    Debug.WriteLine(string.Format("=============================Reserve Handled============================== {0}", dissectedPacket.Length));
+                                    nReservedCount = 0;
+                                }
+                                else
+                                {
+                                    //바이트 배열을 읽은 수 만큼 state.lengthedBuffer에 복사
+                                    Array.Copy(state.rawBuffer, dissectedPacket, bytesRead);
+                                }
                                 while (true)
                                 {
                                     int packetLength = (dissectedPacket[0]) + (dissectedPacket[1] << 8) + (dissectedPacket[2] << 16) + (dissectedPacket[3] << 24);
@@ -540,7 +553,13 @@ namespace ChroZenService
                                         ParsePacket(packet, false);
                                         if (dissectedPacket.Length < 4) break;
                                     }
-                                    else break;
+                                    else
+                                    {
+                                        Array.Copy(dissectedPacket,reserveBytes, dissectedPacket.Length);
+                                        nReservedCount = dissectedPacket.Length;
+                                        Debug.WriteLine(string.Format("=============================Reserve Added============================== {0}", nReservedCount));
+                                        break;
+                                    }
                                 }
 
                                 if (!bIsSync)
@@ -565,21 +584,21 @@ namespace ChroZenService
             catch (Exception ee)
             {
                 ReConnect();
-                TraceManager.AddLog("Exception : TCPClient.ReceiveCallback");
-                TraceManager.AddLog(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
+                Debug.WriteLine("Exception : TCPClient.ReceiveCallback");
+                Debug.WriteLine(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("{0}\r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : ReceiveCallback Error"));
             }
         }
 
-        private static void ParsePacket(byte[] packet, bool bIsSync)
+        private void ParsePacket(byte[] packet, bool bIsSync)
         {
             byte[] bArr_T_YL9000HPLC_PACKET = new byte[24];
             Array.Copy(packet, bArr_T_YL9000HPLC_PACKET, 24);
             //CL_ReceivedPacket_ChrogenInterface.Add(state.lengthedBuffer);
             T_HEADER_PACKET temp = YC_Util.ByteToStruct<T_HEADER_PACKET>(bArr_T_YL9000HPLC_PACKET);
             //Debug.WriteLine(((E_PACKCODE)temp.nPacketCode).ToString());
-            //TraceManager.AddLog(((E_PACKCODE)temp.nPacketCode).ToString() + " 수신");
+            //Debug.WriteLine(((E_PACKCODE)temp.nPacketCode).ToString() + " 수신");
             switch ((E_PACKCODE)temp.nPacketCode)
             {
                 case E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_INFORM:
@@ -602,7 +621,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception ee)
                                 {
-                                    TraceManager.AddLog(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
+                                    Debug.WriteLine(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
                                     System.Diagnostics.Debug.WriteLine(string.Format("{0}\r\n{1}", ee.StackTrace, ee.Message));
                                     System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : Send Error"));
                                 }
@@ -617,7 +636,7 @@ namespace ChroZenService
                                 //t_YL9010_PUMP_INFORM.Model = YC_Util.StringToCharArray("PUMP ver. 1.0.0", 32);
                                 //t_YL9010_PUMP_INFORM.nVersion = 100;
                                 //Send(T_PACKCODE_YL9010_INFORMManager.MakePACKCODE_SET(t_YL9010_PUMP_INFORM));
-                                //TraceManager.AddLog("INFORM SET 송신");
+                                //Debug.WriteLine("INFORM SET 송신");
                                 Send(T_PACKCODE_CHROZEN_SYSTEM_INFORMManager.MakePACKCODE_SET(T_CHROZEN_GC_SYSTEM_INFORMManager.InitiatedInstance));
                                 Send(T_PACKCODE_CHROZEN_SYSTEM_INFORMManager.MakePACKCODE_REQ());
                                 Send(T_PACKCODE_CHROZEN_SYSTEM_CONFIGManager.MakePACKCODE_REQ());
@@ -652,9 +671,8 @@ namespace ChroZenService
                                 Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_REQ(1));
                                 Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_REQ(2));
 
-                                //SPECIAL_FUNCTION 요청 -> 요청 필요성 재고 필요
                                 Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_REQ());
-                                TraceManager.AddLog("접속 성공 직후 Method(Oven setting, Aux apc setting, Aux temp setting, Inlet setting, Det setting, Valve setting, Signal setting, Special function  REQ 송신");
+                                Debug.WriteLine("접속 성공 직후 Method(Oven setting, Aux apc setting, Aux temp setting, Inlet setting, Det setting, Valve setting, Signal setting, Special function  REQ 송신");
 
                                 //9131 Ack 안줌
                                 //접속 성공
@@ -680,7 +698,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
 
@@ -714,10 +732,11 @@ namespace ChroZenService
                                 {
                                     DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SYSTEM_CONFIG>(packet);
                                     EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_CONFIG, DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received);
+                                    Debug.WriteLine(((E_PACKCODE)temp.nPacketCode).ToString());
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -728,7 +747,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -761,13 +780,14 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(((E_PACKCODE)temp.nPacketCode).ToString());
                                     DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_OVEN_SETTING>(packet);
                                     DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received;
                                     EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_OVEN_SETTING, DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send);
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -778,7 +798,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
 
@@ -813,6 +833,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+
                                     T_PACKCODE_CHROZEN_INLET_SETTING packCode = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_INLET_SETTING>(packet);
                                     switch (packCode.packet.btPortNo)
                                     {
@@ -841,18 +862,19 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0}", (E_PACKCODE)temp.nPacketCode).ToString());
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_INLET_SETTING>(packet), E_PACKCODE.PACKCODE_CHROZEN_INLET_SETTING));
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -887,7 +909,8 @@ namespace ChroZenService
                                 try
                                 {
                                     T_PACKCODE_CHROZEN_DET_SETTING packCode = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_DET_SETTING>(packet);
-                                    TraceManager.AddLog(string.Format("T_PACKCODE_CHROZEN_DET_SETTING packet length : {0}", (uint)Marshal.SizeOf(packCode)));
+
+                                    Debug.WriteLine(string.Format("T_PACKCODE_CHROZEN_DET_SETTING packet length : {0}", (uint)Marshal.SizeOf(packCode)));
                                     switch (packCode.packet.btPort)
                                     {
                                         case 0:
@@ -915,7 +938,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
 
@@ -927,7 +950,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
 
@@ -962,13 +985,14 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(((E_PACKCODE)temp.nPacketCode).ToString());
                                     DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_VALVE_SETTING>(packet);
                                     DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send = DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Received;
                                     EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_VALVE_SETTING, DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send);
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -979,7 +1003,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
 
@@ -1014,6 +1038,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(((E_PACKCODE)temp.nPacketCode).ToString());
                                     DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_AUX_TEMP_SETTING>(packet);
                                     DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received;
 
@@ -1021,7 +1046,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1032,7 +1057,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
 
@@ -1095,7 +1120,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1106,7 +1131,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1167,7 +1192,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1178,7 +1203,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1217,7 +1242,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1228,7 +1253,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
 
@@ -1269,7 +1294,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1280,7 +1305,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1316,7 +1341,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1327,7 +1352,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1355,7 +1380,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1366,7 +1391,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1394,7 +1419,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1405,7 +1430,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1438,7 +1463,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1449,7 +1474,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1485,7 +1510,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1496,7 +1521,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1530,7 +1555,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1541,7 +1566,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1575,7 +1600,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1586,7 +1611,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1620,7 +1645,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1631,7 +1656,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1665,7 +1690,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1676,7 +1701,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1710,7 +1735,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1721,7 +1746,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1755,7 +1780,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1766,7 +1791,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1800,7 +1825,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1811,7 +1836,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1845,7 +1870,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1856,7 +1881,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1890,7 +1915,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1901,7 +1926,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1935,7 +1960,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                             else
@@ -1946,7 +1971,7 @@ namespace ChroZenService
                                 }
                                 catch (Exception e)
                                 {
-                                    TraceManager.AddLog(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
+                                    Debug.WriteLine(string.Format("ParsePacket err : {0}, {1}", e.StackTrace, e.Message));
                                 }
                             }
                         }
@@ -1957,7 +1982,7 @@ namespace ChroZenService
             }
         }
 
-        public static void Send(byte[] byteArr)
+        public void Send(byte[] byteArr)
         {
             try
             {
@@ -1973,13 +1998,13 @@ namespace ChroZenService
             catch (Exception ee)
             {
                 ReConnect();
-                TraceManager.AddLog("Exception : TCPClient.Send");
-                TraceManager.AddLog(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
+                Debug.WriteLine("Exception : TCPClient.Send");
+                Debug.WriteLine(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("{0}\r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : Send Error"));
             }
         }
-        public static void ReceiveSync()
+        public void ReceiveSync()
         {
             try
             {
@@ -1997,12 +2022,12 @@ namespace ChroZenService
             }
             catch (Exception ee)
             {
-                TraceManager.AddLog(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
+                Debug.WriteLine(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("{0}\r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : Send Error"));
             }
         }
-        public static void SendSync(byte[] byteArr)
+        public void SendSync(byte[] byteArr)
         {
             try
             {
@@ -2018,13 +2043,13 @@ namespace ChroZenService
             }
             catch (Exception ee)
             {
-                TraceManager.AddLog(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
+                Debug.WriteLine(string.Format("{0}r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("{0}\r\n{1}", ee.StackTrace, ee.Message));
                 System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : Send Error"));
             }
         }
 
-        private static void SendSync(Socket client, byte[] byteData)
+        private void SendSync(Socket client, byte[] byteData)
         {
             //// Convert the string data to byte data using ASCII encoding.  
             //byte[] byteData = Encoding.ASCII.GetBytes(data);
@@ -2033,7 +2058,7 @@ namespace ChroZenService
             client.Send(byteData);
         }
 
-        private static void Send(Socket client, byte[] byteData)
+        private void Send(Socket client, byte[] byteData)
         {
 
             //// Convert the string data to byte data using ASCII encoding.  
@@ -2045,7 +2070,7 @@ namespace ChroZenService
 
         }
 
-        private static void SendCallback(IAsyncResult ar)
+        private void SendCallback(IAsyncResult ar)
         {
             try
             {
@@ -2061,11 +2086,11 @@ namespace ChroZenService
             {
                 ReConnect();
 
-                TraceManager.AddLog("Exception : TCPClient.SendCallback");
+                Debug.WriteLine("Exception : TCPClient.SendCallback");
             }
         }
 
-        public static void Dispose()
+        public void Dispose()
         {
             try
             {
@@ -2089,7 +2114,7 @@ namespace ChroZenService
             }
             catch (Exception e)
             {
-                TraceManager.AddLog(e.Source + " , " + e.StackTrace);
+                Debug.WriteLine(e.Source + " , " + e.StackTrace);
             }
         }
     }

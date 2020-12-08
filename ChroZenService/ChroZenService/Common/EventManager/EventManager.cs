@@ -78,6 +78,13 @@ namespace ChroZenService
         }
         #endregion Connect Success
 
+        public delegate void TemperatureUpdated();
+        public static TemperatureUpdated onTemperatureUpdated;
+        public static void TemperatureUpdatedEvent()
+        {
+            onTemperatureUpdated?.Invoke();
+        }
+
         public delegate void RawDataUpdated();
         public static RawDataUpdated onRawDataUpdated;
         public static void RawDataUpdatedEvent()
@@ -85,11 +92,18 @@ namespace ChroZenService
             onRawDataUpdated?.Invoke();
         }
 
-        public delegate void ChartDeltaChanged(CHART_DELTA_TYPE cHART_DELTA_TYPE, double deltaX, double deltaY);
+        public delegate void ChartDeltaChanged( double deltaX, float deltaY);
         public static ChartDeltaChanged onChartDeltaChanged;
-        public static void ChartDeltaChangedEvent(CHART_DELTA_TYPE cHART_DELTA_TYPE, double deltaX, double deltaY)
+        public static void ChartDeltaChangedEvent( double deltaX, float deltaY)
         {
-            onChartDeltaChanged?.Invoke(cHART_DELTA_TYPE, deltaX, deltaY);
+            onChartDeltaChanged?.Invoke( deltaX, deltaY);
+        }
+
+        public delegate void ChartOffsetChanged( double deltaX, float deltaY);
+        public static ChartOffsetChanged onChartOffsetChanged;
+        public static void ChartOffsetChangedEvent( double deltaX, float deltaY)
+        {
+            onChartOffsetChanged?.Invoke( deltaX, deltaY);
         }
 
         public delegate void InformDelivered();

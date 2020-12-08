@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.UC_MainPageDetDetailView">
+    <ContentView.Content>
+        <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label Text="N2" Grid.Row="1" FontSize="{StaticResource FS_MAINPAGE_NORMAL}"/>
+                <AbsoluteLayout Grid.Row="2">
+                    <Line  X1="50" X2="150" Y1="30" Y2="30" Stroke="White"  />
+                </AbsoluteLayout>
+                <Label Text="ml/min" HorizontalOptions="Start" Margin="150,0,0,0"/>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

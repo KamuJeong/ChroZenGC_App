@@ -7,7 +7,7 @@ namespace ChroZenService
 {
     public class YL_ChartElementRawData
     {
-        public YC_ChartElementRawDataTemperature yC_ChartElementRawDataTemperature = new YC_ChartElementRawDataTemperature();
+        //public YC_ChartElementRawDataTemperature yC_ChartElementRawDataTemperature = new YC_ChartElementRawDataTemperature();
 
         public YC_ChartElementRawDataDetector[] yC_ChartElementRawDataDetector = new
             YC_ChartElementRawDataDetector[3]
@@ -18,20 +18,21 @@ namespace ChroZenService
         };
 
         public YC_ChartElementRawDataTimeStamp yC_ChartElementRawDataTimeStamp = new YC_ChartElementRawDataTimeStamp();
+
     }
 
     public class YC_ChartElementRawDataTemperature
     {
-        public ObservableCollection<double> RawData = new ObservableCollection<double>();
+        public List<float> RawData = new List<float>();
     }
 
     public class YC_ChartElementRawDataDetector
     {
-        public ObservableCollection<double> RawData = new ObservableCollection<double>();
+        public List<float> RawData = new List<float>();
     }
 
     public class YC_ChartElementRawDataTimeStamp
     {
-        public ObservableCollection<double> RawData = new ObservableCollection<double>();
+        public List<float> RawData = new List<float>();
     }
 }

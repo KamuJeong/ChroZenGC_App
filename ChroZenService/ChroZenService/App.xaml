@@ -26,11 +26,14 @@
         </Color>
         <Color x:Key="CS_COLOR_GREEN_0" x:FactoryMethod="FromHex">
             <x:Arguments>
-                <x:String>#ff03c04a</x:String>
+                <x:String>#ffaef359</x:String>
             </x:Arguments>
         </Color>
+        <x:Int32 x:Key="FS_MAINPAGE_NORMAL">24</x:Int32>
         <FileImageSource x:Key="IMG_CONFIG_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
         <FileImageSource x:Key="IMG_SYSTEM_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
+        <cvt:DoubleToGridLengthConverter x:Key="DoubleToGridLengthConverter"/>
+        <cvt:InletTypeToBoolConverter x:Key="InletTypeToBoolConverter"/>
         <!--<cvt:VToIsVisibleConverter x:Key="VToV" />
     <cvt:VToBoolConverter x:Key="VToB" />-->
         <!--

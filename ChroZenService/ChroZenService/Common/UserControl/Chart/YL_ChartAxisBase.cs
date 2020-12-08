@@ -10,13 +10,14 @@ namespace ChroZenService
     public class YL_ChartAxisBase : ContentView
     {
         public static readonly BindableProperty MajorTicksAndLabelsProperty =
-            BindableProperty.Create("MajorTicksAndLabels", typeof(ObservableCollection<Tuple<double, string>>), typeof(YL_ChartAxisBase),
+            BindableProperty.Create("MajorTicksAndLabels", typeof(ObservableCollection<string>), typeof(YL_ChartAxisBase),
+                defaultValue: new ObservableCollection<string>(new string[] { "","","","","","","","",""}),
                 propertyChanged: onMajorTicksAndLabelsPropertyChanged
                 , defaultBindingMode: BindingMode.OneWay);
 
-        public ObservableCollection<Tuple<double, string>> MajorTicksAndLabels
+        public ObservableCollection<string> MajorTicksAndLabels
         {
-            get { return (ObservableCollection<Tuple<double, string>>)GetValue(MajorTicksAndLabelsProperty); }
+            get { return (ObservableCollection<string>)GetValue(MajorTicksAndLabelsProperty); }
             set { SetValue(MajorTicksAndLabelsProperty, value); }
         }
 
@@ -37,7 +38,7 @@ namespace ChroZenService
         {
             if (newValue != null)
             {
-                (bindable as YL_ChartAxisBase).MajorTicksAndLabels = (newValue as ObservableCollection<Tuple<double, string>>);
+                (bindable as YL_ChartAxisBase).MajorTicksAndLabels = (newValue as ObservableCollection<string>);
             }
         }
 

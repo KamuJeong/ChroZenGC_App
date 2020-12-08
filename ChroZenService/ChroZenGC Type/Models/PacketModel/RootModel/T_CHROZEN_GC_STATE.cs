@@ -25,7 +25,7 @@ namespace YC_ChroZenGC_Type
             GAS_SAVER
         };
         public byte btState;
-        //enum { Initilize = 0, Ready, NotReady, Run, Error, PowerSaveMode, Diagnostics, Calibration, Unknown, PostRun, AutoReadyRun, ColumnCondition, GasSaver };
+        public enum E_STATE { Initilize = 0, Ready, NotReady, Run, Error, PowerSaveMode, Diagnostics, Calibration, Unknown, PostRun, AutoReadyRun, ColumnCondition, GasSaver };
         public byte btPrgmStep;                        // 반복 분석 총 횟수
         public float fRunTime;                         // 현재 Run 진행시간
         public byte bRepeatRun;                        // 반복분석 여부 ( 0 = 반복 분석 아님, 1 = 반복 분석) 
