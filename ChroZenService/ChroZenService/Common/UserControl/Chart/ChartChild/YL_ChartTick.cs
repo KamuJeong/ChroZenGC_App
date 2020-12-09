@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkiaSharp;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,6 +13,7 @@ namespace ChroZenService
         bool _IsMajorTick;
         public bool IsMajorTick { get { return _IsMajorTick; } set { _IsMajorTick = value; OnPropertyChanged("IsMajorTick"); } }
 
-
+        public SKPoint startPoint = new SKPoint();
+        public SKPoint endPoint = new SKPoint();
     }
 }

@@ -15,24 +15,11 @@ namespace ChroZenService
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class View_ChartXAxis : YL_ChartAxisBase
     {
-        public static readonly BindableProperty AxisLabelsProperty =
-BindableProperty.Create("AxisLabels", typeof(ObservableCollection<YL_ChartTick>), typeof(View_ChartXAxis),
-    defaultValue: new ObservableCollection<YL_ChartTick> { new YL_ChartTick() },
-    propertyChanged: onAxisLabelsPropertyChanged
-    , defaultBindingMode: BindingMode.TwoWay);
-
-        public ObservableCollection<YL_ChartTick> AxisLabels
+        List<YL_ChartTick> _AxisLabels = new List<YL_ChartTick>();
+        public List<YL_ChartTick> AxisLabels
         {
-            get { return (ObservableCollection<YL_ChartTick>)GetValue(AxisLabelsProperty); }
-            set { SetValue(AxisLabelsProperty, value); }
-        }
-
-        private static void onAxisLabelsPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as View_ChartXAxis).AxisLabels = (ObservableCollection<YL_ChartTick>)newValue;
-            }
+            get { return _AxisLabels; }
+            set { _AxisLabels = value; }
         }
 
         public View_ChartXAxis()
@@ -98,9 +85,6 @@ BindableProperty.Create("AxisLabels", typeof(ObservableCollection<YL_ChartTick>)
             float fMinorTickHeight = 5;
             float fStartY = -1;
 
-            SKPoint startPoint = new SKPoint();
-            SKPoint endPoint = new SKPoint();
-
             label0.IsVisible = false;
             label1.IsVisible = false;
             label2.IsVisible = false;
@@ -120,15 +104,15 @@ BindableProperty.Create("AxisLabels", typeof(ObservableCollection<YL_ChartTick>)
                 if (i % ChroZenService_Const.MinorTicksPerMajorTick == 0)
                 {
                     int nMajorTickIndex = i / ChroZenService_Const.MinorTicksPerMajorTick;
-                    startPoint.X = fXMajotTickInterval * nMajorTickIndex;
-                    startPoint.Y = fStartY;
-                    endPoint.X = fXMajotTickInterval * nMajorTickIndex;
-                    endPoint.Y = fStartY + fMajorTickHeight;
-                    canvas.DrawLine(startPoint, endPoint, paint);
+                    AxisLabels[i].startPoint.X = fXMajotTickInterval * nMajorTickIndex;
+                    AxisLabels[i].startPoint.Y = fStartY;
+                    AxisLabels[i].endPoint.X = fXMajotTickInterval * nMajorTickIndex;
+                    AxisLabels[i].endPoint.Y = fStartY + fMajorTickHeight;
+                    canvas.DrawLine(AxisLabels[i].startPoint, AxisLabels[i].endPoint, paint);
 
                     SKPoint textPoint = new SKPoint();
-                    textPoint.X = endPoint.X + fTextXOffset;
-                    textPoint.Y = endPoint.Y + fTextYOffest;
+                    textPoint.X = AxisLabels[i].endPoint.X + fTextXOffset;
+                    textPoint.Y = AxisLabels[i].endPoint.Y + fTextYOffest;
                     Thickness textMargin = new Thickness(textPoint.X, textPoint.Y, 0, 0);
 
                     switch (nMajorTickIndex)
@@ -201,8 +185,11 @@ BindableProperty.Create("AxisLabels", typeof(ObservableCollection<YL_ChartTick>)
                 //Draw Minor Tick
                 else
                 {
-                    canvas.DrawLine(fXMinorTickInterval * i
-                        , fStartY, fXMinorTickInterval * i, fStartY + fMinorTickHeight, paint);
+                    AxisLabels[i].startPoint.X = fXMinorTickInterval * i;
+                    AxisLabels[i].startPoint.Y = fStartY;
+                    AxisLabels[i].endPoint.X = fXMinorTickInterval * i;
+                    AxisLabels[i].endPoint.Y = fStartY + fMinorTickHeight;
+                    canvas.DrawLine(AxisLabels[i].startPoint, AxisLabels[i].endPoint, paint);
                 }
             }
 

@@ -59,7 +59,9 @@ namespace ChroZenService
                 //if (value < -235) _VerticalDelta = -234;
                 //else if (value > 10000) _VerticalDelta = 10000;
                 //else
-                _VerticalDelta = value;
+                if (value < 0)
+                    _VerticalDelta = 0.00001;
+                else _VerticalDelta = value;
             }
         }
 
@@ -78,6 +80,7 @@ namespace ChroZenService
         {
             InitializeComponent();
             //skb = new SKBitmap(470, 235, SKColorType.Bgra8888, SKAlphaType.Opaque);
+            sKCanvasViewGrid.PaintSurface += OnsKCanvasViewGridPaintSurface;
             sKCanvasViewChart.PaintSurface += OnCanvasViewPaintSurface;
             sKCanvasViewTemperatureChart.PaintSurface += SKCanvasViewTemperatureChart_PaintSurface;
             EventManager.onRunStarted += onRunStartedEventHandler;
@@ -85,6 +88,35 @@ namespace ChroZenService
             EventManager.onMethodUpdated += onMethodUpdatedEventHandler;
             EventManager.onRawDataUpdated += onRawDataUpdatedHandler;
             EventManager.onTemperatureUpdated += onTemperatureUpdatedEventHandler;
+        }
+
+        private void OnsKCanvasViewGridPaintSurface(object sender, SKPaintSurfaceEventArgs e)
+        {
+            SKImageInfo info = e.Info;
+            SKSurface surface = e.Surface;
+            SKCanvas canvas = surface.Canvas;
+            SKPaint paint = new SKPaint();
+            paint.Color = new SKColor(0x00, 0x00, 0xff, 0xff);//blue
+            canvas.Clear();
+
+            //세로 Grid선          
+            for (int j = 0; j < xAxis.AxisLabels.Count; j++)
+            {
+                if (xAxis.AxisLabels[j].IsMajorTick == true)
+                {
+                    canvas.DrawLine(xAxis.AxisLabels[j].startPoint.X, 195f - 195, xAxis.AxisLabels[j].startPoint.X, 195f - 0, paint);
+                }
+            }
+
+            //가로 Grid선
+            for (int j = 0; j < detAxis.AxisLabels.Count; j++)
+            {
+                if (detAxis.AxisLabels[j].IsMajorTick == true)
+                {
+                    canvas.DrawLine(0, detAxis.AxisLabels[j].startPoint.Y, 470, detAxis.AxisLabels[j].startPoint.Y, paint);
+                    //Debug.WriteLine("Y : {0}", detAxis.AxisLabels[j].startPoint.Y);
+                }
+            }
         }
 
         private void SKCanvasViewTemperatureChart_PaintSurface(object sender, SKPaintSurfaceEventArgs e)
@@ -105,14 +137,16 @@ namespace ChroZenService
             float fYUnitForOven = 195 / fYUnitSeed;
 
             canvas.Clear();
+
+
             switch ((E_OVEN_MODE)DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.btMode)
             {
                 case E_OVEN_MODE.ISO_THREMAL:
                     {
                         canvas.DrawLine(0,
-                (235f - DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet * fYUnitForOven),
+                (195f - DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet * fYUnitForOven),
                 470,
-                (235f - DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet * fYUnitForOven), temperaturePaint);
+                (195f - DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet * fYUnitForOven), temperaturePaint);
                     }
                     break;
                 case E_OVEN_MODE.PROGRAM_MODE:
@@ -162,7 +196,7 @@ namespace ChroZenService
                         for (int i = 1; i < sKPoints.Count; i++)
                         {
                             //temperaturePath.LineTo(sKPoints[i].X, (235 - sKPoints[i].Y * fYUnitForOven));
-                            canvas.DrawLine(sKPoints[i - 1].X, (235 - sKPoints[i - 1].Y * fYUnitForOven), sKPoints[i].X, (235 - sKPoints[i].Y * fYUnitForOven), temperaturePaint);
+                            canvas.DrawLine(sKPoints[i - 1].X, (195 - sKPoints[i - 1].Y * fYUnitForOven), sKPoints[i].X, (195 - sKPoints[i].Y * fYUnitForOven), temperaturePaint);
                         }
                         //canvas.DrawPath(temperaturePath, temperaturePaint);
                     }
@@ -215,28 +249,33 @@ namespace ChroZenService
                 float fYUnitOffsetForDetector = (float)(fYUnitForDetector * VerticalOffset);
                 float fYUnitForOven = fChartHeight / DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet;
 
+                float xStart = 0;
+                float xEnd = 0;
                 if (ChartRawData.yC_ChartElementRawDataTimeStamp.RawData.Count > 1)
                 {
-                    float xStart = 0;
-                    float xEnd = 0;
+
                     for (int i = 1; i < ChartRawData.yC_ChartElementRawDataTimeStamp.RawData.Count; i++)
                     {
-                        float detY1Val = (235f - ChartRawData.yC_ChartElementRawDataDetector[0].RawData[i] * fYUnitForDetector + fYUnitOffsetForDetector);
-                        float detY2Val = (235f - ChartRawData.yC_ChartElementRawDataDetector[0].RawData[i - 1] * fYUnitForDetector + fYUnitOffsetForDetector);
-                        xStart = ChartRawData.yC_ChartElementRawDataTimeStamp.RawData[i] * fXUnit;
-                        xEnd = ChartRawData.yC_ChartElementRawDataTimeStamp.RawData[i - 1] * fXUnit;
-                        canvas.DrawLine(xStart,
-                        detY1Val,
-                        xEnd,
-                        detY2Val, detectorPaint);
+                        if (ChartRawData.yC_ChartElementRawDataDetector[0].RawData.Count > i)
+                        {
+                            float detY1Val = (195f - ChartRawData.yC_ChartElementRawDataDetector[0].RawData[i] * fYUnitForDetector + fYUnitOffsetForDetector);
+                            float detY2Val = (195f - ChartRawData.yC_ChartElementRawDataDetector[0].RawData[i - 1] * fYUnitForDetector + fYUnitOffsetForDetector);
+                            xStart = ChartRawData.yC_ChartElementRawDataTimeStamp.RawData[i] * fXUnit;
+                            xEnd = ChartRawData.yC_ChartElementRawDataTimeStamp.RawData[i - 1] * fXUnit;
+                            canvas.DrawLine(xStart,
+                            detY1Val,
+                            xEnd,
+                            detY2Val, detectorPaint);
+                        }
 
                     }
-                    //주황색 현재 시간 기준 세로 선
-                    canvas.DrawLine(xEnd,
-                        235 - 0,
-                        xEnd,
-                        235 - 195, currentTimeMarkerPaint);
                 }
+                //주황색 현재 시간 기준 세로 선
+                canvas.DrawLine(xEnd,
+                    195 - 0,
+                    xEnd,
+                    195 - 195, currentTimeMarkerPaint);
+
             }
         }
 
@@ -291,8 +330,9 @@ namespace ChroZenService
 
             if (e.StatusType == GestureStatus.Running)
             {
-                VerticalDelta += e.TotalY / 100;
+                VerticalDelta += e.TotalY * VerticalDelta / 400;
                 sKCanvasViewChart.InvalidateSurface();
+                sKCanvasViewGrid.InvalidateSurface();
                 EventManager.ChartDeltaChangedEvent(e.TotalX, (float)VerticalDelta);
             }
             Debug.WriteLine(string.Format("Axis : Pan StatusType={0}, VerticalDelta={1}, TotalY={2}", e.StatusType.ToString(), VerticalDelta, e.TotalY));
@@ -305,8 +345,10 @@ namespace ChroZenService
 
             if (e.StatusType == GestureStatus.Running)
             {
-                VerticalOffset += e.TotalY * 7;
+                VerticalOffset += (e.TotalY * VerticalDelta * 7);
+
                 sKCanvasViewChart.InvalidateSurface();
+                sKCanvasViewGrid.InvalidateSurface();
                 EventManager.ChartOffsetChangedEvent(e.TotalX, (float)VerticalOffset);
             }
             Debug.WriteLine(string.Format("Chart : Pan StatusType={0}, VerticalOffset={1}, TotalY={2}", e.StatusType.ToString(), VerticalOffset, e.TotalY));

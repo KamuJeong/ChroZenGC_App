@@ -18,7 +18,10 @@ namespace ChroZenService
 
         public static float GetMaxSignal(float VerticalDelta, float VerticalOffset)
         {
-            return (ChroZenService_Const.fDetMaxVal * (1 *VerticalDelta) + VerticalOffset);
+            float fRetVal = (ChroZenService_Const.fDetMaxVal * VerticalDelta) + VerticalOffset;
+            //if (fRetVal < 0.00001) return 0.00001f;
+            //else
+            return fRetVal;
         }
 
         public static float GetMaxTemperature()
@@ -59,7 +62,7 @@ namespace ChroZenService
             Y_TEMP
         }
 
-        public static TickInfo GetTickInfo(E_LABEL_TYPE e_LABEL_TYPE, float fDetMaxVal = 0, float fDetOffset = 0)
+        public static TickInfo GetTickInfo(E_LABEL_TYPE e_LABEL_TYPE, float fDetMaxVal = 0, float fDetOffset = 0, float fVerticalDelta = 1)
         {
             TickInfo tickInfo = new TickInfo();
             switch (e_LABEL_TYPE)
@@ -105,7 +108,7 @@ namespace ChroZenService
                     }
                 case E_LABEL_TYPE.Y_DET:
                     {
-                        float fValRange = fDetMaxVal - fDetOffset;
+                        float fValRange = (fDetMaxVal - fDetOffset);
                         float fMaxYValSeed = fValRange;
 
                         float majorTickSeed = 0;
@@ -125,7 +128,7 @@ namespace ChroZenService
                             nPowToRecover += 1;
                         }
                         float fPowToRecover = (float)Math.Pow(10, nPowToRecover);
-                        if (fMaxYValSeed > 1 && fMaxYValSeed <= 1.6)
+                        if (fMaxYValSeed >= 1 && fMaxYValSeed <= 1.6)
                         {
                             majorTickSeed = 0.2f;
                         }
@@ -141,9 +144,12 @@ namespace ChroZenService
                         {
                             majorTickSeed = 2;
                         }
+                        //if (majorTickSeed == 0)
+                        //    Debug.WriteLine(string.Format("GetTickInfo : majorTickSeed==0"));
                         tickInfo.nTickCount = (int)Math.Truncate(fMaxYValSeed / (majorTickSeed / ChroZenService_Const.MinorTicksPerMajorTick));
                         tickInfo.fMajorTickInterval = majorTickSeed * fPowToRecover;
                         tickInfo.fTickOffsetToPlus = fDetOffset;
+                        //Debug.WriteLine(string.Format("GetTickInfo Complete"));
                         return tickInfo;
                     }
                 case E_LABEL_TYPE.Y_TEMP:
@@ -194,29 +200,62 @@ namespace ChroZenService
 
         }
 
-        public static ObservableCollection<YL_ChartTick> GetLabels(E_LABEL_TYPE e_LABEL_TYPE, float fDetMaxVal = 0, float fDetOffset = 0, int nMajorTickOffset = 0)
+        public static List<YL_ChartTick> GetLabels(E_LABEL_TYPE e_LABEL_TYPE, float fDetMaxVal = 0, float fDetOffset = 0, int nMajorTickOffset = 0, float fVerticalDelta = 1)
         {
             //Major Tick의 수를 아래의 경우로 가정한다.
             //4, 5, 6, 7, 8
             //이 때, 각 MajorTick의 끝자리의 우선 순위를 정한다.
             //0>5>2>1>0.5>0.2>0.1
 
-            TickInfo tickInfo = GetTickInfo(e_LABEL_TYPE, fDetMaxVal, fDetOffset);
-            Debug.WriteLine(string.Format("GetTickInfo : tickInfo.fMajorTickInterval = {0}, nMajorTickOffset={1} ", tickInfo.fMajorTickInterval, nMajorTickOffset));
+            TickInfo tickInfo = GetTickInfo(e_LABEL_TYPE, fDetMaxVal, fDetOffset, fVerticalDelta);
+            //Debug.WriteLine(string.Format("GetTickInfo : tickInfo.fMajorTickInterval = {0}, nMajorTickOffset={1} ", tickInfo.fMajorTickInterval, nMajorTickOffset));
             //+1 : Tick 구간 수에 시작점을 더한다
             int nTickCount = tickInfo.nTickCount + 1;
 
             int nMajorTickCount = nTickCount / ChroZenService_Const.MinorTicksPerMajorTick;
 
-            ObservableCollection<YL_ChartTick> labelModel = new ObservableCollection<YL_ChartTick>();
+            List<YL_ChartTick> labelModel = new List<YL_ChartTick>();
             for (int i = 0; i < nTickCount; i++)
             {
                 if (i % ChroZenService_Const.MinorTicksPerMajorTick == nMajorTickOffset)
                 {
-                    if (tickInfo.fTickOffsetToPlus <= 0)
-                        labelModel.Add(new YL_ChartTick { IsMajorTick = true, TickLabel = ((tickInfo.fMajorTickInterval * (i - nMajorTickOffset) / ChroZenService_Const.MinorTicksPerMajorTick) + (int)(tickInfo.fTickOffsetToPlus / tickInfo.fMajorTickInterval) * tickInfo.fMajorTickInterval).ToString() });
+                    //if (tickInfo.fTickOffsetToPlus <= 0)
+                    //    labelModel.Add(new YL_ChartTick { IsMajorTick = true, TickLabel = ((tickInfo.fMajorTickInterval * (i - nMajorTickOffset) / ChroZenService_Const.MinorTicksPerMajorTick) + (int)(tickInfo.fTickOffsetToPlus / tickInfo.fMajorTickInterval) * tickInfo.fMajorTickInterval).ToString() });
+                    //else
+                    //{
+                    int nOffsetSeedToPlus = (int)Math.Abs(Math.Ceiling(tickInfo.fTickOffsetToPlus / tickInfo.fMajorTickInterval));
+                    float fOffsetToPlus = 0;
+                    //Debug.WriteLine(string.Format("nOffsetToPlus={0}", nOffsetToPlus));
+                    if (tickInfo.fTickOffsetToPlus > 0)
+                    {
+                        fOffsetToPlus = (nOffsetSeedToPlus * tickInfo.fMajorTickInterval);
+                    }
                     else
-                        labelModel.Add(new YL_ChartTick { IsMajorTick = true, TickLabel = ((tickInfo.fMajorTickInterval * (i - nMajorTickOffset) / ChroZenService_Const.MinorTicksPerMajorTick) + (int)(tickInfo.fTickOffsetToPlus / tickInfo.fMajorTickInterval) * tickInfo.fMajorTickInterval + tickInfo.fMajorTickInterval).ToString() });
+                    {
+                        fOffsetToPlus = -(nOffsetSeedToPlus * tickInfo.fMajorTickInterval);
+                    }
+                    //if (i - nMajorTickOffset == 0)
+                    //{
+                    //    labelModel.Add(new YL_ChartTick { IsMajorTick = true, TickLabel = tickInfo.fMajorTickInterval.ToString() });
+                    //}
+                    ////else labelModel.Add(new YL_ChartTick { IsMajorTick = true, TickLabel = ((int)(i / nMajorTickCount) * tickInfo.fMajorTickInterval).ToString() });
+                    //else
+                    switch(e_LABEL_TYPE)
+                    {
+                        case E_LABEL_TYPE.Y_DET:
+                            {
+                                labelModel.Add(new YL_ChartTick { IsMajorTick = true, TickLabel = ((tickInfo.fMajorTickInterval * (i - nMajorTickOffset) / ChroZenService_Const.MinorTicksPerMajorTick) + fOffsetToPlus).ToString("0.####") });
+                            }
+                            break;
+                        default:
+                            {
+                                labelModel.Add(new YL_ChartTick { IsMajorTick = true, TickLabel = ((tickInfo.fMajorTickInterval * (i - nMajorTickOffset) / ChroZenService_Const.MinorTicksPerMajorTick)).ToString("0.####") });
+                            }
+                            break;
+                    }
+                    
+                    //}
+                    //Debug.WriteLine(string.Format("tickInfo.fTickOffsetToPlus = {0}, (int)(tickInfo.fTickOffsetToPlus / tickInfo.fMajorTickInterval) * tickInfo.fMajorTickInterval = {1}", tickInfo.fTickOffsetToPlus, (int)(tickInfo.fTickOffsetToPlus / tickInfo.fMajorTickInterval) * tickInfo.fMajorTickInterval));
                     //if (nMajorTickOffset != 0)
                     //{
                     //    //Debug.WriteLine(string.Format("label fMajorTickInterval : {0},  tickInfo.fTickOffsetToPlus - tickInfo.fTickOffsetToPlus % tickInfo.fMajorTickInterval : {1}",
@@ -228,7 +267,7 @@ namespace ChroZenService
                     //}
                 }
                 else
-                    labelModel.Add(new YL_ChartTick { IsMajorTick = true, TickLabel = "" });
+                    labelModel.Add(new YL_ChartTick { IsMajorTick = false, TickLabel = "" });
             }
             return labelModel;
         }

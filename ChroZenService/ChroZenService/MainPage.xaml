@@ -80,8 +80,8 @@
                     <Line  X1="0" X2="160" Y1="50" Y2="50" Stroke="White"  />
                 </AbsoluteLayout>
             </Grid>
-            <Grid Grid.Row="3" Margin="5,0,5,0" HorizontalOptions="Center">
-                <local:YL_Chart WidthRequest="570"  ChartRawData="{Binding ViewModel_MainChart.ChartElementRawData}" />
+            <Grid Grid.Row="3" Margin="0,0,0,0" HorizontalOptions="Center">
+                <local:YL_Chart WidthRequest="600"  ChartRawData="{Binding ViewModel_MainChart.ChartElementRawData}" />
             </Grid>
             <!--Main Center Image Backgournd Layer-->
             <Grid Grid.Row="4">
