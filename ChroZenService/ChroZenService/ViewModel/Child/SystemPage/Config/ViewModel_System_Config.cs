@@ -1,10 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
-namespace ChroZenService.ViewModel.Child.SystemPage.Config
+namespace ChroZenService
 {
-    class ViewModel_System_Config
+    public class ViewModel_System_Config : BindableNotifyBase
     {
+        #region 생성자 & 이벤트 헨들러
+
+        public ViewModel_System_Config()
+        {
+            DefaultCommand = new RelayCommand(DefaultCommandAction);
+        }
+
+        #endregion 생성자 & 이벤트 헨들러
+
+        #region Binding
+
+        #region Property
+
+        #endregion Property
+
+        #region Command
+
+        #region DefaultCommand
+        public RelayCommand DefaultCommand { get; set; }
+        private void DefaultCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("DefaultCommand Fired");
+        }
+        #endregion DefaultCommand 
+
+        #endregion Command
+
+        #endregion Binding
+
+        #region Instance Func
+
+        #endregion Instance Func
     }
 }
