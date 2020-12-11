@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ChroZenService.ViewModel
 {
-    class ViewModelConfigPage
+    public class ViewModelConfigPage : BindableNotifyBase
     {
     }
 }

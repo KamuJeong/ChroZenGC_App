@@ -46,6 +46,7 @@ namespace ChroZenService
             }
         }
 
+        int nSelectedDetectorIndex;
         double _VerticalDelta = 1;
 
         /// <summary>
@@ -88,6 +89,14 @@ namespace ChroZenService
             EventManager.onMethodUpdated += onMethodUpdatedEventHandler;
             EventManager.onRawDataUpdated += onRawDataUpdatedHandler;
             EventManager.onTemperatureUpdated += onTemperatureUpdatedEventHandler;
+            EventManager.onDetectorSelectionChangedTo += onDetectorSelectionChangedToEventHandler;
+        }
+
+        private void onDetectorSelectionChangedToEventHandler(int nDetIndex)
+        {
+            nSelectedDetectorIndex = nDetIndex;
+            sKCanvasViewChart.InvalidateSurface();
+            sKCanvasViewGrid.InvalidateSurface();
         }
 
         private void OnsKCanvasViewGridPaintSurface(object sender, SKPaintSurfaceEventArgs e)
@@ -109,11 +118,11 @@ namespace ChroZenService
             }
 
             //가로 Grid선
-            for (int j = 0; j < detAxis.AxisLabels.Count; j++)
+            for (int j = 0; j < detAxis.AxisLabelsArr[nSelectedDetectorIndex].Count; j++)
             {
-                if (detAxis.AxisLabels[j].IsMajorTick == true)
+                if (detAxis.AxisLabelsArr[nSelectedDetectorIndex][j].IsMajorTick == true)
                 {
-                    canvas.DrawLine(0, detAxis.AxisLabels[j].startPoint.Y, 470, detAxis.AxisLabels[j].startPoint.Y, paint);
+                    canvas.DrawLine(0, detAxis.AxisLabelsArr[nSelectedDetectorIndex][j].startPoint.Y, 470, detAxis.AxisLabelsArr[nSelectedDetectorIndex][j].startPoint.Y, paint);
                     //Debug.WriteLine("Y : {0}", detAxis.AxisLabels[j].startPoint.Y);
                 }
             }
@@ -257,9 +266,9 @@ namespace ChroZenService
                     for (int i = 1; i < ChartRawData.yC_ChartElementRawDataTimeStamp.RawData.Count; i++)
                     {
                         if (ChartRawData.yC_ChartElementRawDataDetector[0].RawData.Count > i)
-                        {
-                            float detY1Val = (195f - ChartRawData.yC_ChartElementRawDataDetector[0].RawData[i] * fYUnitForDetector + fYUnitOffsetForDetector);
-                            float detY2Val = (195f - ChartRawData.yC_ChartElementRawDataDetector[0].RawData[i - 1] * fYUnitForDetector + fYUnitOffsetForDetector);
+                        {                                                                         
+                            float detY1Val = (195f - ChartRawData.yC_ChartElementRawDataDetector[nSelectedDetectorIndex].RawData[i] * fYUnitForDetector + fYUnitOffsetForDetector);
+                            float detY2Val = (195f - ChartRawData.yC_ChartElementRawDataDetector[nSelectedDetectorIndex].RawData[i - 1] * fYUnitForDetector + fYUnitOffsetForDetector);
                             xStart = ChartRawData.yC_ChartElementRawDataTimeStamp.RawData[i] * fXUnit;
                             xEnd = ChartRawData.yC_ChartElementRawDataTimeStamp.RawData[i - 1] * fXUnit;
                             canvas.DrawLine(xStart,
@@ -322,7 +331,7 @@ namespace ChroZenService
 
         private void onVerticalDeltaChanged()
         {
-            Debug.WriteLine(string.Format("onVerticalDeltaChanged : VerticalDelta={0}", VerticalDelta));
+            //Debug.WriteLine(string.Format("onVerticalDeltaChanged : VerticalDelta={0}", VerticalDelta));
         }
 
         private void Axis_PanUpdated(object sender, PanUpdatedEventArgs e)
@@ -335,7 +344,7 @@ namespace ChroZenService
                 sKCanvasViewGrid.InvalidateSurface();
                 EventManager.ChartDeltaChangedEvent(e.TotalX, (float)VerticalDelta);
             }
-            Debug.WriteLine(string.Format("Axis : Pan StatusType={0}, VerticalDelta={1}, TotalY={2}", e.StatusType.ToString(), VerticalDelta, e.TotalY));
+            //Debug.WriteLine(string.Format("Axis : Pan StatusType={0}, VerticalDelta={1}, TotalY={2}", e.StatusType.ToString(), VerticalDelta, e.TotalY));
 
 
         }
@@ -351,7 +360,7 @@ namespace ChroZenService
                 sKCanvasViewGrid.InvalidateSurface();
                 EventManager.ChartOffsetChangedEvent(e.TotalX, (float)VerticalOffset);
             }
-            Debug.WriteLine(string.Format("Chart : Pan StatusType={0}, VerticalOffset={1}, TotalY={2}", e.StatusType.ToString(), VerticalOffset, e.TotalY));
+            //Debug.WriteLine(string.Format("Chart : Pan StatusType={0}, VerticalOffset={1}, TotalY={2}", e.StatusType.ToString(), VerticalOffset, e.TotalY));
 
 
         }

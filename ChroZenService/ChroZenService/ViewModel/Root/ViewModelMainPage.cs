@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using YC_ChroZenGC_Type;
 using static ChroZenService.ChroZenService_Const;
+using static YC_ChroZenGC_Type.T_CHROZEN_GC_STATE;
 using static YC_ChroZenGC_Type.T_CHROZEN_GC_SYSTEM_CONFIG;
 
 namespace ChroZenService
@@ -13,16 +15,26 @@ namespace ChroZenService
     {
         #region 생성자 & 이벤트 헨들러
 
+        TCPManager tcpManager;
+
         public ViewModelMainPage()
-        {
+        {         
+            SelectHomeMenu = new RelayCommand(SelectHomeMenuAction);
             SelectSystemMenu = new RelayCommand(SelectSystemMenuAction);
             SelectConfigMenu = new RelayCommand(SelectConfigMenuAction);
+            ErrorSelect = new RelayCommand(ErrorSelectAction);
+            ErrorResetSelect = new RelayCommand(ErrorResetSelectAction);
+            ErrorCloseSelect = new RelayCommand(ErrorCloseSelectAction);
+
             EventManager.onPACKCODE_Receivce += PACKCODE_ReceivceEventHandler;
+            tcpManager = new TCPManager();
+            Task.Factory.StartNew(() => { tcpManager.ConnectDevice("192.168.0.88", 4242); });
         }
 
         private void PACKCODE_ReceivceEventHandler(YC_Const.E_PACKCODE e_LC_PACK_CODE, I_CHROZEN_GC_PACKET packet)
         {
-            Task.Factory.StartNew(() => {
+            Task.Factory.StartNew(() =>
+            {
                 switch (e_LC_PACK_CODE)
                 {
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_STATE:
@@ -35,6 +47,40 @@ namespace ChroZenService
                             ViewModel_MainTop.DeviceRunStartCurrent = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.iCurrentRun.ToString();
                             ViewModel_MainTop.DeviceRunStartTotal = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.btPrgmStep.ToString();
 
+                            E_STATE state = (E_STATE)((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.btState;
+                            ViewModel_MainTop.CHROZEN_GC_STATE_String = state.ToString();
+                            switch (state)
+                            {
+                                case E_STATE.AutoReadyRun:
+                                case E_STATE.Run:
+                                case E_STATE.Calibration:
+                                case E_STATE.ColumnCondition:
+                                case E_STATE.Diagnostics:
+                                case E_STATE.GasSaver:
+                                case E_STATE.PostRun:
+                                case E_STATE.PowerSaveMode:
+                                    {
+                                        ViewModel_MainTop.StateColorBrush = ViewModel_MainTop.RunColorBrush;
+                                    }
+                                    break;
+                                case E_STATE.Error:
+                                    {
+                                        ViewModel_MainTop.StateColorBrush = ViewModel_MainTop.ErrorColorBrush;
+                                    }
+                                    break;
+                                case E_STATE.Initilize:
+                                case E_STATE.Ready:
+                                    {
+                                        ViewModel_MainTop.StateColorBrush = ViewModel_MainTop.ReadyColorBrush;
+                                    }
+                                    break;
+                                case E_STATE.NotReady:
+                                case E_STATE.Unknown:
+                                    {
+                                        ViewModel_MainTop.StateColorBrush = ViewModel_MainTop.NotReadyColorBrush;
+                                    }
+                                    break;
+                            }
                             #endregion MainTop
 
                             #region MainCenter
@@ -87,6 +133,244 @@ namespace ChroZenService
                             ViewModel_MainSide_Left.BottomPressure = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_Press[2].ToString("F2");
 
                             #endregion MainLeft
+
+                            #region MainRight
+
+                            ViewModel_MainSide_Right.TopSignalStrength = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.fSignal[0].ToString("##0.000");
+
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0])
+                            {
+                                case E_DET_TYPE.FID:
+                                case E_DET_TYPE.NPD:
+                                    {
+                                        ViewModel_MainSide_Right.TopFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+                                        ViewModel_MainSide_Right.TopFlow2Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[2].ToString("##0.000");
+                                        ViewModel_MainSide_Right.TopFlow3Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.TopFlow1Name = "Air";
+                                        ViewModel_MainSide_Right.TopFlow2Name = "H2";
+                                        ViewModel_MainSide_Right.TopFlow3Name = "MakeUp";
+
+                                        ViewModel_MainSide_Right.TopIsFlow1Using = true;
+                                        ViewModel_MainSide_Right.TopIsFlow2Using = true;
+                                        ViewModel_MainSide_Right.TopIsFlow3Using = true;
+                                        ViewModel_MainSide_Right.TopSignalUnit = "mV";
+                                    }
+                                    break;
+                                case E_DET_TYPE.FPD:
+                                case E_DET_TYPE.PFPD:
+                                    {
+                                        ViewModel_MainSide_Right.TopFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+                                        ViewModel_MainSide_Right.TopFlow2Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString("##0.000");
+                                        ViewModel_MainSide_Right.TopFlow3Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[2].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.TopFlow1Name = "Air2";
+                                        ViewModel_MainSide_Right.TopFlow2Name = "Air1";
+                                        ViewModel_MainSide_Right.TopFlow3Name = "H2";
+
+                                        ViewModel_MainSide_Right.TopIsFlow1Using = true;
+                                        ViewModel_MainSide_Right.TopIsFlow2Using = true;
+                                        ViewModel_MainSide_Right.TopIsFlow3Using = true;
+                                        ViewModel_MainSide_Right.TopSignalUnit = "mV";
+                                    }
+                                    break;
+                                case E_DET_TYPE.TCD:
+                                case E_DET_TYPE.uTCD:
+                                    {
+                                        ViewModel_MainSide_Right.TopFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+                                        ViewModel_MainSide_Right.TopFlow2Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.TopFlow1Name = "Ref.";
+                                        ViewModel_MainSide_Right.TopFlow2Name = "Sam.";
+
+                                        ViewModel_MainSide_Right.TopIsFlow1Using = true;
+                                        ViewModel_MainSide_Right.TopIsFlow2Using = true;
+                                        ViewModel_MainSide_Right.TopIsFlow3Using = false;
+                                        ViewModel_MainSide_Right.TopSignalUnit = "mV";
+                                    }
+                                    break;
+                                case E_DET_TYPE.ECD:
+                                case E_DET_TYPE.uECD:
+                                    {
+                                        ViewModel_MainSide_Right.TopFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.TopFlow1Name = "Mkup";
+
+                                        ViewModel_MainSide_Right.TopIsFlow1Using = true;
+                                        ViewModel_MainSide_Right.TopIsFlow2Using = false;
+                                        ViewModel_MainSide_Right.TopIsFlow3Using = false;
+                                        ViewModel_MainSide_Right.TopSignalUnit = "mV";
+                                    }
+                                    break;
+                                case E_DET_TYPE.PDD:
+                                    {
+                                        ViewModel_MainSide_Right.TopFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.TopIsFlow1Using = false;
+                                        ViewModel_MainSide_Right.TopIsFlow2Using = false;
+                                        ViewModel_MainSide_Right.TopIsFlow3Using = false;
+                                        ViewModel_MainSide_Right.TopSignalUnit = "mV";
+                                    }
+                                    break;
+                            }
+
+                            ViewModel_MainSide_Right.CenterSignalStrength = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.fSignal[1].ToString("##0.000");
+
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1])
+                            {
+                                case E_DET_TYPE.FID:
+                                case E_DET_TYPE.NPD:
+                                    {
+                                        ViewModel_MainSide_Right.CenterFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+                                        ViewModel_MainSide_Right.CenterFlow2Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[2].ToString("##0.000");
+                                        ViewModel_MainSide_Right.CenterFlow3Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.CenterFlow1Name = "Air";
+                                        ViewModel_MainSide_Right.CenterFlow2Name = "H2";
+                                        ViewModel_MainSide_Right.CenterFlow3Name = "MakeUp";
+
+                                        ViewModel_MainSide_Right.CenterIsFlow1Using = true;
+                                        ViewModel_MainSide_Right.CenterIsFlow2Using = true;
+                                        ViewModel_MainSide_Right.CenterIsFlow3Using = true;
+                                        ViewModel_MainSide_Right.CenterSignalUnit = "mV";
+                                    }
+                                    break;
+                                case E_DET_TYPE.FPD:
+                                case E_DET_TYPE.PFPD:
+                                    {
+                                        ViewModel_MainSide_Right.CenterFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+                                        ViewModel_MainSide_Right.CenterFlow2Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString("##0.000");
+                                        ViewModel_MainSide_Right.CenterFlow3Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[2].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.CenterFlow1Name = "Air2";
+                                        ViewModel_MainSide_Right.CenterFlow2Name = "Air1";
+                                        ViewModel_MainSide_Right.CenterFlow3Name = "H2";
+
+                                        ViewModel_MainSide_Right.CenterIsFlow1Using = true;
+                                        ViewModel_MainSide_Right.CenterIsFlow2Using = true;
+                                        ViewModel_MainSide_Right.CenterIsFlow3Using = true;
+                                        ViewModel_MainSide_Right.CenterSignalUnit = "mV";
+                                    }
+                                    break;
+                                case E_DET_TYPE.TCD:
+                                case E_DET_TYPE.uTCD:
+                                    {
+                                        ViewModel_MainSide_Right.CenterFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+                                        ViewModel_MainSide_Right.CenterFlow2Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.CenterFlow1Name = "Ref.";
+                                        ViewModel_MainSide_Right.CenterFlow2Name = "Sam.";
+
+                                        ViewModel_MainSide_Right.CenterIsFlow1Using = true;
+                                        ViewModel_MainSide_Right.CenterIsFlow2Using = true;
+                                        ViewModel_MainSide_Right.CenterIsFlow3Using = false;
+                                        ViewModel_MainSide_Right.CenterSignalUnit = "mV";
+                                    }
+                                    break;
+                                case E_DET_TYPE.ECD:
+                                case E_DET_TYPE.uECD:
+                                    {
+                                        ViewModel_MainSide_Right.CenterFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.CenterFlow1Name = "Mkup";
+
+                                        ViewModel_MainSide_Right.CenterIsFlow1Using = true;
+                                        ViewModel_MainSide_Right.CenterIsFlow2Using = false;
+                                        ViewModel_MainSide_Right.CenterIsFlow3Using = false;
+                                        ViewModel_MainSide_Right.CenterSignalUnit = "mV";
+                                    }
+                                    break;
+                                case E_DET_TYPE.PDD:
+                                    {
+                                        ViewModel_MainSide_Right.CenterFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.CenterIsFlow1Using = false;
+                                        ViewModel_MainSide_Right.CenterIsFlow2Using = false;
+                                        ViewModel_MainSide_Right.CenterIsFlow3Using = false;
+                                        ViewModel_MainSide_Right.CenterSignalUnit = "mV";
+                                    }
+                                    break;
+                            }
+
+                            ViewModel_MainSide_Right.BottomSignalStrength = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.fSignal[2].ToString("##0.000");
+
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2])
+                            {
+                                case E_DET_TYPE.FID:
+                                case E_DET_TYPE.NPD:
+                                    {
+                                        ViewModel_MainSide_Right.BottomFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+                                        ViewModel_MainSide_Right.BottomFlow2Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[2].ToString("##0.000");
+                                        ViewModel_MainSide_Right.BottomFlow3Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.BottomFlow1Name = "Air";
+                                        ViewModel_MainSide_Right.BottomFlow2Name = "H2";
+                                        ViewModel_MainSide_Right.BottomFlow3Name = "MakeUp";
+
+                                        ViewModel_MainSide_Right.BottomIsFlow1Using = true;
+                                        ViewModel_MainSide_Right.BottomIsFlow2Using = true;
+                                        ViewModel_MainSide_Right.BottomIsFlow3Using = true;
+                                        ViewModel_MainSide_Right.BottomSignalUnit = "mV";
+                                    }
+                                    break;
+                                case E_DET_TYPE.FPD:
+                                case E_DET_TYPE.PFPD:
+                                    {
+                                        ViewModel_MainSide_Right.BottomFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+                                        ViewModel_MainSide_Right.BottomFlow2Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString("##0.000");
+                                        ViewModel_MainSide_Right.BottomFlow3Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[2].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.BottomFlow1Name = "Air2";
+                                        ViewModel_MainSide_Right.BottomFlow2Name = "Air1";
+                                        ViewModel_MainSide_Right.BottomFlow3Name = "H2";
+
+                                        ViewModel_MainSide_Right.BottomIsFlow1Using = true;
+                                        ViewModel_MainSide_Right.BottomIsFlow2Using = true;
+                                        ViewModel_MainSide_Right.BottomIsFlow3Using = true;
+                                        ViewModel_MainSide_Right.BottomSignalUnit = "mV";
+                                    }
+                                    break;
+                                case E_DET_TYPE.TCD:
+                                case E_DET_TYPE.uTCD:
+                                    {
+                                        ViewModel_MainSide_Right.BottomFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+                                        ViewModel_MainSide_Right.BottomFlow2Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.BottomFlow1Name = "Ref.";
+                                        ViewModel_MainSide_Right.BottomFlow2Name = "Sam.";
+
+                                        ViewModel_MainSide_Right.BottomIsFlow1Using = true;
+                                        ViewModel_MainSide_Right.BottomIsFlow2Using = true;
+                                        ViewModel_MainSide_Right.BottomIsFlow3Using = false;
+                                        ViewModel_MainSide_Right.BottomSignalUnit = "mV";
+                                    }
+                                    break;
+                                case E_DET_TYPE.ECD:
+                                case E_DET_TYPE.uECD:
+                                    {
+                                        ViewModel_MainSide_Right.BottomFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.BottomFlow1Name = "Mkup";
+
+                                        ViewModel_MainSide_Right.BottomIsFlow1Using = true;
+                                        ViewModel_MainSide_Right.BottomIsFlow2Using = false;
+                                        ViewModel_MainSide_Right.BottomIsFlow3Using = false;
+                                        ViewModel_MainSide_Right.BottomSignalUnit = "mV";
+                                    }
+                                    break;
+                                case E_DET_TYPE.PDD:
+                                    {
+                                        ViewModel_MainSide_Right.BottomFlow1Value = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString("##0.000");
+
+                                        ViewModel_MainSide_Right.BottomIsFlow1Using = false;
+                                        ViewModel_MainSide_Right.BottomIsFlow2Using = false;
+                                        ViewModel_MainSide_Right.BottomIsFlow3Using = false;
+                                        ViewModel_MainSide_Right.BottomSignalUnit = "mV";
+                                    }
+                                    break;
+                            }
+
+                            #endregion MainRight
 
                             //ViewModel_MainSide_Left.IsTopAvailabe =
                             //    ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.d
@@ -215,7 +499,7 @@ namespace ChroZenService
                         break;
                 }
             });
-            
+
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -240,17 +524,74 @@ namespace ChroZenService
         public ViewModel_MainSide_Right ViewModel_MainSide_Right { get { return _ViewModel_MainSide_Right; } set { ViewModel_MainSide_Right = value; OnPropertyChanged("ViewModel_MainSide_Right"); } }
 
         ViewModel_MainChart _ViewModel_MainChart = new ViewModel_MainChart();
-        public ViewModel_MainChart ViewModel_MainChart { get { return _ViewModel_MainChart; } set { ViewModel_MainChart = value; OnPropertyChanged("ViewModel_MainChart"); } }
+        public ViewModel_MainChart ViewModel_MainChart { get { return _ViewModel_MainChart; } set { _ViewModel_MainChart = value; OnPropertyChanged("ViewModel_MainChart"); } }
 
+        bool _IsErrorPopupVisible = false;
+        public bool IsErrorPopupVisible { get { return _IsErrorPopupVisible; } set { _IsErrorPopupVisible = value; OnPropertyChanged("IsErrorPopupVisible"); } }
+
+        bool _IsConfigPageVisible = false;
+        public bool IsConfigPageVisible { get { return _IsConfigPageVisible; } set { _IsConfigPageVisible = value; OnPropertyChanged("IsConfigPageVisible"); } }
+        
+        bool _IsSystemPageVisible = false;
+        public bool IsSystemPageVisible { get { return _IsSystemPageVisible; } set { _IsSystemPageVisible = value; OnPropertyChanged("IsSystemPageVisible"); } }
+
+        bool _IsMainPageVisible = true;
+        public bool IsMainPageVisible { get { return _IsMainPageVisible; } set { _IsMainPageVisible = value; OnPropertyChanged("IsMainPageVisible"); } }
         #endregion Property
 
         #region Command
+
+        #region 에러 창 닫기 선택 
+        public RelayCommand ErrorCloseSelect { get; set; }
+        private void ErrorCloseSelectAction(object param)
+        {
+            //TODO : state가 에러 해제 되었을 때 자동 닫기 하는지 확인 필요
+            IsErrorPopupVisible = false;
+            Debug.WriteLine("ErrorCloseSelect");
+        }
+        #endregion 에러 창 닫기 선택 
+
+        #region 에러 리셋 선택 
+        public RelayCommand ErrorResetSelect { get; set; }
+        private void ErrorResetSelectAction(object param)
+        {
+            T_PACKCODE_CHROZEN_COMMAND packCode = T_PACKCODE_CHROZEN_COMMANDManager.InitiatedInstance;
+            packCode.packet.btCommand = 30;
+            tcpManager.Send(T_PACKCODE_CHROZEN_COMMANDManager.MakePACKCODE_SET(packCode.packet));
+            IsErrorPopupVisible = false;
+            Debug.WriteLine("ErrorResetSelect");
+        }
+        #endregion 에러 리셋 선택
+
+        #region 에러 선택 
+        public RelayCommand ErrorSelect { get; set; }
+        private void ErrorSelectAction(object param)
+        {
+            if ((E_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState == E_STATE.Error)
+            {
+                IsErrorPopupVisible = true;
+                Debug.WriteLine("ErrorSelected");
+            }
+        }
+        #endregion 에러 선택
+
+        #region 홈 메뉴
+        public RelayCommand SelectHomeMenu { get; set; }
+        private void SelectHomeMenuAction(object param)
+        {
+            IsSystemPageVisible = false;
+            IsConfigPageVisible = false;
+            IsMainPageVisible = true;
+        }
+        #endregion 홈 메뉴
 
         #region 시스템 설정 메뉴
         public RelayCommand SelectSystemMenu { get; set; }
         private void SelectSystemMenuAction(object param)
         {
-
+            IsSystemPageVisible = true;
+            IsConfigPageVisible = false;
+            IsMainPageVisible = false;
         }
         #endregion 시스템 설정 메뉴
 
@@ -258,7 +599,9 @@ namespace ChroZenService
         public RelayCommand SelectConfigMenu { get; set; }
         private void SelectConfigMenuAction(object param)
         {
-
+            IsSystemPageVisible = false;
+            IsConfigPageVisible = true;
+            IsMainPageVisible = false;
         }
         #endregion 장비 설정 메뉴
 

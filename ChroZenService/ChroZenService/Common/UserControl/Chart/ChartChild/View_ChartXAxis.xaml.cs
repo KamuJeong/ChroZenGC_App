@@ -34,9 +34,9 @@ namespace ChroZenService
         private void TemperatureUpdatedEventHandler()
         {
             //Task.Factory.StartNew(() => {
-                sKCanvasViewXAxis.InvalidateSurface();
+            sKCanvasViewXAxis.InvalidateSurface();
             //});
-            
+
         }
 
         private void MethodUpdatedEventHandler()
@@ -73,12 +73,15 @@ namespace ChroZenService
             AxisLabels = ChartHelper.GetLabels(ChartHelper.E_LABEL_TYPE.X);
 
             float fXAxisMaxVal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTotalRunTime;
-
+            ChartHelper.TickInfo tickInfo = ChartHelper.GetTickInfo(ChartHelper.E_LABEL_TYPE.X, fXAxisMaxVal);
             //minor tick당 pixel 수
             float fXAxisUnit = fChartWidth / fXAxisMaxVal;
+            float fXAxisMinTickValInterval = (tickInfo.fMajorTickInterval / ChroZenService_Const.MinorTicksPerMajorTick);
+            float fXAxisTickCount = fXAxisMaxVal / fXAxisMinTickValInterval;
+                        
+            float fXMinorTickInterval = fChartWidth / fXAxisTickCount;
 
             //major tick당 pixel 수
-            float fXMinorTickInterval = fXAxisMaxVal / AxisLabels.Count * fXAxisUnit;
             float fXMajotTickInterval = fXMinorTickInterval * ChroZenService_Const.MinorTicksPerMajorTick;
 
             float fMajorTickHeight = 10;

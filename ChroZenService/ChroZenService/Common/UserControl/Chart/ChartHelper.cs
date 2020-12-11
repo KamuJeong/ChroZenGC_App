@@ -113,8 +113,8 @@ namespace ChroZenService
 
                         float majorTickSeed = 0;
                         int nPowToRecover = 0;
-                        if (fDetOffset != 0)
-                            Debug.WriteLine(string.Format("GetTickInfo : fValRange = {0}, fDetOffset = {1} ", fValRange, fDetOffset));
+                        //if (fDetOffset != 0)
+                            //Debug.WriteLine(string.Format("GetTickInfo : fValRange = {0}, fDetOffset = {1} ", fValRange, fDetOffset));
                         //fTotalRunTime에서 1~10사이의 seed값을 추출 후 TickCount 설정
                         while (fMaxYValSeed < 1)
                         {
@@ -244,12 +244,12 @@ namespace ChroZenService
                     {
                         case E_LABEL_TYPE.Y_DET:
                             {
-                                labelModel.Add(new YL_ChartTick { IsMajorTick = true, TickLabel = ((tickInfo.fMajorTickInterval * (i - nMajorTickOffset) / ChroZenService_Const.MinorTicksPerMajorTick) + fOffsetToPlus).ToString("0.####") });
+                                labelModel.Add(new YL_ChartTick { IsMajorTick = true, TickLabel = ((tickInfo.fMajorTickInterval * (i - nMajorTickOffset) / ChroZenService_Const.MinorTicksPerMajorTick) + fOffsetToPlus).ToString("0.#####") });
                             }
                             break;
                         default:
                             {
-                                labelModel.Add(new YL_ChartTick { IsMajorTick = true, TickLabel = ((tickInfo.fMajorTickInterval * (i - nMajorTickOffset) / ChroZenService_Const.MinorTicksPerMajorTick)).ToString("0.####") });
+                                labelModel.Add(new YL_ChartTick { IsMajorTick = true, TickLabel = ((tickInfo.fMajorTickInterval * (i - nMajorTickOffset) / ChroZenService_Const.MinorTicksPerMajorTick)).ToString("0.#####") });
                             }
                             break;
                     }

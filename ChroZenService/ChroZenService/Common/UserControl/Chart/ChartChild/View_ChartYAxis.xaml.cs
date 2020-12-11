@@ -37,12 +37,21 @@ namespace ChroZenService
             }
         }
 
-        List<YL_ChartTick> _AxisLabels = new List<YL_ChartTick>();
-        public List<YL_ChartTick> AxisLabels
+        List<YL_ChartTick>[] _AxisLabelsArr = new List<YL_ChartTick>[]{
+            new List<YL_ChartTick>(),
+            new List<YL_ChartTick>(),
+            new List<YL_ChartTick>(),
+        };
+        public List<YL_ChartTick>[] AxisLabelsArr
         {
-            get { return _AxisLabels; }
-            set { _AxisLabels = value; }
+            get { return _AxisLabelsArr; }
+            set { _AxisLabelsArr = value; }
         }
+
+        /// <summary>
+        /// 선택 디텍터 인덱스 : 0 base
+        /// </summary>
+        public int nSelectedIndex = 0;
 
         public View_ChartYAxis()
         {
@@ -53,6 +62,14 @@ namespace ChroZenService
             EventManager.onChartOffsetChanged += onChartOffsetChangedEventHandler;
             EventManager.onTemperatureUpdated += TemperatureUpdatedEventHandler;
             EventManager.onChartOffsetChanged += onChartOffsetChangedEventHandler;
+            EventManager.onDetectorSelectionChangedTo += onDetectorSelectionChangedToEventHandler;
+        }
+
+        private void onDetectorSelectionChangedToEventHandler(int nDetIndex)
+        {
+            nSelectedIndex = nDetIndex;
+            CalcChartData();
+            sKCanvasViewXAxis.InvalidateSurface();
         }
 
         float VerticalDelta = 1;
@@ -93,7 +110,7 @@ namespace ChroZenService
                         //Det Y축 시작 값
                         float fTStartVal = ChartHelper.GetMaxSignal(VerticalDelta, VerticalOffset);
                         float fValRange = (fTStartVal - VerticalOffset);
-                        AxisLabels = ChartHelper.GetLabels(ChartHelper.E_LABEL_TYPE.Y_DET, fTStartVal, VerticalOffset, fVerticalDelta: VerticalDelta);
+                        AxisLabelsArr[nSelectedIndex] = ChartHelper.GetLabels(ChartHelper.E_LABEL_TYPE.Y_DET, fTStartVal, VerticalOffset, fVerticalDelta: VerticalDelta);
                         //Debug.WriteLine(string.Format("fTStartVal = {0}, VerticalOffset={1}, AxisLabels.Count={2}", fTStartVal, VerticalOffset, AxisLabels.Count));
                         //Y축 Majortick 시작 index
                         //float fYMajorTickSeed = (float)Math.Abs(AxisLabels.Count * VerticalOffset / fValRange);
@@ -131,7 +148,7 @@ namespace ChroZenService
 
 
                         float fMinVal = fTStartVal - fValRange;
-                        Debug.WriteLine(string.Format("Raw fMinVal = {0}", fMinVal));
+                        //Debug.WriteLine(string.Format("Raw fMinVal = {0}", fMinVal));
                         float nMajorTickVal = (float)(fValRange / (fYMinorTickRangeCount / ChroZenService_Const.MinorTicksPerMajorTick));
                         float nMinorTickVal = nMajorTickVal / ChroZenService_Const.MinorTicksPerMajorTick;
                         float fSpareValForMinorTick = fMinVal % nMajorTickVal;
@@ -139,7 +156,7 @@ namespace ChroZenService
                         if (fMinVal > 0)
                             fYMinorTickOffset = fYMinorTickOffset - fYMinorTickInterval;
 
-                        AxisLabels = ChartHelper.GetLabels(ChartHelper.E_LABEL_TYPE.Y_DET, fTStartVal, VerticalOffset, nYMajorTickStartOffset, VerticalDelta);
+                        AxisLabelsArr[nSelectedIndex] = ChartHelper.GetLabels(ChartHelper.E_LABEL_TYPE.Y_DET, fTStartVal, VerticalOffset, nYMajorTickStartOffset, VerticalDelta);
                         //Debug.WriteLine(string.Format("fTStartVal = {0}, VerticalOffset={1}, AxisLabels.Count={2}, nYMajorTickStartOffset={3}", fTStartVal, VerticalOffset, AxisLabels.Count, nYMajorTickStartOffset));
                         float fMajorTickLength = 10;
                         float fMinorTickLength = 5;
@@ -158,24 +175,24 @@ namespace ChroZenService
                         float fTextYOffest = 5;
                         float fTextXOffset = -40;
 
-                        for (int i = 0; i < AxisLabels.Count; i++)
+                        for (int i = 0; i < AxisLabelsArr[nSelectedIndex].Count; i++)
                         {
                             //Draw Major Tick 
                             if ((i % ChroZenService_Const.MinorTicksPerMajorTick) == nYMajorTickStartOffset)
                             {
                                 fStartX = 59;
                                 int nMajorTickIndex = i / ChroZenService_Const.MinorTicksPerMajorTick;
-                                AxisLabels[i].startPoint.X = fStartX;
-                                AxisLabels[i].startPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMajorTickInterval * nMajorTickIndex) - (fYMinorTickInterval * nYMajorTickStartOffset) + fYMinorTickOffset;
+                                AxisLabelsArr[nSelectedIndex][i].startPoint.X = fStartX;
+                                AxisLabelsArr[nSelectedIndex][i].startPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMajorTickInterval * nMajorTickIndex) - (fYMinorTickInterval * nYMajorTickStartOffset) + fYMinorTickOffset;
                                 //Debug.WriteLine(string.Format("nYMajorTickstartPoint = {0}", startPoint.Y));
 
-                                AxisLabels[i].endPoint.X = fStartX + fMajorTickLength;
-                                AxisLabels[i].endPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMajorTickInterval * nMajorTickIndex) - (fYMinorTickInterval * nYMajorTickStartOffset) + fYMinorTickOffset;
+                                AxisLabelsArr[nSelectedIndex][i].endPoint.X = fStartX + fMajorTickLength;
+                                AxisLabelsArr[nSelectedIndex][i].endPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMajorTickInterval * nMajorTickIndex) - (fYMinorTickInterval * nYMajorTickStartOffset) + fYMinorTickOffset;
                                 //canvas.DrawLine(startPoint, endPoint, temperaturePaint);
 
                                 SKPoint textPoint = new SKPoint();
-                                textPoint.X = AxisLabels[i].endPoint.X + fTextXOffset;
-                                textPoint.Y = AxisLabels[i].endPoint.Y + fTextYOffest;
+                                textPoint.X = AxisLabelsArr[nSelectedIndex][i].endPoint.X + fTextXOffset;
+                                textPoint.Y = AxisLabelsArr[nSelectedIndex][i].endPoint.Y + fTextYOffest;
                                 Thickness textMargin = new Thickness(textPoint.X, textPoint.Y, 0, 0);
                                 SKPaint textPaint = new SKPaint
                                 {
@@ -192,10 +209,10 @@ namespace ChroZenService
                             else
                             {
                                 fStartX = 64;
-                                AxisLabels[i].startPoint.X = fStartX;
-                                AxisLabels[i].startPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMinorTickInterval * i) + fYMinorTickOffset;
-                                AxisLabels[i].endPoint.X = fStartX + fMinorTickLength;
-                                AxisLabels[i].endPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMinorTickInterval * i) + fYMinorTickOffset;
+                                AxisLabelsArr[nSelectedIndex][i].startPoint.X = fStartX;
+                                AxisLabelsArr[nSelectedIndex][i].startPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMinorTickInterval * i) + fYMinorTickOffset;
+                                AxisLabelsArr[nSelectedIndex][i].endPoint.X = fStartX + fMinorTickLength;
+                                AxisLabelsArr[nSelectedIndex][i].endPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMinorTickInterval * i) + fYMinorTickOffset;
                             }
                         }
                     }
@@ -221,7 +238,7 @@ namespace ChroZenService
                 YL_ChartDrawInfo.YTempAxisLine.startPoint = new SKPoint(YL_ChartDrawInfo.fTemperatureStartX, 0);
                 YL_ChartDrawInfo.YTempAxisLine.linePaint.Color = new SKColor(0x3c, 0xb0, 0x43, 0xff);
 
-                AxisLabels = ChartHelper.GetLabels(ChartHelper.E_LABEL_TYPE.Y_TEMP);
+                AxisLabelsArr[nSelectedIndex] = ChartHelper.GetLabels(ChartHelper.E_LABEL_TYPE.Y_TEMP);
 
                 //Y축 최대 값은 가시성을 고려하여 Max온도의 2배로 설정
                 float fYAxisMaxVal = ChartHelper.GetMaxTemperature() * 2 > 400 ? 400 : ChartHelper.GetMaxTemperature() * 2;
@@ -230,7 +247,7 @@ namespace ChroZenService
                 float fYAxisUnit = YL_ChartDrawInfo.fChartHeight / fYAxisMaxVal;
 
                 //major tick당 pixel 수
-                float fYMinorTickInterval = fYAxisMaxVal / AxisLabels.Count * fYAxisUnit;
+                float fYMinorTickInterval = fYAxisMaxVal / AxisLabelsArr[nSelectedIndex].Count * fYAxisUnit;
                 float fYMajotTickInterval = fYMinorTickInterval * ChroZenService_Const.MinorTicksPerMajorTick;
 
                 float fMajorTickLength = 10;
@@ -248,21 +265,21 @@ namespace ChroZenService
 
                 float fTextYOffest = -10;
 
-                for (int i = 0; i < AxisLabels.Count; i++)
+                for (int i = 0; i < AxisLabelsArr[nSelectedIndex].Count; i++)
                 {
                     //Draw Major Tick 
                     if (i % ChroZenService_Const.MinorTicksPerMajorTick == 0)
                     {
                         int nMajorTickIndex = i / ChroZenService_Const.MinorTicksPerMajorTick;
-                        AxisLabels[i].startPoint.X = YL_ChartDrawInfo.fTemperatureStartX;
-                        AxisLabels[i].startPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMajotTickInterval * nMajorTickIndex);
-                        AxisLabels[i].endPoint.X = YL_ChartDrawInfo.fTemperatureStartX + fMajorTickLength;
-                        AxisLabels[i].endPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMajotTickInterval * nMajorTickIndex);
+                        AxisLabelsArr[nSelectedIndex][i].startPoint.X = YL_ChartDrawInfo.fTemperatureStartX;
+                        AxisLabelsArr[nSelectedIndex][i].startPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMajotTickInterval * nMajorTickIndex);
+                        AxisLabelsArr[nSelectedIndex][i].endPoint.X = YL_ChartDrawInfo.fTemperatureStartX + fMajorTickLength;
+                        AxisLabelsArr[nSelectedIndex][i].endPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMajotTickInterval * nMajorTickIndex);
                         //canvas.DrawLine(startPoint, endPoint, temperaturePaint);
 
                         SKPoint textPoint = new SKPoint();
-                        textPoint.X = AxisLabels[i].endPoint.X;
-                        textPoint.Y = AxisLabels[i].endPoint.Y + fTextYOffest;
+                        textPoint.X = AxisLabelsArr[nSelectedIndex][i].endPoint.X;
+                        textPoint.Y = AxisLabelsArr[nSelectedIndex][i].endPoint.Y + fTextYOffest;
                         Thickness textMargin = new Thickness(textPoint.X, textPoint.Y, 0, 0);
 
                         switch (nMajorTickIndex)
@@ -270,63 +287,63 @@ namespace ChroZenService
                             case 0:
                                 {
                                     label0.IsVisible = true;
-                                    label0.Text = AxisLabels[i].TickLabel;
+                                    label0.Text = AxisLabelsArr[nSelectedIndex][i].TickLabel;
                                     label0.Margin = textMargin;
                                 }
                                 break;
                             case 1:
                                 {
                                     label1.IsVisible = true;
-                                    label1.Text = AxisLabels[i].TickLabel;
+                                    label1.Text = AxisLabelsArr[nSelectedIndex][i].TickLabel;
                                     label1.Margin = textMargin;
                                 }
                                 break;
                             case 2:
                                 {
                                     label2.IsVisible = true;
-                                    label2.Text = AxisLabels[i].TickLabel;
+                                    label2.Text = AxisLabelsArr[nSelectedIndex][i].TickLabel;
                                     label2.Margin = textMargin;
                                 }
                                 break;
                             case 3:
                                 {
                                     label3.IsVisible = true;
-                                    label3.Text = AxisLabels[i].TickLabel;
+                                    label3.Text = AxisLabelsArr[nSelectedIndex][i].TickLabel;
                                     label3.Margin = textMargin;
                                 }
                                 break;
                             case 4:
                                 {
                                     label4.IsVisible = true;
-                                    label4.Text = AxisLabels[i].TickLabel;
+                                    label4.Text = AxisLabelsArr[nSelectedIndex][i].TickLabel;
                                     label4.Margin = textMargin;
                                 }
                                 break;
                             case 5:
                                 {
                                     label5.IsVisible = true;
-                                    label5.Text = AxisLabels[i].TickLabel;
+                                    label5.Text = AxisLabelsArr[nSelectedIndex][i].TickLabel;
                                     label5.Margin = textMargin;
                                 }
                                 break;
                             case 6:
                                 {
                                     label6.IsVisible = true;
-                                    label6.Text = AxisLabels[i].TickLabel;
+                                    label6.Text = AxisLabelsArr[nSelectedIndex][i].TickLabel;
                                     label6.Margin = textMargin;
                                 }
                                 break;
                             case 7:
                                 {
                                     label7.IsVisible = true;
-                                    label7.Text = AxisLabels[i].TickLabel;
+                                    label7.Text = AxisLabelsArr[nSelectedIndex][i].TickLabel;
                                     label7.Margin = textMargin;
                                 }
                                 break;
                             case 8:
                                 {
                                     label8.IsVisible = true;
-                                    label8.Text = AxisLabels[i].TickLabel;
+                                    label8.Text = AxisLabelsArr[nSelectedIndex][i].TickLabel;
                                     label8.Margin = textMargin;
                                 }
                                 break;
@@ -335,10 +352,10 @@ namespace ChroZenService
                     //Draw Minor Tick
                     else
                     {
-                        AxisLabels[i].startPoint.X = YL_ChartDrawInfo.fTemperatureStartX;
-                        AxisLabels[i].startPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMinorTickInterval * i);
-                        AxisLabels[i].endPoint.X = YL_ChartDrawInfo.fTemperatureStartX + fMinorTickLength;
-                        AxisLabels[i].endPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMinorTickInterval * i);
+                        AxisLabelsArr[nSelectedIndex][i].startPoint.X = YL_ChartDrawInfo.fTemperatureStartX;
+                        AxisLabelsArr[nSelectedIndex][i].startPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMinorTickInterval * i);
+                        AxisLabelsArr[nSelectedIndex][i].endPoint.X = YL_ChartDrawInfo.fTemperatureStartX + fMinorTickLength;
+                        AxisLabelsArr[nSelectedIndex][i].endPoint.Y = (YL_ChartDrawInfo.fChartHeight - fYMinorTickInterval * i);
                         //        canvas.DrawLine(fStartX,
                         //(fChartHeight - fYMinorTickInterval * i),
                         //fStartX + fMinorTickLength,
@@ -346,9 +363,9 @@ namespace ChroZenService
                     }
                 }
                 canvas.DrawLine(YL_ChartDrawInfo.fTemperatureStartX, 0, YL_ChartDrawInfo.fTemperatureStartX, YL_ChartDrawInfo.fChartHeight, YL_ChartDrawInfo.YTempAxisLine.linePaint);
-                for (int i = 0; i < AxisLabels.Count; i++)
+                for (int i = 0; i < AxisLabelsArr[nSelectedIndex].Count; i++)
                 {
-                    canvas.DrawLine(AxisLabels[i].startPoint, AxisLabels[i].endPoint, YL_ChartDrawInfo.YTempAxisLine.linePaint);
+                    canvas.DrawLine(AxisLabelsArr[nSelectedIndex][i].startPoint, AxisLabelsArr[nSelectedIndex][i].endPoint, YL_ChartDrawInfo.YTempAxisLine.linePaint);
                 }
             }
             else if (ChartAxisType == CHART_AXIS_TYPE.Y_SIGNAL)
@@ -356,22 +373,22 @@ namespace ChroZenService
                 canvas.DrawLine(YL_ChartDrawInfo.fDetStartX, 0, YL_ChartDrawInfo.fDetStartX, YL_ChartDrawInfo.fChartHeight, YL_ChartDrawInfo.YDetAxisLine.linePaint);
 
 
-                for (int i = 0; i < AxisLabels.Count; i++)
+                for (int i = 0; i < AxisLabelsArr[nSelectedIndex].Count; i++)
                 {
                     //Draw Major Tick 
-                    if (AxisLabels[i].IsMajorTick)
+                    if (AxisLabelsArr[nSelectedIndex][i].IsMajorTick)
                     {
                         SKPoint textPoint = new SKPoint();
-                        float fXTextOffset = -YL_ChartDrawInfo.textPaint.MeasureText(AxisLabels[i].TickLabel) - 10;
+                        float fXTextOffset = -YL_ChartDrawInfo.textPaint.MeasureText(AxisLabelsArr[nSelectedIndex][i].TickLabel) - 10;
                         //Debug.WriteLine(string.Format("fXTextOffset={0}", fXTextOffset));
                         //textPoint.X = AxisLabels[i].endPoint.X + YL_ChartDrawInfo.fDetTextXOffset;
-                        textPoint.X = AxisLabels[i].endPoint.X + fXTextOffset;
-                        textPoint.Y = AxisLabels[i].endPoint.Y + YL_ChartDrawInfo.fDetTextYOffset;
+                        textPoint.X = AxisLabelsArr[nSelectedIndex][i].endPoint.X + fXTextOffset;
+                        textPoint.Y = AxisLabelsArr[nSelectedIndex][i].endPoint.Y + YL_ChartDrawInfo.fDetTextYOffset;
 
-                        canvas.DrawText(AxisLabels[i].TickLabel, textPoint, YL_ChartDrawInfo.textPaint);
+                        canvas.DrawText(AxisLabelsArr[nSelectedIndex][i].TickLabel, textPoint, YL_ChartDrawInfo.textPaint);
                     }
                     //Draw Minor Tick
-                    canvas.DrawLine(AxisLabels[i].startPoint, AxisLabels[i].endPoint, YL_ChartDrawInfo.YDetAxisLine.linePaint);
+                    canvas.DrawLine(AxisLabelsArr[nSelectedIndex][i].startPoint, AxisLabelsArr[nSelectedIndex][i].endPoint, YL_ChartDrawInfo.YDetAxisLine.linePaint);
 
                 }
             }

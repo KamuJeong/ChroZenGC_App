@@ -112,5 +112,12 @@ namespace ChroZenService
         {
             onInformDelivered?.Invoke();
         }
+
+        public delegate void DetectorSelectionChangedTo(int nDetIndex);
+        public static DetectorSelectionChangedTo onDetectorSelectionChangedTo;
+        public static void DetectorSelectionChangedToEvent(int nDetIndex)
+        {
+            onDetectorSelectionChangedTo?.Invoke(nDetIndex);
+        }
     }
 }

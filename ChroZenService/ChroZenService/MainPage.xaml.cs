@@ -10,7 +10,7 @@ namespace ChroZenService
 {
     public partial class MainPage : ContentPage
     {
-        TCPManager tcpManager;
+        
         public MainPage()
         {
             //try
@@ -24,8 +24,6 @@ namespace ChroZenService
             //}
             NavigationPage.SetHasNavigationBar(this,false);
 
-            tcpManager = new TCPManager();
-            tcpManager.ConnectDevice("192.168.0.88", 4242);
         }
     }
 }
