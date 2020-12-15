@@ -118,7 +118,7 @@ namespace YC_ChroZenGC_Type
         public static float fMaxDetFlow3 = 150;
         public static int nMinBeadVoltage = 0;
         public static int nMaxBeadVoltage = 9;
-      
+
         #endregion Method const
 
         public static string STR_NULL = "";

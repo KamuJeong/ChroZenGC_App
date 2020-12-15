@@ -11,7 +11,7 @@ namespace ChroZenService
 
         public ViewModelConfigPage()
         {
-            DefaultCommand = new RelayCommand(DefaultCommandAction);
+            MenuSelectCommand = new RelayCommand(MenuSelectCommandAction);
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -43,18 +43,305 @@ namespace ChroZenService
         ViewModel_Config_ValveProgram _ViewModel_Config_ValveProgram = new ViewModel_Config_ValveProgram();
         ViewModel_Config_ValveProgram ViewModel_Config_ValveProgram { get { return _ViewModel_Config_ValveProgram; } set { _ViewModel_Config_ValveProgram = value; OnPropertyChanged("ViewModel_Config_ValveProgram"); } }
 
+        #region 좌측 메뉴 선택 속성
+        bool _IsOvenMenuSelected = true;
+        public bool IsOvenMenuSelected
+        {
+            get { return _IsOvenMenuSelected; }
+            set
+            {
+                _IsOvenMenuSelected = value;
+                if (value == true)
+                {
+                    IsFrontInletMenuSelected = false;
+                    IsCenterInletMenuSelected = false;
+                    IsBottomInletMenuSelected = false;
+                    IsFrontDetectorMenuSelected = false;
+                    IsCenterDetectorMenuSelected = false;
+                    IsBottomDetectorMenuSelected = false;
+                    IsSignalMenuSelected = false;
+                    IsValveMenuSelected = false;
+                    IsAuxMenuSelected = false;
+                }
+                OnPropertyChanged("IsOvenMenuSelected");
+            }
+        }
+
+        bool _IsFrontInletMenuSelected;
+        public bool IsFrontInletMenuSelected
+        {
+            get { return _IsFrontInletMenuSelected; }
+            set
+            {
+                _IsFrontInletMenuSelected = value;
+                if (value == true)
+                {
+                    IsOvenMenuSelected = false;
+                    IsCenterInletMenuSelected = false;
+                    IsBottomInletMenuSelected = false;
+                    IsFrontDetectorMenuSelected = false;
+                    IsCenterDetectorMenuSelected = false;
+                    IsBottomDetectorMenuSelected = false;
+                    IsSignalMenuSelected = false;
+                    IsValveMenuSelected = false;
+                    IsAuxMenuSelected = false;
+                }
+                OnPropertyChanged("IsFrontInletMenuSelected");
+            }
+        }
+
+        bool _IsCenterInletMenuSelected;
+        public bool IsCenterInletMenuSelected
+        {
+            get { return _IsCenterInletMenuSelected; }
+            set
+            {
+                _IsCenterInletMenuSelected = value;
+                if (value == true)
+                {
+                    IsOvenMenuSelected = false;
+                    IsFrontInletMenuSelected = false;
+                    IsBottomInletMenuSelected = false;
+                    IsFrontDetectorMenuSelected = false;
+                    IsCenterDetectorMenuSelected = false;
+                    IsBottomDetectorMenuSelected = false;
+                    IsSignalMenuSelected = false;
+                    IsValveMenuSelected = false;
+                    IsAuxMenuSelected = false;
+                }
+                OnPropertyChanged("IsCenterInletMenuSelected");
+            }
+        }
+
+        bool _IsBottomInletMenuSelected;
+        public bool IsBottomInletMenuSelected
+        {
+            get { return _IsBottomInletMenuSelected; }
+            set
+            {
+                _IsBottomInletMenuSelected = value;
+                if (value == true)
+                {
+                    IsOvenMenuSelected = false;
+                    IsFrontInletMenuSelected = false;
+                    IsCenterInletMenuSelected = false;
+                    IsFrontDetectorMenuSelected = false;
+                    IsCenterDetectorMenuSelected = false;
+                    IsBottomDetectorMenuSelected = false;
+                    IsSignalMenuSelected = false;
+                    IsValveMenuSelected = false;
+                    IsAuxMenuSelected = false;
+                }
+                OnPropertyChanged("IsBottomInletMenuSelected");
+            }
+        }
+
+        bool _IsFrontDetectorMenuSelected;
+        public bool IsFrontDetectorMenuSelected
+        {
+            get { return _IsFrontDetectorMenuSelected; }
+            set
+            {
+                _IsFrontDetectorMenuSelected = value;
+                if (value == true)
+                {
+                    IsOvenMenuSelected = false;
+                    IsFrontInletMenuSelected = false;
+                    IsCenterInletMenuSelected = false;
+                    IsBottomInletMenuSelected = false;
+                    IsCenterDetectorMenuSelected = false;
+                    IsBottomDetectorMenuSelected = false;
+                    IsSignalMenuSelected = false;
+                    IsValveMenuSelected = false;
+                    IsAuxMenuSelected = false;
+                }
+                OnPropertyChanged("IsFrontDetectorMenuSelected");
+            }
+        }
+
+        bool _IsCenterDetectorMenuSelected;
+        public bool IsCenterDetectorMenuSelected
+        {
+            get { return _IsCenterDetectorMenuSelected; }
+            set
+            {
+                _IsCenterDetectorMenuSelected = value;
+                if (value == true)
+                {
+                    IsOvenMenuSelected = false;
+                    IsFrontInletMenuSelected = false;
+                    IsCenterInletMenuSelected = false;
+                    IsBottomInletMenuSelected = false;
+                    IsFrontDetectorMenuSelected = false;
+                    IsBottomDetectorMenuSelected = false;
+                    IsSignalMenuSelected = false;
+                    IsValveMenuSelected = false;
+                    IsAuxMenuSelected = false;
+                }
+                OnPropertyChanged("IsCenterDetectorMenuSelected");
+            }
+        }
+
+        bool _IsBottomDetectorMenuSelected;
+        public bool IsBottomDetectorMenuSelected
+        {
+            get { return _IsBottomDetectorMenuSelected; }
+            set
+            {
+                _IsBottomDetectorMenuSelected = value;
+                if (value == true)
+                {
+                    IsOvenMenuSelected = false;
+                    IsFrontInletMenuSelected = false;
+                    IsCenterInletMenuSelected = false;
+                    IsBottomInletMenuSelected = false;
+                    IsFrontDetectorMenuSelected = false;
+                    IsCenterDetectorMenuSelected = false;
+                    IsSignalMenuSelected = false;
+                    IsValveMenuSelected = false;
+                    IsAuxMenuSelected = false;
+                }
+                OnPropertyChanged("IsBottomDetectorMenuSelected");
+            }
+        }
+
+        bool _IsSignalMenuSelected;
+        public bool IsSignalMenuSelected
+        {
+            get { return _IsSignalMenuSelected; }
+            set
+            {
+                _IsSignalMenuSelected = value;
+                if (value == true)
+                {
+                    IsOvenMenuSelected = false;
+                    IsFrontInletMenuSelected = false;
+                    IsCenterInletMenuSelected = false;
+                    IsBottomInletMenuSelected = false;
+                    IsFrontDetectorMenuSelected = false;
+                    IsCenterDetectorMenuSelected = false;
+                    IsBottomDetectorMenuSelected = false;
+                    IsValveMenuSelected = false;
+                    IsAuxMenuSelected = false;
+                }
+                OnPropertyChanged("IsSignalMenuSelected");
+            }
+        }
+
+        bool _IsValveMenuSelected;
+        public bool IsValveMenuSelected
+        {
+            get { return _IsValveMenuSelected; }
+            set
+            {
+                _IsValveMenuSelected = value;
+                if (value == true)
+                {
+                    IsOvenMenuSelected = false;
+                    IsFrontInletMenuSelected = false;
+                    IsCenterInletMenuSelected = false;
+                    IsBottomInletMenuSelected = false;
+                    IsFrontDetectorMenuSelected = false;
+                    IsCenterDetectorMenuSelected = false;
+                    IsBottomDetectorMenuSelected = false;
+                    IsSignalMenuSelected = false;
+                    IsAuxMenuSelected = false;
+                }
+                OnPropertyChanged("IsValveMenuSelected");
+            }
+        }
+
+        bool _IsAuxMenuSelected;
+        public bool IsAuxMenuSelected
+        {
+            get { return _IsAuxMenuSelected; }
+            set
+            {
+                _IsAuxMenuSelected = value;
+                if (value == true)
+                {
+                    IsOvenMenuSelected = false;
+                    IsFrontInletMenuSelected = false;
+                    IsCenterInletMenuSelected = false;
+                    IsBottomInletMenuSelected = false;
+                    IsFrontDetectorMenuSelected = false;
+                    IsCenterDetectorMenuSelected = false;
+                    IsBottomDetectorMenuSelected = false;
+                    IsSignalMenuSelected = false;
+                    IsValveMenuSelected = false;
+                }
+                OnPropertyChanged("IsAuxMenuSelected");
+            }
+        }
+        #endregion 좌측 메뉴 선택 속성
+
         #endregion Property
 
         #region Command
 
-        #region DefaultCommand
-        public RelayCommand DefaultCommand { get; set; }
-        private void DefaultCommandAction(object param)
+        #region 좌측 메뉴 선택 커멘드
+
+        public RelayCommand MenuSelectCommand { get; set; }
+        private void MenuSelectCommandAction(object param)
         {
+            switch (param)
+            {
+                case "Oven":
+                    {
+                        IsOvenMenuSelected = true;
+                    }
+                    break;
+                case "FrontInlet":
+                    {
+                        IsFrontInletMenuSelected = true;
+                    }
+                    break;
+                case "CenterInlet":
+                    {
+                        IsCenterInletMenuSelected = true;
+                    }
+                    break;
+                case "RearInlet":
+                    {
+                        IsBottomInletMenuSelected = true;
+                    }
+                    break;
+                case "FrontDetector":
+                    {
+                        IsFrontDetectorMenuSelected = true;
+                    }
+                    break;
+                case "CenterDetector":
+                    {
+                        IsCenterDetectorMenuSelected = true;
+                    }
+                    break;
+                case "RearDetector":
+                    {
+                        IsBottomDetectorMenuSelected = true;
+                    }
+                    break;
+                case "Signal":
+                    {
+                        IsSignalMenuSelected = true;
+                    }
+                    break;
+                case "Valve":
+                    {
+                        IsValveMenuSelected = true;
+                    }
+                    break;
+                case "Aux":
+                    {
+                        IsAuxMenuSelected = true;
+                    }
+                    break;
+            }
             //TODO :             
             Debug.WriteLine("DefaultCommand Fired");
         }
-        #endregion DefaultCommand 
+
+        #endregion 좌측 메뉴 선택 커멘드
 
         #endregion Command
 

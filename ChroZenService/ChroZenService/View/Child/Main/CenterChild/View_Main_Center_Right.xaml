@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.View_Main_Center_Right">
+  <ContentView.Content>
+        <AbsoluteLayout>
+            <!--Right-->
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="38"/>
+                    <RowDefinition Height="{Binding ViewModel_MainSide_Right.TopHeight}"/>
+                    <RowDefinition Height="38"/>
+                    <RowDefinition Height="{Binding ViewModel_MainSide_Right.CenterHeight}"/>
+                    <RowDefinition Height="38"/>
+                    <RowDefinition Height="{Binding ViewModel_MainSide_Right.BottomHeight}"/>
+                </Grid.RowDefinitions>
+                <!--<RadioButton IsChecked="{Binding ViewModel_MainSide_Right.IsTopVisible}" BackgroundColor="#11aa0000" Grid.Column="0" Margin="20,5,0,0" HorizontalOptions="Center" VerticalOptions="Start"/>-->
+                <local:UC_MainPageButton IsSelected="{Binding ViewModel_MainSide_Right.IsTopVisible}" Title="{Binding ViewModel_MainSide_Right.TopType}" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Start" TapGestureCommand="{Binding ViewModel_MainSide_Right.TopClick}" ButtonType="DET" IsEnabled="{Binding ViewModel_MainSide_Right.IsTopAvailable}"/>
+                <local:UC_MainPageButton IsSelected="{Binding ViewModel_MainSide_Right.IsCenterVisible}" Title="{Binding ViewModel_MainSide_Right.CenterType}" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" TapGestureCommand="{Binding ViewModel_MainSide_Right.CenterClick}" ButtonType="DET" IsEnabled="{Binding ViewModel_MainSide_Right.IsCenterAvailable}"/>
+                <local:UC_MainPageButton IsSelected="{Binding ViewModel_MainSide_Right.IsBottomVisible}" Title="{Binding ViewModel_MainSide_Right.BottomType}" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Start" TapGestureCommand="{Binding ViewModel_MainSide_Right.BottomClick}" ButtonType="DET" IsEnabled="{Binding ViewModel_MainSide_Right.IsBottomAvailable}"/>
+                <!--<RadioButton IsChecked="{Binding ViewModel_MainSide_Right.IsCenterVisible}" BackgroundColor="#1100aa00" Grid.Column="0" Margin="25,5,0,0" HorizontalOptions="Center" VerticalOptions="Start"/>
+                    <RadioButton IsChecked="{Binding ViewModel_MainSide_Right.IsBottomVisible}" BackgroundColor="#11aa00aa" Grid.Column="0" Margin="30,5,0,0" HorizontalOptions="Center" VerticalOptions="Start"/>-->
+
+                <Grid Grid.Row="1" IsVisible="{Binding ViewModel_MainSide_Right.IsTopVisible}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="55"/>
+                        <ColumnDefinition Width="55"/>
+                        <ColumnDefinition Width="83"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="22"/>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition Height="37"/>
+                        <RowDefinition Height="37"/>
+                        <RowDefinition Height="37"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,0,38,0" Text="{Binding ViewModel_MainSide_Right.TopSignalStrength}" VerticalOptions="End" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" HorizontalOptions="Center"/>
+                    <AbsoluteLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="End">
+                        <Line  X1="15" X2="155" Y1="28" Y2="28" Stroke="White"  />
+                    </AbsoluteLayout>
+                    <Label Grid.Row="1" Grid.Column="2" Margin="35,0,0,0" Text="{Binding ViewModel_MainSide_Right.TopSignalUnit}" VerticalOptions="End" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="{Binding ViewModel_MainSide_Right.TopFlow1Name}" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" Margin="10,0,0,0" IsVisible="{Binding ViewModel_MainSide_Right.TopIsFlow1Using}"/>
+                    <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="60,0,0,0" WidthRequest="90" Text="{Binding ViewModel_MainSide_Right.TopFlow1Value}" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}"  FontSize="20" IsVisible="{Binding ViewModel_MainSide_Right.TopIsFlow1Using}"/>
+                    <AbsoluteLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding ViewModel_MainSide_Right.TopIsFlow1Using}">
+                        <Line  X1="60" X2="160" Y1="28" Y2="28" Stroke="White"  />
+                    </AbsoluteLayout>
+
+                    <Label Grid.Row="5" Grid.Column="0" Text="{Binding ViewModel_MainSide_Right.TopFlow2Name}" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" Margin="10,0,0,0" IsVisible="{Binding ViewModel_MainSide_Right.TopIsFlow2Using}"/>
+                    <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="60,0,0,0" WidthRequest="90" Text="{Binding ViewModel_MainSide_Right.TopFlow2Value}" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}"  FontSize="20" IsVisible="{Binding ViewModel_MainSide_Right.TopIsFlow2Using}"/>
+                    <AbsoluteLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding ViewModel_MainSide_Right.TopIsFlow2Using}">
+                        <Line  X1="60" X2="160" Y1="28" Y2="28" Stroke="White"  />
+                    </AbsoluteLayout>
+
+                    <Label Grid.Row="6" Grid.Column="0" Text="{Binding ViewModel_MainSide_Right.TopFlow3Name}" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" Margin="10,0,0,0" IsVisible="{Binding ViewModel_MainSide_Right.TopIsFlow3Using}"/>
+                    <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="60,0,0,0" WidthRequest="90" Text="{Binding ViewModel_MainSide_Right.TopFlow3Value}" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}"  FontSize="20" IsVisible="{Binding ViewModel_MainSide_Right.TopIsFlow3Using}"/>
+                    <AbsoluteLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding ViewModel_MainSide_Right.TopIsFlow3Using}">
+                        <Line  X1="60" X2="160" Y1="28" Y2="28" Stroke="White"  />
+                    </AbsoluteLayout>
+                </Grid>
+            </Grid>
+        </AbsoluteLayout>
+  </ContentView.Content>
+</ContentView>

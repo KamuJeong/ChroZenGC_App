@@ -18,7 +18,7 @@ namespace ChroZenService
         TCPManager tcpManager;
 
         public ViewModelMainPage()
-        {         
+        {
             SelectHomeMenu = new RelayCommand(SelectHomeMenuAction);
             SelectSystemMenu = new RelayCommand(SelectSystemMenuAction);
             SelectConfigMenu = new RelayCommand(SelectConfigMenuAction);
@@ -27,14 +27,16 @@ namespace ChroZenService
             ErrorCloseSelect = new RelayCommand(ErrorCloseSelectAction);
 
             EventManager.onPACKCODE_Receivce += PACKCODE_ReceivceEventHandler;
-            tcpManager = new TCPManager();
-            Task.Factory.StartNew(() => { tcpManager.ConnectDevice("192.168.0.88", 4242); });
+            EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
+
+            //tcpManager = new TCPManager();
+            //Task.Factory.StartNew(() => { tcpManager.ConnectDevice("192.168.0.88", 4242); });
         }
 
         private void PACKCODE_ReceivceEventHandler(YC_Const.E_PACKCODE e_LC_PACK_CODE, I_CHROZEN_GC_PACKET packet)
         {
-            Task.Factory.StartNew(() =>
-            {
+            //Task.Factory.StartNew(() =>
+            //{
                 switch (e_LC_PACK_CODE)
                 {
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_STATE:
@@ -498,7 +500,7 @@ namespace ChroZenService
                         }
                         break;
                 }
-            });
+            //});
 
         }
 
@@ -531,12 +533,22 @@ namespace ChroZenService
 
         bool _IsConfigPageVisible = false;
         public bool IsConfigPageVisible { get { return _IsConfigPageVisible; } set { _IsConfigPageVisible = value; OnPropertyChanged("IsConfigPageVisible"); } }
-        
+
         bool _IsSystemPageVisible = false;
         public bool IsSystemPageVisible { get { return _IsSystemPageVisible; } set { _IsSystemPageVisible = value; OnPropertyChanged("IsSystemPageVisible"); } }
 
         bool _IsMainPageVisible = true;
         public bool IsMainPageVisible { get { return _IsMainPageVisible; } set { _IsMainPageVisible = value; OnPropertyChanged("IsMainPageVisible"); } }
+
+
+        ViewModel_KeyPad _ViewModel_KeyPad = new ViewModel_KeyPad();
+        public ViewModel_KeyPad ViewModel_KeyPad { get { return _ViewModel_KeyPad; } set { _ViewModel_KeyPad = value; OnPropertyChanged("ViewModel_KeyPad"); } }
+
+        ViewModelConfigPage _ViewModelConfigPage = new ViewModelConfigPage();
+        public ViewModelConfigPage ViewModelConfigPage { get { return _ViewModelConfigPage; } set { _ViewModelConfigPage = value; OnPropertyChanged("ViewModelConfigPage"); } }
+
+        ViewModelSystemPage _ViewModelSystemPage = new ViewModelSystemPage();
+        public ViewModelSystemPage ViewModelSystemPage { get { return _ViewModelSystemPage; } set { _ViewModelSystemPage = value; OnPropertyChanged("ViewModelSystemPage"); } }
         #endregion Property
 
         #region Command

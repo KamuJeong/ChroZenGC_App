@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChroZenService.View_Main_Top">
+  <ContentView.Content>
+        <AbsoluteLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="53"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <!--RunTime-->
+            <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="1" Text="RunTime" FontSize="32"  TextColor="{StaticResource CS_COLOR_GRAY_0}" HorizontalOptions="End"  FontAttributes="Bold" VerticalOptions="End" VerticalTextAlignment="End"/>
+                <Grid Grid.Column="2" VerticalOptions="End">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Label TextColor="{StaticResource CS_COLOR_GREEN_0}" Text="{Binding ViewModel_MainTop.DeviceRuntimeCurrent}" FontSize="24" FontAttributes="Bold" Grid.Column="0" VerticalOptions="End" HorizontalOptions="End"/>
+                    <Label TextColor="{StaticResource CS_COLOR_GREEN_0}" Text="/" FontSize="24" FontAttributes="Bold" Grid.Column="1" VerticalOptions="End" />
+                    <Label TextColor="{StaticResource CS_COLOR_GREEN_0}" Text="{Binding ViewModel_MainTop.DeviceRuntimeTotal}" FontSize="24" FontAttributes="Bold" Grid.Column="2" VerticalOptions="End" HorizontalOptions="Start"/>
+                </Grid>
+                <AbsoluteLayout Grid.Column="2">
+                    <Line  X1="0" X2="200" Y1="45" Y2="45" Stroke="White"  />
+                </AbsoluteLayout>
+                <Label Grid.Column="3" Text="min" FontSize="14"  TextColor="{StaticResource CS_COLOR_GRAY_0}"   HorizontalOptions="Start" VerticalOptions="End" VerticalTextAlignment="End"/>
+            </Grid>
+
+            <!--RunStart-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="1" Text="RunStart" FontSize="24"  TextColor="{StaticResource CS_COLOR_GRAY_0}" HorizontalOptions="End"   VerticalOptions="End"/>
+                <Grid Grid.Column="2" VerticalOptions="End">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="80"/>
+                    </Grid.ColumnDefinitions>
+                    <Label TextColor="{StaticResource CS_COLOR_GREEN_0}" Text="{Binding ViewModel_MainTop.DeviceRunStartCurrent}" FontSize="24" FontAttributes="Bold" Grid.Column="0" VerticalOptions="End" HorizontalOptions="End"/>
+                    <Label TextColor="{StaticResource CS_COLOR_GREEN_0}" Text="/" FontSize="24"  Grid.Column="1" FontAttributes="Bold" VerticalOptions="End" />
+                    <Label TextColor="{StaticResource CS_COLOR_GREEN_0}" Text="{Binding ViewModel_MainTop.DeviceRunStartTotal}" FontSize="24" FontAttributes="Bold" Grid.Column="2" VerticalOptions="End" HorizontalOptions="Start"/>
+                </Grid>
+                <AbsoluteLayout Grid.Column="2">
+                    <Line  X1="0" X2="160" Y1="50" Y2="50" Stroke="White"  />
+                </AbsoluteLayout>
+            </Grid>
+            </Grid>
+        </AbsoluteLayout>
+  </ContentView.Content>
+</ContentView>

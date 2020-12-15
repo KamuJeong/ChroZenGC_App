@@ -4,6 +4,27 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.App">
     <Application.Resources>
+
+        <Color x:Key="CS_COLOR_KEYPAD_LABEL_BORDER" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ffa4a4aa</x:String>
+            </x:Arguments>
+        </Color>
+        <Color x:Key="CS_COLOR_KEYPAD_LABEL_BACKGROUND" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ff373741</x:String>
+            </x:Arguments>
+        </Color>
+        <Color x:Key="CS_COLOR_KEYPAD_BUTTON_BACKGROUND" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ff1d1c21</x:String>
+            </x:Arguments>
+        </Color>
+        <Color x:Key="CS_COLOR_KEYPAD_BACKGROUND" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ff65627e</x:String>
+            </x:Arguments>
+        </Color>
         <Color x:Key="CS_COLOR_ROOT_BACKGROUND" x:FactoryMethod="FromHex">
             <x:Arguments>
                 <x:String>#ff2d2d37</x:String>

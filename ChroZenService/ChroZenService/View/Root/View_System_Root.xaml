@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChroZenService.View_System_Root">
+  <ContentView.Content>
+      <AbsoluteLayout>
+            <Grid >
+                <!--이미지 전시-->
+                <Grid>
+                    <Image Source="bg_info.png" Aspect="Fill" />
+                    <!--<Image Margin="17,43,0,0" Source="side_top.png" VerticalOptions="FillAndExpand"  />-->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="0"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="0"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="0"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="170"/>
+                            <ColumnDefinition Width="400"/>
+                            <ColumnDefinition Width="5"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="1" Grid.Column="1" Source="side_top.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3" ScaleY="1.18"  IsVisible="{Binding ViewModelSystemPage.IsInformationMenuSelected}" />
+                        <Button Grid.Row="1" Grid.Column="1" BackgroundColor="Transparent" Margin="-8,-8,40,8" Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="Information"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="Information" FontSize="22" FontAttributes="Bold" Margin="-8,-8,60,8" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsInformationMenuSelected}" Value="true">
+                                    <Setter Property="FontSize" Value="22"/>
+                                    <Setter Property="TextColor" Value="White"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsInformationMenuSelected}" Value="false">
+                                    <Setter Property="FontSize" Value="18"/>
+                                    <Setter Property="TextColor" Value="LightGray"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image Grid.Row="3" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3" ScaleY="1.18"  Margin="0,-11,0,11" IsVisible="{Binding ViewModelSystemPage.IsConfigMenuSelected}" />
+                        <Button Grid.Row="3" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-19,40,19"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="Config"/>
+                        <Label Grid.Row="3" Grid.Column="1" BackgroundColor="Transparent" Text="Config" FontSize="22" FontAttributes="Bold" Margin="-10,-19,60,19" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsConfigMenuSelected}" Value="true">
+                                    <Setter Property="FontSize" Value="22"/>
+                                    <Setter Property="TextColor" Value="White"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsConfigMenuSelected}" Value="false">
+                                    <Setter Property="FontSize" Value="18"/>
+                                    <Setter Property="TextColor" Value="LightGray"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image Grid.Row="4" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3"  ScaleY="1.18"  Margin="0,-15,0,15" IsVisible="{Binding ViewModelSystemPage.IsSettingsMenuSelected}" />
+                        <Button Grid.Row="4" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-23,40,23"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="Settings"/>
+                        <Label Grid.Row="4" Grid.Column="1" BackgroundColor="Transparent" Text="Settings" FontSize="22" FontAttributes="Bold" Margin="-10,-23,60,23" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True" >
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsSettingsMenuSelected}" Value="true">
+                                    <Setter Property="FontSize" Value="22"/>
+                                    <Setter Property="TextColor" Value="White"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsSettingsMenuSelected}" Value="false">
+                                    <Setter Property="FontSize" Value="18"/>
+                                    <Setter Property="TextColor" Value="LightGray"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image Grid.Row="5" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3"  ScaleY="1.18"  Margin="0,-19,0,19" IsVisible="{Binding ViewModelSystemPage.IsDiagnosticsMenuSelected}" />
+                        <Button Grid.Row="5" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-27,40,27" Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="Diagnostics"/>
+                        <Label Grid.Row="5" Grid.Column="1" BackgroundColor="Transparent" Text="Diagnostics" FontSize="22" FontAttributes="Bold" Margin="-10,-27,60,27" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True" >
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsDiagnosticsMenuSelected}" Value="true">
+                                    <Setter Property="FontSize" Value="22"/>
+                                    <Setter Property="TextColor" Value="White"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsDiagnosticsMenuSelected}" Value="false">
+                                    <Setter Property="FontSize" Value="18"/>
+                                    <Setter Property="TextColor" Value="LightGray"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image Grid.Row="7" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3" ScaleY="1.18"  Margin="0,-30,0,30" IsVisible="{Binding ViewModelSystemPage.IsCalibrationMenuSelected}" />
+                        <Button Grid.Row="7" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-38,40,38"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="Calibration"/>
+                        <Label Grid.Row="7" Grid.Column="1" BackgroundColor="Transparent" Text="Calibration" FontSize="22" FontAttributes="Bold" Margin="-10,-38,60,38" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True" >
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsCalibrationMenuSelected}" Value="true">
+                                    <Setter Property="FontSize" Value="22"/>
+                                    <Setter Property="TextColor" Value="White"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsCalibrationMenuSelected}" Value="false">
+                                    <Setter Property="FontSize" Value="18"/>
+                                    <Setter Property="TextColor" Value="LightGray"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image Grid.Row="8" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3"  ScaleY="1.18"  Margin="0,-34,0,34" IsVisible="{Binding ViewModelSystemPage.IsTimeControlMenuSelected}" />
+                        <Button Grid.Row="8" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-42,40,42"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="TimeControl"/>
+                        <Label Grid.Row="8" Grid.Column="1" BackgroundColor="Transparent" Text="Time&#x0a;Control" FontSize="22" FontAttributes="Bold" Margin="-10,-42,60,42" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True" >
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsTimeControlMenuSelected}" Value="true">
+                                    <Setter Property="FontSize" Value="22"/>
+                                    <Setter Property="TextColor" Value="White"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsTimeControlMenuSelected}" Value="false">
+                                    <Setter Property="FontSize" Value="18"/>
+                                    <Setter Property="TextColor" Value="LightGray"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image Grid.Row="9" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3"  ScaleY="1.18"  Margin="0,-38,0,38" IsVisible="{Binding ViewModelSystemPage.IsMethodMenuSelected}" />
+                        <Button Grid.Row="9" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-46,40,46"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="Method"/>
+                        <Label Grid.Row="9" Grid.Column="1" BackgroundColor="Transparent" Text="Method" FontSize="22" FontAttributes="Bold" Margin="-10,-46,60,46" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True" >
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsMethodMenuSelected}" Value="true">
+                                    <Setter Property="FontSize" Value="22"/>
+                                    <Setter Property="TextColor" Value="White"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsMethodMenuSelected}" Value="false">
+                                    <Setter Property="FontSize" Value="18"/>
+                                    <Setter Property="TextColor" Value="LightGray"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </AbsoluteLayout>
+  </ContentView.Content>
+</ContentView>

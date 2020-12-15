@@ -11,7 +11,7 @@ namespace ChroZenService
 
         public ViewModelSystemPage()
         {
-            DefaultCommand = new RelayCommand(DefaultCommandAction);
+            MenuSelectCommand = new RelayCommand(MenuSelectCommandAction);
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -57,18 +57,201 @@ namespace ChroZenService
         ViewModel_System_TimeControl _ViewModel_System_TimeControl = new ViewModel_System_TimeControl();
         ViewModel_System_TimeControl ViewModel_System_TimeControl { get { return _ViewModel_System_TimeControl; } set { _ViewModel_System_TimeControl = value; OnPropertyChanged("ViewModel_System_TimeControl"); } }
 
+        #region 좌측 메뉴 선택 속성
+        bool _IsInformationMenuSelected = true;
+        public bool IsInformationMenuSelected
+        {
+            get { return _IsInformationMenuSelected; }
+            set
+            {
+                _IsInformationMenuSelected = value;
+                if (value == true)
+                {
+                    IsConfigMenuSelected = false;
+                    IsSettingsMenuSelected = false;
+                    IsDiagnosticsMenuSelected = false;
+                    IsCalibrationMenuSelected = false;
+                    IsTimeControlMenuSelected = false;
+                    IsMethodMenuSelected = false;
+                }
+                OnPropertyChanged("IsInformationMenuSelected");
+            }
+        }
+
+        bool _IsConfigMenuSelected;
+        public bool IsConfigMenuSelected
+        {
+            get { return _IsConfigMenuSelected; }
+            set
+            {
+                _IsConfigMenuSelected = value;
+                if (value == true)
+                {
+                    IsInformationMenuSelected = false;
+                    IsSettingsMenuSelected = false;
+                    IsDiagnosticsMenuSelected = false;
+                    IsCalibrationMenuSelected = false;
+                    IsTimeControlMenuSelected = false;
+                    IsMethodMenuSelected = false;
+                }
+                OnPropertyChanged("IsConfigMenuSelected");
+            }
+        }
+
+        bool _IsSettingsMenuSelected;
+        public bool IsSettingsMenuSelected
+        {
+            get { return _IsSettingsMenuSelected; }
+            set
+            {
+                _IsSettingsMenuSelected = value;
+                if (value == true)
+                {
+                    IsInformationMenuSelected = false;
+                    IsConfigMenuSelected = false;
+                    IsDiagnosticsMenuSelected = false;
+                    IsCalibrationMenuSelected = false;
+                    IsTimeControlMenuSelected = false;
+                    IsMethodMenuSelected = false;
+                }
+                OnPropertyChanged("IsSettingsMenuSelected");
+            }
+        }
+
+        bool _IsDiagnosticsMenuSelected;
+        public bool IsDiagnosticsMenuSelected
+        {
+            get { return _IsDiagnosticsMenuSelected; }
+            set
+            {
+                _IsDiagnosticsMenuSelected = value;
+                if (value == true)
+                {
+                    IsInformationMenuSelected = false;
+                    IsConfigMenuSelected = false;
+                    IsSettingsMenuSelected = false;
+                    IsCalibrationMenuSelected = false;
+                    IsTimeControlMenuSelected = false;
+                    IsMethodMenuSelected = false;
+                }
+                OnPropertyChanged("IsDiagnosticsMenuSelected");
+            }
+        }
+
+        bool _IsCalibrationMenuSelected;
+        public bool IsCalibrationMenuSelected
+        {
+            get { return _IsCalibrationMenuSelected; }
+            set
+            {
+                _IsCalibrationMenuSelected = value;
+                if (value == true)
+                {
+                    IsInformationMenuSelected = false;
+                    IsConfigMenuSelected = false;
+                    IsSettingsMenuSelected = false;
+                    IsDiagnosticsMenuSelected = false;
+                    IsTimeControlMenuSelected = false;
+                    IsMethodMenuSelected = false;
+                }
+                OnPropertyChanged("IsCalibrationMenuSelected");
+            }
+        }
+
+        bool _IsTimeControlMenuSelected;
+        public bool IsTimeControlMenuSelected
+        {
+            get { return _IsTimeControlMenuSelected; }
+            set
+            {
+                _IsTimeControlMenuSelected = value;
+                if (value == true)
+                {
+                    IsInformationMenuSelected = false;
+                    IsConfigMenuSelected = false;
+                    IsSettingsMenuSelected = false;
+                    IsDiagnosticsMenuSelected = false;
+                    IsCalibrationMenuSelected = false;
+                    IsMethodMenuSelected = false;
+                }
+                OnPropertyChanged("IsTimeControlMenuSelected");
+            }
+        }
+
+        bool _IsMethodMenuSelected;
+        public bool IsMethodMenuSelected
+        {
+            get { return _IsMethodMenuSelected; }
+            set
+            {
+                _IsMethodMenuSelected = value;
+                if (value == true)
+                {
+                    IsInformationMenuSelected = false;
+                    IsConfigMenuSelected = false;
+                    IsSettingsMenuSelected = false;
+                    IsDiagnosticsMenuSelected = false;
+                    IsCalibrationMenuSelected = false;
+                    IsTimeControlMenuSelected = false;
+                }
+                OnPropertyChanged("IsMethodMenuSelected");
+            }
+        }
+
+        #endregion 좌측 메뉴 선택 속성
+
         #endregion Property
 
         #region Command
 
-        #region DefaultCommand
-        public RelayCommand DefaultCommand { get; set; }
-        private void DefaultCommandAction(object param)
+        #region 좌측 메뉴 선택 커멘드
+
+        public RelayCommand MenuSelectCommand { get; set; }
+        private void MenuSelectCommandAction(object param)
         {
+            switch (param)
+            {
+                case "Information":
+                    {
+                        IsInformationMenuSelected = true;
+                    }
+                    break;
+                case "Config":
+                    {
+                        IsConfigMenuSelected = true;
+                    }
+                    break;
+                case "Settings":
+                    {
+                        IsSettingsMenuSelected = true;
+                    }
+                    break;
+                case "Diagnostics":
+                    {
+                        IsDiagnosticsMenuSelected = true;
+                    }
+                    break;
+                case "Calibration":
+                    {
+                        IsCalibrationMenuSelected = true;
+                    }
+                    break;
+                case "TimeControl":
+                    {
+                        IsTimeControlMenuSelected = true;
+                    }
+                    break;
+                case "Method":
+                    {
+                        IsMethodMenuSelected = true;
+                    }
+                    break;               
+            }
             //TODO :             
             Debug.WriteLine("DefaultCommand Fired");
         }
-        #endregion DefaultCommand 
+
+        #endregion 좌측 메뉴 선택 커멘드
 
         #endregion Command
 

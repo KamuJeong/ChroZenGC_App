@@ -9,6 +9,17 @@ namespace ChroZenService
 {
     public static class EventManager
     {
+        #region MainInitialized
+
+        public delegate void MainInitialized(TCPManager tCPManager);
+        public static MainInitialized onMainInitialized;
+        public static void MainInitializedEvent(TCPManager tCPManager)
+        {
+            onMainInitialized?.Invoke(tCPManager);
+        }
+
+        #endregion MainInitialized
+
         #region RunStarted
 
         public delegate void RunStarted();

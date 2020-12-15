@@ -148,11 +148,11 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="NETStandard.Library">
-      <Version>2.0.3</Version>
-    </PackageReference>
     <PackageReference Include="SkiaSharp">
-      <Version>1.68.0</Version>
+      <Version>1.68.1</Version>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies">
+      <Version>1.68.1</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp.Views">
       <Version>1.68.0</Version>

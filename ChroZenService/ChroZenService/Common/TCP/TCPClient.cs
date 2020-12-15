@@ -498,7 +498,7 @@ namespace ChroZenService
             }
         }
 
-        byte[] reserveBytes = new byte[16000];
+        byte[] reserveBytes = new byte[4096 * 4];
         int nReservedCount;
 
         private void ReceiveCallback(IAsyncResult ar)
@@ -555,7 +555,7 @@ namespace ChroZenService
                                     }
                                     else
                                     {
-                                        Array.Copy(dissectedPacket,reserveBytes, dissectedPacket.Length);
+                                        Array.Copy(dissectedPacket, reserveBytes, dissectedPacket.Length);
                                         nReservedCount = dissectedPacket.Length;
                                         Debug.WriteLine(string.Format("=============================Reserve Added============================== {0}", nReservedCount));
                                         break;
