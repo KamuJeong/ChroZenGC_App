@@ -132,10 +132,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Common\Controls\KeyPad\KeyPad.xaml">
+    <EmbeddedResource Update="Common\UserControl\KeyPad\KeyPad.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Common\Controls\TextBoxEx.xaml">
+    <EmbeddedResource Update="Common\UserControl\Editor\TextBoxEx.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Common\UserControl\Chart\ChartChild\View_ChartXAxis.xaml">
@@ -282,9 +282,6 @@
     <EmbeddedResource Update="View\Child\System\Child\Time Control\View_System_TimeControl.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\System\Child\View_System_Menu.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="View\Root\View_System_Root.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -297,5 +294,9 @@
     <Compile Update="View\Root\View_Main_Root.xaml.cs">
       <DependentUpon>View_Main_Root.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\NewFolder1\" />
   </ItemGroup>
 </Project>

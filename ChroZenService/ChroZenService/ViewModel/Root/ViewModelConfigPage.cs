@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
@@ -12,6 +13,7 @@ namespace ChroZenService
         public ViewModelConfigPage()
         {
             MenuSelectCommand = new RelayCommand(MenuSelectCommandAction);
+            SubMenuSelectCommand = new RelayCommand(SubMenuSelectCommandAction);
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -20,260 +22,76 @@ namespace ChroZenService
 
         #region Property
 
-        ViewModel_Config_AuxFlow _ViewModel_Config_AuxFlow = new ViewModel_Config_AuxFlow();
-        ViewModel_Config_AuxFlow ViewModel_Config_AuxFlow { get { return _ViewModel_Config_AuxFlow; } set { _ViewModel_Config_AuxFlow = value; OnPropertyChanged("ViewModel_Config_AuxFlow"); } }
-        ViewModel_Config_AuxTemperature _ViewModel_Config_AuxTemperature = new ViewModel_Config_AuxTemperature();
-        ViewModel_Config_AuxTemperature ViewModel_Config_AuxTemperature { get { return _ViewModel_Config_AuxTemperature; } set { _ViewModel_Config_AuxTemperature = value; OnPropertyChanged("ViewModel_Config_AuxTemperature"); } }
-        ViewModel_Config_DetConfig _ViewModel_Config_DetConfig = new ViewModel_Config_DetConfig();
-        ViewModel_Config_DetConfig ViewModel_Config_DetConfig { get { return _ViewModel_Config_DetConfig; } set { _ViewModel_Config_DetConfig = value; OnPropertyChanged("ViewModel_Config_DetConfig"); } }
-        ViewModel_Config_DetSettings _ViewModel_Config_DetSettings = new ViewModel_Config_DetSettings();
-        ViewModel_Config_DetSettings ViewModel_Config_DetSettings { get { return _ViewModel_Config_DetSettings; } set { _ViewModel_Config_DetSettings = value; OnPropertyChanged("ViewModel_Config_DetSettings"); } }
-        ViewModel_Config_InletConfig _ViewModel_Config_InletConfig = new ViewModel_Config_InletConfig();
-        ViewModel_Config_InletConfig ViewModel_Config_InletConfig { get { return _ViewModel_Config_InletConfig; } set { _ViewModel_Config_InletConfig = value; OnPropertyChanged("ViewModel_Config_InletConfig"); } }
-        ViewModel_Config_InletSettings _ViewModel_Config_InletSettings = new ViewModel_Config_InletSettings();
-        ViewModel_Config_InletSettings ViewModel_Config_InletSettings { get { return _ViewModel_Config_InletSettings; } set { _ViewModel_Config_InletSettings = value; OnPropertyChanged("ViewModel_Config_InletSettings"); } }
+        #region Oven
         ViewModel_Config_OvenConfig _ViewModel_Config_OvenConfig = new ViewModel_Config_OvenConfig();
-        ViewModel_Config_OvenConfig ViewModel_Config_OvenConfig { get { return _ViewModel_Config_OvenConfig; } set { _ViewModel_Config_OvenConfig = value; OnPropertyChanged("ViewModel_Config_OvenConfig"); } }
+        public ViewModel_Config_OvenConfig ViewModel_Config_OvenConfig { get { return _ViewModel_Config_OvenConfig; } set { _ViewModel_Config_OvenConfig = value; OnPropertyChanged("ViewModel_Config_OvenConfig"); } }
         ViewModel_Config_OvenSettings _ViewModel_Config_OvenSettings = new ViewModel_Config_OvenSettings();
-        ViewModel_Config_OvenSettings ViewModel_Config_OvenSettings { get { return _ViewModel_Config_OvenSettings; } set { _ViewModel_Config_OvenSettings = value; OnPropertyChanged("ViewModel_Config_OvenSettings"); } }
-        ViewModel_Config_Signal _ViewModel_Config_Signal = new ViewModel_Config_Signal();
-        ViewModel_Config_Signal ViewModel_Config_Signal { get { return _ViewModel_Config_Signal; } set { _ViewModel_Config_Signal = value; OnPropertyChanged("ViewModel_Config_Signal"); } }
+        public ViewModel_Config_OvenSettings ViewModel_Config_OvenSettings { get { return _ViewModel_Config_OvenSettings; } set { _ViewModel_Config_OvenSettings = value; OnPropertyChanged("ViewModel_Config_OvenSettings"); } }
+        #endregion Oven
+
+        #region Inlet
+        ViewModel_Config_InletConfig _ViewModel_Config_FrontInletConfig = new ViewModel_Config_InletConfig();
+        public ViewModel_Config_InletConfig ViewModel_Config_FrontInletConfig { get { return _ViewModel_Config_FrontInletConfig; } set { _ViewModel_Config_FrontInletConfig = value; OnPropertyChanged("ViewModel_Config_FrontInletConfig"); } }
+        ViewModel_Config_InletConfig _ViewModel_Config_CenterInletConfig = new ViewModel_Config_InletConfig();
+        public ViewModel_Config_InletConfig ViewModel_Config_CenterInletConfig { get { return _ViewModel_Config_CenterInletConfig; } set { _ViewModel_Config_CenterInletConfig = value; OnPropertyChanged("ViewModel_Config_CenterInletConfig"); } }
+        ViewModel_Config_InletConfig _ViewModel_Config_RearInletConfig = new ViewModel_Config_InletConfig();
+        public ViewModel_Config_InletConfig ViewModel_Config_RearInletConfig { get { return _ViewModel_Config_RearInletConfig; } set { _ViewModel_Config_RearInletConfig = value; OnPropertyChanged("ViewModel_Config_RearInletConfig"); } }
+        ViewModel_Config_InletSettings _ViewModel_Config_FrontInletSettings = new ViewModel_Config_InletSettings();
+        public ViewModel_Config_InletSettings ViewModel_Config_FrontInletSettings { get { return _ViewModel_Config_FrontInletSettings; } set { _ViewModel_Config_FrontInletSettings = value; OnPropertyChanged("ViewModel_Config_FrontInletSettings"); } }
+        ViewModel_Config_InletSettings _ViewModel_Config_CenterInletSettings = new ViewModel_Config_InletSettings();
+        public ViewModel_Config_InletSettings ViewModel_Config_CenterInletSettings { get { return _ViewModel_Config_CenterInletSettings; } set { _ViewModel_Config_CenterInletSettings = value; OnPropertyChanged("ViewModel_Config_CenterInletSettings"); } }
+        ViewModel_Config_InletSettings _ViewModel_Config_RearInletSettings = new ViewModel_Config_InletSettings();
+        public ViewModel_Config_InletSettings ViewModel_Config_RearInletSettings { get { return _ViewModel_Config_RearInletSettings; } set { _ViewModel_Config_RearInletSettings = value; OnPropertyChanged("ViewModel_Config_RearInletSettings"); } }
+        #endregion Inlet
+
+        #region Detector
+        ViewModel_Config_DetConfig _ViewModel_Config_FrontDetConfig = new ViewModel_Config_DetConfig();
+        public ViewModel_Config_DetConfig ViewModel_Config_FrontDetConfig { get { return _ViewModel_Config_FrontDetConfig; } set { _ViewModel_Config_FrontDetConfig = value; OnPropertyChanged("ViewModel_Config_FrontDetConfig"); } }
+        ViewModel_Config_DetConfig _ViewModel_Config_CenterDetConfig = new ViewModel_Config_DetConfig();
+        public ViewModel_Config_DetConfig ViewModel_Config_CenterDetConfig { get { return _ViewModel_Config_CenterDetConfig; } set { _ViewModel_Config_CenterDetConfig = value; OnPropertyChanged("ViewModel_Config_CenterDetConfig"); } }
+        ViewModel_Config_DetConfig _ViewModel_Config_RearDetConfig = new ViewModel_Config_DetConfig();
+        public ViewModel_Config_DetConfig ViewModel_Config_RearDetConfig { get { return _ViewModel_Config_RearDetConfig; } set { _ViewModel_Config_RearDetConfig = value; OnPropertyChanged("ViewModel_Config_RearDetConfig"); } }
+        ViewModel_Config_DetSettings _ViewModel_Config_FrontDetSettings = new ViewModel_Config_DetSettings();
+        public ViewModel_Config_DetSettings ViewModel_Config_FrontDetSettings { get { return _ViewModel_Config_FrontDetSettings; } set { _ViewModel_Config_FrontDetSettings = value; OnPropertyChanged("ViewModel_Config_FrontDetSettings"); } }
+        ViewModel_Config_DetSettings _ViewModel_Config_CenterDetSettings = new ViewModel_Config_DetSettings();
+        public ViewModel_Config_DetSettings ViewModel_Config_CenterDetSettings { get { return _ViewModel_Config_CenterDetSettings; } set { _ViewModel_Config_CenterDetSettings = value; OnPropertyChanged("ViewModel_Config_CenterDetSettings"); } }
+        ViewModel_Config_DetSettings _ViewModel_Config_RearDetSettings = new ViewModel_Config_DetSettings();
+        public ViewModel_Config_DetSettings ViewModel_Config_RearDetSettings { get { return _ViewModel_Config_RearDetSettings; } set { _ViewModel_Config_RearDetSettings = value; OnPropertyChanged("ViewModel_Config_RearDetSettings"); } }
+        #endregion Detector
+
+        #region Signal
+        ViewModel_Config_Signal _ViewModel_Config_Signal1 = new ViewModel_Config_Signal();
+        public ViewModel_Config_Signal ViewModel_Config_Signal1 { get { return _ViewModel_Config_Signal1; } set { _ViewModel_Config_Signal1 = value; OnPropertyChanged("ViewModel_Config_Signal1"); } }
+        ViewModel_Config_Signal _ViewModel_Config_Signal2 = new ViewModel_Config_Signal();
+        public ViewModel_Config_Signal ViewModel_Config_Signal2 { get { return _ViewModel_Config_Signal2; } set { _ViewModel_Config_Signal2 = value; OnPropertyChanged("ViewModel_Config_Signal2"); } }
+        ViewModel_Config_Signal _ViewModel_Config_Signal3 = new ViewModel_Config_Signal();
+        public ViewModel_Config_Signal ViewModel_Config_Signal3 { get { return _ViewModel_Config_Signal3; } set { _ViewModel_Config_Signal3 = value; OnPropertyChanged("ViewModel_Config_Signal3"); } }
+        #endregion Signal
+
+        #region Valve
         ViewModel_Config_ValveInitialState _ViewModel_Config_ValveInitialState = new ViewModel_Config_ValveInitialState();
-        ViewModel_Config_ValveInitialState ViewModel_Config_ValveInitialState { get { return _ViewModel_Config_ValveInitialState; } set { _ViewModel_Config_ValveInitialState = value; OnPropertyChanged("ViewModel_Config_ValveInitialState"); } }
+        public ViewModel_Config_ValveInitialState ViewModel_Config_ValveInitialState { get { return _ViewModel_Config_ValveInitialState; } set { _ViewModel_Config_ValveInitialState = value; OnPropertyChanged("ViewModel_Config_ValveInitialState"); } }
         ViewModel_Config_ValveProgram _ViewModel_Config_ValveProgram = new ViewModel_Config_ValveProgram();
-        ViewModel_Config_ValveProgram ViewModel_Config_ValveProgram { get { return _ViewModel_Config_ValveProgram; } set { _ViewModel_Config_ValveProgram = value; OnPropertyChanged("ViewModel_Config_ValveProgram"); } }
+        public ViewModel_Config_ValveProgram ViewModel_Config_ValveProgram { get { return _ViewModel_Config_ValveProgram; } set { _ViewModel_Config_ValveProgram = value; OnPropertyChanged("ViewModel_Config_ValveProgram"); } }
+        #endregion Valve
+
+        #region AuxFlow
+        ViewModel_Config_AuxFlow _ViewModel_Config_AuxFlow = new ViewModel_Config_AuxFlow();
+        public ViewModel_Config_AuxFlow ViewModel_Config_AuxFlow { get { return _ViewModel_Config_AuxFlow; } set { _ViewModel_Config_AuxFlow = value; OnPropertyChanged("ViewModel_Config_AuxFlow"); } }
+        ViewModel_Config_AuxTemperature _ViewModel_Config_AuxTemperature = new ViewModel_Config_AuxTemperature();
+        public ViewModel_Config_AuxTemperature ViewModel_Config_AuxTemperature { get { return _ViewModel_Config_AuxTemperature; } set { _ViewModel_Config_AuxTemperature = value; OnPropertyChanged("ViewModel_Config_AuxTemperature"); } }
+        #endregion AuxFlow
 
         #region 좌측 메뉴 선택 속성
-        bool _IsOvenMenuSelected = true;
-        public bool IsOvenMenuSelected
-        {
-            get { return _IsOvenMenuSelected; }
-            set
-            {
-                _IsOvenMenuSelected = value;
-                if (value == true)
-                {
-                    IsFrontInletMenuSelected = false;
-                    IsCenterInletMenuSelected = false;
-                    IsBottomInletMenuSelected = false;
-                    IsFrontDetectorMenuSelected = false;
-                    IsCenterDetectorMenuSelected = false;
-                    IsBottomDetectorMenuSelected = false;
-                    IsSignalMenuSelected = false;
-                    IsValveMenuSelected = false;
-                    IsAuxMenuSelected = false;
-                }
-                OnPropertyChanged("IsOvenMenuSelected");
-            }
-        }
 
-        bool _IsFrontInletMenuSelected;
-        public bool IsFrontInletMenuSelected
-        {
-            get { return _IsFrontInletMenuSelected; }
-            set
-            {
-                _IsFrontInletMenuSelected = value;
-                if (value == true)
-                {
-                    IsOvenMenuSelected = false;
-                    IsCenterInletMenuSelected = false;
-                    IsBottomInletMenuSelected = false;
-                    IsFrontDetectorMenuSelected = false;
-                    IsCenterDetectorMenuSelected = false;
-                    IsBottomDetectorMenuSelected = false;
-                    IsSignalMenuSelected = false;
-                    IsValveMenuSelected = false;
-                    IsAuxMenuSelected = false;
-                }
-                OnPropertyChanged("IsFrontInletMenuSelected");
-            }
-        }
+        E_CONFIG_MENU_TYPE _SelectedMenu = E_CONFIG_MENU_TYPE.OVEN;
+        public E_CONFIG_MENU_TYPE SelectedMenu { get { return _SelectedMenu; } set { _SelectedMenu = value; OnPropertyChanged("SelectedMenu"); } }
 
-        bool _IsCenterInletMenuSelected;
-        public bool IsCenterInletMenuSelected
-        {
-            get { return _IsCenterInletMenuSelected; }
-            set
-            {
-                _IsCenterInletMenuSelected = value;
-                if (value == true)
-                {
-                    IsOvenMenuSelected = false;
-                    IsFrontInletMenuSelected = false;
-                    IsBottomInletMenuSelected = false;
-                    IsFrontDetectorMenuSelected = false;
-                    IsCenterDetectorMenuSelected = false;
-                    IsBottomDetectorMenuSelected = false;
-                    IsSignalMenuSelected = false;
-                    IsValveMenuSelected = false;
-                    IsAuxMenuSelected = false;
-                }
-                OnPropertyChanged("IsCenterInletMenuSelected");
-            }
-        }
-
-        bool _IsBottomInletMenuSelected;
-        public bool IsBottomInletMenuSelected
-        {
-            get { return _IsBottomInletMenuSelected; }
-            set
-            {
-                _IsBottomInletMenuSelected = value;
-                if (value == true)
-                {
-                    IsOvenMenuSelected = false;
-                    IsFrontInletMenuSelected = false;
-                    IsCenterInletMenuSelected = false;
-                    IsFrontDetectorMenuSelected = false;
-                    IsCenterDetectorMenuSelected = false;
-                    IsBottomDetectorMenuSelected = false;
-                    IsSignalMenuSelected = false;
-                    IsValveMenuSelected = false;
-                    IsAuxMenuSelected = false;
-                }
-                OnPropertyChanged("IsBottomInletMenuSelected");
-            }
-        }
-
-        bool _IsFrontDetectorMenuSelected;
-        public bool IsFrontDetectorMenuSelected
-        {
-            get { return _IsFrontDetectorMenuSelected; }
-            set
-            {
-                _IsFrontDetectorMenuSelected = value;
-                if (value == true)
-                {
-                    IsOvenMenuSelected = false;
-                    IsFrontInletMenuSelected = false;
-                    IsCenterInletMenuSelected = false;
-                    IsBottomInletMenuSelected = false;
-                    IsCenterDetectorMenuSelected = false;
-                    IsBottomDetectorMenuSelected = false;
-                    IsSignalMenuSelected = false;
-                    IsValveMenuSelected = false;
-                    IsAuxMenuSelected = false;
-                }
-                OnPropertyChanged("IsFrontDetectorMenuSelected");
-            }
-        }
-
-        bool _IsCenterDetectorMenuSelected;
-        public bool IsCenterDetectorMenuSelected
-        {
-            get { return _IsCenterDetectorMenuSelected; }
-            set
-            {
-                _IsCenterDetectorMenuSelected = value;
-                if (value == true)
-                {
-                    IsOvenMenuSelected = false;
-                    IsFrontInletMenuSelected = false;
-                    IsCenterInletMenuSelected = false;
-                    IsBottomInletMenuSelected = false;
-                    IsFrontDetectorMenuSelected = false;
-                    IsBottomDetectorMenuSelected = false;
-                    IsSignalMenuSelected = false;
-                    IsValveMenuSelected = false;
-                    IsAuxMenuSelected = false;
-                }
-                OnPropertyChanged("IsCenterDetectorMenuSelected");
-            }
-        }
-
-        bool _IsBottomDetectorMenuSelected;
-        public bool IsBottomDetectorMenuSelected
-        {
-            get { return _IsBottomDetectorMenuSelected; }
-            set
-            {
-                _IsBottomDetectorMenuSelected = value;
-                if (value == true)
-                {
-                    IsOvenMenuSelected = false;
-                    IsFrontInletMenuSelected = false;
-                    IsCenterInletMenuSelected = false;
-                    IsBottomInletMenuSelected = false;
-                    IsFrontDetectorMenuSelected = false;
-                    IsCenterDetectorMenuSelected = false;
-                    IsSignalMenuSelected = false;
-                    IsValveMenuSelected = false;
-                    IsAuxMenuSelected = false;
-                }
-                OnPropertyChanged("IsBottomDetectorMenuSelected");
-            }
-        }
-
-        bool _IsSignalMenuSelected;
-        public bool IsSignalMenuSelected
-        {
-            get { return _IsSignalMenuSelected; }
-            set
-            {
-                _IsSignalMenuSelected = value;
-                if (value == true)
-                {
-                    IsOvenMenuSelected = false;
-                    IsFrontInletMenuSelected = false;
-                    IsCenterInletMenuSelected = false;
-                    IsBottomInletMenuSelected = false;
-                    IsFrontDetectorMenuSelected = false;
-                    IsCenterDetectorMenuSelected = false;
-                    IsBottomDetectorMenuSelected = false;
-                    IsValveMenuSelected = false;
-                    IsAuxMenuSelected = false;
-                }
-                OnPropertyChanged("IsSignalMenuSelected");
-            }
-        }
-
-        bool _IsValveMenuSelected;
-        public bool IsValveMenuSelected
-        {
-            get { return _IsValveMenuSelected; }
-            set
-            {
-                _IsValveMenuSelected = value;
-                if (value == true)
-                {
-                    IsOvenMenuSelected = false;
-                    IsFrontInletMenuSelected = false;
-                    IsCenterInletMenuSelected = false;
-                    IsBottomInletMenuSelected = false;
-                    IsFrontDetectorMenuSelected = false;
-                    IsCenterDetectorMenuSelected = false;
-                    IsBottomDetectorMenuSelected = false;
-                    IsSignalMenuSelected = false;
-                    IsAuxMenuSelected = false;
-                }
-                OnPropertyChanged("IsValveMenuSelected");
-            }
-        }
-
-        bool _IsAuxMenuSelected;
-        public bool IsAuxMenuSelected
-        {
-            get { return _IsAuxMenuSelected; }
-            set
-            {
-                _IsAuxMenuSelected = value;
-                if (value == true)
-                {
-                    IsOvenMenuSelected = false;
-                    IsFrontInletMenuSelected = false;
-                    IsCenterInletMenuSelected = false;
-                    IsBottomInletMenuSelected = false;
-                    IsFrontDetectorMenuSelected = false;
-                    IsCenterDetectorMenuSelected = false;
-                    IsBottomDetectorMenuSelected = false;
-                    IsSignalMenuSelected = false;
-                    IsValveMenuSelected = false;
-                }
-                OnPropertyChanged("IsAuxMenuSelected");
-            }
-        }
+        E_CONFIG_SUB_MENU_TYPE _SelectedSubMenu = E_CONFIG_SUB_MENU_TYPE.OVEN_CONFIG;
+        public E_CONFIG_SUB_MENU_TYPE SelectedSubMenu { get { return _SelectedSubMenu; } set { _SelectedSubMenu = value; OnPropertyChanged("SelectedSubMenu"); } }
+        
         #endregion 좌측 메뉴 선택 속성
+
 
         #endregion Property
 
@@ -284,61 +102,17 @@ namespace ChroZenService
         public RelayCommand MenuSelectCommand { get; set; }
         private void MenuSelectCommandAction(object param)
         {
-            switch (param)
-            {
-                case "Oven":
-                    {
-                        IsOvenMenuSelected = true;
-                    }
-                    break;
-                case "FrontInlet":
-                    {
-                        IsFrontInletMenuSelected = true;
-                    }
-                    break;
-                case "CenterInlet":
-                    {
-                        IsCenterInletMenuSelected = true;
-                    }
-                    break;
-                case "RearInlet":
-                    {
-                        IsBottomInletMenuSelected = true;
-                    }
-                    break;
-                case "FrontDetector":
-                    {
-                        IsFrontDetectorMenuSelected = true;
-                    }
-                    break;
-                case "CenterDetector":
-                    {
-                        IsCenterDetectorMenuSelected = true;
-                    }
-                    break;
-                case "RearDetector":
-                    {
-                        IsBottomDetectorMenuSelected = true;
-                    }
-                    break;
-                case "Signal":
-                    {
-                        IsSignalMenuSelected = true;
-                    }
-                    break;
-                case "Valve":
-                    {
-                        IsValveMenuSelected = true;
-                    }
-                    break;
-                case "Aux":
-                    {
-                        IsAuxMenuSelected = true;
-                    }
-                    break;
-            }
+            SelectedMenu = (E_CONFIG_MENU_TYPE)param;          
             //TODO :             
-            Debug.WriteLine("DefaultCommand Fired");
+            Debug.WriteLine(string.Format("ViewModelConfigPage : MenuSelectCommand to {0} Fired",SelectedMenu));
+        }
+
+        public RelayCommand SubMenuSelectCommand { get; set; }
+        private void SubMenuSelectCommandAction(object param)
+        {
+            SelectedSubMenu = (E_CONFIG_SUB_MENU_TYPE)param;
+            //TODO :             
+            Debug.WriteLine(string.Format("ViewModelConfigPage : SubMenuSelectCommand to {0} Fired", SelectedSubMenu));
         }
 
         #endregion 좌측 메뉴 선택 커멘드

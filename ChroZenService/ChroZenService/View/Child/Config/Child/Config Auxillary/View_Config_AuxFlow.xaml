@@ -4,7 +4,9 @@
              x:Class="ChroZenService.View_Config_AuxFlow">
   <ContentView.Content>
         <AbsoluteLayout>
-
+            <Grid>
+               
+            </Grid>
         </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>

@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
-   public class ViewModelSystemPage : BindableNotifyBase
+    public class ViewModelSystemPage : BindableNotifyBase
     {
         #region 생성자 & 이벤트 헨들러
 
         public ViewModelSystemPage()
         {
             MenuSelectCommand = new RelayCommand(MenuSelectCommandAction);
+            SubMenuSelectCommand = new RelayCommand(SubMenuSelectCommandAction);
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -58,145 +60,13 @@ namespace ChroZenService
         ViewModel_System_TimeControl ViewModel_System_TimeControl { get { return _ViewModel_System_TimeControl; } set { _ViewModel_System_TimeControl = value; OnPropertyChanged("ViewModel_System_TimeControl"); } }
 
         #region 좌측 메뉴 선택 속성
-        bool _IsInformationMenuSelected = true;
-        public bool IsInformationMenuSelected
-        {
-            get { return _IsInformationMenuSelected; }
-            set
-            {
-                _IsInformationMenuSelected = value;
-                if (value == true)
-                {
-                    IsConfigMenuSelected = false;
-                    IsSettingsMenuSelected = false;
-                    IsDiagnosticsMenuSelected = false;
-                    IsCalibrationMenuSelected = false;
-                    IsTimeControlMenuSelected = false;
-                    IsMethodMenuSelected = false;
-                }
-                OnPropertyChanged("IsInformationMenuSelected");
-            }
-        }
 
-        bool _IsConfigMenuSelected;
-        public bool IsConfigMenuSelected
-        {
-            get { return _IsConfigMenuSelected; }
-            set
-            {
-                _IsConfigMenuSelected = value;
-                if (value == true)
-                {
-                    IsInformationMenuSelected = false;
-                    IsSettingsMenuSelected = false;
-                    IsDiagnosticsMenuSelected = false;
-                    IsCalibrationMenuSelected = false;
-                    IsTimeControlMenuSelected = false;
-                    IsMethodMenuSelected = false;
-                }
-                OnPropertyChanged("IsConfigMenuSelected");
-            }
-        }
+        E_SYSTEM_MENU_TYPE _SelectedMenu = E_SYSTEM_MENU_TYPE.INFORMATION;
+        public E_SYSTEM_MENU_TYPE SelectedMenu { get { return _SelectedMenu; } set { _SelectedMenu = value; OnPropertyChanged("SelectedMenu"); } }
 
-        bool _IsSettingsMenuSelected;
-        public bool IsSettingsMenuSelected
-        {
-            get { return _IsSettingsMenuSelected; }
-            set
-            {
-                _IsSettingsMenuSelected = value;
-                if (value == true)
-                {
-                    IsInformationMenuSelected = false;
-                    IsConfigMenuSelected = false;
-                    IsDiagnosticsMenuSelected = false;
-                    IsCalibrationMenuSelected = false;
-                    IsTimeControlMenuSelected = false;
-                    IsMethodMenuSelected = false;
-                }
-                OnPropertyChanged("IsSettingsMenuSelected");
-            }
-        }
+        E_SYSTEM_SUB_MENU_TYPE _SelectedSubMenu = E_SYSTEM_SUB_MENU_TYPE.INFO_ROOT;
+        public E_SYSTEM_SUB_MENU_TYPE SelectedSubMenu { get { return _SelectedSubMenu; } set { _SelectedSubMenu = value; OnPropertyChanged("SelectedSubMenu"); } }
 
-        bool _IsDiagnosticsMenuSelected;
-        public bool IsDiagnosticsMenuSelected
-        {
-            get { return _IsDiagnosticsMenuSelected; }
-            set
-            {
-                _IsDiagnosticsMenuSelected = value;
-                if (value == true)
-                {
-                    IsInformationMenuSelected = false;
-                    IsConfigMenuSelected = false;
-                    IsSettingsMenuSelected = false;
-                    IsCalibrationMenuSelected = false;
-                    IsTimeControlMenuSelected = false;
-                    IsMethodMenuSelected = false;
-                }
-                OnPropertyChanged("IsDiagnosticsMenuSelected");
-            }
-        }
-
-        bool _IsCalibrationMenuSelected;
-        public bool IsCalibrationMenuSelected
-        {
-            get { return _IsCalibrationMenuSelected; }
-            set
-            {
-                _IsCalibrationMenuSelected = value;
-                if (value == true)
-                {
-                    IsInformationMenuSelected = false;
-                    IsConfigMenuSelected = false;
-                    IsSettingsMenuSelected = false;
-                    IsDiagnosticsMenuSelected = false;
-                    IsTimeControlMenuSelected = false;
-                    IsMethodMenuSelected = false;
-                }
-                OnPropertyChanged("IsCalibrationMenuSelected");
-            }
-        }
-
-        bool _IsTimeControlMenuSelected;
-        public bool IsTimeControlMenuSelected
-        {
-            get { return _IsTimeControlMenuSelected; }
-            set
-            {
-                _IsTimeControlMenuSelected = value;
-                if (value == true)
-                {
-                    IsInformationMenuSelected = false;
-                    IsConfigMenuSelected = false;
-                    IsSettingsMenuSelected = false;
-                    IsDiagnosticsMenuSelected = false;
-                    IsCalibrationMenuSelected = false;
-                    IsMethodMenuSelected = false;
-                }
-                OnPropertyChanged("IsTimeControlMenuSelected");
-            }
-        }
-
-        bool _IsMethodMenuSelected;
-        public bool IsMethodMenuSelected
-        {
-            get { return _IsMethodMenuSelected; }
-            set
-            {
-                _IsMethodMenuSelected = value;
-                if (value == true)
-                {
-                    IsInformationMenuSelected = false;
-                    IsConfigMenuSelected = false;
-                    IsSettingsMenuSelected = false;
-                    IsDiagnosticsMenuSelected = false;
-                    IsCalibrationMenuSelected = false;
-                    IsTimeControlMenuSelected = false;
-                }
-                OnPropertyChanged("IsMethodMenuSelected");
-            }
-        }
 
         #endregion 좌측 메뉴 선택 속성
 
@@ -209,48 +79,20 @@ namespace ChroZenService
         public RelayCommand MenuSelectCommand { get; set; }
         private void MenuSelectCommandAction(object param)
         {
-            switch (param)
-            {
-                case "Information":
-                    {
-                        IsInformationMenuSelected = true;
-                    }
-                    break;
-                case "Config":
-                    {
-                        IsConfigMenuSelected = true;
-                    }
-                    break;
-                case "Settings":
-                    {
-                        IsSettingsMenuSelected = true;
-                    }
-                    break;
-                case "Diagnostics":
-                    {
-                        IsDiagnosticsMenuSelected = true;
-                    }
-                    break;
-                case "Calibration":
-                    {
-                        IsCalibrationMenuSelected = true;
-                    }
-                    break;
-                case "TimeControl":
-                    {
-                        IsTimeControlMenuSelected = true;
-                    }
-                    break;
-                case "Method":
-                    {
-                        IsMethodMenuSelected = true;
-                    }
-                    break;               
-            }
+            SelectedMenu = (E_SYSTEM_MENU_TYPE)param;
+
             //TODO :             
-            Debug.WriteLine("DefaultCommand Fired");
+            Debug.WriteLine(string.Format("ViewModelSystemPage : MenuSelectCommand to {0} Fired", SelectedMenu));
         }
 
+        public RelayCommand SubMenuSelectCommand { get; set; }
+        private void SubMenuSelectCommandAction(object param)
+        {
+            SelectedSubMenu = (E_SYSTEM_SUB_MENU_TYPE)param;
+
+            //TODO :             
+            Debug.WriteLine(string.Format("ViewModelSystemPage : SubMenuSelectCommand to {0} Fired", SelectedMenu));
+        }
         #endregion 좌측 메뉴 선택 커멘드
 
         #endregion Command

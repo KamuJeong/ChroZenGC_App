@@ -4,7 +4,6 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.App">
     <Application.Resources>
-
         <Color x:Key="CS_COLOR_KEYPAD_LABEL_BORDER" x:FactoryMethod="FromHex">
             <x:Arguments>
                 <x:String>#ffa4a4aa</x:String>
@@ -53,6 +52,10 @@
         <x:Int32 x:Key="FS_MAINPAGE_NORMAL">24</x:Int32>
         <FileImageSource x:Key="IMG_CONFIG_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
         <FileImageSource x:Key="IMG_SYSTEM_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
+        <cvt:E_SYSTEM_SUB_MENU_TYPEToBoolConverter x:Key="E_SYSTEM_SUB_MENU_TYPEToBoolConverter"/>
+        <cvt:E_SYSTEM_MENU_TYPEToBoolConverter x:Key="E_SYSTEM_MENU_TYPEToBoolConverter"/>
+        <cvt:E_CONFIG_SUB_MENU_TYPEToBoolConverter x:Key="E_CONFIG_SUB_MENU_TYPEToBoolConverter"/>
+        <cvt:E_CONFIG_MENU_TYPEToBoolConverter x:Key="E_CONFIG_MENU_TYPEToBoolConverter"/>
         <cvt:DoubleToGridLengthConverter x:Key="DoubleToGridLengthConverter"/>
         <cvt:InletTypeToBoolConverter x:Key="InletTypeToBoolConverter"/>
         <!--<cvt:VToIsVisibleConverter x:Key="VToV" />

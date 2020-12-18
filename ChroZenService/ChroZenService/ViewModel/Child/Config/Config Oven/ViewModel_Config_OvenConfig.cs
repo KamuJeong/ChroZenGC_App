@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using Xamarin.Forms;
 
 namespace ChroZenService
 {
-    public class ViewModel_Config_OvenConfig : BindableNotifyBase
+    public class ViewModel_Config_OvenConfig : ChildNotifyBase
     {
         #region 생성자 & 이벤트 헨들러
 
@@ -20,6 +21,8 @@ namespace ChroZenService
 
         #region Property
 
+        
+        
         #endregion Property
 
         #region Command

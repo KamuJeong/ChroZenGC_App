@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Root">
   <ContentView.Content>
       <AbsoluteLayout>
@@ -32,104 +33,153 @@
                             <ColumnDefinition Width="400"/>
                             <ColumnDefinition Width="5"/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Row="1" Grid.Column="1" Source="side_top.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3" ScaleY="1.18"  IsVisible="{Binding ViewModelSystemPage.IsInformationMenuSelected}" />
-                        <Button Grid.Row="1" Grid.Column="1" BackgroundColor="Transparent" Margin="-8,-8,40,8" Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="Information"/>
+                        <Image  Grid.Row="1" Grid.Column="1" Source="side_top.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3" ScaleY="1.18"  IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.INFORMATION}}" />
+                        <Button Grid.Row="1" Grid.Column="1" BackgroundColor="Transparent" Margin="-8,-8,40,8" Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.INFORMATION}"/>
                         <Label Grid.Row="1" Grid.Column="1" Text="Information" FontSize="22" FontAttributes="Bold" Margin="-8,-8,60,8" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True">
                             <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsInformationMenuSelected}" Value="true">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.INFORMATION}}" Value="true">
                                     <Setter Property="FontSize" Value="22"/>
                                     <Setter Property="TextColor" Value="White"/>
                                 </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsInformationMenuSelected}" Value="false">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.INFORMATION}}" Value="false">
                                     <Setter Property="FontSize" Value="18"/>
                                     <Setter Property="TextColor" Value="LightGray"/>
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
-                        <Image Grid.Row="3" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3" ScaleY="1.18"  Margin="0,-11,0,11" IsVisible="{Binding ViewModelSystemPage.IsConfigMenuSelected}" />
-                        <Button Grid.Row="3" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-19,40,19"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="Config"/>
+                        <Image Grid.Row="3" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3" ScaleY="1.18"  Margin="0,-11,0,11" IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.CONFIG}}" />
+                        <Button Grid.Row="3" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-19,40,19"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.CONFIG}"/>
                         <Label Grid.Row="3" Grid.Column="1" BackgroundColor="Transparent" Text="Config" FontSize="22" FontAttributes="Bold" Margin="-10,-19,60,19" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True">
                             <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsConfigMenuSelected}" Value="true">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.CONFIG}}" Value="true">
                                     <Setter Property="FontSize" Value="22"/>
                                     <Setter Property="TextColor" Value="White"/>
                                 </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsConfigMenuSelected}" Value="false">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.CONFIG}}" Value="false">
                                     <Setter Property="FontSize" Value="18"/>
                                     <Setter Property="TextColor" Value="LightGray"/>
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
-                        <Image Grid.Row="4" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3"  ScaleY="1.18"  Margin="0,-15,0,15" IsVisible="{Binding ViewModelSystemPage.IsSettingsMenuSelected}" />
-                        <Button Grid.Row="4" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-23,40,23"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="Settings"/>
+                        <Image Grid.Row="4" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3"  ScaleY="1.18"  Margin="0,-15,0,15" IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.SETTINGS}}" />
+                        <Button Grid.Row="4" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-23,40,23"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.SETTINGS}"/>
                         <Label Grid.Row="4" Grid.Column="1" BackgroundColor="Transparent" Text="Settings" FontSize="22" FontAttributes="Bold" Margin="-10,-23,60,23" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True" >
                             <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsSettingsMenuSelected}" Value="true">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.SETTINGS}}" Value="true">
                                     <Setter Property="FontSize" Value="22"/>
                                     <Setter Property="TextColor" Value="White"/>
                                 </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsSettingsMenuSelected}" Value="false">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.SETTINGS}}" Value="false">
                                     <Setter Property="FontSize" Value="18"/>
                                     <Setter Property="TextColor" Value="LightGray"/>
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
-                        <Image Grid.Row="5" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3"  ScaleY="1.18"  Margin="0,-19,0,19" IsVisible="{Binding ViewModelSystemPage.IsDiagnosticsMenuSelected}" />
-                        <Button Grid.Row="5" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-27,40,27" Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="Diagnostics"/>
+                        <Image Grid.Row="5" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3"  ScaleY="1.18"  Margin="0,-19,0,19" IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.DIAGNOSTICS}}" />
+                        <Button Grid.Row="5" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-27,40,27" Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.DIAGNOSTICS}"/>
                         <Label Grid.Row="5" Grid.Column="1" BackgroundColor="Transparent" Text="Diagnostics" FontSize="22" FontAttributes="Bold" Margin="-10,-27,60,27" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True" >
                             <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsDiagnosticsMenuSelected}" Value="true">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.DIAGNOSTICS}}" Value="true">
                                     <Setter Property="FontSize" Value="22"/>
                                     <Setter Property="TextColor" Value="White"/>
                                 </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsDiagnosticsMenuSelected}" Value="false">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.DIAGNOSTICS}}" Value="false">
                                     <Setter Property="FontSize" Value="18"/>
                                     <Setter Property="TextColor" Value="LightGray"/>
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
-                        <Image Grid.Row="7" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3" ScaleY="1.18"  Margin="0,-30,0,30" IsVisible="{Binding ViewModelSystemPage.IsCalibrationMenuSelected}" />
-                        <Button Grid.Row="7" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-38,40,38"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="Calibration"/>
+                        <Image Grid.Row="7" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3" ScaleY="1.18"  Margin="0,-30,0,30" IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.CALIBRATION}}" />
+                        <Button Grid.Row="7" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-38,40,38"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.CALIBRATION}"/>
                         <Label Grid.Row="7" Grid.Column="1" BackgroundColor="Transparent" Text="Calibration" FontSize="22" FontAttributes="Bold" Margin="-10,-38,60,38" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True" >
                             <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsCalibrationMenuSelected}" Value="true">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.CALIBRATION}}" Value="true">
                                     <Setter Property="FontSize" Value="22"/>
                                     <Setter Property="TextColor" Value="White"/>
                                 </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsCalibrationMenuSelected}" Value="false">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.CALIBRATION}}" Value="false">
                                     <Setter Property="FontSize" Value="18"/>
                                     <Setter Property="TextColor" Value="LightGray"/>
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
-                        <Image Grid.Row="8" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3"  ScaleY="1.18"  Margin="0,-34,0,34" IsVisible="{Binding ViewModelSystemPage.IsTimeControlMenuSelected}" />
-                        <Button Grid.Row="8" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-42,40,42"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="TimeControl"/>
+                        <Image Grid.Row="8" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3"  ScaleY="1.18"  Margin="0,-34,0,34" IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.TIMECONTROL}}" />
+                        <Button Grid.Row="8" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-42,40,42"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.TIMECONTROL}"/>
                         <Label Grid.Row="8" Grid.Column="1" BackgroundColor="Transparent" Text="Time&#x0a;Control" FontSize="22" FontAttributes="Bold" Margin="-10,-42,60,42" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True" >
                             <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsTimeControlMenuSelected}" Value="true">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.TIMECONTROL}}" Value="true">
                                     <Setter Property="FontSize" Value="22"/>
                                     <Setter Property="TextColor" Value="White"/>
                                 </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsTimeControlMenuSelected}" Value="false">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.TIMECONTROL}}" Value="false">
                                     <Setter Property="FontSize" Value="18"/>
                                     <Setter Property="TextColor" Value="LightGray"/>
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
-                        <Image Grid.Row="9" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3"  ScaleY="1.18"  Margin="0,-38,0,38" IsVisible="{Binding ViewModelSystemPage.IsMethodMenuSelected}" />
-                        <Button Grid.Row="9" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-46,40,46"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="Method"/>
+                        <Image Grid.Row="9" Grid.Column="1" Source="side_mid.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Start" ScaleX="1.3"  ScaleY="1.18"  Margin="0,-38,0,38" IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.METHOD}}" />
+                        <Button Grid.Row="9" Grid.Column="1" BackgroundColor="Transparent" Margin="-10,-46,40,46"  Command="{Binding ViewModelSystemPage.MenuSelectCommand}" CommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.METHOD}"/>
                         <Label Grid.Row="9" Grid.Column="1" BackgroundColor="Transparent" Text="Method" FontSize="22" FontAttributes="Bold" Margin="-10,-46,60,46" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True" >
                             <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsMethodMenuSelected}" Value="true">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.METHOD}}" Value="true">
                                     <Setter Property="FontSize" Value="22"/>
                                     <Setter Property="TextColor" Value="White"/>
                                 </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.IsMethodMenuSelected}" Value="false">
+                                <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.METHOD}}" Value="false">
                                     <Setter Property="FontSize" Value="18"/>
                                     <Setter Property="TextColor" Value="LightGray"/>
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
+
+                        <Grid Grid.Row="0" Grid.RowSpan="13" Grid.Column="2" Grid.ColumnSpan="2" Margin="-49,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="43"/>
+                                <RowDefinition Height="732"/>
+                                <RowDefinition Height="33.5"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="417"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Row="1" BackgroundColor="#1100FF00" Margin="-1,0,0,0">
+                                <Grid IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.INFORMATION}}">
+                                    <local:View_System_Information IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.INFO_ROOT}}" />
+                                </Grid>
+                                <Grid IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.CONFIG}}">
+                                    <local:View_System_Config_Root  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CONFIG_ROOT}}" />                                    
+                                </Grid>
+                                <Grid IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.SETTINGS}}">
+                                    <local:View_System_Settings  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.SETTINGS_ROOT}}" />
+                                </Grid>
+                                <Grid IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.DIAGNOSTICS}}">
+                                    <local:View_System_Diagnostics_Root  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.DIAG_ROOT}}" />
+                                    <local:View_System_Diagnostics_Heater  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.DIAG_HEATER}}" />
+                                    <local:View_System_Diagnostics_IgnitorAndValve  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.DIAG_IGNITOR_VALVE}}" />
+                                    <local:View_System_Diagnostics_PowerMonitor  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.DIAG_POWER_MONITOR}}" />
+                                    <local:View_System_Diagnostics_RemoteAndSignal  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.DIAG_REMOTE_SIGNAL}}" />
+                                    <local:View_System_Diagnostics_UPCSensorCheck  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.DIAG_UPC_SENSOR_CHECK}}" />
+                                    <local:View_System_Diagnostics_UPCValveCheck  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.DIAG_UPC_VALVE_CHECK}}" />
+                                </Grid>
+                                <Grid IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.CALIBRATION}}">
+                                    <local:View_System_Calib_Root  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_ROOT}}" />
+                                    <local:View_System_Calib_AuxTemp  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_AUX_TEMP}}" />
+                                    <local:View_System_Calib_Det  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_DET_FRONT}}" />
+                                    <local:View_System_Calib_Det  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_DET_CENTER}}" />
+                                    <local:View_System_Calib_Det  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_DET_REAR}}" />
+                                    <local:View_System_Calib_Inlet  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_INLET_FRONT}}" />
+                                    <local:View_System_Calib_Inlet  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_INLET_CENTER}}" />
+                                    <local:View_System_Calib_Inlet  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_INLET_REAR}}" />
+                                    <local:View_System_Calib_Oven  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_OVEN}}" />
+                                    <local:View_System_Calib_UPC  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC}}" />                                    
+                                </Grid>
+                                <Grid IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.TIMECONTROL}}">
+                                    <local:View_System_TimeControl  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.TIME_CONTROL_ROOT}}" />
+                                </Grid>
+                                <Grid IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.METHOD}}">
+                                    <local:View_System_Method  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.METHOD_ROOT}}" />
+                                </Grid>                              
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

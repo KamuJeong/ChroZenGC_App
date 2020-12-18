@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace ChroZenService
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class View_System_Calib_Rootxaml : ContentView
+	public partial class View_System_Calib_Root : ContentView
 	{
-		public View_System_Calib_Rootxaml ()
+		public View_System_Calib_Root ()
 		{
 			InitializeComponent ();
 		}

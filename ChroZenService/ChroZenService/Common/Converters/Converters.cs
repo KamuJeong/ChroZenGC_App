@@ -3,10 +3,95 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
+using static ChroZenService.ChroZenService_Const;
 using static YC_ChroZenGC_Type.T_CHROZEN_GC_SYSTEM_CONFIG;
 
 namespace ChroZenService
 {
+    public class E_SYSTEM_SUB_MENU_TYPEToBoolConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                if ((E_SYSTEM_SUB_MENU_TYPE)value == (E_SYSTEM_SUB_MENU_TYPE)parameter) return true;
+                else return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class E_SYSTEM_MENU_TYPEToBoolConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                if ((E_SYSTEM_MENU_TYPE)value == (E_SYSTEM_MENU_TYPE)parameter) return true;
+                else return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class E_CONFIG_SUB_MENU_TYPEToBoolConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                if ((E_CONFIG_SUB_MENU_TYPE)value == (E_CONFIG_SUB_MENU_TYPE)parameter) return true;
+                else return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class E_CONFIG_MENU_TYPEToBoolConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                if ((E_CONFIG_MENU_TYPE)value == (E_CONFIG_MENU_TYPE)parameter) return true;
+                else return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class InletTypeToBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -14,11 +99,11 @@ namespace ChroZenService
             if (value != null)
             {
                 switch (value)
-                {                    
+                {
                     case "Capillary":
                         {
                             return true;
-                        }                   
+                        }
                     default:
                         {
                             return false;

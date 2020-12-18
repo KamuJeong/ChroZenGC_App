@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ChroZenService
 {
-    public class ViewModel_System_Calibration : BindableNotifyBase
+    public class ViewModel_System_Calibration : ChildNotifyBase
     {
         #region 생성자 & 이벤트 헨들러
 
