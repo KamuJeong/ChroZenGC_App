@@ -102,7 +102,60 @@ namespace ChroZenService
         public RelayCommand MenuSelectCommand { get; set; }
         private void MenuSelectCommandAction(object param)
         {
-            SelectedMenu = (E_CONFIG_MENU_TYPE)param;          
+            SelectedMenu = (E_CONFIG_MENU_TYPE)param;        
+            switch(SelectedMenu)
+            {
+                case E_CONFIG_MENU_TYPE.AUX:
+                    {
+                        SelectedSubMenu = E_CONFIG_SUB_MENU_TYPE.AUX_TEMPERATURE;
+                    }
+                    break;
+                case E_CONFIG_MENU_TYPE.CENTER_DET:
+                    {
+                        SelectedSubMenu = E_CONFIG_SUB_MENU_TYPE.CENTER_DET_SETTING;
+                    }
+                    break;
+                case E_CONFIG_MENU_TYPE.CENTER_INLET:
+                    {
+                        SelectedSubMenu = E_CONFIG_SUB_MENU_TYPE.CENTER_INLET_SETTING;
+                    }
+                    break;
+                case E_CONFIG_MENU_TYPE.FRONT_DET:
+                    {
+                        SelectedSubMenu = E_CONFIG_SUB_MENU_TYPE.FRONT_DET_SETTING;
+                    }
+                    break;
+                case E_CONFIG_MENU_TYPE.FRONT_INLET:
+                    {
+                        SelectedSubMenu = E_CONFIG_SUB_MENU_TYPE.FRONT_INLET_SETTING;
+                    }
+                    break;
+                case E_CONFIG_MENU_TYPE.OVEN:
+                    {
+                        SelectedSubMenu = E_CONFIG_SUB_MENU_TYPE.OVEN_SETTING;
+                    }
+                    break;
+                case E_CONFIG_MENU_TYPE.REAR_DET:
+                    {
+                        SelectedSubMenu = E_CONFIG_SUB_MENU_TYPE.REAR_DET_SETTING;
+                    }
+                    break;
+                case E_CONFIG_MENU_TYPE.REAR_INLET:
+                    {
+                        SelectedSubMenu = E_CONFIG_SUB_MENU_TYPE.REAR_INLET_SETTING;
+                    }
+                    break;
+                case E_CONFIG_MENU_TYPE.SIGNAL:
+                    {
+                        SelectedSubMenu = E_CONFIG_SUB_MENU_TYPE.SIGNAL1;
+                    }
+                    break;
+                case E_CONFIG_MENU_TYPE.VALVE:
+                    {
+                        SelectedSubMenu = E_CONFIG_SUB_MENU_TYPE.VALVE_INIT_STATE;
+                    }
+                    break;
+            }
             //TODO :             
             Debug.WriteLine(string.Format("ViewModelConfigPage : MenuSelectCommand to {0} Fired",SelectedMenu));
         }

@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.App">
     <Application.Resources>
+        <LinearGradientBrush x:Key="SCB_CONTROL_BACKGROUND_DARK_0" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#25242a" Offset="0" />
+                <GradientStop Color="#1b1a1f" Offset="1" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
         <Color x:Key="CS_COLOR_KEYPAD_LABEL_BORDER" x:FactoryMethod="FromHex">
             <x:Arguments>
                 <x:String>#ffa4a4aa</x:String>

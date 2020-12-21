@@ -132,6 +132,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Common\UserControl\ConfigPage\UC_TabHeaderButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Common\UserControl\KeyPad\KeyPad.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

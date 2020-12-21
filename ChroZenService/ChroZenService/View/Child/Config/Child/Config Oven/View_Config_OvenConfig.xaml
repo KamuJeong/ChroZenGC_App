@@ -4,7 +4,29 @@
              x:Class="ChroZenService.View_Config_OvenConfig">
   <ContentView.Content>
         <AbsoluteLayout>
+            <Grid HeightRequest="703">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="158"/>
+                    <RowDefinition Height="112"/>
+                    <RowDefinition Height="158"/>
+                    <RowDefinition Height="112"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="417"/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0" CornerRadius="18" Margin="18,10,18,10" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    
+                </Frame>
+                <Frame Grid.Row="1" CornerRadius="18" Margin="18,10,18,10" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
+                </Frame>
+                <Frame Grid.Row="2" CornerRadius="18" Margin="18,10,18,10" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Frame Grid.Row="3" CornerRadius="18" Margin="18,10,18,10" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+            </Grid>
         </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>
