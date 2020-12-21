@@ -4,7 +4,29 @@
              x:Class="ChroZenService.View_Config_Signal">
   <ContentView.Content>
         <AbsoluteLayout>
+            <Grid HeightRequest="703">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_2}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_MIDDLE}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_8}"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="417"/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0" CornerRadius="18" Margin="18,10,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
+                </Frame>
+                <Frame Grid.Row="1" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Frame Grid.Row="3" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <!--<Frame Grid.Row="3" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>-->
+            </Grid>
         </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>

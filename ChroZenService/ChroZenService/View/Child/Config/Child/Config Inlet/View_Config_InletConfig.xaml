@@ -4,7 +4,34 @@
              x:Class="ChroZenService.View_Config_InletConfig">
   <ContentView.Content>
         <AbsoluteLayout>
+            <Grid HeightRequest="703">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_3}"/>
+                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_MIDDLE}"/>
+                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_3}"/>
+                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_MIDDLE}"/>
+                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_3}"/>
+                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_3}"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="417"/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0" CornerRadius="18" Margin="18,10,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
+                </Frame>
+                <Frame Grid.Row="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Frame Grid.Row="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Frame Grid.Row="4" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Frame Grid.Row="5" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+            </Grid>
         </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>
