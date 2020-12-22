@@ -127,6 +127,11 @@ namespace ChroZenService
         #endregion ENUM
 
         #region Const Value
+        public static int METHOD_PROGRAM_CNT = 20;
+        public static int TIME_CONTROL_PROGRAM_CNT = 20;
+        public static int AUX_APC_CNT = 3;
+        public static int INLET_CNT = 3;
+        public static int DET_CNT = 3;
         public static int AUX_CNT = 8;
         public static int VALVE_PROGRAM_CNT = 20;
         public static int SYSTEM_VALVE_CNT = 8;

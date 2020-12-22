@@ -48,10 +48,26 @@ namespace YC_ChroZenGC_Type
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
         public byte[] bAuxAPC;                // Auxiliary APC (0:Not Install / 1:Type 1~ 6:Type6) [AUX_APC_COUNT]
 
+        public enum E_AUX_APC
+        {
+            Not_Install,
+            Type_1,
+            Type_2,
+            Type_3,
+            Type_4,
+            Type_5,
+            Type_6,
+        }
         public byte bAutosampler;                          // AutoSampler - (0:Not Install / 1:Install)
 
         public byte bMethanizer;                           // Methanizer- (0:Not Install / 1:Install)
                                                            // Auxiliary 8개 중 하나 // Valve port 4로 고정한다.
+        public enum E_METHANIZER
+        {
+            Valve,
+            Methanizer,
+            TransferLine
+        }
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public byte[] bAuxTemp;              // Sampling Valve의 히터 설치여부 [AUX_TEMP_COUNT]

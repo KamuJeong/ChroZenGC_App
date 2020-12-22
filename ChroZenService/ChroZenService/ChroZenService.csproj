@@ -301,5 +301,6 @@
 
   <ItemGroup>
     <Folder Include="Model\NewFolder1\" />
+    <Folder Include="ViewModel\Child\System\Method\Child\NewFolder\" />
   </ItemGroup>
 </Project>
