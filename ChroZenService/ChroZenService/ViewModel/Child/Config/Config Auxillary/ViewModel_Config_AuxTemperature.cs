@@ -20,6 +20,12 @@ namespace ChroZenService
 
         #region Property
 
+        float[] _fTempSet = new float[ChroZenService_Const.AUX_CNT];
+        public float[] fTempSet { get { return _fTempSet; } set { _fTempSet = value; OnPropertyChanged("fTempSet"); } }
+
+        byte[] _fTempOnoff = new byte[ChroZenService_Const.AUX_CNT];
+        public byte[] fTempOnoff { get { return _fTempOnoff; } set { _fTempOnoff = value; OnPropertyChanged("fTempOnoff"); } }
+
         #endregion Property
 
         #region Command

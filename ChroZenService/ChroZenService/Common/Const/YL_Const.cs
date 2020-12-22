@@ -6,6 +6,8 @@ namespace ChroZenService
 {
     public static class ChroZenService_Const
     {
+        #region ENUM
+
         public enum E_SYSTEM_SUB_MENU_TYPE
         {
             CALIB_ROOT,
@@ -91,7 +93,7 @@ namespace ChroZenService
         public enum CHART_AXIS_TYPE
         {
             Y_SIGNAL,
-            Y_TEMPERATURE,            
+            Y_TEMPERATURE,
         }
 
         public enum MAIN_SIDE_BUTTON_TYPE
@@ -112,10 +114,7 @@ namespace ChroZenService
             Prog_Flow,
             Prog_Press
         }
-        public enum DET_TYPE
-        {
 
-        }
         public enum CARRIER_GAS_TYPE
         {
             N2,
@@ -125,8 +124,20 @@ namespace ChroZenService
             ArCh4
         }
 
+        #endregion ENUM
+
+        #region Const Value
+        public static int AUX_CNT = 8;
+        public static int VALVE_PROGRAM_CNT = 20;
+        public static int SYSTEM_VALVE_CNT = 8;
+        public static int SYSTEM_MULTI_VALVE_CNT = 2;
+        public static int SIGNAL_PRGM_CNT = 5;
+        public static int OVEN_PRGM_CNT = 25;
+
         public static float fDetMaxVal = 10000;
         public static int MinorTicksPerMajorTick = 5;
         public static double dMainPageEnabledSideInfoHeight = 257;
+
+        #endregion Const Value
     }
 }

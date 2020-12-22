@@ -38,7 +38,7 @@ namespace YC_ChroZenGC_Type
         //public short nDummy0;
         //public short nSensitivity;                                      //
         public short iECDCurrentValue;                                     // ECD Current : 0~350
-        public short iSignalvariation;                                     // default : 0 -> -10 ~ 10
+        public short iSignalvariation;                                     // default : 0 -> -10 ~ 10 (Sensitivity on DetConfig)
                                                                            // ~
 
         public float fFlowSet1;                                                // 유량설정1

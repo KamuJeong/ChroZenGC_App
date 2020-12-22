@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
 
@@ -19,6 +20,14 @@ namespace ChroZenService
         #region Binding
 
         #region Property
+
+        ObservableCollection<ViewModel_Config_ValveProgram_Program> _OC_ViewModel_Config_ValveProgram_Program = new ObservableCollection<ViewModel_Config_ValveProgram_Program>(new ViewModel_Config_ValveProgram_Program[ChroZenService_Const.VALVE_PROGRAM_CNT]);
+
+        public ObservableCollection<ViewModel_Config_ValveProgram_Program> OC_ViewModel_Config_ValveProgram_Program
+        {
+            get { return _OC_ViewModel_Config_ValveProgram_Program; }
+            set { _OC_ViewModel_Config_ValveProgram_Program = value; OnPropertyChanged("OC_ViewModel_Config_ValveProgram_Program"); }
+        }
 
         #endregion Property
 

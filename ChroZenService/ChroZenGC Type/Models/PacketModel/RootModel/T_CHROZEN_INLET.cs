@@ -20,10 +20,25 @@ namespace YC_ChroZenGC_Type
         public byte btPortNo;             // 설치위치(0:front / 1:center / 2:rear)
         //Inlet->Config : Carrier Gas
         public byte btCarriergas;               // Carrier Gas(0:N2 / 1:He / 2:H2 / 3:Ar / 4:ArCh4)
+        public enum E_INLET_CARRIER_GAS_TYPE
+        {
+            N2,
+            He,
+            H2,
+            Ar,
+            ArCH4
+        }
         //Inlet->Config : APC Mode
         public byte btApcMode;
         // APC Mode(0:Constant Flow 
         // 1:Constant Pressure / 2:Programed Flow / 3:Programed Pressure
+
+        public enum E_INLET_APC_MODE
+        {
+            CONSTANT_PRESSURE,
+            PROGRAMMED_FLOW,
+            PROGRAMMED_PRESSURE
+        }
 
         //Inlet->APC : Column.Length(m)
         public float fLength;                  // [CO]										// Column Length (m)
@@ -52,6 +67,13 @@ namespace YC_ChroZenGC_Type
         public byte btInjMode;                                                             // 190822
                                                                                            // Capillary Inlet APC 모드(0:Split mode / 1:Splitless mode)
                                                                                            //	2:Pulsed Split mode / 3 : Pulsed Splitless mode) - 20180724
+        public enum E_INLET_INJ_MODE
+        {
+            SPLIT_MODE,
+            SPLITLESS_MODE,
+            PULSED_SPLIT_MODE,
+            PULSED_SPLITLESS_MODE
+        }
 
         public float fColumnFlowSet;                                                       // Column Flow(ml/min) 
                                                                                            // -- APC Mode가 [Constant Flow]이거나 [Programed Flow]일 때 설정 가능
@@ -112,7 +134,7 @@ namespace YC_ChroZenGC_Type
                     T_INLET_TEMP_PRGMManager.InitiatedInstance,
                 },
                 flowPrgm = new T_APC_FLOW_PRGM[]
-                {                    
+                {
                     T_APC_FLOW_PRGMManager.InitiatedInstance,
                     T_APC_FLOW_PRGMManager.InitiatedInstance,
                     T_APC_FLOW_PRGMManager.InitiatedInstance,
@@ -121,7 +143,7 @@ namespace YC_ChroZenGC_Type
                     T_APC_FLOW_PRGMManager.InitiatedInstance,
                 },
                 presPrgm = new T_APC_PRESS_PRGM[]
-                {                    
+                {
                     T_APC_PRESS_PRGMManager.InitiatedInstance,
                     T_APC_PRESS_PRGMManager.InitiatedInstance,
                     T_APC_PRESS_PRGMManager.InitiatedInstance,

@@ -457,6 +457,7 @@ namespace ChroZenService
                             ViewModel_MainSide_Left.CenterType = ((E_INLET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btInlet[1]).ToString().Replace("_", " ");
                             ViewModel_MainSide_Left.BottomType = ((E_INLET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btInlet[2]).ToString().Replace("_", " ");
 
+                            
                             #endregion MainLeft
 
                             #region MainCenter
@@ -477,10 +478,11 @@ namespace ChroZenService
                             ViewModel_MainSide_Right.CenterType = ((E_DET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btDet[1]).ToString().Replace("_", " ");
                             ViewModel_MainSide_Right.BottomType = ((E_DET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btDet[2]).ToString().Replace("_", " ");
 
+                        ViewModelConfigPage.ViewModel_Config_FrontDetConfig.
                             #endregion MainRight
 
-                            #endregion MainPage
-                        }
+                        #endregion MainPage
+                    }
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_INFORM:
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_VALVE_SETTING:
