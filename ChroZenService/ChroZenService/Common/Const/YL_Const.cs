@@ -71,6 +71,13 @@ namespace ChroZenService
             FLOW,
         }
 
+        public enum E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE
+        {
+            SENSOR_ZERO,
+            VALVE,
+            FLOW,
+        }
+
         public enum E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE
         {
             TEMP_CALIBRATION1_T1,

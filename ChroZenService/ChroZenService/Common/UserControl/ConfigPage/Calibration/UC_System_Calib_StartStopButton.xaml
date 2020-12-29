@@ -10,10 +10,10 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="142"/>
                 </Grid.ColumnDefinitions>
-                <Button BackgroundColor="Transparent"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_ButtonBase}}, Path=ClickCommand}" 
-                        CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_ButtonBase}}, Path=ClickCommandParameter}"
-                        />
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+               
                 <Frame Background="{StaticResource SCB_CALIB_BUTTON_BACKGROUND_LIGHTGRAY_0}" 
                        CornerRadius="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_ButtonBase}}, Path=CornerRadius}"
                        Margin="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_ButtonBase}}, Path=InnerMargin}" InputTransparent="True">
@@ -32,6 +32,11 @@
                         </Label>
                     </Grid>
                 </Grid>
+                <Button BackgroundColor="Transparent"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_ButtonBase}}, Path=ClickCommand}" 
+                        CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_ButtonBase}}, Path=ClickCommandParameter}"
+                        
+                        />
             </Grid>
         </AbsoluteLayout>
     </ContentView.Content>

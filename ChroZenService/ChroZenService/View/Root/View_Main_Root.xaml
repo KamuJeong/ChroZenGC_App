@@ -46,8 +46,8 @@
                 <local:View_System_Root Grid.Row="1" IsVisible="{Binding IsSystemPageVisible}"/>                
                 
                 <!--Footer-->
-                <local:View_Footer Grid.Row="5" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}"/>              
-               
+                <local:View_Footer Grid.Row="5" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}"/>
+
             </Grid>
             <local:KeyPad HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" 
                           IsVisible="{Binding ViewModel_KeyPad.IsKeyPadShown}"

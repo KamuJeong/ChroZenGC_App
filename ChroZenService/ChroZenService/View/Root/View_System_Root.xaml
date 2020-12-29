@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Root">
-  <ContentView.Content>
-      <AbsoluteLayout>
+    <ContentView.Content>
+        <AbsoluteLayout>
             <Grid >
                 <!--이미지 전시-->
                 <Grid>
@@ -146,7 +146,7 @@
                                     <local:View_System_Information IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.INFO_ROOT}}" />
                                 </Grid>
                                 <Grid IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.CONFIG}}">
-                                    <local:View_System_Config_Root  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CONFIG_ROOT}}" />                                    
+                                    <local:View_System_Config_Root  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CONFIG_ROOT}}" />
                                 </Grid>
                                 <Grid IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.SETTINGS}}">
                                     <local:View_System_Settings  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.SETTINGS_ROOT}}" />
@@ -184,12 +184,12 @@
                                 </Grid>
                                 <Grid IsVisible="{Binding ViewModelSystemPage.SelectedMenu,Converter={StaticResource E_SYSTEM_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_MENU_TYPE.METHOD}}">
                                     <local:View_System_Method  IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.METHOD_ROOT}}" />
-                                </Grid>                              
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
             </Grid>
         </AbsoluteLayout>
-  </ContentView.Content>
+    </ContentView.Content>
 </ContentView>
