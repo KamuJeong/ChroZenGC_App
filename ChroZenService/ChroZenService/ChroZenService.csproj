@@ -132,6 +132,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Common\UserControl\ConfigPage\Calibration\UC_System_Calib_ApplyButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\UserControl\ConfigPage\Calibration\UC_System_Calib_ResetButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\UserControl\ConfigPage\Calibration\UC_System_Calib_StartStopButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Common\UserControl\ConfigPage\UC_TabHeaderButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -234,16 +243,16 @@
     <EmbeddedResource Update="View\Child\System\Child\Calib\Calib AuxTemp\View_System_Calib_AuxTemp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\System\Child\Calib\Calib Det\View_System_Calib_Det.xaml">
+    <EmbeddedResource Update="View\Child\System\Child\Calib\Calib Det\View_System_Calib_DetFront.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\System\Child\Calib\Calib Inlet\View_System_Calib_Inlet.xaml">
+    <EmbeddedResource Update="View\Child\System\Child\Calib\Calib Inlet\View_System_Calib_InletFront.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Child\System\Child\Calib\Calib Oven\View_System_Calib_Oven.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\System\Child\Calib\Calib UPC\View_System_Calib_UPC.xaml">
+    <EmbeddedResource Update="View\Child\System\Child\Calib\Calib UPC\View_System_Calib_UPC1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Child\System\Child\Calib\View_System_Calib_Root.xaml">
@@ -291,6 +300,39 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="View\Child\System\Child\Calib\Calib AuxTemp\View_System_Calib_AuxTemp2.xaml.cs">
+      <DependentUpon>View_System_Calib_AuxTemp2.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\System\Child\Calib\Calib Det\View_System_Calib_DetRear.xaml.cs">
+      <DependentUpon>View_System_Calib_DetRear.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\System\Child\Calib\Calib Det\View_System_Calib_DetCenter.xaml.cs">
+      <DependentUpon>View_System_Calib_DetCenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\System\Child\Calib\Calib Det\View_System_Calib_DetFront.xaml.cs">
+      <DependentUpon>View_System_Calib_DetFront.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\System\Child\Calib\Calib Inlet\View_System_Calib_InletRear.xaml.cs">
+      <DependentUpon>View_System_Calib_InletRear.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\System\Child\Calib\Calib Inlet\View_System_Calib_InletCenter.xaml.cs">
+      <DependentUpon>View_System_Calib_InletCenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\System\Child\Calib\Calib Inlet\View_System_Calib_InletFront.xaml.cs">
+      <DependentUpon>View_System_Calib_InletFront.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\System\Child\Calib\Calib UPC\View_System_Calib_UPC3.xaml.cs">
+      <DependentUpon>View_System_Calib_UPC3.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\System\Child\Calib\Calib UPC\View_System_Calib_UPC3).xaml.cs">
+      <DependentUpon>View_System_Calib_UPC3%29.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\System\Child\Calib\Calib UPC\View_System_Calib_UPC2.xaml.cs">
+      <DependentUpon>View_System_Calib_UPC2.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\System\Child\Calib\Calib UPC\View_System_Calib_UPC1.xaml.cs">
+      <DependentUpon>View_System_Calib_UPC1.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\Child\System\Child\Calib\View_System_Calib_Root.xaml.cs">
       <DependentUpon>View_System_Calib_Root.xaml</DependentUpon>
     </Compile>
@@ -300,7 +342,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\NewFolder1\" />
     <Folder Include="ViewModel\Child\System\Method\Child\NewFolder\" />
   </ItemGroup>
 </Project>

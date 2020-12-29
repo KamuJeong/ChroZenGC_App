@@ -6,12 +6,96 @@ namespace ChroZenService
 {
     public static class ChroZenService_Const
     {
-        #region ENUM
+        #region ENUM        
+
+        public enum E_UPC_INDEX
+        {
+            UPC1,
+            UPC2,
+            UPC3
+        }
+        public enum E_AUXTEMP_INDEX
+        {
+            AUXTEMP1,
+            AUXTEMP2
+        }
+        public enum E_INLET_LOCATION
+        {
+            FRONT,
+            CENTER,
+            REAR
+        }
+        public enum E_DET_LOCATION
+        {
+            FRONT,
+            CENTER,
+            REAR
+        }
+        public enum E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE
+        {
+            TEMP_CALIBRATION_T1,
+            TEMP_CALIBRATION_T2,
+        }
+
+        public enum E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE
+        {
+            TEMP_CALIBRATION_T1,
+            TEMP_CALIBRATION_T2,
+            FLOW_CALIBRATION1,
+            FLOW_CALIBRATION2,
+            FLOW_CALIBRATION3,
+        }
+
+        public enum E_SYSTEM_CALIBRATION_INLET_CONTROL_COMMAND_TYPE
+        {
+            TEMP_CALIBRATION,
+            SENSOR_ZERO,
+            VALVE,
+            FLOW,
+        }
+
+        public enum E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE
+        {
+            TEMP_CALIBRATION_T1,
+            TEMP_CALIBRATION_T2,
+            FLOW_CALIBRATION1,
+            FLOW_CALIBRATION2,
+            FLOW_CALIBRATION3,
+        }
+
+        public enum E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE
+        {
+            TEMP_CALIBRATION,
+            SENSOR_ZERO,
+            VALVE,
+            FLOW,
+        }
+
+        public enum E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE
+        {
+            TEMP_CALIBRATION1_T1,
+            TEMP_CALIBRATION1_T2,
+            TEMP_CALIBRATION2_T1,
+            TEMP_CALIBRATION2_T2,
+            TEMP_CALIBRATION3_T1,
+            TEMP_CALIBRATION3_T2,
+            TEMP_CALIBRATION4_T1,
+            TEMP_CALIBRATION4_T2,
+        }
+
+        public enum E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE
+        {
+            TEMP_CALIBRATION1,
+            TEMP_CALIBRATION2,
+            TEMP_CALIBRATION3,
+            TEMP_CALIBRATION4,
+        }
 
         public enum E_SYSTEM_SUB_MENU_TYPE
         {
             CALIB_ROOT,
-            CALIB_AUX_TEMP,
+            CALIB_AUX_TEMP1,
+            CALIB_AUX_TEMP2,
             CALIB_DET_FRONT,
             CALIB_DET_CENTER,
             CALIB_DET_REAR,
@@ -19,7 +103,9 @@ namespace ChroZenService
             CALIB_INLET_CENTER,
             CALIB_INLET_REAR,
             CALIB_OVEN,
-            CALIB_UPC,
+            CALIB_UPC1,
+            CALIB_UPC2,
+            CALIB_UPC3,
             CONFIG_ROOT,
             DIAG_ROOT,
             DIAG_HEATER,

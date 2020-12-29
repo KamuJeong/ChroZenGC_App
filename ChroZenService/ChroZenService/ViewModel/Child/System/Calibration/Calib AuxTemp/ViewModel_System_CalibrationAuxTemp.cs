@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
@@ -9,9 +10,13 @@ namespace ChroZenService
     {
         #region 생성자 & 이벤트 헨들러
 
-        public ViewModel_System_CalibrationAuxTemp()
+        public ViewModel_System_CalibrationAuxTemp(E_AUXTEMP_INDEX e_AUXTEMP_INDEX)
         {
-            DefaultCommand = new RelayCommand(DefaultCommandAction);
+            _e_AUXTEMP_INDEX = e_AUXTEMP_INDEX;
+            SetCommand = new RelayCommand(SetCommandAction);
+            MeasuredCommand = new RelayCommand(MeasuredCommandAction);
+            ResetCommand = new RelayCommand(ResetCommandAction);
+            ApplyCommand = new RelayCommand(ApplyCommandAction);
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -19,6 +24,8 @@ namespace ChroZenService
         #region Binding
 
         #region Property
+
+        public E_AUXTEMP_INDEX _e_AUXTEMP_INDEX;
 
         float _ActualTemp_Calib1;
         /// <summary>
@@ -146,14 +153,93 @@ namespace ChroZenService
 
         #region Command
 
-        #region DefaultCommand
-        public RelayCommand DefaultCommand { get; set; }
-        private void DefaultCommandAction(object param)
+        #region SetCommand
+        public RelayCommand SetCommand { get; set; }
+        private void SetCommandAction(object param)
         {
+            switch ((E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE)param)
+            {
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T1:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T2:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T1:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T2:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T1:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T2:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T1:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T2:
+                    {
+
+                    }
+                    break;
+            }
             //TODO :             
-            Debug.WriteLine("DefaultCommand Fired");
+            Debug.WriteLine("SetCommand Fired");
         }
-        #endregion DefaultCommand 
+        #endregion SetCommand 
+
+        #region MeasuredCommand
+        public RelayCommand MeasuredCommand { get; set; }
+        private void MeasuredCommandAction(object param)
+        {
+            switch ((E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE)param)
+            {
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T1:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T2:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T1:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T2:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T1:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T2:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T1:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T2:
+                    {
+
+                    }
+                    break;
+            }
+            //TODO :             
+            Debug.WriteLine("MeasuredCommand Fired");
+        }
+        #endregion MeasuredCommand 
+
+        #region ResetCommand
+        public RelayCommand ResetCommand { get; set; }
+        private void ResetCommandAction(object param)
+        {
+            switch ((E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE)param)
+            {
+                case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION1:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION2:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION3:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION4:
+                    {
+
+                    }
+                    break;
+            }
+            //TODO :             
+            Debug.WriteLine("ResetCommand Fired");
+        }
+        #endregion ResetCommand 
+
+        #region ApplyCommand
+        public RelayCommand ApplyCommand { get; set; }
+        private void ApplyCommandAction(object param)
+        {
+            switch ((E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE)param)
+            {
+                case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION1:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION2:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION3:
+                case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION4:
+                    {
+
+                    }
+                    break;
+            }
+            //TODO :             
+            Debug.WriteLine("ApplyCommand Fired");
+        }
+        #endregion ApplyCommand 
 
         #endregion Command
 

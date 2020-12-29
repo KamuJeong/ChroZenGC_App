@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using static ChroZenService.ChroZenService_Const;
 using static YC_ChroZenGC_Type.T_CHROZEN_GC_SYSTEM_CONFIG;
 
 namespace ChroZenService
@@ -10,9 +11,27 @@ namespace ChroZenService
     {
         #region 생성자 & 이벤트 헨들러
 
-        public ViewModel_System_CalibrationInlet()
+        public ViewModel_System_CalibrationInlet(E_INLET_LOCATION e_INLET_LOCATION)
         {
-            DefaultCommand = new RelayCommand(DefaultCommandAction);
+            _e_INLET_LOCATION = e_INLET_LOCATION;
+            SetCommand = new RelayCommand(SetCommandAction);
+            MeasuredCommand = new RelayCommand(MeasuredCommandAction);
+            ResetCommand = new RelayCommand(ResetCommandAction);
+            ApplyCommand = new RelayCommand(ApplyCommandAction);
+            SensorZeroResetCommand = new RelayCommand(SensorZeroResetCommandAction);
+            SensorZeroStartCommand = new RelayCommand(SensorZeroStartCommandAction);
+            SensorZeroStopCommand = new RelayCommand(SensorZeroStopCommandAction);
+            SensorZeroApplyCommand = new RelayCommand(SensorZeroApplyCommandAction);
+
+            ValveResetCommand = new RelayCommand(ValveResetCommandAction);
+            ValveStartCommand = new RelayCommand(ValveStartCommandAction);
+            ValveStopCommand = new RelayCommand(ValveStopCommandAction);
+            ValveApplyCommand = new RelayCommand(ValveApplyCommandAction);
+
+            FlowResetCommand = new RelayCommand(FlowResetCommandAction);
+            FlowStartCommand = new RelayCommand(FlowStartCommandAction);
+            FlowStopCommand = new RelayCommand(FlowStopCommandAction);
+            FlowApplyCommand = new RelayCommand(FlowApplyCommandAction);
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -20,7 +39,7 @@ namespace ChroZenService
         #region Binding
 
         #region Property
-
+        public E_INLET_LOCATION _e_INLET_LOCATION;
         E_INLET_TYPE _e_INLET_TYPE = E_INLET_TYPE.Not_Installed;
         public E_INLET_TYPE e_INLET_TYPE { get { return _e_INLET_TYPE; } set { _e_INLET_TYPE = value; OnPropertyChanged("e_INLET_TYPE"); } }
 
@@ -127,14 +146,191 @@ namespace ChroZenService
 
         #region Command
 
-        #region DefaultCommand
-        public RelayCommand DefaultCommand { get; set; }
-        private void DefaultCommandAction(object param)
+        #region Temp Calibration
+
+        #region SetCommand
+        public RelayCommand SetCommand { get; set; }
+        private void SetCommandAction(object param)
+        {
+            switch ((E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE)param)
+            {
+                case E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION_T1:
+                case E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION_T2:
+                case E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION1:
+                case E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION2:
+                case E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION3:
+                    {
+
+                    }
+                    break;
+            }
+            //TODO :             
+            Debug.WriteLine("SetCommand Fired");
+        }
+        #endregion SetCommand 
+
+        #region MeasuredCommand
+        public RelayCommand MeasuredCommand { get; set; }
+        private void MeasuredCommandAction(object param)
+        {
+            switch ((E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE)param)
+            {
+                case E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION_T1:
+                case E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION_T2:
+                case E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION1:
+                case E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION2:
+                case E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION3:
+                    {
+
+                    }
+                    break;
+            }
+            //TODO :             
+            Debug.WriteLine("MeasuredCommand Fired");
+        }
+        #endregion MeasuredCommand 
+
+        #region ResetCommand
+        public RelayCommand ResetCommand { get; set; }
+        private void ResetCommandAction(object param)
+        {
+         
+            //TODO :             
+            Debug.WriteLine("ResetCommand Fired");
+        }
+        #endregion ResetCommand 
+
+        #region ApplyCommand
+        public RelayCommand ApplyCommand { get; set; }
+        private void ApplyCommandAction(object param)
+        {
+          
+            //TODO :             
+            Debug.WriteLine("ApplyCommand Fired");
+        }
+        #endregion ApplyCommand 
+
+        #endregion Temp Calibration
+
+        #region SensorZero
+
+        #region SensorZeroResetCommand
+        public RelayCommand SensorZeroResetCommand { get; set; }
+        private void SensorZeroResetCommandAction(object param)
         {
             //TODO :             
-            Debug.WriteLine("DefaultCommand Fired");
+            Debug.WriteLine("SensorZeroResetCommand Fired");
         }
-        #endregion DefaultCommand 
+        #endregion SensorZeroResetCommand 
+
+        #region SensorZeroStartCommand
+        public RelayCommand SensorZeroStartCommand { get; set; }
+        private void SensorZeroStartCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("SensorZeroStartCommand Fired");
+        }
+        #endregion SensorZeroStartCommand 
+
+        #region SensorZeroStopCommand
+        public RelayCommand SensorZeroStopCommand { get; set; }
+        private void SensorZeroStopCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("SensorZeroStopCommand Fired");
+        }
+        #endregion SensorZeroStopCommand 
+
+        #region SensorZeroApplyCommand
+        public RelayCommand SensorZeroApplyCommand { get; set; }
+        private void SensorZeroApplyCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("SensorZeroApplyCommand Fired");
+        }
+        #endregion SensorZeroApplyCommand 
+
+        #endregion SensorZero
+
+        #region Valve
+
+        #region ValveResetCommand
+        public RelayCommand ValveResetCommand { get; set; }
+        private void ValveResetCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("ValveResetCommand Fired");
+        }
+        #endregion ValveResetCommand 
+
+        #region ValveStartCommand
+        public RelayCommand ValveStartCommand { get; set; }
+        private void ValveStartCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("ValveStartCommand Fired");
+        }
+        #endregion ValveStartCommand 
+
+        #region ValveStopCommand
+        public RelayCommand ValveStopCommand { get; set; }
+        private void ValveStopCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("ValveStopCommand Fired");
+        }
+        #endregion ValveStopCommand 
+
+        #region ValveApplyCommand
+        public RelayCommand ValveApplyCommand { get; set; }
+        private void ValveApplyCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("ValveApplyCommand Fired");
+        }
+        #endregion ValveApplyCommand 
+
+        #endregion Valve
+
+        #region Flow
+
+        #region FlowResetCommand
+        public RelayCommand FlowResetCommand { get; set; }
+        private void FlowResetCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("FlowResetCommand Fired");
+        }
+        #endregion FlowResetCommand 
+
+        #region FlowStartCommand
+        public RelayCommand FlowStartCommand { get; set; }
+        private void FlowStartCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("FlowStartCommand Fired");
+        }
+        #endregion FlowStartCommand 
+
+        #region FlowStopCommand
+        public RelayCommand FlowStopCommand { get; set; }
+        private void FlowStopCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("FlowStopCommand Fired");
+        }
+        #endregion FlowStopCommand 
+
+        #region FlowApplyCommand
+        public RelayCommand FlowApplyCommand { get; set; }
+        private void FlowApplyCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("FlowApplyCommand Fired");
+        }
+        #endregion FlowApplyCommand 
+
+        #endregion Flow
 
         #endregion Command
 

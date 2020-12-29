@@ -1,10 +1,49 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Calib_AuxTemp">
-  <ContentView.Content>
+    <ContentView.Content>
         <AbsoluteLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="168"/>
+                    <ColumnDefinition Width="168"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_MIDDLE}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_3}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_CALIB_BUTTON}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_MIDDLE}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_3}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_CALIB_BUTTON}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_MIDDLE}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_3}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_CALIB_BUTTON}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_MIDDLE}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_3}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_CALIB_BUTTON}"/>
+                </Grid.RowDefinitions>
+                <Label Text="Temp Calibration 1" Grid.ColumnSpan="2" FontSize="24" TextColor="White" FontAttributes="Bold" Margin="18,0,0,0" HorizontalOptions="Start" Padding="0,1,0,0"/>
+                <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,12,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
+                <local:UC_System_Calib_ResetButton Grid.Row="2" Grid.Column="0" Text="Reset" CornerRadius="10" ButtonMargin="18,0,2,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp.ResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION1}"/>
+                <local:UC_System_Calib_ApplyButton Grid.Row="2" Grid.Column="1" Text="Apply" CornerRadius="10" ButtonMargin="15,0,4,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp.ApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION1}"/>
 
+                <Label Grid.Row="3" Text="Temp Calibration 2" Grid.ColumnSpan="2" FontSize="24" TextColor="White" FontAttributes="Bold" Margin="18,0,0,0" HorizontalOptions="Start"  Padding="0,1,0,0"/>
+                <Frame Grid.Row="4" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,12,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
+                <local:UC_System_Calib_ResetButton Grid.Row="5" Grid.Column="0" Text="Reset" CornerRadius="10" ButtonMargin="18,0,2,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp.ResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION2}"/>
+                <local:UC_System_Calib_ApplyButton Grid.Row="5" Grid.Column="1" Text="Apply" CornerRadius="10" ButtonMargin="15,0,4,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp.ApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION2}"/>
+
+                <Label Grid.Row="6" Text="Temp Calibration 3" Grid.ColumnSpan="2" FontSize="24" TextColor="White" FontAttributes="Bold" Margin="18,0,0,0" HorizontalOptions="Start"  Padding="0,1,0,0"/>
+                <Frame Grid.Row="7" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,12,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
+                <local:UC_System_Calib_ResetButton Grid.Row="8" Grid.Column="0" Text="Reset" CornerRadius="10" ButtonMargin="18,0,2,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp.ResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION3}"/>
+                <local:UC_System_Calib_ApplyButton Grid.Row="8" Grid.Column="1" Text="Apply" CornerRadius="10" ButtonMargin="15,0,4,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp.ApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION3}"/>
+
+                <Label Grid.Row="9" Text="Temp Calibration 4" Grid.ColumnSpan="2" FontSize="24" TextColor="White" FontAttributes="Bold" Margin="18,0,0,0" HorizontalOptions="Start"  Padding="0,1,0,0"/>
+                <Frame Grid.Row="10" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,12,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
+                <local:UC_System_Calib_ResetButton Grid.Row="11" Grid.Column="0" Text="Reset" CornerRadius="10" ButtonMargin="18,0,2,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp.ResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION4}"/>
+                <local:UC_System_Calib_ApplyButton Grid.Row="11" Grid.Column="1" Text="Apply" CornerRadius="10" ButtonMargin="15,0,4,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp.ApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION4}"/>
+            </Grid>
         </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
@@ -11,7 +12,10 @@ namespace ChroZenService
 
         public ViewModel_System_CalibrationOven()
         {
-            DefaultCommand = new RelayCommand(DefaultCommandAction);
+            SetCommand = new RelayCommand(SetCommandAction);
+            MeasuredCommand = new RelayCommand(MeasuredCommandAction);
+            ResetCommand = new RelayCommand(ResetCommandAction);
+            ApplyCommand = new RelayCommand(ApplyCommandAction);
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -50,20 +54,66 @@ namespace ChroZenService
         /// </summary>
         public float Measure2 { get { return _Measure2; } set { _Measure2 = value; OnPropertyChanged("Measure2"); } }
 
-        
+
         #endregion Property
 
         #region Command
 
-        #region DefaultCommand
-        public RelayCommand DefaultCommand { get; set; }
-        private void DefaultCommandAction(object param)
+        #region SetCommand
+        public RelayCommand SetCommand { get; set; }
+        private void SetCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("DefaultCommand Fired");
-        }
+            switch ((E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE)param)
+            {
+                case E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE.TEMP_CALIBRATION_T1:
+                case E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE.TEMP_CALIBRATION_T2:
+                    {
 
-        #endregion DefaultCommand 
+                    }
+                    break;
+            }
+            //TODO :             
+            Debug.WriteLine("SetCommand Fired");
+        }
+        #endregion SetCommand 
+
+        #region MeasuredCommand
+        public RelayCommand MeasuredCommand { get; set; }
+        private void MeasuredCommandAction(object param)
+        {
+            switch ((E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE)param)
+            {
+                case E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE.TEMP_CALIBRATION_T1:
+                case E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE.TEMP_CALIBRATION_T2:
+                    {
+
+                    }
+                    break;
+            }
+            //TODO :             
+            Debug.WriteLine("MeasuredCommand Fired");
+        }
+        #endregion MeasuredCommand 
+
+        #region ResetCommand
+        public RelayCommand ResetCommand { get; set; }
+        private void ResetCommandAction(object param)
+        {
+
+            //TODO :             
+            Debug.WriteLine("ResetCommand Fired");
+        }
+        #endregion ResetCommand 
+
+        #region ApplyCommand
+        public RelayCommand ApplyCommand { get; set; }
+        private void ApplyCommandAction(object param)
+        {
+
+            //TODO :             
+            Debug.WriteLine("ApplyCommand Fired");
+        }
+        #endregion ApplyCommand 
 
         #endregion Command
 

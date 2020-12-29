@@ -478,7 +478,7 @@ namespace ChroZenService
                             ViewModel_MainSide_Right.CenterType = ((E_DET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btDet[1]).ToString().Replace("_", " ");
                             ViewModel_MainSide_Right.BottomType = ((E_DET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btDet[2]).ToString().Replace("_", " ");
 
-                        ViewModelConfigPage.ViewModel_Config_FrontDetConfig.
+                        //ViewModelConfigPage.ViewModel_Config_FrontDetConfig.
                             #endregion MainRight
 
                         #endregion MainPage

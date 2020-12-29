@@ -23,7 +23,7 @@ namespace ChroZenService
 
         ObservableCollection<ViewModel_System_TimeControl_TimeControlType> _OC_ViewModel_System_TimeControl_TimeControlType =
             new ObservableCollection<ViewModel_System_TimeControl_TimeControlType>(new ViewModel_System_TimeControl_TimeControlType[ChroZenService_Const.TIME_CONTROL_PROGRAM_CNT]);
-        ObservableCollection<ViewModel_System_TimeControl_TimeControlType> OC_ViewModel_System_TimeControl_TimeControlType
+        public ObservableCollection<ViewModel_System_TimeControl_TimeControlType> OC_ViewModel_System_TimeControl_TimeControlType
         {
             get { return _OC_ViewModel_System_TimeControl_TimeControlType; }
             set { _OC_ViewModel_System_TimeControl_TimeControlType = value; OnPropertyChanged("OC_ViewModel_System_TimeControl_TimeControlType"); }

@@ -204,7 +204,7 @@
 
                             <local:UC_TabHeaderButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" ButtonMargin="22,0,-3,0" ButtonPadding="0,0,0,20" 
                                                       IsVisible="{Binding ViewModelConfigPage.SelectedMenu,Converter={StaticResource E_CONFIG_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_MENU_TYPE.FRONT_INLET}}"
-                            ClickCommand="{Binding ViewModelConfigPage.SubMenuSelectCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.FRONT_INLET_CONFIG}" ButtonWidth="193.2" ButtonHeight="65"                          
+                            ClickCommand="{Binding ViewModelConfigPage.SubMenuSelectCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.FRONT_INLET_CONFIG}" ButtonWidth="188.2" ButtonHeight="65"                          
                                                       Text="Config" CornerRadius="10" InnerItemSelected="{Binding ViewModelConfigPage.SelectedSubMenu,Converter={StaticResource E_CONFIG_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.FRONT_INLET_CONFIG}}"/>
 
                             <local:UC_TabHeaderButton Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" ButtonMargin="-3,0,20,0" ButtonPadding="0,0,0,20" ButtonWidth="188.2" ButtonHeight="65"
@@ -214,7 +214,7 @@
 
                             <local:UC_TabHeaderButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" ButtonMargin="22,0,-3,0" ButtonPadding="0,0,0,20" 
                                                       IsVisible="{Binding ViewModelConfigPage.SelectedMenu,Converter={StaticResource E_CONFIG_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_MENU_TYPE.CENTER_INLET}}"
-                            ClickCommand="{Binding ViewModelConfigPage.SubMenuSelectCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.CENTER_INLET_CONFIG}" ButtonWidth="193.2" ButtonHeight="65"                          
+                            ClickCommand="{Binding ViewModelConfigPage.SubMenuSelectCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.CENTER_INLET_CONFIG}" ButtonWidth="188.2" ButtonHeight="65"                          
                                                       Text="Config" CornerRadius="10" InnerItemSelected="{Binding ViewModelConfigPage.SelectedSubMenu,Converter={StaticResource E_CONFIG_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.CENTER_INLET_CONFIG}}"/>
 
                             <local:UC_TabHeaderButton Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" ButtonMargin="-3,0,20,0" ButtonPadding="0,0,0,20" ButtonWidth="188.2" ButtonHeight="65"
@@ -224,7 +224,7 @@
 
                             <local:UC_TabHeaderButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" ButtonMargin="22,0,-3,0" ButtonPadding="0,0,0,20" 
                                                       IsVisible="{Binding ViewModelConfigPage.SelectedMenu,Converter={StaticResource E_CONFIG_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_MENU_TYPE.REAR_INLET}}"
-                            ClickCommand="{Binding ViewModelConfigPage.SubMenuSelectCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.REAR_INLET_CONFIG}" ButtonWidth="193.2" ButtonHeight="65"                          
+                            ClickCommand="{Binding ViewModelConfigPage.SubMenuSelectCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.REAR_INLET_CONFIG}" ButtonWidth="188.2" ButtonHeight="65"                          
                                                       Text="Config" CornerRadius="10" InnerItemSelected="{Binding ViewModelConfigPage.SelectedSubMenu,Converter={StaticResource E_CONFIG_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.REAR_INLET_CONFIG}}"/>
 
                             <local:UC_TabHeaderButton Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" ButtonMargin="-3,0,20,0" ButtonPadding="0,0,0,20" ButtonWidth="188.2" ButtonHeight="65"
@@ -257,7 +257,7 @@
 
                             <local:UC_TabHeaderButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" ButtonMargin="22,0,-3,0" ButtonPadding="0,0,0,20" 
                                                       IsVisible="{Binding ViewModelConfigPage.SelectedMenu,Converter={StaticResource E_CONFIG_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_MENU_TYPE.REAR_DET}}"
-                            ClickCommand="{Binding ViewModelConfigPage.SubMenuSelectCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.REAR_DET_CONFIG}" ButtonWidth="193.2" ButtonHeight="65"                          
+                            ClickCommand="{Binding ViewModelConfigPage.SubMenuSelectCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.REAR_DET_CONFIG}" ButtonWidth="188.2" ButtonHeight="65"                          
                                                       Text="Config" CornerRadius="10" InnerItemSelected="{Binding ViewModelConfigPage.SelectedSubMenu,Converter={StaticResource E_CONFIG_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.REAR_DET_CONFIG}}"/>
 
                             <local:UC_TabHeaderButton Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" ButtonMargin="-3,0,20,0" ButtonPadding="0,0,0,20" ButtonWidth="188.2" ButtonHeight="65"

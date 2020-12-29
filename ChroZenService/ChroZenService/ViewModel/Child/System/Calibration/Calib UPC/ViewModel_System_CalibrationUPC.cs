@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
@@ -9,9 +10,22 @@ namespace ChroZenService
     {
         #region 생성자 & 이벤트 헨들러
 
-        public ViewModel_System_CalibrationUPC()
+        public ViewModel_System_CalibrationUPC(E_UPC_INDEX e_UPC_INDEX)
         {
-            DefaultCommand = new RelayCommand(DefaultCommandAction);
+            SensorZeroResetCommand = new RelayCommand(SensorZeroResetCommandAction);
+            SensorZeroStartCommand = new RelayCommand(SensorZeroStartCommandAction);
+            SensorZeroStopCommand = new RelayCommand(SensorZeroStopCommandAction);
+            SensorZeroApplyCommand = new RelayCommand(SensorZeroApplyCommandAction);
+
+            ValveResetCommand = new RelayCommand(ValveResetCommandAction);
+            ValveStartCommand = new RelayCommand(ValveStartCommandAction);
+            ValveStopCommand = new RelayCommand(ValveStopCommandAction);
+            ValveApplyCommand = new RelayCommand(ValveApplyCommandAction);
+
+            FlowResetCommand = new RelayCommand(FlowResetCommandAction);
+            FlowStartCommand = new RelayCommand(FlowStartCommandAction);
+            FlowStopCommand = new RelayCommand(FlowStopCommandAction);
+            FlowApplyCommand = new RelayCommand(FlowApplyCommandAction);
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -19,6 +33,8 @@ namespace ChroZenService
         #region Binding
 
         #region Property
+
+        public E_UPC_INDEX _e_UPC_INDEX;
 
         bool _bIsDoingSensorZeroCalibration;
         public bool bIsDoingSensorZeroCalibration { get { return _bIsDoingSensorZeroCalibration; } set { _bIsDoingSensorZeroCalibration = value; OnPropertyChanged("bIsDoingSensorZeroCalibration"); } }
@@ -105,14 +121,126 @@ namespace ChroZenService
 
         #region Command
 
-        #region DefaultCommand
-        public RelayCommand DefaultCommand { get; set; }
-        private void DefaultCommandAction(object param)
+        #region SensorZero
+
+        #region SensorZeroResetCommand
+        public RelayCommand SensorZeroResetCommand { get; set; }
+        private void SensorZeroResetCommandAction(object param)
         {
             //TODO :             
-            Debug.WriteLine("DefaultCommand Fired");
+            Debug.WriteLine("SensorZeroResetCommand Fired");
         }
-        #endregion DefaultCommand 
+        #endregion SensorZeroResetCommand 
+
+        #region SensorZeroStartCommand
+        public RelayCommand SensorZeroStartCommand { get; set; }
+        private void SensorZeroStartCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("SensorZeroStartCommand Fired");
+        }
+        #endregion SensorZeroStartCommand 
+
+        #region SensorZeroStopCommand
+        public RelayCommand SensorZeroStopCommand { get; set; }
+        private void SensorZeroStopCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("SensorZeroStopCommand Fired");
+        }
+        #endregion SensorZeroStopCommand 
+
+        #region SensorZeroApplyCommand
+        public RelayCommand SensorZeroApplyCommand { get; set; }
+        private void SensorZeroApplyCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("SensorZeroApplyCommand Fired");
+        }
+        #endregion SensorZeroApplyCommand 
+
+        #endregion SensorZero
+
+        #region Valve
+
+        #region ValveResetCommand
+        public RelayCommand ValveResetCommand { get; set; }
+        private void ValveResetCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("ValveResetCommand Fired");
+        }
+        #endregion ValveResetCommand 
+
+        #region ValveStartCommand
+        public RelayCommand ValveStartCommand { get; set; }
+        private void ValveStartCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("ValveStartCommand Fired");
+        }
+        #endregion ValveStartCommand 
+
+        #region ValveStopCommand
+        public RelayCommand ValveStopCommand { get; set; }
+        private void ValveStopCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("ValveStopCommand Fired");
+        }
+        #endregion ValveStopCommand 
+
+        #region ValveApplyCommand
+        public RelayCommand ValveApplyCommand { get; set; }
+        private void ValveApplyCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("ValveApplyCommand Fired");
+        }
+        #endregion ValveApplyCommand 
+
+        #endregion Valve
+
+        #region Flow
+
+        #region FlowResetCommand
+        public RelayCommand FlowResetCommand { get; set; }
+        private void FlowResetCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("FlowResetCommand Fired");
+        }
+        #endregion FlowResetCommand 
+
+        #region FlowStartCommand
+        public RelayCommand FlowStartCommand { get; set; }
+        private void FlowStartCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("FlowStartCommand Fired");
+        }
+        #endregion FlowStartCommand 
+
+        #region FlowStopCommand
+        public RelayCommand FlowStopCommand { get; set; }
+        private void FlowStopCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("FlowStopCommand Fired");
+        }
+        #endregion FlowStopCommand 
+
+        #region FlowApplyCommand
+        public RelayCommand FlowApplyCommand { get; set; }
+        private void FlowApplyCommandAction(object param)
+        {
+            //TODO :             
+            Debug.WriteLine("FlowApplyCommand Fired");
+        }
+        #endregion FlowApplyCommand 
+
+        #endregion Flow
+
 
         #endregion Command
 

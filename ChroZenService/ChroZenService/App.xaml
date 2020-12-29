@@ -7,7 +7,7 @@
         <x:Double x:Key="HEIGHT_CONTROLPAGE_MIDDLE">30</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_2">105</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_1">50</x:Double>
-        <x:Double x:Key="HEIGHT_CONTROLPAGE_3">140</x:Double>
+        <x:Double x:Key="HEIGHT_CONTROLPAGE_3">103</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_4">170</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_5">195</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_8">250</x:Double>
@@ -16,10 +16,19 @@
         <x:Double x:Key="HEIGHT_CONTROLPAGE_14">480</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_18">640</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_BOTTOM">60</x:Double>
+        <x:Double x:Key="HEIGHT_SYSTEMPAGE_CALIB_BUTTON">30</x:Double>        
         <LinearGradientBrush x:Key="SCB_CONTROL_BACKGROUND_DARK_0" StartPoint="0,0" EndPoint="0,1">
             <LinearGradientBrush.GradientStops>
                 <GradientStop Color="#25242a" Offset="0" />
                 <GradientStop Color="#1b1a1f" Offset="1" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SCB_CALIB_BUTTON_BACKGROUND_LIGHTGRAY_0" StartPoint="0.4,0" EndPoint="1,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#3d3d49" Offset="0" />
+                <GradientStop Color="#3d3d49" Offset="0.4" />
+                <GradientStop Color="#34323d" Offset="0.7" />
+                <GradientStop Color="#33333d" Offset="1" />
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
         <Color x:Key="CS_COLOR_KEYPAD_LABEL_BORDER" x:FactoryMethod="FromHex">
@@ -70,6 +79,7 @@
         <x:Int32 x:Key="FS_MAINPAGE_NORMAL">24</x:Int32>
         <FileImageSource x:Key="IMG_CONFIG_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
         <FileImageSource x:Key="IMG_SYSTEM_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
+        <cvt:BoolReverseConverter x:Key="BoolReverseConverter"/>
         <cvt:E_SYSTEM_SUB_MENU_TYPEToBoolConverter x:Key="E_SYSTEM_SUB_MENU_TYPEToBoolConverter"/>
         <cvt:E_SYSTEM_MENU_TYPEToBoolConverter x:Key="E_SYSTEM_MENU_TYPEToBoolConverter"/>
         <cvt:E_CONFIG_SUB_MENU_TYPEToBoolConverter x:Key="E_CONFIG_SUB_MENU_TYPEToBoolConverter"/>
