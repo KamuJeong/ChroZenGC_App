@@ -1528,7 +1528,7 @@ namespace ChroZenService
                     }
                     break;
 
-                case E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_CALIB_READ:
+                case E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_CALIB_READ: //Done
                     {
                         if (temp.nPacketLength == 24)
                         {
@@ -1540,7 +1540,7 @@ namespace ChroZenService
                             //Req
                             else
                             {
-                                Send(T_PACKCODE_CHROZEN_SIGNALManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SIGNAL_Send.packet));
+                                Send(T_PACKCODE_CHROZEN_LCD_APC_CALIB_READManager.MakePACKCODE_SET(DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Send.packet));
                             }
                         }
                         //Set
@@ -1550,8 +1550,8 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet);
-                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_YL6200_SIGNAL, DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received);
+                                    DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ>(packet);
+                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_CALIB_READ, DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received);
                                 }
                                 catch (Exception e)
                                 {
@@ -1562,7 +1562,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL));
+                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_CALIB_READ));
                                 }
                                 catch (Exception e)
                                 {
@@ -1573,7 +1573,7 @@ namespace ChroZenService
                     }
                     break;
 
-                case E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE:
+                case E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE: //Done
                     {
                         if (temp.nPacketLength == 24)
                         {
@@ -1595,8 +1595,8 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet);
-                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_YL6200_SIGNAL, DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received);
+                                    DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE>(packet);
+                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE, DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received);
                                 }
                                 catch (Exception e)
                                 {
@@ -1607,7 +1607,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL));
+                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE));
                                 }
                                 catch (Exception e)
                                 {
@@ -1618,7 +1618,7 @@ namespace ChroZenService
                     }
                     break;
 
-                case E_PACKCODE.PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK:
+                case E_PACKCODE.PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK: //Done
                     {
                         if (temp.nPacketLength == 24)
                         {
@@ -1630,7 +1630,7 @@ namespace ChroZenService
                             //Req
                             else
                             {
-                                Send(T_PACKCODE_CHROZEN_SIGNALManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SIGNAL_Send.packet));
+                                Send(T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECKManager.MakePACKCODE_SET(DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Send.packet));
                             }
                         }
                         //Set
@@ -1640,8 +1640,8 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet);
-                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_YL6200_SIGNAL, DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received);
+                                    DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK>(packet);
+                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK, DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received);
                                 }
                                 catch (Exception e)
                                 {
@@ -1652,7 +1652,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL));
+                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK));
                                 }
                                 catch (Exception e)
                                 {
@@ -1663,7 +1663,7 @@ namespace ChroZenService
                     }
                     break;
 
-                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP:
+                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP: //Done
                     {
                         if (temp.nPacketLength == 24)
                         {
@@ -1675,7 +1675,7 @@ namespace ChroZenService
                             //Req
                             else
                             {
-                                Send(T_PACKCODE_CHROZEN_SIGNALManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SIGNAL_Send.packet));
+                                Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket));
                             }
                         }
                         //Set
@@ -1685,8 +1685,8 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet);
-                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_YL6200_SIGNAL, DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received);
+                                    DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP>(packet);
+                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received);
                                 }
                                 catch (Exception e)
                                 {
@@ -1697,7 +1697,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL));
+                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                                 }
                                 catch (Exception e)
                                 {
@@ -1708,7 +1708,7 @@ namespace ChroZenService
                     }
                     break;
 
-                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_SIGNAL:
+                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_SIGNAL: //Done
                     {
                         if (temp.nPacketLength == 24)
                         {
@@ -1720,7 +1720,7 @@ namespace ChroZenService
                             //Req
                             else
                             {
-                                Send(T_PACKCODE_CHROZEN_SIGNALManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SIGNAL_Send.packet));
+                                Send(T_PACKCODE_LCD_COMMAND_TYPE_SIGNALManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL_Send.signalPacket));
                             }
                         }
                         //Set
@@ -1730,8 +1730,8 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet);
-                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_YL6200_SIGNAL, DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received);
+                                    DataManager.T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL>(packet);
+                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_SIGNAL, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL_Received);
                                 }
                                 catch (Exception e)
                                 {
@@ -1742,7 +1742,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL));
+                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_SIGNAL));
                                 }
                                 catch (Exception e)
                                 {
@@ -1753,7 +1753,7 @@ namespace ChroZenService
                     }
                     break;
 
-                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN:
+                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN: //Done
                     {
                         if (temp.nPacketLength == 24)
                         {
@@ -1765,7 +1765,7 @@ namespace ChroZenService
                             //Req
                             else
                             {
-                                Send(T_PACKCODE_CHROZEN_SIGNALManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SIGNAL_Send.packet));
+                                Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
                             }
                         }
                         //Set
@@ -1775,8 +1775,8 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet);
-                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_YL6200_SIGNAL, DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received);
+                                    DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_TEMP>(packet);
+                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received);
                                 }
                                 catch (Exception e)
                                 {
@@ -1787,7 +1787,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL));
+                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_TEMP>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
                                 }
                                 catch (Exception e)
                                 {
@@ -1798,7 +1798,7 @@ namespace ChroZenService
                     }
                     break;
 
-                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET:
+                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET: //Done
                     {
                         if (temp.nPacketLength == 24)
                         {
@@ -1810,7 +1810,24 @@ namespace ChroZenService
                             //Req
                             else
                             {
-                                Send(T_PACKCODE_CHROZEN_SIGNALManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SIGNAL_Send.packet));
+                                switch (temp.nEventIndex)
+                                {
+                                    case 0:
+                                        {
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 0));
+                                        }
+                                        break;
+                                    case 1:
+                                        {
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket, 1));
+                                        }
+                                        break;
+                                    case 2:
+                                        {
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket, 2));
+                                        }
+                                        break;
+                                }
                             }
                         }
                         //Set
@@ -1820,8 +1837,27 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet);
-                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_YL6200_SIGNAL, DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received);
+                                    switch (temp.nEventIndex)
+                                    {
+                                        case 0:
+                                            {
+                                                DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_INLET>(packet);
+                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received);
+                                            }
+                                            break;
+                                        case 1:
+                                            {
+                                                DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_INLET>(packet);
+                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received);
+                                            }
+                                            break;
+                                        case 2:
+                                            {
+                                                DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_INLET>(packet);
+                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received);
+                                            }
+                                            break;
+                                    }
                                 }
                                 catch (Exception e)
                                 {
@@ -1832,7 +1868,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL));
+                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_INLET>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
                                 }
                                 catch (Exception e)
                                 {
@@ -1843,7 +1879,7 @@ namespace ChroZenService
                     }
                     break;
 
-                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET:
+                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET: //Done
                     {
                         if (temp.nPacketLength == 24)
                         {
@@ -1855,7 +1891,24 @@ namespace ChroZenService
                             //Req
                             else
                             {
-                                Send(T_PACKCODE_CHROZEN_SIGNALManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SIGNAL_Send.packet));
+                                switch(temp.nEventIndex)
+                                {
+                                    case 0:
+                                        {
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket));
+                                        }
+                                        break;
+                                    case 1:
+                                        {
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket));
+                                        }
+                                        break;
+                                    case 2:
+                                        {
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket));
+                                        }
+                                        break;
+                                }                                
                             }
                         }
                         //Set
@@ -1865,8 +1918,27 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet);
-                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_YL6200_SIGNAL, DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received);
+                                    switch(temp.nEventIndex)
+                                    {
+                                        case 0:
+                                            {
+                                                DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_DET>(packet);
+                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received);
+                                            }
+                                            break;
+                                        case 1:
+                                            {
+                                                DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_DET>(packet);
+                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received);
+                                            }
+                                            break;
+                                        case 2:
+                                            {
+                                                DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_DET>(packet);
+                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received);
+                                            }
+                                            break;
+                                    }                                    
                                 }
                                 catch (Exception e)
                                 {
@@ -1877,7 +1949,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL));
+                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_DET>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET));
                                 }
                                 catch (Exception e)
                                 {
@@ -1888,7 +1960,7 @@ namespace ChroZenService
                     }
                     break;
 
-                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_APCAUX:
+                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_APCAUX: //Done
                     {
                         if (temp.nPacketLength == 24)
                         {
@@ -1900,7 +1972,25 @@ namespace ChroZenService
                             //Req
                             else
                             {
-                                Send(T_PACKCODE_CHROZEN_SIGNALManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SIGNAL_Send.packet));
+                                switch (temp.nEventIndex)
+                                {
+                                    case 0:
+                                        {
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket));
+                                        }
+                                        break;
+                                    case 1:
+                                        {
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket));
+                                        }
+                                        break;
+                                    case 2:
+                                        {
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket));
+                                        }
+                                        break;
+                                }
+
                             }
                         }
                         //Set
@@ -1910,8 +2000,28 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet);
-                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_YL6200_SIGNAL, DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received);
+                                    switch (temp.nEventIndex)
+                                    {
+                                        case 0:
+                                            {
+                                                DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_AUX>(packet);
+                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_APCAUX, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Received);
+                                            }
+                                            break;
+                                        case 1:
+                                            {
+                                                DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_AUX>(packet);
+                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_APCAUX, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Received);
+                                            }
+                                            break;
+                                        case 2:
+                                            {
+                                                DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_AUX>(packet);
+                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_APCAUX, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Received);
+                                            }
+                                            break;
+                                    }
+
                                 }
                                 catch (Exception e)
                                 {
@@ -1922,7 +2032,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL));
+                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_AUX>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_APCAUX));
                                 }
                                 catch (Exception e)
                                 {
@@ -1933,7 +2043,7 @@ namespace ChroZenService
                     }
                     break;
 
-                case E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG:
+                case E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG: //Done
                     {
                         if (temp.nPacketLength == 24)
                         {
@@ -1945,7 +2055,7 @@ namespace ChroZenService
                             //Req
                             else
                             {
-                                Send(T_PACKCODE_CHROZEN_SIGNALManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SIGNAL_Send.packet));
+                                Send(T_PACKCODE_CHROZEN_LCD_DIAGManager.MakePACKCODE_SET(DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet));
                             }
                         }
                         //Set
@@ -1955,8 +2065,8 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet);
-                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_YL6200_SIGNAL, DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received);
+                                    DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_LCD_DIAG>(packet);
+                                    EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG, DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Received);
                                 }
                                 catch (Exception e)
                                 {
@@ -1967,7 +2077,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL));
+                                    receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_LCD_DIAG>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG));
                                 }
                                 catch (Exception e)
                                 {

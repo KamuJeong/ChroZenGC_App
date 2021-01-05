@@ -73,7 +73,7 @@ namespace ChroZenService
                     break;
             }
             //TODO :             
-            Debug.WriteLine("SetCommand Fired");
+            Debug.WriteLine(string.Format("Oven : {0} SetCommand Fired", (E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE)param));
         }
         #endregion SetCommand 
 
@@ -91,7 +91,7 @@ namespace ChroZenService
                     break;
             }
             //TODO :             
-            Debug.WriteLine("MeasuredCommand Fired");
+            Debug.WriteLine(string.Format("Oven : {0} MeasuredCommand Fired", (E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE)param));
         }
         #endregion MeasuredCommand 
 

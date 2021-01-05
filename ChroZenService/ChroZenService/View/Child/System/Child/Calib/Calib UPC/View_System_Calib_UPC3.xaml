@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Calib_UPC3">
-  <ContentView.Content>
+    <ContentView.Content>
         <AbsoluteLayout>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -28,9 +28,9 @@
                     <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_4}"/>
                     <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_CALIB_BUTTON}"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Text="Sensor Zero" Grid.ColumnSpan="6" FontSize="24" TextColor="White" FontAttributes="Bold" Margin="18,0,0,0" HorizontalOptions="Start"  Padding="0,1,0,0"/>
+                <Label Grid.Row="0" Text="Sensor Zero" Grid.ColumnSpan="6" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_TITLE}"/>
                 <Frame Grid.Row="1" Grid.ColumnSpan="6" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="18,0,12,0" >
+                <Grid Grid.Row="1" Grid.ColumnSpan="6" Margin="18,0,12,0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_ROW_TITLE}"/>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_COLUMN_ONE_THIRD}"/>
@@ -45,15 +45,19 @@
                     <Label Grid.Row="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_SENSOR1}"/>
                     <Label Grid.Row="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_SENSOR2}"/>
                     <Label Grid.Row="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_SENSOR3}"/>
-                   <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_3}" />
-                </Grid>
-                <local:UC_System_Calib_ResetButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Reset" CornerRadius="10"      ButtonMargin="18,0,0,0"  IsSmall="True" InnerMargin="0,0,38,0" Margin="0,0,0,-1"    IconMargin="-12,0,0,-10" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.SensorZeroResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.SENSOR_ZERO}"/>
-                <local:UC_System_Calib_StartStopButton Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10"  ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,0"                       IconMargin="-12,0,0,-12" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.SensorZeroStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.SENSOR_ZERO}"/>
-                <local:UC_System_Calib_ApplyButton Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"      ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"  Margin="-8,0,0,0"   IconMargin="-12,0,0,-10" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.SensorZeroApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.SENSOR_ZERO}"/>
 
-                <Label Grid.Row="5" Text="Valve Calibration" Grid.ColumnSpan="6" FontSize="24" TextColor="White" FontAttributes="Bold" Margin="18,0,0,0" HorizontalOptions="Start"  Padding="0,1,0,0"/>
+                    <local:UC_System_Calib_LongLabel Grid.Row="0" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_LongLabel Grid.Row="1" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_LongLabel Grid.Row="2" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_3}" />
+                </Grid>
+                <local:UC_System_Calib_ResetButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Reset" CornerRadius="10"      ButtonMargin="18,0,0,0"  IsSmall="True" InnerMargin="0,0,38,0" Margin="0,0,0,-1"    IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.SensorZeroResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.SENSOR_ZERO}"/>
+                <local:UC_System_Calib_StartStopButton Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10"  ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,0"                       IconMargin="-12,0,0,-8" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.SensorZeroStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.SENSOR_ZERO}"/>
+                <local:UC_System_Calib_ApplyButton Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"      ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"  Margin="-8,0,0,0"   IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.SensorZeroApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.SENSOR_ZERO}"/>
+
+                <Label Grid.Row="5" Text="Valve Calibration" Grid.ColumnSpan="6" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_TITLE}"/>
                 <Frame Grid.Row="6" Grid.ColumnSpan="6" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                <Grid Grid.Row="6" Grid.ColumnSpan="2" Margin="18,0,12,0" >
+                <Grid Grid.Row="6" Grid.ColumnSpan="6" Margin="18,0,12,0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_ROW_TITLE}"/>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_COLUMN_ONE_THIRD}"/>
@@ -69,15 +73,27 @@
                     <Label Grid.Row="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_VALVE1}"/>
                     <Label Grid.Row="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_VALVE2}"/>
                     <Label Grid.Row="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_VALVE3}"/>
-                   <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_3}" />
-                </Grid>
-                <local:UC_System_Calib_ResetButton Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Text="Reset" CornerRadius="10"      ButtonMargin="18,0,0,0"  IsSmall="True" InnerMargin="0,0,38,0" Margin="0,0,0,-1"   IconMargin="-12,0,0,-10" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.ValveResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.VALVE}"/>
-                <local:UC_System_Calib_StartStopButton Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10"  ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,0"                      IconMargin="-12,0,0,-12" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.ValveStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.VALVE}"/>
-                <local:UC_System_Calib_ApplyButton Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"      ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"  Margin="-8,0,0,0"  IconMargin="-12,0,0,-10" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.ValveApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.VALVE}"/>
 
-                <Label Grid.Row="9" Text="Flow Calibration" Grid.ColumnSpan="6" FontSize="24" TextColor="White" FontAttributes="Bold" Margin="18,0,0,0" HorizontalOptions="Start"  Padding="0,1,0,0"/>
+                    <local:UC_System_Calib_Label Grid.Row="0" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+
+                    <local:UC_System_Calib_Label Grid.Row="0" Grid.Column="2" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="2" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="2" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+
+                    <local:UC_System_Calib_Label Grid.Row="0" Grid.Column="3" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="3" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="3" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_3}" />
+                </Grid>
+                <local:UC_System_Calib_ResetButton Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Text="Reset" CornerRadius="10"      ButtonMargin="18,0,0,0"  IsSmall="True" InnerMargin="0,0,38,0" Margin="0,0,0,-1"   IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.ValveResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.VALVE}"/>
+                <local:UC_System_Calib_StartStopButton Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10"  ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,0"                      IconMargin="-12,0,0,-8" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.ValveStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.VALVE}"/>
+                <local:UC_System_Calib_ApplyButton Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"      ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"  Margin="-8,0,0,0"  IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.ValveApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.VALVE}"/>
+
+                <Label Grid.Row="9" Text="Flow Calibration" Grid.ColumnSpan="6" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_TITLE}"/>
                 <Frame Grid.Row="10" Grid.ColumnSpan="6" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                <Grid Grid.Row="10" Grid.ColumnSpan="2" Margin="18,0,12,0" >
+                <Grid Grid.Row="10" Grid.ColumnSpan="6" Margin="18,0,12,0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_ROW_TITLE}"/>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_COLUMN_ONE_THIRD}"/>
@@ -96,13 +112,23 @@
                     <Label Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_ACT}"/>
                     <Label Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_SET}"/>
                     <Label Grid.Column="3" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_Measured}"/>
-                    <Line Grid.Row="0" Grid.ColumnSpan="5" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="0" X2="312" Y1="27" Y2="27" />
-                   <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_4}" />
+
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="3" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="2" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION1}"/>
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="2" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION2}"/>
+                    <local:UC_System_Calib_Label Grid.Row="3" Grid.Column="2" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION3}"/>
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="3" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.MeasuredCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION1}"/>
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="3" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.MeasuredCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION2}"/>
+                    <local:UC_System_Calib_Label Grid.Row="3" Grid.Column="3" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.MeasuredCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION3}"/>
+                    <Line Grid.Row="0" Grid.ColumnSpan="5" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="0" X2="312" Y1="26" Y2="26" />
+                    <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_4}" />
                 </Grid>
-                <local:UC_System_Calib_ResetButton Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Text="Reset" CornerRadius="10"     ButtonMargin="18,0,0,0"  IsSmall="True" InnerMargin="0,0,38,0" Margin="0,0,0,-1"    IconMargin="-12,0,0,-10" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.FlowResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.FLOW}"/>
-                <local:UC_System_Calib_StartStopButton Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10" ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,0"                       IconMargin="-12,0,0,-12" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.FlowStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.FLOW}"/>
-                <local:UC_System_Calib_ApplyButton Grid.Row="11" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"     ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"  Margin="-8,0,0,0"   IconMargin="-12,0,0,-10" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.FlowApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.FLOW}"/>
-            </Grid> 
+                <local:UC_System_Calib_ResetButton Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Text="Reset" CornerRadius="10"     ButtonMargin="18,0,0,0"  IsSmall="True" InnerMargin="0,0,38,0" Margin="0,0,0,-1"    IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.FlowResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.FLOW}"/>
+                <local:UC_System_Calib_StartStopButton Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10" ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,0"                       IconMargin="-12,0,0,-8" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.FlowStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.FLOW}"/>
+                <local:UC_System_Calib_ApplyButton Grid.Row="11" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"     ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"  Margin="-8,0,0,0"   IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.FlowApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE.FLOW}"/>
+            </Grid>
         </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>

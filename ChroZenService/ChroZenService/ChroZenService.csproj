@@ -135,6 +135,9 @@
     <EmbeddedResource Update="Common\UserControl\ConfigPage\Calibration\UC_System_Calib_ApplyButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Common\UserControl\ConfigPage\Calibration\UC_System_Calib_Label.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Common\UserControl\ConfigPage\Calibration\UC_System_Calib_ResetButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -300,6 +303,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_System_Calib_LongLabel.xaml.cs">
+      <DependentUpon>UC_System_Calib_LongLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\Child\System\Child\Calib\Calib AuxTemp\View_System_Calib_AuxTemp2.xaml.cs">
       <DependentUpon>View_System_Calib_AuxTemp2.xaml</DependentUpon>
     </Compile>

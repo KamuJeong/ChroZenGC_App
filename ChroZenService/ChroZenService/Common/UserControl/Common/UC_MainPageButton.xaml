@@ -6,7 +6,7 @@
     <ContentView.Content>
         <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=TapGestureCommand}"/>
+                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=TapGestureCommand}" />
             </StackLayout.GestureRecognizers>
             <Label Text="{Binding Source={RelativeSource AncestorType={x:Type ContentView}},Path=Title}" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="24" FontAttributes="Bold"  HorizontalOptions="Center" HorizontalTextAlignment="Center" BackgroundColor="Transparent" Margin="0,5,0,0"/>
         </StackLayout>

@@ -10,7 +10,7 @@
                     <ColumnDefinition Width="142"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="33"/>
                 </Grid.RowDefinitions>
                 
                 <Frame Background="{StaticResource SCB_CALIB_BUTTON_BACKGROUND_LIGHTGRAY_0}" 

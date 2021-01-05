@@ -13,7 +13,7 @@ namespace ChroZenService
 
         public static readonly BindableProperty IconMarginProperty = BindableProperty.Create("IconMargin", typeof(Thickness), typeof(UC_System_Calib_ButtonBase),
   propertyChanged: onIconMarginPropertyChanged,
-  defaultValue: new Thickness(0, 0, 0, -10));
+  defaultValue: new Thickness(0, 0, 0, -6));
 
         public Thickness IconMargin
         {
@@ -35,7 +35,7 @@ namespace ChroZenService
 
         public static readonly BindableProperty LabelMarginProperty = BindableProperty.Create("LabelMargin", typeof(Thickness), typeof(UC_System_Calib_ButtonBase),
   propertyChanged: onLabelMarginPropertyChanged,
-  defaultValue: new Thickness(-10, 4, 0, 0));
+  defaultValue: new Thickness(-10, 1, 0, 0));
 
         public Thickness LabelMargin
         {

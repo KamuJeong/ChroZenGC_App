@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Calib_DetFront">
-  <ContentView.Content>
+    <ContentView.Content>
         <AbsoluteLayout>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -28,9 +28,9 @@
                     <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_4}"/>
                     <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_CALIB_BUTTON}"/>
                 </Grid.RowDefinitions>
-                <Label Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_TEMP_CALIBRATION_TITLE}" Grid.ColumnSpan="6" FontSize="24" TextColor="White" FontAttributes="Bold" Margin="18,0,0,0" HorizontalOptions="Start" Padding="0,1,0,0"/>
+                <Label Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_TEMP_CALIBRATION_TITLE}" Grid.ColumnSpan="6" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_TITLE}"/>
                 <Frame Grid.Row="1" Grid.ColumnSpan="6" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="18,0,12,0" >
+                <Grid Grid.Row="1" Grid.ColumnSpan="6" Margin="18,0,12,0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_ROW_TITLE}"/>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_COLUMN_ONE_THIRD}"/>
@@ -43,25 +43,31 @@
                         <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_ROW_ONE_SECOND}"/>
                         <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_ROW_ONE_SECOND}"/>
                     </Grid.RowDefinitions>
-                  <Label Grid.Row="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_T1}"/>
-                  <Label Grid.Row="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_T2}"/>
-                    <Label Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_ACT}"/>
-                    <Label Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_SET}"/>
-                    <Label Grid.Column="3" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_Measured}"/>
-                    <Line Grid.Row="0" Grid.ColumnSpan="5" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="0" X2="312" Y1="27" Y2="27" />
-                   <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_3}" />
+                    <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_T1}"/>
+                    <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_T2}"/>
+                    <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_ACT}"/>
+                    <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_SET}"/>
+                    <Label Grid.Column="3" Grid.Row="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_Measured}"/>
+
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ActT_1}"    Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ActT_2}"    Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fSet1}"     Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION_T1}"/>
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="2" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fSet2}"     Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION_T2}"/>
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="3" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fMeasure1}" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.MeasuredCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION_T1}"/>
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="3" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fMeasure2}" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.MeasuredCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION_T2}"/>
+                    <Line Grid.Row="0" Grid.ColumnSpan="5" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="0" X2="312" Y1="26" Y2="26" />
+                    <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_3}" />
                 </Grid>
                 <local:UC_System_Calib_ResetButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="Reset" CornerRadius="10" ButtonMargin="18,0,2,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.TEMP_CALIBRATION}"/>
                 <local:UC_System_Calib_ApplyButton Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Text="Apply" CornerRadius="10" ButtonMargin="12,0,6,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.TEMP_CALIBRATION}"/>
 
-                <Label Grid.Row="3" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_SENSOR_ZERO_CALIBRATION_TITLE}" Grid.ColumnSpan="6" FontSize="24" TextColor="White" FontAttributes="Bold" Margin="18,0,0,0" HorizontalOptions="Start"  Padding="0,1,0,0"/>
+                <Label Grid.Row="3" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_SENSOR_ZERO_CALIBRATION_TITLE}" Grid.ColumnSpan="6" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_TITLE}"/>
                 <Frame Grid.Row="4" Grid.ColumnSpan="6" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                <Grid Grid.Row="4" Grid.ColumnSpan="2" Margin="18,0,12,0" >
+                <Grid Grid.Row="4" Grid.ColumnSpan="6" Margin="18,0,12,0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_ROW_TITLE}"/>
-                        <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_COLUMN_ONE_THIRD}"/>
-                        <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_COLUMN_ONE_THIRD}"/>
-                        <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_COLUMN_ONE_THIRD}"/>
+                        <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_COLUMN_ONE_SECOND}"/>
+                        <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_COLUMN_ONE_SECOND}"/>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_COLUMN_ONE_THIRD_SPARE}"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -69,15 +75,22 @@
                         <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_ROW_ONE_SECOND}"/>
                         <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_ROW_ONE_SECOND}"/>
                     </Grid.RowDefinitions>
-                   <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_3}" />
-                </Grid>
-                <local:UC_System_Calib_ResetButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="Reset" CornerRadius="10"      ButtonMargin="18,0,0,0"  IsSmall="True" InnerMargin="0,0,38,0"   Margin="0,0,0,-1"       IconMargin="-12,0,0,-10" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SensorZeroResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.SENSOR_ZERO}"/>
-                <local:UC_System_Calib_StartStopButton Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10"  ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,0"                            IconMargin="-12,0,0,-12" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SensorZeroStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.SENSOR_ZERO}"/>
-                <local:UC_System_Calib_ApplyButton Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"      ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"   Margin="-8,0,0,0"       IconMargin="-12,0,0,-10" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SensorZeroApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.SENSOR_ZERO}"/>
+                    <Label Grid.Row="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SensorTitle1}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsSensor1Visible}"/>
+                    <Label Grid.Row="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SensorTitle2}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsSensor2Visible}"/>
+                    <Label Grid.Row="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SensorTitle3}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsSensor3Visible}"/>
 
-                <Label Grid.Row="6" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_VALVE_CALIBRATION_TITLE}" Grid.ColumnSpan="6" FontSize="24" TextColor="White" FontAttributes="Bold" Margin="18,0,0,0" HorizontalOptions="Start"  Padding="0,1,0,0"/>
+                    <local:UC_System_Calib_LongLabel Grid.Row="0" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsSensor1Visible}"/>
+                    <local:UC_System_Calib_LongLabel Grid.Row="1" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsSensor2Visible}"/>
+                    <local:UC_System_Calib_LongLabel Grid.Row="2" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsSensor3Visible}"/>
+                    <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_3}" />
+                </Grid>
+                <local:UC_System_Calib_ResetButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="Reset" CornerRadius="10"      ButtonMargin="18,0,0,0"  IsSmall="True" InnerMargin="0,0,38,0"   Margin="0,0,0,-1"       IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SensorZeroResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.SENSOR_ZERO}"/>
+                <local:UC_System_Calib_StartStopButton Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10"  ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,0"                            IconMargin="-12,0,0,-8" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SensorZeroStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.SENSOR_ZERO}"/>
+                <local:UC_System_Calib_ApplyButton Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"      ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"   Margin="-8,0,0,0"       IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SensorZeroApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.SENSOR_ZERO}"/>
+
+                <Label Grid.Row="6" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_VALVE_CALIBRATION_TITLE}" Grid.ColumnSpan="6" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_TITLE}"/>
                 <Frame Grid.Row="7" Grid.ColumnSpan="6" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                <Grid Grid.Row="7" Grid.ColumnSpan="2" Margin="18,0,12,0" >
+                <Grid Grid.Row="7" Grid.ColumnSpan="6" Margin="18,0,12,0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_ROW_TITLE}"/>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_COLUMN_ONE_THIRD}"/>
@@ -90,15 +103,30 @@
                         <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_ROW_ONE_SECOND}"/>
                         <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_ROW_ONE_SECOND}"/>
                     </Grid.RowDefinitions>
-                   <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_3}" />
-                </Grid>
-                <local:UC_System_Calib_ResetButton Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Text="Reset" CornerRadius="10"      ButtonMargin="18,0,0,0"  IsSmall="True" InnerMargin="0,0,38,0"   Margin="0,0,0,-1"   IconMargin="-12,0,0,-10" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ValveResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.VALVE}"/>
-                <local:UC_System_Calib_StartStopButton Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10"  ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,0"    IconMargin="-12,0,0,-12" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ValveStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.VALVE}"/>
-                <local:UC_System_Calib_ApplyButton Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"      ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"  Margin="-8,0,0,0"    IconMargin="-12,0,0,-10" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ValveApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.VALVE}"/>
+                    <Label Grid.Row="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ValveTitle1}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsValve1Visible}"/>
+                    <Label Grid.Row="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ValveTitle2}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsValve2Visible}"/>
+                    <Label Grid.Row="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ValveTitle3}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsValve3Visible}"/>
 
-                <Label Grid.Row="9" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_FLOW_CALIBRATION_TITLE}" Grid.ColumnSpan="6" FontSize="24" TextColor="White" FontAttributes="Bold" Margin="18,0,0,0" HorizontalOptions="Start"  Padding="0,1,0,0"/>
+                    <local:UC_System_Calib_Label Grid.Row="0" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsValve1Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsValve2Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsValve3Visible}"/>
+
+                    <local:UC_System_Calib_Label Grid.Row="0" Grid.Column="2" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsValve1Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="2" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsValve2Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="2" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsValve3Visible}"/>
+
+                    <local:UC_System_Calib_Label Grid.Row="0" Grid.Column="3" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsValve1Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="3" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsValve2Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="3" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsValve3Visible}"/>
+                    <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_3}" />
+                </Grid>
+                <local:UC_System_Calib_ResetButton Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Text="Reset" CornerRadius="10"      ButtonMargin="18,0,0,0"  IsSmall="True" InnerMargin="0,0,38,0"   Margin="0,0,0,-1"   IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ValveResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.VALVE}"/>
+                <local:UC_System_Calib_StartStopButton Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10"  ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,0"    IconMargin="-12,0,0,-8" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ValveStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.VALVE}"/>
+                <local:UC_System_Calib_ApplyButton Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"      ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"  Margin="-8,0,0,0"    IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ValveApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.VALVE}"/>
+
+                <Label Grid.Row="9" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_FLOW_CALIBRATION_TITLE}" Grid.ColumnSpan="6" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_TITLE}"/>
                 <Frame Grid.Row="10" Grid.ColumnSpan="6" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                <Grid Grid.Row="10" Grid.ColumnSpan="2" Margin="18,0,12,0" >
+                <Grid Grid.Row="10" Grid.ColumnSpan="6" Margin="18,0,12,0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_ROW_TITLE}"/>
                         <ColumnDefinition Width="{StaticResource WIDTH_SYSTEMPAGE_COLUMN_ONE_THIRD}"/>
@@ -108,19 +136,33 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_COLUMN_TITLE}"/>
-                      <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_ROW_ONE_THIRD}"/>
-                      <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_ROW_ONE_THIRD}"/>
-                      <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_ROW_ONE_THIRD}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_ROW_ONE_THIRD}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_ROW_ONE_THIRD}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_ROW_ONE_THIRD}"/>
                     </Grid.RowDefinitions>
-                  <Label Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_ACT}"/>
-                  <Label Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_SET}"/>
-                  <Label Grid.Column="3" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_Measured}"/>
-                    <Line Grid.Row="0" Grid.ColumnSpan="5" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="0" X2="312" Y1="27" Y2="27" />
-                   <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_4}" />
+                    <Label Grid.Row="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.FlowTitle1}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsFlow1Visible}"/>
+                    <Label Grid.Row="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.FlowTitle2}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsFlow2Visible}"/>
+                    <Label Grid.Row="3" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.FlowTitle3}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsFlow3Visible}"/>
+
+                    <Label Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_ACT}"/>
+                    <Label Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_SET}"/>
+                    <Label Grid.Column="3" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_Measured}"/>
+
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsFlow1Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsFlow2Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="3" Grid.Column="1" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsFlow3Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="2" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION1}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsFlow1Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="2" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION2}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsFlow2Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="3" Grid.Column="2" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION3}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsFlow3Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="3" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.MeasuredCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION1}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsFlow1Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="3" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.MeasuredCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION2}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsFlow2Visible}"/>
+                    <local:UC_System_Calib_Label Grid.Row="3" Grid.Column="3" Text="Ab1.00" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.MeasuredCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION3}" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.IsFlow3Visible}"/>
+                    <Line Grid.Row="0" Grid.ColumnSpan="5" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="0" X2="312" Y1="26" Y2="26" />
+                    <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_4}" />
                 </Grid>
-                <local:UC_System_Calib_ResetButton Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Text="Reset" CornerRadius="10"     ButtonMargin="18,0,0,0"  IsSmall="True" InnerMargin="0,0,38,0"   Margin="0,0,0,-1"   IconMargin="-12,0,0,-10" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.FlowResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.FLOW}"/>
-                <local:UC_System_Calib_StartStopButton Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10" ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,0"    IconMargin="-12,0,0,-12" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.FlowStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.FLOW}"/>
-                <local:UC_System_Calib_ApplyButton Grid.Row="11" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"     ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"   Margin="-8,0,0,0"   IconMargin="-12,0,0,-10" LabelMargin="-20,4,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.FlowApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.FLOW}"/>
+                <local:UC_System_Calib_ResetButton Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Text="Reset" CornerRadius="10"     ButtonMargin="18,0,0,0"  IsSmall="True" InnerMargin="0,0,38,0"   Margin="0,0,0,-1"   IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.FlowResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.FLOW}"/>
+                <local:UC_System_Calib_StartStopButton Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10" ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,0"    IconMargin="-12,0,0,-8" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.FlowStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.FLOW}"/>
+                <local:UC_System_Calib_ApplyButton Grid.Row="11" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"     ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"   Margin="-8,0,0,0"   IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.FlowApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.FLOW}"/>
             </Grid>
         </AbsoluteLayout>
     </ContentView.Content>

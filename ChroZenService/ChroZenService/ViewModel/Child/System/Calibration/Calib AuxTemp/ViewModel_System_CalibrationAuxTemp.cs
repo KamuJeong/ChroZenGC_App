@@ -173,7 +173,7 @@ namespace ChroZenService
                     break;
             }
             //TODO :             
-            Debug.WriteLine("SetCommand Fired");
+            Debug.WriteLine(string.Format("{0} : {1} SetCommand Fired", _e_AUXTEMP_INDEX, (E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE)param));
         }
         #endregion SetCommand 
 
@@ -197,7 +197,7 @@ namespace ChroZenService
                     break;
             }
             //TODO :             
-            Debug.WriteLine("MeasuredCommand Fired");
+            Debug.WriteLine(string.Format("{0} : {1} MeasuredCommand Fired", _e_AUXTEMP_INDEX, (E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE)param));
         }
         #endregion MeasuredCommand 
 

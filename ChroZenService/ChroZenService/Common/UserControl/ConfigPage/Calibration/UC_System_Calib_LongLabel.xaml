@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:UC_System_Calib_LabelBase xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.UC_System_Calib_LongLabel">
+    <local:UC_System_Calib_LabelBase.Content>
+        <AbsoluteLayout >
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="116"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="26"/>
+                </Grid.RowDefinitions>
+                <Frame CornerRadius="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=CornerRadius}"
+                   Background="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=Background}"
+                   BorderColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_LABEL_BORDER_COLOR}"                        
+                   >
+                </Frame>
+                <Label 
+                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=Text}"
+                    TextColor="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=TextColor}"
+                    BackgroundColor="Transparent"                    
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"                   
+                    />
+            </Grid>
+        </AbsoluteLayout>
+    </local:UC_System_Calib_LabelBase.Content>
+</local:UC_System_Calib_LabelBase>

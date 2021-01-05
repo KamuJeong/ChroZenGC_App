@@ -8,6 +8,48 @@ using static YC_ChroZenGC_Type.T_CHROZEN_GC_SYSTEM_CONFIG;
 
 namespace ChroZenService
 {
+    public class E_INLET_TYPEToBoolConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                if ((E_INLET_TYPE)value == E_INLET_TYPE.Not_Installed) return false;
+                else return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class E_DET_TYPEToBoolConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                if ((E_DET_TYPE)value == E_DET_TYPE.Not_Installed) return false;
+                else return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class BoolReverseConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

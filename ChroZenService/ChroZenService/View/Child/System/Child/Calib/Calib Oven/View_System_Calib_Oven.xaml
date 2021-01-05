@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Calib_Oven">
-  <ContentView.Content>
+    <ContentView.Content>
         <AbsoluteLayout>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -24,7 +24,7 @@
                     <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_3}"/>
                     <RowDefinition Height="{StaticResource HEIGHT_SYSTEMPAGE_CALIB_BUTTON}"/>
                 </Grid.RowDefinitions>
-                <Label Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_TEMP_CALIBRATION_TITLE}" Grid.ColumnSpan="2" FontSize="24" TextColor="White" FontAttributes="Bold" Margin="18,0,0,0" HorizontalOptions="Start" Padding="0,1,0,0"/>
+                <Label Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_TEMP_CALIBRATION_TITLE}" Grid.ColumnSpan="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_TITLE}"/>
                 <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,12,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
                 <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="18,0,12,0" >
                     <Grid.ColumnDefinitions>
@@ -43,8 +43,15 @@
                     <Label Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_ACT}"/>
                     <Label Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_SET}"/>
                     <Label Grid.Column="3" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_COLUMN_TITLE}" Text="{StaticResource STR_SYSTEMPAGE_CALIBRATION_COLUMN_TITLE_Measured}"/>
-                    <Line Grid.Row="0" Grid.ColumnSpan="5" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="0" X2="312" Y1="27" Y2="27" />
-                   <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_3}" />
+                    <Line Grid.Row="0" Grid.ColumnSpan="5" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="0" X2="312" Y1="26" Y2="26" />
+                    <Line Grid.RowSpan="4" Stroke="{StaticResource SCB_COLOR_WHITE_BORDER}" X1="65" X2="65" Y1="0" Y2="{StaticResource HEIGHT_CONTROLPAGE_3}" />
+
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationOven.ActualTemp}" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationOven.ActualTemp}" Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_LABEL}" />
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationOven.fSet1}"      Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationOven.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE.TEMP_CALIBRATION_T1}"/>
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="2" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationOven.fSet2}"      Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationOven.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE.TEMP_CALIBRATION_T2}"/>
+                    <local:UC_System_Calib_Label Grid.Row="1" Grid.Column="3" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationOven.Measure1}"   Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationOven.MeasuredCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE.TEMP_CALIBRATION_T1}"/>
+                    <local:UC_System_Calib_Label Grid.Row="2" Grid.Column="3" Text="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationOven.Measure2}"   Style="{StaticResource STYLE_LABEL_SYSTEM_CALIB_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationOven.MeasuredCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE.TEMP_CALIBRATION_T2}"/>
                 </Grid>
                 <local:UC_System_Calib_ResetButton Grid.Row="2" Grid.Column="0" Text="Reset" CornerRadius="10" ButtonMargin="18,0,2,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationOven.ResetCommand}" />
                 <local:UC_System_Calib_ApplyButton Grid.Row="2" Grid.Column="1" Text="Apply" CornerRadius="10" ButtonMargin="15,0,4,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationOven.ApplyCommand}" />

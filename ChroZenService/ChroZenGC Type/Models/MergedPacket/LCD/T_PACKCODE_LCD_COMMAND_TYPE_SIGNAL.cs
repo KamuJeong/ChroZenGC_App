@@ -42,7 +42,7 @@ namespace YC_ChroZenGC_Type
             return byteArr;
         }
 
-        public static byte[] MakePACKCODE_SET(T_LCD_COMMAND command, T_SIGNAL_CALIBRATION_DATA signal)
+        public static byte[] MakePACKCODE_SET(T_SIGNAL_CALIBRATION_DATA signal)
         {
             //설정 패킷
             T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL packet = new T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL();

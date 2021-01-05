@@ -12,6 +12,10 @@ namespace ChroZenService
 
         public ViewModel_System_CalibrationUPC(E_UPC_INDEX e_UPC_INDEX)
         {
+            _e_UPC_INDEX = e_UPC_INDEX;
+            SetCommand = new RelayCommand(SetCommandAction);
+            MeasuredCommand = new RelayCommand(MeasuredCommandAction);
+
             SensorZeroResetCommand = new RelayCommand(SensorZeroResetCommandAction);
             SensorZeroStartCommand = new RelayCommand(SensorZeroStartCommandAction);
             SensorZeroStopCommand = new RelayCommand(SensorZeroStopCommandAction);
@@ -202,6 +206,44 @@ namespace ChroZenService
         #endregion Valve
 
         #region Flow
+
+        #region SetCommand
+        public RelayCommand SetCommand { get; set; }
+        private void SetCommandAction(object param)
+        {
+            switch ((E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE)param)
+            {
+                case E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION1:
+                case E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION2:
+                case E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION3:
+                    {
+
+                    }
+                    break;
+            }
+            //TODO :             
+            Debug.WriteLine(string.Format("{0} : {1} SetCommand Fired", _e_UPC_INDEX, (E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE)param));
+        }
+        #endregion SetCommand 
+
+        #region MeasuredCommand
+        public RelayCommand MeasuredCommand { get; set; }
+        private void MeasuredCommandAction(object param)
+        {
+            switch ((E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE)param)
+            {
+                case E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION1:
+                case E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION2:
+                case E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION3:
+                    {
+
+                    }
+                    break;
+            }
+            //TODO :             
+            Debug.WriteLine(string.Format("{0} : {1} MeasuredCommand Fired", _e_UPC_INDEX, (E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE)param));
+        }
+        #endregion MeasuredCommand 
 
         #region FlowResetCommand
         public RelayCommand FlowResetCommand { get; set; }

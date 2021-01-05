@@ -6,8 +6,130 @@ namespace ChroZenService
 {
     public static class ChroZenService_Const
     {
-        #region ENUM        
+        #region ENUM     
+        public enum E_ERROR_STATE
+        {
+            GC_Error_None = 0,
+            GC_Error_DoorOpen = 1,
+            GC_Error_OvenTemp = 2,
+            GC_Error_Oven_RangeErr = 3,
+            GC_Error_H2_Leak = 4,
+            GC_Error_Inj_F_Temp = 11,
+            GC_Error_Inj_C_Temp = 12,
+            GC_Error_Inj_R_Temp = 13,
+            GC_Error_Det_F_Temp = 14,
+            GC_Error_Det_C_Temp = 15,
+            GC_Error_Det_R_Temp = 16,
+            GC_Error_Aux_1_Temp = 17,
+            GC_Error_Aux_2_Temp = 18,
+            GC_Error_Aux_3_Temp = 19,
+            GC_Error_Aux_4_Temp = 20,
+            GC_Error_Aux_5_Temp = 21,
+            GC_Error_Aux_6_Temp = 22,
+            GC_Error_Aux_7_Temp = 23,
+            GC_Error_Aux_8_Temp = 24,
+            GC_Error_Det_F_Ignition = 25,
+            GC_Error_Det_C_Ignition = 26,
+            GC_Error_Det_R_Ignition = 27,
+            GC_Error_Inj_F_LowGas = 30,
+            GC_Error_Inj_C_LowGas = 31,
+            GC_Error_Inj_R_LowGas = 32,
 
+            GC_Error_Det_F_Sen1_LowGas = 33,
+            GC_Error_Det_F_Sen2_LowGas = 34,
+            GC_Error_Det_F_Sen3_LowGas = 35,
+            GC_Error_Det_C_Sen1_LowGas = 36,
+            GC_Error_Det_C_Sen2_LowGas = 37,
+            GC_Error_Det_C_Sen3_LowGas = 38,
+            GC_Error_Det_R_Sen1_LowGas = 39,
+            GC_Error_Det_R_Sen2_LowGas = 40,
+            GC_Error_Det_R_Sen3_LowGas = 41,
+            GC_Error_Aux_F_Sen1_LowGas = 42,
+            GC_Error_Aux_F_Sen2_LowGas = 43,
+            GC_Error_Aux_F_Sen3_LowGas = 44,
+            GC_Error_Aux_C_Sen1_LowGas = 45,
+            GC_Error_Aux_C_Sen2_LowGas = 46,
+            GC_Error_Aux_C_Sen3_LowGas = 47,
+            GC_Error_Aux_R_Sen1_LowGas = 48,
+            GC_Error_Aux_R_Sen2_LowGas = 49,
+            GC_Error_Aux_R_Sen3_LowGas = 50,
+
+            GC_Error_Inj_F_OverFlow = 60,
+            GC_Error_Inj_C_OverFlow = 61,
+            GC_Error_Inj_R_OverFlow = 62,
+
+            GC_Error_Det_F_Sen1_OverFlow = 63,
+            GC_Error_Det_F_Sen2_OverFlow = 64,
+            GC_Error_Det_F_Sen3_OverFlow = 65,
+            GC_Error_Det_C_Sen1_OverFlow = 66,
+            GC_Error_Det_C_Sen2_OverFlow = 67,
+            GC_Error_Det_C_Sen3_OverFlow = 68,
+            GC_Error_Det_R_Sen1_OverFlow = 69,
+            GC_Error_Det_R_Sen2_OverFlow = 70,
+            GC_Error_Det_R_Sen3_OverFlow = 71,
+            GC_Error_Aux_F_Sen1_OverFlow = 72,
+            GC_Error_Aux_F_Sen2_OverFlow = 73,
+            GC_Error_Aux_F_Sen3_OverFlow = 74,
+            GC_Error_Aux_C_Sen1_OverFlow = 75,
+            GC_Error_Aux_C_Sen2_OverFlow = 76,
+            GC_Error_Aux_C_Sen3_OverFlow = 77,
+            GC_Error_Aux_R_Sen1_OverFlow = 78,
+            GC_Error_Aux_R_Sen2_OverFlow = 79,
+            GC_Error_Aux_R_Sen3_OverFlow = 80,
+
+            GC_Error_Det_F_TCD_Ref_LowGas = 90,
+            GC_Error_Det_C_TCD_Ref_LowGas = 91,
+            GC_Error_Det_R_TCD_Ref_LowGas = 92,
+
+            GC_Error_Det_F_TCD_Mkup_LowGas = 100,
+            GC_Error_Det_C_TCD_Mkup_LowGas = 101,
+            GC_Error_Det_R_TCD_Mkup_LowGas = 102,
+
+            GC_Error_48V_Heater_Fuse = 110,
+            GC_Error_MultiP_1_Valve = 120,
+            GC_Error_MultiP_2_Valve = 121,
+
+            GC_Error_Cryo_Control = 130,
+
+            GC_APC_Error_None = 150,
+            GC_APC_Error_Inj_F_Setting = 151,
+            GC_APC_Error_Inj_C_Setting = 152,
+            GC_APC_Error_Inj_R_Setting = 153,
+            GC_APC_Error_Det_F_Setting = 154,
+            GC_APC_Error_Det_C_Setting = 155,
+            GC_APC_Error_Det_R_Setting = 156,
+            GC_APC_Error_Aux_F_Setting = 157,
+            GC_APC_Error_Aux_C_Setting = 158,
+            GC_APC_Error_Aux_R_Setting = 159,
+
+            APC_Calib_Error_None = 170,
+            APC_Calib_Error_Inj_F_Setting = 171,
+            APC_Calib_Error_Inj_C_Setting = 172,
+            APC_Calib_Error_Inj_R_Setting = 173,
+            APC_Calib_Error_Det_F_Setting = 174,
+            APC_Calib_Error_Det_C_Setting = 175,
+            APC_Calib_Error_Det_R_Setting = 176,
+            APC_Calib_Error_Aux_F_Setting = 177,
+            APC_Calib_Error_Aux_C_Setting = 178,
+            APC_Calib_Error_Aux_R_Setting = 179,
+            // 180~183 은 Valve Calibration Fail 메시지 표시용으로 에러창 안 띄움.
+            APC_Calib_Error_Volt_High = 180,
+            APC_Calib_Error_Time_Over = 181,
+            APC_Calib_Error_Valve_16V = 182,
+            APC_Calib_Error_Fail = 183,
+
+            GC_Error_Code_Max
+        }
+
+        public enum E_CALIBRATION_STATE
+        {
+            STOP,
+            CHECKING,
+            PASS,
+            FAIL,
+            COMPLETE,
+            RESET
+        }
         public enum E_UPC_INDEX
         {
             UPC1,
@@ -69,6 +191,12 @@ namespace ChroZenService
             SENSOR_ZERO,
             VALVE,
             FLOW,
+        }
+        public enum E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE
+        {
+            FLOW_CALIBRATION1,
+            FLOW_CALIBRATION2,
+            FLOW_CALIBRATION3,
         }
 
         public enum E_SYSTEM_CALIBRATION_AUX_UPC_CONTROL_COMMAND_TYPE
@@ -220,6 +348,12 @@ namespace ChroZenService
         #endregion ENUM
 
         #region Const Value
+        public static string STR_CALIBRATION_FAIL_VH = "VH FAIL";
+        public static string STR_CALIBRATION_FAIL_TO = "TO FAIL";
+        public static string STR_CALIBRATION_FAIL_16V = "16V FAIL";
+        public static string STR_CALIBRATION_FAIL_DEFAULT = "FAIL";
+        public static string STR_UNIT_VOLTAGE = " V";
+        public static string STR_FORMAT_BELOW_POINT_1 = "0.0";
         public static int METHOD_PROGRAM_CNT = 20;
         public static int TIME_CONTROL_PROGRAM_CNT = 20;
         public static int AUX_APC_CNT = 3;

@@ -26,18 +26,18 @@
         <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_SENSOR_ZERO_CALIBRATION_TITLE">Sensor Zero</x:String>
         <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_VALVE_CALIBRATION_TITLE">Valve Calibration</x:String>
         <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_FLOW_CALIBRATION_TITLE">Flow Calibration</x:String>
-        <x:Double x:Key="HEIGHT_SYSTEMPAGE_COLUMN_TITLE">27</x:Double>
-        <x:Double x:Key="HEIGHT_SYSTEMPAGE_ROW_ONE_SECOND">27</x:Double>
-        <x:Double x:Key="HEIGHT_SYSTEMPAGE_ROW_ONE_THIRD">25</x:Double>
+        <x:Double x:Key="HEIGHT_SYSTEMPAGE_COLUMN_TITLE">26</x:Double>
+        <x:Double x:Key="HEIGHT_SYSTEMPAGE_ROW_ONE_SECOND">26</x:Double>
+        <x:Double x:Key="HEIGHT_SYSTEMPAGE_ROW_ONE_THIRD">26</x:Double>
         <x:Double x:Key="WIDTH_SYSTEMPAGE_ROW_TITLE">66</x:Double>
         <x:Double x:Key="WIDTH_SYSTEMPAGE_COLUMN_ONE_THIRD">71</x:Double>
         <x:Double x:Key="WIDTH_SYSTEMPAGE_COLUMN_ONE_THIRD_SPARE">30</x:Double>
-        <x:Double x:Key="WIDTH_SYSTEMPAGE_COLUMN_ONE_SECOND">126</x:Double>
-        <x:Double x:Key="HEIGHT_CONTROLPAGE_MIDDLE">30</x:Double>
+        <x:Double x:Key="WIDTH_SYSTEMPAGE_COLUMN_ONE_SECOND">116</x:Double>
+        <x:Double x:Key="HEIGHT_CONTROLPAGE_MIDDLE">27</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_2">105</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_1">50</x:Double>
-        <x:Double x:Key="HEIGHT_CONTROLPAGE_3">93</x:Double>
-        <x:Double x:Key="HEIGHT_CONTROLPAGE_4">121</x:Double>
+        <x:Double x:Key="HEIGHT_CONTROLPAGE_3">95</x:Double>
+        <x:Double x:Key="HEIGHT_CONTROLPAGE_4">125</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_5">195</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_8">250</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_9">300</x:Double>
@@ -45,7 +45,23 @@
         <x:Double x:Key="HEIGHT_CONTROLPAGE_14">480</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_18">640</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_BOTTOM">60</x:Double>
-        <x:Double x:Key="HEIGHT_SYSTEMPAGE_CALIB_BUTTON">35</x:Double>        
+        <x:Double x:Key="HEIGHT_SYSTEMPAGE_CALIB_BUTTON">30</x:Double>
+        <LinearGradientBrush x:Key="LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0" StartPoint="0.4,0" EndPoint="1,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#546497" Offset="0" />
+                <GradientStop Color="#546497" Offset="0.4" />
+                <GradientStop Color="#42477f" Offset="0.7" />
+                <GradientStop Color="#3b4077" Offset="1" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="LGB_CONTROL_SYSTEM_LABEL_BACKGROUND_DARK_0" StartPoint="0.4,0" EndPoint="1,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#3d3d49" Offset="0" />
+                <GradientStop Color="#3d3d49" Offset="0.4" />
+                <GradientStop Color="#34323d" Offset="0.7" />
+                <GradientStop Color="#33333d" Offset="1" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
         <LinearGradientBrush x:Key="SCB_CONTROL_BACKGROUND_DARK_0" StartPoint="0,0" EndPoint="0,1">
             <LinearGradientBrush.GradientStops>
                 <GradientStop Color="#25242a" Offset="0" />
@@ -61,6 +77,22 @@
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
         <SolidColorBrush x:Key="SCB_COLOR_WHITE_BORDER" Color="#ff3d3e46"/>
+        <SolidColorBrush x:Key="SCB_COLOR_TRANSPARENT" Color="Transparent"/>
+        <Color x:Key="CS_COLOR_SYSTEM_CALIBRATION_LABEL_BORDER_COLOR" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ffa4a4aa</x:String>
+            </x:Arguments>
+        </Color>
+        <Color x:Key="CS_COLOR_SYSTEM_CALIBRATION_LABEL_TEXTCOLOR" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ff787a87</x:String>
+            </x:Arguments>
+        </Color>
+        <Color x:Key="CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ffb8b7bb</x:String>
+            </x:Arguments>
+        </Color>
         <Color x:Key="CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE" x:FactoryMethod="FromHex">
             <x:Arguments>
                 <x:String>#ffa19e9e</x:String>
@@ -119,6 +151,8 @@
         <x:Int32 x:Key="FS_MAINPAGE_NORMAL">24</x:Int32>
         <FileImageSource x:Key="IMG_CONFIG_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
         <FileImageSource x:Key="IMG_SYSTEM_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
+        <cvt:E_INLET_TYPEToBoolConverter x:Key="E_INLET_TYPEToBoolConverter"/>
+        <cvt:E_DET_TYPEToBoolConverter x:Key="E_DET_TYPEToBoolConverter"/>
         <cvt:BoolReverseConverter x:Key="BoolReverseConverter"/>
         <cvt:E_SYSTEM_SUB_MENU_TYPEToBoolConverter x:Key="E_SYSTEM_SUB_MENU_TYPEToBoolConverter"/>
         <cvt:E_SYSTEM_MENU_TYPEToBoolConverter x:Key="E_SYSTEM_MENU_TYPEToBoolConverter"/>
@@ -131,6 +165,30 @@
             <Setter Property="VerticalOptions" Value="Center"/>
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_SYSTEM_CALIB_LABEL" TargetType="{x:Type local:UC_System_Calib_LabelBase}">            
+            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            <Setter Property="Margin" Value="0,1,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_LABEL_TEXTCOLOR}"/>
+            <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_LABEL_BACKGROUND_DARK_0}"/>            
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_SYSTEM_CALIB_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
+            <Setter Property="FontSize" Value="16"/>
+            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            <Setter Property="Margin" Value="0,1,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
+            <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
+        </Style>
+
+        <Style x:Key="STYLE_LABEL_SYSTEM_CALIB_TITLE" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="22"/>
+            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="Margin" Value="18,0,0,0"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="Padding" Value="0,0,0,0"/>            
         </Style>
         <!--<cvt:VToIsVisibleConverter x:Key="VToV" />
     <cvt:VToBoolConverter x:Key="VToB" />-->

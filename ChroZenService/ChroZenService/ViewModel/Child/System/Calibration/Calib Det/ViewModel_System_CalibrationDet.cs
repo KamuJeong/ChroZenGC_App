@@ -46,6 +46,45 @@ namespace ChroZenService
         E_DET_TYPE _e_DET_TYPE = E_DET_TYPE.Not_Installed;
         public E_DET_TYPE e_DET_TYPE { get { return _e_DET_TYPE; } set { _e_DET_TYPE = value; OnPropertyChanged("e_DET_TYPE"); } }
 
+        bool _IsSensor1Visible = true;
+        public bool IsSensor1Visible { get { return _IsSensor1Visible; } set { _IsSensor1Visible = value; OnPropertyChanged("IsSensor1Visible"); } }
+        bool _IsSensor2Visible = true;
+        public bool IsSensor2Visible { get { return _IsSensor2Visible; } set { _IsSensor2Visible = value; OnPropertyChanged("IsSensor2Visible"); } }
+        bool _IsSensor3Visible = true;
+        public bool IsSensor3Visible { get { return _IsSensor3Visible; } set { _IsSensor3Visible = value; OnPropertyChanged("IsSensor3Visible"); } }
+
+        bool _IsValve1Visible = true;
+        public bool IsValve1Visible { get { return _IsValve1Visible; } set { _IsValve1Visible = value; OnPropertyChanged("IsValve1Visible"); } }
+        bool _IsValve2Visible = true;
+        public bool IsValve2Visible { get { return _IsValve2Visible; } set { _IsValve2Visible = value; OnPropertyChanged("IsValve2Visible"); } }
+        bool _IsValve3Visible = true;
+        public bool IsValve3Visible { get { return _IsValve3Visible; } set { _IsValve3Visible = value; OnPropertyChanged("IsValve3Visible"); } }
+
+        bool _IsFlow1Visible = true;
+        public bool IsFlow1Visible { get { return _IsFlow1Visible; } set { _IsFlow1Visible = value; OnPropertyChanged("IsFlow1Visible"); } }
+        bool _IsFlow2Visible = true;
+        public bool IsFlow2Visible { get { return _IsFlow2Visible; } set { _IsFlow2Visible = value; OnPropertyChanged("IsFlow2Visible"); } }
+        bool _IsFlow3Visible = true;
+        public bool IsFlow3Visible { get { return _IsFlow3Visible; } set { _IsFlow3Visible = value; OnPropertyChanged("IsFlow3Visible"); } }
+
+        string _SensorTitle1 = "DS1";
+        public string SensorTitle1 { get { return _SensorTitle1; } set { _SensorTitle1 = value; OnPropertyChanged("SensorTitle1"); } }
+        string _SensorTitle2 = "DS2";
+        public string SensorTitle2 { get { return _SensorTitle2; } set { _SensorTitle2 = value; OnPropertyChanged("SensorTitle2"); } }
+        string _SensorTitle3 = "DS3";
+        public string SensorTitle3 { get { return _SensorTitle3; } set { _SensorTitle3 = value; OnPropertyChanged("SensorTitle3"); } }
+        string _ValveTitle1 = "DV1";
+        public string ValveTitle1 { get { return _ValveTitle1; } set { _ValveTitle1 = value; OnPropertyChanged("ValveTitle1"); } }
+        string _ValveTitle2 = "DV2";
+        public string ValveTitle2 { get { return _ValveTitle2; } set { _ValveTitle2 = value; OnPropertyChanged("ValveTitle2"); } }
+        string _ValveTitle3 = "DV3";
+        public string ValveTitle3 { get { return _ValveTitle3; } set { _ValveTitle3 = value; OnPropertyChanged("ValveTitle3"); } }
+        string _FlowTitle1 = "DF1";
+        public string FlowTitle1 { get { return _FlowTitle1; } set { _FlowTitle1 = value; OnPropertyChanged("FlowTitle1"); } }
+        string _FlowTitle2 = "DF2";
+        public string FlowTitle2 { get { return _FlowTitle2; } set { _FlowTitle2 = value; OnPropertyChanged("FlowTitle2"); } }
+        string _FlowTitle3 = "DF3";
+        public string FlowTitle3 { get { return _FlowTitle3; } set { _FlowTitle3 = value; OnPropertyChanged("FlowTitle3"); } }
 
         float _ActT_1;
         public float ActT_1 { get { return _ActT_1; } set { _ActT_1 = value; OnPropertyChanged("ActT_1"); } }
@@ -169,7 +208,7 @@ namespace ChroZenService
                     break;
             }
             //TODO :             
-            Debug.WriteLine("SetCommand Fired");
+            Debug.WriteLine(string.Format("{0} Det : {1} SetCommand Fired", _e_DET_TYPE, (E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE)param));
         }
         #endregion SetCommand 
 
@@ -190,7 +229,7 @@ namespace ChroZenService
                     break;
             }
             //TODO :             
-            Debug.WriteLine("MeasuredCommand Fired");
+            Debug.WriteLine(string.Format("{0} Det : {1} MeasuredCommand Fired", _e_DET_TYPE, (E_SYSTEM_CALIBRATION_DET_SET_MEASURE_COMMAND_TYPE)param));
         }
         #endregion MeasuredCommand 
 
