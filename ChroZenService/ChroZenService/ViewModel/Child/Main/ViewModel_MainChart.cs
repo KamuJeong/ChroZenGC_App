@@ -14,7 +14,7 @@ namespace ChroZenService
     public class ViewModel_MainChart : BindableNotifyBase
     {
         int _SelectedDetectorIndex;
-        public int SelectedDetectorIndex { get { return _SelectedDetectorIndex; } set { _SelectedDetectorIndex = value; OnPropertyChanged("SelectedDetectorIndex"); } }
+        public int SelectedDetectorIndex { get { return _SelectedDetectorIndex; } set { if (_SelectedDetectorIndex != value) { _SelectedDetectorIndex = value; OnPropertyChanged("SelectedDetectorIndex"); } } }
 
         public static readonly BindableProperty ChartElementRawDataProperty =
         BindableProperty.Create("ChartElementRawData", typeof(YL_ChartElementRawData), typeof(ViewModel_MainChart),

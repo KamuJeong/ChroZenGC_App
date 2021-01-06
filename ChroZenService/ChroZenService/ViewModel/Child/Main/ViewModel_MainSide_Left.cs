@@ -13,58 +13,58 @@ namespace ChroZenService
         #region NotifybaseProperty
 
         string _TopType;
-        public string TopType { get { return _TopType; } set { _TopType = value; OnPropertyChanged("TopType"); } }
+        public string TopType { get { return _TopType; } set { if (_TopType != value) { _TopType = value; OnPropertyChanged("TopType"); } } }
 
         string _TopFlow;
-        public string TopFlow { get { return _TopFlow; } set { _TopFlow = value; OnPropertyChanged("TopFlow"); } }
+        public string TopFlow { get { return _TopFlow; } set { if (_TopFlow != value) { _TopFlow = value; OnPropertyChanged("TopFlow"); } } }
 
         string _TopPressure;
-        public string TopPressure { get { return _TopPressure; } set { _TopPressure = value; OnPropertyChanged("TopPressure"); } }
+        public string TopPressure { get { return _TopPressure; } set { if (_TopPressure != value) { _TopPressure = value; OnPropertyChanged("TopPressure"); } } }
 
         string _TopCarrierGasType;
-        public string TopCarrierGasType { get { return _TopCarrierGasType; } set { _TopCarrierGasType = value; OnPropertyChanged("TopCarrierGasType"); } }
+        public string TopCarrierGasType { get { return _TopCarrierGasType; } set { if (_TopCarrierGasType != value) { _TopCarrierGasType = value; OnPropertyChanged("TopCarrierGasType"); } } }
 
         string _TopSplitRatio;
-        public string TopSplitRatio { get { return _TopSplitRatio; } set { _TopSplitRatio = value; OnPropertyChanged("TopSplitRatio"); } }
+        public string TopSplitRatio { get { return _TopSplitRatio; } set { if (_TopSplitRatio != value) { _TopSplitRatio = value; OnPropertyChanged("TopSplitRatio"); } } }
 
         string _TopApcMode;
-        public string TopApcMode { get { return _TopApcMode; } set { _TopApcMode = value; OnPropertyChanged("TopApcMode"); } }
+        public string TopApcMode { get { return _TopApcMode; } set { if (_TopApcMode != value) { _TopApcMode = value; OnPropertyChanged("TopApcMode"); } } }
 
         string _CenterType;
-        public string CenterType { get { return _CenterType; } set { _CenterType = value; OnPropertyChanged("CenterType"); } }
+        public string CenterType { get { return _CenterType; } set { if (_CenterType != value) { _CenterType = value; OnPropertyChanged("CenterType"); } } }
 
         string _CenterFlow;
-        public string CenterFlow { get { return _CenterFlow; } set { _CenterFlow = value; OnPropertyChanged("CenterFlow"); } }
+        public string CenterFlow { get { return _CenterFlow; } set { if (_CenterFlow != value) { _CenterFlow = value; OnPropertyChanged("CenterFlow"); } } }
 
         string _CenterPressure;
-        public string CenterPressure { get { return _CenterPressure; } set { _CenterPressure = value; OnPropertyChanged("CenterPressure"); } }
+        public string CenterPressure { get { return _CenterPressure; } set { if (_CenterPressure != value) { _CenterPressure = value; OnPropertyChanged("CenterPressure"); } } }
 
         string _CenterCarrierGasType;
-        public string CenterCarrierGasType { get { return _CenterCarrierGasType; } set { _CenterCarrierGasType = value; OnPropertyChanged("CenterCarrierGasType"); } }
+        public string CenterCarrierGasType { get { return _CenterCarrierGasType; } set { if (_CenterCarrierGasType != value) { _CenterCarrierGasType = value; OnPropertyChanged("CenterCarrierGasType"); } } }
 
         string _CenterSplitRatio;
-        public string CenterSplitRatio { get { return _CenterSplitRatio; } set { _CenterSplitRatio = value; OnPropertyChanged("CenterSplitRatio"); } }
+        public string CenterSplitRatio { get { return _CenterSplitRatio; } set { if (_CenterSplitRatio != value) { _CenterSplitRatio = value; OnPropertyChanged("CenterSplitRatio"); } } }
 
         string _CenterApcMode;
-        public string CenterApcMode { get { return _CenterApcMode; } set { _CenterApcMode = value; OnPropertyChanged("CenterApcMode"); } }
+        public string CenterApcMode { get { return _CenterApcMode; } set { if (_CenterApcMode != value) { _CenterApcMode = value; OnPropertyChanged("CenterApcMode"); } } }
         
         string _BottomType;
-        public string BottomType { get { return _BottomType; } set { _BottomType = value; OnPropertyChanged("BottomType"); } }
+        public string BottomType { get { return _BottomType; } set { if (_BottomType != value) { _BottomType = value; OnPropertyChanged("BottomType"); } } }
              
         string _BottomFlow;
-        public string BottomFlow { get { return _BottomFlow; } set { _BottomFlow = value; OnPropertyChanged("BottomFlow"); } }
+        public string BottomFlow { get { return _BottomFlow; } set { if (_BottomFlow != value) { _BottomFlow = value; OnPropertyChanged("BottomFlow"); } } }
 
         string _BottomPressure;
-        public string BottomPressure { get { return _BottomPressure; } set { _BottomPressure = value; OnPropertyChanged("BottomPressure"); } }
+        public string BottomPressure { get { return _BottomPressure; } set { if (_BottomPressure != value) { _BottomPressure = value; OnPropertyChanged("BottomPressure"); } } }
 
         string _BottomCarrierGasType;
-        public string BottomCarrierGasType { get { return _BottomCarrierGasType; } set { _BottomCarrierGasType = value; OnPropertyChanged("BottomCarrierGasType"); } }
+        public string BottomCarrierGasType { get { return _BottomCarrierGasType; } set { if (_BottomCarrierGasType != value) { _BottomCarrierGasType = value; OnPropertyChanged("BottomCarrierGasType"); } } }
 
         string _BottomSplitRatio;
-        public string BottomSplitRatio { get { return _BottomSplitRatio; } set { _BottomSplitRatio = value; OnPropertyChanged("BottomSplitRatio"); } }
+        public string BottomSplitRatio { get { return _BottomSplitRatio; } set { if (_BottomSplitRatio != value) { _BottomSplitRatio = value; OnPropertyChanged("BottomSplitRatio"); } } }
 
         string _BottomApcMode;
-        public string BottomApcMode { get { return _BottomApcMode; } set { _BottomApcMode = value; OnPropertyChanged("BottomApcMode"); } }
+        public string BottomApcMode { get { return _BottomApcMode; } set { if (_BottomApcMode != value) { _BottomApcMode = value; OnPropertyChanged("BottomApcMode"); } } }
         
         bool _IsTopAvailable;
         public bool IsTopAvailable

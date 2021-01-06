@@ -41,84 +41,84 @@ namespace ChroZenService
         public E_UPC_INDEX _e_UPC_INDEX;
 
         bool _bIsDoingSensorZeroCalibration;
-        public bool bIsDoingSensorZeroCalibration { get { return _bIsDoingSensorZeroCalibration; } set { _bIsDoingSensorZeroCalibration = value; OnPropertyChanged("bIsDoingSensorZeroCalibration"); } }
+        public bool bIsDoingSensorZeroCalibration { get { return _bIsDoingSensorZeroCalibration; } set { if (_bIsDoingSensorZeroCalibration != value) { _bIsDoingSensorZeroCalibration = value; OnPropertyChanged("bIsDoingSensorZeroCalibration"); } } }
 
         string _SensorZero_Row_1;
-        public string SensorZero_Row_1 { get { return _SensorZero_Row_1; } set { _SensorZero_Row_1 = value; OnPropertyChanged("SensorZero_Row_1"); } }
+        public string SensorZero_Row_1 { get { return _SensorZero_Row_1; } set { if (_SensorZero_Row_1 != value) { _SensorZero_Row_1 = value; OnPropertyChanged("SensorZero_Row_1"); } } }
 
         string _SensorZero_Row_2;
-        public string SensorZero_Row_2 { get { return _SensorZero_Row_2; } set { _SensorZero_Row_2 = value; OnPropertyChanged("SensorZero_Row_2"); } }
+        public string SensorZero_Row_2 { get { return _SensorZero_Row_2; } set { if (_SensorZero_Row_2 != value) { _SensorZero_Row_2 = value; OnPropertyChanged("SensorZero_Row_2"); } } }
 
         string _SensorZero_Row_3;
-        public string SensorZero_Row_3 { get { return _SensorZero_Row_3; } set { _SensorZero_Row_3 = value; OnPropertyChanged("SensorZero_Row_3"); } }
+        public string SensorZero_Row_3 { get { return _SensorZero_Row_3; } set { if (_SensorZero_Row_3 != value) { _SensorZero_Row_3 = value; OnPropertyChanged("SensorZero_Row_3"); } } }
 
         bool _bIsDoingValveCalibration;
-        public bool bIsDoingValveCalibration { get { return _bIsDoingValveCalibration; } set { _bIsDoingValveCalibration = value; OnPropertyChanged("bIsDoingValveCalibration"); } }
+        public bool bIsDoingValveCalibration { get { return _bIsDoingValveCalibration; } set { if (_bIsDoingValveCalibration != value) { if (_bIsDoingValveCalibration != value) { _bIsDoingValveCalibration = value; OnPropertyChanged("bIsDoingValveCalibration"); } } } }
 
         string _Valve_Row_1_State;
-        public string Valve_Row_1_State { get { return _Valve_Row_1_State; } set { _Valve_Row_1_State = value; OnPropertyChanged("Valve_Row_1_State"); } }
+        public string Valve_Row_1_State { get { return _Valve_Row_1_State; } set { if (_Valve_Row_1_State != value) { if (_Valve_Row_1_State != value) { _Valve_Row_1_State = value; OnPropertyChanged("Valve_Row_1_State"); } } } }
 
 
         string _Valve_Row_1_Voltage;
-        public string Valve_Row_1_Voltage { get { return _Valve_Row_1_Voltage; } set { _Valve_Row_1_Voltage = value; OnPropertyChanged("Valve_Row_1_Voltage"); } }
+        public string Valve_Row_1_Voltage { get { return _Valve_Row_1_Voltage; } set { if (_Valve_Row_1_Voltage != value) { if (_Valve_Row_1_Voltage != value) { _Valve_Row_1_Voltage = value; OnPropertyChanged("Valve_Row_1_Voltage"); } } } }
 
 
         string _Valve_Row_1_Flow;
-        public string Valve_Row_1_Flow { get { return _Valve_Row_1_Flow; } set { _Valve_Row_1_Flow = value; OnPropertyChanged("Valve_Row_1_Flow"); } }
+        public string Valve_Row_1_Flow { get { return _Valve_Row_1_Flow; } set { if (_Valve_Row_1_Flow != value) { if (_Valve_Row_1_Flow != value) { _Valve_Row_1_Flow = value; OnPropertyChanged("Valve_Row_1_Flow"); } } } }
 
 
         string _Valve_Row_2_State;
-        public string Valve_Row_2_State { get { return _Valve_Row_2_State; } set { _Valve_Row_2_State = value; OnPropertyChanged("Valve_Row_2_State"); } }
+        public string Valve_Row_2_State { get { return _Valve_Row_2_State; } set { if (_Valve_Row_2_State != value) { if (_Valve_Row_2_State != value) { _Valve_Row_2_State = value; OnPropertyChanged("Valve_Row_2_State"); } } } }
 
 
         string _Valve_Row_2_Voltage;
-        public string Valve_Row_2_Voltage { get { return _Valve_Row_2_Voltage; } set { _Valve_Row_2_Voltage = value; OnPropertyChanged("Valve_Row_2_Voltage"); } }
+        public string Valve_Row_2_Voltage { get { return _Valve_Row_2_Voltage; } set { if (_Valve_Row_2_Voltage != value) { _Valve_Row_2_Voltage = value; OnPropertyChanged("Valve_Row_2_Voltage"); } } }
 
         string _Valve_Row_2_Flow;
-        public string Valve_Row_2_Flow { get { return _Valve_Row_2_Flow; } set { _Valve_Row_2_Flow = value; OnPropertyChanged("Valve_Row_2_Flow"); } }
+        public string Valve_Row_2_Flow { get { return _Valve_Row_2_Flow; } set { if (_Valve_Row_2_Flow != value) { _Valve_Row_2_Flow = value; OnPropertyChanged("Valve_Row_2_Flow"); } } }
 
         string _Valve_Row_3_State;
-        public string Valve_Row_3_State { get { return _Valve_Row_3_State; } set { _Valve_Row_3_State = value; OnPropertyChanged("Valve_Row_3_State"); } }
+        public string Valve_Row_3_State { get { return _Valve_Row_3_State; } set { if (_Valve_Row_3_State != value) { _Valve_Row_3_State = value; OnPropertyChanged("Valve_Row_3_State"); } } }
 
         string _Valve_Row_3_Voltage;
-        public string Valve_Row_3_Voltage { get { return _Valve_Row_3_Voltage; } set { _Valve_Row_3_Voltage = value; OnPropertyChanged("Valve_Row_3_Voltage"); } }
+        public string Valve_Row_3_Voltage { get { return _Valve_Row_3_Voltage; } set { if (_Valve_Row_3_Voltage != value) { _Valve_Row_3_Voltage = value; OnPropertyChanged("Valve_Row_3_Voltage"); } } }
 
         string _Valve_Row_3_Flow;
-        public string Valve_Row_3_Flow { get { return _Valve_Row_3_Flow; } set { _Valve_Row_3_Flow = value; OnPropertyChanged("Valve_Row_3_Flow"); } }
+        public string Valve_Row_3_Flow { get { return _Valve_Row_3_Flow; } set { if (_Valve_Row_3_Flow != value) { _Valve_Row_3_Flow = value; OnPropertyChanged("Valve_Row_3_Flow"); } } }
 
         bool _bIsDoingFlowCalibration;
 
         /// <summary>
         /// State==7
         /// </summary>
-        public bool bIsDoingFlowCalibration { get { return _bIsDoingFlowCalibration; } set { _bIsDoingFlowCalibration = value; OnPropertyChanged("bIsDoingFlowCalibration"); } }
+        public bool bIsDoingFlowCalibration { get { return _bIsDoingFlowCalibration; } set { if (_bIsDoingFlowCalibration != value) { _bIsDoingFlowCalibration = value; OnPropertyChanged("bIsDoingFlowCalibration"); } } }
 
         string _Flow_Row_1_Act;
-        public string Flow_Row_1_Act { get { return _Flow_Row_1_Act; } set { _Flow_Row_1_Act = value; OnPropertyChanged("Flow_Row_1_Act"); } }
+        public string Flow_Row_1_Act { get { return _Flow_Row_1_Act; } set { if (_Flow_Row_1_Act != value) { _Flow_Row_1_Act = value; OnPropertyChanged("Flow_Row_1_Act"); } } }
 
         string _Flow_Row_1_Set;
-        public string Flow_Row_1_Set { get { return _Flow_Row_1_Set; } set { _Flow_Row_1_Set = value; OnPropertyChanged("Flow_Row_1_Set"); } }
+        public string Flow_Row_1_Set { get { return _Flow_Row_1_Set; } set { if (_Flow_Row_1_Set != value) { _Flow_Row_1_Set = value; OnPropertyChanged("Flow_Row_1_Set"); } } }
 
         string _Flow_Row_1_Measured;
-        public string Flow_Row_1_Measured { get { return _Flow_Row_1_Measured; } set { _Flow_Row_1_Measured = value; OnPropertyChanged("Flow_Row_1_Measured"); } }
+        public string Flow_Row_1_Measured { get { return _Flow_Row_1_Measured; } set { if (_Flow_Row_1_Measured != value) { _Flow_Row_1_Measured = value; OnPropertyChanged("Flow_Row_1_Measured"); } } }
 
         string _Flow_Row_2_Act;
-        public string Flow_Row_2_Act { get { return _Flow_Row_2_Act; } set { _Flow_Row_2_Act = value; OnPropertyChanged("Flow_Row_2_Act"); } }
+        public string Flow_Row_2_Act { get { return _Flow_Row_2_Act; } set { if (_Flow_Row_2_Act != value) { _Flow_Row_2_Act = value; OnPropertyChanged("Flow_Row_2_Act"); } } }
 
         string _Flow_Row_2_Set;
-        public string Flow_Row_2_Set { get { return _Flow_Row_2_Set; } set { _Flow_Row_2_Set = value; OnPropertyChanged("Flow_Row_2_Set"); } }
+        public string Flow_Row_2_Set { get { return _Flow_Row_2_Set; } set { if (_Flow_Row_2_Set != value) { _Flow_Row_2_Set = value; OnPropertyChanged("Flow_Row_2_Set"); } } }
 
         string _Flow_Row_2_Measured;
-        public string Flow_Row_2_Measured { get { return _Flow_Row_2_Measured; } set { _Flow_Row_2_Measured = value; OnPropertyChanged("Flow_Row_2_Measured"); } }
+        public string Flow_Row_2_Measured { get { return _Flow_Row_2_Measured; } set { if (_Flow_Row_2_Measured != value) { _Flow_Row_2_Measured = value; OnPropertyChanged("Flow_Row_2_Measured"); } } }
 
         string _Flow_Row_3_Act;
-        public string Flow_Row_3_Act { get { return _Flow_Row_3_Act; } set { _Flow_Row_3_Act = value; OnPropertyChanged("Flow_Row_3_Act"); } }
+        public string Flow_Row_3_Act { get { return _Flow_Row_3_Act; } set { if (_Flow_Row_3_Act != value) { _Flow_Row_3_Act = value; OnPropertyChanged("Flow_Row_3_Act"); } } }
 
         string _Flow_Row_3_Set;
-        public string Flow_Row_3_Set { get { return _Flow_Row_3_Set; } set { _Flow_Row_3_Set = value; OnPropertyChanged("Flow_Row_3_Set"); } }
+        public string Flow_Row_3_Set { get { return _Flow_Row_3_Set; } set { if (_Flow_Row_3_Set != value) { _Flow_Row_3_Set = value; OnPropertyChanged("Flow_Row_3_Set"); } } }
 
         string _Flow_Row_3_Measured;
-        public string Flow_Row_3_Measured { get { return _Flow_Row_3_Measured; } set { _Flow_Row_3_Measured = value; OnPropertyChanged("Flow_Row_3_Measured"); } }
+        public string Flow_Row_3_Measured { get { return _Flow_Row_3_Measured; } set { if (_Flow_Row_3_Measured != value) { _Flow_Row_3_Measured = value; OnPropertyChanged("Flow_Row_3_Measured"); } } }
 
 
         #endregion Property

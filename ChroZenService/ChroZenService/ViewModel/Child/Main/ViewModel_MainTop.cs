@@ -12,19 +12,19 @@ namespace ChroZenService
         Timer t;
 
         string _DeviceRuntimeCurrent;
-        public string DeviceRuntimeCurrent { get { return _DeviceRuntimeCurrent; } set { _DeviceRuntimeCurrent = value; OnPropertyChanged("DeviceRuntimeCurrent"); } }
+        public string DeviceRuntimeCurrent { get { return _DeviceRuntimeCurrent; } set { if (_DeviceRuntimeCurrent != value) { _DeviceRuntimeCurrent = value; OnPropertyChanged("DeviceRuntimeCurrent"); } } }
 
         string _DeviceRuntimeTotal;
-        public string DeviceRuntimeTotal { get { return _DeviceRuntimeTotal; } set { _DeviceRuntimeTotal = value; OnPropertyChanged("DeviceRuntimeTotal"); } }
+        public string DeviceRuntimeTotal { get { return _DeviceRuntimeTotal; } set { if (_DeviceRuntimeTotal != value) { _DeviceRuntimeTotal = value; OnPropertyChanged("DeviceRuntimeTotal"); } } }
 
         string _DeviceRunStartCurrent;
-        public string DeviceRunStartCurrent { get { return _DeviceRunStartCurrent; } set { _DeviceRunStartCurrent = value; OnPropertyChanged("DeviceRunStartCurrent"); } }
+        public string DeviceRunStartCurrent { get { return _DeviceRunStartCurrent; } set { if (_DeviceRunStartCurrent != value) { _DeviceRunStartCurrent = value; OnPropertyChanged("DeviceRunStartCurrent"); } } }
 
         string _DeviceRunStartTotal;
-        public string DeviceRunStartTotal { get { return _DeviceRunStartTotal; } set { _DeviceRunStartTotal = value; OnPropertyChanged("DeviceRunStartTotal"); } }
+        public string DeviceRunStartTotal { get { return _DeviceRunStartTotal; } set { if (_DeviceRunStartTotal != value) { _DeviceRunStartTotal = value; OnPropertyChanged("DeviceRunStartTotal"); } } }
 
         string _CurrentTime;
-        public string CurrentTime { get { return _CurrentTime; } set { _CurrentTime = value; OnPropertyChanged("CurrentTime"); } }
+        public string CurrentTime { get { return _CurrentTime; } set { if (_CurrentTime != value) { _CurrentTime = value; OnPropertyChanged("CurrentTime"); } } }
 
         private string _CHROZEN_GC_STATE_String;
         public string CHROZEN_GC_STATE_String
@@ -32,8 +32,11 @@ namespace ChroZenService
             get { return _CHROZEN_GC_STATE_String; }
             set
             {
-                _CHROZEN_GC_STATE_String = value;
-                OnPropertyChanged("CHROZEN_GC_STATE_String");
+                if (_CHROZEN_GC_STATE_String != value)
+                {
+                    _CHROZEN_GC_STATE_String = value;
+                    OnPropertyChanged("CHROZEN_GC_STATE_String");
+                }
             }
         }
 
@@ -43,12 +46,15 @@ namespace ChroZenService
             get { return _CHROZEN_GC_CONNECTION_STATE_String; }
             set
             {
-                _CHROZEN_GC_CONNECTION_STATE_String = value;
-                OnPropertyChanged("CHROZEN_GC_CONNECTION_STATE_String");
+                if (_CHROZEN_GC_CONNECTION_STATE_String != value)
+                {
+                    _CHROZEN_GC_CONNECTION_STATE_String = value;
+                    OnPropertyChanged("CHROZEN_GC_CONNECTION_STATE_String");
+                }
             }
         }
         Color _ConnectedColorBrush = Color.Gray;
-        public Color ConnectedColorBrush { get { return _ConnectedColorBrush; } set { _ConnectedColorBrush = value; OnPropertyChanged("ConnectedColorBrush"); } }
+        public Color ConnectedColorBrush { get { return _ConnectedColorBrush; } set { if (_ConnectedColorBrush != value) { _ConnectedColorBrush = value; OnPropertyChanged("ConnectedColorBrush"); } } }
 
         public Color CalibrationColorBrush = Color.Yellow;
 
@@ -63,7 +69,7 @@ namespace ChroZenService
         public Color ErrorColorBrush = Color.Red;
 
         Color _StateColorBrush = Color.Gray;
-        public Color StateColorBrush { get { return _StateColorBrush; } set { _StateColorBrush = value; OnPropertyChanged("StateColorBrush"); } }
+        public Color StateColorBrush { get { return _StateColorBrush; } set { if (_StateColorBrush != value) { _StateColorBrush = value; OnPropertyChanged("StateColorBrush"); } } }
 
         public ViewModel_MainTop()
         {
