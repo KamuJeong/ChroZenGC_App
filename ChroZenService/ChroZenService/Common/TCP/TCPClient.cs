@@ -75,7 +75,7 @@ namespace ChroZenService
         {
             threadQueue = new Thread(new ThreadStart(delegate
             {
-                Thread.CurrentThread.Priority = ThreadPriority.Highest;
+                Thread.CurrentThread.Priority = ThreadPriority.Normal;
                 Debug.WriteLine(string.Format("ChroZen GC Process={0}, TCPClient : received PACKCODE queue pumping thread start", Process.GetCurrentProcess().ProcessName));
 
                 while (bIsThreadQueueProceed)

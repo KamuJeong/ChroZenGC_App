@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
              x:Class="ChroZenService.KeyPad">
   <ContentView.Content>
       <AbsoluteLayout>
@@ -31,30 +31,30 @@
                 <Label Grid.Row="2" Grid.Column="3" Text="MAX" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontSize="24"/>
                 <Label Grid.Row="3" Grid.Column="3" TextColor="White" Text="{Binding Source={RelativeSource AncestorType={x:Type ContentView}},Path=MaxValue}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" FontSize="22"/>
                 <Button Grid.Row="2" Grid.Column="4" FontSize="24" TextColor="White" Grid.RowSpan="2" Grid.ColumnSpan="2" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}" Text="{Binding Source={RelativeSource AncestorType={x:Type ContentView}},Path=CurrentValue}" CornerRadius="10"  BorderWidth="1" BorderColor="White"/>
-                <Button Grid.Row="4" Grid.RowSpan="2" FontSize="23" Grid.Column="1" TextColor="White" CornerRadius="10" Text="ON" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}"  BorderWidth="1" BorderColor="White"/>
-                <Button Grid.Row="6" Grid.RowSpan="2" FontSize="23" Grid.Column="1" TextColor="White" CornerRadius="10" Text="OFF" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" BorderWidth="1" BorderColor="White"/>
+                <Button Grid.Row="4" Grid.RowSpan="2" FontSize="23" Grid.Column="1" TextColor="White" CornerRadius="10" Text="ON" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}"  BorderWidth="1" BorderColor="White" Command="{Binding ViewModel_KeyPad.OnCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                <Button Grid.Row="6" Grid.RowSpan="2" FontSize="23" Grid.Column="1" TextColor="White" CornerRadius="10" Text="OFF" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" BorderWidth="1" BorderColor="White" Command="{Binding ViewModel_KeyPad.OffCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
                 <Grid Grid.Column="5" Grid.Row="4" Grid.RowSpan="4">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="95.6"/>
                         <RowDefinition Height="95.6"/>
                         <RowDefinition Height="95.6"/>
                     </Grid.RowDefinitions>
-                    <Button Grid.Row="0" TextColor="White" FontSize="23" CornerRadius="10" Text="Del" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" BorderWidth="1" BorderColor="White"/>
-                    <Button Grid.Row="1" TextColor="White" FontSize="23" CornerRadius="10" Text="Cancel" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" BorderWidth="1" BorderColor="White"/>
-                    <Button Grid.Row="2" TextColor="White" FontSize="23" CornerRadius="10" Text="Apply" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" BorderWidth="1" BorderColor="White"/>
+                    <Button Grid.Row="0" TextColor="White" FontSize="23" CornerRadius="10" Text="Del" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" BorderWidth="1" BorderColor="White"  Command="{Binding ViewModel_KeyPad.DeleteCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                    <Button Grid.Row="1" TextColor="White" FontSize="23" CornerRadius="10" Text="Cancel" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" BorderWidth="1" BorderColor="White" Command="{Binding ViewModel_KeyPad.CancelCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                    <Button Grid.Row="2" TextColor="White" FontSize="23" CornerRadius="10" Text="Apply" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" BorderWidth="1" BorderColor="White" Command="{Binding ViewModel_KeyPad.ApplyCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
                 </Grid>
-                <Button Grid.Row="4" Grid.Column="2" TextColor="White" FontSize="40" Text="1" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"    BorderWidth="1" BorderColor="White" CornerRadius="10"/>
-                <Button Grid.Row="4" Grid.Column="3" TextColor="White" FontSize="40"  Text="2" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10"/>
-                <Button Grid.Row="4" Grid.Column="4" TextColor="White" FontSize="40"  Text="3" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10"/>
-                <Button Grid.Row="5" Grid.Column="2" TextColor="White" FontSize="40"  Text="4" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10"/>
-                <Button Grid.Row="5" Grid.Column="3" TextColor="White" FontSize="40"  Text="5" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10"/>
-                <Button Grid.Row="5" Grid.Column="4" TextColor="White" FontSize="40"  Text="6" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10"/>
-                <Button Grid.Row="6" Grid.Column="2" TextColor="White" FontSize="40"  Text="7" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10"/>
-                <Button Grid.Row="6" Grid.Column="3" TextColor="White" FontSize="40"  Text="8" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10"/>
-                <Button Grid.Row="6" Grid.Column="4" TextColor="White" FontSize="40"  Text="9" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10"/>
-                <Button Grid.Row="7" Grid.Column="2" TextColor="White" FontSize="40"  Text="." BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10"/>
-                <Button Grid.Row="7" Grid.Column="3" TextColor="White" FontSize="40"  Text="0" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10"/>
-                <Button Grid.Row="7" Grid.Column="4" TextColor="White" FontSize="40"  Text="-/+" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}" BorderWidth="1" BorderColor="White" CornerRadius="10"/>
+                <Button Grid.Row="4" Grid.Column="2" TextColor="White" FontSize="40" Text="1" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"    BorderWidth="1" BorderColor="White" CornerRadius="10" Command="{Binding ViewModel_KeyPad.KeyPadClickCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                <Button Grid.Row="4" Grid.Column="3" TextColor="White" FontSize="40"  Text="2" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10" Command="{Binding ViewModel_KeyPad.KeyPadClickCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                <Button Grid.Row="4" Grid.Column="4" TextColor="White" FontSize="40"  Text="3" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10" Command="{Binding ViewModel_KeyPad.KeyPadClickCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                <Button Grid.Row="5" Grid.Column="2" TextColor="White" FontSize="40"  Text="4" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10" Command="{Binding ViewModel_KeyPad.KeyPadClickCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                <Button Grid.Row="5" Grid.Column="3" TextColor="White" FontSize="40"  Text="5" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10" Command="{Binding ViewModel_KeyPad.KeyPadClickCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                <Button Grid.Row="5" Grid.Column="4" TextColor="White" FontSize="40"  Text="6" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10" Command="{Binding ViewModel_KeyPad.KeyPadClickCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                <Button Grid.Row="6" Grid.Column="2" TextColor="White" FontSize="40"  Text="7" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10" Command="{Binding ViewModel_KeyPad.KeyPadClickCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                <Button Grid.Row="6" Grid.Column="3" TextColor="White" FontSize="40"  Text="8" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10" Command="{Binding ViewModel_KeyPad.KeyPadClickCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                <Button Grid.Row="6" Grid.Column="4" TextColor="White" FontSize="40"  Text="9" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10" Command="{Binding ViewModel_KeyPad.KeyPadClickCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                <Button Grid.Row="7" Grid.Column="2" TextColor="White" FontSize="40"  Text="." BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10" Command="{Binding ViewModel_KeyPad.KeyPadClickCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                <Button Grid.Row="7" Grid.Column="3" TextColor="White" FontSize="40"  Text="0" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}"   BorderWidth="1" BorderColor="White" CornerRadius="10" Command="{Binding ViewModel_KeyPad.KeyPadClickCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
+                <Button Grid.Row="7" Grid.Column="4" TextColor="White" FontSize="40"  Text="-/+" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}" BorderWidth="1" BorderColor="White" CornerRadius="10" Command="{Binding ViewModel_KeyPad.KeyPadClickCommand}" CommandParameter="{Binding Source={RelativeSource Self}}"/>
             </Grid>
         </AbsoluteLayout>
   </ContentView.Content>

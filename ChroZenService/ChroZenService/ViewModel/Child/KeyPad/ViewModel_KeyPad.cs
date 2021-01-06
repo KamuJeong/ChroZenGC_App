@@ -25,22 +25,11 @@ namespace ChroZenService
         #region CurrentValue : double
 
         public static readonly BindableProperty CurrentValueProperty =
-        BindableProperty.Create("CurrentValue", typeof(double), typeof(ViewModel_KeyPad),
-            defaultValue: 0d,
-            propertyChanged: onCurrentValuePropertyChanged
-            , defaultBindingMode: BindingMode.TwoWay);
+        BindableProperty.Create("CurrentValue", typeof(string), typeof(ViewModel_KeyPad));
 
-        private static void onCurrentValuePropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        public string CurrentValue
         {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_KeyPad).CurrentValue = (double)newValue;
-            }
-        }
-
-        public double CurrentValue
-        {
-            get { return (double)GetValue(CurrentValueProperty); }
+            get { return (string)GetValue(CurrentValueProperty); }
             set { SetValue(CurrentValueProperty, value); }
         }
 
@@ -179,11 +168,136 @@ namespace ChroZenService
         }
         #endregion DefaultCommand 
 
+        #region KeyPadClickCommand
+
+        public static readonly BindableProperty KeyPadClickCommandProperty = BindableProperty.Create("KeyPadClickCommand", typeof(RelayCommand), typeof(ViewModel_KeyPad));
+
+        public RelayCommand KeyPadClickCommand
+        {
+            set
+            {
+                SetValue(KeyPadClickCommandProperty, value);
+            }
+            get
+            {
+                return (RelayCommand)GetValue(KeyPadClickCommandProperty);
+
+            }
+        }
+        #endregion KeyPadClickCommand
+
+        #region DeleteCommand
+
+        public static readonly BindableProperty DeleteCommandProperty = BindableProperty.Create("DeleteCommand", typeof(RelayCommand), typeof(ViewModel_KeyPad));
+
+        public RelayCommand DeleteCommand
+        {
+            set
+            {
+                SetValue(DeleteCommandProperty, value);
+            }
+            get
+            {
+                return (RelayCommand)GetValue(DeleteCommandProperty);
+
+            }
+        }
+        #endregion DeleteCommand
+
+        #region CancelCommand
+
+        public static readonly BindableProperty CancelCommandProperty = BindableProperty.Create("CancelCommand", typeof(RelayCommand), typeof(ViewModel_KeyPad));
+
+        public RelayCommand CancelCommand
+        {
+            set
+            {
+                SetValue(CancelCommandProperty, value);
+            }
+            get
+            {
+                return (RelayCommand)GetValue(CancelCommandProperty);
+
+            }
+        }
+        #endregion CancelCommand
+
+        #region ApplyCommand
+
+        public static readonly BindableProperty ApplyCommandProperty = BindableProperty.Create("ApplyCommand", typeof(RelayCommand), typeof(ViewModel_KeyPad));
+
+        public RelayCommand ApplyCommand
+        {
+            set
+            {
+                SetValue(ApplyCommandProperty, value);
+            }
+            get
+            {
+                return (RelayCommand)GetValue(ApplyCommandProperty);
+
+            }
+        }
+        #endregion ApplyCommand
+
+        #region OnCommand
+
+        public static readonly BindableProperty OnCommandProperty = BindableProperty.Create("OnCommand", typeof(RelayCommand), typeof(ViewModel_KeyPad));
+
+        public RelayCommand OnCommand
+        {
+            set
+            {
+                SetValue(OnCommandProperty, value);
+            }
+            get
+            {
+                return (RelayCommand)GetValue(OnCommandProperty);
+
+            }
+        }
+        #endregion OnCommand
+
+        #region OffCommand
+
+        public static readonly BindableProperty OffCommandProperty = BindableProperty.Create("OffCommand", typeof(RelayCommand), typeof(KeyPad));
+
+        public RelayCommand OffCommand
+        {
+            set
+            {
+                SetValue(OffCommandProperty, value);
+            }
+            get
+            {
+                return (RelayCommand)GetValue(OffCommandProperty);
+
+            }
+        }
+        #endregion OffCommand
+
         #endregion Command
 
         #endregion Binding
 
         #region Instance Func
+
+        public void CopyFrom(ViewModel_KeyPad vmInstance)
+        {
+            this.KeyPadClickCommand = vmInstance.KeyPadClickCommand;
+            this.DeleteCommand = vmInstance.DeleteCommand;
+            this.CancelCommand = vmInstance.CancelCommand;
+            this.ApplyCommand = vmInstance.ApplyCommand;
+            this.OnCommand = vmInstance.OnCommand;
+            this.OffCommand = vmInstance.OffCommand;
+            if (vmInstance.CurrentValue != null)
+                this.CurrentValue = vmInstance.CurrentValue;            
+            this.IsKeyPadShown = vmInstance.IsKeyPadShown;
+            this.Title = vmInstance.Title;
+            this.KeyPadType = vmInstance.KeyPadType;
+            this.MaxValue = vmInstance.MaxValue;
+            this.MinValue = vmInstance.MinValue;
+        }
 
         #endregion Instance Func
     }

@@ -37,14 +37,14 @@
 
                     <local:View_Main_Top Grid.Row="1"/>
                     <local:YL_Chart Grid.Row="3" HorizontalOptions="Center" WidthRequest="600"  ChartRawData="{Binding ViewModel_MainChart.ChartElementRawData}" />
-                    <local:View_Main_Center Grid.Row="4"/>                    
+                    <local:View_Main_Center Grid.Row="4"/>
                 </Grid>
 
                 <!--설정 페이지-->
                 <local:View_Config_Root Grid.Row="1" IsVisible="{Binding IsConfigPageVisible}"/>
                 <!--시스템 페이지-->
-                <local:View_System_Root Grid.Row="1" IsVisible="{Binding IsSystemPageVisible}"/>                
-                
+                <local:View_System_Root Grid.Row="1" IsVisible="{Binding IsSystemPageVisible}"/>
+
                 <!--Footer-->
                 <local:View_Footer Grid.Row="5" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}"/>
 
@@ -60,7 +60,7 @@
 
             <!--에러 페이지-->
             <local:View_Error IsVisible="{Binding IsErrorPopupVisible}"/>
-           
+
         </Grid>
     </AbsoluteLayout>
 </ContentPage>

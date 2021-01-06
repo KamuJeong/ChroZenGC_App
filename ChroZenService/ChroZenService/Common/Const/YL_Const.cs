@@ -348,7 +348,7 @@ namespace ChroZenService
         #endregion ENUM
 
         #region Const Value
-        
+
 
         public static string STR_CALIBRATION_FAIL_VH = "VH FAIL";
         public static string STR_CALIBRATION_FAIL_TO = "TO FAIL";
@@ -357,6 +357,7 @@ namespace ChroZenService
         public static string STR_UNIT_VOLTAGE = " V";
         public static string STR_FORMAT_BELOW_POINT_1 = "0.0";
         public static string STR_FORMAT_BELOW_POINT_2 = "0.00";
+        public static string STR_FORMAT_BELOW_POINT_3 = "0.000";
         public static int METHOD_PROGRAM_CNT = 20;
         public static int TIME_CONTROL_PROGRAM_CNT = 20;
         public static int AUX_APC_CNT = 3;

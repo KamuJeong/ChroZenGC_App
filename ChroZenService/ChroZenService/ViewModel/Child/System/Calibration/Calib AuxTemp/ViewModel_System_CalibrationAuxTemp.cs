@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using Xamarin.Forms;
 using YC_ChroZenGC_Type;
 using static ChroZenService.ChroZenService_Const;
 
@@ -18,6 +19,12 @@ namespace ChroZenService
             MeasuredCommand = new RelayCommand(MeasuredCommandAction);
             ResetCommand = new RelayCommand(ResetCommandAction);
             ApplyCommand = new RelayCommand(ApplyCommandAction);
+            KeyPadCancelCommand = new RelayCommand(KeyPadCancelCommandAction);
+            KeyPadApplyCommand = new RelayCommand(KeyPadApplyCommandAction);
+            KeyPadDeleteCommand = new RelayCommand(KeyPadDeleteCommandAction);
+            KeyPadOnCommand = new RelayCommand(KeyPadOnCommandAction);
+            KeyPadOffCommand = new RelayCommand(KeyPadOffCommandAction);
+            KeyPadKeyPadClickCommand = new RelayCommand(KeyPadKeyPadClickCommandAction);
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -162,25 +169,171 @@ namespace ChroZenService
 
         #region Command
 
-        #region SetCommand
-        public RelayCommand SetCommand { get; set; }
-        private void SetCommandAction(object param)
+        #region KeyPad : CancelCommand
+
+        public RelayCommand KeyPadCancelCommand { get; set; }
+        private void KeyPadCancelCommandAction(object param)
         {
-            switch ((E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE)param)
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+            //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            //{
+            //    IsKeyPadShown = false,
+            //};
+            //EventManager.KeyPadRequestEvent(vmKeyPad);
+        }
+
+        #endregion KeyPad : CancelCommand
+
+        #region KeyPad : DeleteCommand
+
+        public RelayCommand KeyPadDeleteCommand { get; set; }
+        private void KeyPadDeleteCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+        }
+
+        #endregion KeyPad : DeleteCommand
+
+        #region KeyPad : ApplyCommand
+
+        public RelayCommand KeyPadApplyCommand { get; set; }
+        private void KeyPadApplyCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+            //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            //{
+            //    IsKeyPadShown = false,
+            //};
+            //EventManager.KeyPadRequestEvent(vmKeyPad);
+        }
+
+        #endregion KeyPad : ApplyCommand
+
+        #region KeyPad : OnCommand
+
+        public RelayCommand KeyPadOnCommand { get; set; }
+        private void KeyPadOnCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+        }
+
+        #endregion KeyPad : OnCommand
+
+        #region KeyPad : OffCommand
+
+        public RelayCommand KeyPadOffCommand { get; set; }
+        private void KeyPadOffCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+        }
+
+        #endregion KeyPad : OffCommand
+
+        #region KeyPad : KeyPadClickCommand
+
+        public RelayCommand KeyPadKeyPadClickCommand { get; set; }
+        private void KeyPadKeyPadClickCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            switch (sender.Text)
             {
-                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T1:
-                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T2:
-                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T1:
-                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T2:
-                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T1:
-                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T2:
-                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T1:
-                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T2:
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                case "0":
+                case "-/+":
                     {
 
                     }
                     break;
             }
+        }
+
+        #endregion KeyPad : KeyPadClickCommand
+
+        #region SetCommand
+        public RelayCommand SetCommand { get; set; }
+        private void SetCommandAction(object param)
+        {
+            ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            {
+                IsKeyPadShown = true,
+                KeyPadType = KeyPad.E_KEYPAD_TYPE.DOUBLE,
+                MaxValue = 450,
+                MinValue = 0,
+                CancelCommand = KeyPadCancelCommand,
+                ApplyCommand = KeyPadApplyCommand,
+                DeleteCommand = KeyPadDeleteCommand,
+                OnCommand = KeyPadOnCommand,
+                OffCommand = KeyPadOffCommand,
+                KeyPadClickCommand = KeyPadKeyPadClickCommand
+            };
+            switch ((E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE)param)
+            {
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T1:
+                    {
+                        vmKeyPad.Title = "T1 Set";
+                        vmKeyPad.CurrentValue = fSet1_Calib1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T2:
+                    {
+                        vmKeyPad.Title = "T2 Set";
+                        vmKeyPad.CurrentValue = fSet2_Calib1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T1:
+                    {
+                        vmKeyPad.Title = "T1 Set";
+                        vmKeyPad.CurrentValue = fSet1_Calib2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T2:
+                    {
+                        vmKeyPad.Title = "T2 Set";
+                        vmKeyPad.CurrentValue = fSet2_Calib2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T1:
+                    {
+                        vmKeyPad.Title = "T1 Set";
+                        vmKeyPad.CurrentValue = fSet1_Calib3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T2:
+                    {
+                        vmKeyPad.Title = "T2 Set";
+                        vmKeyPad.CurrentValue = fSet2_Calib3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T1:
+                    {
+                        vmKeyPad.Title = "T1 Set";
+                        vmKeyPad.CurrentValue = fSet1_Calib4.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
+                case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T2:
+                    {
+                        vmKeyPad.Title = "T2 Set";
+                        vmKeyPad.CurrentValue = fSet2_Calib4.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
+            }
+            EventManager.KeyPadRequestEvent(vmKeyPad);
             //TODO :             
             Debug.WriteLine(string.Format("{0} : {1} SetCommand Fired", _e_AUXTEMP_INDEX, (E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE)param));
         }
@@ -190,21 +343,71 @@ namespace ChroZenService
         public RelayCommand MeasuredCommand { get; set; }
         private void MeasuredCommandAction(object param)
         {
+            ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            {
+                IsKeyPadShown = true,
+                KeyPadType = KeyPad.E_KEYPAD_TYPE.DOUBLE,
+                MaxValue = 450,
+                MinValue = 0,
+                CancelCommand = KeyPadCancelCommand,
+                ApplyCommand = KeyPadApplyCommand,
+                DeleteCommand = KeyPadDeleteCommand,
+                OnCommand = KeyPadOnCommand,
+                OffCommand = KeyPadOffCommand,
+                KeyPadClickCommand = KeyPadKeyPadClickCommand
+            };
             switch ((E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE)param)
             {
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T1:
+                    {
+                        vmKeyPad.Title = "T1 Measure";
+                        vmKeyPad.CurrentValue = Measure1_Calib1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T2:
+                    {
+                        vmKeyPad.Title = "T2 Measure";
+                        vmKeyPad.CurrentValue = Measure2_Calib1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T1:
+                    {
+                        vmKeyPad.Title = "T1 Measure";
+                        vmKeyPad.CurrentValue = Measure1_Calib2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T2:
+                    {
+                        vmKeyPad.Title = "T2 Measure";
+                        vmKeyPad.CurrentValue = Measure2_Calib2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T1:
+                    {
+                        vmKeyPad.Title = "T1 Measure";
+                        vmKeyPad.CurrentValue = Measure1_Calib3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T2:
+                    {
+                        vmKeyPad.Title = "T2 Measure";
+                        vmKeyPad.CurrentValue = Measure2_Calib3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T1:
+                    {
+                        vmKeyPad.Title = "T1 Measure";
+                        vmKeyPad.CurrentValue = Measure1_Calib4.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T2:
                     {
-
+                        vmKeyPad.Title = "T2 Measure";
+                        vmKeyPad.CurrentValue = Measure2_Calib4.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                     }
                     break;
             }
+            EventManager.KeyPadRequestEvent(vmKeyPad);
             //TODO :             
             Debug.WriteLine(string.Format("{0} : {1} MeasuredCommand Fired", _e_AUXTEMP_INDEX, (E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE)param));
         }

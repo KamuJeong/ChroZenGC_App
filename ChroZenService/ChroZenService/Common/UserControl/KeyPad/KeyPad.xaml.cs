@@ -21,6 +21,8 @@ namespace ChroZenService
 
         #endregion 생성자 & 이벤트 헨들러
 
+        #region Binding
+
         #region Property
 
         public enum E_KEYPAD_TYPE
@@ -151,5 +153,13 @@ namespace ChroZenService
         #endregion MinValue : double
 
         #endregion Property
+
+        #region Command
+
+
+
+        #endregion Command
+
+        #endregion Binding
     }
 }

@@ -9,6 +9,17 @@ namespace ChroZenService
 {
     public static class EventManager
     {
+        #region KeyPadOnOff
+
+        public delegate void KeyPadRequest(ViewModel_KeyPad viewModel_KeyPad);
+        public static KeyPadRequest onKeyPadRequest;
+        public static void KeyPadRequestEvent(ViewModel_KeyPad viewModel_KeyPad)
+        {
+            onKeyPadRequest?.Invoke(viewModel_KeyPad);
+        }
+
+        #endregion MainInitialized
+
         #region MainInitialized
 
         public delegate void MainInitialized(TCPManager tCPManager);
