@@ -27,8 +27,8 @@ namespace YC_ChroZenGC_Type
         {
             return new T_YL6700GC_TEMP_CALIB_VALUE
             {
-                fSet = new float[2],
-                fMeasure = new float[2],
+                fSet = new float[] { YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP, YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP },
+                fMeasure = new float[] { YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP, YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP },
                 fFactor = new float[2],
             };
         }

@@ -24,8 +24,43 @@ namespace YC_ChroZenGC_Type
         {
             return new T_TEMP_CALIBRATION
             {
-                fSet = new float[16],
-                fMeasure = new float[16],
+                fSet = new float[] {
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP,
+                },
+                fMeasure = new float[]
+                {
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                    YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP,
+                },
                 fFactor = new float[16],
             };
         }

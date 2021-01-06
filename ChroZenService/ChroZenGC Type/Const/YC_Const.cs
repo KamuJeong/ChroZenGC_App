@@ -541,5 +541,8 @@ namespace YC_ChroZenGC_Type
         }
 
         #endregion enum
+
+        public static float FLOAT_DEFAULT_SET_AUX_TEMP = 52.1f;
+        public static float FLOAT_DEFAULT_MEASURE_AUX_TEMP = 211.3f;
     }
 }

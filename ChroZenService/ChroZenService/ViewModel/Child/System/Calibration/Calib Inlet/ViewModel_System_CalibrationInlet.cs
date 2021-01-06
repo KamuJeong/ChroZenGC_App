@@ -84,11 +84,11 @@ namespace ChroZenService
         public string FlowTitle3 { get { return _FlowTitle3; } set { _FlowTitle3 = value; OnPropertyChanged("FlowTitle3"); } }
 
 
-        float _ActT_1;
-        public float ActT_1 { get { return _ActT_1; } set { _ActT_1 = value; OnPropertyChanged("ActT_1"); } }
+        string _ActT_1;
+        public string ActT_1 { get { return _ActT_1; } set { _ActT_1 = value; OnPropertyChanged("ActT_1"); } }
 
-        float _ActT_2;
-        public float ActT_2 { get { return _ActT_2; } set { _ActT_2 = value; OnPropertyChanged("ActT_2"); } }
+        string _ActT_2;
+        public string ActT_2 { get { return _ActT_2; } set { _ActT_2 = value; OnPropertyChanged("ActT_2"); } }
 
         float _fSet1;
         public float fSet1 { get { return _fSet1; } set { _fSet1 = value; OnPropertyChanged("fSet1"); } }
