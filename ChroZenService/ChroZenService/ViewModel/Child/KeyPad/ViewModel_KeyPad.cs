@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
+using static ChroZenService.ChroZenService_Const;
 using static ChroZenService.KeyPad;
 
 namespace ChroZenService
@@ -22,7 +23,33 @@ namespace ChroZenService
 
         #region Property
 
-        #region CurrentValue : double
+        #region KEY_PAD_SET_MEASURE_TYPE : E_KEY_PAD_SET_MEASURE_TYPE
+
+        public static readonly BindableProperty KEY_PAD_SET_MEASURE_TYPEProperty =
+        BindableProperty.Create("KEY_PAD_SET_MEASURE_TYPE", typeof(E_KEY_PAD_SET_MEASURE_TYPE), typeof(ViewModel_KeyPad));
+
+        public E_KEY_PAD_SET_MEASURE_TYPE KEY_PAD_SET_MEASURE_TYPE
+        {
+            get { return (E_KEY_PAD_SET_MEASURE_TYPE)GetValue(KEY_PAD_SET_MEASURE_TYPEProperty); }
+            set { SetValue(KEY_PAD_SET_MEASURE_TYPEProperty, value); }
+        }
+
+        #endregion KEY_PAD_SET_MEASURE_TYPE : E_KEY_PAD_SET_MEASURE_TYPE
+
+        #region IsNeedRefresh : bool
+
+        public static readonly BindableProperty IsNeedRefreshProperty =
+        BindableProperty.Create("IsNeedRefresh", typeof(bool), typeof(ViewModel_KeyPad));
+
+        public bool IsNeedRefresh
+        {
+            get { return (bool)GetValue(IsNeedRefreshProperty); }
+            set { SetValue(IsNeedRefreshProperty, value); }
+        }
+
+        #endregion IsNeedRefresh : bool
+
+        #region CurrentValue : string
 
         public static readonly BindableProperty CurrentValueProperty =
         BindableProperty.Create("CurrentValue", typeof(string), typeof(ViewModel_KeyPad));
@@ -33,7 +60,7 @@ namespace ChroZenService
             set { SetValue(CurrentValueProperty, value); }
         }
 
-        #endregion CurrentValue : double
+        #endregion CurrentValue : string
 
         #region IsKeyPadShown : bool
 
@@ -297,6 +324,8 @@ namespace ChroZenService
             this.KeyPadType = vmInstance.KeyPadType;
             this.MaxValue = vmInstance.MaxValue;
             this.MinValue = vmInstance.MinValue;
+            this.IsNeedRefresh = true;
+            this.KEY_PAD_SET_MEASURE_TYPE = vmInstance.KEY_PAD_SET_MEASURE_TYPE;
         }
 
         #endregion Instance Func

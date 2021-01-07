@@ -1891,24 +1891,24 @@ namespace ChroZenService
                             //Req
                             else
                             {
-                                switch(temp.nEventIndex)
+                                switch (temp.nEventIndex)
                                 {
                                     case 0:
                                         {
-                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket));
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
                                         }
                                         break;
                                     case 1:
                                         {
-                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket));
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
                                         }
                                         break;
                                     case 2:
                                         {
-                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket));
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
                                         }
                                         break;
-                                }                                
+                                }
                             }
                         }
                         //Set
@@ -1918,7 +1918,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    switch(temp.nEventIndex)
+                                    switch (temp.nEventIndex)
                                     {
                                         case 0:
                                             {
@@ -1938,7 +1938,7 @@ namespace ChroZenService
                                                 EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET, DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received);
                                             }
                                             break;
-                                    }                                    
+                                    }
                                 }
                                 catch (Exception e)
                                 {
@@ -1976,17 +1976,17 @@ namespace ChroZenService
                                 {
                                     case 0:
                                         {
-                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket));
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
                                         }
                                         break;
                                     case 1:
                                         {
-                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket));
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
                                         }
                                         break;
                                     case 2:
                                         {
-                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket));
+                                            Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
                                         }
                                         break;
                                 }

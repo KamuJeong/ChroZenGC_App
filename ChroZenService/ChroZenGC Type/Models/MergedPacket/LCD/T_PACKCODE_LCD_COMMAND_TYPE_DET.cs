@@ -42,12 +42,13 @@ namespace YC_ChroZenGC_Type
             return byteArr;
         }
 
-        public static byte[] MakePACKCODE_SET(T_YL6700GC_APC_DET_Calib_Write det)
+        public static byte[] MakePACKCODE_SET(T_YL6700GC_APC_DET_Calib_Write det, uint _nEventIndex)
         {
             //설정 패킷
             T_PACKCODE_LCD_COMMAND_TYPE_DET packet = new T_PACKCODE_LCD_COMMAND_TYPE_DET();
             packet.header.nPacketCode = (uint)YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET;
             packet.header.nSlotSize = (uint)Marshal.SizeOf(T_YL6700GC_APC_DET_Calib_WriteManager.InitiatedInstance);
+            packet.header.nEventIndex = _nEventIndex;
             //요청 패킷의 경우 nPacketLengt = SizeOf(T_PACKCODE)
             packet.header.nPacketLength = (uint)Marshal.SizeOf(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.InitiatedInstance);
 

@@ -9,6 +9,19 @@ namespace ChroZenService
     {
         #region BindableProperty
 
+        #region IsStarted
+
+        public static readonly BindableProperty IsStartedProperty = BindableProperty.Create("IsStarted", typeof(bool), typeof(UC_System_Calib_ButtonBase),
+  defaultValue: false);
+
+        public bool IsStarted
+        {
+            get { return (bool)GetValue(IsStartedProperty); }
+            set { SetValue(IsStartedProperty, value); }
+        }
+
+        #endregion IsStarted
+
         #region IconMargin
 
         public static readonly BindableProperty IconMarginProperty = BindableProperty.Create("IconMargin", typeof(Thickness), typeof(UC_System_Calib_ButtonBase),

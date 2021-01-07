@@ -9,15 +9,15 @@ using Xamarin.Forms.Xaml;
 
 namespace ChroZenService
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class KeyPad : ContentView
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class KeyPad : ContentView
+    {
         #region 생성자 & 이벤트 헨들러
 
-        public KeyPad ()
-		{
-			InitializeComponent ();
-		}
+        public KeyPad()
+        {
+            InitializeComponent();
+        }
 
         #endregion 생성자 & 이벤트 헨들러
 
@@ -35,22 +35,12 @@ namespace ChroZenService
         #region CurrentValue : double
 
         public static readonly BindableProperty CurrentValueProperty =
-        BindableProperty.Create("CurrentValue", typeof(double), typeof(KeyPad),
-            defaultValue: 0d,
-            propertyChanged: onCurrentValuePropertyChanged
-            , defaultBindingMode: BindingMode.TwoWay);
+        BindableProperty.Create("CurrentValue", typeof(string), typeof(KeyPad));
 
-        private static void onCurrentValuePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as KeyPad).CurrentValue = (double)newValue;
-            }
-        }
 
-        public double CurrentValue
+        public string CurrentValue
         {
-            get { return (double)GetValue(CurrentValueProperty); }
+            get { return (string)GetValue(CurrentValueProperty); }
             set { SetValue(CurrentValueProperty, value); }
         }
 

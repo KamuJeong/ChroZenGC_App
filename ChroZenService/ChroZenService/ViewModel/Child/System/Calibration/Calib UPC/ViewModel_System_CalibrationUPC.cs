@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using Xamarin.Forms;
+using YC_ChroZenGC_Type;
 using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
@@ -13,6 +15,14 @@ namespace ChroZenService
         public ViewModel_System_CalibrationUPC(E_UPC_INDEX e_UPC_INDEX)
         {
             _e_UPC_INDEX = e_UPC_INDEX;
+
+            KeyPadCancelCommand = new RelayCommand(KeyPadCancelCommandAction);
+            KeyPadApplyCommand = new RelayCommand(KeyPadApplyCommandAction);
+            KeyPadDeleteCommand = new RelayCommand(KeyPadDeleteCommandAction);
+            KeyPadOnCommand = new RelayCommand(KeyPadOnCommandAction);
+            KeyPadOffCommand = new RelayCommand(KeyPadOffCommandAction);
+            KeyPadKeyPadClickCommand = new RelayCommand(KeyPadKeyPadClickCommandAction);
+
             SetCommand = new RelayCommand(SetCommandAction);
             MeasuredCommand = new RelayCommand(MeasuredCommandAction);
 
@@ -30,6 +40,8 @@ namespace ChroZenService
             FlowStartCommand = new RelayCommand(FlowStartCommandAction);
             FlowStopCommand = new RelayCommand(FlowStopCommandAction);
             FlowApplyCommand = new RelayCommand(FlowApplyCommandAction);
+
+            EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -37,6 +49,7 @@ namespace ChroZenService
         #region Binding
 
         #region Property
+        TCPManager tcpManager;
 
         public E_UPC_INDEX _e_UPC_INDEX;
 
@@ -125,6 +138,317 @@ namespace ChroZenService
 
         #region Command
 
+        #region KeyPad : CancelCommand
+
+        public RelayCommand KeyPadCancelCommand { get; set; }
+        private void KeyPadCancelCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+            //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            //{
+            //    IsKeyPadShown = false,
+            //};
+            //EventManager.KeyPadRequestEvent(vmKeyPad);
+        }
+
+        #endregion KeyPad : CancelCommand
+
+        #region KeyPad : DeleteCommand
+
+        public RelayCommand KeyPadDeleteCommand { get; set; }
+        private void KeyPadDeleteCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1)
+            {
+                double tempVal;
+                double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Substring(0, mainVM.ViewModel_KeyPad.CurrentValue.Length - 1), out tempVal);
+                Debug.WriteLine(string.Format("tempVal : {0}", tempVal));
+                mainVM.ViewModel_KeyPad.CurrentValue = tempVal.ToString();
+            }
+            mainVM.ViewModel_KeyPad.IsNeedRefresh = false;
+        }
+
+        #endregion KeyPad : DeleteCommand
+
+        #region KeyPad : ApplyCommand
+
+        public RelayCommand KeyPadApplyCommand { get; set; }
+        private void KeyPadApplyCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+            //.시작 케이스
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+            {
+                double tempVal;
+                double.TryParse("0" + mainVM.ViewModel_KeyPad.CurrentValue, out tempVal);
+                if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                {
+                    mainVM.ViewModel_KeyPad.CurrentValue = "0" + mainVM.ViewModel_KeyPad.CurrentValue;
+                }
+            }
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '-' &&
+                mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+            {
+                double tempVal;
+                double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0"), out tempVal);
+                if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                {
+                    mainVM.ViewModel_KeyPad.CurrentValue = mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0");
+                }
+            }
+            float tempFloatVal = 0;
+            if (float.TryParse(mainVM.ViewModel_KeyPad.CurrentValue, out tempFloatVal))
+            {
+                switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
+                {
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX1_SET_FLOW_CALIBRATION1:
+                        {
+                            Flow_Row_1_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket.Aux_flowCalSet[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX1_SET_FLOW_CALIBRATION2:
+                        {
+                            Flow_Row_2_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket.Aux_flowCalSet[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX1_SET_FLOW_CALIBRATION3:
+                        {
+                            Flow_Row_3_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket.Aux_flowCalSet[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX1_MEASURE_FLOW_CALIBRATION1:
+                        {
+                            Flow_Row_1_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket.Aux_flowCalMeasure[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX1_MEASURE_FLOW_CALIBRATION2:
+                        {
+                            Flow_Row_2_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket.Aux_flowCalMeasure[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX1_MEASURE_FLOW_CALIBRATION3:
+                        {
+                            Flow_Row_3_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket.Aux_flowCalMeasure[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX2_SET_FLOW_CALIBRATION1:
+                        {
+                            Flow_Row_1_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket.Aux_flowCalSet[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX2_SET_FLOW_CALIBRATION2:
+                        {
+                            Flow_Row_2_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket.Aux_flowCalSet[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX2_SET_FLOW_CALIBRATION3:
+                        {
+                            Flow_Row_3_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket.Aux_flowCalSet[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX2_MEASURE_FLOW_CALIBRATION1:
+                        {
+                            Flow_Row_1_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket.Aux_flowCalMeasure[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX2_MEASURE_FLOW_CALIBRATION2:
+                        {
+                            Flow_Row_2_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket.Aux_flowCalMeasure[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX2_MEASURE_FLOW_CALIBRATION3:
+                        {
+                            Flow_Row_3_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket.Aux_flowCalMeasure[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX3_SET_FLOW_CALIBRATION1:
+                        {
+                            Flow_Row_1_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket.Aux_flowCalSet[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX3_SET_FLOW_CALIBRATION2:
+                        {
+                            Flow_Row_2_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket.Aux_flowCalSet[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX3_SET_FLOW_CALIBRATION3:
+                        {
+                            Flow_Row_3_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket.Aux_flowCalSet[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX3_MEASURE_FLOW_CALIBRATION1:
+                        {
+                            Flow_Row_1_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket.Aux_flowCalMeasure[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX3_MEASURE_FLOW_CALIBRATION2:
+                        {
+                            Flow_Row_2_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket.Aux_flowCalMeasure[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX3_MEASURE_FLOW_CALIBRATION3:
+                        {
+                            Flow_Row_3_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket.Aux_flowCalMeasure[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                        }
+                        break;
+                }
+            }
+
+            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+
+            //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            //{
+            //    IsKeyPadShown = false,
+            //};
+            //EventManager.KeyPadRequestEvent(vmKeyPad);
+        }
+
+        #endregion KeyPad : ApplyCommand
+
+        #region KeyPad : OnCommand
+
+        public RelayCommand KeyPadOnCommand { get; set; }
+        private void KeyPadOnCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+        }
+
+        #endregion KeyPad : OnCommand
+
+        #region KeyPad : OffCommand
+
+        public RelayCommand KeyPadOffCommand { get; set; }
+        private void KeyPadOffCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+        }
+
+        #endregion KeyPad : OffCommand
+
+        #region KeyPad : KeyPadClickCommand
+
+        public RelayCommand KeyPadKeyPadClickCommand { get; set; }
+        private void KeyPadKeyPadClickCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            if (mainVM.ViewModel_KeyPad.IsNeedRefresh)
+            {
+                mainVM.ViewModel_KeyPad.CurrentValue = "";
+                mainVM.ViewModel_KeyPad.IsNeedRefresh = false;
+            }
+
+            switch (sender.Text)
+            {
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                case "0":
+                    {
+                        //.시작 케이스
+                        if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+                        {
+                            double tempVal;
+                            double.TryParse("0" + mainVM.ViewModel_KeyPad.CurrentValue, out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                        else if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '-' &&
+                            mainVM.ViewModel_KeyPad.CurrentValue[1] == '.')
+                        {
+                            double tempVal;
+                            double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0"), out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                        else
+                        {
+                            double tempVal;
+                            double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue + sender.Text, out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                    }
+                    break;
+                case ".":
+                    {
+                        if (!mainVM.ViewModel_KeyPad.CurrentValue.Contains("."))
+                        {
+                            mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                        }
+                    }
+                    break;
+                case "-/+":
+                    {
+                        if (!mainVM.ViewModel_KeyPad.CurrentValue.Contains("-"))
+                        {
+                            mainVM.ViewModel_KeyPad.CurrentValue = "-" + mainVM.ViewModel_KeyPad.CurrentValue;
+                        }
+                    }
+                    break;
+
+            }
+        }
+
+        #endregion KeyPad : KeyPadClickCommand
+
         #region SensorZero
 
         #region SensorZeroResetCommand
@@ -140,6 +464,18 @@ namespace ChroZenService
         public RelayCommand SensorZeroStartCommand { get; set; }
         private void SensorZeroStartCommandAction(object param)
         {
+            bIsDoingSensorZeroCalibration = !bIsDoingSensorZeroCalibration;
+            //Start
+            if (bIsDoingSensorZeroCalibration)
+            {
+
+            }
+            //Stop
+            else
+            {
+
+            }
+
             //TODO :             
             Debug.WriteLine("SensorZeroStartCommand Fired");
         }
@@ -180,6 +516,17 @@ namespace ChroZenService
         public RelayCommand ValveStartCommand { get; set; }
         private void ValveStartCommandAction(object param)
         {
+            bIsDoingValveCalibration = !bIsDoingValveCalibration;
+            //Start
+            if (bIsDoingValveCalibration)
+            {
+
+            }
+            //Stop
+            else
+            {
+
+            }
             //TODO :             
             Debug.WriteLine("ValveStartCommand Fired");
         }
@@ -211,16 +558,95 @@ namespace ChroZenService
         public RelayCommand SetCommand { get; set; }
         private void SetCommandAction(object param)
         {
+            ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            {
+                IsKeyPadShown = true,
+                KeyPadType = KeyPad.E_KEYPAD_TYPE.DOUBLE,
+                MaxValue = ChroZenService_Const.FLOAT_CALIBRATION_MAX_FLOW,
+                MinValue = 0,
+                CancelCommand = KeyPadCancelCommand,
+                ApplyCommand = KeyPadApplyCommand,
+                DeleteCommand = KeyPadDeleteCommand,
+                OnCommand = KeyPadOnCommand,
+                OffCommand = KeyPadOffCommand,
+                KeyPadClickCommand = KeyPadKeyPadClickCommand,
+            };
             switch ((E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE)param)
             {
                 case E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION1:
+                    {
+                        vmKeyPad.Title = "Flow1 Set";
+                        vmKeyPad.CurrentValue = Flow_Row_1_Set;
+                        switch (_e_UPC_INDEX)
+                        {
+                            case E_UPC_INDEX.UPC1:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX1_SET_FLOW_CALIBRATION1;
+                                }
+                                break;
+                            case E_UPC_INDEX.UPC2:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX2_SET_FLOW_CALIBRATION1;
+                                }
+                                break;
+                            case E_UPC_INDEX.UPC3:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX3_SET_FLOW_CALIBRATION1;
+                                }
+                                break;
+                        }
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION2:
+                    {
+                        vmKeyPad.Title = "Flow2 Set";
+                        vmKeyPad.CurrentValue = Flow_Row_2_Set;
+                        switch (_e_UPC_INDEX)
+                        {
+                            case E_UPC_INDEX.UPC1:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX1_SET_FLOW_CALIBRATION2;
+                                }
+                                break;
+                            case E_UPC_INDEX.UPC2:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX2_SET_FLOW_CALIBRATION2;
+                                }
+                                break;
+                            case E_UPC_INDEX.UPC3:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX3_SET_FLOW_CALIBRATION2;
+                                }
+                                break;
+                        }
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION3:
                     {
-
+                        vmKeyPad.Title = "Flow3 Set";
+                        vmKeyPad.CurrentValue = Flow_Row_3_Set;
+                        switch (_e_UPC_INDEX)
+                        {
+                            case E_UPC_INDEX.UPC1:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX1_SET_FLOW_CALIBRATION3;
+                                }
+                                break;
+                            case E_UPC_INDEX.UPC2:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX2_SET_FLOW_CALIBRATION3;
+                                }
+                                break;
+                            case E_UPC_INDEX.UPC3:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX3_SET_FLOW_CALIBRATION3;
+                                }
+                                break;
+                        }
                     }
                     break;
             }
+            EventManager.KeyPadRequestEvent(vmKeyPad);
             //TODO :             
             Debug.WriteLine(string.Format("{0} : {1} SetCommand Fired", _e_UPC_INDEX, (E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE)param));
         }
@@ -230,16 +656,95 @@ namespace ChroZenService
         public RelayCommand MeasuredCommand { get; set; }
         private void MeasuredCommandAction(object param)
         {
+            ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            {
+                IsKeyPadShown = true,
+                KeyPadType = KeyPad.E_KEYPAD_TYPE.DOUBLE,
+                MaxValue = ChroZenService_Const.FLOAT_CALIBRATION_MAX_FLOW,
+                MinValue = 0,
+                CancelCommand = KeyPadCancelCommand,
+                ApplyCommand = KeyPadApplyCommand,
+                DeleteCommand = KeyPadDeleteCommand,
+                OnCommand = KeyPadOnCommand,
+                OffCommand = KeyPadOffCommand,
+                KeyPadClickCommand = KeyPadKeyPadClickCommand,
+            };
             switch ((E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE)param)
             {
                 case E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION1:
+                    {
+                        vmKeyPad.Title = "Flow1 Measure";
+                        vmKeyPad.CurrentValue = Flow_Row_1_Act;
+                        switch (_e_UPC_INDEX)
+                        {
+                            case E_UPC_INDEX.UPC1:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX1_MEASURE_FLOW_CALIBRATION1;
+                                }
+                                break;
+                            case E_UPC_INDEX.UPC2:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX2_MEASURE_FLOW_CALIBRATION1;
+                                }
+                                break;
+                            case E_UPC_INDEX.UPC3:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX3_MEASURE_FLOW_CALIBRATION1;
+                                }
+                                break;
+                        }
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION2:
+                    {
+                        vmKeyPad.Title = "Flow2 Measure";
+                        vmKeyPad.CurrentValue = Flow_Row_1_Act;
+                        switch (_e_UPC_INDEX)
+                        {
+                            case E_UPC_INDEX.UPC1:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX1_MEASURE_FLOW_CALIBRATION2;
+                                }
+                                break;
+                            case E_UPC_INDEX.UPC2:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX2_MEASURE_FLOW_CALIBRATION2;
+                                }
+                                break;
+                            case E_UPC_INDEX.UPC3:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX3_MEASURE_FLOW_CALIBRATION2;
+                                }
+                                break;
+                        }
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE.FLOW_CALIBRATION3:
                     {
-
+                        vmKeyPad.Title = "Flow3 Measure";
+                        vmKeyPad.CurrentValue = Flow_Row_3_Act;
+                        switch (_e_UPC_INDEX)
+                        {
+                            case E_UPC_INDEX.UPC1:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX1_MEASURE_FLOW_CALIBRATION3;
+                                }
+                                break;
+                            case E_UPC_INDEX.UPC2:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX2_MEASURE_FLOW_CALIBRATION3;
+                                }
+                                break;
+                            case E_UPC_INDEX.UPC3:
+                                {
+                                    vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX3_MEASURE_FLOW_CALIBRATION3;
+                                }
+                                break;
+                        }
                     }
                     break;
             }
+            EventManager.KeyPadRequestEvent(vmKeyPad);
             //TODO :             
             Debug.WriteLine(string.Format("{0} : {1} MeasuredCommand Fired", _e_UPC_INDEX, (E_SYSTEM_CALIBRATION_AUX_UPC_SET_MEASURE_COMMAND_TYPE)param));
         }
@@ -258,6 +763,17 @@ namespace ChroZenService
         public RelayCommand FlowStartCommand { get; set; }
         private void FlowStartCommandAction(object param)
         {
+            bIsDoingFlowCalibration = !bIsDoingFlowCalibration;
+            //Start
+            if (bIsDoingFlowCalibration)
+            {
+
+            }
+            //Stop
+            else
+            {
+
+            }
             //TODO :             
             Debug.WriteLine("FlowStartCommand Fired");
         }

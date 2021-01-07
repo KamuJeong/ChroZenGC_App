@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using Xamarin.Forms;
 using YC_ChroZenGC_Type;
 using static ChroZenService.ChroZenService_Const;
 
@@ -13,10 +14,19 @@ namespace ChroZenService
 
         public ViewModel_System_CalibrationOven()
         {
+            KeyPadCancelCommand = new RelayCommand(KeyPadCancelCommandAction);
+            KeyPadApplyCommand = new RelayCommand(KeyPadApplyCommandAction);
+            KeyPadDeleteCommand = new RelayCommand(KeyPadDeleteCommandAction);
+            KeyPadOnCommand = new RelayCommand(KeyPadOnCommandAction);
+            KeyPadOffCommand = new RelayCommand(KeyPadOffCommandAction);
+            KeyPadKeyPadClickCommand = new RelayCommand(KeyPadKeyPadClickCommandAction);
+
             SetCommand = new RelayCommand(SetCommandAction);
             MeasuredCommand = new RelayCommand(MeasuredCommandAction);
             ResetCommand = new RelayCommand(ResetCommandAction);
             ApplyCommand = new RelayCommand(ApplyCommandAction);
+
+            EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -24,6 +34,7 @@ namespace ChroZenService
         #region Binding
 
         #region Property
+        TCPManager tcpManager;
 
         string _ActualTemp;
         /// <summary>
@@ -60,19 +71,251 @@ namespace ChroZenService
 
         #region Command
 
+        #region KeyPad : CancelCommand
+
+        public RelayCommand KeyPadCancelCommand { get; set; }
+        private void KeyPadCancelCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+            //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            //{
+            //    IsKeyPadShown = false,
+            //};
+            //EventManager.KeyPadRequestEvent(vmKeyPad);
+        }
+
+        #endregion KeyPad : CancelCommand
+
+        #region KeyPad : DeleteCommand
+
+        public RelayCommand KeyPadDeleteCommand { get; set; }
+        private void KeyPadDeleteCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1)
+            {
+                double tempVal;
+                double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Substring(0, mainVM.ViewModel_KeyPad.CurrentValue.Length - 1), out tempVal);
+                Debug.WriteLine(string.Format("tempVal : {0}", tempVal));
+                mainVM.ViewModel_KeyPad.CurrentValue = tempVal.ToString();
+            }
+            mainVM.ViewModel_KeyPad.IsNeedRefresh = false;
+        }
+
+        #endregion KeyPad : DeleteCommand
+
+        #region KeyPad : ApplyCommand
+
+        public RelayCommand KeyPadApplyCommand { get; set; }
+        private void KeyPadApplyCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+            //.시작 케이스
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+            {
+                double tempVal;
+                double.TryParse("0" + mainVM.ViewModel_KeyPad.CurrentValue, out tempVal);
+                if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                {
+                    mainVM.ViewModel_KeyPad.CurrentValue = "0" + mainVM.ViewModel_KeyPad.CurrentValue;
+                }
+            }
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '-' &&
+                mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+            {
+                double tempVal;
+                double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0"), out tempVal);
+                if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                {
+                    mainVM.ViewModel_KeyPad.CurrentValue = mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0");
+                }
+            }
+            float tempFloatVal = 0;
+            if (float.TryParse(mainVM.ViewModel_KeyPad.CurrentValue, out tempFloatVal))
+            {
+                switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
+                {
+                    case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SET_TEMP_CALIBRATION_T1:
+                        {
+                            fSet1 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket.fSet[0] = fSet1;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SET_TEMP_CALIBRATION_T2:
+                        {
+                            fSet2 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket.fSet[1] = fSet2;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_MEASURE_TEMP_CALIBRATION_T1:
+                        {
+                            Measure1 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket.fMeasure[0] = Measure1;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_MEASURE_TEMP_CALIBRATION_T2:
+                        {
+                            Measure2 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket.fMeasure[1] = Measure2;
+                        }
+                        break;
+                }
+            }
+
+            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+
+            //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            //{
+            //    IsKeyPadShown = false,
+            //};
+            //EventManager.KeyPadRequestEvent(vmKeyPad);
+        }
+
+        #endregion KeyPad : ApplyCommand
+
+        #region KeyPad : OnCommand
+
+        public RelayCommand KeyPadOnCommand { get; set; }
+        private void KeyPadOnCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+        }
+
+        #endregion KeyPad : OnCommand
+
+        #region KeyPad : OffCommand
+
+        public RelayCommand KeyPadOffCommand { get; set; }
+        private void KeyPadOffCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+        }
+
+        #endregion KeyPad : OffCommand
+
+        #region KeyPad : KeyPadClickCommand
+
+        public RelayCommand KeyPadKeyPadClickCommand { get; set; }
+        private void KeyPadKeyPadClickCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            if (mainVM.ViewModel_KeyPad.IsNeedRefresh)
+            {
+                mainVM.ViewModel_KeyPad.CurrentValue = "";
+                mainVM.ViewModel_KeyPad.IsNeedRefresh = false;
+            }
+
+            switch (sender.Text)
+            {
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                case "0":
+                    {
+                        //.시작 케이스
+                        if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+                        {
+                            double tempVal;
+                            double.TryParse("0" + mainVM.ViewModel_KeyPad.CurrentValue, out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                        else if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '-' &&
+                            mainVM.ViewModel_KeyPad.CurrentValue[1] == '.')
+                        {
+                            double tempVal;
+                            double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0"), out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                        else
+                        {
+                            double tempVal;
+                            double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue + sender.Text, out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                    }
+                    break;
+                case ".":
+                    {
+                        if (!mainVM.ViewModel_KeyPad.CurrentValue.Contains("."))
+                        {
+                            mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                        }
+                    }
+                    break;
+                case "-/+":
+                    {
+                        if (!mainVM.ViewModel_KeyPad.CurrentValue.Contains("-"))
+                        {
+                            mainVM.ViewModel_KeyPad.CurrentValue = "-" + mainVM.ViewModel_KeyPad.CurrentValue;
+                        }
+                    }
+                    break;
+
+            }
+        }
+
+        #endregion KeyPad : KeyPadClickCommand
+
         #region SetCommand
         public RelayCommand SetCommand { get; set; }
         private void SetCommandAction(object param)
         {
+            ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            {
+                IsKeyPadShown = true,
+                KeyPadType = KeyPad.E_KEYPAD_TYPE.DOUBLE,
+                MaxValue = ChroZenService_Const.FLOAT_CALIBRATION_MAX_TEMPERATURE,
+                MinValue = 0,
+                CancelCommand = KeyPadCancelCommand,
+                ApplyCommand = KeyPadApplyCommand,
+                DeleteCommand = KeyPadDeleteCommand,
+                OnCommand = KeyPadOnCommand,
+                OffCommand = KeyPadOffCommand,
+                KeyPadClickCommand = KeyPadKeyPadClickCommand,
+            };
             switch ((E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE)param)
             {
                 case E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE.TEMP_CALIBRATION_T1:
+                    {
+                        vmKeyPad.Title = "T1 Set";
+                        vmKeyPad.CurrentValue = fSet1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SET_TEMP_CALIBRATION_T1;
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE.TEMP_CALIBRATION_T2:
                     {
-
+                        vmKeyPad.Title = "T2 Set";
+                        vmKeyPad.CurrentValue = fSet2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SET_TEMP_CALIBRATION_T2;
                     }
                     break;
             }
+            EventManager.KeyPadRequestEvent(vmKeyPad);
+
             //TODO :             
             Debug.WriteLine(string.Format("Oven : {0} SetCommand Fired", (E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE)param));
         }
@@ -82,15 +325,37 @@ namespace ChroZenService
         public RelayCommand MeasuredCommand { get; set; }
         private void MeasuredCommandAction(object param)
         {
+            ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            {
+                IsKeyPadShown = true,
+                KeyPadType = KeyPad.E_KEYPAD_TYPE.DOUBLE,
+                MaxValue = ChroZenService_Const.FLOAT_CALIBRATION_MAX_TEMPERATURE,
+                MinValue = 0,
+                CancelCommand = KeyPadCancelCommand,
+                ApplyCommand = KeyPadApplyCommand,
+                DeleteCommand = KeyPadDeleteCommand,
+                OnCommand = KeyPadOnCommand,
+                OffCommand = KeyPadOffCommand,
+                KeyPadClickCommand = KeyPadKeyPadClickCommand,
+            };
             switch ((E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE)param)
             {
                 case E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE.TEMP_CALIBRATION_T1:
+                    {
+                        vmKeyPad.Title = "T1 Measure";
+                        vmKeyPad.CurrentValue = ActualTemp;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.OVEN_MEASURE_TEMP_CALIBRATION_T1;
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE.TEMP_CALIBRATION_T2:
                     {
-
+                        vmKeyPad.Title = "T2 Measure";
+                        vmKeyPad.CurrentValue = ActualTemp;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.OVEN_MEASURE_TEMP_CALIBRATION_T2;
                     }
                     break;
             }
+            EventManager.KeyPadRequestEvent(vmKeyPad);
             //TODO :             
             Debug.WriteLine(string.Format("Oven : {0} MeasuredCommand Fired", (E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE)param));
         }

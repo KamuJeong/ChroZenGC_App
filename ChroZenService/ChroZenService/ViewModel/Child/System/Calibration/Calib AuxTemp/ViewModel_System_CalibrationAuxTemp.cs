@@ -25,6 +25,8 @@ namespace ChroZenService
             KeyPadOnCommand = new RelayCommand(KeyPadOnCommandAction);
             KeyPadOffCommand = new RelayCommand(KeyPadOffCommandAction);
             KeyPadKeyPadClickCommand = new RelayCommand(KeyPadKeyPadClickCommandAction);
+
+            EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -32,6 +34,7 @@ namespace ChroZenService
         #region Binding
 
         #region Property
+        TCPManager tcpManager;
 
         public E_AUXTEMP_INDEX _e_AUXTEMP_INDEX;
 
@@ -193,6 +196,15 @@ namespace ChroZenService
         {
             Button sender = (param as Button);
             ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1)
+            {
+                double tempVal;
+                double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Substring(0, mainVM.ViewModel_KeyPad.CurrentValue.Length - 1), out tempVal);
+                Debug.WriteLine(string.Format("tempVal : {0}", tempVal));
+                mainVM.ViewModel_KeyPad.CurrentValue = tempVal.ToString();
+            }
+            mainVM.ViewModel_KeyPad.IsNeedRefresh = false;
         }
 
         #endregion KeyPad : DeleteCommand
@@ -204,7 +216,232 @@ namespace ChroZenService
         {
             Button sender = (param as Button);
             ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+            //.시작 케이스
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+            {
+                double tempVal;
+                double.TryParse("0" + mainVM.ViewModel_KeyPad.CurrentValue, out tempVal);
+                if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                {
+                    mainVM.ViewModel_KeyPad.CurrentValue = "0" + mainVM.ViewModel_KeyPad.CurrentValue;
+                }
+            }
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '-' &&
+                mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+            {
+                double tempVal;
+                double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0"), out tempVal);
+                if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                {
+                    mainVM.ViewModel_KeyPad.CurrentValue = mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0");
+                }
+            }
+            float tempFloatVal = 0;
+            if (float.TryParse(mainVM.ViewModel_KeyPad.CurrentValue, out tempFloatVal))
+            {
+                switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
+                {
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION1_T1:
+                        {
+                            fSet1_Calib1 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION1_T2:
+                        {
+                            fSet2_Calib1 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[1] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION2_T1:
+                        {
+                            fSet1_Calib2 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[2] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION2_T2:
+                        {
+                            fSet2_Calib2 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[3] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION3_T1:
+                        {
+                            fSet1_Calib3 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[4] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION3_T2:
+                        {
+                            fSet2_Calib3 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[5] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION4_T1:
+                        {
+                            fSet1_Calib4 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[6] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION4_T2:
+                        {
+                            fSet2_Calib4 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[7] = tempFloatVal;
+                        }
+                        break;
+
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION1_T1:
+                        {
+                            Measure1_Calib1 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION1_T2:
+                        {
+                            Measure2_Calib1 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[1] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION2_T1:
+                        {
+                            Measure1_Calib2 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[2] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION2_T2:
+                        {
+                            Measure2_Calib2 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[3] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION3_T1:
+                        {
+                            Measure1_Calib3 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[4] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION3_T2:
+                        {
+                            Measure2_Calib3 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[5] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION4_T1:
+                        {
+                            Measure1_Calib4 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[6] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION4_T2:
+                        {
+                            Measure2_Calib4 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[7] = tempFloatVal;
+                        }
+                        break;
+
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION1_T1:
+                        {
+                            fSet1_Calib1 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[8] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION1_T2:
+                        {
+                            fSet2_Calib1 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[9] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION2_T1:
+                        {
+                            fSet1_Calib2 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[10] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION2_T2:
+                        {
+                            fSet2_Calib2 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[11] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION3_T1:
+                        {
+                            fSet1_Calib3 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[12] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION3_T2:
+                        {
+                            fSet2_Calib3 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[13] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION4_T1:
+                        {
+                            fSet1_Calib4 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[14] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION4_T2:
+                        {
+                            fSet2_Calib4 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[15] = tempFloatVal;
+                        }
+                        break;
+
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION1_T1:
+                        {
+                            Measure1_Calib1 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[8] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION1_T2:
+                        {
+                            Measure2_Calib1 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[9] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION2_T1:
+                        {
+                            Measure1_Calib2 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[10] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION2_T2:
+                        {
+                            Measure2_Calib2 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[11] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION3_T1:
+                        {
+                            Measure1_Calib3 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[12] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION3_T2:
+                        {
+                            Measure2_Calib3 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[13] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION4_T1:
+                        {
+                            Measure1_Calib4 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[14] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION4_T2:
+                        {
+                            Measure2_Calib4 = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[15] = tempFloatVal;
+                        }
+                        break;
+                }
+            }
+
             mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+
             //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
             //{
             //    IsKeyPadShown = false,
@@ -243,6 +480,12 @@ namespace ChroZenService
         {
             Button sender = (param as Button);
             ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            if (mainVM.ViewModel_KeyPad.IsNeedRefresh)
+            {
+                mainVM.ViewModel_KeyPad.CurrentValue = "";
+                mainVM.ViewModel_KeyPad.IsNeedRefresh = false;
+            }
+
             switch (sender.Text)
             {
                 case "1":
@@ -255,11 +498,55 @@ namespace ChroZenService
                 case "8":
                 case "9":
                 case "0":
-                case "-/+":
                     {
-
+                        //.시작 케이스
+                        if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+                        {
+                            double tempVal;
+                            double.TryParse("0" + mainVM.ViewModel_KeyPad.CurrentValue, out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                        else if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '-' &&
+                            mainVM.ViewModel_KeyPad.CurrentValue[1] == '.')
+                        {
+                            double tempVal;
+                            double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0"), out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                        else
+                        {
+                            double tempVal;
+                            double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue + sender.Text, out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
                     }
                     break;
+                case ".":
+                    {
+                        if (!mainVM.ViewModel_KeyPad.CurrentValue.Contains("."))
+                        {
+                            mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                        }
+                    }
+                    break;
+                case "-/+":
+                    {
+                        if (!mainVM.ViewModel_KeyPad.CurrentValue.Contains("-"))
+                        {
+                            mainVM.ViewModel_KeyPad.CurrentValue = "-" + mainVM.ViewModel_KeyPad.CurrentValue;
+                        }
+                    }
+                    break;
+
             }
         }
 
@@ -273,14 +560,14 @@ namespace ChroZenService
             {
                 IsKeyPadShown = true,
                 KeyPadType = KeyPad.E_KEYPAD_TYPE.DOUBLE,
-                MaxValue = 450,
+                MaxValue = ChroZenService_Const.FLOAT_CALIBRATION_MAX_TEMPERATURE,
                 MinValue = 0,
                 CancelCommand = KeyPadCancelCommand,
                 ApplyCommand = KeyPadApplyCommand,
                 DeleteCommand = KeyPadDeleteCommand,
                 OnCommand = KeyPadOnCommand,
                 OffCommand = KeyPadOffCommand,
-                KeyPadClickCommand = KeyPadKeyPadClickCommand
+                KeyPadClickCommand = KeyPadKeyPadClickCommand,
             };
             switch ((E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE)param)
             {
@@ -288,48 +575,112 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "T1 Set";
                         vmKeyPad.CurrentValue = fSet1_Calib1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION1_T1;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION1_T1;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T2:
                     {
                         vmKeyPad.Title = "T2 Set";
                         vmKeyPad.CurrentValue = fSet2_Calib1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION1_T2;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION1_T2;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T1:
                     {
                         vmKeyPad.Title = "T1 Set";
                         vmKeyPad.CurrentValue = fSet1_Calib2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION2_T1;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION2_T1;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T2:
                     {
                         vmKeyPad.Title = "T2 Set";
                         vmKeyPad.CurrentValue = fSet2_Calib2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION2_T2;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION2_T2;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T1:
                     {
                         vmKeyPad.Title = "T1 Set";
                         vmKeyPad.CurrentValue = fSet1_Calib3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION3_T1;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION3_T1;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T2:
                     {
                         vmKeyPad.Title = "T2 Set";
                         vmKeyPad.CurrentValue = fSet2_Calib3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION3_T2;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION3_T2;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T1:
                     {
                         vmKeyPad.Title = "T1 Set";
                         vmKeyPad.CurrentValue = fSet1_Calib4.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION4_T1;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION4_T1;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T2:
                     {
                         vmKeyPad.Title = "T2 Set";
                         vmKeyPad.CurrentValue = fSet2_Calib4.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION4_T2;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION4_T2;
+                        }
                     }
                     break;
             }
@@ -347,63 +698,127 @@ namespace ChroZenService
             {
                 IsKeyPadShown = true,
                 KeyPadType = KeyPad.E_KEYPAD_TYPE.DOUBLE,
-                MaxValue = 450,
+                MaxValue = ChroZenService_Const.FLOAT_CALIBRATION_MAX_TEMPERATURE,
                 MinValue = 0,
                 CancelCommand = KeyPadCancelCommand,
                 ApplyCommand = KeyPadApplyCommand,
                 DeleteCommand = KeyPadDeleteCommand,
                 OnCommand = KeyPadOnCommand,
                 OffCommand = KeyPadOffCommand,
-                KeyPadClickCommand = KeyPadKeyPadClickCommand
+                KeyPadClickCommand = KeyPadKeyPadClickCommand,
             };
             switch ((E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE)param)
             {
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T1:
                     {
                         vmKeyPad.Title = "T1 Measure";
-                        vmKeyPad.CurrentValue = Measure1_Calib1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.CurrentValue = ActualTemp_Calib1;
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION1_T1;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION1_T1;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION1_T2:
                     {
                         vmKeyPad.Title = "T2 Measure";
-                        vmKeyPad.CurrentValue = Measure2_Calib1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.CurrentValue = ActualTemp_Calib1;
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION1_T2;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION1_T2;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T1:
                     {
                         vmKeyPad.Title = "T1 Measure";
-                        vmKeyPad.CurrentValue = Measure1_Calib2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.CurrentValue = ActualTemp_Calib2;
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION2_T1;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION2_T1;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION2_T2:
                     {
                         vmKeyPad.Title = "T2 Measure";
-                        vmKeyPad.CurrentValue = Measure2_Calib2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.CurrentValue = ActualTemp_Calib2;
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION2_T2;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION2_T2;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T1:
                     {
                         vmKeyPad.Title = "T1 Measure";
-                        vmKeyPad.CurrentValue = Measure1_Calib3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.CurrentValue = ActualTemp_Calib3;
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION3_T1;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION3_T1;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION3_T2:
                     {
                         vmKeyPad.Title = "T2 Measure";
-                        vmKeyPad.CurrentValue = Measure2_Calib3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.CurrentValue = ActualTemp_Calib3;
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION3_T2;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION3_T2;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T1:
                     {
                         vmKeyPad.Title = "T1 Measure";
-                        vmKeyPad.CurrentValue = Measure1_Calib4.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.CurrentValue = ActualTemp_Calib4;
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION4_T1;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION4_T1;
+                        }
                     }
                     break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_SET_MEASURE_COMMAND_TYPE.TEMP_CALIBRATION4_T2:
                     {
                         vmKeyPad.Title = "T2 Measure";
-                        vmKeyPad.CurrentValue = Measure2_Calib4.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.CurrentValue = ActualTemp_Calib4;
+                        if (_e_AUXTEMP_INDEX == E_AUXTEMP_INDEX.AUXTEMP1)
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION4_T2;
+                        }
+                        else
+                        {
+                            vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION4_T2;
+                        }
                     }
                     break;
             }

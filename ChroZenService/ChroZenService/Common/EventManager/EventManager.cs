@@ -9,6 +9,7 @@ namespace ChroZenService
 {
     public static class EventManager
     {
+
         #region KeyPadOnOff
 
         public delegate void KeyPadRequest(ViewModel_KeyPad viewModel_KeyPad);
