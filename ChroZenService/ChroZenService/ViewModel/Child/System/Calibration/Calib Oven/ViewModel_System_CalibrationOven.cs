@@ -8,7 +8,7 @@ using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
-    public class ViewModel_System_CalibrationOven : ChildNotifyBase
+    public class ViewModel_System_CalibrationOven : Model_System_Calibration
     {
         #region 생성자 & 이벤트 헨들러
 
@@ -365,9 +365,7 @@ namespace ChroZenService
         public RelayCommand ResetCommand { get; set; }
         private void ResetCommandAction(object param)
         {
-
-            //TODO :             
-            Debug.WriteLine("ResetCommand Fired");
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_OVEN_TEMP_RESET, tcpManager);
         }
         #endregion ResetCommand 
 
@@ -375,9 +373,7 @@ namespace ChroZenService
         public RelayCommand ApplyCommand { get; set; }
         private void ApplyCommandAction(object param)
         {
-
-            //TODO :             
-            Debug.WriteLine("ApplyCommand Fired");
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_OVEN_TEMP_APPLY, tcpManager);
         }
         #endregion ApplyCommand 
 

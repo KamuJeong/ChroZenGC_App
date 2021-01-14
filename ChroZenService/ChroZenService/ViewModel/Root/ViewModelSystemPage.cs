@@ -20,6 +20,7 @@ namespace ChroZenService
             SubMenuSelectCommand = new RelayCommand(SubMenuSelectCommandAction);
 
             EventManager.onPACKCODE_Receivce += PACKCODE_ReceivceEventHandler;
+            EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
 
         private void PACKCODE_ReceivceEventHandler(YC_Const.E_PACKCODE e_LC_PACK_CODE, I_CHROZEN_GC_PACKET packet)
@@ -586,7 +587,7 @@ namespace ChroZenService
                                         //Valve가 Start되었으면
                                         if (ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.bIsDoingValveCalibration)
                                         {
-                                            E_CALIBRATION_STATE valveState1 = (E_CALIBRATION_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.AuxValCalState[0];
+                                            E_CALIBRATION_STATE valveState1 = (E_CALIBRATION_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.InjValCalState[0];
                                             switch (valveState1)
                                             {
                                                 case E_CALIBRATION_STATE.STOP:
@@ -602,7 +603,7 @@ namespace ChroZenService
                                                     break;
                                                 case E_CALIBRATION_STATE.FAIL:
                                                     {
-                                                        E_ERROR_STATE errorState1 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_AuxErrorCode[0];
+                                                        E_ERROR_STATE errorState1 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_InjErrorCode[0];
                                                         switch (errorState1)
                                                         {
                                                             case E_ERROR_STATE.APC_Calib_Error_Volt_High:
@@ -626,7 +627,7 @@ namespace ChroZenService
                                                                 }
                                                                 break;
                                                         }
-                                                        E_ERROR_STATE errorState2 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_AuxErrorCode[1];
+                                                        E_ERROR_STATE errorState2 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_InjErrorCode[1];
                                                         switch (errorState2)
                                                         {
                                                             case E_ERROR_STATE.APC_Calib_Error_Volt_High:
@@ -650,7 +651,7 @@ namespace ChroZenService
                                                                 }
                                                                 break;
                                                         }
-                                                        E_ERROR_STATE errorState3 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_AuxErrorCode[2];
+                                                        E_ERROR_STATE errorState3 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_InjErrorCode[2];
                                                         switch (errorState3)
                                                         {
                                                             case E_ERROR_STATE.APC_Calib_Error_Volt_High:
@@ -686,7 +687,7 @@ namespace ChroZenService
                                         }
                                         if (ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.bIsDoingValveCalibration)
                                         {
-                                            E_CALIBRATION_STATE valveState1 = (E_CALIBRATION_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.AuxValCalState[1];
+                                            E_CALIBRATION_STATE valveState1 = (E_CALIBRATION_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.InjValCalState[1];
                                             switch (valveState1)
                                             {
                                                 case E_CALIBRATION_STATE.STOP:
@@ -702,7 +703,7 @@ namespace ChroZenService
                                                     break;
                                                 case E_CALIBRATION_STATE.FAIL:
                                                     {
-                                                        E_ERROR_STATE errorState1 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_AuxErrorCode[0];
+                                                        E_ERROR_STATE errorState1 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_InjErrorCode[3];
                                                         switch (errorState1)
                                                         {
                                                             case E_ERROR_STATE.APC_Calib_Error_Volt_High:
@@ -726,7 +727,7 @@ namespace ChroZenService
                                                                 }
                                                                 break;
                                                         }
-                                                        E_ERROR_STATE errorState2 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_AuxErrorCode[1];
+                                                        E_ERROR_STATE errorState2 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_InjErrorCode[4];
                                                         switch (errorState2)
                                                         {
                                                             case E_ERROR_STATE.APC_Calib_Error_Volt_High:
@@ -750,7 +751,7 @@ namespace ChroZenService
                                                                 }
                                                                 break;
                                                         }
-                                                        E_ERROR_STATE errorState3 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_AuxErrorCode[2];
+                                                        E_ERROR_STATE errorState3 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_InjErrorCode[5];
                                                         switch (errorState3)
                                                         {
                                                             case E_ERROR_STATE.APC_Calib_Error_Volt_High:
@@ -786,7 +787,7 @@ namespace ChroZenService
                                         }
                                         if (ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.bIsDoingValveCalibration)
                                         {
-                                            E_CALIBRATION_STATE valveState1 = (E_CALIBRATION_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.AuxValCalState[2];
+                                            E_CALIBRATION_STATE valveState1 = (E_CALIBRATION_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.InjValCalState[2];
                                             switch (valveState1)
                                             {
                                                 case E_CALIBRATION_STATE.STOP:
@@ -802,7 +803,7 @@ namespace ChroZenService
                                                     break;
                                                 case E_CALIBRATION_STATE.FAIL:
                                                     {
-                                                        E_ERROR_STATE errorState1 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_AuxErrorCode[0];
+                                                        E_ERROR_STATE errorState1 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_InjErrorCode[6];
                                                         switch (errorState1)
                                                         {
                                                             case E_ERROR_STATE.APC_Calib_Error_Volt_High:
@@ -826,7 +827,7 @@ namespace ChroZenService
                                                                 }
                                                                 break;
                                                         }
-                                                        E_ERROR_STATE errorState2 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_AuxErrorCode[0];
+                                                        E_ERROR_STATE errorState2 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_InjErrorCode[7];
                                                         switch (errorState2)
                                                         {
                                                             case E_ERROR_STATE.APC_Calib_Error_Volt_High:
@@ -850,7 +851,7 @@ namespace ChroZenService
                                                                 }
                                                                 break;
                                                         }
-                                                        E_ERROR_STATE errorState3 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_AuxErrorCode[0];
+                                                        E_ERROR_STATE errorState3 = (E_ERROR_STATE)DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.APC_InjErrorCode[8];
                                                         switch (errorState3)
                                                         {
                                                             case E_ERROR_STATE.APC_Calib_Error_Volt_High:
@@ -880,14 +881,6 @@ namespace ChroZenService
                                         }
                                         else
                                         {
-                                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Valve_Row_1_State = E_CALIBRATION_STATE.STOP.ToString();
-                                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Valve_Row_2_State = E_CALIBRATION_STATE.STOP.ToString();
-                                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Valve_Row_3_State = E_CALIBRATION_STATE.STOP.ToString();
-
-                                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Valve_Row_1_State = E_CALIBRATION_STATE.STOP.ToString();
-                                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Valve_Row_2_State = E_CALIBRATION_STATE.STOP.ToString();
-                                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Valve_Row_3_State = E_CALIBRATION_STATE.STOP.ToString();
-
                                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Valve_Row_1_State = E_CALIBRATION_STATE.STOP.ToString();
                                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Valve_Row_2_State = E_CALIBRATION_STATE.STOP.ToString();
                                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Valve_Row_3_State = E_CALIBRATION_STATE.STOP.ToString();
@@ -1319,9 +1312,9 @@ namespace ChroZenService
                                         }
                                         else
                                         {
-                                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Valve_Row_1_State = E_CALIBRATION_STATE.STOP.ToString();
-                                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Valve_Row_2_State = E_CALIBRATION_STATE.STOP.ToString();
-                                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Valve_Row_3_State = E_CALIBRATION_STATE.STOP.ToString();
+                                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Valve_Row_1_State = E_CALIBRATION_STATE.STOP.ToString();
+                                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Valve_Row_2_State = E_CALIBRATION_STATE.STOP.ToString();
+                                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Valve_Row_3_State = E_CALIBRATION_STATE.STOP.ToString();
                                         }
 
                                         #endregion State : Calibration -> Det, SensorZero Started                                   
@@ -2863,6 +2856,7 @@ namespace ChroZenService
         #region Binding
 
         #region Property
+        TCPManager tcpManager;
 
         ViewModel_System_Calibration _ViewModel_System_Calibration = new ViewModel_System_Calibration();
         public ViewModel_System_Calibration ViewModel_System_Calibration { get { return _ViewModel_System_Calibration; } set { _ViewModel_System_Calibration = value; OnPropertyChanged("ViewModel_System_Calibration"); } }
@@ -2899,6 +2893,164 @@ namespace ChroZenService
         public RelayCommand MenuSelectCommand { get; set; }
         private void MenuSelectCommandAction(object param)
         {
+            switch (SelectedMenu)
+            {
+                case E_SYSTEM_MENU_TYPE.CALIBRATION:
+                    {
+                        if ((E_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState == E_STATE.Calibration)
+                        {
+                            switch (SelectedSubMenu)
+                            {
+                                case E_SYSTEM_SUB_MENU_TYPE.CALIB_AUX_TEMP1:
+                                    {
+                                        //T_LCD_COMMAND command = new T_LCD_COMMAND
+                                        //{
+                                        //    Command = 8,
+                                        //    Action = 0,
+                                        //    Function_No = 0,
+                                        //    Target_Set = 0
+                                        //};
+                                        //tcpManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                                    }
+                                    break;
+                                case E_SYSTEM_SUB_MENU_TYPE.CALIB_AUX_TEMP2:
+                                    {
+                                        //T_LCD_COMMAND command = new T_LCD_COMMAND
+                                        //{
+                                        //    Command = 8,
+                                        //    Action = 0,
+                                        //    Function_No = 0,
+                                        //    Target_Set = 0
+                                        //};
+                                        //tcpManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                                    }
+                                    break;
+                                case E_SYSTEM_SUB_MENU_TYPE.CALIB_DET_CENTER:
+                                    {
+                                        T_LCD_COMMAND command = new T_LCD_COMMAND
+                                        {
+                                            Command = 8,
+                                            Action = 0,
+                                            Function_No = 1,
+                                            Target_Set = 5
+                                        };
+                                        tcpManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                                    }
+                                    break;
+                                case E_SYSTEM_SUB_MENU_TYPE.CALIB_DET_FRONT:
+                                    {
+                                        T_LCD_COMMAND command = new T_LCD_COMMAND
+                                        {
+                                            Command = 8,
+                                            Action = 0,
+                                            Function_No = 1,
+                                            Target_Set = 4
+                                        };
+                                        tcpManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                                    }
+                                    break;
+                                case E_SYSTEM_SUB_MENU_TYPE.CALIB_DET_REAR:
+                                    {
+                                        T_LCD_COMMAND command = new T_LCD_COMMAND
+                                        {
+                                            Command = 8,
+                                            Action = 0,
+                                            Function_No = 1,
+                                            Target_Set = 6
+                                        };
+                                        tcpManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                                    }
+                                    break;
+                                case E_SYSTEM_SUB_MENU_TYPE.CALIB_INLET_CENTER:
+                                    {
+                                        T_LCD_COMMAND command = new T_LCD_COMMAND
+                                        {
+                                            Command = 8,
+                                            Action = 0,
+                                            Function_No = 1,
+                                            Target_Set = 2
+                                        };
+                                        tcpManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                                    }
+                                    break;
+                                case E_SYSTEM_SUB_MENU_TYPE.CALIB_INLET_FRONT:
+                                    {
+                                        T_LCD_COMMAND command = new T_LCD_COMMAND
+                                        {
+                                            Command = 8,
+                                            Action = 0,
+                                            Function_No = 1,
+                                            Target_Set = 1
+                                        };
+                                        tcpManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                                    }
+                                    break;
+                                case E_SYSTEM_SUB_MENU_TYPE.CALIB_INLET_REAR:
+                                    {
+                                        T_LCD_COMMAND command = new T_LCD_COMMAND
+                                        {
+                                            Command = 8,
+                                            Action = 0,
+                                            Function_No = 1,
+                                            Target_Set = 3
+                                        };
+                                        tcpManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                                    }
+                                    break;
+                                case E_SYSTEM_SUB_MENU_TYPE.CALIB_OVEN:
+                                    {
+                                        T_LCD_COMMAND command = new T_LCD_COMMAND
+                                        {
+                                            Command = 8,
+                                            Action = 0,
+                                            Function_No = 1,
+                                            Target_Set = 0
+                                        };
+                                        tcpManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                                    }
+                                    break;
+                                case E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC1:
+                                    {
+                                        T_LCD_COMMAND command = new T_LCD_COMMAND
+                                        {
+                                            Command = 8,
+                                            Action = 0,
+                                            Function_No = 1,
+                                            Target_Set = 7
+                                        };
+                                        tcpManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                                    }
+                                    break;
+                                case E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC2:
+                                    {
+                                        T_LCD_COMMAND command = new T_LCD_COMMAND
+                                        {
+                                            Command = 8,
+                                            Action = 0,
+                                            Function_No = 1,
+                                            Target_Set = 8
+                                        };
+                                        tcpManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                                    }
+                                    break;
+                                case E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC3:
+                                    {
+                                        T_LCD_COMMAND command = new T_LCD_COMMAND
+                                        {
+                                            Command = 8,
+                                            Action = 0,
+                                            Function_No = 1,
+                                            Target_Set = 9
+                                        };
+                                        tcpManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                    break;
+            }
+
             SelectedMenu = (E_SYSTEM_MENU_TYPE)param;
 
             switch (SelectedMenu)

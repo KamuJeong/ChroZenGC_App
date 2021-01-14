@@ -8,7 +8,7 @@ using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
-    public class ViewModel_System_CalibrationAuxTemp : ChildNotifyBase
+    public class ViewModel_System_CalibrationAuxTemp : Model_System_Calibration
     {
         #region 생성자 & 이벤트 헨들러
 
@@ -831,20 +831,78 @@ namespace ChroZenService
         #region ResetCommand
         public RelayCommand ResetCommand { get; set; }
         private void ResetCommandAction(object param)
-        {
+        {          
             switch ((E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE)param)
             {
                 case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION1:
+                    {
+                        switch (_e_AUXTEMP_INDEX)
+                        {
+                            case E_AUXTEMP_INDEX.AUXTEMP1:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP1_TEMP_RESET, tcpManager);
+                                }
+                                break;
+                            case E_AUXTEMP_INDEX.AUXTEMP2:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP5_TEMP_RESET, tcpManager);
+                                }
+                                break;
+                        }
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION2:
+                    {
+                        switch (_e_AUXTEMP_INDEX)
+                        {
+                            case E_AUXTEMP_INDEX.AUXTEMP1:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP2_TEMP_RESET, tcpManager);
+                                }
+                                break;
+                            case E_AUXTEMP_INDEX.AUXTEMP2:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP6_TEMP_RESET, tcpManager);
+                                }
+                                break;
+                        }
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION3:
+                    {
+                        switch (_e_AUXTEMP_INDEX)
+                        {
+                            case E_AUXTEMP_INDEX.AUXTEMP1:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP3_TEMP_RESET, tcpManager);
+                                }
+                                break;
+                            case E_AUXTEMP_INDEX.AUXTEMP2:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP7_TEMP_RESET, tcpManager);
+                                }
+                                break;
+                        }
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION4:
                     {
-
+                        switch (_e_AUXTEMP_INDEX)
+                        {
+                            case E_AUXTEMP_INDEX.AUXTEMP1:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP4_TEMP_RESET, tcpManager);
+                                }
+                                break;
+                            case E_AUXTEMP_INDEX.AUXTEMP2:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP8_TEMP_RESET, tcpManager);
+                                }
+                                break;
+                        }
                     }
                     break;
             }
-            //TODO :             
-            Debug.WriteLine("ResetCommand Fired");
         }
         #endregion ResetCommand 
 
@@ -855,16 +913,74 @@ namespace ChroZenService
             switch ((E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE)param)
             {
                 case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION1:
+                    {
+                        switch(_e_AUXTEMP_INDEX)
+                        {
+                            case E_AUXTEMP_INDEX.AUXTEMP1:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP1_TEMP_APPLY, tcpManager);
+                                }
+                                break;
+                            case E_AUXTEMP_INDEX.AUXTEMP2:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP5_TEMP_APPLY, tcpManager);
+                                }
+                                break;
+                        }
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION2:
+                    {
+                        switch (_e_AUXTEMP_INDEX)
+                        {
+                            case E_AUXTEMP_INDEX.AUXTEMP1:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP2_TEMP_APPLY, tcpManager);
+                                }
+                                break;
+                            case E_AUXTEMP_INDEX.AUXTEMP2:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP6_TEMP_APPLY, tcpManager);
+                                }
+                                break;
+                        }
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION3:
+                    {
+                        switch (_e_AUXTEMP_INDEX)
+                        {
+                            case E_AUXTEMP_INDEX.AUXTEMP1:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP3_TEMP_APPLY, tcpManager);
+                                }
+                                break;
+                            case E_AUXTEMP_INDEX.AUXTEMP2:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP7_TEMP_APPLY, tcpManager);
+                                }
+                                break;
+                        }
+                    }
+                    break;
                 case E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION4:
                     {
-
+                        switch (_e_AUXTEMP_INDEX)
+                        {
+                            case E_AUXTEMP_INDEX.AUXTEMP1:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP4_TEMP_APPLY, tcpManager);
+                                }
+                                break;
+                            case E_AUXTEMP_INDEX.AUXTEMP2:
+                                {
+                                    this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUXTEMP8_TEMP_APPLY, tcpManager);
+                                }
+                                break;
+                        }
                     }
                     break;
             }
-            //TODO :             
-            Debug.WriteLine("ApplyCommand Fired");
         }
         #endregion ApplyCommand 
 

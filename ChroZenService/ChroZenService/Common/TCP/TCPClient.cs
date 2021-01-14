@@ -233,6 +233,117 @@ namespace ChroZenService
                                         DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = (T_PACKCODE_CHROZEN_SIGNAL)wrappedPACKCODE.packet;
                                     }
                                     break;
+
+                                #region LCD
+
+                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_SIGNAL:
+                                    {
+                                        DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = (T_PACKCODE_CHROZEN_SIGNAL)wrappedPACKCODE.packet;
+                                    }
+                                    break;
+                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_CALIB_READ:
+                                    {
+                                        DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received = (T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ)wrappedPACKCODE.packet;
+                                    }
+                                    break;
+                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE:
+                                    {
+                                        DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received = (T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE)wrappedPACKCODE.packet;
+                                    }
+                                    break;
+                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK:
+                                    {
+                                        DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received = (T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK)wrappedPACKCODE.packet;
+                                    }
+                                    break;
+                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP:
+                                    {
+                                        DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received = (T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)wrappedPACKCODE.packet;
+                                    }
+                                    break;
+                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_SIGNAL:
+                                    {
+                                        DataManager.T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL_Received = (T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL)wrappedPACKCODE.packet;
+                                    }
+                                    break;
+                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN:
+                                    {
+                                        DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received = (T_PACKCODE_LCD_COMMAND_TYPE_TEMP)wrappedPACKCODE.packet;
+                                    }
+                                    break;
+                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET:
+                                    {
+                                        switch (((T_PACKCODE_LCD_COMMAND_TYPE_INLET)wrappedPACKCODE.packet).header.nEventIndex)
+                                        {
+                                            case 0:
+                                                {
+                                                    DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received = (T_PACKCODE_LCD_COMMAND_TYPE_INLET)wrappedPACKCODE.packet;
+                                                }
+                                                break;
+                                            case 1:
+                                                {
+                                                    DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received = (T_PACKCODE_LCD_COMMAND_TYPE_INLET)wrappedPACKCODE.packet;
+                                                }
+                                                break;
+                                            case 2:
+                                                {
+                                                    DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received = (T_PACKCODE_LCD_COMMAND_TYPE_INLET)wrappedPACKCODE.packet;
+                                                }
+                                                break;
+                                        }
+                                    }
+                                    break;
+                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET:
+                                    {
+                                        switch (((T_PACKCODE_LCD_COMMAND_TYPE_DET)wrappedPACKCODE.packet).header.nEventIndex)
+                                        {
+                                            case 0:
+                                                {
+                                                    DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received = (T_PACKCODE_LCD_COMMAND_TYPE_DET)wrappedPACKCODE.packet;
+                                                }
+                                                break;
+                                            case 1:
+                                                {
+                                                    DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received = (T_PACKCODE_LCD_COMMAND_TYPE_DET)wrappedPACKCODE.packet;
+                                                }
+                                                break;
+                                            case 2:
+                                                {
+                                                    DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received = (T_PACKCODE_LCD_COMMAND_TYPE_DET)wrappedPACKCODE.packet;
+                                                }
+                                                break;
+                                        }
+                                    }
+                                    break;
+                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_APCAUX:
+                                    {
+                                        switch (((T_PACKCODE_LCD_COMMAND_TYPE_AUX)wrappedPACKCODE.packet).header.nEventIndex)
+                                        {
+                                            case 0:
+                                                {
+                                                    DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Received = (T_PACKCODE_LCD_COMMAND_TYPE_AUX)wrappedPACKCODE.packet;
+                                                }
+                                                break;
+                                            case 1:
+                                                {
+                                                    DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Received = (T_PACKCODE_LCD_COMMAND_TYPE_AUX)wrappedPACKCODE.packet;
+                                                }
+                                                break;
+                                            case 2:
+                                                {
+                                                    DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Received = (T_PACKCODE_LCD_COMMAND_TYPE_AUX)wrappedPACKCODE.packet;
+                                                }
+                                                break;
+                                        }                                        
+                                    }
+                                    break;
+                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG:
+                                    {
+                                        DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Received = (T_PACKCODE_CHROZEN_LCD_DIAG)wrappedPACKCODE.packet;
+                                    }
+                                    break;
+
+                                    #endregion LCD
                             }
 
                             EventManager.PACKCODE_ReceivceEvent(wrappedPACKCODE.packcode, wrappedPACKCODE.packet);

@@ -9,7 +9,7 @@ using static YC_ChroZenGC_Type.T_CHROZEN_GC_SYSTEM_CONFIG;
 
 namespace ChroZenService
 {
-    public class ViewModel_System_CalibrationInlet : ChildNotifyBase
+    public class ViewModel_System_CalibrationInlet : Model_System_Calibration
     {
         #region 생성자 & 이벤트 헨들러
 
@@ -926,9 +926,24 @@ namespace ChroZenService
         public RelayCommand ResetCommand { get; set; }
         private void ResetCommandAction(object param)
         {
-
-            //TODO :             
-            Debug.WriteLine("ResetCommand Fired");
+            switch(_e_INLET_LOCATION)
+            {
+                case E_INLET_LOCATION.FRONT:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_TEMP_RESET, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.CENTER:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_TEMP_RESET, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.REAR:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_TEMP_RESET, tcpManager);
+                    }
+                    break;
+            }          
         }
         #endregion ResetCommand 
 
@@ -936,9 +951,24 @@ namespace ChroZenService
         public RelayCommand ApplyCommand { get; set; }
         private void ApplyCommandAction(object param)
         {
-
-            //TODO :             
-            Debug.WriteLine("ApplyCommand Fired");
+            switch (_e_INLET_LOCATION)
+            {
+                case E_INLET_LOCATION.FRONT:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_TEMP_APPLY, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.CENTER:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_TEMP_APPLY, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.REAR:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_TEMP_APPLY, tcpManager);
+                    }
+                    break;
+            }
         }
         #endregion ApplyCommand 
 
@@ -950,8 +980,24 @@ namespace ChroZenService
         public RelayCommand SensorZeroResetCommand { get; set; }
         private void SensorZeroResetCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("SensorZeroResetCommand Fired");
+            switch (_e_INLET_LOCATION)
+            {
+                case E_INLET_LOCATION.FRONT:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_SENSORZERO_RESET, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.CENTER:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_SENSORZERO_RESET, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.REAR:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_SENSORZERO_RESET, tcpManager);
+                    }
+                    break;
+            }
         }
         #endregion SensorZeroResetCommand 
 
@@ -963,12 +1009,46 @@ namespace ChroZenService
             //Start
             if (bIsDoingSensorZeroCalibration)
             {
-
+                switch (_e_INLET_LOCATION)
+                {
+                    case E_INLET_LOCATION.FRONT:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_SENSORZERO_START, tcpManager);
+                        }
+                        break;
+                    case E_INLET_LOCATION.CENTER:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_SENSORZERO_START, tcpManager);
+                        }
+                        break;
+                    case E_INLET_LOCATION.REAR:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_SENSORZERO_START, tcpManager);
+                        }
+                        break;
+                }
             }
             //Stop
             else
             {
-
+                switch (_e_INLET_LOCATION)
+                {
+                    case E_INLET_LOCATION.FRONT:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_SENSORZERO_STOP, tcpManager);
+                        }
+                        break;
+                    case E_INLET_LOCATION.CENTER:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_SENSORZERO_STOP, tcpManager);
+                        }
+                        break;
+                    case E_INLET_LOCATION.REAR:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_SENSORZERO_STOP, tcpManager);
+                        }
+                        break;
+                }
             }
             //TODO :             
             Debug.WriteLine("SensorZeroStartCommand Fired");
@@ -988,8 +1068,24 @@ namespace ChroZenService
         public RelayCommand SensorZeroApplyCommand { get; set; }
         private void SensorZeroApplyCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("SensorZeroApplyCommand Fired");
+            switch (_e_INLET_LOCATION)
+            {
+                case E_INLET_LOCATION.FRONT:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_SENSORZERO_APPLY, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.CENTER:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_SENSORZERO_APPLY, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.REAR:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_SENSORZERO_APPLY, tcpManager);
+                    }
+                    break;
+            }
         }
         #endregion SensorZeroApplyCommand 
 
@@ -1001,8 +1097,24 @@ namespace ChroZenService
         public RelayCommand ValveResetCommand { get; set; }
         private void ValveResetCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("ValveResetCommand Fired");
+            switch (_e_INLET_LOCATION)
+            {
+                case E_INLET_LOCATION.FRONT:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_VALVE_RESET, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.CENTER:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_VALVE_RESET, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.REAR:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_VALVE_RESET, tcpManager);
+                    }
+                    break;
+            }
         }
         #endregion ValveResetCommand 
 
@@ -1014,17 +1126,47 @@ namespace ChroZenService
             //Start
             if (bIsDoingValveCalibration)
             {
-
+                switch (_e_INLET_LOCATION)
+                {
+                    case E_INLET_LOCATION.FRONT:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_VALVE_START, tcpManager);
+                        }
+                        break;
+                    case E_INLET_LOCATION.CENTER:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_VALVE_START, tcpManager);
+                        }
+                        break;
+                    case E_INLET_LOCATION.REAR:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_VALVE_START, tcpManager);
+                        }
+                        break;
+                }
             }
             //Stop
             else
             {
-
+                switch (_e_INLET_LOCATION)
+                {
+                    case E_INLET_LOCATION.FRONT:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_VALVE_STOP, tcpManager);
+                        }
+                        break;
+                    case E_INLET_LOCATION.CENTER:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_VALVE_STOP, tcpManager);
+                        }
+                        break;
+                    case E_INLET_LOCATION.REAR:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_VALVE_STOP, tcpManager);
+                        }
+                        break;
+                }
             }
-            //TODO :             
-            Debug.WriteLine("ValveStartCommand Fired");
-            //TODO :             
-            Debug.WriteLine("ValveStartCommand Fired");
         }
         #endregion ValveStartCommand 
 
@@ -1041,8 +1183,24 @@ namespace ChroZenService
         public RelayCommand ValveApplyCommand { get; set; }
         private void ValveApplyCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("ValveApplyCommand Fired");
+            switch (_e_INLET_LOCATION)
+            {
+                case E_INLET_LOCATION.FRONT:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_VALVE_APPLY, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.CENTER:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_VALVE_APPLY, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.REAR:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_VALVE_APPLY, tcpManager);
+                    }
+                    break;
+            }
         }
         #endregion ValveApplyCommand 
 
@@ -1054,8 +1212,24 @@ namespace ChroZenService
         public RelayCommand FlowResetCommand { get; set; }
         private void FlowResetCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("FlowResetCommand Fired");
+            switch (_e_INLET_LOCATION)
+            {
+                case E_INLET_LOCATION.FRONT:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_FLOW_RESET, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.CENTER:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_FLOW_RESET, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.REAR:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_FLOW_RESET, tcpManager);
+                    }
+                    break;
+            }
         }
         #endregion FlowResetCommand 
 
@@ -1067,15 +1241,47 @@ namespace ChroZenService
             //Start
             if (bIsDoingFlowCalibration)
             {
-
+                switch (_e_INLET_LOCATION)
+                {
+                    case E_INLET_LOCATION.FRONT:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_FLOW_START, tcpManager);
+                        }
+                        break;
+                    case E_INLET_LOCATION.CENTER:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_FLOW_START, tcpManager);
+                        }
+                        break;
+                    case E_INLET_LOCATION.REAR:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_FLOW_START, tcpManager);
+                        }
+                        break;
+                }
             }
             //Stop
             else
             {
-
+                switch (_e_INLET_LOCATION)
+                {
+                    case E_INLET_LOCATION.FRONT:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_FLOW_STOP, tcpManager);
+                        }
+                        break;
+                    case E_INLET_LOCATION.CENTER:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_FLOW_STOP, tcpManager);
+                        }
+                        break;
+                    case E_INLET_LOCATION.REAR:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_FLOW_STOP, tcpManager);
+                        }
+                        break;
+                }
             }
-            //TODO :             
-            Debug.WriteLine("FlowStartCommand Fired");
         }
         #endregion FlowStartCommand 
 
@@ -1092,8 +1298,24 @@ namespace ChroZenService
         public RelayCommand FlowApplyCommand { get; set; }
         private void FlowApplyCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("FlowApplyCommand Fired");
+            switch (_e_INLET_LOCATION)
+            {
+                case E_INLET_LOCATION.FRONT:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_FLOW_APPLY, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.CENTER:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_FLOW_APPLY, tcpManager);
+                    }
+                    break;
+                case E_INLET_LOCATION.REAR:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_FLOW_APPLY, tcpManager);
+                    }
+                    break;
+            }
         }
         #endregion FlowApplyCommand 
 

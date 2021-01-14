@@ -8,6 +8,135 @@ using static YC_ChroZenGC_Type.T_CHROZEN_GC_SYSTEM_CONFIG;
 
 namespace ChroZenService
 {
+    public class BoolToSettingInputBackgroundConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                if ((bool)value)
+                {
+                    return Application.Current.Resources["LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0"];
+                }
+                else return Application.Current.Resources["SCB_CONTROL_SYSTEM_EDITOR_BACKGROUND_GRAY_0"];
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class BoolToAuxTempInstallConditionConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            int tempVal;
+            if (value != null)
+            {
+                if (int.TryParse(value.ToString(), out tempVal))
+                {
+                    if (tempVal != 0)
+                    {
+                        return "Installed";
+                    }
+                    else return "Not installed";
+                }
+                else return "Not installed";
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class DetTypeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                switch ((E_DET_TYPE)value)
+                {
+                    case E_DET_TYPE.ECD:
+                    case E_DET_TYPE.FID:
+                    case E_DET_TYPE.FPD:
+                    case E_DET_TYPE.Not_Installed:
+                    case E_DET_TYPE.NPD:
+                    case E_DET_TYPE.PDD:
+                    case E_DET_TYPE.PFPD:
+                    case E_DET_TYPE.TCD:
+                    case E_DET_TYPE.uECD:
+                    case E_DET_TYPE.uTCD:
+                        {
+                            return ((E_DET_TYPE)value).ToString().Replace("_", " ");
+                        }
+                    default:
+                        {
+                            E_DET_TYPE.Not_Installed.ToString().Replace("_", " ");
+                        }
+                        break;
+                }
+                return E_DET_TYPE.Not_Installed.ToString().Replace("_", " ");
+
+            }
+            else
+            {
+                return E_DET_TYPE.Not_Installed.ToString().Replace("_", " ");
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class InletTypeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                switch ((E_INLET_TYPE)value)
+                {
+                    case E_INLET_TYPE.Capillary:
+                    case E_INLET_TYPE.Not_Installed:
+                    case E_INLET_TYPE.On_Column:
+                    case E_INLET_TYPE.Packed:
+                        {
+                            return ((E_INLET_TYPE)value).ToString().Replace("_", " ");
+                        }
+                    default:
+                        {
+                            E_INLET_TYPE.Not_Installed.ToString().Replace("_", " ");
+                        }
+                        break;
+                }
+                return E_INLET_TYPE.Not_Installed.ToString().Replace("_", " ");
+
+            }
+            else
+            {
+                return E_INLET_TYPE.Not_Installed.ToString().Replace("_", " ");
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class E_INLET_TYPEToBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

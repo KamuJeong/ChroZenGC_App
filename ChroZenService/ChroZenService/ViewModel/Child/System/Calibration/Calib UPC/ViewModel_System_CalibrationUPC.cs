@@ -8,7 +8,7 @@ using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
-    public class ViewModel_System_CalibrationUPC : BindableNotifyBase
+    public class ViewModel_System_CalibrationUPC : Model_System_Calibration
     {
         #region 생성자 & 이벤트 헨들러
 
@@ -66,7 +66,7 @@ namespace ChroZenService
         public string SensorZero_Row_3 { get { return _SensorZero_Row_3; } set { if (_SensorZero_Row_3 != value) { _SensorZero_Row_3 = value; OnPropertyChanged("SensorZero_Row_3"); } } }
 
         bool _bIsDoingValveCalibration;
-        public bool bIsDoingValveCalibration { get { return _bIsDoingValveCalibration; } set { if (_bIsDoingValveCalibration != value) { if (_bIsDoingValveCalibration != value) { _bIsDoingValveCalibration = value; OnPropertyChanged("bIsDoingValveCalibration"); } } } }
+        public bool bIsDoingValveCalibration { get { return _bIsDoingValveCalibration; } set { if (_bIsDoingValveCalibration != value) { _bIsDoingValveCalibration = value; OnPropertyChanged("bIsDoingValveCalibration"); } } } 
 
         string _Valve_Row_1_State;
         public string Valve_Row_1_State { get { return _Valve_Row_1_State; } set { if (_Valve_Row_1_State != value) { if (_Valve_Row_1_State != value) { _Valve_Row_1_State = value; OnPropertyChanged("Valve_Row_1_State"); } } } }
@@ -455,8 +455,24 @@ namespace ChroZenService
         public RelayCommand SensorZeroResetCommand { get; set; }
         private void SensorZeroResetCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("SensorZeroResetCommand Fired");
+            switch(_e_UPC_INDEX)
+            {
+                case E_UPC_INDEX.UPC1:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX1_SENSORZERO_RESET, tcpManager);
+                    }
+                    break;
+                case E_UPC_INDEX.UPC2:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX2_SENSORZERO_RESET, tcpManager);
+                    }
+                    break;
+                case E_UPC_INDEX.UPC3:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX3_SENSORZERO_RESET, tcpManager);
+                    }
+                    break;
+            }
         }
         #endregion SensorZeroResetCommand 
 
@@ -468,16 +484,47 @@ namespace ChroZenService
             //Start
             if (bIsDoingSensorZeroCalibration)
             {
-
+                switch (_e_UPC_INDEX)
+                {
+                    case E_UPC_INDEX.UPC1:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX1_SENSORZERO_START, tcpManager);
+                        }
+                        break;
+                    case E_UPC_INDEX.UPC2:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX2_SENSORZERO_START, tcpManager);
+                        }
+                        break;
+                    case E_UPC_INDEX.UPC3:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX3_SENSORZERO_START, tcpManager);
+                        }
+                        break;
+                }
             }
             //Stop
             else
             {
-
+                switch (_e_UPC_INDEX)
+                {
+                    case E_UPC_INDEX.UPC1:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX1_SENSORZERO_STOP, tcpManager);
+                        }
+                        break;
+                    case E_UPC_INDEX.UPC2:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX2_SENSORZERO_STOP, tcpManager);
+                        }
+                        break;
+                    case E_UPC_INDEX.UPC3:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX3_SENSORZERO_STOP, tcpManager);
+                        }
+                        break;
+                }
             }
-
-            //TODO :             
-            Debug.WriteLine("SensorZeroStartCommand Fired");
         }
         #endregion SensorZeroStartCommand 
 
@@ -494,8 +541,24 @@ namespace ChroZenService
         public RelayCommand SensorZeroApplyCommand { get; set; }
         private void SensorZeroApplyCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("SensorZeroApplyCommand Fired");
+            switch (_e_UPC_INDEX)
+            {
+                case E_UPC_INDEX.UPC1:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX1_SENSORZERO_APPLY, tcpManager);
+                    }
+                    break;
+                case E_UPC_INDEX.UPC2:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX2_SENSORZERO_APPLY, tcpManager);
+                    }
+                    break;
+                case E_UPC_INDEX.UPC3:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX3_SENSORZERO_APPLY, tcpManager);
+                    }
+                    break;
+            }
         }
         #endregion SensorZeroApplyCommand 
 
@@ -507,8 +570,25 @@ namespace ChroZenService
         public RelayCommand ValveResetCommand { get; set; }
         private void ValveResetCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("ValveResetCommand Fired");
+            switch (_e_UPC_INDEX)
+            {
+                case E_UPC_INDEX.UPC1:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX1_VALVE_RESET, tcpManager);
+                    }
+                    break;
+                case E_UPC_INDEX.UPC2:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX2_VALVE_RESET, tcpManager);
+                    }
+                    break;
+                case E_UPC_INDEX.UPC3:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX3_VALVE_RESET, tcpManager);
+                    }
+                    break;
+            }
+           
         }
         #endregion ValveResetCommand 
 
@@ -520,12 +600,46 @@ namespace ChroZenService
             //Start
             if (bIsDoingValveCalibration)
             {
-
+                switch (_e_UPC_INDEX)
+                {
+                    case E_UPC_INDEX.UPC1:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX1_VALVE_START, tcpManager);
+                        }
+                        break;
+                    case E_UPC_INDEX.UPC2:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX2_VALVE_START, tcpManager);
+                        }
+                        break;
+                    case E_UPC_INDEX.UPC3:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX3_VALVE_START, tcpManager);
+                        }
+                        break;
+                }                
             }
             //Stop
             else
             {
-
+                switch (_e_UPC_INDEX)
+                {
+                    case E_UPC_INDEX.UPC1:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX1_VALVE_STOP, tcpManager);
+                        }
+                        break;
+                    case E_UPC_INDEX.UPC2:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX2_VALVE_STOP, tcpManager);
+                        }
+                        break;
+                    case E_UPC_INDEX.UPC3:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX3_VALVE_STOP, tcpManager);
+                        }
+                        break;
+                }
             }
             //TODO :             
             Debug.WriteLine("ValveStartCommand Fired");
@@ -545,8 +659,24 @@ namespace ChroZenService
         public RelayCommand ValveApplyCommand { get; set; }
         private void ValveApplyCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("ValveApplyCommand Fired");
+            switch (_e_UPC_INDEX)
+            {
+                case E_UPC_INDEX.UPC1:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX1_VALVE_APPLY, tcpManager);
+                    }
+                    break;
+                case E_UPC_INDEX.UPC2:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX2_VALVE_APPLY, tcpManager);
+                    }
+                    break;
+                case E_UPC_INDEX.UPC3:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX3_VALVE_APPLY, tcpManager);
+                    }
+                    break;
+            }
         }
         #endregion ValveApplyCommand 
 
@@ -754,8 +884,24 @@ namespace ChroZenService
         public RelayCommand FlowResetCommand { get; set; }
         private void FlowResetCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("FlowResetCommand Fired");
+            switch (_e_UPC_INDEX)
+            {
+                case E_UPC_INDEX.UPC1:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX1_FLOW_RESET, tcpManager);
+                    }
+                    break;
+                case E_UPC_INDEX.UPC2:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX2_FLOW_RESET, tcpManager);
+                    }
+                    break;
+                case E_UPC_INDEX.UPC3:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX3_FLOW_RESET, tcpManager);
+                    }
+                    break;
+            }            
         }
         #endregion FlowResetCommand 
 
@@ -767,15 +913,47 @@ namespace ChroZenService
             //Start
             if (bIsDoingFlowCalibration)
             {
-
+                switch (_e_UPC_INDEX)
+                {
+                    case E_UPC_INDEX.UPC1:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX1_FLOW_START, tcpManager);
+                        }
+                        break;
+                    case E_UPC_INDEX.UPC2:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX2_FLOW_START, tcpManager);
+                        }
+                        break;
+                    case E_UPC_INDEX.UPC3:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX3_FLOW_START, tcpManager);
+                        }
+                        break;
+                }
             }
             //Stop
             else
             {
-
+                switch (_e_UPC_INDEX)
+                {
+                    case E_UPC_INDEX.UPC1:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX1_FLOW_STOP, tcpManager);
+                        }
+                        break;
+                    case E_UPC_INDEX.UPC2:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX2_FLOW_STOP, tcpManager);
+                        }
+                        break;
+                    case E_UPC_INDEX.UPC3:
+                        {
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX3_FLOW_STOP, tcpManager);
+                        }
+                        break;
+                }
             }
-            //TODO :             
-            Debug.WriteLine("FlowStartCommand Fired");
         }
         #endregion FlowStartCommand 
 
@@ -792,8 +970,24 @@ namespace ChroZenService
         public RelayCommand FlowApplyCommand { get; set; }
         private void FlowApplyCommandAction(object param)
         {
-            //TODO :             
-            Debug.WriteLine("FlowApplyCommand Fired");
+            switch (_e_UPC_INDEX)
+            {
+                case E_UPC_INDEX.UPC1:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX1_FLOW_APPLY, tcpManager);
+                    }
+                    break;
+                case E_UPC_INDEX.UPC2:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX2_FLOW_APPLY, tcpManager);
+                    }
+                    break;
+                case E_UPC_INDEX.UPC3:
+                    {
+                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_AUX3_FLOW_APPLY, tcpManager);
+                    }
+                    break;
+            }
         }
         #endregion FlowApplyCommand 
 

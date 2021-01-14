@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.UC_ON_OFF_Button">
+    <ContentView.Content>
+        <StackLayout>
+            <Grid Margin="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonMargin}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="142"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="31"/>
+                </Grid.RowDefinitions>
+                <Image Source="btn_on.png" Aspect="AspectFit" Grid.Column="0"  Margin="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ImageMargin}" VerticalOptions="CenterAndExpand" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=IsOn}"/>
+                <Image Source="btn_off.png" Aspect="AspectFit" Grid.Column="0"  Margin="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ImageMargin}" VerticalOptions="CenterAndExpand" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=IsOn, Converter={StaticResource BoolReverseConverter}}"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" BackgroundColor="Transparent"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=OffCommand}"                        
+                        />
+                    <Button Grid.Column="1" BackgroundColor="Transparent"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=OnCommand}"                       
+                        />
+                </Grid>                
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

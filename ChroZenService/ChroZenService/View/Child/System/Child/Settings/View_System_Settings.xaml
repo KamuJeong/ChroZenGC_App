@@ -1,10 +1,161 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Settings">
-  <ContentView.Content>
+    <ContentView.Content>
         <AbsoluteLayout>
 
+            <Grid HeightRequest="703">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1_PLUS7}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_SYSTEM_5}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_SYSTEM_3}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_SYSTEM_3}"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="230"/>
+                    <ColumnDefinition Width="187"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="230"/>
+                        <ColumnDefinition Width="187"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,10,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                    </Frame>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Column Condition" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" Margin="32,7,0,0"/>
+                    <local:UC_System_Calib_Settings_StartStopButton Grid.Column="1" IsStarted="{Binding ViewModelSystemPage.ViewModel_System_Settings.bOnoff}" Margin="0,15,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.StartStopCommand}" >
+                        <local:UC_System_Calib_Settings_StartStopButton.Triggers>
+                            <Trigger Property="IsStarted" Value="true" TargetType="{x:Type local:UC_System_Calib_Settings_StartStopButton}">
+                                <Setter Property="Background" Value="#FF1ABF00"/>
+                            </Trigger>
+                            <Trigger Property="IsStarted" Value="false" TargetType="{x:Type local:UC_System_Calib_Settings_StartStopButton}">
+                                <Setter Property="Background" Value="{StaticResource SCB_CALIB_BUTTON_BACKGROUND_LIGHTGRAY_0}"/>
+                            </Trigger>
+                        </local:UC_System_Calib_Settings_StartStopButton.Triggers>
+                    </local:UC_System_Calib_Settings_StartStopButton>
+                </Grid>
+
+                <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208"/>
+                        <ColumnDefinition Width="179"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="Init Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="5" Y2="235" Grid.RowSpan="6" Stroke="Gray" />
+                    <local:UC_System_SETTING_LABEL Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fInitTemp}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.INIT_TEMP}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Init Time" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_System_SETTING_LABEL Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fInitTime}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.INIT_TIME}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Rate" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_System_SETTING_LABEL Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fRate}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.RATE}"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="Final Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_System_SETTING_LABEL Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fFinalTemp}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.FINAL_TEMP}"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="Final Time" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_System_SETTING_LABEL Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fFinalTime}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.FINAL_TIME}"/>
+                </Grid>
+
+                <Frame Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Label Grid.Row="2" Grid.Column="0" Text="Remote Access" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                <local:UC_ON_OFF_Button Grid.Row="2" Grid.Column="1" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Settings.RemoteAccess_bOnoff}" ButtonMargin="5,7,0,1" OnCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.RemoteAccess_OnCommand}" OffCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.RemoteAccess_OffCommand}"  WidthRequest="179"/>
+
+                <Frame Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Grid Grid.Row="3" Grid.ColumnSpan="2" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208"/>
+                        <ColumnDefinition Width="179"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="Remote Time" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="5" Y2="145" Grid.RowSpan="4" Stroke="Gray" />
+                    <local:UC_System_SETTING_LABEL Grid.Row="0" Grid.Column="1"  Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fTime}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.INSTALL_DATE}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Remote event 1" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_System_SETTING_LABEL Grid.Row="1" Grid.Column="1" IsEnabled="{Binding ViewModelSystemPage.ViewModel_System_Settings.RemoteAccess_bOnoff}" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fEventTime1}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.DATE}">
+                        <!--<local:UC_System_SETTING_LABEL.Triggers>
+                            <Trigger Property="IsEnabled" Value="true" TargetType="{x:Type local:UC_System_SETTING_LABEL}">
+                                <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false" TargetType="{x:Type local:UC_System_SETTING_LABEL}">
+                                <Setter Property="Background" Value="{StaticResource SCB_CONTROL_SYSTEM_EDITOR_BACKGROUND_GRAY_0}"/>
+                            </Trigger>
+                        </local:UC_System_SETTING_LABEL.Triggers>-->
+                    </local:UC_System_SETTING_LABEL>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Remote event 2" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_System_SETTING_LABEL Grid.Row="2" Grid.Column="1" IsEnabled="{Binding ViewModelSystemPage.ViewModel_System_Settings.RemoteAccess_bOnoff}" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fEventTime2}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.TIME}">
+                        <!--<local:UC_System_SETTING_LABEL.Triggers>
+                            <Trigger Property="IsEnabled" Value="true" TargetType="{x:Type local:UC_System_SETTING_LABEL}">
+                                <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false" TargetType="{x:Type local:UC_System_SETTING_LABEL}">
+                                <Setter Property="Background" Value="{StaticResource SCB_CONTROL_SYSTEM_EDITOR_BACKGROUND_GRAY_0}"/>
+                            </Trigger>
+                        </local:UC_System_SETTING_LABEL.Triggers>-->
+                    </local:UC_System_SETTING_LABEL>
+                </Grid>
+
+                <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="178"/>
+                        <ColumnDefinition Width="239"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                    </Frame>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Install Date" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" InputTransparent="True"/>
+                    <Line  Grid.Row="0" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_INFORMATION_TITLE}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.InstDate}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+
+                    <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                    </Frame>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Date" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" InputTransparent="True"/>
+                    <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_INFORMATION_TITLE}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.Date}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+
+                    <Frame Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                    </Frame>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Time" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" InputTransparent="True"/>
+                    <Line  Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_INFORMATION_TITLE}"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.Time}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+
+                </Grid>
+
+
+            </Grid>
         </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>

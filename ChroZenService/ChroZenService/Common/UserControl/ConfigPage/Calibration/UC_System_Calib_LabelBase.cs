@@ -7,6 +7,7 @@ namespace ChroZenService
 {
     public class UC_System_Calib_LabelBase : ContentView
     {
+
         #region CornerRadius
 
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create("CornerRadius", typeof(double), typeof(UC_System_Calib_LabelBase),

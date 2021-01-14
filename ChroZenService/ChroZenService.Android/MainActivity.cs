@@ -17,10 +17,14 @@ namespace ChroZenService.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            //2021-01-13 : 
+            HideNavAndStatusBar();
+
+
             Window.AddFlags(WindowManagerFlags.Fullscreen);
             Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
             base.OnCreate(savedInstanceState);
-            
+
             global::Xamarin.Forms.Forms.SetFlags(new string[] { "RadioButton_Experimental", "Brush_Experimental", "Shapes_Experimental" });
             
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
@@ -35,7 +39,13 @@ namespace ChroZenService.Droid
 
             Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
 
+            Window.DecorView.SystemUiVisibilityChange += DecorView_SystemUiVisibilityChange;
             LoadApplication(new App());
+        }
+
+        private void DecorView_SystemUiVisibilityChange(object sender, View.SystemUiVisibilityChangeEventArgs e)
+        {
+            HideNavAndStatusBar();
         }
 
         protected override void OnResume()
@@ -60,6 +70,18 @@ namespace ChroZenService.Droid
             uiOptions |= (int)SystemUiFlags.Fullscreen;
             uiOptions |= (int)SystemUiFlags.HideNavigation;
             uiOptions |= (int)SystemUiFlags.ImmersiveSticky;
+
+            Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
+        }
+
+        private void HideNavAndStatusBar()
+        {
+            int uiOptions = (int)Window.DecorView.SystemUiVisibility;
+            uiOptions |= (int)SystemUiFlags.LowProfile;
+            uiOptions |= (int)SystemUiFlags.Fullscreen;
+            uiOptions |= (int)SystemUiFlags.HideNavigation;
+            uiOptions |= (int)SystemUiFlags.ImmersiveSticky;
+            //uiOptions |= (int)SystemUiFlags.LayoutStable;
 
             Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
         }
