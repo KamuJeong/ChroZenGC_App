@@ -27,16 +27,7 @@
 
                     </Frame>
                     <Label Grid.Row="0" Grid.Column="0" Text="Column Condition" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" Margin="32,7,0,0"/>
-                    <local:UC_System_Calib_Settings_StartStopButton Grid.Column="1" IsStarted="{Binding ViewModelSystemPage.ViewModel_System_Settings.bOnoff}" Margin="0,15,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.StartStopCommand}" >
-                        <local:UC_System_Calib_Settings_StartStopButton.Triggers>
-                            <Trigger Property="IsStarted" Value="true" TargetType="{x:Type local:UC_System_Calib_Settings_StartStopButton}">
-                                <Setter Property="Background" Value="#FF1ABF00"/>
-                            </Trigger>
-                            <Trigger Property="IsStarted" Value="false" TargetType="{x:Type local:UC_System_Calib_Settings_StartStopButton}">
-                                <Setter Property="Background" Value="{StaticResource SCB_CALIB_BUTTON_BACKGROUND_LIGHTGRAY_0}"/>
-                            </Trigger>
-                        </local:UC_System_Calib_Settings_StartStopButton.Triggers>
-                    </local:UC_System_Calib_Settings_StartStopButton>
+                    <local:UC_System_Calib_Settings_StartStopButton Grid.Column="1" IsStarted="{Binding ViewModelSystemPage.ViewModel_System_Settings.bOnoff}" Margin="0,18,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.StartStopCommand}" />
                 </Grid>
 
                 <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
@@ -57,19 +48,19 @@
 
                     <Label Grid.Row="0" Grid.Column="0" Text="Init Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
                     <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="5" Y2="235" Grid.RowSpan="6" Stroke="Gray" />
-                    <local:UC_System_SETTING_LABEL Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fInitTemp}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.INIT_TEMP}"/>
+                    <local:UC_System_SETTING_LABEL Grid.Row="0" Grid.Column="1" IsEnabled="{Binding ViewModelSystemPage.ViewModel_System_Settings.bOnoff, Converter={StaticResource BoolReverseConverter}}" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fInitTemp}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.INIT_TEMP}"/>
 
                     <Label Grid.Row="1" Grid.Column="0" Text="Init Time" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
-                    <local:UC_System_SETTING_LABEL Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fInitTime}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.INIT_TIME}"/>
+                    <local:UC_System_SETTING_LABEL Grid.Row="1" Grid.Column="1" IsEnabled="{Binding ViewModelSystemPage.ViewModel_System_Settings.bOnoff, Converter={StaticResource BoolReverseConverter}}" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fInitTime}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.INIT_TIME}"/>
 
                     <Label Grid.Row="2" Grid.Column="0" Text="Rate" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
-                    <local:UC_System_SETTING_LABEL Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fRate}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.RATE}"/>
+                    <local:UC_System_SETTING_LABEL Grid.Row="2" Grid.Column="1" IsEnabled="{Binding ViewModelSystemPage.ViewModel_System_Settings.bOnoff, Converter={StaticResource BoolReverseConverter}}" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fRate}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.RATE}"/>
 
                     <Label Grid.Row="3" Grid.Column="0" Text="Final Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
-                    <local:UC_System_SETTING_LABEL Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fFinalTemp}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.FINAL_TEMP}"/>
+                    <local:UC_System_SETTING_LABEL Grid.Row="3" Grid.Column="1" IsEnabled="{Binding ViewModelSystemPage.ViewModel_System_Settings.bOnoff, Converter={StaticResource BoolReverseConverter}}" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fFinalTemp}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.FINAL_TEMP}"/>
 
                     <Label Grid.Row="4" Grid.Column="0" Text="Final Time" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
-                    <local:UC_System_SETTING_LABEL Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fFinalTime}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.FINAL_TIME}"/>
+                    <local:UC_System_SETTING_LABEL Grid.Row="4" Grid.Column="1" IsEnabled="{Binding ViewModelSystemPage.ViewModel_System_Settings.bOnoff, Converter={StaticResource BoolReverseConverter}}" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fFinalTime}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.FINAL_TIME}"/>
                 </Grid>
 
                 <Frame Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">

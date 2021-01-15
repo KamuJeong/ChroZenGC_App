@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
@@ -12,6 +13,7 @@ namespace ChroZenService
         public ViewModel_System_Diagnostics()
         {
             DefaultCommand = new RelayCommand(DefaultCommandAction);
+
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -20,6 +22,8 @@ namespace ChroZenService
 
         #region Property
 
+        E_DIAGNOSTICS_TYPE _e_DIAGNOSTICS_TYPE = E_DIAGNOSTICS_TYPE.ROOT;
+        public E_DIAGNOSTICS_TYPE e_DIAGNOSTICS_TYPE { get { return _e_DIAGNOSTICS_TYPE; } set { _e_DIAGNOSTICS_TYPE = value; OnPropertyChanged("e_DIAGNOSTICS_TYPE"); } }
 
         ViewModel_System_DiagnosticsHeater _ViewModel_System_DiagnosticsHeater = new ViewModel_System_DiagnosticsHeater();
         public ViewModel_System_DiagnosticsHeater ViewModel_System_DiagnosticsHeater { get { return _ViewModel_System_DiagnosticsHeater; } set { _ViewModel_System_DiagnosticsHeater = value; OnPropertyChanged("ViewModel_System_DiagnosticsHeater"); } }

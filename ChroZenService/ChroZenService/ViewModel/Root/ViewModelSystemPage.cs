@@ -31,9 +31,11 @@ namespace ChroZenService
                 {
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_STATE:
                         {
+                            T_PACKCODE_CHROZEN_SYSTEM_STATE statePacket = (T_PACKCODE_CHROZEN_SYSTEM_STATE)packet;
+
                             #region Calibration
 
-                            CHROZEN_GC_STATE state = (CHROZEN_GC_STATE)((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.btState;
+                            CHROZEN_GC_STATE state = (CHROZEN_GC_STATE)(statePacket.packet.btState);
 
                             #region State : Calibration casing
 
@@ -1941,6 +1943,54 @@ namespace ChroZenService
 
                             #endregion Calibration
 
+                            #region Diagnostics
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bOven == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fOven = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fOven = statePacket.packet.ActTemp.fOven.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[0] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_1 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_1 = statePacket.packet.ActTemp.fInj[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[1] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_2 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_2 = statePacket.packet.ActTemp.fInj[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[2] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_3 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_3 = statePacket.packet.ActTemp.fInj[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_1 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_1 = statePacket.packet.ActTemp.fDet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_2 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_2 = statePacket.packet.ActTemp.fDet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_3 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_3 = statePacket.packet.ActTemp.fDet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[0] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_1 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_1 = statePacket.packet.ActTemp.fAux[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[1] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_2 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_2 = statePacket.packet.ActTemp.fAux[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[2] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_3 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_3 = statePacket.packet.ActTemp.fAux[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[3] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_4 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_4 = statePacket.packet.ActTemp.fAux[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[4] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_5 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_5 = statePacket.packet.ActTemp.fAux[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[5] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_6 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_6 = statePacket.packet.ActTemp.fAux[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[6] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_7 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_7 = statePacket.packet.ActTemp.fAux[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[7] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_8 = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_8 = statePacket.packet.ActTemp.fAux[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            #endregion Diagnostics
+
                         }
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_AUX_APC_SETTING:
@@ -2218,7 +2268,66 @@ namespace ChroZenService
                         }
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_SIGNAL:
+                        break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG:
+                        {
+                            T_PACKCODE_CHROZEN_LCD_DIAG diagPacket = (T_PACKCODE_CHROZEN_LCD_DIAG)packet;
+                            switch ((E_SYSTEM_DIAG_FUNCTION_TYPE)diagPacket.packet.btFunc)
+                            {
+                                case E_SYSTEM_DIAG_FUNCTION_TYPE.HEATER:
+                                    {
+
+                                    }
+                                    break;
+                                case E_SYSTEM_DIAG_FUNCTION_TYPE.IGNITOR_VALVE:
+                                    {
+                                        if(diagPacket.packet.bStartStop)
+                                        {
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_1_On = true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_2_On = true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_3_On = true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_1_On= true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_2_On = true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_3_On = true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_4_On = true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_5_On = true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_6_On = true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_7_On = true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_8_On = true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_1_On = true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_2_On = true;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_3_On = true;
+                                        }
+                                        else
+                                        {
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_1_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_2_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_3_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_1_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_2_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_3_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_4_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_5_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_6_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_7_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_8_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_1_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_2_On = false;
+                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_3_On = false;
+                                        }
+                                    }
+                                    break;
+                                case E_SYSTEM_DIAG_FUNCTION_TYPE.REMOTE_SIGNAL:
+                                case E_SYSTEM_DIAG_FUNCTION_TYPE.APC_VALVE:
+                                case E_SYSTEM_DIAG_FUNCTION_TYPE.APC_SENSOR:
+                                case E_SYSTEM_DIAG_FUNCTION_TYPE.POWER_MONITOR:
+                                    {
+
+                                    }
+                                    break;
+                            }
+                        }
+                        break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_SIGNAL:
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK:
                         break;
@@ -3098,6 +3207,41 @@ namespace ChroZenService
         public RelayCommand SubMenuSelectCommand { get; set; }
         private void SubMenuSelectCommandAction(object param)
         {
+            DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet.bStartStop = false;
+            switch (SelectedSubMenu)
+            {
+                case E_SYSTEM_SUB_MENU_TYPE.DIAG_HEATER:
+                    {
+                        DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet.btFunc = 0;
+                    }
+                    break;
+                case E_SYSTEM_SUB_MENU_TYPE.DIAG_IGNITOR_VALVE:
+                    {
+                        DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet.btFunc = 1;
+                    }
+                    break;
+                case E_SYSTEM_SUB_MENU_TYPE.DIAG_POWER_MONITOR:
+                    {
+                        DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet.btFunc = 2;
+                    }
+                    break;
+                case E_SYSTEM_SUB_MENU_TYPE.DIAG_REMOTE_SIGNAL:
+                    {
+                        DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet.btFunc = 3;
+                    }
+                    break;
+                case E_SYSTEM_SUB_MENU_TYPE.DIAG_UPC_SENSOR_CHECK:
+                    {
+                        DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet.btFunc = 4;
+                    }
+                    break;
+                case E_SYSTEM_SUB_MENU_TYPE.DIAG_UPC_VALVE_CHECK:
+                    {
+                        DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet.btFunc = 5;
+                    }
+                    break;
+            }
+            tcpManager.Send(T_PACKCODE_CHROZEN_LCD_DIAGManager.MakePACKCODE_SET(DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet));
             SelectedSubMenu = (E_SYSTEM_SUB_MENU_TYPE)param;
 
             //TODO :             

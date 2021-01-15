@@ -53,6 +53,7 @@
         <x:Double x:Key="HEIGHT_SYSTEMPAGE_CALIB_BUTTON">30</x:Double>
         <x:Double x:Key="HEIGHT_SYSTEM_5">240</x:Double>
         <x:Double x:Key="HEIGHT_SYSTEM_3">150</x:Double>
+        <x:Double x:Key="HEIGHT_DIAGNOSTICS_ROOT_BUTTON">70</x:Double>
         <Thickness x:Key="THICKNESS_FRAME_MARGIN_TOP">
             <Thickness.Left>18</Thickness.Left>
             <Thickness.Top>7</Thickness.Top>
@@ -66,6 +67,15 @@
             <Thickness.Bottom>0</Thickness.Bottom>
         </Thickness>
         <SolidColorBrush x:Key="SCB_CONTROL_SYSTEM_EDITOR_BACKGROUND_GRAY_0" Color="Gray"/>
+
+        <LinearGradientBrush x:Key="LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_1" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#606d9f" Offset="0" />
+                <GradientStop Color="#6c78aa" Offset="0.1" />
+                <GradientStop Color="#576096" Offset="0.5" />
+                <GradientStop Color="#3d4378" Offset="1" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
 
         <LinearGradientBrush x:Key="LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0" StartPoint="0.4,0" EndPoint="1,1">
             <LinearGradientBrush.GradientStops>
@@ -186,7 +196,11 @@
         <cvt:E_CONFIG_MENU_TYPEToBoolConverter x:Key="E_CONFIG_MENU_TYPEToBoolConverter"/>
         <cvt:DoubleToGridLengthConverter x:Key="DoubleToGridLengthConverter"/>
         <cvt:InletTypeToBoolConverter x:Key="InletTypeToBoolConverter"/>
-
+        <Style x:Key="STYLE_LABEL_SYSTEM_DIAGNOSTICS_ROOT_BUTTON" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="18,5,18,5"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="22"/>
             <Setter Property="VerticalOptions" Value="Center"/>
@@ -290,11 +304,11 @@
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
         </Style>
-        <Style x:Key="STYLE_LABEL_SYSTEM_CALIB_LABEL" TargetType="{x:Type local:UC_System_Calib_LabelBase}">            
+        <Style x:Key="STYLE_LABEL_SYSTEM_CALIB_LABEL" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <!--<Setter Property="CornerRadius" Value="5"/>-->
             <Setter Property="Margin" Value="0,1,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_LABEL_TEXTCOLOR}"/>
-            <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_LABEL_BACKGROUND_DARK_0}"/>            
+            <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_LABEL_BACKGROUND_DARK_0}"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_CALIB_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
@@ -312,7 +326,7 @@
             <Setter Property="FontAttributes" Value="Bold"/>
             <Setter Property="Margin" Value="18,0,0,0"/>
             <Setter Property="HorizontalOptions" Value="Start"/>
-            <Setter Property="Padding" Value="0,0,0,0"/>            
+            <Setter Property="Padding" Value="0,0,0,0"/>
         </Style>
         <!--<cvt:VToIsVisibleConverter x:Key="VToV" />
     <cvt:VToBoolConverter x:Key="VToB" />-->

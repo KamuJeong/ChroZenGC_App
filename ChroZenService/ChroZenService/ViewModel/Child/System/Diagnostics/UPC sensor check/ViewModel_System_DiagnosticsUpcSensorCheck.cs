@@ -5,13 +5,15 @@ using System.Text;
 
 namespace ChroZenService
 {
-    public class ViewModel_System_DiagnosticsUpcSensorCheck : ChildNotifyBase
+    public class ViewModel_System_DiagnosticsUpcSensorCheck : Model_System_Diagnostics
     {
         #region 생성자 & 이벤트 헨들러
 
         public ViewModel_System_DiagnosticsUpcSensorCheck()
         {
-            DefaultCommand = new RelayCommand(DefaultCommandAction);
+            StartStopCommand = new RelayCommand(StartStopCommandAction);
+
+            EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -19,7 +21,7 @@ namespace ChroZenService
         #region Binding
 
         #region Property
-
+        TCPManager tcpManager;
         #region First page
 
         string _FrontInletSensor_1;
@@ -112,14 +114,15 @@ namespace ChroZenService
 
         #region Command
 
-        #region DefaultCommand
-        public RelayCommand DefaultCommand { get; set; }
-        private void DefaultCommandAction(object param)
+        #region StartStopCommand
+        public RelayCommand StartStopCommand { get; set; }
+        private void StartStopCommandAction(object param)
         {
+            this.StartCommand((ChroZenService_Const.E_SYSTEM_DIAG_COMMAND_TYPE)param, tcpManager);
             //TODO :             
-            Debug.WriteLine("DefaultCommand Fired");
+            Debug.WriteLine("StartStopCommand Fired");
         }
-        #endregion DefaultCommand 
+        #endregion StartStopCommand 
 
         #endregion Command
 

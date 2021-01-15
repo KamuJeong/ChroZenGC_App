@@ -5,13 +5,15 @@ using System.Text;
 
 namespace ChroZenService
 {
-    public class ViewModel_System_DiagnosticsUpcValveCheck : BindableNotifyBase
+    public class ViewModel_System_DiagnosticsUpcValveCheck : Model_System_Diagnostics
     {
         #region 생성자 & 이벤트 헨들러
 
         public ViewModel_System_DiagnosticsUpcValveCheck()
         {
-            DefaultCommand = new RelayCommand(DefaultCommandAction);
+            StartStopCommand = new RelayCommand(StartStopCommandAction);
+
+            EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -19,7 +21,7 @@ namespace ChroZenService
         #region Binding
 
         #region Property
-
+        TCPManager tcpManager;
         string _FrontInletValve;
         public string FrontInletValve { get { return _FrontInletValve; } set { _FrontInletValve = value; OnPropertyChanged("FrontInletValve"); } }
 
@@ -52,14 +54,15 @@ namespace ChroZenService
 
         #region Command
 
-        #region DefaultCommand
-        public RelayCommand DefaultCommand { get; set; }
-        private void DefaultCommandAction(object param)
+        #region StartStopCommand
+        public RelayCommand StartStopCommand { get; set; }
+        private void StartStopCommandAction(object param)
         {
+            this.StartCommand((ChroZenService_Const.E_SYSTEM_DIAG_COMMAND_TYPE)param, tcpManager);
             //TODO :             
-            Debug.WriteLine("DefaultCommand Fired");
+            Debug.WriteLine("StartStopCommand Fired");
         }
-        #endregion DefaultCommand 
+        #endregion StartStopCommand 
 
         #endregion Command
 

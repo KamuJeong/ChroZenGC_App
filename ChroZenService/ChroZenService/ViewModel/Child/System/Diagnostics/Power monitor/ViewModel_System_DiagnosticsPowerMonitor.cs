@@ -5,13 +5,15 @@ using System.Text;
 
 namespace ChroZenService
 {
-    public class ViewModel_System_DiagnosticsPowerMonitor : ChildNotifyBase
+    public class ViewModel_System_DiagnosticsPowerMonitor : Model_System_Diagnostics
     {
         #region 생성자 & 이벤트 헨들러
 
         public ViewModel_System_DiagnosticsPowerMonitor()
         {
-            DefaultCommand = new RelayCommand(DefaultCommandAction);
+            StartStopCommand = new RelayCommand(StartStopCommandAction);
+
+            EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -19,7 +21,7 @@ namespace ChroZenService
         #region Binding
 
         #region Property
-
+        TCPManager tcpManager;
         string _MAIN_V50D;
         public string MAIN_V50D { get { return _MAIN_V50D; } set { _MAIN_V50D = value; OnPropertyChanged("MAIN_V50D"); } }
 
@@ -72,14 +74,15 @@ namespace ChroZenService
 
         #region Command
 
-        #region DefaultCommand
-        public RelayCommand DefaultCommand { get; set; }
-        private void DefaultCommandAction(object param)
+        #region StartStopCommand
+        public RelayCommand StartStopCommand { get; set; }
+        private void StartStopCommandAction(object param)
         {
+            this.StartCommand((ChroZenService_Const.E_SYSTEM_DIAG_COMMAND_TYPE)param, tcpManager);
             //TODO :             
-            Debug.WriteLine("DefaultCommand Fired");
+            Debug.WriteLine("StartStopCommand Fired");
         }
-        #endregion DefaultCommand 
+        #endregion StartStopCommand 
 
         #endregion Command
 

@@ -7,7 +7,18 @@ namespace ChroZenService
     public static class ChroZenService_Const
     {
         #region ENUM    
-        
+
+        public enum E_DIAGNOSTICS_TYPE
+        {
+            ROOT,
+            HEATER,
+            IGNITOR_VALVE,
+            REMOTE_SIGNAL,
+            UPC_VALVE_CHECK,
+            UPC_SENSOR_CHECK,
+            POWER_MONITOR
+        }
+
         public enum E_SYSTEM_SETTING_INPUT_TYPE
         {
             INIT_TEMP,
@@ -35,6 +46,31 @@ namespace ChroZenService
             VALVE8,
             VALVEM1,
             VALVEM2,
+        }
+        public enum E_SYSTEM_DIAG_FUNCTION_TYPE
+        {
+            HEATER=0,
+            IGNITOR_VALVE,
+            REMOTE_SIGNAL,
+            APC_VALVE,
+            APC_SENSOR,
+            POWER_MONITOR
+        }
+
+        public enum E_SYSTEM_DIAG_COMMAND_TYPE
+        {
+            START_HEATER,
+            STOP_HEATER,
+            START_IGNITOR_VALVE,
+            STOP_IGNITOR_VALVE,
+            START_REMOTE_SIGNAL,
+            STOP_REMOTE_SIGNAL,
+            START_UPC_VALVE_CHECK,
+            STOP_UPC_VALVE_CHECK,
+            START_UPC_SENSOR_CHECK,
+            STOP_UPC_SENSOR_CHECK,
+            START_POWER_MONITOR,
+            STOP_POWER_MONITOR,
         }
         public enum E_GLOBAL_COMMAND_TYPE
         {
@@ -189,7 +225,7 @@ namespace ChroZenService
         }
 
         public enum E_KEY_PAD_SET_MEASURE_TYPE
-        {            
+        {
             INLET_FRONT_SET_TEMP_CALIBRATION_T1,
             INLET_FRONT_SET_TEMP_CALIBRATION_T2,
             INLET_FRONT_SET_FLOW_CALIBRATION1,
@@ -315,7 +351,7 @@ namespace ChroZenService
             OVEN_SET_TEMP_CALIBRATION_T2,
             OVEN_MEASURE_TEMP_CALIBRATION_T1,
             OVEN_MEASURE_TEMP_CALIBRATION_T2,
-            
+
             CONFIG_VALVE1_PORT,
             CONFIG_VALVE2_PORT,
             CONFIG_VALVE3_PORT,

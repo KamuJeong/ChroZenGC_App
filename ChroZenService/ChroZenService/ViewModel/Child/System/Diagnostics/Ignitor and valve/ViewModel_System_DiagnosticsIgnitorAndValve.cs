@@ -5,13 +5,15 @@ using System.Text;
 
 namespace ChroZenService
 {
-    public class ViewModel_System_DiagnosticsIgnitorAndValve : ChildNotifyBase
+    public class ViewModel_System_DiagnosticsIgnitorAndValve : Model_System_Diagnostics
     {
         #region 생성자 & 이벤트 헨들러
 
         public ViewModel_System_DiagnosticsIgnitorAndValve()
         {
-            DefaultCommand = new RelayCommand(DefaultCommandAction);
+            StartStopCommand = new RelayCommand(StartStopCommandAction);
+
+            EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -19,7 +21,7 @@ namespace ChroZenService
         #region Binding
 
         #region Property
-
+        TCPManager tcpManager;
         bool _bIsIgnitor_1_On;
         public bool bIsIgnitor_1_On { get { return _bIsIgnitor_1_On; } set { _bIsIgnitor_1_On = value; OnPropertyChanged("bIsIgnitor_1_On"); } }
 
@@ -64,15 +66,16 @@ namespace ChroZenService
 
         #region Command
 
-        #region DefaultCommand
-        public RelayCommand DefaultCommand { get; set; }
-        private void DefaultCommandAction(object param)
+        #region StartStopCommand
+        public RelayCommand StartStopCommand { get; set; }
+        private void StartStopCommandAction(object param)
         {
+            this.StartCommand((ChroZenService_Const.E_SYSTEM_DIAG_COMMAND_TYPE)param, tcpManager);
             //TODO :             
-            Debug.WriteLine("DefaultCommand Fired");
+            Debug.WriteLine("StartStopCommand Fired");
         }
+        #endregion StartStopCommand 
 
-        #endregion DefaultCommand 
         #endregion Command
 
         #endregion Binding
