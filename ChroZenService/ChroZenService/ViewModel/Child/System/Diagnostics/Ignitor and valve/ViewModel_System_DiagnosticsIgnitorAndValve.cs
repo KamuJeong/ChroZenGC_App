@@ -71,6 +71,40 @@ namespace ChroZenService
         private void StartStopCommandAction(object param)
         {
             this.StartCommand((ChroZenService_Const.E_SYSTEM_DIAG_COMMAND_TYPE)param, tcpManager);
+            if ((ChroZenService_Const.E_SYSTEM_DIAG_COMMAND_TYPE)param == ChroZenService_Const.E_SYSTEM_DIAG_COMMAND_TYPE.START_IGNITOR_VALVE)
+            {
+                bIsIgnitor_1_On = true;
+                bIsIgnitor_2_On = true;
+                bIsIgnitor_3_On = true;
+                bIsValve_1_On = true;
+                bIsValve_2_On = true;
+                bIsValve_3_On = true;
+                bIsValve_4_On = true;
+                bIsValve_5_On = true;
+                bIsValve_6_On = true;
+                bIsValve_7_On = true;
+                bIsValve_8_On = true;
+                bIsFan_1_On = true;
+                bIsFan_2_On = true;
+                bIsFan_3_On = true;
+            }
+            else
+            {
+                bIsIgnitor_1_On = false;
+                bIsIgnitor_2_On = false;
+                bIsIgnitor_3_On = false;
+                bIsValve_1_On = false;
+                bIsValve_2_On = false;
+                bIsValve_3_On = false;
+                bIsValve_4_On = false;
+                bIsValve_5_On = false;
+                bIsValve_6_On = false;
+                bIsValve_7_On = false;
+                bIsValve_8_On = false;
+                bIsFan_1_On = false;
+                bIsFan_2_On = false;
+                bIsFan_3_On = false;
+            }
             //TODO :             
             Debug.WriteLine("StartStopCommand Fired");
         }

@@ -2281,40 +2281,40 @@ namespace ChroZenService
                                     break;
                                 case E_SYSTEM_DIAG_FUNCTION_TYPE.IGNITOR_VALVE:
                                     {
-                                        if(diagPacket.packet.bStartStop)
-                                        {
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_1_On = true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_2_On = true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_3_On = true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_1_On= true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_2_On = true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_3_On = true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_4_On = true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_5_On = true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_6_On = true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_7_On = true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_8_On = true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_1_On = true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_2_On = true;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_3_On = true;
-                                        }
-                                        else
-                                        {
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_1_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_2_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_3_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_1_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_2_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_3_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_4_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_5_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_6_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_7_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_8_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_1_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_2_On = false;
-                                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_3_On = false;
-                                        }
+                                        //if(diagPacket.packet.bStartStop)
+                                        //{
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_1_On = true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_2_On = true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_3_On = true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_1_On= true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_2_On = true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_3_On = true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_4_On = true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_5_On = true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_6_On = true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_7_On = true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_8_On = true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_1_On = true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_2_On = true;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_3_On = true;
+                                        //}
+                                        //else
+                                        //{
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_1_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_2_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_3_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_1_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_2_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_3_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_4_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_5_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_6_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_7_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_8_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_1_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_2_On = false;
+                                        //    ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_3_On = false;
+                                        //}
                                     }
                                     break;
                                 case E_SYSTEM_DIAG_FUNCTION_TYPE.REMOTE_SIGNAL:
@@ -3218,6 +3218,22 @@ namespace ChroZenService
                 case E_SYSTEM_SUB_MENU_TYPE.DIAG_IGNITOR_VALVE:
                     {
                         DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet.btFunc = 1;
+
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_1_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_2_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsIgnitor_3_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_1_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_2_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_3_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_4_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_5_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_6_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_7_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_8_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_1_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_2_On = false;
+                        ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_3_On = false;
+
                     }
                     break;
                 case E_SYSTEM_SUB_MENU_TYPE.DIAG_POWER_MONITOR:
@@ -3242,6 +3258,7 @@ namespace ChroZenService
                     break;
             }
             tcpManager.Send(T_PACKCODE_CHROZEN_LCD_DIAGManager.MakePACKCODE_SET(DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet));
+
             SelectedSubMenu = (E_SYSTEM_SUB_MENU_TYPE)param;
 
             //TODO :             

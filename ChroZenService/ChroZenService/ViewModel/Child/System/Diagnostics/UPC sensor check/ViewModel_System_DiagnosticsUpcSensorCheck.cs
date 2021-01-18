@@ -22,6 +22,10 @@ namespace ChroZenService
 
         #region Property
         TCPManager tcpManager;
+
+        bool _IsFirstPageVisible;
+        public bool IsFirstPageVisible { get { return _IsFirstPageVisible; } set { _IsFirstPageVisible = value; OnPropertyChanged("IsFirstPageVisible"); } }
+
         #region First page
 
         string _FrontInletSensor_1;

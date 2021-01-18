@@ -14,7 +14,7 @@
                     <ColumnDefinition Width="209"/>
                     <ColumnDefinition Width="208"/>
                 </Grid.ColumnDefinitions>
-                <Grid HeightRequest="669" Grid.ColumnSpan="2" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.IsFirstPage}">
+                <Grid HeightRequest="669" Grid.ColumnSpan="2" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
                         <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
