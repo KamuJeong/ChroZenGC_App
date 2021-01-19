@@ -81,56 +81,56 @@
 
                     </Frame>
                     <Label Grid.Row="6" Grid.Column="0" Text="Valve 4" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="6" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
+                    <Line  Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <local:UC_ON_OFF_Button Grid.Row="6" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_4_On}"  Margin="0,0,0,0"/>
 
                     <Frame Grid.Row="7" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
                     <Label Grid.Row="7" Grid.Column="0" Text="Valve 5" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="7" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
+                    <Line  Grid.Row="7" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <local:UC_ON_OFF_Button Grid.Row="7" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_5_On}"  Margin="0,0,0,0"/>
 
                     <Frame Grid.Row="8" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
                     <Label Grid.Row="8" Grid.Column="0" Text="Valve 6" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="8" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
+                    <Line  Grid.Row="8" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <local:UC_ON_OFF_Button Grid.Row="8" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_6_On}"  Margin="0,0,0,0"/>
 
                     <Frame Grid.Row="9" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
                     <Label Grid.Row="9" Grid.Column="0" Text="Valve 7" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="9" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
+                    <Line  Grid.Row="9" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <local:UC_ON_OFF_Button Grid.Row="9" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_7_On}"  Margin="0,0,0,0"/>
 
                     <Frame Grid.Row="10" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
                     <Label Grid.Row="10" Grid.Column="0" Text="Valve 8" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="10" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
+                    <Line  Grid.Row="10" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <local:UC_ON_OFF_Button Grid.Row="10" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsValve_8_On}"  Margin="0,0,0,0"/>
 
                     <Frame Grid.Row="11" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
                     <Label Grid.Row="11" Grid.Column="0" Text="Fan 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="11" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
+                    <Line  Grid.Row="11" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <local:UC_ON_OFF_Button Grid.Row="11" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_1_On}"  Margin="0,0,0,0"/>
 
                     <Frame Grid.Row="12" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
                     <Label Grid.Row="12" Grid.Column="0" Text="Fan 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="12" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
+                    <Line  Grid.Row="12" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <local:UC_ON_OFF_Button Grid.Row="12" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_2_On}"  Margin="0,0,0,0"/>
 
                     <Frame Grid.Row="13" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
                     <Label Grid.Row="13" Grid.Column="0" Text="Fan 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="13" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
+                    <Line  Grid.Row="13" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <local:UC_ON_OFF_Button Grid.Row="13" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_3_On}"  Margin="0,0,0,0"/>
 
                 </Grid>

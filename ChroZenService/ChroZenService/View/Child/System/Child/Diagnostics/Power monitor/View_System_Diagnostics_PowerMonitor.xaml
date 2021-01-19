@@ -40,114 +40,114 @@
                     <Frame Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,7,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="0" Grid.Column="0" Text="Oven Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" Margin="32,6,0,0"/>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Main +5.0V" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" Margin="32,6,0,0"/>
                     <Line  Grid.Row="0" Grid.Column="0" X1="195" X2="195" Y1="11" Y2="37" Stroke="Gray"/>
                     <Label Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.MAIN_V50D}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
 
                     <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="1" Grid.Column="0" Text="Inlet Front Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Label Grid.Row="1" Grid.Column="0" Text="MAIN -5.0V" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.MAIN_N50V}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="2" Grid.Column="0" Text="Inlet Center Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Label Grid.Row="2" Grid.Column="0" Text="MAIN +12.0V" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.MAIN_V12P}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="3" Grid.Column="0" Text="Inlet Rear Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Label Grid.Row="3" Grid.Column="0" Text="MAIN +24.0V" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="3" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <Label Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.MAIN_V24P}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="4" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="4" Grid.Column="0" Text="Det Front Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="UPC INJ +2.5V" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}"/>
                     <Line  Grid.Row="4" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
-                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.fDet_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_INJ_V25D_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="5" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="5" Grid.Column="0" Text="Det Center Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Label Grid.Row="5" Grid.Column="0" Text="UPC INJ +3.3V" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="5" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
-                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.fDet_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_INJ_V33D_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="6" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="6" Grid.Column="0" Text="Det Rear Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="6" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
-                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.fDet_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="6" Grid.Column="0" Text="UPC INJ +5.0V" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
+                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_INJ_V50D_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="7" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="7" Grid.Column="0" Text="Aux 1 Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="7" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
-                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.fAux_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="7" Grid.Column="0" Text="UPC INJ +24.0V" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="7" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
+                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_INJ_V24_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="8" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="8" Grid.Column="0" Text="Aux 2 Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="8" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
-                    <Label Grid.Row="8" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.fAux_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="8" Grid.Column="0" Text="UPC INJ F_Sensor" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="8" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
+                    <Label Grid.Row="8" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_INJ_SEN1_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="9" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="9" Grid.Column="0" Text="Aux 3 Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="9" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
-                    <Label Grid.Row="9" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.fAux_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="9" Grid.Column="0" Text="UPC INJ P_Sensor" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="9" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
+                    <Label Grid.Row="9" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor._APC_INJ_SEN2_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="10" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="10" Grid.Column="0" Text="Aux 4 Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="10" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
-                    <Label Grid.Row="10" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.fAux_4}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="10" Grid.Column="0" Text="UPC DET +2.5V" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="10" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
+                    <Label Grid.Row="10" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_DET_V25D}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="11" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="11" Grid.Column="0" Text="Aux 5 Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="11" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
-                    <Label Grid.Row="11" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.fAux_5}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="11" Grid.Column="0" Text="UPC DET +3.3V" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="11" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
+                    <Label Grid.Row="11" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_DET_V33D}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="12" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="12" Grid.Column="0" Text="Aux 6 Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="12" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
-                    <Label Grid.Row="12" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.fAux_6}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="12" Grid.Column="0" Text="UPC DET P_Sensor" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="12" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
+                    <Label Grid.Row="12" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_DET_SEN}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="13" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="13" Grid.Column="0" Text="Aux 7 Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="13" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
-                    <Label Grid.Row="13" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.fAux_7}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="13" Grid.Column="0" Text="UPC AUX +2.5V" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="13" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
+                    <Label Grid.Row="13" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_AUX_V25D}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="14" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="14" Grid.Column="0" Text="Aux 8 Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="14" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
-                    <Label Grid.Row="14" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.fAux_8}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="14" Grid.Column="0" Text="UPC AUX +3.3V" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="14" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
+                    <Label Grid.Row="14" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_AUX_V33D}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="14" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="14" Grid.Column="0" Text="Aux 8 Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="14" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
-                    <Label Grid.Row="14" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.fAux_8}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="14" Grid.Column="0" Text="UPC AUX P_Sensor" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="14" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
+                    <Label Grid.Row="14" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_AUX_SEN}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
                 </Grid>
                 <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_NAVIGATION_SPLIT}"/>
                 <local:UC_System_Calib_Settings_StartStopButton Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="false" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.START_POWER_MONITOR}"/>

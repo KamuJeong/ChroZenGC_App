@@ -33,14 +33,14 @@
                     </Frame>
                     <Label Grid.Row="0" Grid.Column="0" Text="Start OUT(TP4)" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" Margin="32,6,0,0"/>
                     <Line  Grid.Row="0" Grid.Column="0" X1="195" X2="195" Y1="11" Y2="37" Stroke="Gray"/>
-                    <local:UC_ON_OFF_Button Grid.Row="7" Grid.Column="1" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.bIsStartOutOn}" IsEnabled="False"/>
+                    <local:UC_ON_OFF_Button Grid.Row="0" Grid.Column="1" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.bIsStartOutOn}" IsEnabled="False" Margin="0,5,0,0"/>
 
                     <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
                     <Label Grid.Row="1" Grid.Column="0" Text="Ready OUT(TP6)" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
-                    <local:UC_ON_OFF_Button Grid.Row="7" Grid.Column="1" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.bIsReadyOutOn}" IsEnabled="False"/>
+                    <local:UC_ON_OFF_Button Grid.Row="1" Grid.Column="1" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.bIsReadyOutOn}" IsEnabled="False" Margin="0,-2,0,0"/>
 
                     <Frame Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
@@ -74,7 +74,7 @@
 
                     </Frame>
                     <Label Grid.Row="6" Grid.Column="0" Text="LED Button" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="6" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
+                    <Line  Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.fDet_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
     

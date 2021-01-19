@@ -76,21 +76,21 @@
 
                     </Frame>
                     <Label Grid.Row="6" Grid.Column="0" Text="Front AuxAPC Valve" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="6" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
+                    <Line  Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <local:UC_ON_OFF_Button Grid.Row="6" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.FrontAuxAPCValve}"  Margin="0,0,0,0"/>
 
                     <Frame Grid.Row="7" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
                     <Label Grid.Row="7" Grid.Column="0" Text="Center AuxAPC Valve" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="7" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
+                    <Line  Grid.Row="7" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <local:UC_ON_OFF_Button Grid.Row="7" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterAuxAPCValve}"  Margin="0,0,0,0"/>
 
                     <Frame Grid.Row="8" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
                     <Label Grid.Row="8" Grid.Column="0" Text="Rear AuxAPC Valve" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="8" Grid.Column="0" X1="195" X2="195" Y1="6" Y2="40" Stroke="Gray"/>
+                    <Line  Grid.Row="8" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <local:UC_ON_OFF_Button Grid.Row="8" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearAuxAPCValve}"  Margin="0,0,0,0"/>
 
                 </Grid>
