@@ -33,6 +33,12 @@ namespace ChroZenService
                         {
                             T_PACKCODE_CHROZEN_SYSTEM_STATE statePacket = (T_PACKCODE_CHROZEN_SYSTEM_STATE)packet;
 
+                            #region Information
+
+
+
+                            #endregion Information
+
                             #region Calibration
 
                             CHROZEN_GC_STATE state = (CHROZEN_GC_STATE)(statePacket.packet.btState);
@@ -1944,6 +1950,8 @@ namespace ChroZenService
                             #endregion Calibration
 
                             #region Diagnostics
+
+                            #region Heater
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bOven == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fOven = "None";
                             else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fOven = statePacket.packet.ActTemp.fOven.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
@@ -1988,6 +1996,242 @@ namespace ChroZenService
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[7] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_8 = "None";
                             else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_8 = statePacket.packet.ActTemp.fAux[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            #endregion Heater
+
+                            #region Remote And Signal
+                            string strOnOffState = "OFF";
+                            if (DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet.bStartStop)
+                            {
+                                strOnOffState = "ON";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.bIsStartOutOn = true;
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.bIsReadyOutOn = true;
+                            }
+                            else
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.bIsStartOutOn = false;
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.bIsReadyOutOn = false;
+                            }
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.SignalFront = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.SignalFront = string.Format("Signal {0}", strOnOffState);
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.SignalCenter = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.SignalCenter = string.Format("Signal {0}", strOnOffState);
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.SignalRear = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.SignalRear = string.Format("Signal {0}", strOnOffState);
+
+                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.StateLED = strOnOffState;
+                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.LEDButton = strOnOffState;
+
+                            #endregion Remote And Signal
+
+                            #region UpcValveCheck
+                            string strOnOffStateForUpc = "OFF";
+                            if (DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send.packet.bStartStop)
+                            {
+                                strOnOffStateForUpc = "ON";
+                            }
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.FrontDetValve = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.FrontDetValve = string.Format("Valve {0}", strOnOffStateForUpc);
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterDetValve = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterDetValve = string.Format("Valve {0}", strOnOffStateForUpc);
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearDetValve = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearDetValve = string.Format("Valve {0}", strOnOffStateForUpc);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[0] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.FrontInletValve = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.FrontInletValve = string.Format("Valve {0}", strOnOffStateForUpc);
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[1] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterInletValve = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterInletValve = string.Format("Valve {0}", strOnOffStateForUpc);
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[2] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearInletValve = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearInletValve = string.Format("Valve {0}", strOnOffStateForUpc);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[0] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.FrontAuxAPCValve = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.FrontAuxAPCValve = string.Format("Valve {0}", strOnOffStateForUpc);
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[1] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterAuxAPCValve = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterAuxAPCValve = string.Format("Valve {0}", strOnOffStateForUpc);
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[2] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearAuxAPCValve = "None";
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearAuxAPCValve = string.Format("Valve {0}", strOnOffStateForUpc);
+
+                            #endregion UpcValveCheck
+
+                            #region UpcSensorCheck
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0] == 0)
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontDetSensor_1 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontDetSensor_2 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontDetSensor_3 = "None";
+                            }
+                            else
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontDetSensor_1 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Det_Volt[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontDetSensor_2 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Det_Volt[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontDetSensor_3 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Det_Volt[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            }
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1] == 0)
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterDetSensor_1 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterDetSensor_2 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterDetSensor_3 = "None";
+                            }
+                            else
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterDetSensor_1 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Det_Volt[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterDetSensor_2 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Det_Volt[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterDetSensor_3 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Det_Volt[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            }
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2] == 0)
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearDetSensor_1 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearDetSensor_2 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearDetSensor_3 = "None";
+                            }
+                            else
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearDetSensor_1 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Det_Volt[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearDetSensor_2 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Det_Volt[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearDetSensor_3 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Det_Volt[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            }
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[0] == 0)
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontInletSensor_1 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontInletSensor_2 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontInletSensor_3 = "None";
+                            }
+                            else
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontInletSensor_1 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Inj_Volt[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontInletSensor_2 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Inj_Volt[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontInletSensor_3 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Inj_Volt[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            }
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[1] == 0)
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterInletSensor_1 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterInletSensor_2 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterInletSensor_3 = "None";
+                            }
+                            else
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterInletSensor_1 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Inj_Volt[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterInletSensor_2 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Inj_Volt[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterInletSensor_3 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Inj_Volt[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            }
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[2] == 0)
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearInletSensor_1 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearInletSensor_2 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearInletSensor_3 = "None";
+                            }
+                            else
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearInletSensor_1 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Inj_Volt[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearInletSensor_2 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Inj_Volt[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearInletSensor_3 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Inj_Volt[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            }
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[0] == 0)
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontAuxAPCSensor_1 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontAuxAPCSensor_2 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontAuxAPCSensor_3 = "None";
+                            }
+                            else
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontAuxAPCSensor_1 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Aux_Volt[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontAuxAPCSensor_2 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Aux_Volt[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontAuxAPCSensor_3 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Aux_Volt[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            }
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[1] == 0)
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterAuxAPCSensor_1 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterAuxAPCSensor_2 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterAuxAPCSensor_3 = "None";
+                            }
+                            else
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterAuxAPCSensor_1 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Aux_Volt[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterAuxAPCSensor_2 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Aux_Volt[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterAuxAPCSensor_3 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Aux_Volt[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            }
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[2] == 0)
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearAuxAPCSensor_1 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearAuxAPCSensor_2 = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearAuxAPCSensor_3 = "None";
+                            }
+                            else
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearAuxAPCSensor_1 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Aux_Volt[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearAuxAPCSensor_2 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Aux_Volt[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearAuxAPCSensor_3 = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received.packet.Aux_Volt[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            }
+
+                            #endregion UpcSensorCheck
+
+                            #region Power monitor
+
+
+                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.MAIN_V50D = DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.MAIN_V50D.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.MAIN_N50V = DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.MAIN_N50V.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.MAIN_V12P = DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.MAIN_V12P.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.MAIN_V24P = DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.MAIN_V24P.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_INJ_V25D_1 =
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_V25D[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3) + " / " +
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_V25D[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3) + " / " +
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_V25D[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_INJ_V33D_1 =
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_V33D[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3) + " / " +
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_V33D[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3) + " / " +
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_V33D[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_INJ_V50D_1 =
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_V50D[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3) + " / " +
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_V50D[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3) + " / " +
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_V50D[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_INJ_V24_1 =
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_V24[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3) + " / " +
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_V24[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3) + " / " +
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_V24[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_INJ_SEN1_1 =
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_SEN1[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3) + " / " +
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_SEN1[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3) + " / " +
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_SEN1[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_INJ_SEN2_1 =
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_SEN2[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3) + " / " +
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_SEN2[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3) + " / " +
+                            DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_INJ_SEN2[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0] == 0 &&
+                            DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1] == 0 &&
+                            DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2] == 0)
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_DET_V25D = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_DET_V33D = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_DET_SEN = "None";
+                            }
+                            else
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_DET_V25D = DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_DET_V25D.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_DET_V33D = DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_DET_V33D.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_DET_SEN = DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_DET_SEN.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            }
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[0] == 0 &&
+                           DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[1] == 0 &&
+                           DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[2] == 0)
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_AUX_V25D = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_AUX_V33D = "None";
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_AUX_SEN = "None";
+                            }
+                            else
+                            {
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_AUX_V25D = DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_AUX_V25D.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_AUX_V33D = DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_AUX_V33D.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsPowerMonitor.APC_AUX_SEN = DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received.packet.APC_AUX_SEN.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            }
+
+                            #endregion Power monitor                            
 
                             #endregion Diagnostics
 
@@ -2333,6 +2577,62 @@ namespace ChroZenService
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_OVEN_SETTING:
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SPECIAL_FUNCTION:
+                        {
+                            #region System Setting
+
+                            ViewModel_System_Settings.bOnoff = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.bOnoff == 0 ? false : true;
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fInitTemp == 0.0f) ViewModel_System_Settings.fInitTemp = 100.0f;
+                            else
+                            {
+                                ViewModel_System_Settings.fInitTemp = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fInitTemp;
+                            }
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fInitTime == 0.0f) ViewModel_System_Settings.fInitTime = "1.0";
+                            else
+                            {
+                                ViewModel_System_Settings.fInitTime = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fInitTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            }
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fRate == 0.0f) ViewModel_System_Settings.fRate = "3.0";
+                            else
+                            {
+                                ViewModel_System_Settings.fRate = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            }
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fFinalTemp == 0.0f) ViewModel_System_Settings.fFinalTemp = 300f;
+                            else
+                            {
+                                ViewModel_System_Settings.fFinalTemp = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fFinalTemp;
+                            }
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fFinalTime == 0.0f) ViewModel_System_Settings.fFinalTime = "50.0";
+                            else
+                            {
+                                ViewModel_System_Settings.fFinalTime = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            }
+
+                            ViewModel_System_Settings.RemoteAccess_bOnoff = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.bOnoff == 0 ? false : true;
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fTime == 0.0f) ViewModel_System_Settings.fTime = 200f;
+                            else
+                            {
+                                ViewModel_System_Settings.fTime = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fTime;
+                            }
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fEventTime1 == 0.0f) ViewModel_System_Settings.fFinalTime = "50.0";
+                            else
+                            {
+                                ViewModel_System_Settings.fEventTime1 = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fEventTime1;
+                            }
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fEventTime2 == 0.0f) ViewModel_System_Settings.fFinalTime = "50.0";
+                            else
+                            {
+                                ViewModel_System_Settings.fEventTime2 = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fEventTime2;
+                            }
+
+                            #endregion System Setting
+                        }
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_CONFIG:
                         {
@@ -2937,9 +3237,119 @@ namespace ChroZenService
                             #endregion Inlet
 
                             #endregion Calibration                       
+
+                            #region Setting
+
+                            ViewModel_System_Config.btInlet1 = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[0];
+                            ViewModel_System_Config.btInlet2 = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[1];
+                            ViewModel_System_Config.btInlet3 = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[2];
+
+                            ViewModel_System_Config.btDet1 = (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0];
+                            ViewModel_System_Config.btDet2 = (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1];
+                            ViewModel_System_Config.btDet3 = (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2];
+
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bMethanizer > 0 &&
+                            DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bMethanizer < 3)
+                            {
+                                ViewModel_System_Config.bMethanizer = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bMethanizer;
+                            }
+
+                            ViewModel_System_Config.bCryogenic = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bCryogenic;
+                            ViewModel_System_Config.bAuxAPC1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[0] == 0 ? false : true;
+                            ViewModel_System_Config.bAuxAPC2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[1] == 0 ? false : true;
+                            ViewModel_System_Config.bAuxAPC3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[2] == 0 ? false : true;
+
+                            ViewModel_System_Config.bAuxTemp1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[0];
+                            ViewModel_System_Config.bAuxTemp2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[1];
+                            ViewModel_System_Config.bAuxTemp3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[2];
+                            ViewModel_System_Config.bAuxTemp4 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[3];
+                            ViewModel_System_Config.bAuxTemp5 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[4];
+                            ViewModel_System_Config.bAuxTemp6 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[5];
+                            ViewModel_System_Config.bAuxTemp7 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[6];
+                            ViewModel_System_Config.bAuxTemp8 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[7];
+
+                            ViewModel_System_Config.bMultiValve1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bMultiValve[0];
+                            ViewModel_System_Config.bMultiValve2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bMultiValve[1];
+
+                            ViewModel_System_Config.btType1_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType1[0];
+                            ViewModel_System_Config.btType1_2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType1[1];
+                            ViewModel_System_Config.btType1_3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType1[2];
+                            ViewModel_System_Config.btType1_4 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType1[3];
+                            ViewModel_System_Config.btType1_5 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType1[4];
+                            ViewModel_System_Config.btType1_6 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType1[5];
+                            ViewModel_System_Config.btType1_7 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType1[6];
+                            ViewModel_System_Config.btType1_8 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType1[7];
+
+                            ViewModel_System_Config.btType1_M1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btMultiType[0];
+                            ViewModel_System_Config.btType1_M2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btMultiType[1];
+
+                            ViewModel_System_Config.btType2_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType2[0];
+                            ViewModel_System_Config.btType2_2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType2[1];
+                            ViewModel_System_Config.btType2_3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType2[2];
+                            ViewModel_System_Config.btType2_4 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType2[3];
+                            ViewModel_System_Config.btType2_5 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType2[4];
+                            ViewModel_System_Config.btType2_6 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType2[5];
+                            ViewModel_System_Config.btType2_7 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType2[6];
+                            ViewModel_System_Config.btType2_8 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType2[7];
+
+                            ViewModel_System_Config.btType2_M1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btMultiType[0];
+                            ViewModel_System_Config.btType2_M2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btMultiType[1];
+
+                            ViewModel_System_Config.btPort1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btPort[0];
+                            ViewModel_System_Config.btPort2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btPort[1];
+                            ViewModel_System_Config.btPort3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btPort[2];
+                            ViewModel_System_Config.btPort4 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btPort[3];
+                            ViewModel_System_Config.btPort5 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btPort[4];
+                            ViewModel_System_Config.btPort6 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btPort[5];
+                            ViewModel_System_Config.btPort7 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btPort[6];
+                            ViewModel_System_Config.btPort8 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btPort[7];
+
+                            ViewModel_System_Config.btPortM1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btMultiPort[0];
+                            ViewModel_System_Config.btPortM2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btMultiPort[1];
+
+                            ViewModel_System_Config.fLoop1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.fLoop1[0];
+                            ViewModel_System_Config.fLoop2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.fLoop1[1];
+                            ViewModel_System_Config.fLoop3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.fLoop1[2];
+                            ViewModel_System_Config.fLoop4 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.fLoop1[3];
+                            ViewModel_System_Config.fLoop5 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.fLoop1[4];
+                            ViewModel_System_Config.fLoop6 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.fLoop1[5];
+                            ViewModel_System_Config.fLoop7 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.fLoop1[6];
+                            ViewModel_System_Config.fLoop8 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.fLoop1[7];
+
+                            ViewModel_System_Config.fLoopM1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.fMultiLoop[0];
+                            ViewModel_System_Config.fLoopM2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.fMultiLoop[1];
+                            #endregion Setting
+
                         }
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_INFORM:
+                        {
+                            ViewModel_System_Information.InstVersion = new string(DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.InstInfo.InstVersion);
+                            ViewModel_System_Information.InstSerialNo = new string(DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.InstInfo.InstSerialNo);
+
+                            ViewModel_System_Information.IPAddress = new System.Net.IPAddress(new byte[]{
+                                DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cIPAddress[0],
+                                DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cIPAddress[1],
+                                DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cIPAddress[2],
+                                DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cIPAddress[3],
+                            }).ToString();
+
+                            ViewModel_System_Information.NetMask = new System.Net.IPAddress(new byte[]{
+                                DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cIPAddress[4],
+                                DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cIPAddress[5],
+                                DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cIPAddress[6],
+                                DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cIPAddress[7],
+                            }).ToString();
+
+                            ViewModel_System_Information.GateWay = new System.Net.IPAddress(new byte[]{
+                                DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cIPAddress[8],
+                                DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cIPAddress[9],
+                                DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cIPAddress[10],
+                                DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cIPAddress[11],
+                            }).ToString();
+                            ViewModel_System_Information.cPortNo = Encoding.UTF8.GetString(DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.SysConfig.cPortNo);
+                        }
+                        break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_VALVE_SETTING:
                     case YC_Const.E_PACKCODE.PACKCODE_YL6200_DIAGDATA:
                     case YC_Const.E_PACKCODE.PACKCODE_YL6200_SERVICE:

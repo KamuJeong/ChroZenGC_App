@@ -20,7 +20,7 @@ namespace YC_ChroZenGC_Type
             // Client socket.  
             public Socket workSocket = null;
             // Size of receive buffer.  
-            public const int BufferSize = 4096;
+            public const int BufferSize = 4096 * 2;
             // Receive raw bytes.  
             public byte[] rawBuffer = new byte[BufferSize];
 

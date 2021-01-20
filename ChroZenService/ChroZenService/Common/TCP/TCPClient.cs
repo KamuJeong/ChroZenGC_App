@@ -609,7 +609,7 @@ namespace ChroZenService
             }
         }
 
-        byte[] reserveBytes = new byte[4096 * 4];
+        byte[] reserveBytes = new byte[4096 * 16];
         int nReservedCount;
 
         private void ReceiveCallback(IAsyncResult ar)

@@ -50,6 +50,8 @@ namespace YC_ChroZenGC_Type
                 APC_INJ_V33D = new float[3],
                 APC_INJ_V50D = new float[3],
                 APC_INJ_V24 = new float[3],
+                APC_INJ_SEN1 = new float[3],
+                APC_INJ_SEN2 = new float[3],
             };
         }
     }

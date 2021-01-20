@@ -142,7 +142,6 @@
                     <Label Grid.Row="14" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_8}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                 </Grid>         
-                <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_NAVIGATION_SPLIT}"/>
                 <local:UC_System_Calib_Settings_StartStopButton Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="false" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.START_HEATER}"/>
                 <local:UC_System_Calib_Settings_StartStopButton Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="true" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.STOP_HEATER}"/>
             </Grid>

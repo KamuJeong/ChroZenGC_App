@@ -196,6 +196,20 @@
         <cvt:E_CONFIG_MENU_TYPEToBoolConverter x:Key="E_CONFIG_MENU_TYPEToBoolConverter"/>
         <cvt:DoubleToGridLengthConverter x:Key="DoubleToGridLengthConverter"/>
         <cvt:InletTypeToBoolConverter x:Key="InletTypeToBoolConverter"/>
+        <Style x:Key="STYLE_LINE_SYSTEM_SETTING_TITLE_POWERMONITOR" TargetType="{x:Type Line}">
+            <Setter Property="X1" Value="208"/>
+            <Setter Property="X2" Value="208"/>
+            <Setter Property="Y1" Value="5"/>
+            <Setter Property="Y2" Value="30"/>
+            <Setter Property="Stroke" Value="Gray"/>
+        </Style>
+        <Style x:Key="STYLE_LINE_SYSTEM_SETTING_TITLE_LONG" TargetType="{x:Type Line}">
+            <Setter Property="X1" Value="277"/>
+            <Setter Property="X2" Value="277"/>
+            <Setter Property="Y1" Value="5"/>
+            <Setter Property="Y2" Value="30"/>
+            <Setter Property="Stroke" Value="Gray"/>
+        </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_DIAGNOSTICS_ROOT_BUTTON" TargetType="{x:Type Button}">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Margin" Value="18,5,18,5"/>
@@ -269,6 +283,20 @@
             <Setter Property="Y1" Value="7"/>
             <Setter Property="Y2" Value="43"/>
             <Setter Property="Stroke" Value="Gray"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_SYSTEM_DIAG_POWERMONITOR_COLUMN_TITLE" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="Margin" Value="32,2,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_SYSTEM_DIAG_POWERMONITOR_COLUMN_VALUE" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="Margin" Value="0,2,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="22"/>

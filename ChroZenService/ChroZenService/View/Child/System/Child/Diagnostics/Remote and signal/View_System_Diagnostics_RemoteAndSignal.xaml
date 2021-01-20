@@ -61,25 +61,24 @@
                     </Frame>
                     <Label Grid.Row="4" Grid.Column="0" Text="Signal Rear" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}"/>
                     <Line  Grid.Row="4" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
-                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.fDet_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.SignalRear}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="5" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
                     <Label Grid.Row="5" Grid.Column="0" Text="State LED" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="5" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
-                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.fDet_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.StateLED}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="6" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
                     <Label Grid.Row="6" Grid.Column="0" Text="LED Button" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
-                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.fDet_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.LEDButton}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
     
                 </Grid>
-                <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_NAVIGATION_SPLIT}"/>
                 <local:UC_System_Calib_Settings_StartStopButton Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="false" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.START_REMOTE_SIGNAL}"/>
                 <local:UC_System_Calib_Settings_StartStopButton Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="true" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsRemoteSignal.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.STOP_REMOTE_SIGNAL}"/>
             </Grid>

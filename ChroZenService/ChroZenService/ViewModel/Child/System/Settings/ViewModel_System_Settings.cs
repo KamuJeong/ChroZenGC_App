@@ -41,14 +41,14 @@ namespace ChroZenService
         public bool bOnoff { get { return _bOnoff; } set { _bOnoff = value; OnPropertyChanged("bOnoff"); } }
         float _fInitTemp;
         public float fInitTemp { get { return _fInitTemp; } set { _fInitTemp = value; OnPropertyChanged("fInitTemp"); } }
-        float _fInitTime;
-        public float fInitTime { get { return _fInitTime; } set { _fInitTime = value; OnPropertyChanged("fInitTime"); } }
-        float _fRate;
-        public float fRate { get { return _fRate; } set { _fRate = value; OnPropertyChanged("fRate"); } }
+        string _fInitTime;
+        public string fInitTime { get { return _fInitTime; } set { _fInitTime = value; OnPropertyChanged("fInitTime"); } }
+        string _fRate;
+        public string fRate { get { return _fRate; } set { _fRate = value; OnPropertyChanged("fRate"); } }
         float _fFinalTemp;
         public float fFinalTemp { get { return _fFinalTemp; } set { _fFinalTemp = value; OnPropertyChanged("fFinalTemp"); } }
-        float _fFinalTime;
-        public float fFinalTime { get { return _fFinalTime; } set { _fFinalTime = value; OnPropertyChanged("fFinalTime"); } }
+        string _fFinalTime;
+        public string fFinalTime { get { return _fFinalTime; } set { _fFinalTime = value; OnPropertyChanged("fFinalTime"); } }
 
         float _fTime;
         public float fTime { get { return _fTime; } set { _fTime = value; OnPropertyChanged("fTime"); } }

@@ -12,6 +12,8 @@ namespace ChroZenService
         public ViewModel_System_DiagnosticsUpcSensorCheck()
         {
             StartStopCommand = new RelayCommand(StartStopCommandAction);
+            Navigation_PrevCommand = new RelayCommand(Navigation_PrevCommandAction);
+            Navigation_NextCommand = new RelayCommand(Navigation_NextCommandAction);
 
             EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
@@ -23,7 +25,7 @@ namespace ChroZenService
         #region Property
         TCPManager tcpManager;
 
-        bool _IsFirstPageVisible;
+        bool _IsFirstPageVisible = true;
         public bool IsFirstPageVisible { get { return _IsFirstPageVisible; } set { _IsFirstPageVisible = value; OnPropertyChanged("IsFirstPageVisible"); } }
 
         #region First page
@@ -127,6 +129,26 @@ namespace ChroZenService
             Debug.WriteLine("StartStopCommand Fired");
         }
         #endregion StartStopCommand 
+
+        #region Navigation_PrevCommand
+        public RelayCommand Navigation_PrevCommand { get; set; }
+        private void Navigation_PrevCommandAction(object param)
+        {
+            IsFirstPageVisible = true;
+            //TODO :             
+            Debug.WriteLine("Navigation_PrevCommand Fired");
+        }
+        #endregion Navigation_PrevCommand 
+
+        #region Navigation_NextCommand
+        public RelayCommand Navigation_NextCommand { get; set; }
+        private void Navigation_NextCommandAction(object param)
+        {
+            IsFirstPageVisible = false;
+            //TODO :             
+            Debug.WriteLine("Navigation_NextCommand Fired");
+        }
+        #endregion Navigation_NextCommand 
 
         #endregion Command
 

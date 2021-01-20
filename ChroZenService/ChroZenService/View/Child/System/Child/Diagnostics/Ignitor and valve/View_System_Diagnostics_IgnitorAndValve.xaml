@@ -134,7 +134,6 @@
                     <local:UC_ON_OFF_Button Grid.Row="13" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.bIsFan_3_On}"  Margin="0,0,0,0"/>
 
                 </Grid>
-                <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_NAVIGATION_SPLIT}"/>
                 <local:UC_System_Calib_Settings_StartStopButton Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="false" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.START_IGNITOR_VALVE}"/>
                 <local:UC_System_Calib_Settings_StartStopButton Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="true" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.STOP_IGNITOR_VALVE}"/>
             </Grid>
