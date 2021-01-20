@@ -33,11 +33,8 @@ namespace ChroZenService
                         {
                             T_PACKCODE_CHROZEN_SYSTEM_STATE statePacket = (T_PACKCODE_CHROZEN_SYSTEM_STATE)packet;
 
-                            #region Information
-
-
-
-                            #endregion Information
+                            ViewModel_System_Settings.Date = DateTime.Now.ToString("yyyy.MM.dd");
+                            ViewModel_System_Settings.Time = DateTime.Now.ToString("HH:mm:ss");
 
                             #region Calibration
 
@@ -2587,16 +2584,16 @@ namespace ChroZenService
                                 ViewModel_System_Settings.fInitTemp = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fInitTemp;
                             }
 
-                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fInitTime == 0.0f) ViewModel_System_Settings.fInitTime = "1.0";
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fInitTime == 0.0f) ViewModel_System_Settings.fInitTime = 1.0f;
                             else
                             {
-                                ViewModel_System_Settings.fInitTime = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fInitTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                ViewModel_System_Settings.fInitTime = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fInitTime;
                             }
 
-                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fRate == 0.0f) ViewModel_System_Settings.fRate = "3.0";
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fRate == 0.0f) ViewModel_System_Settings.fRate = 3.0f;
                             else
                             {
-                                ViewModel_System_Settings.fRate = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                ViewModel_System_Settings.fRate = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fRate;
                             }
 
                             if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fFinalTemp == 0.0f) ViewModel_System_Settings.fFinalTemp = 300f;
@@ -2605,10 +2602,10 @@ namespace ChroZenService
                                 ViewModel_System_Settings.fFinalTemp = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fFinalTemp;
                             }
 
-                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fFinalTime == 0.0f) ViewModel_System_Settings.fFinalTime = "50.0";
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fFinalTime == 0.0f) ViewModel_System_Settings.fFinalTime = 50.0f;
                             else
                             {
-                                ViewModel_System_Settings.fFinalTime = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                ViewModel_System_Settings.fFinalTime = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Colclean.fFinalTime;
                             }
 
                             ViewModel_System_Settings.RemoteAccess_bOnoff = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.bOnoff == 0 ? false : true;
@@ -2619,13 +2616,13 @@ namespace ChroZenService
                                 ViewModel_System_Settings.fTime = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fTime;
                             }
 
-                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fEventTime1 == 0.0f) ViewModel_System_Settings.fFinalTime = "50.0";
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fEventTime1 == 0.0f) ViewModel_System_Settings.fFinalTime = 50.0f;
                             else
                             {
                                 ViewModel_System_Settings.fEventTime1 = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fEventTime1;
                             }
 
-                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fEventTime2 == 0.0f) ViewModel_System_Settings.fFinalTime = "50.0";
+                            if (DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fEventTime2 == 0.0f) ViewModel_System_Settings.fFinalTime = 50.0f;
                             else
                             {
                                 ViewModel_System_Settings.fEventTime2 = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received.packet.Remote.fEventTime2;
@@ -3324,6 +3321,8 @@ namespace ChroZenService
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_INFORM:
                         {
+                            ViewModel_System_Settings.InstDate = new string(DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.InstInfo.InstDate);
+
                             ViewModel_System_Information.InstVersion = new string(DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.InstInfo.InstVersion);
                             ViewModel_System_Information.InstSerialNo = new string(DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received.packet.InstInfo.InstSerialNo);
 
