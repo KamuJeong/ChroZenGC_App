@@ -1,10 +1,437 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_TimeControl">
-  <ContentView.Content>
+    <ContentView.Content>
         <AbsoluteLayout>
+            <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" HeightRequest="716" Margin="0,10,0,10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
 
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource WIDTH_TIMECONTROL_ROW_TITLE}"/>
+                        <ColumnDefinition Width="{StaticResource WIDTH_TIMECONTROL_ROW_DATE}"/>
+                        <ColumnDefinition Width="{StaticResource WIDTH_TIMECONTROL_ROW_TIME}"/>
+                        <ColumnDefinition Width="{StaticResource WIDTH_TIMECONTROL_ROW_FUNCTION}"/>
+                        <ColumnDefinition Width="{StaticResource WIDTH_TIMECONTROL_ROW_VAL}"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.RowSpan="22" Grid.ColumnSpan="6" CornerRadius="18" Margin="5,0,7,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
+                    <Line Grid.ColumnSpan="6" X1="9" X2="410" Y1="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}" Y2="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}" Stroke="Gray"/>
+                    <Line Grid.RowSpan="22" X1="{StaticResource WIDTH_TIMECONTROL_ROW_TITLE}" X2="{StaticResource WIDTH_TIMECONTROL_ROW_TITLE}" Y1="3" Y2="970" Stroke="Gray"/>
+
+                    <Label Text="No." Grid.Row="0" Grid.Column="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="12,2,0,0"/>
+                    <Label Text="Date" Grid.Row="0" Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                    <Label Text="Time" Grid.Row="0" Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                    <Label Text="Function" Grid.Row="0" Grid.Column="3" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                    <Label Text="Val" Grid.Row="0" Grid.Column="4" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0"  Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_1}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_1}"/>
+                    <local:UC_System_TimeControl_Label Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_1}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_1}"/>
+                    <Picker Grid.Row="1" Grid.Column="3" SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_1}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="1" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_1}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_1}"/>
+
+                    <Label                              Grid.Row="2" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="2" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_2}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_2}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="2" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_2}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_2}"/>
+                    <Picker                             Grid.Row="2" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_2}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="2" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_2}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_2}"/>
+
+                    <Label                              Grid.Row="3" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="3" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_3}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_3}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="3" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_3}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_3}"/>
+                    <Picker                             Grid.Row="3" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_3}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="3" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_3}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_3}"/>
+
+                    <Label                              Grid.Row="4" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_4}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="4" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_4}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_4}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="4" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_4}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_4}"/>
+                    <Picker                             Grid.Row="4" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_4}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="4" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_4}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_4}"/>
+
+                    <Label                              Grid.Row="5" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_5}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="5" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_5}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_5}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="5" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_5}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_5}"/>
+                    <Picker                             Grid.Row="5" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_5}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="5" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_5}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_5}"/>
+
+                    <Label                              Grid.Row="6" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_6}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="6" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_6}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_6}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="6" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_6}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_6}"/>
+                    <Picker                             Grid.Row="6" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_6}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="6" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_6}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_6}"/>
+
+                    <Label                              Grid.Row="7" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_7}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="7" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_7}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_7}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="7" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_7}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_7}"/>
+                    <Picker                             Grid.Row="7" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_7}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="7" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_7}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_7}"/>
+
+                    <Label                              Grid.Row="8" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_8}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="8" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_8}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_8}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="8" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_8}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_8}"/>
+                    <Picker                             Grid.Row="8" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_8}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="8" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_8}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_8}"/>
+
+                    <Label                              Grid.Row="9" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_9}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="9" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_9}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_9}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="9" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_9}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_9}"/>
+                    <Picker                             Grid.Row="9" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_9}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="9" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_9}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_9}"/>
+
+                    <Label                              Grid.Row="10" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_10}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="10" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_10}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_10}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="10" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_10}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_10}"/>
+                    <Picker                             Grid.Row="10" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_10}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="10" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_10}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_10}"/>
+
+                    <Label                              Grid.Row="11" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_11}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="11" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_11}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_11}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="11" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_11}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_11}"/>
+                    <Picker                             Grid.Row="11" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_11}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="11" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_11}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_11}"/>
+
+                    <Label                              Grid.Row="12" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_12}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="12" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_12}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_12}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="12" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_12}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_12}"/>
+                    <Picker                             Grid.Row="12" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_12}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="12" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_12}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_12}"/>
+
+                    <Label                              Grid.Row="13" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_13}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="13" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_13}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_13}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="13" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_13}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_13}"/>
+                    <Picker                             Grid.Row="13" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_13}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="13" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_13}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_13}"/>
+
+                    <Label                              Grid.Row="14" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_14}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="14" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_14}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_14}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="14" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_14}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_14}"/>
+                    <Picker                             Grid.Row="14" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_14}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="14" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_14}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_14}"/>
+
+                    <Label                              Grid.Row="15" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_15}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="15" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_15}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_15}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="15" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_15}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_15}"/>
+                    <Picker                             Grid.Row="15" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_15}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="15" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_15}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_15}"/>
+
+                    <Label                              Grid.Row="16" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_16}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="16" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_16}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_16}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="16" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_16}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_16}"/>
+                    <Picker                             Grid.Row="16" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_16}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="16" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_16}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_16}"/>
+
+                    <Label                              Grid.Row="17" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_17}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="17" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_17}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_17}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="17" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_17}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_17}"/>
+                    <Picker                             Grid.Row="17" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_17}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="17" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_17}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_17}"/>
+
+                    <Label                              Grid.Row="18" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_18}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="18" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_18}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_18}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="18" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_18}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_18}"/>
+                    <Picker                             Grid.Row="18" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_18}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="18" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_18}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_18}"/>
+
+                    <Label                              Grid.Row="19" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_19}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="19" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_19}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_19}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="19" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_19}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_19}"/>
+                    <Picker                             Grid.Row="19" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_19}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="19" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_19}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_19}"/>
+
+                    <Label                              Grid.Row="20" Grid.Column="0"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.nIndex_20}" Style="{StaticResource STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="20" Grid.Column="1"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtDate_20}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_20}"/>
+                    <local:UC_System_TimeControl_Label  Grid.Row="20" Grid.Column="2"            Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.dtTime_20}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_20}"/>
+                    <Picker                             Grid.Row="20" Grid.Column="3"   SelectedIndex="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.btFunction_20}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>All Off</x:String>
+                            <x:String>Temp Off</x:String>
+                            <x:String>Flow Off</x:String>
+                            <x:String>Det Off</x:String>
+                            <x:String>Method</x:String>
+                            <x:String>Start</x:String>
+                            <x:String>Set Oven</x:String>
+                            <x:String>System Start</x:String>
+                            <x:String>System Sleep</x:String>
+                            <x:String>▷ None ◁</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <local:UC_System_TimeControl_Value_Label Grid.Row="20" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_20}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_20}"/>
+                </Grid>
+            </ScrollView>
         </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>

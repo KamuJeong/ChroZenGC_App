@@ -33,7 +33,7 @@ namespace YC_ChroZenGC_Type
             //요청 패킷
             T_HEADER_PACKET header = new T_HEADER_PACKET();
             header.nPacketCode = (uint)YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG;
-            header.nSlotSize = (uint)Marshal.SizeOf(T_CHROZEN_AUXAPC_SETTINGManager.InitiatedInstance);
+            header.nSlotSize = (uint)Marshal.SizeOf(T_SYSTEM_LCD_DiagManager.InitiatedInstance);
             header.nEventIndex = position;
             //요청 패킷의 경우 nPacketLengt = SizeOf(T_YL9000HPLC_PACKETManager.InitiatedInstance)
             header.nPacketLength = (uint)Marshal.SizeOf(T_HEADER_PACKETManager.InitiatedInstance);
@@ -48,6 +48,7 @@ namespace YC_ChroZenGC_Type
             T_PACKCODE_CHROZEN_LCD_DIAG packet = new T_PACKCODE_CHROZEN_LCD_DIAG();
             packet.header.nPacketCode = (uint)YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG;
             packet.header.nSlotSize = (uint)Marshal.SizeOf(T_SYSTEM_LCD_DiagManager.InitiatedInstance);
+            
             //요청 패킷의 경우 nPacketLengt = SizeOf(T_PACKCODE)
             packet.header.nPacketLength = (uint)Marshal.SizeOf(T_PACKCODE_CHROZEN_LCD_DIAGManager.InitiatedInstance);
 

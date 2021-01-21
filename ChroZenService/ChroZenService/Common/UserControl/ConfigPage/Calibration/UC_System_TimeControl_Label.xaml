@@ -2,7 +2,7 @@
 <local:UC_System_Calib_LabelBase xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
-             x:Class="ChroZenService.UC_System_SETTING_LABEL" Background="Transparent">
+             x:Class="ChroZenService.UC_System_TimeControl_Label" Background="Transparent">
     <local:UC_System_Calib_LabelBase.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=TapGestureCommand}" 
                                       CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=TapGestureCommandParameter}"/>
@@ -11,10 +11,10 @@
         <AbsoluteLayout >
             <Grid Background="Transparent">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="179"/>
+                    <ColumnDefinition Width="95"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="38"/>
+                    <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
                 <Frame CornerRadius="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=CornerRadius}"
                    Background="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=IsEnabled, Converter={StaticResource BoolToSettingInputBackgroundConverter}}"

@@ -85,10 +85,10 @@
 
                     <Label Grid.Row="0" Grid.Column="0" Text="Remote Time" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
                     <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="5" Y2="145" Grid.RowSpan="4" Stroke="Gray" />
-                    <local:UC_System_SETTING_LABEL Grid.Row="0" Grid.Column="1"  Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fTime}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.INSTALL_DATE}"/>
+                    <local:UC_System_SETTING_LABEL Grid.Row="0" Grid.Column="1"  Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fTime}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.REMOTE_TIME}"/>
 
                     <Label Grid.Row="1" Grid.Column="0" Text="Remote event 1" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
-                    <local:UC_System_SETTING_LABEL Grid.Row="1" Grid.Column="1" IsEnabled="{Binding ViewModelSystemPage.ViewModel_System_Settings.RemoteAccess_bOnoff}" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fEventTime1}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.DATE}">
+                    <local:UC_System_SETTING_LABEL Grid.Row="1" Grid.Column="1" IsEnabled="{Binding ViewModelSystemPage.ViewModel_System_Settings.RemoteAccess_bOnoff}" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fEventTime1}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.REMOTE_EVENT1}">
                         <!--<local:UC_System_SETTING_LABEL.Triggers>
                             <Trigger Property="IsEnabled" Value="true" TargetType="{x:Type local:UC_System_SETTING_LABEL}">
                                 <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
@@ -100,7 +100,7 @@
                     </local:UC_System_SETTING_LABEL>
 
                     <Label Grid.Row="2" Grid.Column="0" Text="Remote event 2" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
-                    <local:UC_System_SETTING_LABEL Grid.Row="2" Grid.Column="1" IsEnabled="{Binding ViewModelSystemPage.ViewModel_System_Settings.RemoteAccess_bOnoff}" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fEventTime2}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.TIME}">
+                    <local:UC_System_SETTING_LABEL Grid.Row="2" Grid.Column="1" IsEnabled="{Binding ViewModelSystemPage.ViewModel_System_Settings.RemoteAccess_bOnoff}" Text="{Binding ViewModelSystemPage.ViewModel_System_Settings.fEventTime2}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_Settings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SETTING_INPUT_TYPE.REMOTE_EVENT2}">
                         <!--<local:UC_System_SETTING_LABEL.Triggers>
                             <Trigger Property="IsEnabled" Value="true" TargetType="{x:Type local:UC_System_SETTING_LABEL}">
                                 <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>

@@ -7,6 +7,46 @@ namespace ChroZenService
 {
     public class YC_Util
     {
+        public static DateTime StringToDateTime(string strDateTime)
+        {
+            if (strDateTime.Length > 7)
+            {
+                DateTime dt = new DateTime(int.Parse(strDateTime.Substring(0, 4)), int.Parse(strDateTime.Substring(4, 2)), int.Parse(strDateTime.Substring(6, 2)));
+                return dt;
+            }
+            else
+            {
+                return new DateTime();
+            }
+        }
+
+        public static DateTime StringToDate(string strDate)
+        {
+            if (strDate.Length > 7)
+            {
+                DateTime dt = new DateTime(int.Parse(strDate.Substring(0, 4)), int.Parse(strDate.Substring(4, 2)), int.Parse(strDate.Substring(6, 2)));
+                return dt;
+            }
+            else
+            {
+                return new DateTime();
+            }
+        }
+
+        public static TimeSpan StringToTime(string strTime)
+        {
+            if (strTime.Length > 3)
+            {
+                TimeSpan ts = new TimeSpan(int.Parse(strTime.Substring(0, 2)), int.Parse(strTime.Substring(0, 2)), 0);
+                
+                return ts;
+            }
+            else
+            {
+                return new TimeSpan();
+            }
+        }
+
         // Structure 정보를 Byte Array로 변환하는 함수
         public static byte[] StructToByte(object obj)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace YC_ChroZenGC_Type
@@ -11,7 +12,9 @@ namespace YC_ChroZenGC_Type
         public byte btHeaterTest;
         public byte btSensorTest;
         public byte btBoardTest;
+        [MarshalAs(UnmanagedType.I1)]
         public bool bReset;
+        [MarshalAs(UnmanagedType.I1)]
         public bool bCalibReset;
     }
     public static class T_CHROZEN_GC_DIAGNOSISManager

@@ -144,6 +144,12 @@
     <EmbeddedResource Update="Common\UserControl\ConfigPage\Calibration\UC_System_Calib_StartStopButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Common\UserControl\ConfigPage\Calibration\UC_System_TimeControl_Label.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\UserControl\ConfigPage\Calibration\UC_System_TimeControl_Value_Label.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Common\UserControl\ConfigPage\UC_ON_OFF_Button.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

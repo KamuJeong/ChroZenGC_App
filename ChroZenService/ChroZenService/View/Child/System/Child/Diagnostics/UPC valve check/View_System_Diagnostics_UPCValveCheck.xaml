@@ -42,7 +42,7 @@
 
                     </Frame>
                     <Label Grid.Row="1" Grid.Column="0" Text="Center Inlet Valve" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_POWERMONITOR}"/>
+                    <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_UPCVALVE}"/>
                     <Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterInletValve}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
                     <!--<local:UC_ON_OFF_Button Grid.Row="1" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterInletValve}"  Margin="0,-2,0,0"/>-->
 
@@ -50,7 +50,7 @@
 
                     </Frame>
                     <Label Grid.Row="2" Grid.Column="0" Text="Rear Inlet Valve" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_POWERMONITOR}"/>
+                    <Line  Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_UPCVALVE}"/>
                     <Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearInletValve}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
                     <!--<local:UC_ON_OFF_Button Grid.Row="2" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearInletValve}"  Margin="0,-2,0,0"/>-->
 
@@ -58,7 +58,7 @@
 
                     </Frame>
                     <Label Grid.Row="3" Grid.Column="0" Text="Front Det Valve" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="3" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_POWERMONITOR}"/>
+                    <Line  Grid.Row="3" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_UPCVALVE}"/>
                     <Label Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.FrontDetValve}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
                     <!--<local:UC_ON_OFF_Button Grid.Row="3" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.FrontDetValve}"  Margin="0,-2,0,0"/>-->
 
@@ -66,7 +66,7 @@
 
                     </Frame>
                     <Label Grid.Row="4" Grid.Column="0" Text="Center Det Valve" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}"/>
-                    <Line  Grid.Row="4" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_POWERMONITOR}"/>
+                    <Line  Grid.Row="4" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_UPCVALVE}"/>
                     <Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterDetValve}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
                     <!--<local:UC_ON_OFF_Button Grid.Row="4" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterDetValve}"  Margin="0,-2,0,0"/>-->
 
@@ -74,7 +74,7 @@
 
                     </Frame>
                     <Label Grid.Row="5" Grid.Column="0" Text="Rear Det Valve" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="5" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_POWERMONITOR}"/>
+                    <Line  Grid.Row="5" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_UPCVALVE}"/>
                     <Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearDetValve}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
                     <!--<local:UC_ON_OFF_Button Grid.Row="5" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearDetValve}"  Margin="0,-2,0,0"/>-->
 
@@ -82,7 +82,7 @@
 
                     </Frame>
                     <Label Grid.Row="6" Grid.Column="0" Text="Front AuxAPC Valve" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_POWERMONITOR}"/>
+                    <Line  Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_UPCVALVE}"/>
                     <Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.FrontAuxAPCValve}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
                     <!--<local:UC_ON_OFF_Button Grid.Row="6" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.FrontAuxAPCValve}"  Margin="0,-2,0,0"/>-->
 
@@ -90,7 +90,7 @@
 
                     </Frame>
                     <Label Grid.Row="7" Grid.Column="0" Text="Center AuxAPC Valve" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="7" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_POWERMONITOR}"/>
+                    <Line  Grid.Row="7" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_UPCVALVE}"/>
                     <Label Grid.Row="7" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterAuxAPCValve}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
                     <!--<local:UC_ON_OFF_Button Grid.Row="7" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.CenterAuxAPCValve}"  Margin="0,-2,0,0"/>-->
 
@@ -98,7 +98,7 @@
 
                     </Frame>
                     <Label Grid.Row="8" Grid.Column="0" Text="Rear AuxAPC Valve" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-                    <Line  Grid.Row="8" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_POWERMONITOR}"/>
+                    <Line  Grid.Row="8" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_UPCVALVE}"/>
                     <Label Grid.Row="8" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearAuxAPCValve}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
                     <!--<local:UC_ON_OFF_Button Grid.Row="8" Grid.Column="1" IsEnabled="False" IsOn="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcValveCheck.RearAuxAPCValve}"  Margin="0,-2,0,0"/>-->
 

@@ -54,6 +54,13 @@
         <x:Double x:Key="HEIGHT_SYSTEM_5">240</x:Double>
         <x:Double x:Key="HEIGHT_SYSTEM_3">150</x:Double>
         <x:Double x:Key="HEIGHT_DIAGNOSTICS_ROOT_BUTTON">70</x:Double>
+
+        <x:Double x:Key="WIDTH_TIMECONTROL_ROW_TITLE">40</x:Double>
+        <x:Double x:Key="WIDTH_TIMECONTROL_ROW_DATE">95</x:Double>
+        <x:Double x:Key="WIDTH_TIMECONTROL_ROW_TIME">95</x:Double>
+        <x:Double x:Key="WIDTH_TIMECONTROL_ROW_FUNCTION">95</x:Double>
+        <x:Double x:Key="WIDTH_TIMECONTROL_ROW_VAL">55</x:Double>
+        
         <Thickness x:Key="THICKNESS_FRAME_MARGIN_TOP">
             <Thickness.Left>18</Thickness.Left>
             <Thickness.Top>7</Thickness.Top>
@@ -196,6 +203,13 @@
         <cvt:E_CONFIG_MENU_TYPEToBoolConverter x:Key="E_CONFIG_MENU_TYPEToBoolConverter"/>
         <cvt:DoubleToGridLengthConverter x:Key="DoubleToGridLengthConverter"/>
         <cvt:InletTypeToBoolConverter x:Key="InletTypeToBoolConverter"/>
+        <Style x:Key="STYLE_LINE_SYSTEM_SETTING_TITLE_UPCVALVE" TargetType="{x:Type Line}">
+            <Setter Property="X1" Value="237"/>
+            <Setter Property="X2" Value="237"/>
+            <Setter Property="Y1" Value="5"/>
+            <Setter Property="Y2" Value="30"/>
+            <Setter Property="Stroke" Value="Gray"/>
+        </Style>
         <Style x:Key="STYLE_LINE_SYSTEM_SETTING_TITLE_POWERMONITOR" TargetType="{x:Type Line}">
             <Setter Property="X1" Value="208"/>
             <Setter Property="X2" Value="208"/>
@@ -236,6 +250,13 @@
             <Setter Property="Margin" Value="0,2,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
         </Style>
+        <Style x:Key="STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="Margin" Value="15,2,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
+        </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_CONFIG_ROW_TITLE" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="VerticalOptions" Value="Center"/>
@@ -246,6 +267,12 @@
         <Style x:Key="STYLE_PICKER_SYSTEM_CONFIG_VALVE" TargetType="{x:Type Picker}">
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Margin" Value="0,2,1,0"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="BackgroundColor" Value="White"/>
+        </Style>
+        <Style x:Key="STYLE_PICKER_SYSTEM_TIMECONTROL" TargetType="{x:Type Picker}">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,5,0,-4"/>
             <Setter Property="TextColor" Value="Black"/>
             <Setter Property="BackgroundColor" Value="White"/>
         </Style>
