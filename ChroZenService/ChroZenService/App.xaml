@@ -41,6 +41,10 @@
         <x:Double x:Key="HEIGHT_CONTROLPAGE_NARROW_1_PLUS7">40</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_NARROW_1_PLUS6">39</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_NARROW_1">33</x:Double>
+
+        <x:Double x:Key="HEIGHT_CONFIG_3">130</x:Double>
+        <x:Double x:Key="HEIGHT_CONFIG_2">90</x:Double>
+        
         <x:Double x:Key="HEIGHT_CONTROLPAGE_3">95</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_4">125</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_5">195</x:Double>
@@ -229,12 +233,27 @@
             <Setter Property="Margin" Value="18,5,18,5"/>
             <Setter Property="TextColor" Value="White"/>
         </Style>
+        <Style x:Key="STYLE_LABEL_CONFIG_TITLE_BOLD_LEFT" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="Margin" Value="23,2,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
+        </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="22"/>
             <Setter Property="VerticalOptions" Value="Center"/>
             <Setter Property="HorizontalOptions" Value="End"/>
             <Setter Property="Margin" Value="0,2,10,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_CONFIG_SETTING_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
+            <Setter Property="FontSize" Value="16"/>
+            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
+            <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_SETTING_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <Setter Property="FontSize" Value="16"/>

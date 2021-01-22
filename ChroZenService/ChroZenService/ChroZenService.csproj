@@ -315,6 +315,9 @@
     <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_System_Calib_Settings_StartStopButton.xaml.cs">
       <DependentUpon>UC_System_Calib_Settings_StartStopButton.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_Config_SETTING_LABEL.xaml.cs">
+      <DependentUpon>UC_Config_SETTING_LABEL.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_System_SETTING_LABEL.xaml.cs">
       <DependentUpon>UC_System_SETTING_LABEL.xaml</DependentUpon>
     </Compile>

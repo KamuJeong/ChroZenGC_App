@@ -3,16 +3,43 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
+using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
-    public class ViewModel_Config_OvenConfig : ChildNotifyBase
+    public class ViewModel_Config_OvenConfig : Model_Config
     {
         #region 생성자 & 이벤트 헨들러
 
         public ViewModel_Config_OvenConfig()
         {
             DefaultCommand = new RelayCommand(DefaultCommandAction);
+
+            KeyPadCancelCommand = new RelayCommand(KeyPadCancelCommandAction);
+            KeyPadDeleteCommand = new RelayCommand(KeyPadDeleteCommandAction);
+            KeyPadApplyCommand = new RelayCommand(KeyPadApplyCommandAction);
+            KeyPadOnCommand = new RelayCommand(KeyPadOnCommandAction);
+            KeyPadOffCommand = new RelayCommand(KeyPadOffCommandAction);
+            KeyPadKeyPadClickCommand = new RelayCommand(KeyPadKeyPadClickCommandAction);
+
+            SetCommand = new RelayCommand(SetCommandAction);
+
+            CryogenicCoolingOnCommand = new RelayCommand(CryogenicCoolingOnCommandAction);
+            CryogenicCoolingOffCommand = new RelayCommand(CryogenicCoolingOnCommandAction);
+
+            FastCoolingOnCommand = new RelayCommand(FastCoolingOnCommandAction);
+            FastCoolingOffCommand = new RelayCommand(FastCoolingOffCommandAction);
+
+            AutoReadyrunOnCommand = new RelayCommand(AutoReadyrunOnCommandAction);
+            AutoReadyrunOffCommand = new RelayCommand(AutoReadyrunOffCommandAction);
+
+            RunStartOnCommand = new RelayCommand(RunStartOnCommandAction);
+            RunStartOffCommand = new RelayCommand(RunStartOffCommandAction);
+
+            PostRunOnCommand = new RelayCommand(PostRunOnCommandAction);
+            PostRunOffCommand = new RelayCommand(PostRunOffCommandAction);
+
+            EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -21,25 +48,27 @@ namespace ChroZenService
 
         #region Property
 
+        TCPManager tcpManager;
+
         float _fMaxTemp;
         public float fMaxTemp { get { return _fMaxTemp; } set { _fMaxTemp = value; OnPropertyChanged("fMaxTemp"); } }
 
         float _fEquibTime;
         public float fEquibTime { get { return _fEquibTime; } set { _fEquibTime = value; OnPropertyChanged("fEquibTime"); } }
 
-        byte _bAutoReadyrun;
-        public byte bAutoReadyrun { get { return _bAutoReadyrun; } set { _bAutoReadyrun = value; OnPropertyChanged("bAutoReadyrun"); } }
+        bool _bAutoReadyrun;
+        public bool bAutoReadyrun { get { return _bAutoReadyrun; } set { _bAutoReadyrun = value; OnPropertyChanged("bAutoReadyrun"); } }
 
-        byte _bCryogenic;
-        public byte bCryogenic { get { return _bCryogenic; } set { _bCryogenic = value; OnPropertyChanged("bCryogenic"); } }
+        bool _bCryogenic;
+        public bool bCryogenic { get { return _bCryogenic; } set { _bCryogenic = value; OnPropertyChanged("bCryogenic"); } }
 
-        byte _bFastCryo;
-        public byte bFastCryo { get { return _bFastCryo; } set { _bFastCryo = value; OnPropertyChanged("bFastCryo"); } }
+        bool _bFastCryo;
+        public bool bFastCryo { get { return _bFastCryo; } set { _bFastCryo = value; OnPropertyChanged("bFastCryo"); } }
 
-        ViewModel_Config_OvenConfig_Runstart _runstart;
+        ViewModel_Config_OvenConfig_Runstart _runstart = new ViewModel_Config_OvenConfig_Runstart();
         public ViewModel_Config_OvenConfig_Runstart runstart { get { return _runstart; } set { _runstart = value; OnPropertyChanged("runstart"); } }
 
-        ViewModel_Cofig_OvenConfig_Postrun _Postrun;
+        ViewModel_Cofig_OvenConfig_Postrun _Postrun = new ViewModel_Cofig_OvenConfig_Postrun();
         public ViewModel_Cofig_OvenConfig_Postrun Postrun { get { return _Postrun; } set { _Postrun = value; OnPropertyChanged("Postrun"); } }
 
 
@@ -55,6 +84,430 @@ namespace ChroZenService
             Debug.WriteLine("DefaultCommand Fired");
         }
         #endregion DefaultCommand 
+
+        #region KeyPad : CancelCommand
+
+        public RelayCommand KeyPadCancelCommand { get; set; }
+        private void KeyPadCancelCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+            //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            //{
+            //    IsKeyPadShown = false,
+            //};
+            //EventManager.KeyPadRequestEvent(vmKeyPad);
+        }
+
+        #endregion KeyPad : CancelCommand
+
+        #region KeyPad : DeleteCommand
+
+        public RelayCommand KeyPadDeleteCommand { get; set; }
+        private void KeyPadDeleteCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1)
+            {
+                double tempVal;
+                double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Substring(0, mainVM.ViewModel_KeyPad.CurrentValue.Length - 1), out tempVal);
+                Debug.WriteLine(string.Format("tempVal : {0}", tempVal));
+                mainVM.ViewModel_KeyPad.CurrentValue = tempVal.ToString();
+            }
+            mainVM.ViewModel_KeyPad.IsNeedRefresh = false;
+        }
+
+        #endregion KeyPad : DeleteCommand
+
+        #region KeyPad : ApplyCommand
+
+        public RelayCommand KeyPadApplyCommand { get; set; }
+        private void KeyPadApplyCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+            //.시작 케이스
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+            {
+                double tempVal;
+                double.TryParse("0" + mainVM.ViewModel_KeyPad.CurrentValue, out tempVal);
+                if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                {
+                    mainVM.ViewModel_KeyPad.CurrentValue = "0" + mainVM.ViewModel_KeyPad.CurrentValue;
+                }
+            }
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '-' &&
+                mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+            {
+                double tempVal;
+                double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0"), out tempVal);
+                if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                {
+                    mainVM.ViewModel_KeyPad.CurrentValue = mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0");
+                }
+            }
+            float tempFloatVal = 0;
+            if (float.TryParse(mainVM.ViewModel_KeyPad.CurrentValue, out tempFloatVal))
+            {
+                switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
+                {
+                    case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_MAX_TEMP:
+                        {
+                            fMaxTemp = (byte)tempFloatVal;
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_LABEL_MAX, tcpManager);
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_EQUILIBRIUM_TIME:
+                        {
+                            fEquibTime = (byte)tempFloatVal;
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_LABEL_EQUILIBRIUM, tcpManager);
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_NO_OF_RUN:
+                        {
+                            runstart.iCount = (byte)tempFloatVal;
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_NO_OF_RUN, tcpManager);
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_CYCLE_TIME:
+                        {
+                            runstart.fCycletime = (byte)tempFloatVal;
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_CYCLE, tcpManager);
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_POSTRUN_TEMP:
+                        {
+                            Postrun.fTemp = (byte)tempFloatVal;
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN_TEMP, tcpManager);
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_POSTRUN_TIME:
+                        {
+                            Postrun.fTime = (byte)tempFloatVal;
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN_TIME, tcpManager);
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+
+                }
+            }
+
+            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+
+            //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            //{
+            //    IsKeyPadShown = false,
+            //};
+            //EventManager.KeyPadRequestEvent(vmKeyPad);
+        }
+
+        #endregion KeyPad : ApplyCommand
+
+        #region KeyPad : OnCommand
+
+        public RelayCommand KeyPadOnCommand { get; set; }
+        private void KeyPadOnCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+        }
+
+        #endregion KeyPad : OnCommand
+
+        #region KeyPad : OffCommand
+
+        public RelayCommand KeyPadOffCommand { get; set; }
+        private void KeyPadOffCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+        }
+
+        #endregion KeyPad : OffCommand
+
+        #region KeyPad : KeyPadClickCommand
+
+        public RelayCommand KeyPadKeyPadClickCommand { get; set; }
+        private void KeyPadKeyPadClickCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            if (mainVM.ViewModel_KeyPad.IsNeedRefresh)
+            {
+                mainVM.ViewModel_KeyPad.CurrentValue = "";
+                mainVM.ViewModel_KeyPad.IsNeedRefresh = false;
+            }
+
+            switch (sender.Text)
+            {
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                case "0":
+                    {
+                        //.시작 케이스
+                        if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+                        {
+                            double tempVal;
+                            double.TryParse("0" + mainVM.ViewModel_KeyPad.CurrentValue, out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                        else if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '-' &&
+                            mainVM.ViewModel_KeyPad.CurrentValue[1] == '.')
+                        {
+                            double tempVal;
+                            double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0"), out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                        else
+                        {
+                            double tempVal;
+                            double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue + sender.Text, out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                    }
+                    break;
+                case ".":
+                    {
+                        if (!mainVM.ViewModel_KeyPad.CurrentValue.Contains("."))
+                        {
+                            mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                        }
+                    }
+                    break;
+                case "-/+":
+                    {
+                        if (!mainVM.ViewModel_KeyPad.CurrentValue.Contains("-"))
+                        {
+                            mainVM.ViewModel_KeyPad.CurrentValue = "-" + mainVM.ViewModel_KeyPad.CurrentValue;
+                        }
+                    }
+                    break;
+
+            }
+        }
+
+        #endregion KeyPad : KeyPadClickCommand
+
+        #region SetCommand
+        public RelayCommand SetCommand { get; set; }
+        private void SetCommandAction(object param)
+        {
+            ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            {
+                IsKeyPadShown = true,
+                KeyPadType = KeyPad.E_KEYPAD_TYPE.DOUBLE,
+                MinValue = 0,
+                CancelCommand = KeyPadCancelCommand,
+                ApplyCommand = KeyPadApplyCommand,
+                DeleteCommand = KeyPadDeleteCommand,
+                OnCommand = KeyPadOnCommand,
+                OffCommand = KeyPadOffCommand,
+                KeyPadClickCommand = KeyPadKeyPadClickCommand,
+            };
+
+            switch ((E_KEY_PAD_SET_MEASURE_TYPE)param)
+            {
+                case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_MAX_TEMP:
+                    {
+                        vmKeyPad.Title = "Max Temp";
+                        vmKeyPad.CurrentValue = fMaxTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_INIT_TEMP;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_EQUILIBRIUM_TIME:
+                    {
+                        vmKeyPad.Title = "Equilibrium Time";
+                        vmKeyPad.CurrentValue = fEquibTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_INIT_TIME;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_NO_OF_RUN:
+                    {
+                        vmKeyPad.Title = "No. of run";
+                        vmKeyPad.CurrentValue = runstart.iCount.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.MaxValue = 120;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_CYCLE_TIME:
+                    {
+                        vmKeyPad.Title = "Cycle Time";
+                        vmKeyPad.CurrentValue = runstart.iCount.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.MaxValue = 120;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_POSTRUN_TEMP:
+                    {
+                        vmKeyPad.Title = "PostRun Temp";
+                        vmKeyPad.CurrentValue = runstart.iCount.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.MaxValue = 120;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_POSTRUN_TIME:
+                    {
+                        vmKeyPad.Title = "PostRun Time";
+                        vmKeyPad.CurrentValue = runstart.iCount.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        vmKeyPad.MaxValue = 120;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
+                    }
+                    break;
+            }
+
+            EventManager.KeyPadRequestEvent(vmKeyPad);
+
+            //TODO :             
+            Debug.WriteLine("SetCommand Fired");
+        }
+        #endregion SetCommand 
+
+        #region CryogenicCoolingOnCommand
+        public RelayCommand CryogenicCoolingOnCommand { get; set; }
+        private void CryogenicCoolingOnCommandAction(object param)
+        {
+            bCryogenic = true;
+
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_CRYOGENIC, tcpManager);
+            //TODO :             
+            Debug.WriteLine("CryogenicCoolingOnCommand Fired");
+        }
+        #endregion CryogenicCoolingOnCommand 
+
+        #region CryogenicCoolingOffCommand
+        public RelayCommand CryogenicCoolingOffCommand { get; set; }
+        private void CryogenicCoolingOffCommandAction(object param)
+        {
+            bCryogenic = false;
+
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_CRYOGENIC, tcpManager);
+            //TODO :             
+            Debug.WriteLine("CryogenicCoolingOffCommand Fired");
+        }
+        #endregion CryogenicCoolingOffCommand 
+
+        #region FastCoolingOnCommand
+        public RelayCommand FastCoolingOnCommand { get; set; }
+        private void FastCoolingOnCommandAction(object param)
+        {
+            bFastCryo = true;
+
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_FAST_COOLING, tcpManager);
+            //TODO :             
+            Debug.WriteLine("FastCoolingOnCommand Fired");
+        }
+        #endregion FastCoolingOnCommand 
+
+        #region FastCoolingOffCommand
+        public RelayCommand FastCoolingOffCommand { get; set; }
+        private void FastCoolingOffCommandAction(object param)
+        {
+            bFastCryo = false;
+
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_FAST_COOLING, tcpManager);
+            //TODO :             
+            Debug.WriteLine("FastCoolingOffCommand Fired");
+        }
+        #endregion FastCoolingOffCommand 
+
+        #region AutoReadyrunOnCommand
+        public RelayCommand AutoReadyrunOnCommand { get; set; }
+        private void AutoReadyrunOnCommandAction(object param)
+        {
+            bAutoReadyrun = true;
+
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_AUTO_READY_RUN, tcpManager);
+            //TODO :             
+            Debug.WriteLine("AutoReadyrunOnCommand Fired");
+        }
+        #endregion AutoReadyrunOnCommand 
+
+        #region AutoReadyrunOffCommand
+        public RelayCommand AutoReadyrunOffCommand { get; set; }
+        private void AutoReadyrunOffCommandAction(object param)
+        {
+            bAutoReadyrun = false;
+
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_AUTO_READY_RUN, tcpManager);
+            //TODO :             
+            Debug.WriteLine("AutoReadyrunOffCommand Fired");
+        }
+        #endregion AutoReadyrunOffCommand 
+
+        #region RunStartOnCommand
+        public RelayCommand RunStartOnCommand { get; set; }
+        private void RunStartOnCommandAction(object param)
+        {
+            runstart.bOnoff = true;
+
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_RUN_START, tcpManager);
+            //TODO :             
+            Debug.WriteLine("RunStartOnCommand Fired");
+        }
+        #endregion RunStartOnCommand 
+
+        #region RunStartOffCommand
+        public RelayCommand RunStartOffCommand { get; set; }
+        private void RunStartOffCommandAction(object param)
+        {
+            runstart.bOnoff = false;
+
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_RUN_START, tcpManager);
+            //TODO :             
+            Debug.WriteLine("RunStartOffCommand Fired");
+        }
+        #endregion RunStartOffCommand 
+
+        #region PostRunOnCommand
+        public RelayCommand PostRunOnCommand { get; set; }
+        private void PostRunOnCommandAction(object param)
+        {
+            Postrun.bOnoff = true;
+
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN, tcpManager);
+            //TODO :             
+            Debug.WriteLine("PostRunOnCommand Fired");
+        }
+        #endregion PostRunOnCommand 
+
+        #region PostRunOffCommand
+        public RelayCommand PostRunOffCommand { get; set; }
+        private void PostRunOffCommandAction(object param)
+        {
+            Postrun.bOnoff = false;
+
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN, tcpManager);
+            //TODO :             
+            Debug.WriteLine("PostRunOffCommand Fired");
+        }
+        #endregion PostRunOffCommand 
 
         #endregion Command
 

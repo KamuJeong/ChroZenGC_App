@@ -6,8 +6,8 @@ namespace ChroZenService
 {
     public class ViewModel_Config_OvenConfig_Runstart : BindableNotifyBase
     {
-        byte _bOnoff;
-        public byte bOnoff { get { return _bOnoff; } set { _bOnoff = value; OnPropertyChanged("bOnoff"); } }
+        bool _bOnoff;
+        public bool bOnoff { get { return _bOnoff; } set { _bOnoff = value; OnPropertyChanged("bOnoff"); } }
 
         ushort _iCount;
         public ushort iCount { get { return _iCount; } set { _iCount = value; OnPropertyChanged("iCount"); } }

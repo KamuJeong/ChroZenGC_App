@@ -1,31 +1,113 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_Config_OvenConfig">
-  <ContentView.Content>
+    <ContentView.Content>
         <AbsoluteLayout>
             <Grid HeightRequest="703">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_3}"/>
-                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_2}"/>
-                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_3}"/>
-                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_2}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONFIG_3}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONFIG_2}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONFIG_3}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONFIG_3}"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="417"/>
                 </Grid.ColumnDefinitions>
                 <Frame Grid.Row="0" CornerRadius="18" Margin="18,10,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
-                    
+
                 </Frame>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208"/>
+                        <ColumnDefinition Width="170"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Max Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" Margin="0,12,10,0"/>
+                    <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="15" Y2="132" Grid.RowSpan="3" Stroke="Gray" />
+                    <local:UC_Config_SETTING_LABEL Grid.Row="0" Grid.Column="1"  Text="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.fMaxTemp}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_MAX_TEMP}" Margin="0,15,0,0"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Equilibrium Time" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_Config_SETTING_LABEL Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.fEquibTime}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_EQUILIBRIUM_TIME}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Cryogenic Cooling" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_ON_OFF_Button Grid.Row="2" Grid.Column="1" IsOn="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.bCryogenic}"  Margin="0,2,0,0" OnCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.CryogenicCoolingOnCommand}" OffCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.CryogenicCoolingOffCommand}" />
+                </Grid>
+
                 <Frame Grid.Row="1" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                 </Frame>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208"/>
+                        <ColumnDefinition Width="170"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Fast Cooling" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="8" Y2="81" Grid.RowSpan="3" Stroke="Gray" />
+                    <local:UC_ON_OFF_Button Grid.Row="0" Grid.Column="1" IsOn="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.bFastCryo}" Margin="0,7,0,0" OnCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.FastCoolingOnCommand}" OffCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.FastCoolingOffCommand}" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Auto Readyrun" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_ON_OFF_Button Grid.Row="1" Grid.Column="1" IsOn="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.bAutoReadyrun}"  Margin="0,2,0,0" OnCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.AutoReadyrunOnCommand}" OffCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.AutoReadyrunOffCommand}" />
+                </Grid>
+
                 <Frame Grid.Row="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                 </Frame>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208"/>
+                        <ColumnDefinition Width="170"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Run Start" Style="{StaticResource STYLE_LABEL_CONFIG_TITLE_BOLD_LEFT}" Margin="23,12,0,0"/>
+                    <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="15" Y2="132" Grid.RowSpan="3" Stroke="Gray" />
+                    <local:UC_ON_OFF_Button Grid.Row="0" Grid.Column="1" IsOn="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.runstart.bOnoff}"  Margin="0,7,0,0" OnCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.RunStartOnCommand}" OffCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.RunStartOffCommand}" />
+                    
+                    <Label Grid.Row="1" Grid.Column="0" Text="No. of run" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_Config_SETTING_LABEL Grid.Row="1" Grid.Column="1"  Text="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.runstart.iCount}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_NO_OF_RUN}" Margin="0,2,0,0"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Cycle Time" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_Config_SETTING_LABEL Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.runstart.fCycletime}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_CYCLE_TIME}" Margin="0,2,0,0"/>
+                </Grid>
+
                 <Frame Grid.Row="3" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                 </Frame>
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208"/>
+                        <ColumnDefinition Width="170"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Post Run" Style="{StaticResource STYLE_LABEL_CONFIG_TITLE_BOLD_LEFT}" Margin="23,12,0,0"/>
+                    <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="15" Y2="132" Grid.RowSpan="3" Stroke="Gray" />
+                    <local:UC_ON_OFF_Button Grid.Row="0" Grid.Column="1" IsOn="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.Postrun.bOnoff}"  Margin="0,7,0,0" OnCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.PostRunOnCommand}" OffCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.PostRunOffCommand}" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Postrun Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_Config_SETTING_LABEL Grid.Row="1" Grid.Column="1"  Text="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.Postrun.fTemp}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_POSTRUN_TEMP}" Margin="0,2,0,0"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Postrun Time" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_Config_SETTING_LABEL Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.Postrun.fTime}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_POSTRUN_TIME}" Margin="0,2,0,0"/>
+
+                </Grid>
+
             </Grid>
         </AbsoluteLayout>
     </ContentView.Content>
