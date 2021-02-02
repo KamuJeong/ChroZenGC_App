@@ -44,14 +44,22 @@
 
         <x:Double x:Key="HEIGHT_CONFIG_3">130</x:Double>
         <x:Double x:Key="HEIGHT_CONFIG_2">90</x:Double>
-        
+        <x:Double x:Key="HEIGHT_CONFIG_2_LARGE">100</x:Double>
+        <x:Double x:Key="HEIGHT_CONFIG_1">40</x:Double>
+        <x:Double x:Key="HEIGHT_CONFIG_14">580</x:Double>
+
+        <x:Double x:Key="WIDTH_CONFIG_OVEN_SETTING_COLUMN_TITLE">95</x:Double>
+        <x:Double x:Key="WIDTH_CONFIG_OVEN_SETTING_COLUMN_ACTUAL">95</x:Double>
+        <x:Double x:Key="WIDTH_CONFIG_OVEN_SETTING_COLUMN_SETTING">95</x:Double>
+        <x:Double x:Key="WIDTH_CONFIG_OVEN_SETTING_COLUMN_TIME">95</x:Double>
+
         <x:Double x:Key="HEIGHT_CONTROLPAGE_3">95</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_4">125</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_5">195</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_8">250</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_9">300</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_11">528</x:Double>
-        <x:Double x:Key="HEIGHT_CONTROLPAGE_14">480</x:Double>
+
         <x:Double x:Key="HEIGHT_CONTROLPAGE_18">640</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_BOTTOM">60</x:Double>
         <x:Double x:Key="HEIGHT_SYSTEMPAGE_CALIB_BUTTON">30</x:Double>
@@ -64,6 +72,25 @@
         <x:Double x:Key="WIDTH_TIMECONTROL_ROW_TIME">95</x:Double>
         <x:Double x:Key="WIDTH_TIMECONTROL_ROW_FUNCTION">95</x:Double>
         <x:Double x:Key="WIDTH_TIMECONTROL_ROW_VAL">55</x:Double>
+
+        <x:Double x:Key="WIDTH_SIGNAL_SETTING_COLUMN_TITLE">75</x:Double>
+        <x:Double x:Key="WIDTH_SIGNAL_SETTING_COLUMN_TIME">142.5</x:Double>
+        <x:Double x:Key="WIDTH_SIGNAL_SETTING_COLUMN_SOURCE">142.5</x:Double>
+
+        <x:Double x:Key="WIDTH_SIGNAL_SETTING_ROW_8">330</x:Double>
+        <x:Double x:Key="HEIGHT_CONFIG_SIGNAL_MIDDLE">31</x:Double>
+
+        <x:Double x:Key="WIDTH_VALVE_INITIAL_STATE_COLUMN_TITLE">80</x:Double>
+        <x:Double x:Key="WIDTH_VALVE_INITIAL_STATE_COLUMN_INITIAL_STATE">179</x:Double>
+        <x:Double x:Key="WIDTH_VALVE_INITIAL_STATE_COLUMN_SPARE">138</x:Double>
+
+        <x:Double x:Key="HEIGHT_VALVE_INITIAL_STATE_TABLE">450</x:Double>
+        <x:Double x:Key="HEIGHT_VALVE_PROGRAM_TABLE">693</x:Double>
+        <x:Double x:Key="WIDTH_VALVE_PROGRAM_COLUMN_TITLE">80</x:Double>
+        <x:Double x:Key="WIDTH_VALVE_PROGRAM_COLUMN_TIME">100</x:Double>
+        <x:Double x:Key="WIDTH_VALVE_PROGRAM_COLUMN_VALVE">105</x:Double>
+        <x:Double x:Key="WIDTH_VALVE_PROGRAM_COLUMN_STATE">80</x:Double>
+        <x:Double x:Key="WIDTH_VALVE_PROGRAM_COLUMN_SPARE">40</x:Double>
         
         <Thickness x:Key="THICKNESS_FRAME_MARGIN_TOP">
             <Thickness.Left>18</Thickness.Left>
@@ -98,16 +125,16 @@
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="LGB_CONTROL_SYSTEM_LABEL_BACKGROUND_DARK_0" StartPoint="0.4,0" EndPoint="1,1">
             <LinearGradientBrush.GradientStops>
-                <GradientStop Color="#3d3d49" Offset="0" />
-                <GradientStop Color="#3d3d49" Offset="0.4" />
-                <GradientStop Color="#34323d" Offset="0.7" />
-                <GradientStop Color="#33333d" Offset="1" />
+                <GradientStop Color="#ff3d3d49" Offset="0" />
+                <GradientStop Color="#ff3d3d49" Offset="0.4" />
+                <GradientStop Color="#ff34323d" Offset="0.7" />
+                <GradientStop Color="#ff33333d" Offset="1" />
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="SCB_CONTROL_BACKGROUND_DARK_0" StartPoint="0,0" EndPoint="0,1">
             <LinearGradientBrush.GradientStops>
-                <GradientStop Color="#25242a" Offset="0" />
-                <GradientStop Color="#1b1a1f" Offset="1" />
+                <GradientStop Color="#ff25242a" Offset="0" />
+                <GradientStop Color="#ff1b1a1f" Offset="1" />
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="SCB_CALIB_BUTTON_BACKGROUND_LIGHTGRAY_0" StartPoint="0.4,0" EndPoint="1,1">
@@ -193,6 +220,8 @@
         <x:Int32 x:Key="FS_MAINPAGE_NORMAL">24</x:Int32>
         <FileImageSource x:Key="IMG_CONFIG_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
         <FileImageSource x:Key="IMG_SYSTEM_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
+        <cvt:ValveProgramStateToStringConverter x:Key="ValveProgramStateToStringConverter"/>
+        <cvt:ValveInitialStateToBoolConverter x:Key="ValveInitialStateToBoolConverter"/>
         <cvt:BoolToSettingInputBackgroundConverter x:Key="BoolToSettingInputBackgroundConverter"/>
         <cvt:BoolToAuxTempInstallConditionConverter x:Key="BoolToAuxTempInstallConditionConverter"/>
         <cvt:DetTypeConverter x:Key="DetTypeConverter"/>
@@ -255,6 +284,19 @@
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>
+        <Style x:Key="STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
+            <Setter Property="FontSize" Value="16"/>
+            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            <Setter Property="Margin" Value="0,1,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
+            <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_CONFIG_VALVE_PROGRAM_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
+            <Setter Property="FontSize" Value="16"/>
+            <!--<Setter Property="CornerRadius" Value="5"/>-->            
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
+            <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
+        </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_SETTING_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <Setter Property="FontSize" Value="16"/>
             <!--<Setter Property="CornerRadius" Value="5"/>-->
@@ -262,11 +304,25 @@
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>
+        <Style x:Key="STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Margin" Value="12,2,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
+        </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="VerticalOptions" Value="Center"/>
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="Margin" Value="0,2,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Margin" Value="20,2,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_TIMECONTROL_ROW_TITLE" TargetType="{x:Type Label}">
@@ -292,6 +348,12 @@
         <Style x:Key="STYLE_PICKER_SYSTEM_TIMECONTROL" TargetType="{x:Type Picker}">
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Margin" Value="0,5,0,-4"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="BackgroundColor" Value="White"/>
+        </Style>
+        <Style x:Key="STYLE_PICKER_CONFIG_VALVE_PROGRAM" TargetType="{x:Type Picker}">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,1,0,-4"/>
             <Setter Property="TextColor" Value="Black"/>
             <Setter Property="BackgroundColor" Value="White"/>
         </Style>
@@ -342,6 +404,28 @@
             <Setter Property="VerticalOptions" Value="Center"/>
             <Setter Property="HorizontalOptions" Value="Start"/>
             <Setter Property="Margin" Value="0,2,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_CONFIG_TITLE" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="Margin" Value="32,2,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_CONFIG_SIGNAL_TITLE" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="Margin" Value="32,6,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_SIGNAL_MIDDLE" TargetType="{x:Type Label}">
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="Margin" Value="10,2,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE" TargetType="{x:Type Label}">

@@ -21,9 +21,11 @@
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" BackgroundColor="Transparent"
                         Command="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=OffCommand}"                        
+                            CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ClickCommandParameter}"
                         />
                     <Button Grid.Column="1" BackgroundColor="Transparent"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=OnCommand}"                       
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=OnCommand}"          
+                            CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ClickCommandParameter}"
                         />
                 </Grid>                
             </Grid>

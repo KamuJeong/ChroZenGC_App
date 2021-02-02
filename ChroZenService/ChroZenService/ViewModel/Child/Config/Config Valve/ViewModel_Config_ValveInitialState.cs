@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using YC_ChroZenGC_Type;
+using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
@@ -12,6 +14,11 @@ namespace ChroZenService
         public ViewModel_Config_ValveInitialState()
         {
             DefaultCommand = new RelayCommand(DefaultCommandAction);
+
+            OnCommand = new RelayCommand(OnCommandAction);
+            OffCommand = new RelayCommand(OffCommandAction);
+
+            EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -19,6 +26,8 @@ namespace ChroZenService
         #region Binding
 
         #region Property
+
+        TCPManager tcpManager;
 
         public byte[] _btType1 = new byte[ChroZenService_Const.SYSTEM_VALVE_CNT];
 
@@ -48,6 +57,50 @@ namespace ChroZenService
         /// </summary>
         public byte[] btMultiInitState { get { return _btMultiInitState; } set { _btMultiInitState = value; OnPropertyChanged("btMultiInitState"); } }
 
+        bool _type1_1;
+        public bool type1_1 { get { return _type1_1; } set { _type1_1 = value; OnPropertyChanged("type1_1"); } }
+        bool _type1_2;
+        public bool type1_2 { get { return _type1_2; } set { _type1_2 = value; OnPropertyChanged("type1_2"); } }
+        bool _type1_3;
+        public bool type1_3 { get { return _type1_3; } set { _type1_3 = value; OnPropertyChanged("type1_3"); } }
+        bool _type1_4;
+        public bool type1_4 { get { return _type1_4; } set { _type1_4 = value; OnPropertyChanged("type1_4"); } }
+        bool _type1_5;
+        public bool type1_5 { get { return _type1_5; } set { _type1_5 = value; OnPropertyChanged("type1_5"); } }
+        bool _type1_6;
+        public bool type1_6 { get { return _type1_6; } set { _type1_6 = value; OnPropertyChanged("type1_6"); } }
+        bool _type1_7;
+        public bool type1_7 { get { return _type1_7; } set { _type1_7 = value; OnPropertyChanged("type1_7"); } }
+        bool _type1_8;
+        public bool type1_8 { get { return _type1_8; } set { _type1_8 = value; OnPropertyChanged("type1_8"); } }
+
+        bool _type1_M1;
+        public bool type1_M1 { get { return _type1_M1; } set { _type1_M1 = value; OnPropertyChanged("type1_M1"); } }
+        bool _type1_M2;
+        public bool type1_M2 { get { return _type1_M2; } set { _type1_M2 = value; OnPropertyChanged("type1_M2"); } }
+
+        bool _initState_1;
+        public bool initState_1 { get { return _initState_1; } set { _initState_1 = value; OnPropertyChanged("initState_1"); } }
+        bool _initState_2;
+        public bool initState_2 { get { return _initState_2; } set { _initState_2 = value; OnPropertyChanged("initState_2"); } }
+        bool _initState_3;
+        public bool initState_3 { get { return _initState_3; } set { _initState_3 = value; OnPropertyChanged("initState_3"); } }
+        bool _initState_4;
+        public bool initState_4 { get { return _initState_4; } set { _initState_4 = value; OnPropertyChanged("initState_4"); } }
+        bool _initState_5;
+        public bool initState_5 { get { return _initState_5; } set { _initState_5 = value; OnPropertyChanged("initState_5"); } }
+        bool _initState_6;
+        public bool initState_6 { get { return _initState_6; } set { _initState_6 = value; OnPropertyChanged("initState_6"); } }
+        bool _initState_7;
+        public bool initState_7 { get { return _initState_7; } set { _initState_7 = value; OnPropertyChanged("initState_7"); } }
+        bool _initState_8;
+        public bool initState_8 { get { return _initState_8; } set { _initState_8 = value; OnPropertyChanged("initState_8"); } }
+
+        byte _initState_M1;
+        public byte initState_M1 { get { return _initState_M1; } set { _initState_M1 = value; OnPropertyChanged("initState_M1"); } }
+        byte _initState_M2;
+        public byte initState_M2 { get { return _initState_M2; } set { _initState_M2 = value; OnPropertyChanged("initState_M2"); } }
+
         #endregion Property
 
         #region Command
@@ -60,6 +113,146 @@ namespace ChroZenService
             Debug.WriteLine("DefaultCommand Fired");
         }
         #endregion DefaultCommand 
+
+        #region OnCommand
+        public RelayCommand OnCommand { get; set; }
+        private void OnCommandAction(object param)
+        {
+            
+
+            switch ((E_GLOBAL_COMMAND_TYPE)param)
+            {
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_1:
+                    {
+                        initState_1 = true;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[0] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_2:
+                    {
+                        initState_2 = true;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[1] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_3:
+                    {
+                        initState_3 = true;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[2] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_4:
+                    {
+                        initState_4 = true;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[3] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_5:
+                    {
+                        initState_5 = true;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[4] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_6:
+                    {
+                        initState_6 = true;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[5] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_7:
+                    {
+                        initState_7 = true;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[6] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_8:
+                    {
+                        initState_8 = true;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[7] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+            }
+
+            //TODO :             
+            Debug.WriteLine("OnCommand Fired");
+        }
+        #endregion OnCommand 
+
+        #region OffCommand
+        public RelayCommand OffCommand { get; set; }
+        private void OffCommandAction(object param)
+        {
+            switch ((E_GLOBAL_COMMAND_TYPE)param)
+            {
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_1:
+                    {
+                        initState_1 = false;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[0] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_2:
+                    {
+                        initState_2 = false;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[1] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_3:
+                    {
+                        initState_3 = false;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[2] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_4:
+                    {
+                        initState_4 = false;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[3] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_5:
+                    {
+                        initState_5 = false;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[4] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_6:
+                    {
+                        initState_6 = false;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[5] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_7:
+                    {
+                        initState_7 = false;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[6] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_8:
+                    {
+                        initState_8 = false;
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[7] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                    }
+                    break;
+            }
+
+            //TODO :             
+            Debug.WriteLine("OffCommand Fired");
+        }
+        #endregion OffCommand 
 
         #endregion Command
 

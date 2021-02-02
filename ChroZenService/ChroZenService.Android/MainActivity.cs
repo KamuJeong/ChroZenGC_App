@@ -26,7 +26,7 @@ namespace ChroZenService.Droid
             base.OnCreate(savedInstanceState);
 
             global::Xamarin.Forms.Forms.SetFlags(new string[] { "RadioButton_Experimental", "Brush_Experimental", "Shapes_Experimental" });
-            
+
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
 
@@ -40,7 +40,14 @@ namespace ChroZenService.Droid
             Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
 
             Window.DecorView.SystemUiVisibilityChange += DecorView_SystemUiVisibilityChange;
-            LoadApplication(new App());
+            try
+            {
+                LoadApplication(new App());
+            }
+            catch (Exception e)
+            {
+                string errString = string.Format("Message : {0}, StackTrace : {1}", e.Message, e.StackTrace);
+            }
         }
 
         private void DecorView_SystemUiVisibilityChange(object sender, View.SystemUiVisibilityChangeEventArgs e)

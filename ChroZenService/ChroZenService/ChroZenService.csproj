@@ -216,7 +216,7 @@
     <EmbeddedResource Update="View\Child\Config\Child\Config Oven\View_Config_OvenSettings.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Signal\View_Config_Signal.xaml">
+    <EmbeddedResource Update="View\Child\Config\Child\Config Signal\View_Config_Signal1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Child\Config\Child\Config Valve\View_Config_ValveInitialState.xaml">
@@ -312,6 +312,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_Config_UnderLine_Button.xaml.cs">
+      <DependentUpon>UC_Config_UnderLine_Button.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_System_Calib_Settings_StartStopButton.xaml.cs">
       <DependentUpon>UC_System_Calib_Settings_StartStopButton.xaml</DependentUpon>
     </Compile>
@@ -321,11 +324,32 @@
     <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_System_SETTING_LABEL.xaml.cs">
       <DependentUpon>UC_System_SETTING_LABEL.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_Config_Oven_Setting_Label.xaml.cs">
+      <DependentUpon>UC_Config_Oven_Setting_Label.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_Config_Signal_Label.xaml.cs">
+      <DependentUpon>UC_Config_Signal_Label.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_System_VALVE_LABEL.xaml.cs">
       <DependentUpon>UC_System_VALVE_LABEL.xaml</DependentUpon>
     </Compile>
     <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_System_Calib_LongLabel.xaml.cs">
       <DependentUpon>UC_System_Calib_LongLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Valve\UC_System_ValveProgram_State.xaml.cs">
+      <DependentUpon>UC_System_ValveProgram_State.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Valve\UC_System_ValveProgram_Time.xaml.cs">
+      <DependentUpon>UC_System_ValveProgram_Time.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Signal\View_Config_Signal1.xaml.cs">
+      <DependentUpon>View_Config_Signal1.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Signal\View_Config_Signal3.xaml.cs">
+      <DependentUpon>View_Config_Signal3.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Signal\View_Config_Signal2.xaml.cs">
+      <DependentUpon>View_Config_Signal2.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\Child\System\Child\Calib\Calib AuxTemp\View_System_Calib_AuxTemp2.xaml.cs">
       <DependentUpon>View_System_Calib_AuxTemp2.xaml</DependentUpon>

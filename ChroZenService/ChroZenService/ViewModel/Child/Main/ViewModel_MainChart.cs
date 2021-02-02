@@ -43,14 +43,14 @@ namespace ChroZenService
         }
 
         public E_STATE prevE_STATE;
-        private void onPACKCODE_ReceivceEventHandler(YC_Const.E_PACKCODE e_LC_PACK_CODE, I_CHROZEN_GC_PACKET packet)
+        private void onPACKCODE_ReceivceEventHandler(YC_Const.E_PACKCODE e_LC_PACK_CODE, int nIndex)
         {
             Task.Factory.StartNew(() => {
                 switch (e_LC_PACK_CODE)
                 {
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_STATE:
                         {
-                            if ((E_STATE)((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.btState == E_STATE.Run)
+                            if ((E_STATE)(DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState) == E_STATE.Run)
                             {
                                 if (prevE_STATE != E_STATE.Run)
                                 {
@@ -64,22 +64,22 @@ namespace ChroZenService
                                 }
                                 float fXUnit = 470 / (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTotalRunTime);
 
-                                int nPixelXPosition = (int)(((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.fRunTime * fXUnit);
+                                int nPixelXPosition = (int)(DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.fRunTime * fXUnit);
 
-                                ChartElementRawData.yC_ChartElementRawDataDetector[0].RawData.Add(((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.fSignal[0]);
-                                ChartElementRawData.yC_ChartElementRawDataDetector[1].RawData.Add(((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.fSignal[1]);
-                                ChartElementRawData.yC_ChartElementRawDataDetector[2].RawData.Add(((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.fSignal[2]);
+                                ChartElementRawData.yC_ChartElementRawDataDetector[0].RawData.Add(DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.fSignal[0]);
+                                ChartElementRawData.yC_ChartElementRawDataDetector[1].RawData.Add(DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.fSignal[1]);
+                                ChartElementRawData.yC_ChartElementRawDataDetector[2].RawData.Add(DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.fSignal[2]);
                                 //ChartElementRawData.yC_ChartElementRawDataTemperature.RawData[i] = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fOven;
-                                ChartElementRawData.yC_ChartElementRawDataTimeStamp.RawData.Add(((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.fRunTime);
+                                ChartElementRawData.yC_ChartElementRawDataTimeStamp.RawData.Add(DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.fRunTime);
 
                                 Task.Factory.StartNew(() => EventManager.RawDataUpdatedEvent());
                             }
-                            else if ((E_STATE)((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.btState != E_STATE.Run)
+                            else if ((E_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState != E_STATE.Run)
                             {
                                 if (prevE_STATE == E_STATE.Run)
                                 {
                                     EventManager.RunStoppedEvent();
-                                    prevE_STATE = (E_STATE)((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.btState;
+                                    prevE_STATE = (E_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState;
                                 }
                             }
                         }

@@ -14,7 +14,8 @@ namespace ChroZenService
             switch (e_GLOBAL_COMMAND_TYPE)
             {
                 #region Oven
-                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_CRYOGENIC:
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_CRYOGENIC_ON:
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_CRYOGENIC_OFF:
                     {
                         T_LCD_COMMAND command = new T_LCD_COMMAND
                         {
@@ -27,16 +28,49 @@ namespace ChroZenService
                         tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
                     }
                     break;
-                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_FAST_COOLING:
-                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_AUTO_READY_RUN:
-                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_RUN_START:
-                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN:
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_FAST_COOLING_ON:
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_FAST_COOLING_OFF:
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_AUTO_READY_RUN_ON:
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_AUTO_READY_RUN_OFF:
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_RUN_START_ON:
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_RUN_START_OFF:
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN_ON:
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN_OFF:
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_LABEL_MAX:
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_LABEL_EQUILIBRIUM:
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_NO_OF_RUN:
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_CYCLE:
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN_TEMP:
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN_TIME:
+                    {
+                        T_LCD_COMMAND command = new T_LCD_COMMAND
+                        {
+                            Command = 8,
+                            Action = 2,
+                            Function_No = 1,
+                            Target_Set = 0
+                        };
+                        tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                    }
+                    break;
+                #endregion Oven
+
+                #region Oven
+                case E_GLOBAL_COMMAND_TYPE.E_OVEN_TEMP_RESET:
+                    {
+                        T_LCD_COMMAND command = new T_LCD_COMMAND
+                        {
+                            Command = 8,
+                            Action = 3,
+                            Function_No = 1,
+                            Target_Set = 0
+                        };
+                        tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                    }
+                    break;
+                case E_GLOBAL_COMMAND_TYPE.E_OVEN_TEMP_APPLY:
                     {
                         T_LCD_COMMAND command = new T_LCD_COMMAND
                         {

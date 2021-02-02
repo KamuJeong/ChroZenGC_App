@@ -112,6 +112,27 @@ namespace ChroZenService
 
         #endregion OffCommand
 
+        #region ClickCommandParameter
+
+        public static readonly BindableProperty ClickCommandParameterProperty = BindableProperty.Create("ClickCommandParameter", typeof(object), typeof(UC_ON_OFF_Button)
+            );
+
+        public object ClickCommandParameter
+        {
+            get { return (object)GetValue(ClickCommandParameterProperty); }
+            set { SetValue(ClickCommandParameterProperty, value); }
+        }
+
+        private static void onClickCommandParameterPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            //if (newValue != null)
+            //{
+            //    (bindable as UC_TabHeaderButton).ClickCommandParameter = newValue;
+            //}
+        }
+
+        #endregion ClickCommandParameter
+
         public UC_ON_OFF_Button ()
 		{
 			InitializeComponent ();

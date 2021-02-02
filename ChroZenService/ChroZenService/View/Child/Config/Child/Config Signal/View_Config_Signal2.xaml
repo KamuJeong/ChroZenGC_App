@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.View_Config_Signal2">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <Grid HeightRequest="703">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONFIG_2}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_CONFIG_SIGNAL_MIDDLE}"/>
+                    <RowDefinition Height="{StaticResource WIDTH_SIGNAL_SETTING_ROW_8}"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="417"/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0" CornerRadius="18" Margin="18,10,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208"/>
+                        <ColumnDefinition Width="170"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="3"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Signal Zero" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" Margin="0,12,10,0"/>
+                    <Line Grid.RowSpan="3" X1="208" X2="208" Y1="14" Y2="85" Stroke="Gray"/>
+                    <local:UC_Config_SETTING_LABEL Grid.Row="0" Grid.Column="1"  Text="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.fZero}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_2_SIGNAL_ZERO}" Margin="0,15,0,0"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Sensitivity" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
+                    <local:UC_Config_SETTING_LABEL Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.fSensitivity}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_2_SENSITIVITY}"/>
+
+                </Grid>
+                <Frame Grid.Row="1" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208"/>
+                        <ColumnDefinition Width="209"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Text="Signal Change" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_TITLE}" />
+                    <local:UC_ON_OFF_Button Grid.Column="1" IsOn="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.bSignalChange}" ButtonMargin="5,7,0,1" OnCommand="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.SignalChangeOnCommand}" OffCommand="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.SignalChangeOffCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_CENTER_SIGNAL_CHANGE_ON}"  WidthRequest="179" Margin="0,-3,0,0"/>
+                </Grid>
+                <Label Grid.Row="2" Text="Signal Program" Style="{StaticResource STYLE_LABEL_SIGNAL_MIDDLE}" />
+                <Frame Grid.Row="3" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource WIDTH_SIGNAL_SETTING_COLUMN_TITLE}"/>
+                        <ColumnDefinition Width="{StaticResource WIDTH_SIGNAL_SETTING_COLUMN_TIME}"/>
+                        <ColumnDefinition Width="{StaticResource WIDTH_SIGNAL_SETTING_COLUMN_SOURCE}"/>
+                    </Grid.ColumnDefinitions>
+                    <Line Grid.ColumnSpan="6" X1="20" X2="397" Y1="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}" Y2="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}" Stroke="Gray"/>
+                    <Line Grid.RowSpan="8" X1="{StaticResource WIDTH_SIGNAL_SETTING_COLUMN_TITLE}" X2="{StaticResource WIDTH_SIGNAL_SETTING_COLUMN_TITLE}" Y1="6" Y2="321" Stroke="Gray"/>
+
+                    <Label Text="No." Grid.Row="0" Grid.Column="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="12,2,0,0"/>
+                    <Label Text="Time(min)" Grid.Row="0" Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                    <Label Text="Source" Grid.Row="0" Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0"  Text="Init" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}"/>
+                    <Label Grid.Row="2" Grid.Column="0"  Text="1" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}"/>
+                    <Label Grid.Row="3" Grid.Column="0"  Text="2" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}"/>
+                    <Label Grid.Row="4" Grid.Column="0"  Text="3" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}"/>
+                    <Label Grid.Row="5" Grid.Column="0"  Text="4" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}"/>
+                    <Label Grid.Row="6" Grid.Column="0"  Text="5" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}"/>
+                    <!--<local:UC_Config_Signal_Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.fTime_0}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_1_PROGRAM_TIME_1}"/>-->
+                    <local:UC_Config_Signal_Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.fTime_1}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_2_PROGRAM_TIME_1}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.bSignalChange}"/>
+                    <local:UC_Config_Signal_Label Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.fTime_2}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_2_PROGRAM_TIME_2}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.bSignalChange}"/>
+                    <local:UC_Config_Signal_Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.fTime_3}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_2_PROGRAM_TIME_3}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.bSignalChange}"/>
+                    <local:UC_Config_Signal_Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.fTime_4}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_2_PROGRAM_TIME_4}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.bSignalChange}"/>
+                    <local:UC_Config_Signal_Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.fTime_5}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_2_PROGRAM_TIME_5}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.bSignalChange}"/>
+
+                    <Picker Grid.Row="1" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.btDet_0}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}">
+                        <Picker.Items>
+                            <x:String>Front Detector</x:String>
+                            <x:String>Center Detector</x:String>
+                            <x:String>Rear Detector</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Picker Grid.Row="2" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.btDet_1}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.bSignalChange}">
+                        <Picker.Items>
+                            <x:String>Front Detector</x:String>
+                            <x:String>Center Detector</x:String>
+                            <x:String>Rear Detector</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Picker Grid.Row="3" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.btDet_2}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.bSignalChange}">
+                        <Picker.Items>
+                            <x:String>Front Detector</x:String>
+                            <x:String>Center Detector</x:String>
+                            <x:String>Rear Detector</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Picker Grid.Row="4" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.btDet_3}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.bSignalChange}">
+                        <Picker.Items>
+                            <x:String>Front Detector</x:String>
+                            <x:String>Center Detector</x:String>
+                            <x:String>Rear Detector</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Picker Grid.Row="5" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.btDet_4}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.bSignalChange}">
+                        <Picker.Items>
+                            <x:String>Front Detector</x:String>
+                            <x:String>Center Detector</x:String>
+                            <x:String>Rear Detector</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Picker Grid.Row="6" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.btDet_5}" Style="{StaticResource STYLE_PICKER_SYSTEM_TIMECONTROL}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_Signal2.bSignalChange}">
+                        <Picker.Items>
+                            <x:String>Front Detector</x:String>
+                            <x:String>Center Detector</x:String>
+                            <x:String>Rear Detector</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <!--<Frame Grid.Row="3" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>-->
+                </Grid>
+            </Grid>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

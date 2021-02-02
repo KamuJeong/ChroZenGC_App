@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:UC_Config_UnderLine_ButtonBase xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.UC_Config_UnderLine_Button " Background="Transparent">
+    <ContentView Background="Transparent">
+        <ContentView.Content>
+            <AbsoluteLayout Background="Transparent" >
+                <Grid Background="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="33"/>
+                    </Grid.RowDefinitions>
+                    <Line Grid.ColumnSpan="2" X1="0" X2="95" Y1="33" Y2="33" Stroke="Gray"/>
+                    <Label Grid.Column="0" Margin="2"
+                    Text="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=Text}"
+                    TextColor="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=TextColor}"
+                       Background="Transparent"
+                    BackgroundColor="Transparent"                    
+                    VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                    HorizontalOptions="FillAndExpand"                   
+                    />
+                    <Label Grid.Column="1" Margin="2"
+                    Text="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=UnitText}"
+                    TextColor="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=TextColor}"
+                       Background="Transparent"
+                    BackgroundColor="Transparent"                    
+                    VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"
+                    HorizontalOptions="FillAndExpand"                   
+                    />
+                </Grid>
+            </AbsoluteLayout>
+        </ContentView.Content>
+    </ContentView>
+</local:UC_Config_UnderLine_ButtonBase>

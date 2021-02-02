@@ -25,7 +25,7 @@ namespace ChroZenService
             SetCommand = new RelayCommand(SetCommandAction);
 
             CryogenicCoolingOnCommand = new RelayCommand(CryogenicCoolingOnCommandAction);
-            CryogenicCoolingOffCommand = new RelayCommand(CryogenicCoolingOnCommandAction);
+            CryogenicCoolingOffCommand = new RelayCommand(CryogenicCoolingOffCommandAction);
 
             FastCoolingOnCommand = new RelayCommand(FastCoolingOnCommandAction);
             FastCoolingOffCommand = new RelayCommand(FastCoolingOffCommandAction);
@@ -157,42 +157,48 @@ namespace ChroZenService
                 {
                     case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_MAX_TEMP:
                         {
-                            fMaxTemp = (byte)tempFloatVal;
+                            fMaxTemp = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.fMaxTemp = fMaxTemp;
                             this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_LABEL_MAX, tcpManager);
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_EQUILIBRIUM_TIME:
                         {
-                            fEquibTime = (byte)tempFloatVal;
+                            fEquibTime = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.fEquibTime = fEquibTime;
                             this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_LABEL_EQUILIBRIUM, tcpManager);
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_NO_OF_RUN:
                         {
-                            runstart.iCount = (byte)tempFloatVal;
+                            runstart.iCount = (ushort)tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Runstart.iCount = runstart.iCount;
                             this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_NO_OF_RUN, tcpManager);
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_CYCLE_TIME:
                         {
-                            runstart.fCycletime = (byte)tempFloatVal;
+                            runstart.fCycletime = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Runstart.fCycletime = runstart.fCycletime;
                             this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_CYCLE, tcpManager);
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_POSTRUN_TEMP:
                         {
-                            Postrun.fTemp = (byte)tempFloatVal;
+                            Postrun.fTemp = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Postrun.fTemp = Postrun.fTemp;
                             this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN_TEMP, tcpManager);
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_POSTRUN_TIME:
                         {
-                            Postrun.fTime = (byte)tempFloatVal;
+                            Postrun.fTime = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Postrun.fTime = Postrun.fTime;
                             this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN_TIME, tcpManager);
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
@@ -380,6 +386,7 @@ namespace ChroZenService
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
                     }
                     break;
+               
             }
 
             EventManager.KeyPadRequestEvent(vmKeyPad);
@@ -395,7 +402,10 @@ namespace ChroZenService
         {
             bCryogenic = true;
 
-            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_CRYOGENIC, tcpManager);
+            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bCryogenic = 1;
+            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bFastCryo = 1;
+
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_CRYOGENIC_ON, tcpManager);
             //TODO :             
             Debug.WriteLine("CryogenicCoolingOnCommand Fired");
         }
@@ -407,7 +417,10 @@ namespace ChroZenService
         {
             bCryogenic = false;
 
-            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_CRYOGENIC, tcpManager);
+            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bCryogenic = 0;
+            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bFastCryo = 0;
+
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_CRYOGENIC_OFF, tcpManager);
             //TODO :             
             Debug.WriteLine("CryogenicCoolingOffCommand Fired");
         }
@@ -419,7 +432,8 @@ namespace ChroZenService
         {
             bFastCryo = true;
 
-            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_FAST_COOLING, tcpManager);
+            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bFastCryo = 1;
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_FAST_COOLING_ON, tcpManager);
             //TODO :             
             Debug.WriteLine("FastCoolingOnCommand Fired");
         }
@@ -431,7 +445,8 @@ namespace ChroZenService
         {
             bFastCryo = false;
 
-            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_FAST_COOLING, tcpManager);
+            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bFastCryo = 0;
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_FAST_COOLING_OFF, tcpManager);
             //TODO :             
             Debug.WriteLine("FastCoolingOffCommand Fired");
         }
@@ -443,7 +458,8 @@ namespace ChroZenService
         {
             bAutoReadyrun = true;
 
-            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_AUTO_READY_RUN, tcpManager);
+            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bAutoReadyrun = 1;
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_AUTO_READY_RUN_ON, tcpManager);
             //TODO :             
             Debug.WriteLine("AutoReadyrunOnCommand Fired");
         }
@@ -455,7 +471,8 @@ namespace ChroZenService
         {
             bAutoReadyrun = false;
 
-            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_AUTO_READY_RUN, tcpManager);
+            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bAutoReadyrun = 0;
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_AUTO_READY_RUN_OFF, tcpManager);
             //TODO :             
             Debug.WriteLine("AutoReadyrunOffCommand Fired");
         }
@@ -467,7 +484,8 @@ namespace ChroZenService
         {
             runstart.bOnoff = true;
 
-            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_RUN_START, tcpManager);
+            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Runstart.bOnoff = 1;
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_RUN_START_ON, tcpManager);
             //TODO :             
             Debug.WriteLine("RunStartOnCommand Fired");
         }
@@ -479,7 +497,8 @@ namespace ChroZenService
         {
             runstart.bOnoff = false;
 
-            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_RUN_START, tcpManager);
+            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Runstart.bOnoff = 0;
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_RUN_START_OFF, tcpManager);
             //TODO :             
             Debug.WriteLine("RunStartOffCommand Fired");
         }
@@ -491,7 +510,8 @@ namespace ChroZenService
         {
             Postrun.bOnoff = true;
 
-            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN, tcpManager);
+            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Postrun.bOnoff = 1;
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN_ON, tcpManager);
             //TODO :             
             Debug.WriteLine("PostRunOnCommand Fired");
         }
@@ -503,7 +523,8 @@ namespace ChroZenService
         {
             Postrun.bOnoff = false;
 
-            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN, tcpManager);
+            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Postrun.bOnoff = 0;
+            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN_OFF, tcpManager);
             //TODO :             
             Debug.WriteLine("PostRunOffCommand Fired");
         }

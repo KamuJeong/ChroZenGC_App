@@ -66,11 +66,11 @@ namespace ChroZenService
         #endregion MethodUpdated
 
         #region PACKCODE receive
-        public delegate void PACKCODE_Receivce(E_PACKCODE e_LC_PACK_CODE, I_CHROZEN_GC_PACKET packet);
+        public delegate void PACKCODE_Receivce(E_PACKCODE e_LC_PACK_CODE,int nIndex);
         public static PACKCODE_Receivce onPACKCODE_Receivce;
-        public static void PACKCODE_ReceivceEvent(E_PACKCODE e_LC_PACK_CODE, I_CHROZEN_GC_PACKET packet)
+        public static void PACKCODE_ReceivceEvent(E_PACKCODE e_LC_PACK_CODE, int nIndex)
         {
-            onPACKCODE_Receivce?.Invoke(e_LC_PACK_CODE, packet);
+            onPACKCODE_Receivce?.Invoke(e_LC_PACK_CODE,nIndex);
         }
         #endregion PACKCODE receive
 

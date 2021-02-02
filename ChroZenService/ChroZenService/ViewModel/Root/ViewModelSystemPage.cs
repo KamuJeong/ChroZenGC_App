@@ -23,7 +23,7 @@ namespace ChroZenService
             EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
 
-        private void PACKCODE_ReceivceEventHandler(YC_Const.E_PACKCODE e_LC_PACK_CODE, I_CHROZEN_GC_PACKET packet)
+        private void PACKCODE_ReceivceEventHandler(YC_Const.E_PACKCODE e_LC_PACK_CODE, int nIndex)
         {
             Task.Factory.StartNew(() =>
             {
@@ -31,14 +31,12 @@ namespace ChroZenService
                 {
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_STATE:
                         {
-                            T_PACKCODE_CHROZEN_SYSTEM_STATE statePacket = (T_PACKCODE_CHROZEN_SYSTEM_STATE)packet;
-
                             ViewModel_System_Settings.Date = DateTime.Now.ToString("yyyy.MM.dd");
                             ViewModel_System_Settings.Time = DateTime.Now.ToString("HH:mm:ss");
 
                             #region Calibration
 
-                            CHROZEN_GC_STATE state = (CHROZEN_GC_STATE)(statePacket.packet.btState);
+                            CHROZEN_GC_STATE state = (CHROZEN_GC_STATE)(DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState);
 
                             #region State : Calibration casing
 
@@ -1435,35 +1433,35 @@ namespace ChroZenService
                             //ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_2_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
                             //ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_3_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_1_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_2_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_3_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_1_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_2_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_3_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
 
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Valve_Row_1_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Valve_Row_2_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Valve_Row_3_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Valve_Row_1_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Valve_Row_2_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Valve_Row_3_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             //ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_1_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
                             //ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_2_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
                             //ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_3_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_1_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_2_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_3_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_1_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_2_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_3_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_AuxFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_1_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
                             ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_2_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
@@ -1502,17 +1500,17 @@ namespace ChroZenService
                             #region AUX TEMP
 
                             #region AUX TEMP1
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.ActualTemp_Calib1 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fAux[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.ActualTemp_Calib2 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fAux[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.ActualTemp_Calib3 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fAux[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.ActualTemp_Calib4 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fAux[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.ActualTemp_Calib1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.ActualTemp_Calib2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.ActualTemp_Calib3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.ActualTemp_Calib4 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             #endregion AUX TEMP1
 
                             #region AUX TEMP2
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.ActualTemp_Calib1 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fAux[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.ActualTemp_Calib2 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fAux[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.ActualTemp_Calib3 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fAux[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.ActualTemp_Calib4 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fAux[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.ActualTemp_Calib1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.ActualTemp_Calib2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.ActualTemp_Calib3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.ActualTemp_Calib4 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             #endregion AUX TEMP2
 
                             #endregion AUX TEMP
@@ -1521,14 +1519,14 @@ namespace ChroZenService
 
                             #region Temperature
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ActT_1 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fDet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ActT_2 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fDet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ActT_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.ActT_2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.ActT_1 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fDet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.ActT_2 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fDet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.ActT_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.ActT_2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.ActT_1 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fDet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.ActT_2 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fDet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.ActT_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.ActT_2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fSet1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fSet[0];
                             ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fSet2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fSet[1];
@@ -1555,23 +1553,23 @@ namespace ChroZenService
                             ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Valve_Row_1_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_DetValcalib[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Valve_Row_2_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_DetValcalib[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Valve_Row_3_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_DetValcalib[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Valve_Row_1_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Valve_Row_2_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Valve_Row_3_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Valve_Row_1_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Valve_Row_2_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Valve_Row_3_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Valve_Row_1_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_DetValcalib[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Valve_Row_2_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_DetValcalib[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Valve_Row_3_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_DetValcalib[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Valve_Row_1_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Valve_Row_2_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Valve_Row_3_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Valve_Row_1_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Valve_Row_2_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Valve_Row_3_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Valve_Row_1_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_DetValcalib[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Valve_Row_2_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_DetValcalib[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Valve_Row_3_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_DetValcalib[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Valve_Row_1_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Valve_Row_2_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Valve_Row_3_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Valve_Row_1_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Valve_Row_2_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Valve_Row_3_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             #endregion Valve : Voltage, Flow
 
@@ -1580,9 +1578,9 @@ namespace ChroZenService
                                 case E_DET_TYPE.FID:
                                 case E_DET_TYPE.NPD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received.detPacket.Det_FlowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received.detPacket.Det_FlowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
@@ -1596,9 +1594,9 @@ namespace ChroZenService
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received.detPacket.Det_FlowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received.detPacket.Det_FlowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
@@ -1612,8 +1610,8 @@ namespace ChroZenService
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_3_Act = "-";
 
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received.detPacket.Det_FlowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
@@ -1628,7 +1626,7 @@ namespace ChroZenService
                                 case E_DET_TYPE.ECD:
                                 case E_DET_TYPE.uECD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Act = "-";
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_3_Act = "-";
 
@@ -1643,9 +1641,9 @@ namespace ChroZenService
                                     break;
                                 case E_DET_TYPE.PDD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Set = "-";
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Set = "-";
@@ -1663,9 +1661,9 @@ namespace ChroZenService
                                 case E_DET_TYPE.FID:
                                 case E_DET_TYPE.NPD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received.detPacket.Det_FlowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received.detPacket.Det_FlowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
@@ -1679,9 +1677,9 @@ namespace ChroZenService
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received.detPacket.Det_FlowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received.detPacket.Det_FlowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
@@ -1695,8 +1693,8 @@ namespace ChroZenService
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_3_Act = "-";
 
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received.detPacket.Det_FlowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
@@ -1711,7 +1709,7 @@ namespace ChroZenService
                                 case E_DET_TYPE.ECD:
                                 case E_DET_TYPE.uECD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Act = "-";
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_3_Act = "-";
 
@@ -1726,9 +1724,9 @@ namespace ChroZenService
                                     break;
                                 case E_DET_TYPE.PDD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Set = "-";
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Set = "-";
@@ -1746,9 +1744,9 @@ namespace ChroZenService
                                 case E_DET_TYPE.FID:
                                 case E_DET_TYPE.NPD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received.detPacket.Det_FlowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received.detPacket.Det_FlowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
@@ -1762,9 +1760,9 @@ namespace ChroZenService
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received.detPacket.Det_FlowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received.detPacket.Det_FlowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
@@ -1778,8 +1776,8 @@ namespace ChroZenService
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_3_Act = "-";
 
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received.detPacket.Det_FlowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
@@ -1794,7 +1792,7 @@ namespace ChroZenService
                                 case E_DET_TYPE.ECD:
                                 case E_DET_TYPE.uECD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Act = "-";
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_3_Act = "-";
 
@@ -1809,9 +1807,9 @@ namespace ChroZenService
                                     break;
                                 case E_DET_TYPE.PDD:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_DetFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Set = "-";
                                         ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Set = "-";
@@ -1829,14 +1827,14 @@ namespace ChroZenService
 
                             #region Inlet
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.ActT_1 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fInj[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.ActT_2 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fInj[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.ActT_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.ActT_2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.ActT_1 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fInj[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.ActT_2 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fInj[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.ActT_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.ActT_2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.ActT_1 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fInj[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.ActT_2 = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fInj[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.ActT_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.ActT_2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.fSet1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0];
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.fSet2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1];
@@ -1845,31 +1843,31 @@ namespace ChroZenService
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.fMeasure2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1];
 
                             //Capillary인 경우
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_2_Act = (
-                                  ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[0]
-                                - ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[1]
-                                - ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[2])
+                                  DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[0]
+                                - DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[1]
+                                - DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[2])
                                 .ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             //Capillary인 경우
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_2_Act = (
-                                  ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[4]
-                                - ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[5]
-                                - ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[6])
+                                 DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[4]
+                                - DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[5]
+                                - DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[6])
                                 .ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             //Capillary인 경우
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_1_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[9].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_1_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[9].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_2_Act = (
-                                  ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[8]
-                                - ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[9]
-                                - ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[10])
+                                  DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[8]
+                                - DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[9]
+                                - DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[10])
                                 .ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_3_Act = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[10].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_3_Act = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[10].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
 
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.inj_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
@@ -1912,30 +1910,30 @@ namespace ChroZenService
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Valve_Row_2_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_InjValcalib[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Valve_Row_3_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_InjValcalib[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Valve_Row_1_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Valve_Row_2_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Valve_Row_3_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Valve_Row_1_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Valve_Row_2_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Valve_Row_3_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Valve_Row_1_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_InjValcalib[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Valve_Row_2_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_InjValcalib[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Valve_Row_3_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_InjValcalib[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Valve_Row_1_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Valve_Row_2_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Valve_Row_3_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Valve_Row_1_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Valve_Row_2_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Valve_Row_3_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Valve_Row_1_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_InjValcalib[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Valve_Row_2_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_InjValcalib[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Valve_Row_3_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_InjValcalib[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Valve_Row_1_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Valve_Row_2_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[9].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Valve_Row_3_Flow = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActFlow.Disp_InjFlow[10].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Valve_Row_1_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Valve_Row_2_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[9].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Valve_Row_3_Flow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[10].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             #endregion Inlet
 
                             #region Oven
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationOven.ActualTemp = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fOven.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationOven.ActualTemp = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             ViewModel_System_Calibration.ViewModel_System_CalibrationOven.fSet1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fSet[0];
                             ViewModel_System_Calibration.ViewModel_System_CalibrationOven.fSet2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fSet[1];
@@ -1950,49 +1948,49 @@ namespace ChroZenService
 
                             #region Heater
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bOven == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fOven = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fOven = statePacket.packet.ActTemp.fOven.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fOven = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[0] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_1 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_1 = statePacket.packet.ActTemp.fInj[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[1] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_2 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_2 = statePacket.packet.ActTemp.fInj[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[2] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_3 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_3 = statePacket.packet.ActTemp.fInj[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_1 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_1 = statePacket.packet.ActTemp.fDet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_2 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_2 = statePacket.packet.ActTemp.fDet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_3 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_3 = statePacket.packet.ActTemp.fDet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[0] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_1 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_1 = statePacket.packet.ActTemp.fAux[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[1] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_2 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_2 = statePacket.packet.ActTemp.fAux[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[2] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_3 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_3 = statePacket.packet.ActTemp.fAux[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[3] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_4 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_4 = statePacket.packet.ActTemp.fAux[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_4 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[4] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_5 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_5 = statePacket.packet.ActTemp.fAux[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_5 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[5] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_6 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_6 = statePacket.packet.ActTemp.fAux[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_6 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[6] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_7 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_7 = statePacket.packet.ActTemp.fAux[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_7 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[7] == 0) ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_8 = "None";
-                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_8 = statePacket.packet.ActTemp.fAux[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fAux_8 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             #endregion Heater
 
                             #region Remote And Signal
@@ -2253,15 +2251,15 @@ namespace ChroZenService
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_CALIB_READ:
                         {
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_1_Voltage = ((T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ)packet).packet.Disp_AuxValcalib[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_2_Voltage = ((T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ)packet).packet.Disp_AuxValcalib[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_3_Voltage = ((T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ)packet).packet.Disp_AuxValcalib[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Valve_Row_1_Voltage = ((T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ)packet).packet.Disp_AuxValcalib[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Valve_Row_2_Voltage = ((T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ)packet).packet.Disp_AuxValcalib[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Valve_Row_3_Voltage = ((T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ)packet).packet.Disp_AuxValcalib[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_1_Voltage = ((T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ)packet).packet.Disp_AuxValcalib[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_2_Voltage = ((T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ)packet).packet.Disp_AuxValcalib[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_3_Voltage = ((T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ)packet).packet.Disp_AuxValcalib[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_1_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_2_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Valve_Row_3_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Valve_Row_1_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Valve_Row_2_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Valve_Row_3_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_1_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_2_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Valve_Row_3_Voltage = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received.packet.Disp_AuxValcalib[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1) + ChroZenService_Const.STR_UNIT_VOLTAGE;
                         }
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE:
@@ -2272,36 +2270,36 @@ namespace ChroZenService
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_APCAUX:
                         {
                             #region AUX APC
-                            switch (((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).header.nEventIndex)
+                            switch (nIndex)
                             {
                                 case 0:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_1_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_2_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_3_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalSet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_1_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalMeasure[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_2_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalMeasure[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_3_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalMeasure[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Received.auxPacket.Aux_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Received.auxPacket.Aux_flowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_3_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Received.auxPacket.Aux_flowCalSet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_1_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Received.auxPacket.Aux_flowCalMeasure[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_2_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Received.auxPacket.Aux_flowCalMeasure[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC1.Flow_Row_3_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Received.auxPacket.Aux_flowCalMeasure[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                                     }
                                     break;
                                 case 1:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_1_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_2_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_3_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalSet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_1_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalMeasure[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_2_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalMeasure[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_3_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalMeasure[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Received.auxPacket.Aux_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Received.auxPacket.Aux_flowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_3_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Received.auxPacket.Aux_flowCalSet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_1_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Received.auxPacket.Aux_flowCalMeasure[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_2_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Received.auxPacket.Aux_flowCalMeasure[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC2.Flow_Row_3_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Received.auxPacket.Aux_flowCalMeasure[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                                     }
                                     break;
                                 case 2:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_1_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_2_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_3_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalSet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_1_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalMeasure[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_2_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalMeasure[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_3_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_AUX)packet).auxPacket.Aux_flowCalMeasure[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Received.auxPacket.Aux_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Received.auxPacket.Aux_flowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_3_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Received.auxPacket.Aux_flowCalSet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_1_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Received.auxPacket.Aux_flowCalMeasure[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_2_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Received.auxPacket.Aux_flowCalMeasure[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationUPC3.Flow_Row_3_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Received.auxPacket.Aux_flowCalMeasure[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                                     }
                                     break;
                             }
@@ -2315,47 +2313,47 @@ namespace ChroZenService
                             #region AUX TEMP
 
                             #region AUX TEMP1
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[0];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[1];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[0];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[1];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[0];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[1];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[0];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[1];
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[2];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[3];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[2];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[3];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[2];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[3];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[2];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[3];
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[4];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[5];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[4];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[5];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[4];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[5];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[4];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[5];
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[6];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[7];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[6];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[7];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[6];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.fSet2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[7];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[6];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.Measure2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[7];
                             #endregion AUX TEMP1
 
                             #region AUX TEMP2
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[8];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[9];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[8];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[9];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[8];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[9];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[8];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[9];
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[10];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[11];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[10];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[11];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[10];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[11];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[10];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[11];
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[12];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[13];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[12];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[13];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[12];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[13];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[12];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[13];
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[14];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fSet[15];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure1_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[14];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure2_Calib1 = ((T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)packet).tempPacket.fMeasure[15];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[14];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.fSet2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fSet[15];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure1_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[14];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp2.Measure2_Calib1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received.tempPacket.fMeasure[15];
                             #endregion AUX TEMP2
 
                             #endregion AUX TEMP
@@ -2366,41 +2364,41 @@ namespace ChroZenService
 
                             #region Calibration 
 
-                            switch (((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).header.nEventIndex)
+                            switch (nIndex)
                             {
                                 case 0:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_FlowCalSet[0].ToString("0.00");
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_FlowCalSet[1].ToString("0.00");
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_3_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_FlowCalSet[2].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received.detPacket.Det_FlowCalSet[0].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received.detPacket.Det_FlowCalSet[1].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_3_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received.detPacket.Det_FlowCalSet[2].ToString("0.00");
 
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_flowCalMeasure[0].ToString("0.00");
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_flowCalMeasure[1].ToString("0.00");
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_3_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_flowCalMeasure[2].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_1_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received.detPacket.Det_flowCalMeasure[0].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_2_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received.detPacket.Det_flowCalMeasure[1].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.Flow_Row_3_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Received.detPacket.Det_flowCalMeasure[2].ToString("0.00");
 
                                     }
                                     break;
                                 case 1:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_FlowCalSet[0].ToString("0.00");
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_FlowCalSet[1].ToString("0.00");
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_3_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_FlowCalSet[2].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received.detPacket.Det_FlowCalSet[0].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received.detPacket.Det_FlowCalSet[1].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_3_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received.detPacket.Det_FlowCalSet[2].ToString("0.00");
 
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_flowCalMeasure[0].ToString("0.00");
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_flowCalMeasure[1].ToString("0.00");
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_3_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_flowCalMeasure[2].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_1_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received.detPacket.Det_flowCalMeasure[0].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_2_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received.detPacket.Det_flowCalMeasure[1].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.Flow_Row_3_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Received.detPacket.Det_flowCalMeasure[2].ToString("0.00");
 
                                     }
                                     break;
                                 case 2:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_FlowCalSet[0].ToString("0.00");
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_FlowCalSet[1].ToString("0.00");
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_3_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_FlowCalSet[2].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received.detPacket.Det_FlowCalSet[0].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received.detPacket.Det_FlowCalSet[1].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_3_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received.detPacket.Det_FlowCalSet[2].ToString("0.00");
 
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_flowCalMeasure[0].ToString("0.00");
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_flowCalMeasure[1].ToString("0.00");
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_3_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_DET)packet).detPacket.Det_flowCalMeasure[2].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_1_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received.detPacket.Det_flowCalMeasure[0].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_2_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received.detPacket.Det_flowCalMeasure[1].ToString("0.00");
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.Flow_Row_3_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received.detPacket.Det_flowCalMeasure[2].ToString("0.00");
 
                                     }
                                     break;
@@ -2412,57 +2410,57 @@ namespace ChroZenService
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET:
                         {
-                            switch (((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).header.nEventIndex)
+                            switch (nIndex)
                             {
                                 case 0:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.fSet1 = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0];
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.fSet2 = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1];
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.fSet1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0];
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.fSet2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1];
 
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.fMeasure1 = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0];
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.fMeasure2 = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1];
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.fMeasure1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0];
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.fMeasure2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1];
 
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_1_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_2_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_3_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalSet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.inj_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.inj_flowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_3_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.inj_flowCalSet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
 
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_1_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalMeasure[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_2_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalMeasure[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_3_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalMeasure[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_1_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.inj_flowCalMeasure[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_2_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.inj_flowCalMeasure[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.Flow_Row_3_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Received.inletPacket.inj_flowCalMeasure[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                                     }
                                     break;
                                 case 1:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.fSet1 = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0];
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.fSet2 = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1];
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.fSet1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0];
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.fSet2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1];
 
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.fMeasure1 = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0];
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.fMeasure2 = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1];
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.fMeasure1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0];
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.fMeasure2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1];
 
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_1_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_2_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_3_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalSet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received.inletPacket.inj_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received.inletPacket.inj_flowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_3_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received.inletPacket.inj_flowCalSet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
 
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_1_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalMeasure[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_2_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalMeasure[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_3_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalMeasure[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_1_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received.inletPacket.inj_flowCalMeasure[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_2_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received.inletPacket.inj_flowCalMeasure[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.Flow_Row_3_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Received.inletPacket.inj_flowCalMeasure[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                                     }
                                     break;
                                 case 2:
                                     {
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.fSet1 = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0];
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.fSet2 = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1];
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.fSet1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0];
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.fSet2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1];
 
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.fMeasure1 = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0];
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.fMeasure2 = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1];
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.fMeasure1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0];
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.fMeasure2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1];
 
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_1_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_2_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_3_Set = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalSet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_1_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received.inletPacket.inj_flowCalSet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_2_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received.inletPacket.inj_flowCalSet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_3_Set = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received.inletPacket.inj_flowCalSet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
 
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_1_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalMeasure[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_2_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalMeasure[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_3_Measured = ((T_PACKCODE_LCD_COMMAND_TYPE_INLET)packet).inletPacket.inj_flowCalMeasure[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_1_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received.inletPacket.inj_flowCalMeasure[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_2_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received.inletPacket.inj_flowCalMeasure[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.Flow_Row_3_Measured = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received.inletPacket.inj_flowCalMeasure[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                                     }
                                     break;
                             }
@@ -2474,34 +2472,34 @@ namespace ChroZenService
                             #region Calibration 
 
                             #region Oven
+                            
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationOven.fSet1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fSet[0];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationOven.fSet2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fSet[1];
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationOven.fSet1 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fSet[0];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationOven.fSet2 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fSet[1];
-
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationOven.Measure1 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fMeasure[0];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationOven.Measure2 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fMeasure[1];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationOven.Measure1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fMeasure[0];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationOven.Measure2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fMeasure[1];
 
                             #endregion Oven
 
                             #region Det
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fSet1 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fSet[0];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fSet2 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fSet[1];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fSet1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fSet[0];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fSet2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fSet[1];
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fMeasure1 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fMeasure[0];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fMeasure2 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fMeasure[1];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fMeasure1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fMeasure[0];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.fMeasure2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fMeasure[1];
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.fSet1 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fSet[0];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.fSet2 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fSet[1];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.fSet1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fSet[0];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.fSet2 =DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fSet[1];
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.fMeasure1 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fMeasure[0];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.fMeasure2 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fMeasure[1];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.fMeasure1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fMeasure[0];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.fMeasure2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fMeasure[1];
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.fSet1 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fSet[0];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.fSet2 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fSet[1];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.fSet1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fSet[0];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.fSet2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fSet[1];
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.fMeasure1 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fMeasure[0];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.fMeasure2 = ((T_PACKCODE_LCD_COMMAND_TYPE_TEMP)packet).tempPacket.fMeasure[1];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.fMeasure1 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fMeasure[0];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.fMeasure2 = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received.tempPacket.fMeasure[1];
 
                             #endregion Det
 
@@ -2512,8 +2510,8 @@ namespace ChroZenService
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG:
                         {
-                            T_PACKCODE_CHROZEN_LCD_DIAG diagPacket = (T_PACKCODE_CHROZEN_LCD_DIAG)packet;
-                            switch ((E_SYSTEM_DIAG_FUNCTION_TYPE)diagPacket.packet.btFunc)
+                          
+                            switch ((E_SYSTEM_DIAG_FUNCTION_TYPE)DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Received.packet.btFunc)
                             {
                                 case E_SYSTEM_DIAG_FUNCTION_TYPE.HEATER:
                                     {
@@ -2637,11 +2635,11 @@ namespace ChroZenService
 
                             #region Det
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.e_DET_TYPE = (E_DET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btDet[0];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.e_DET_TYPE = (E_DET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btDet[1];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.e_DET_TYPE = (E_DET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btDet[2];
-
-                            switch ((E_DET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btDet[0])
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetFront.e_DET_TYPE = (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.e_DET_TYPE = (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationDetRear.e_DET_TYPE = (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2];
+                            
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0])
                             {
                                 case E_DET_TYPE.FID:
                                 case E_DET_TYPE.NPD:
@@ -2774,7 +2772,7 @@ namespace ChroZenService
                                     break;
                             }
 
-                            switch ((E_DET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btDet[1])
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1])
                             {
                                 case E_DET_TYPE.FID:
                                 case E_DET_TYPE.NPD:
@@ -2907,7 +2905,7 @@ namespace ChroZenService
                                     break;
                             }
 
-                            switch ((E_DET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btDet[2])
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2])
                             {
                                 case E_DET_TYPE.FID:
                                 case E_DET_TYPE.NPD:
@@ -3044,11 +3042,11 @@ namespace ChroZenService
 
                             #region Inlet
 
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.e_INLET_TYPE = (E_INLET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btInlet[0];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.e_INLET_TYPE = (E_INLET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btInlet[1];
-                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.e_INLET_TYPE = (E_INLET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btInlet[2];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletFront.e_INLET_TYPE = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[0];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletCenter.e_INLET_TYPE = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[1];
+                            ViewModel_System_Calibration.ViewModel_System_CalibrationInletRear.e_INLET_TYPE = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[2];
 
-                            switch ((E_INLET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btInlet[0])
+                            switch ((E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[0])
                             {
                                 case E_INLET_TYPE.Capillary:
                                     {
@@ -3109,7 +3107,7 @@ namespace ChroZenService
                                     break;
                             }
 
-                            switch ((E_INLET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btInlet[1])
+                            switch ((E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[1])
                             {
                                 case E_INLET_TYPE.Capillary:
                                     {
@@ -3170,7 +3168,7 @@ namespace ChroZenService
                                     break;
                             }
 
-                            switch ((E_INLET_TYPE)((T_PACKCODE_CHROZEN_SYSTEM_CONFIG)packet).packet.btInlet[2])
+                            switch ((E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[2])
                             {
                                 case E_INLET_TYPE.Capillary:
                                     {
