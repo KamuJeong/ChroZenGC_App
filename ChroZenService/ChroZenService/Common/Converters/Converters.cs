@@ -8,6 +8,54 @@ using static YC_ChroZenGC_Type.T_CHROZEN_GC_SYSTEM_CONFIG;
 
 namespace ChroZenService
 {
+    public class bMethanizerToStringConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                switch ((E_METHANIZER)((byte)value))
+                {
+                    case E_METHANIZER.Valve:
+                        return "Valve";
+                    case E_METHANIZER.Methanizer:
+                        return "Methanizer";
+                    case E_METHANIZER.TransferLine:
+                        return "Transfer line";
+                    default:
+                        return "--";
+                }
+            }
+            else
+            {
+                return "OFF";
+            }
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ValveProgramSelectedIndexToParameterConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var eventArgs = value as SelectedItemChangedEventArgs;
+            var strIndex = eventArgs.SelectedItem as string;
+
+            return new Tuple<string, E_GLOBAL_COMMAND_TYPE>(strIndex, (E_GLOBAL_COMMAND_TYPE)parameter);
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class ValveProgramStateToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

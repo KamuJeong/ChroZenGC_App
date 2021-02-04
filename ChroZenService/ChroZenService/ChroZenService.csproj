@@ -125,6 +125,7 @@
     <PackageReference Include="SkiaSharp.Views" Version="1.68.0" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+    <PackageReference Include="Xamarin.Forms.BehaviorsPack" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -154,6 +155,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Common\UserControl\ConfigPage\UC_TabHeaderButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\UserControl\ConfigPage\Config\Valve\UC_Config_Valve_Program_Picker.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Common\UserControl\KeyPad\KeyPad.xaml">
@@ -336,10 +340,25 @@
     <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_System_Calib_LongLabel.xaml.cs">
       <DependentUpon>UC_System_Calib_LongLabel.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Common\UserControl\ConfigPage\Valve\UC_System_ValveProgram_State.xaml.cs">
+    <Compile Update="Common\UserControl\ConfigPage\Config\Auxillary\AuxFlow\UC_Config_Aux_Flow_Picker.xaml.cs">
+      <DependentUpon>UC_Config_Aux_Flow_Picker.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Auxillary\AuxFlow\UC_System_Aux_Flow_Actual.xaml.cs">
+      <DependentUpon>UC_System_Aux_Flow_Actual.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Auxillary\AuxFlow\UC_System_Aux_Flow_Set.xaml.cs">
+      <DependentUpon>UC_System_Aux_Flow_Set.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Auxillary\AuxTemp\UC_System_AuxTemperature_Actual.xaml.cs">
+      <DependentUpon>UC_System_AuxTemperature_Actual.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Auxillary\AuxTemp\UC_System_AuxTemperature_Set.xaml.cs">
+      <DependentUpon>UC_System_AuxTemperature_Set.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Valve\UC_System_ValveProgram_State.xaml.cs">
       <DependentUpon>UC_System_ValveProgram_State.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Common\UserControl\ConfigPage\Valve\UC_System_ValveProgram_Time.xaml.cs">
+    <Compile Update="Common\UserControl\ConfigPage\Config\Valve\UC_System_ValveProgram_Time.xaml.cs">
       <DependentUpon>UC_System_ValveProgram_Time.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\Child\Config\Child\Config Signal\View_Config_Signal1.xaml.cs">

@@ -7,7 +7,12 @@ namespace ChroZenService
     public static class ChroZenService_Const
     {
         #region ENUM    
-
+        //public enum E_METHANIZER
+        //{
+        //    VALVE,
+        //    METHANIZER,
+        //    TRANSFER_LINE
+        //}
         public enum E_DIAGNOSTICS_TYPE
         {
             ROOT,
@@ -327,6 +332,28 @@ namespace ChroZenService
             E_CONFIG_VALVE_PROGRAM_STATE_18,
             E_CONFIG_VALVE_PROGRAM_STATE_19,
             E_CONFIG_VALVE_PROGRAM_STATE_20,
+
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_1,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_2,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_3,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_4,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_5,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_6,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_7,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_8,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_9,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_10,
+
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_11,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_12,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_13,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_14,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_15,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_16,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_17,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_18,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_19,
+            E_CONFIG_VALVE_PROGRAM_VALVE_NUMBER_20,
         }
 
         public enum E_KEY_PAD_SET_MEASURE_TYPE

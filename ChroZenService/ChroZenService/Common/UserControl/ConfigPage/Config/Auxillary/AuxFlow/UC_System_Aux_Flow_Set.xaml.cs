@@ -10,11 +10,13 @@ using Xamarin.Forms.Xaml;
 namespace ChroZenService
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class View_Config_ValveProgram : ContentView
-	{
-		public View_Config_ValveProgram ()
+	public partial class UC_System_Aux_Flow_Set : UC_System_Calib_LabelBase
+    {
+       
+
+        public UC_System_Aux_Flow_Set()
 		{
 			InitializeComponent ();
 		}
-    }
+	}
 }

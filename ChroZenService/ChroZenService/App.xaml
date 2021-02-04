@@ -91,7 +91,19 @@
         <x:Double x:Key="WIDTH_VALVE_PROGRAM_COLUMN_VALVE">105</x:Double>
         <x:Double x:Key="WIDTH_VALVE_PROGRAM_COLUMN_STATE">80</x:Double>
         <x:Double x:Key="WIDTH_VALVE_PROGRAM_COLUMN_SPARE">40</x:Double>
-        
+
+        <x:Double x:Key="HEIGHT_AUX_TEMPERATURE_TABLE">430</x:Double>
+        <x:Double x:Key="HEIGHT_AUX_PROGRAM_TABLE">693</x:Double>
+        <x:Double x:Key="WIDTH_AUX_TEMPERATURE_COLUMN_NAME">170</x:Double>
+        <x:Double x:Key="WIDTH_AUX_TEMPERATURE_COLUMN_ACT">100</x:Double>
+        <x:Double x:Key="WIDTH_AUX_TEMPERATURE_COLUMN_SET">100</x:Double>
+        <x:Double x:Key="WIDTH_AUX_TEMPERATURE_COLUMN_SPARE">40</x:Double>
+
+        <x:Double x:Key="WIDTH_AUX_FLOW_COLUMN_NAME">170</x:Double>
+        <x:Double x:Key="WIDTH_AUX_FLOW_COLUMN_ACT">100</x:Double>
+        <x:Double x:Key="WIDTH_AUX_FLOW_COLUMN_SET">100</x:Double>
+        <x:Double x:Key="WIDTH_AUX_FLOW_COLUMN_SPARE">40</x:Double>
+        <x:Double x:Key="HEIGHT_AUX_FLOW_GROUP">225</x:Double>
         <Thickness x:Key="THICKNESS_FRAME_MARGIN_TOP">
             <Thickness.Left>18</Thickness.Left>
             <Thickness.Top>7</Thickness.Top>
@@ -220,6 +232,8 @@
         <x:Int32 x:Key="FS_MAINPAGE_NORMAL">24</x:Int32>
         <FileImageSource x:Key="IMG_CONFIG_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
         <FileImageSource x:Key="IMG_SYSTEM_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
+        <cvt:bMethanizerToStringConverter x:Key="bMethanizerToStringConverter"/>
+        <cvt:ValveProgramSelectedIndexToParameterConverter x:Key="ValveProgramSelectedIndexToParameterConverter"/>
         <cvt:ValveProgramStateToStringConverter x:Key="ValveProgramStateToStringConverter"/>
         <cvt:ValveInitialStateToBoolConverter x:Key="ValveInitialStateToBoolConverter"/>
         <cvt:BoolToSettingInputBackgroundConverter x:Key="BoolToSettingInputBackgroundConverter"/>
@@ -281,6 +295,13 @@
             <Setter Property="FontSize" Value="16"/>
             <!--<Setter Property="CornerRadius" Value="5"/>-->
             <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
+            <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_CONFIG_AUX_TEMPERATURE_SET_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
+            <Setter Property="FontSize" Value="16"/>
+            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            <Setter Property="Margin" Value="0,1,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>

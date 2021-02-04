@@ -49,6 +49,26 @@ namespace ChroZenService
 
         #endregion UnitText
 
+        #region TextColor
+
+        public static readonly BindableProperty TextColorProperty = BindableProperty.Create("TextColor", typeof(Color), typeof(UC_Config_UnderLine_ButtonBase));
+
+        public Color TextColor
+        {
+            get { return (Color)GetValue(TextColorProperty); }
+            set { SetValue(TextColorProperty, value); }
+        }
+
+        private static void onTextColorPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            //if (newValue != null)
+            //{
+            //    (bindable as UC_TabHeaderButton).TextColor = (string)newValue;
+            //}
+        }
+
+        #endregion TextColor
+
         #region ClickCommand
 
         public static readonly BindableProperty ClickCommandProperty = BindableProperty.Create("ClickCommand", typeof(RelayCommand), typeof(UC_Config_UnderLine_ButtonBase)

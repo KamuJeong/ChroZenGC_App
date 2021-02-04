@@ -2,6 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
+             xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
              x:Class="ChroZenService.View_Config_ValveProgram">
     <ContentView.Content>
         <AbsoluteLayout>
@@ -51,7 +52,7 @@
 
                         </Frame>
                         <Line Grid.ColumnSpan="6" X1="21" X2="406" Y1="{StaticResource HEIGHT_CONTROLPAGE_1}" Y2="{StaticResource HEIGHT_CONTROLPAGE_1}" Stroke="Gray"/>
-                        <Line Grid.RowSpan="22" X1="{StaticResource WIDTH_VALVE_PROGRAM_COLUMN_TITLE}" X2="{StaticResource WIDTH_VALVE_PROGRAM_COLUMN_TITLE}" Y1="14" Y2="844" Stroke="Gray"/>
+                        <Line Grid.RowSpan="22" X1="{StaticResource WIDTH_VALVE_PROGRAM_COLUMN_TITLE}" X2="{StaticResource WIDTH_VALVE_PROGRAM_COLUMN_TITLE}" Y1="14" Y2="835" Stroke="Gray"/>
                         <Label Text="No." Grid.Row="0" Grid.Column="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="12,2,0,0"/>
                         <Label Text="Time(min)" Grid.Row="0" Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
                         <Label Text="Valve" Grid.Row="0" Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
@@ -98,26 +99,147 @@
                         <local:UC_System_ValveProgram_Time Grid.Row="19"  Grid.Column="1"  Text="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.fTime_19}" Style="{StaticResource STYLE_LABEL_CONFIG_VALVE_PROGRAM_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_19}"/>
                         <local:UC_System_ValveProgram_Time Grid.Row="20"  Grid.Column="1"  Text="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.fTime_20}" Style="{StaticResource STYLE_LABEL_CONFIG_VALVE_PROGRAM_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_20}"/>
 
-                        <Picker Grid.Row="1" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_1}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="2" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_2}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="3" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_3}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="4" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_4}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="5" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_5}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="6" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_6}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="7" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_7}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="8" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_8}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="9" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_9}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="10" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_10}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="11" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_11}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="12" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_12}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="13" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_13}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="14" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_14}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="15" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_15}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="16" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_16}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="17" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_17}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="18" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_18}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="19" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_19}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
-                        <Picker Grid.Row="20" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_20}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}"/>
+                        <Picker x:Name="picker1" Title="Valve Number 1" Grid.Row="1"  Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_1}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}" >
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" 
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                          CommandParameter="{Binding Source={x:Reference picker1}, Path=Title}"
+                                          />
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker2" Title="Valve Number 2" Grid.Row="2"  Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_2}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}" >
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                          CommandParameter="{Binding Source={x:Reference picker2}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker3"  Title="Valve Number 3" Grid.Row="3"  Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_3}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}" >
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker3}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker4"  Title="Valve Number 4" Grid.Row="4"  Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_4}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}" >
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker4}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker5"  Title="Valve Number 5" Grid.Row="5"  Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_5}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}" >
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                       CommandParameter="{Binding Source={x:Reference picker5}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker6"  Title="Valve Number 6" Grid.Row="6"  Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_6}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}" >
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                               CommandParameter="{Binding Source={x:Reference picker6}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker7"  Title="Valve Number 7" Grid.Row="7"  Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_7}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}" >
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker7}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker8"  Title="Valve Number 8" Grid.Row="8"  Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_8}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}" >
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                        CommandParameter="{Binding Source={x:Reference picker8}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker9" Title="Valve Number 9" Grid.Row="9"  Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_9}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}" >
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                               CommandParameter="{Binding Source={x:Reference picker9}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker10"  Title="Valve Number 10" Grid.Row="10" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_10}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}">
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker10}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker11"  Title="Valve Number 11" Grid.Row="11" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_11}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}">
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker11}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker12"  Title="Valve Number 12" Grid.Row="12" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_12}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}">
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker12}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker13"  Title="Valve Number 13" Grid.Row="13" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_13}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}">
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker13}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker14"  Title="Valve Number 14" Grid.Row="14" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_14}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}">
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker14}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker15"  Title="Valve Number 15" Grid.Row="15" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_15}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}">
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker15}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker16"  Title="Valve Number 16" Grid.Row="16" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_16}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}">
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker16}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker17"  Title="Valve Number 17" Grid.Row="17" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_17}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}">
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker17}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker18"  Title="Valve Number 18" Grid.Row="18" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_18}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}">
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker18}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker19"  Title="Valve Number 19" Grid.Row="19" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_19}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}">
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker19}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
+                        <Picker x:Name="picker20"  Title="Valve Number 20" Grid.Row="20" Grid.Column="2" SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btNumber_20}" Style="{StaticResource STYLE_PICKER_CONFIG_VALVE_PROGRAM}" ItemsSource="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.valveProgramPickerSource}">
+                            <Picker.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" EventArgsConverter="{StaticResource ValveProgramSelectedIndexToParameterConverter}"
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramValveIndexChangeCommand}"
+                                CommandParameter="{Binding Source={x:Reference picker20}, Path=Title}"/>
+                            </Picker.Behaviors>
+                        </Picker>
 
                         <local:UC_System_ValveProgram_State Grid.Row="1"  Grid.Column="3"  Text="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btState_1, Converter={StaticResource ValveProgramStateToStringConverter}}" Style="{StaticResource STYLE_LABEL_CONFIG_VALVE_PROGRAM_EDITOR}"   TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramStateChangeCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_1}"/>
                         <local:UC_System_ValveProgram_State Grid.Row="2"  Grid.Column="3"  Text="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.btState_2, Converter={StaticResource ValveProgramStateToStringConverter}}" Style="{StaticResource STYLE_LABEL_CONFIG_VALVE_PROGRAM_EDITOR}"   TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_ValveProgram.ProgramStateChangeCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_2}"/>

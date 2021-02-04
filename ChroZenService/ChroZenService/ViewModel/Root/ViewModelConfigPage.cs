@@ -32,6 +32,34 @@ namespace ChroZenService
                             ViewModel_Config_OvenSettings.ActualTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_Config_OvenSettings.fTempSet = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[0] > 0) ViewModel_Config_AuxTemperature.strActAux_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_Config_AuxTemperature.strActAux_1 = "";
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[1] > 0) ViewModel_Config_AuxTemperature.strActAux_2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_Config_AuxTemperature.strActAux_2 = "";
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[2] > 0) ViewModel_Config_AuxTemperature.strActAux_3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_Config_AuxTemperature.strActAux_3 = "";
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[3] > 0) ViewModel_Config_AuxTemperature.strActAux_4 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_Config_AuxTemperature.strActAux_4 = "";
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[4] > 0) ViewModel_Config_AuxTemperature.strActAux_5 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_Config_AuxTemperature.strActAux_5 = "";
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[5] > 0) ViewModel_Config_AuxTemperature.strActAux_6 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_Config_AuxTemperature.strActAux_6 = "";
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[6] > 0) ViewModel_Config_AuxTemperature.strActAux_7 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_Config_AuxTemperature.strActAux_7 = "";
+                            if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[7] > 0) ViewModel_Config_AuxTemperature.strActAux_8 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            else ViewModel_Config_AuxTemperature.strActAux_8 = "";
+
+                            ViewModel_Config_AuxFlow1.ActualFlow1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_AuxFlow1.ActualFlow2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_AuxFlow1.ActualFlow3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            ViewModel_Config_AuxFlow2.ActualFlow1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_AuxFlow2.ActualFlow2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_AuxFlow2.ActualFlow3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            ViewModel_Config_AuxFlow3.ActualFlow1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_AuxFlow3.ActualFlow2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_AuxFlow3.ActualFlow3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                         }
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_OVEN_SETTING:
@@ -336,6 +364,83 @@ namespace ChroZenService
                             if (ViewModel_Config_ValveInitialState.type1_7) ViewModel_Config_ValveProgram.valveProgramPickerSource.Add("7");
                             if (ViewModel_Config_ValveInitialState.type1_8) ViewModel_Config_ValveProgram.valveProgramPickerSource.Add("8");
 
+                            ViewModel_Config_AuxTemperature.bMethanizer = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bMethanizer;
+                            ViewModel_Config_AuxTemperature.bIsAux1Enabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[0] > 0;
+                            ViewModel_Config_AuxTemperature.bIsAux2Enabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[1] > 0;
+                            ViewModel_Config_AuxTemperature.bIsAux3Enabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[2] > 0;
+                            ViewModel_Config_AuxTemperature.bIsAux4Enabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[3] > 0;
+                            ViewModel_Config_AuxTemperature.bIsAux5Enabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[4] > 0;
+                            ViewModel_Config_AuxTemperature.bIsAux6Enabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[5] > 0;
+                            ViewModel_Config_AuxTemperature.bIsAux7Enabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[6] > 0;
+                            ViewModel_Config_AuxTemperature.bIsAux8Enabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxTemp[7] > 0;
+
+                            ViewModel_Config_AuxFlow1.bIsAuxEnabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[0] > 0;
+                            ViewModel_Config_AuxFlow2.bIsAuxEnabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[1] > 0;
+                            ViewModel_Config_AuxFlow3.bIsAuxEnabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[2] > 0;
+                        }
+                        break;
+                    case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_AUX_TEMP_SETTING:
+                        {
+                            ViewModel_Config_AuxTemperature.fTempSet_1 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempSet[0];
+                            ViewModel_Config_AuxTemperature.fTempSet_2 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempSet[1];
+                            ViewModel_Config_AuxTemperature.fTempSet_3 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempSet[2];
+                            ViewModel_Config_AuxTemperature.fTempSet_4 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempSet[3];
+                            ViewModel_Config_AuxTemperature.fTempSet_5 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempSet[4];
+                            ViewModel_Config_AuxTemperature.fTempSet_6 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempSet[5];
+                            ViewModel_Config_AuxTemperature.fTempSet_7 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempSet[6];
+                            ViewModel_Config_AuxTemperature.fTempSet_8 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempSet[7];
+
+                            ViewModel_Config_AuxTemperature.fTempOnoff_1 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempOnoff[0] == 1 ? true : false;
+                            ViewModel_Config_AuxTemperature.fTempOnoff_2 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempOnoff[1] == 1 ? true : false;
+                            ViewModel_Config_AuxTemperature.fTempOnoff_3 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempOnoff[2] == 1 ? true : false;
+                            ViewModel_Config_AuxTemperature.fTempOnoff_4 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempOnoff[3] == 1 ? true : false;
+                            ViewModel_Config_AuxTemperature.fTempOnoff_5 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempOnoff[4] == 1 ? true : false;
+                            ViewModel_Config_AuxTemperature.fTempOnoff_6 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempOnoff[5] == 1 ? true : false;
+                            ViewModel_Config_AuxTemperature.fTempOnoff_7 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempOnoff[6] == 1 ? true : false;
+                            ViewModel_Config_AuxTemperature.fTempOnoff_8 = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received.packet.fTempOnoff[7] == 1 ? true : false;
+                        }
+                        break;
+                    case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_AUX_APC_SETTING:
+                        {
+                            switch(nIndex)
+                            {
+                                case 0:
+                                    {
+                                        ViewModel_Config_AuxFlow1.btAuxGas = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Received.packet.lcdAuxApc.btAuxGas;
+                                        ViewModel_Config_AuxFlow1.fFlowSet1 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Received.packet.lcdAuxApc.fFlowSet1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_AuxFlow1.fFlowSet2 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Received.packet.lcdAuxApc.fFlowSet2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_AuxFlow1.fFlowSet3 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Received.packet.lcdAuxApc.fFlowSet3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_AuxFlow1.fFlowOnoff1 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Received.packet.lcdAuxApc.fFlowOnoff1;
+                                        ViewModel_Config_AuxFlow1.fFlowOnoff2 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Received.packet.lcdAuxApc.fFlowOnoff2;
+                                        ViewModel_Config_AuxFlow1.fFlowOnoff3 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Received.packet.lcdAuxApc.fFlowOnoff3;
+                                    }
+                                    break;
+                                case 1:
+                                    {
+                                        ViewModel_Config_AuxFlow2.btAuxGas = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Received.packet.lcdAuxApc.btAuxGas;
+                                        ViewModel_Config_AuxFlow2.fFlowSet1 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Received.packet.lcdAuxApc.fFlowSet1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_AuxFlow2.fFlowSet2 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Received.packet.lcdAuxApc.fFlowSet2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_AuxFlow2.fFlowSet3 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Received.packet.lcdAuxApc.fFlowSet3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_AuxFlow2.fFlowOnoff1 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Received.packet.lcdAuxApc.fFlowOnoff1;
+                                        ViewModel_Config_AuxFlow2.fFlowOnoff2 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Received.packet.lcdAuxApc.fFlowOnoff2;
+                                        ViewModel_Config_AuxFlow2.fFlowOnoff3 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Received.packet.lcdAuxApc.fFlowOnoff3;
+                                    }
+                                    break;
+                                case 2:
+                                    {
+                                        ViewModel_Config_AuxFlow3.btAuxGas = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Received.packet.lcdAuxApc.btAuxGas;
+                                        ViewModel_Config_AuxFlow3.fFlowSet1 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Received.packet.lcdAuxApc.fFlowSet1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_AuxFlow3.fFlowSet2 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Received.packet.lcdAuxApc.fFlowSet2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_AuxFlow3.fFlowSet3 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Received.packet.lcdAuxApc.fFlowSet3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_AuxFlow3.fFlowOnoff1 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Received.packet.lcdAuxApc.fFlowOnoff1;
+                                        ViewModel_Config_AuxFlow3.fFlowOnoff2 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Received.packet.lcdAuxApc.fFlowOnoff2;
+                                        ViewModel_Config_AuxFlow3.fFlowOnoff3 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Received.packet.lcdAuxApc.fFlowOnoff3;
+                                    }
+                                    break;
+                            }
                         }
                         break;
                 }
@@ -402,8 +507,13 @@ namespace ChroZenService
         #endregion Valve
 
         #region AuxFlow
-        ViewModel_Config_AuxFlow _ViewModel_Config_AuxFlow = new ViewModel_Config_AuxFlow();
-        public ViewModel_Config_AuxFlow ViewModel_Config_AuxFlow { get { return _ViewModel_Config_AuxFlow; } set { _ViewModel_Config_AuxFlow = value; OnPropertyChanged("ViewModel_Config_AuxFlow"); } }
+        ViewModel_Config_AuxFlow _ViewModel_Config_AuxFlow1 = new ViewModel_Config_AuxFlow();
+        public ViewModel_Config_AuxFlow ViewModel_Config_AuxFlow1 { get { return _ViewModel_Config_AuxFlow1; } set { _ViewModel_Config_AuxFlow1 = value; OnPropertyChanged("ViewModel_Config_AuxFlow1"); } }
+        ViewModel_Config_AuxFlow _ViewModel_Config_AuxFlow2 = new ViewModel_Config_AuxFlow();
+        public ViewModel_Config_AuxFlow ViewModel_Config_AuxFlow2 { get { return _ViewModel_Config_AuxFlow2; } set { _ViewModel_Config_AuxFlow2 = value; OnPropertyChanged("ViewModel_Config_AuxFlow2"); } }
+        ViewModel_Config_AuxFlow _ViewModel_Config_AuxFlow3 = new ViewModel_Config_AuxFlow();
+        public ViewModel_Config_AuxFlow ViewModel_Config_AuxFlow3 { get { return _ViewModel_Config_AuxFlow3; } set { _ViewModel_Config_AuxFlow3 = value; OnPropertyChanged("ViewModel_Config_AuxFlow3"); } }
+
         ViewModel_Config_AuxTemperature _ViewModel_Config_AuxTemperature = new ViewModel_Config_AuxTemperature();
         public ViewModel_Config_AuxTemperature ViewModel_Config_AuxTemperature { get { return _ViewModel_Config_AuxTemperature; } set { _ViewModel_Config_AuxTemperature = value; OnPropertyChanged("ViewModel_Config_AuxTemperature"); } }
         #endregion AuxFlow

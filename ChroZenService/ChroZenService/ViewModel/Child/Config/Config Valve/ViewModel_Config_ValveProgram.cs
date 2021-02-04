@@ -16,6 +16,7 @@ namespace ChroZenService
         public ViewModel_Config_ValveProgram()
         {
             ProgramStateChangeCommand = new RelayCommand(ProgramStateChangeCommandAction);
+            ProgramValveIndexChangeCommand = new RelayCommand(ProgramValveIndexChangeCommandAction);
 
             KeyPadApplyCommand = new RelayCommand(KeyPadApplyCommandAction);
             KeyPadCancelCommand = new RelayCommand(KeyPadCancelCommandAction);
@@ -251,121 +252,160 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_1:
                         {
                             fTime_1 = tempFloatVal;
-
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_2:
                         {
                             fTime_2 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_3:
                         {
                             fTime_3 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_4:
                         {
                             fTime_4 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_5:
                         {
                             fTime_5 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_6:
                         {
                             fTime_6 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_7:
                         {
                             fTime_7 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_8:
                         {
                             fTime_8 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_9:
                         {
                             fTime_9 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_10:
                         {
                             fTime_10 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_11:
                         {
                             fTime_11 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_12:
                         {
                             fTime_12 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_13:
                         {
                             fTime_13 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_14:
                         {
                             fTime_14 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_15:
                         {
                             fTime_15 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_16:
                         {
                             fTime_16 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_17:
                         {
                             fTime_17 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_18:
                         {
                             fTime_18 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_19:
                         {
                             fTime_19 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.VALVE_PROGRAM_TIME_20:
                         {
                             fTime_20 = tempFloatVal;
+                            SortTimeAndSource();
+                            SetValvePrgmAndSend();
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
@@ -404,7 +444,7 @@ namespace ChroZenService
             Button sender = (param as Button);
             ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
 
-         
+
         }
 
         #endregion KeyPad : OffCommand
@@ -492,7 +532,7 @@ namespace ChroZenService
         public RelayCommand ProgramStateChangeCommand { get; set; }
         private void ProgramStateChangeCommandAction(object param)
         {
-            switch((E_GLOBAL_COMMAND_TYPE)param)
+            switch ((E_GLOBAL_COMMAND_TYPE)param)
             {
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_1:
                     {
@@ -681,6 +721,305 @@ namespace ChroZenService
             Debug.WriteLine("ProgramStateChangeCommand Fired");
         }
         #endregion ProgramStateChangeCommand 
+
+        #region ProgramValveIndexChangeCommand
+        public RelayCommand ProgramValveIndexChangeCommand { get; set; }
+        private void ProgramValveIndexChangeCommandAction(object title)
+        {
+            switch (title.ToString())
+            {
+                case "Valve Number 1":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[0].btNumber = btNumber_1;
+                    }
+                    break;
+                case "Valve Number 2":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[1].btNumber = btNumber_2;
+                    }
+                    break;
+                case "Valve Number 3":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[2].btNumber = btNumber_3;
+                    }
+                    break;
+                case "Valve Number 4":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[3].btNumber = btNumber_4;
+                    }
+                    break;
+                case "Valve Number 5":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[4].btNumber = btNumber_5;
+                    }
+                    break;
+                case "Valve Number 6":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[5].btNumber = btNumber_6;
+                    }
+                    break;
+                case "Valve Number 7":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[6].btNumber = btNumber_7;
+                    }
+                    break;
+                case "Valve Number 8":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[7].btNumber = btNumber_8;
+                    }
+                    break;
+                case "Valve Number 9":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[8].btNumber = btNumber_9;
+                    }
+                    break;
+                case "Valve Number 10":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[9].btNumber = btNumber_10;
+                    }
+                    break;
+                case "Valve Number 11":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[10].btNumber = btNumber_11;
+                    }
+                    break;
+                case "Valve Number 12":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[11].btNumber = btNumber_12;
+                    }
+                    break;
+                case "Valve Number 13":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[12].btNumber = btNumber_13;
+                    }
+                    break;
+                case "Valve Number 14":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[13].btNumber = btNumber_14;
+                    }
+                    break;
+                case "Valve Number 15":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[14].btNumber = btNumber_15;
+                    }
+                    break;
+                case "Valve Number 16":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[15].btNumber = btNumber_16;
+                    }
+                    break;
+                case "Valve Number 17":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[16].btNumber = btNumber_17;
+                    }
+                    break;
+                case "Valve Number 18":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[17].btNumber = btNumber_18;
+                    }
+                    break;
+                case "Valve Number 19":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[18].btNumber = btNumber_19;
+                    }
+                    break;
+                case "Valve Number 20":
+                    {
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[19].btNumber = btNumber_20;
+                    }
+                    break;
+            }
+            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //switch ((sender as Picker).)
+            //{
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_1:
+            //        {
+            //            if (btState_1 == 0) btState_1 = 1;
+            //            else btState_1 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[0].btState = btState_1;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_2:
+            //        {
+            //            if (btState_2 == 0) btState_2 = 1;
+            //            else btState_2 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[1].btState = btState_2;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_3:
+            //        {
+            //            if (btState_3 == 0) btState_3 = 1;
+            //            else btState_3 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[2].btState = btState_3;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_4:
+            //        {
+            //            if (btState_4 == 0) btState_4 = 1;
+            //            else btState_4 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[3].btState = btState_4;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_5:
+            //        {
+            //            if (btState_5 == 0) btState_5 = 1;
+            //            else btState_5 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[4].btState = btState_5;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_6:
+            //        {
+            //            if (btState_6 == 0) btState_6 = 1;
+            //            else btState_6 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[5].btState = btState_6;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_7:
+            //        {
+            //            if (btState_7 == 0) btState_7 = 1;
+            //            else btState_7 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[6].btState = btState_7;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_8:
+            //        {
+            //            if (btState_8 == 0) btState_8 = 1;
+            //            else btState_8 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[7].btState = btState_8;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_9:
+            //        {
+            //            if (btState_9 == 0) btState_9 = 1;
+            //            else btState_9 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[8].btState = btState_9;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_10:
+            //        {
+            //            if (btState_10 == 0) btState_10 = 1;
+            //            else btState_10 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[9].btState = btState_10;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_11:
+            //        {
+            //            if (btState_11 == 0) btState_11 = 1;
+            //            else btState_11 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[10].btState = btState_11;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_12:
+            //        {
+            //            if (btState_12 == 0) btState_12 = 1;
+            //            else btState_12 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[11].btState = btState_12;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_13:
+            //        {
+            //            if (btState_13 == 0) btState_13 = 1;
+            //            else btState_13 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[12].btState = btState_13;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_14:
+            //        {
+            //            if (btState_14 == 0) btState_14 = 1;
+            //            else btState_14 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[13].btState = btState_14;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_15:
+            //        {
+            //            if (btState_15 == 0) btState_15 = 1;
+            //            else btState_15 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[14].btState = btState_15;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_16:
+            //        {
+            //            if (btState_16 == 0) btState_16 = 1;
+            //            else btState_16 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[15].btState = btState_16;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_17:
+            //        {
+            //            if (btState_17 == 0) btState_17 = 1;
+            //            else btState_17 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[16].btState = btState_17;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_18:
+            //        {
+            //            if (btState_18 == 0) btState_18 = 1;
+            //            else btState_18 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[17].btState = btState_18;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_19:
+            //        {
+            //            if (btState_19 == 0) btState_19 = 1;
+            //            else btState_19 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[18].btState = btState_19;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //    case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_PROGRAM_STATE_20:
+            //        {
+            //            if (btState_20 == 0) btState_20 = 1;
+            //            else btState_20 = 0;
+            //            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[19].btState = btState_20;
+            //            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+            //                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+            //        }
+            //        break;
+            //}
+
+            //TODO :             
+            Debug.WriteLine(string.Format("ProgramValveIndexChangeCommand Fired : {0}", title.ToString()));
+        }
+        #endregion ProgramValveIndexChangeCommand 
 
         #region SetCommand
         public RelayCommand SetCommand { get; set; }
@@ -881,6 +1220,180 @@ namespace ChroZenService
         #endregion Binding
 
         #region Instance Func
+
+        private void SortTimeAndSource()
+        {
+            List<Tuple<float, byte, byte>> listPrgmSourceArr = new List<Tuple<float, byte, byte>>
+            {
+               new Tuple<float,byte,byte>(fTime_1 , btNumber_1  , btState_1  ),
+               new Tuple<float,byte,byte>(fTime_2 , btNumber_2  , btState_2  ),
+               new Tuple<float,byte,byte>(fTime_3 , btNumber_3  , btState_3  ),
+               new Tuple<float,byte,byte>(fTime_4 , btNumber_4  , btState_4  ),
+               new Tuple<float,byte,byte>(fTime_5 , btNumber_5  , btState_5  ),
+               new Tuple<float,byte,byte>(fTime_6 , btNumber_6  , btState_6  ),
+               new Tuple<float,byte,byte>(fTime_7 , btNumber_7  , btState_7  ),
+               new Tuple<float,byte,byte>(fTime_8 , btNumber_8  , btState_8  ),
+               new Tuple<float,byte,byte>(fTime_9 , btNumber_9  , btState_9  ),
+               new Tuple<float,byte,byte>(fTime_10, btNumber_10 , btState_10 ),
+               new Tuple<float,byte,byte>(fTime_11, btNumber_11 , btState_11 ),
+               new Tuple<float,byte,byte>(fTime_12, btNumber_12 , btState_12 ),
+               new Tuple<float,byte,byte>(fTime_13, btNumber_13 , btState_13 ),
+               new Tuple<float,byte,byte>(fTime_14, btNumber_14 , btState_14 ),
+               new Tuple<float,byte,byte>(fTime_15, btNumber_15 , btState_15 ),
+               new Tuple<float,byte,byte>(fTime_16, btNumber_16 , btState_16 ),
+               new Tuple<float,byte,byte>(fTime_17, btNumber_17 , btState_17 ),
+               new Tuple<float,byte,byte>(fTime_18, btNumber_18 , btState_18 ),
+               new Tuple<float,byte,byte>(fTime_19, btNumber_19 , btState_19 ),
+               new Tuple<float,byte,byte>(fTime_20, btNumber_20 , btState_20 ),
+            };
+
+            int nRoopCount = 19;
+
+            while (nRoopCount > 1)
+            {
+                for (int i = 0; i < nRoopCount; i++)
+                {
+                    if (listPrgmSourceArr[i].Item1 > listPrgmSourceArr[i + 1].Item1)
+                    {
+                        Tuple<float, byte, byte> tempTuple = new Tuple<float, byte, byte>(listPrgmSourceArr[i + 1].Item1, listPrgmSourceArr[i + 1].Item2, listPrgmSourceArr[i + 1].Item3);
+
+                        listPrgmSourceArr[i + 1] = new Tuple<float, byte, byte>(listPrgmSourceArr[i].Item1, listPrgmSourceArr[i].Item2, listPrgmSourceArr[i].Item3);
+                        listPrgmSourceArr[i] = new Tuple<float, byte, byte>(tempTuple.Item1, tempTuple.Item2, tempTuple.Item3);
+                    }
+                }
+                nRoopCount -= 1;
+            }
+            fTime_1 = listPrgmSourceArr[0].Item1;
+            btNumber_1 = listPrgmSourceArr[0].Item2;
+            btState_1 = listPrgmSourceArr[0].Item3;
+            fTime_2 = listPrgmSourceArr[1].Item1;
+            btNumber_2 = listPrgmSourceArr[1].Item2;
+            btState_2 = listPrgmSourceArr[1].Item3;
+            fTime_3 = listPrgmSourceArr[2].Item1;
+            btNumber_3 = listPrgmSourceArr[2].Item2;
+            btState_3 = listPrgmSourceArr[2].Item3;
+            fTime_4 = listPrgmSourceArr[3].Item1;
+            btNumber_4 = listPrgmSourceArr[3].Item2;
+            btState_4 = listPrgmSourceArr[3].Item3;
+            fTime_5 = listPrgmSourceArr[4].Item1;
+            btNumber_5 = listPrgmSourceArr[4].Item2;
+            btState_5 = listPrgmSourceArr[4].Item3;
+
+            fTime_6 = listPrgmSourceArr[5].Item1;
+            btNumber_6 = listPrgmSourceArr[5].Item2;
+            btState_6 = listPrgmSourceArr[5].Item3;
+            fTime_7 = listPrgmSourceArr[6].Item1;
+            btNumber_7 = listPrgmSourceArr[6].Item2;
+            btState_7 = listPrgmSourceArr[6].Item3;
+            fTime_8 = listPrgmSourceArr[7].Item1;
+            btNumber_8 = listPrgmSourceArr[7].Item2;
+            btState_8 = listPrgmSourceArr[7].Item3;
+            fTime_9 = listPrgmSourceArr[8].Item1;
+            btNumber_9 = listPrgmSourceArr[8].Item2;
+            btState_9 = listPrgmSourceArr[8].Item3;
+            fTime_10 = listPrgmSourceArr[9].Item1;
+            btNumber_10 = listPrgmSourceArr[9].Item2;
+            btState_10 = listPrgmSourceArr[9].Item3;
+
+            fTime_11 = listPrgmSourceArr[10].Item1;
+            btNumber_11 = listPrgmSourceArr[10].Item2;
+            btState_11 = listPrgmSourceArr[10].Item3;
+            fTime_12 = listPrgmSourceArr[11].Item1;
+            btNumber_12 = listPrgmSourceArr[11].Item2;
+            btState_12 = listPrgmSourceArr[11].Item3;
+            fTime_13 = listPrgmSourceArr[12].Item1;
+            btNumber_13 = listPrgmSourceArr[12].Item2;
+            btState_13 = listPrgmSourceArr[12].Item3;
+            fTime_14 = listPrgmSourceArr[13].Item1;
+            btNumber_14 = listPrgmSourceArr[13].Item2;
+            btState_14 = listPrgmSourceArr[13].Item3;
+            fTime_15 = listPrgmSourceArr[14].Item1;
+            btNumber_15 = listPrgmSourceArr[14].Item2;
+            btState_15 = listPrgmSourceArr[14].Item3;
+
+            fTime_16 = listPrgmSourceArr[15].Item1;
+            btNumber_16 = listPrgmSourceArr[15].Item2;
+            btState_16 = listPrgmSourceArr[15].Item3;
+            fTime_17 = listPrgmSourceArr[16].Item1;
+            btNumber_17 = listPrgmSourceArr[16].Item2;
+            btState_17 = listPrgmSourceArr[16].Item3;
+            fTime_18 = listPrgmSourceArr[17].Item1;
+            btNumber_18 = listPrgmSourceArr[17].Item2;
+            btState_18 = listPrgmSourceArr[17].Item3;
+            fTime_19 = listPrgmSourceArr[18].Item1;
+            btNumber_19 = listPrgmSourceArr[18].Item2;
+            btState_19 = listPrgmSourceArr[18].Item3;
+            fTime_20 = listPrgmSourceArr[19].Item1;
+            btNumber_20 = listPrgmSourceArr[19].Item2;
+            btState_20 = listPrgmSourceArr[19].Item3;
+        }
+
+        private void SetValvePrgmAndSend()
+        {
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[0].fTime = fTime_1;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[1].fTime = fTime_2;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[2].fTime = fTime_3;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[3].fTime = fTime_4;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[4].fTime = fTime_5;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[5].fTime = fTime_6;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[6].fTime = fTime_7;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[7].fTime = fTime_8;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[8].fTime = fTime_9;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[9].fTime = fTime_10;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[10].fTime = fTime_11;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[11].fTime = fTime_12;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[12].fTime = fTime_13;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[13].fTime = fTime_14;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[14].fTime = fTime_15;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[15].fTime = fTime_16;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[16].fTime = fTime_17;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[17].fTime = fTime_18;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[18].fTime = fTime_19;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[19].fTime = fTime_20;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[0].btNumber = btNumber_1;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[1].btNumber = btNumber_2;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[2].btNumber = btNumber_3;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[3].btNumber = btNumber_4;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[4].btNumber = btNumber_5;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[5].btNumber = btNumber_6;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[6].btNumber = btNumber_7;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[7].btNumber = btNumber_8;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[8].btNumber = btNumber_9;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[9].btNumber = btNumber_10;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[10].btNumber = btNumber_11;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[11].btNumber = btNumber_12;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[12].btNumber = btNumber_13;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[13].btNumber = btNumber_14;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[14].btNumber = btNumber_15;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[15].btNumber = btNumber_16;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[16].btNumber = btNumber_17;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[17].btNumber = btNumber_18;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[18].btNumber = btNumber_19;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[19].btNumber = btNumber_20;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[0].btState = btState_1;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[1].btState = btState_2;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[2].btState = btState_3;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[3].btState = btState_4;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[4].btState = btState_5;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[5].btState = btState_6;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[6].btState = btState_7;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[7].btState = btState_8;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[8].btState = btState_9;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[9].btState = btState_10;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[10].btState = btState_11;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[11].btState = btState_12;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[12].btState = btState_13;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[13].btState = btState_14;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[14].btState = btState_15;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[15].btState = btState_16;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[16].btState = btState_17;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[17].btState = btState_18;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[18].btState = btState_19;
+            DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.Prgm[19].btState = btState_20;
+
+            tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(
+                DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+        }
 
         #endregion Instance Func
     }

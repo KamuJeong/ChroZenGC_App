@@ -341,8 +341,8 @@
                                     <local:View_Config_ValveProgram  IsVisible="{Binding ViewModelConfigPage.SelectedSubMenu,Converter={StaticResource E_CONFIG_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.VALVE_PROGRAM}}" />
                                 </Grid>
                                 <Grid IsVisible="{Binding ViewModelConfigPage.SelectedMenu,Converter={StaticResource E_CONFIG_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_MENU_TYPE.AUX}}">
-                                    <local:View_Config_AuxFlow  IsVisible="{Binding ViewModelConfigPage.SelectedSubMenu,Converter={StaticResource E_CONFIG_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.AUX_TEMPERATURE}}" />
-                                    <local:View_Config_AuxTemperature  IsVisible="{Binding ViewModelConfigPage.SelectedSubMenu,Converter={StaticResource E_CONFIG_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.AUX_FLOW}}" />
+                                    <local:View_Config_AuxFlow  IsVisible="{Binding ViewModelConfigPage.SelectedSubMenu,Converter={StaticResource E_CONFIG_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.AUX_FLOW}}" />
+                                    <local:View_Config_AuxTemperature  IsVisible="{Binding ViewModelConfigPage.SelectedSubMenu,Converter={StaticResource E_CONFIG_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_CONFIG_SUB_MENU_TYPE.AUX_TEMPERATURE}}" />
                                 </Grid>
                             </Grid>
                         </Grid>
