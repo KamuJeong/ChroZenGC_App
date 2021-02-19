@@ -6,10 +6,13 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using System.Threading.Tasks;
+using System.IO;
+using Android.Util;
 
 namespace ChroZenService.Droid
 {
-    [Activity(Label = "ChroZenService", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "ChroZenService", Icon = "@mipmap/icon", Theme = "@style/MainTheme",   HardwareAccelerated =true,  ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -20,7 +23,6 @@ namespace ChroZenService.Droid
             //2021-01-13 : 
             HideNavAndStatusBar();
 
-
             Window.AddFlags(WindowManagerFlags.Fullscreen);
             Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
             base.OnCreate(savedInstanceState);
@@ -28,7 +30,6 @@ namespace ChroZenService.Droid
             global::Xamarin.Forms.Forms.SetFlags(new string[] { "RadioButton_Experimental", "Brush_Experimental", "Shapes_Experimental" });
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-
 
             int uiOptions = (int)Window.DecorView.SystemUiVisibility;
 
@@ -40,9 +41,59 @@ namespace ChroZenService.Droid
             Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
 
             Window.DecorView.SystemUiVisibilityChange += DecorView_SystemUiVisibilityChange;
+
+            Task.Run(async () =>
+            {
+                const int seconds = 30;
+                const string grefTag = "monodroid-gref";
+                const string grefsFile = "grefs.txt";
+                while (true)
+                {
+                    var appDir = Application.ApplicationInfo.DataDir;
+                    var grefFile = Path.Combine("/data/data", PackageName, "files/.__override__", grefsFile);
+                    var grefFilePublic = Path.Combine(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads).AbsolutePath, grefsFile);
+                    if (File.Exists(grefFile))
+                    {
+                        try
+                        {
+                            File.Copy(grefFile, grefFilePublic, true);
+                            Log.Debug(grefTag, $"adb pull {grefFilePublic} {grefsFile}");
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(string.Format("GREF Log Err Message : {0}, StackTrace : {1}", e.Message, e.StackTrace));
+                        }
+                    }
+                    else
+                        Log.Debug(grefTag, "no grefs.txt found, gref logging enabled? (adb shell setprop debug.mono.log gref)");
+                    await Task.Delay(seconds * 1000);
+                }
+            });
+            //Task.Run(async () =>
+            //{
+            //    const int seconds = 120;
+            //    const string grefTag = "monodroid-gref";
+            //    const string grefsFile = "grefs.txt";
+            //    while (true)
+            //    {
+            //        var appDir = Application.ApplicationInfo.DataDir;
+            //        var grefFile = System.IO.Path.Combine("/data/data", PackageName, "files/.__override__", grefsFile);
+            //        //var grefFilePublic = System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory + Java.IO.File.Separator + "download", grefsFile);
+            //        var grefFilePublic = System.IO.Path.Combine(Android.OS.Environment.DirectoryDownloads , grefsFile);
+            //        if (System.IO.File.Exists(grefFile))
+            //        {
+            //            System.IO.File.Copy(grefFile, grefFilePublic, true);
+            //            System.Console.Write(grefTag, $"adb pull {grefFilePublic} {grefsFile}");
+            //        }
+            //        else
+            //            System.Console.Write(grefTag, "no grefs.txt found, gref logging enabled? (adb shell setprop debug.mono.log gref)");
+            //        await Task.Delay(seconds * 1000);
+            //    }
+            //});
+
             try
             {
-                LoadApplication(new App());
+                LoadApplication(new App()); 
             }
             catch (Exception e)
             {

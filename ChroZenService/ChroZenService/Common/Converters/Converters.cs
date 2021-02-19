@@ -5,9 +5,318 @@ using System.Text;
 using Xamarin.Forms;
 using static ChroZenService.ChroZenService_Const;
 using static YC_ChroZenGC_Type.T_CHROZEN_GC_SYSTEM_CONFIG;
+using static YC_ChroZenGC_Type.T_CHROZEN_INLET;
 
 namespace ChroZenService
 {
+    public class E_INLET_TEMP_MODEToTemperatureTableEnableConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is E_INLET_TEMP_MODE)
+            {
+                switch ((E_INLET_TEMP_MODE)(value))
+                {
+                    case E_INLET_TEMP_MODE.PROGRAM:
+                        return true;
+                    case E_INLET_TEMP_MODE.ISO_THERMAL:
+                    case E_INLET_TEMP_MODE.TRACK_OVEN:
+                        return false;
+                    default:
+                        return false;                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class E_INLET_TYPEToOnColumnUIVisibleConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is E_INLET_TYPE)
+            {
+                switch ((E_INLET_TYPE)(value))
+                {
+                    case E_INLET_TYPE.On_Column:
+                        return true;
+                    case E_INLET_TYPE.Not_Installed:
+                    case E_INLET_TYPE.Capillary:
+                    case E_INLET_TYPE.Packed:
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class E_INLET_TYPEToCapillaryUIVisibleConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is E_INLET_TYPE)
+            {
+                switch ((E_INLET_TYPE)(value))
+                {
+                    case E_INLET_TYPE.Capillary:
+                        return true;
+                    case E_INLET_TYPE.Not_Installed:
+                    case E_INLET_TYPE.On_Column:
+                    case E_INLET_TYPE.Packed:
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class E_INLET_TYPEToPackedUIVisibleConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is E_INLET_TYPE)
+            {
+                switch ((E_INLET_TYPE)(value))
+                {
+                    case E_INLET_TYPE.Packed:
+                        return true;
+                    case E_INLET_TYPE.Not_Installed:
+                    case E_INLET_TYPE.On_Column:
+                    case E_INLET_TYPE.Capillary:
+
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    public class ApcModeToFlowTableEnableConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                switch ((E_INLET_APC_MODE)((byte)value))
+                {
+                    case E_INLET_APC_MODE.PROGRAMMED_FLOW:
+                        return true;
+                    case E_INLET_APC_MODE.CONSTANT_FLOW:
+                    case E_INLET_APC_MODE.CONSTANT_PRESSURE:
+                    case E_INLET_APC_MODE.PROGRAMMED_PRESSURE:
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ApcModeToPressureTableEnableConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                switch ((E_INLET_APC_MODE)((byte)value))
+                {
+                    case E_INLET_APC_MODE.CONSTANT_FLOW:
+                    case E_INLET_APC_MODE.PROGRAMMED_FLOW:
+                    case E_INLET_APC_MODE.CONSTANT_PRESSURE:
+                        return false;
+                    case E_INLET_APC_MODE.PROGRAMMED_PRESSURE:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ApcModeToPressureTableVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                switch ((E_INLET_APC_MODE)((byte)value))
+                {
+                    case E_INLET_APC_MODE.CONSTANT_FLOW:
+                    case E_INLET_APC_MODE.PROGRAMMED_FLOW:
+                        return false;
+                    case E_INLET_APC_MODE.CONSTANT_PRESSURE:
+                    case E_INLET_APC_MODE.PROGRAMMED_PRESSURE:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ApcModeToFlowTableVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                switch ((E_INLET_APC_MODE)((byte)value))
+                {
+                    case E_INLET_APC_MODE.CONSTANT_FLOW:
+                    case E_INLET_APC_MODE.PROGRAMMED_FLOW:
+                        return true;
+                    case E_INLET_APC_MODE.CONSTANT_PRESSURE:
+                    case E_INLET_APC_MODE.PROGRAMMED_PRESSURE:
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    public class ApcModeToFlowSetAvailableConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                switch ((E_INLET_APC_MODE)((byte)value))
+                {
+                    case E_INLET_APC_MODE.CONSTANT_FLOW:
+                    case E_INLET_APC_MODE.PROGRAMMED_FLOW:
+                        return true;
+                    case E_INLET_APC_MODE.CONSTANT_PRESSURE:
+                    case E_INLET_APC_MODE.PROGRAMMED_PRESSURE:
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ApcModeToPressureSetAvailableConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                switch ((E_INLET_APC_MODE)((byte)value))
+                {
+                    case E_INLET_APC_MODE.CONSTANT_FLOW:
+                    case E_INLET_APC_MODE.PROGRAMMED_FLOW:
+                        return false;
+                    case E_INLET_APC_MODE.CONSTANT_PRESSURE:
+                    case E_INLET_APC_MODE.PROGRAMMED_PRESSURE:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class bMethanizerToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -201,7 +510,7 @@ namespace ChroZenService
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
+            if (value is E_INLET_TYPE)
             {
                 switch ((E_INLET_TYPE)value)
                 {
@@ -237,7 +546,7 @@ namespace ChroZenService
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
+            if (value is E_INLET_TYPE)
             {
                 if ((E_INLET_TYPE)value == E_INLET_TYPE.Not_Installed) return false;
                 else return true;
@@ -258,7 +567,7 @@ namespace ChroZenService
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
+            if (value is E_DET_TYPE)
             {
                 if ((E_DET_TYPE)value == E_DET_TYPE.Not_Installed) return false;
                 else return true;
@@ -299,7 +608,7 @@ namespace ChroZenService
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
+            if (value is E_SYSTEM_SUB_MENU_TYPE)
             {
                 if ((E_SYSTEM_SUB_MENU_TYPE)value == (E_SYSTEM_SUB_MENU_TYPE)parameter) return true;
                 else return false;
@@ -320,7 +629,7 @@ namespace ChroZenService
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
+            if (value is E_SYSTEM_MENU_TYPE)
             {
                 if ((E_SYSTEM_MENU_TYPE)value == (E_SYSTEM_MENU_TYPE)parameter) return true;
                 else return false;
@@ -341,7 +650,7 @@ namespace ChroZenService
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
+            if (value is E_CONFIG_SUB_MENU_TYPE)
             {
                 if ((E_CONFIG_SUB_MENU_TYPE)value == (E_CONFIG_SUB_MENU_TYPE)parameter) return true;
                 else return false;
@@ -362,7 +671,7 @@ namespace ChroZenService
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
+            if (value is E_CONFIG_MENU_TYPE)
             {
                 if ((E_CONFIG_MENU_TYPE)value == (E_CONFIG_MENU_TYPE)parameter) return true;
                 else return false;

@@ -202,16 +202,16 @@
     <EmbeddedResource Update="View\Child\Config\Child\Config Auxillary\View_Config_AuxTemperature.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Det\View_Config_DetConfig.xaml">
+    <EmbeddedResource Update="View\Child\Config\Child\Config Det\View_Config_DetConfig_Front.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Det\View_Config_DetSettings.xaml">
+    <EmbeddedResource Update="View\Child\Config\Child\Config Det\View_Config_DetSettings_Front.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Inlet\View_Config_InletConfig.xaml">
+    <EmbeddedResource Update="View\Child\Config\Child\Config Inlet\View_Config_InletConfig_Center.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Inlet\View_Config_InletSettings.xaml">
+    <EmbeddedResource Update="View\Child\Config\Child\Config Inlet\View_Config_InletSettings_Rear.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Child\Config\Child\Config Oven\View_Config_OvenConfig.xaml">
@@ -316,6 +316,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Inlet\Setting\UC_Config_INLET_SETTING_LONG_LABEL.xaml.cs">
+      <DependentUpon>UC_Config_INLET_SETTING_LONG_LABEL.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Inlet\Setting\UC_Config_INLET_SETTING_LABEL.xaml.cs">
+      <DependentUpon>UC_Config_INLET_SETTING_LABEL.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Common\UserControl\ConfigPage\Calibration\UC_Config_UnderLine_Button.xaml.cs">
       <DependentUpon>UC_Config_UnderLine_Button.xaml</DependentUpon>
     </Compile>
@@ -355,11 +361,56 @@
     <Compile Update="Common\UserControl\ConfigPage\Config\Auxillary\AuxTemp\UC_System_AuxTemperature_Set.xaml.cs">
       <DependentUpon>UC_System_AuxTemperature_Set.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Inlet\Setting\UC_Config_InletSetting_Velocity.xaml.cs">
+      <DependentUpon>UC_Config_InletSetting_Velocity.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Inlet\Setting\UC_Config_InletSetting_TemperatureActual.xaml.cs">
+      <DependentUpon>UC_Config_InletSetting_TemperatureActual.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Inlet\Setting\UC_Config_InletSetting_TemperatureSet.xaml.cs">
+      <DependentUpon>UC_Config_InletSetting_TemperatureSet.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Common\UserControl\ConfigPage\Config\Valve\UC_System_ValveProgram_State.xaml.cs">
       <DependentUpon>UC_System_ValveProgram_State.xaml</DependentUpon>
     </Compile>
     <Compile Update="Common\UserControl\ConfigPage\Config\Valve\UC_System_ValveProgram_Time.xaml.cs">
       <DependentUpon>UC_System_ValveProgram_Time.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetConfig_Front.xaml.cs">
+      <DependentUpon>View_Config_DetConfig_Front.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetConfig_Rear.xaml.cs">
+      <DependentUpon>View_Config_DetConfig_Rear.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetConfig_Center.xaml.cs">
+      <DependentUpon>View_Config_DetConfig_Center.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetSettings_Front.xaml.cs">
+      <DependentUpon>View_Config_DetSettings_Front.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetSettings_Rear.xaml.cs">
+      <DependentUpon>View_Config_DetSettings_Rear.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetSettings_Center.xaml.cs">
+      <DependentUpon>View_Config_DetSettings_Center.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Inlet\View_Config_InletConfig_Center.xaml.cs">
+      <DependentUpon>View_Config_InletConfig_Center.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Inlet\View_Config_InletConfig_Rear.xaml.cs">
+      <DependentUpon>View_Config_InletConfig_Rear.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Inlet\View_Config_InletConfig_Front.xaml.cs">
+      <DependentUpon>View_Config_InletConfig_Front.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Inlet\View_Config_InletSettings_Rear.xaml.cs">
+      <DependentUpon>View_Config_InletSettings_Rear.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Inlet\View_Config_InletSettings_Front.xaml.cs">
+      <DependentUpon>View_Config_InletSettings_Front.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Child\Config\Child\Config Inlet\View_Config_InletSettings_Center.xaml.cs">
+      <DependentUpon>View_Config_InletSettings_Center.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\Child\Config\Child\Config Signal\View_Config_Signal1.xaml.cs">
       <DependentUpon>View_Config_Signal1.xaml</DependentUpon>

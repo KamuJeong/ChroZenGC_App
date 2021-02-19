@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using YC_ChroZenGC_Type;
 using static ChroZenService.ChroZenService_Const;
 using static YC_ChroZenGC_Type.T_CHROZEN_GC_STATE;
+using static YC_ChroZenGC_Type.T_CHROZEN_GC_SYSTEM_CONFIG;
+
 
 namespace ChroZenService
 {
@@ -60,6 +62,45 @@ namespace ChroZenService
                             ViewModel_Config_AuxFlow3.ActualFlow1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_Config_AuxFlow3.ActualFlow2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_Config_AuxFlow3.ActualFlow3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_AuxFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            #region InletSetting
+
+                            ViewModel_Config_FrontInletSettings.ActualTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_CenterInletSettings.ActualTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_RearInletSettings.ActualTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            ViewModel_Config_FrontInletSettings.ActualColumnFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            ViewModel_Config_CenterInletSettings.ActualColumnFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            ViewModel_Config_RearInletSettings.ActualColumnFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[10].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+
+                            if ((CHROZEN_GC_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState == CHROZEN_GC_STATE.RUN)
+                            {
+                                ViewModel_Config_FrontInletSettings.fColumnFlowSet = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Setflow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                ViewModel_Config_CenterInletSettings.fColumnFlowSet = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Setflow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                ViewModel_Config_RearInletSettings.fColumnFlowSet = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Setflow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+
+                                ViewModel_Config_FrontInletSettings.fPressureSet = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Setpress[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                ViewModel_Config_CenterInletSettings.fPressureSet = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Setpress[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                ViewModel_Config_RearInletSettings.fPressureSet = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Setpress[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            }
+
+                            ViewModel_Config_FrontInletSettings.ActualPressure = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Press[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_Config_CenterInletSettings.ActualPressure = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Press[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_Config_RearInletSettings.ActualPressure = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Press[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+
+                            ViewModel_Config_FrontInletSettings.ActualTotalFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_CenterInletSettings.ActualTotalFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_RearInletSettings.ActualTotalFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            ViewModel_Config_FrontInletSettings.ActualSplitFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_CenterInletSettings.ActualSplitFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_RearInletSettings.ActualSplitFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[11].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            ViewModel_Config_FrontInletSettings.ActualVelocity = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Velocity_Inj[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_CenterInletSettings.ActualVelocity = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Velocity_Inj[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_RearInletSettings.ActualVelocity = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Velocity_Inj[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                            #endregion InletSetting
                         }
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_OVEN_SETTING:
@@ -377,6 +418,10 @@ namespace ChroZenService
                             ViewModel_Config_AuxFlow1.bIsAuxEnabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[0] > 0;
                             ViewModel_Config_AuxFlow2.bIsAuxEnabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[1] > 0;
                             ViewModel_Config_AuxFlow3.bIsAuxEnabled = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.bAuxAPC[2] > 0;
+
+                            ViewModel_Config_FrontInletSettings.e_INLET_TYPE = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[0];
+                            ViewModel_Config_CenterInletSettings.e_INLET_TYPE = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[1];
+                            ViewModel_Config_RearInletSettings.e_INLET_TYPE = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[2];
                         }
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_AUX_TEMP_SETTING:
@@ -402,7 +447,7 @@ namespace ChroZenService
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_AUX_APC_SETTING:
                         {
-                            switch(nIndex)
+                            switch (nIndex)
                             {
                                 case 0:
                                     {
@@ -438,6 +483,151 @@ namespace ChroZenService
                                         ViewModel_Config_AuxFlow3.fFlowOnoff1 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Received.packet.lcdAuxApc.fFlowOnoff1;
                                         ViewModel_Config_AuxFlow3.fFlowOnoff2 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Received.packet.lcdAuxApc.fFlowOnoff2;
                                         ViewModel_Config_AuxFlow3.fFlowOnoff3 = DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Received.packet.lcdAuxApc.fFlowOnoff3;
+                                    }
+                                    break;
+                            }
+                        }
+                        break;
+                    case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_INLET_SETTING:
+                        {
+                            switch (nIndex)
+                            {
+                                case 0:
+                                    {
+                                        #region Config
+
+                                        ViewModel_Config_FrontInletConfig.btCarriergas = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.btCarriergas;
+                                        ViewModel_Config_FrontInletConfig.btApcMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.btApcMode;
+                                        ViewModel_Config_FrontInletConfig.ConnectionToDet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.__btConnection;
+                                        ViewModel_Config_FrontInletConfig.fLength = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fLength.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletConfig.fDiameter = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fDiameter.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_FrontInletConfig.fThickness = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fThickness.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_FrontInletConfig.bGasSaverMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.bGasSaverMode == 1 ? true : false;
+                                        ViewModel_Config_FrontInletConfig.fGasSaverFlow = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fGasSaverFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_FrontInletConfig.fGasSaverTime = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fGasSaverTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletConfig.fPressureCorrect = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fPressCorrect.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_FrontInletConfig.bPressCorrect = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.bPressCorrect == 1 ? true : false;
+                                        ViewModel_Config_FrontInletConfig.bVacuumCorrect = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.bVacuumCorrect == 1 ? true : false;
+
+                                        #endregion Config
+
+                                        #region Setting
+
+                                        ViewModel_Config_FrontInletSettings.fTempSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fTempSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.fTempOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fTempOnoff == 1 ? true : false;
+
+                                        if ((CHROZEN_GC_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState != CHROZEN_GC_STATE.RUN)
+                                        {
+                                            ViewModel_Config_FrontInletSettings.fPressureSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fPressureSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                            ViewModel_Config_FrontInletSettings.fColumnFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fColumnFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+
+                                        }
+
+                                        ViewModel_Config_FrontInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.btInjMode == 1 ? true : false;
+                                        ViewModel_Config_FrontInletSettings.fTotalFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fTotalFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.fSplitFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fSplitFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.iSplitratio = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.iSplitratio.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
+                                        ViewModel_Config_FrontInletSettings.fPulsed_FlowPressSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fPulsed_FlowPressSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.fSplitOnTime = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fSplitOnTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.fPulsed_Time = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fPulsed_Time.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.fTotalFlowOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fTotalFlowOnoff == 1 ? true : false;
+
+                                        ViewModel_Config_FrontInletSettings.fColumnFlowOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fColumnFlowOnoff == 1 ? true : false;
+                                        ViewModel_Config_FrontInletSettings.fPressureOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fPressureOnoff == 1 ? true : false;
+
+                                        ViewModel_Config_FrontInletSettings.btTempMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.btTempMode;
+
+                                        #endregion Setting
+
+                                    }
+                                    break;
+                                case 1:
+                                    {
+                                        ViewModel_Config_CenterInletConfig.btCarriergas = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btCarriergas;
+                                        ViewModel_Config_CenterInletConfig.btApcMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btApcMode;
+                                        ViewModel_Config_CenterInletConfig.ConnectionToDet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.__btConnection;
+                                        ViewModel_Config_CenterInletConfig.fLength = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fLength.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletConfig.fDiameter = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fDiameter.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_CenterInletConfig.fThickness = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fThickness.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_CenterInletConfig.bGasSaverMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.bGasSaverMode == 1 ? true : false;
+                                        ViewModel_Config_CenterInletConfig.fGasSaverFlow = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fGasSaverFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_CenterInletConfig.fGasSaverTime = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fGasSaverTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletConfig.fPressureCorrect = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fPressCorrect.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_CenterInletConfig.bPressCorrect = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.bPressCorrect == 1 ? true : false;
+                                        ViewModel_Config_CenterInletConfig.bVacuumCorrect = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.bVacuumCorrect == 1 ? true : false;
+
+                                        #region Setting
+
+                                        ViewModel_Config_CenterInletSettings.fTempSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fTempSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.fTempOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fTempOnoff == 1 ? true : false;
+
+                                        if ((CHROZEN_GC_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState != CHROZEN_GC_STATE.RUN)
+                                        {
+                                            ViewModel_Config_CenterInletSettings.fPressureSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fPressureSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                            ViewModel_Config_CenterInletSettings.fColumnFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fColumnFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+
+                                        }
+
+                                        ViewModel_Config_CenterInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btInjMode == 1 ? true : false;
+                                        ViewModel_Config_CenterInletSettings.fTotalFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fTotalFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.fSplitFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fSplitFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.iSplitratio = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.iSplitratio.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
+                                        ViewModel_Config_CenterInletSettings.fPulsed_FlowPressSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fPulsed_FlowPressSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.fSplitOnTime = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fSplitOnTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.fPulsed_Time = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fPulsed_Time.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.fTotalFlowOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fTotalFlowOnoff == 1 ? true : false;
+
+                                        ViewModel_Config_CenterInletSettings.fColumnFlowOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fColumnFlowOnoff == 1 ? true : false;
+                                        ViewModel_Config_CenterInletSettings.fPressureOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fPressureOnoff == 1 ? true : false;
+
+                                        ViewModel_Config_CenterInletSettings.btTempMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btTempMode;
+
+                                        #endregion Setting
+
+                                    }
+                                    break;
+                                case 2:
+                                    {
+                                        ViewModel_Config_RearInletConfig.btCarriergas = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.btCarriergas;
+                                        ViewModel_Config_RearInletConfig.btApcMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.btApcMode;
+                                        ViewModel_Config_RearInletConfig.ConnectionToDet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.__btConnection;
+                                        ViewModel_Config_RearInletConfig.fLength = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fLength.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletConfig.fDiameter = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fDiameter.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_RearInletConfig.fThickness = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fThickness.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_RearInletConfig.bGasSaverMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.bGasSaverMode == 1 ? true : false;
+                                        ViewModel_Config_RearInletConfig.fGasSaverFlow = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fGasSaverFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_RearInletConfig.fGasSaverTime = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fGasSaverTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletConfig.fPressureCorrect = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fPressCorrect.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_RearInletConfig.bPressCorrect = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.bPressCorrect == 1 ? true : false;
+                                        ViewModel_Config_RearInletConfig.bVacuumCorrect = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.bVacuumCorrect == 1 ? true : false;
+
+                                        #region Setting
+
+                                        ViewModel_Config_RearInletSettings.fTempSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fTempSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.fTempOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fTempOnoff == 1 ? true : false;
+
+                                        if ((CHROZEN_GC_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState != CHROZEN_GC_STATE.RUN)
+                                        {
+                                            ViewModel_Config_RearInletSettings.fPressureSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fPressureSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                            ViewModel_Config_RearInletSettings.fColumnFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fColumnFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+
+                                        }
+
+                                        ViewModel_Config_RearInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.btInjMode == 1 ? true : false;
+                                        ViewModel_Config_RearInletSettings.fTotalFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fTotalFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.fSplitFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fSplitFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.iSplitratio = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.iSplitratio.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
+                                        ViewModel_Config_RearInletSettings.fPulsed_FlowPressSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fPulsed_FlowPressSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.fSplitOnTime = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fSplitOnTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.fPulsed_Time = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fPulsed_Time.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.fTotalFlowOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fTotalFlowOnoff == 1 ? true : false;
+
+                                        ViewModel_Config_RearInletSettings.fColumnFlowOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fColumnFlowOnoff == 1 ? true : false;
+                                        ViewModel_Config_RearInletSettings.fPressureOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fPressureOnoff == 1 ? true : false;
+
+                                        ViewModel_Config_RearInletSettings.btTempMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.btTempMode;
+
+                                        #endregion Setting
                                     }
                                     break;
                             }

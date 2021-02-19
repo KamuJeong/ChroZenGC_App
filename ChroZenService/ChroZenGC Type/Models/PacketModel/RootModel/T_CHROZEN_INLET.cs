@@ -35,6 +35,7 @@ namespace YC_ChroZenGC_Type
 
         public enum E_INLET_APC_MODE
         {
+            CONSTANT_FLOW,
             CONSTANT_PRESSURE,
             PROGRAMMED_FLOW,
             PROGRAMMED_PRESSURE
@@ -59,6 +60,14 @@ namespace YC_ChroZenGC_Type
         public float fPressCorrect;                                                        // 0.0psi
         public byte bVacuumCorrect;                                                        // ON (0:Off / 1:On) // default : ON
                                                                                            // Capillary, On-Column Inlet에서 사용
+
+        public enum E_INLET_TEMP_MODE
+        {
+            ISO_THERMAL,
+            PROGRAM,
+            TRACK_OVEN
+        }
+
         public byte btTempMode;                                                            //On - Column 온도프로그램 모드
                                                                                            //(0:Iso - thermal / 1 : Program Mode / 2 : Track Oven)
         public float fTempSet;                                                             // 설정온도(0 ~ 450℃)

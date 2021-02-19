@@ -60,7 +60,7 @@
 
             <!--에러 페이지-->
             <local:View_Error IsVisible="{Binding IsErrorPopupVisible}"/>
-
+            <Grid x:Name="WhitePage" BackgroundColor="White" />
         </Grid>
     </AbsoluteLayout>
 </ContentPage>

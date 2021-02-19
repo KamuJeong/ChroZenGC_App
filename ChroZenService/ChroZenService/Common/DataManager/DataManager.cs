@@ -5,7 +5,7 @@ using YC_ChroZenGC_Type;
 
 namespace ChroZenService
 {
-    public static class DataManager
+    public class DataManager
     {
         public static class RunState
         {

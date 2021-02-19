@@ -266,7 +266,7 @@ namespace ChroZenService
                     for (int i = 1; i < ChartRawData.yC_ChartElementRawDataTimeStamp.RawData.Count; i++)
                     {
                         if (ChartRawData.yC_ChartElementRawDataDetector[0].RawData.Count > i)
-                        {                                                                         
+                        {
                             float detY1Val = (195f - ChartRawData.yC_ChartElementRawDataDetector[nSelectedDetectorIndex].RawData[i] * fYUnitForDetector + fYUnitOffsetForDetector);
                             float detY2Val = (195f - ChartRawData.yC_ChartElementRawDataDetector[nSelectedDetectorIndex].RawData[i - 1] * fYUnitForDetector + fYUnitOffsetForDetector);
                             xStart = ChartRawData.yC_ChartElementRawDataTimeStamp.RawData[i] * fXUnit;

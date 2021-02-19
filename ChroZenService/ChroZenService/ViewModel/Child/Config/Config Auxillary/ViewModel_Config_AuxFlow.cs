@@ -25,6 +25,7 @@ namespace ChroZenService
 
             SetCommand = new RelayCommand(SetCommandAction);
 
+
             EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
         }
 
@@ -822,6 +823,7 @@ namespace ChroZenService
             Debug.WriteLine("SetCommand Fired");
         }
         #endregion SetCommand 
+
 
         #endregion Command
 

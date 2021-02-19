@@ -37,11 +37,13 @@
         <x:Double x:Key="HEIGHT_CONTROLPAGE_2">105</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_1_PLUS7">57</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_1">50</x:Double>
+        <x:Double x:Key="HEIGHT_CONTROLPAGE_NARROW_1_PLUS21">55</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_NARROW_1_PLUS10">44</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_NARROW_1_PLUS7">40</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_NARROW_1_PLUS6">39</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_NARROW_1">33</x:Double>
-
+        <x:Double x:Key="HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX">4</x:Double>
+        
         <x:Double x:Key="HEIGHT_CONFIG_3">130</x:Double>
         <x:Double x:Key="HEIGHT_CONFIG_2">90</x:Double>
         <x:Double x:Key="HEIGHT_CONFIG_2_LARGE">100</x:Double>
@@ -104,6 +106,21 @@
         <x:Double x:Key="WIDTH_AUX_FLOW_COLUMN_SET">100</x:Double>
         <x:Double x:Key="WIDTH_AUX_FLOW_COLUMN_SPARE">40</x:Double>
         <x:Double x:Key="HEIGHT_AUX_FLOW_GROUP">225</x:Double>
+
+        <x:Double x:Key="HEIGHT_INLET_GROUP_MIDDLE">30</x:Double>
+        <x:Double x:Key="HEIGHT_INLET_GROUP">160</x:Double>
+        <x:Double x:Key="HEIGHT_INLET_GROUP_SMALL">130</x:Double>
+
+        <x:Double x:Key="HEIGHT_INLET_SETTING_GROUP_2ROW">96</x:Double>
+        <x:Double x:Key="HEIGHT_INLET_SETTING_GROUP_1ROW">53</x:Double>
+        <x:Double x:Key="HEIGHT_INLET_SETTING_GROUP_5ROW">235</x:Double>
+        <x:Double x:Key="HEIGHT_INLET_SETTING_GROUP_7ROW">291</x:Double>
+
+        <x:Double x:Key="WIDTH_CONFIG_INLET_SETTING_COLUMN_TITLE">95</x:Double>
+        <x:Double x:Key="WIDTH_CONFIG_INLET_SETTING_COLUMN_ACTUAL">95</x:Double>
+        <x:Double x:Key="WIDTH_CONFIG_INLET_SETTING_COLUMN_SETTING">95</x:Double>
+        <x:Double x:Key="WIDTH_CONFIG_INLET_SETTING_COLUMN_TIME">95</x:Double>
+        
         <Thickness x:Key="THICKNESS_FRAME_MARGIN_TOP">
             <Thickness.Left>18</Thickness.Left>
             <Thickness.Top>7</Thickness.Top>
@@ -232,6 +249,22 @@
         <x:Int32 x:Key="FS_MAINPAGE_NORMAL">24</x:Int32>
         <FileImageSource x:Key="IMG_CONFIG_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
         <FileImageSource x:Key="IMG_SYSTEM_MENU" File="pack://application:,,,/ChroZenService;component/Common/Resources/Images/btn_bot_03.png"/>
+
+        <cvt:E_INLET_TEMP_MODEToTemperatureTableEnableConverter x:Key="E_INLET_TEMP_MODEToTemperatureTableEnableConverter"/>
+        
+        <cvt:E_INLET_TYPEToOnColumnUIVisibleConverter x:Key="E_INLET_TYPEToOnColumnUIVisibleConverter"/>
+        <cvt:E_INLET_TYPEToCapillaryUIVisibleConverter x:Key="E_INLET_TYPEToCapillaryUIVisibleConverter"/>
+        <cvt:E_INLET_TYPEToPackedUIVisibleConverter x:Key="E_INLET_TYPEToPackedUIVisibleConverter"/>
+
+        <cvt:ApcModeToPressureTableEnableConverter x:Key="ApcModeToPressureTableEnableConverter"/>
+        <cvt:ApcModeToPressureTableVisibilityConverter x:Key="ApcModeToPressureTableVisibilityConverter"/>
+        
+        <cvt:ApcModeToFlowTableEnableConverter x:Key="ApcModeToFlowTableEnableConverter"/>
+        <cvt:ApcModeToFlowTableVisibilityConverter x:Key="ApcModeToFlowTableVisibilityConverter"/>
+        
+        <cvt:ApcModeToFlowSetAvailableConverter x:Key="ApcModeToFlowSetAvailableConverter"/>
+        <cvt:ApcModeToPressureSetAvailableConverter x:Key="ApcModeToPressureSetAvailableConverter"/>
+        
         <cvt:bMethanizerToStringConverter x:Key="bMethanizerToStringConverter"/>
         <cvt:ValveProgramSelectedIndexToParameterConverter x:Key="ValveProgramSelectedIndexToParameterConverter"/>
         <cvt:ValveProgramStateToStringConverter x:Key="ValveProgramStateToStringConverter"/>
@@ -286,6 +319,13 @@
         </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="22"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="End"/>
+            <Setter Property="Margin" Value="0,2,10,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_CONFIG_INLET_TITLE" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="VerticalOptions" Value="Center"/>
             <Setter Property="HorizontalOptions" Value="End"/>
             <Setter Property="Margin" Value="0,2,10,0"/>
@@ -378,6 +418,12 @@
             <Setter Property="TextColor" Value="Black"/>
             <Setter Property="BackgroundColor" Value="White"/>
         </Style>
+        <Style x:Key="STYLE_PICKER_CONFIG_INLET_CONFIG" TargetType="{x:Type Picker}">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,1,0,-4"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="BackgroundColor" Value="White"/>
+        </Style>
         <Style x:Key="STYLE_PICKER_SYSTEM_CONFIG" TargetType="{x:Type Picker}">
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Margin" Value="0,4,35,1"/>
@@ -439,6 +485,14 @@
             <Setter Property="VerticalOptions" Value="Center"/>
             <Setter Property="HorizontalOptions" Value="Start"/>
             <Setter Property="Margin" Value="32,6,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_INLET_CONFIG_MIDDLE" TargetType="{x:Type Label}">
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="Margin" Value="10,2,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_SIGNAL_MIDDLE" TargetType="{x:Type Label}">

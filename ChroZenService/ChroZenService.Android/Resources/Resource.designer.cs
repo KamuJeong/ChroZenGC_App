@@ -6770,44 +6770,44 @@ namespace ChroZenService.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0c005e
-			public const int abc_background_cache_hint_selector_material_dark = 2131492958;
-			
 			// aapt resource value: 0x7f0c005f
-			public const int abc_background_cache_hint_selector_material_light = 2131492959;
+			public const int abc_background_cache_hint_selector_material_dark = 2131492959;
 			
 			// aapt resource value: 0x7f0c0060
-			public const int abc_btn_colored_borderless_text_material = 2131492960;
+			public const int abc_background_cache_hint_selector_material_light = 2131492960;
 			
 			// aapt resource value: 0x7f0c0061
-			public const int abc_btn_colored_text_material = 2131492961;
+			public const int abc_btn_colored_borderless_text_material = 2131492961;
 			
 			// aapt resource value: 0x7f0c0062
-			public const int abc_color_highlight_material = 2131492962;
+			public const int abc_btn_colored_text_material = 2131492962;
 			
 			// aapt resource value: 0x7f0c0063
-			public const int abc_hint_foreground_material_dark = 2131492963;
+			public const int abc_color_highlight_material = 2131492963;
 			
 			// aapt resource value: 0x7f0c0064
-			public const int abc_hint_foreground_material_light = 2131492964;
+			public const int abc_hint_foreground_material_dark = 2131492964;
+			
+			// aapt resource value: 0x7f0c0065
+			public const int abc_hint_foreground_material_light = 2131492965;
 			
 			// aapt resource value: 0x7f0c0004
 			public const int abc_input_method_navigation_guard = 2131492868;
 			
-			// aapt resource value: 0x7f0c0065
-			public const int abc_primary_text_disable_only_material_dark = 2131492965;
-			
 			// aapt resource value: 0x7f0c0066
-			public const int abc_primary_text_disable_only_material_light = 2131492966;
+			public const int abc_primary_text_disable_only_material_dark = 2131492966;
 			
 			// aapt resource value: 0x7f0c0067
-			public const int abc_primary_text_material_dark = 2131492967;
+			public const int abc_primary_text_disable_only_material_light = 2131492967;
 			
 			// aapt resource value: 0x7f0c0068
-			public const int abc_primary_text_material_light = 2131492968;
+			public const int abc_primary_text_material_dark = 2131492968;
 			
 			// aapt resource value: 0x7f0c0069
-			public const int abc_search_url_text = 2131492969;
+			public const int abc_primary_text_material_light = 2131492969;
+			
+			// aapt resource value: 0x7f0c006a
+			public const int abc_search_url_text = 2131492970;
 			
 			// aapt resource value: 0x7f0c0005
 			public const int abc_search_url_text_normal = 2131492869;
@@ -6818,29 +6818,29 @@ namespace ChroZenService.Droid
 			// aapt resource value: 0x7f0c0007
 			public const int abc_search_url_text_selected = 2131492871;
 			
-			// aapt resource value: 0x7f0c006a
-			public const int abc_secondary_text_material_dark = 2131492970;
-			
 			// aapt resource value: 0x7f0c006b
-			public const int abc_secondary_text_material_light = 2131492971;
+			public const int abc_secondary_text_material_dark = 2131492971;
 			
 			// aapt resource value: 0x7f0c006c
-			public const int abc_tint_btn_checkable = 2131492972;
+			public const int abc_secondary_text_material_light = 2131492972;
 			
 			// aapt resource value: 0x7f0c006d
-			public const int abc_tint_default = 2131492973;
+			public const int abc_tint_btn_checkable = 2131492973;
 			
 			// aapt resource value: 0x7f0c006e
-			public const int abc_tint_edittext = 2131492974;
+			public const int abc_tint_default = 2131492974;
 			
 			// aapt resource value: 0x7f0c006f
-			public const int abc_tint_seek_thumb = 2131492975;
+			public const int abc_tint_edittext = 2131492975;
 			
 			// aapt resource value: 0x7f0c0070
-			public const int abc_tint_spinner = 2131492976;
+			public const int abc_tint_seek_thumb = 2131492976;
 			
 			// aapt resource value: 0x7f0c0071
-			public const int abc_tint_switch_track = 2131492977;
+			public const int abc_tint_spinner = 2131492977;
+			
+			// aapt resource value: 0x7f0c0072
+			public const int abc_tint_switch_track = 2131492978;
 			
 			// aapt resource value: 0x7f0c0008
 			public const int accent_material_dark = 2131492872;
@@ -6926,8 +6926,8 @@ namespace ChroZenService.Droid
 			// aapt resource value: 0x7f0c0043
 			public const int design_default_color_primary_dark = 2131492931;
 			
-			// aapt resource value: 0x7f0c0072
-			public const int design_error = 2131492978;
+			// aapt resource value: 0x7f0c0073
+			public const int design_error = 2131492979;
 			
 			// aapt resource value: 0x7f0c0044
 			public const int design_fab_shadow_end_color = 2131492932;
@@ -6953,8 +6953,8 @@ namespace ChroZenService.Droid
 			// aapt resource value: 0x7f0c004b
 			public const int design_snackbar_background_color = 2131492939;
 			
-			// aapt resource value: 0x7f0c0073
-			public const int design_tint_password_toggle = 2131492979;
+			// aapt resource value: 0x7f0c0074
+			public const int design_tint_password_toggle = 2131492980;
 			
 			// aapt resource value: 0x7f0c0016
 			public const int dim_foreground_disabled_material_dark = 2131492886;
@@ -7025,71 +7025,71 @@ namespace ChroZenService.Droid
 			// aapt resource value: 0x7f0c002b
 			public const int material_grey_900 = 2131492907;
 			
-			// aapt resource value: 0x7f0c0074
-			public const int mtrl_bottom_nav_colored_item_tint = 2131492980;
-			
 			// aapt resource value: 0x7f0c0075
-			public const int mtrl_bottom_nav_item_tint = 2131492981;
+			public const int mtrl_bottom_nav_colored_item_tint = 2131492981;
+			
+			// aapt resource value: 0x7f0c0076
+			public const int mtrl_bottom_nav_item_tint = 2131492982;
 			
 			// aapt resource value: 0x7f0c004c
 			public const int mtrl_btn_bg_color_disabled = 2131492940;
 			
-			// aapt resource value: 0x7f0c0076
-			public const int mtrl_btn_bg_color_selector = 2131492982;
-			
 			// aapt resource value: 0x7f0c0077
-			public const int mtrl_btn_ripple_color = 2131492983;
+			public const int mtrl_btn_bg_color_selector = 2131492983;
 			
 			// aapt resource value: 0x7f0c0078
-			public const int mtrl_btn_stroke_color_selector = 2131492984;
+			public const int mtrl_btn_ripple_color = 2131492984;
 			
 			// aapt resource value: 0x7f0c0079
-			public const int mtrl_btn_text_btn_ripple_color = 2131492985;
+			public const int mtrl_btn_stroke_color_selector = 2131492985;
+			
+			// aapt resource value: 0x7f0c007a
+			public const int mtrl_btn_text_btn_ripple_color = 2131492986;
 			
 			// aapt resource value: 0x7f0c004d
 			public const int mtrl_btn_text_color_disabled = 2131492941;
 			
-			// aapt resource value: 0x7f0c007a
-			public const int mtrl_btn_text_color_selector = 2131492986;
+			// aapt resource value: 0x7f0c007b
+			public const int mtrl_btn_text_color_selector = 2131492987;
 			
 			// aapt resource value: 0x7f0c004e
 			public const int mtrl_btn_transparent_bg_color = 2131492942;
 			
-			// aapt resource value: 0x7f0c007b
-			public const int mtrl_chip_background_color = 2131492987;
-			
 			// aapt resource value: 0x7f0c007c
-			public const int mtrl_chip_close_icon_tint = 2131492988;
+			public const int mtrl_chip_background_color = 2131492988;
 			
 			// aapt resource value: 0x7f0c007d
-			public const int mtrl_chip_ripple_color = 2131492989;
+			public const int mtrl_chip_close_icon_tint = 2131492989;
 			
 			// aapt resource value: 0x7f0c007e
-			public const int mtrl_chip_text_color = 2131492990;
+			public const int mtrl_chip_ripple_color = 2131492990;
 			
 			// aapt resource value: 0x7f0c007f
-			public const int mtrl_fab_ripple_color = 2131492991;
+			public const int mtrl_chip_text_color = 2131492991;
+			
+			// aapt resource value: 0x7f0c0080
+			public const int mtrl_fab_ripple_color = 2131492992;
 			
 			// aapt resource value: 0x7f0c004f
 			public const int mtrl_scrim_color = 2131492943;
 			
-			// aapt resource value: 0x7f0c0080
-			public const int mtrl_tabs_colored_ripple_color = 2131492992;
-			
 			// aapt resource value: 0x7f0c0081
-			public const int mtrl_tabs_icon_color_selector = 2131492993;
+			public const int mtrl_tabs_colored_ripple_color = 2131492993;
 			
 			// aapt resource value: 0x7f0c0082
-			public const int mtrl_tabs_icon_color_selector_colored = 2131492994;
+			public const int mtrl_tabs_icon_color_selector = 2131492994;
 			
 			// aapt resource value: 0x7f0c0083
-			public const int mtrl_tabs_legacy_text_color_selector = 2131492995;
+			public const int mtrl_tabs_icon_color_selector_colored = 2131492995;
 			
 			// aapt resource value: 0x7f0c0084
-			public const int mtrl_tabs_ripple_color = 2131492996;
+			public const int mtrl_tabs_legacy_text_color_selector = 2131492996;
 			
 			// aapt resource value: 0x7f0c0085
-			public const int mtrl_text_btn_text_color_selector = 2131492997;
+			public const int mtrl_tabs_ripple_color = 2131492997;
+			
+			// aapt resource value: 0x7f0c0086
+			public const int mtrl_text_btn_text_color_selector = 2131492998;
 			
 			// aapt resource value: 0x7f0c0050
 			public const int mtrl_textinput_default_box_stroke_color = 2131492944;
@@ -7154,17 +7154,20 @@ namespace ChroZenService.Droid
 			// aapt resource value: 0x7f0c0039
 			public const int secondary_text_disabled_material_light = 2131492921;
 			
+			// aapt resource value: 0x7f0c005e
+			public const int splash_background = 2131492958;
+			
 			// aapt resource value: 0x7f0c003a
 			public const int switch_thumb_disabled_material_dark = 2131492922;
 			
 			// aapt resource value: 0x7f0c003b
 			public const int switch_thumb_disabled_material_light = 2131492923;
 			
-			// aapt resource value: 0x7f0c0086
-			public const int switch_thumb_material_dark = 2131492998;
-			
 			// aapt resource value: 0x7f0c0087
-			public const int switch_thumb_material_light = 2131492999;
+			public const int switch_thumb_material_dark = 2131492999;
+			
+			// aapt resource value: 0x7f0c0088
+			public const int switch_thumb_material_light = 2131493000;
 			
 			// aapt resource value: 0x7f0c003c
 			public const int switch_thumb_normal_material_dark = 2131492924;
@@ -8122,26 +8125,26 @@ namespace ChroZenService.Droid
 			// aapt resource value: 0x7f020054
 			public const int avd_hide_password = 2130837588;
 			
-			// aapt resource value: 0x7f02008a
-			public const int avd_hide_password_1 = 2130837642;
-			
-			// aapt resource value: 0x7f02008b
-			public const int avd_hide_password_2 = 2130837643;
-			
 			// aapt resource value: 0x7f02008c
-			public const int avd_hide_password_3 = 2130837644;
+			public const int avd_hide_password_1 = 2130837644;
+			
+			// aapt resource value: 0x7f02008d
+			public const int avd_hide_password_2 = 2130837645;
+			
+			// aapt resource value: 0x7f02008e
+			public const int avd_hide_password_3 = 2130837646;
 			
 			// aapt resource value: 0x7f020055
 			public const int avd_show_password = 2130837589;
 			
-			// aapt resource value: 0x7f02008d
-			public const int avd_show_password_1 = 2130837645;
-			
-			// aapt resource value: 0x7f02008e
-			public const int avd_show_password_2 = 2130837646;
-			
 			// aapt resource value: 0x7f02008f
-			public const int avd_show_password_3 = 2130837647;
+			public const int avd_show_password_1 = 2130837647;
+			
+			// aapt resource value: 0x7f020090
+			public const int avd_show_password_2 = 2130837648;
+			
+			// aapt resource value: 0x7f020091
+			public const int avd_show_password_3 = 2130837649;
 			
 			// aapt resource value: 0x7f020056
 			public const int bg = 2130837590;
@@ -8251,11 +8254,11 @@ namespace ChroZenService.Droid
 			// aapt resource value: 0x7f020079
 			public const int notification_icon_background = 2130837625;
 			
-			// aapt resource value: 0x7f020088
-			public const int notification_template_icon_bg = 2130837640;
+			// aapt resource value: 0x7f02008a
+			public const int notification_template_icon_bg = 2130837642;
 			
-			// aapt resource value: 0x7f020089
-			public const int notification_template_icon_low_bg = 2130837641;
+			// aapt resource value: 0x7f02008b
+			public const int notification_template_icon_low_bg = 2130837643;
 			
 			// aapt resource value: 0x7f02007a
 			public const int notification_tile_bg = 2130837626;
@@ -8285,19 +8288,25 @@ namespace ChroZenService.Droid
 			public const int side_top = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int start = 2130837635;
+			public const int Splash_Img_Text = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int toggle_off = 2130837636;
+			public const int splash_screen = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int toggle_on = 2130837637;
+			public const int start = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int tooltip_frame_dark = 2130837638;
+			public const int toggle_off = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int tooltip_frame_light = 2130837639;
+			public const int toggle_on = 2130837639;
+			
+			// aapt resource value: 0x7f020088
+			public const int tooltip_frame_dark = 2130837640;
+			
+			// aapt resource value: 0x7f020089
+			public const int tooltip_frame_light = 2130837641;
 			
 			static Drawable()
 			{
@@ -10054,6 +10063,9 @@ namespace ChroZenService.Droid
 			
 			// aapt resource value: 0x7f090004
 			public const int MainTheme_Base = 2131296260;
+			
+			// aapt resource value: 0x7f0901fa
+			public const int MyTheme_Splash = 2131296762;
 			
 			// aapt resource value: 0x7f090079
 			public const int Platform_AppCompat = 2131296377;

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:UC_System_Calib_LabelBase xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.UC_Config_INLET_SETTING_LONG_LABEL " Background="Transparent">
+    <local:UC_System_Calib_LabelBase.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=TapGestureCommand}" 
+                                      CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=TapGestureCommandParameter}"/>
+    </local:UC_System_Calib_LabelBase.GestureRecognizers>
+    <ContentView.Content>
+        <AbsoluteLayout >
+            <Grid Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="33"/>
+                </Grid.RowDefinitions>
+                <Frame CornerRadius="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=CornerRadius}"
+                   Background="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=IsEnabled, Converter={StaticResource BoolToSettingInputBackgroundConverter}}"
+                   BorderColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_LABEL_BORDER_COLOR}"                        
+                   >
+                    <!--<Frame.Triggers>
+                        <DataTrigger Binding="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=IsEnabled}" Value="true" TargetType="{x:Type Frame}">
+                            <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=IsEnabled}" Value="false" TargetType="{x:Type Frame}">
+                            <Setter Property="Background" Value="{StaticResource SCB_CONTROL_SYSTEM_EDITOR_BACKGROUND_GRAY_0}"/>
+                        </DataTrigger>
+                    </Frame.Triggers>-->
+                </Frame>
+                <Label Margin="2"
+                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=Text}"
+                    TextColor="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=TextColor}"
+                    Background="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=IsEnabled, Converter={StaticResource BoolToSettingInputBackgroundConverter}}"
+                    BackgroundColor="Transparent"                    
+                    VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                    HorizontalOptions="FillAndExpand"                   
+                    />
+            </Grid>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</local:UC_System_Calib_LabelBase>

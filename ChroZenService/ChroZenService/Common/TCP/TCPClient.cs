@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using YC_ChroZenGC_Type;
 using static YC_ChroZenGC_Type.YC_Const;
 
@@ -14,6 +15,8 @@ namespace ChroZenService
     public class TCPManager : IDisposable
     {
         Queue<W_CHROZEN_GC_PACKET_WITH_PACKCODE> receivedAsyncPACKCODE_queue = new Queue<W_CHROZEN_GC_PACKET_WITH_PACKCODE>();
+        Queue<byte[]> receivedRawBytesQueue = new Queue<byte[]>();
+        private readonly object receiveSyncRoot = new object();
 
         /// <summary>
         /// TCP 동기/비동기 순차 실행 : 초기 상태 대기 해제
@@ -69,14 +72,15 @@ namespace ChroZenService
             bIsThreadQueueProceed = false;
         }
 
-        Thread threadQueue;
+        Task taskQueue;
         bool bIsThreadQueueProceed = true;
         private void InitQueue()
         {
-            threadQueue = new Thread(new ThreadStart(delegate
+            taskQueue = Task.Factory.StartNew(delegate
             {
-                Thread.CurrentThread.Priority = ThreadPriority.Normal;
-                Debug.WriteLine(string.Format("ChroZen GC Process={0}, TCPClient : received PACKCODE queue pumping thread start", Process.GetCurrentProcess().ProcessName));
+                //Thread.CurrentThread.Priority = ThreadPriority.Normal;
+
+                Debug.WriteLine(string.Format("ChroZen GC Process={0}, TCPClient : received PACKCODE queue pumping thread start at Thread Id : {1}", Process.GetCurrentProcess().ProcessName, TaskScheduler.Current.Id));
 
                 while (bIsThreadQueueProceed)
                 {
@@ -396,7 +400,7 @@ namespace ChroZenService
                                                     nIndex = 2;
                                                 }
                                                 break;
-                                        }                                        
+                                        }
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG:
@@ -419,14 +423,14 @@ namespace ChroZenService
                     }
                 }
                 Debug.WriteLine(string.Format("Chrozen GC : Process={0} TCPClient: Queue thread died", Process.GetCurrentProcess().ProcessName));
-            }));
-            threadQueue.Start();
+            });
+            //taskQueue.Start();
         }
         private void RestartQueueThread()
         {
             try
             {
-                threadQueue.Abort();
+                taskQueue.Dispose();
                 Debug.WriteLine(string.Format("Chrozen GC : Process={0} : TCPClient: RestartQueueThread -> threadQueue aborted.", Process.GetCurrentProcess().ProcessName));
             }
             catch (Exception e)
@@ -585,20 +589,20 @@ namespace ChroZenService
             }
         }
 
-        public void ReceiveAsync()
-        {
-            try
-            {
-                bIsSync = false;
-                Receive(Socket_Client_DeviceInterface);
+        //public void ReceiveAsync()
+        //{
+        //    try
+        //    {
+        //        bIsSync = false;
+        //        Receive(Socket_Client_DeviceInterface);
 
-            }
-            catch (Exception e)
-            {
+        //    }
+        //    catch (Exception e)
+        //    {
 
-                Debug.WriteLine(string.Format("ReceiveAsync err : {0}, {1}", e.StackTrace, e.Message));
-            }
-        }
+        //        Debug.WriteLine(string.Format("ReceiveAsync err : {0}, {1}", e.StackTrace, e.Message));
+        //    }
+        //}
 
         private void Receive(Socket client)
         {
@@ -672,88 +676,93 @@ namespace ChroZenService
             }
         }
 
-        byte[] reserveBytes = new byte[4096 * 16];
+        byte[] reserveBytes = new byte[4096 * 4];
         int nReservedCount;
 
         private void ReceiveCallback(IAsyncResult ar)
         {
             try
             {
-
-                // Retrieve the state object and the client socket   
-                // from the asynchronous state object.  
-                SocketStateObject state = (SocketStateObject)ar.AsyncState;
-                Socket client = state.workSocket;
-
-                if (client.Connected == true)
+                Task.Factory.StartNew(delegate
                 {
+                    lock (receiveSyncRoot)
                     {
-                        // Read data from the remote device.  
-                        int bytesRead = client.EndReceive(ar);
+                        // Retrieve the state object and the client socket   
+                        // from the asynchronous state object.  
+                        SocketStateObject state = (SocketStateObject)ar.AsyncState;
+                        Socket client = state.workSocket;
+
+                        if (client.Connected == true)
                         {
-                            if (bytesRead > 0)
                             {
-                                byte[] dissectedPacket = new byte[bytesRead];
-                                if (nReservedCount > 0)
+                                // Read data from the remote device.  
+                                int bytesRead = client.EndReceive(ar);
                                 {
-                                    dissectedPacket = new byte[bytesRead + nReservedCount];
-                                    Array.Copy(reserveBytes, 0, dissectedPacket, 0, nReservedCount);
-                                    Array.Copy(state.rawBuffer, 0, dissectedPacket, nReservedCount, bytesRead);
-                                    Debug.WriteLine(string.Format("=============================Reserve Handled============================== {0}", dissectedPacket.Length));
-                                    nReservedCount = 0;
-                                }
-                                else
-                                {
-                                    //바이트 배열을 읽은 수 만큼 state.lengthedBuffer에 복사
-                                    Array.Copy(state.rawBuffer, dissectedPacket, bytesRead);
-                                }
-                                while (true)
-                                {
-                                    int packetLength = (dissectedPacket[0]) + (dissectedPacket[1] << 8) + (dissectedPacket[2] << 16) + (dissectedPacket[3] << 24);
-
-                                    if (
-                                        (dissectedPacket.Length >= packetLength) &&
-                                        (packetLength >= 24)
-                                        )
+                                    if (bytesRead > 0)
                                     {
-                                        //System.Diagnostics.Debug.WriteLine(string.Format("ReceiveCallback : bytes to read == {0}", bytesRead));
-                                        byte[] packet = new byte[packetLength];
-                                        //읽은 바이트 배열을 nPacketLength 크기에 따라 분할하여 처리
-                                        Array.Copy(dissectedPacket, packet, packetLength);
+                                        byte[] dissectedPacket = new byte[bytesRead];
+                                        if (nReservedCount > 0)
+                                        {
+                                            dissectedPacket = new byte[bytesRead + nReservedCount];
+                                            Array.Copy(reserveBytes, 0, dissectedPacket, 0, nReservedCount);
+                                            Array.Copy(state.rawBuffer, 0, dissectedPacket, nReservedCount, bytesRead);
+                                            Debug.WriteLine(string.Format("=============================Reserve Handled============================== {0} at Thread Id : {1}", dissectedPacket.Length, TaskScheduler.Current.Id));
+                                            nReservedCount = 0;
+                                        }
+                                        else
+                                        {
+                                            //바이트 배열을 읽은 수 만큼 state.lengthedBuffer에 복사
+                                            Array.Copy(state.rawBuffer, dissectedPacket, bytesRead);
+                                        }
+                                        while (true)
+                                        {
+                                            int packetLength = (dissectedPacket[0]) + (dissectedPacket[1] << 8) + (dissectedPacket[2] << 16) + (dissectedPacket[3] << 24);
 
-                                        //원본 바이트 배열에서 nPacketLength 만큼을 제거 후 다시 할당
-                                        dissectedPacket = dissectedPacket.Skip(packetLength).ToArray();
-                                        //nPacketLength 크기에 따라 분할한 packet을 parsing
-                                        ParsePacket(packet, false);
-                                        if (dissectedPacket.Length < 4) break;
+                                            if (
+                                                (dissectedPacket.Length >= packetLength) &&
+                                                (packetLength >= 24)
+                                                )
+                                            {
+                                                //System.Diagnostics.Debug.WriteLine(string.Format("ReceiveCallback : bytes to read == {0}", bytesRead));
+                                                byte[] packet = new byte[packetLength];
+                                                //읽은 바이트 배열을 nPacketLength 크기에 따라 분할하여 처리
+                                                Array.Copy(dissectedPacket, packet, packetLength);
+
+                                                //원본 바이트 배열에서 nPacketLength 만큼을 제거 후 다시 할당
+                                                dissectedPacket = dissectedPacket.Skip(packetLength).ToArray();
+                                                //nPacketLength 크기에 따라 분할한 packet을 parsing
+                                                ParsePacket(packet, false);
+                                                if (dissectedPacket.Length < 4) break;
+                                            }
+                                            else
+                                            {
+                                                Array.Copy(dissectedPacket, reserveBytes, dissectedPacket.Length);
+                                                nReservedCount = dissectedPacket.Length;
+                                                Debug.WriteLine(string.Format("=============================Reserve Added============================== {0}", nReservedCount));
+                                                break;
+                                            }
+                                        }
+
+                                        if (!bIsSync)
+                                            // Get the rest of the data.  
+                                            client.BeginReceive(state.rawBuffer, 0, SocketStateObject.BufferSize, 0,
+                                                new AsyncCallback(ReceiveCallback), state);
+
                                     }
+
                                     else
                                     {
-                                        Array.Copy(dissectedPacket, reserveBytes, dissectedPacket.Length);
-                                        nReservedCount = dissectedPacket.Length;
-                                        Debug.WriteLine(string.Format("=============================Reserve Added============================== {0}", nReservedCount));
-                                        break;
+                                        System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : bytes to read == 0"));
                                     }
                                 }
-
-                                if (!bIsSync)
-                                    // Get the rest of the data.  
-                                    client.BeginReceive(state.rawBuffer, 0, SocketStateObject.BufferSize, 0,
-                                        new AsyncCallback(ReceiveCallback), state);
-
-                            }
-
-                            else
-                            {
-                                System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : bytes to read == 0"));
                             }
                         }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine(string.Format("TCPClient.ReceiveCallback : client.Connected == false"));
+                        }
                     }
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine(string.Format("TCPClient.ReceiveCallback : client.Connected == false"));
-                }
+                });
             }
             catch (Exception ee)
             {
@@ -770,7 +779,7 @@ namespace ChroZenService
             byte[] bArr_T_YL9000HPLC_PACKET = new byte[24];
             Array.Copy(packet, bArr_T_YL9000HPLC_PACKET, 24);
             //CL_ReceivedPacket_ChrogenInterface.Add(state.lengthedBuffer);
-            T_HEADER_PACKET temp = YC_Util.ByteToStruct<T_HEADER_PACKET>(bArr_T_YL9000HPLC_PACKET);
+            T_HEADER_PACKET temp =  YC_Util.ByteToStruct<T_HEADER_PACKET>(bArr_T_YL9000HPLC_PACKET);
             //Debug.WriteLine(((E_PACKCODE)temp.nPacketCode).ToString());
             //Debug.WriteLine(((E_PACKCODE)temp.nPacketCode).ToString() + " 수신");
             switch ((E_PACKCODE)temp.nPacketCode)
@@ -862,7 +871,7 @@ namespace ChroZenService
                             if (bIsSync)
                             {
                                 DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received = YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SYSTEM_INFORM>(packet);
-                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_INFORM,0);
+                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_INFORM, 0);
                             }
                             else
                             {
@@ -2028,7 +2037,7 @@ namespace ChroZenService
                                         case 2:
                                             {
                                                 DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_INLET>(packet);
-                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET,2);
+                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET, 2);
                                             }
                                             break;
                                     }
@@ -2109,7 +2118,7 @@ namespace ChroZenService
                                         case 2:
                                             {
                                                 DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Received = YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_DET>(packet);
-                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET,2);
+                                                EventManager.PACKCODE_ReceivceEvent(E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET, 2);
                                             }
                                             break;
                                     }

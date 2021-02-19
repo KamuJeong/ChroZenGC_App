@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace ChroZenService
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class View_Config_DetConfig : ContentView
+	public partial class View_Config_InletConfig_Front : ContentView
 	{
-		public View_Config_DetConfig ()
+		public View_Config_InletConfig_Front()
 		{
 			InitializeComponent ();
 		}

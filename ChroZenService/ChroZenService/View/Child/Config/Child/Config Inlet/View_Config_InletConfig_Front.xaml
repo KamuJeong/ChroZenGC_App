@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+             x:Class="ChroZenService.View_Config_InletConfig_Front">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <Grid HeightRequest="703">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{StaticResource HEIGHT_INLET_GROUP}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_INLET_GROUP_MIDDLE}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_INLET_GROUP_SMALL}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_INLET_GROUP_MIDDLE}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_INLET_GROUP_SMALL}"/>
+                    <RowDefinition Height="{StaticResource HEIGHT_INLET_GROUP_SMALL}"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="417"/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0" CornerRadius="18" Margin="18,10,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS21}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208"/>
+                        <ColumnDefinition Width="140"/>
+                    </Grid.ColumnDefinitions>                    
+                    <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="15" Y2="153" Grid.RowSpan="4" Stroke="Gray" />
+                    <Label Grid.Row="0" Grid.Column="0" Text="Carrier Gas" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,16,10,0"/>
+                    <Picker x:Name="picker_CarrierGas1" Title="Inlet Front" Grid.Row="0"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.btCarriergas}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" Margin="0,16,0,-4" >
+                        <Picker.Items>
+                            <x:String>N2</x:String>
+                            <x:String>He</x:String>
+                            <x:String>H2</x:String>
+                            <x:String>Ar</x:String>
+                            <x:String>ArCH4</x:String>
+                        </Picker.Items>
+                        <Picker.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" 
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.InletCarrierGasIndexChangeCommand}"
+                                          CommandParameter="{Binding Source={x:Reference picker_CarrierGas1}, Path=Title}"
+                                          />
+                        </Picker.Behaviors>
+                    </Picker>
+                    <Label Grid.Row="1" Grid.Column="0" Text="UPC mode" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
+                    <Picker x:Name="picker_UPCMode1" Title="Inlet Front" Grid.Row="1"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.btApcMode}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}"  >
+                        <Picker.Items>
+                            <x:String>Constant Flow</x:String>
+                            <x:String>Constant Pressure</x:String>
+                            <x:String>Programed Flow</x:String>
+                            <x:String>Programed Pressure</x:String>
+                        </Picker.Items>
+                        <Picker.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" 
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.InletUPCModeIndexChangeCommand}"
+                                          CommandParameter="{Binding Source={x:Reference picker_UPCMode1}, Path=Title}"
+                                          />
+                        </Picker.Behaviors>
+                    </Picker>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Connection" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
+                    <Picker x:Name="picker_Connection1" Title="Inlet Front" Grid.Row="2"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.ConnectionToDet}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}"  >
+                        <Picker.Items>
+                            <x:String>Front Detector</x:String>
+                            <x:String>Center Detector</x:String>
+                            <x:String>Rear Detector</x:String>
+                            <x:String>MSD</x:String>
+                        </Picker.Items>
+                        <Picker.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" 
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.InletConnectionIndexChangeCommand}"
+                                          CommandParameter="{Binding Source={x:Reference picker_Connection1}, Path=Title}"
+                                          />
+                        </Picker.Behaviors>
+                    </Picker>
+                </Grid>
+                <Label Grid.Row="1" Text="Column Setup" Style="{StaticResource STYLE_LABEL_INLET_CONFIG_MIDDLE}" />
+                <Frame Grid.Row="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208"/>
+                        <ColumnDefinition Width="140"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Length" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,9,10,0"/>
+                    <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="10" Y2="124" Grid.RowSpan="4" Stroke="Gray" />
+                    <local:UC_Config_INLET_SETTING_LABEL Grid.Row="0" Grid.Column="1"  Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.fLength}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_CONFIG_LENGTH}" Margin="0,12,0,0"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="I.D." Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
+                    <local:UC_Config_INLET_SETTING_LABEL Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.fDiameter}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_CONFIG_ID}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Film Thickness" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
+                    <local:UC_Config_INLET_SETTING_LABEL Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.fThickness}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_CONFIG_FILM_THICKNESS}"/>
+                </Grid>
+                <Label Grid.Row="3" Text="Gas Saver Mode" Style="{StaticResource STYLE_LABEL_INLET_CONFIG_MIDDLE}" />
+                <Frame Grid.Row="4" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Grid Grid.Row="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208"/>
+                        <ColumnDefinition Width="140"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Gas Saver" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,9,10,0"/>
+                    <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="10" Y2="124" Grid.RowSpan="4" Stroke="Gray" />
+                    <local:UC_ON_OFF_Button Grid.Row="0" Grid.Column="1" IsOn="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.bGasSaverMode}"  Margin="0,9,0,0" OnCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.GasSaverOnCommand}" OffCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.GasSaverOffCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_INLET_LOCATION.FRONT}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Flow" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
+                    <local:UC_Config_INLET_SETTING_LABEL Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.fGasSaverFlow}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_CONFIG_FLOW}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.bGasSaverMode}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Time" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
+                    <local:UC_Config_INLET_SETTING_LABEL Grid.Row="2" Grid.Column="1"  Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.fGasSaverTime}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_CONFIG_TIME}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.bGasSaverMode}"/>
+                </Grid>
+                <Frame Grid.Row="5" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Grid Grid.Row="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX}"/>                        
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208"/>
+                        <ColumnDefinition Width="140"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Pressure Correct" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,9,10,0"/>
+                    <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="10" Y2="124" Grid.RowSpan="4" Stroke="Gray" />
+                    <local:UC_ON_OFF_Button Grid.Row="0" Grid.Column="1" IsOn="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.bPressCorrect}"  Margin="0,9,0,0" OnCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.PressureCorrectOnCommand}" OffCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.PressureCorrectOffCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_INLET_LOCATION.FRONT}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Pressure Correct Value" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
+                    <local:UC_Config_INLET_SETTING_LABEL Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.fPressureCorrect}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_CONFIG_PRESSURE_CORRECT}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.bPressCorrect}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Vacuum Correct" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
+                    <local:UC_ON_OFF_Button Grid.Row="2" Grid.Column="1" IsOn="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.bVacuumCorrect}"  Margin="0,2,0,0" OnCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.VacuumCorrectOnCommand}" OffCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.VacuumCorrectOffCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_INLET_LOCATION.FRONT}"/>
+                </Grid>
+            </Grid>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

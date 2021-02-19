@@ -210,21 +210,12 @@ namespace ChroZenService
 
         #region ButtonPadding
 
-        public static readonly BindableProperty ButtonPaddingProperty = BindableProperty.Create("ButtonPadding", typeof(Thickness), typeof(UC_System_Calib_ButtonBase),
-  propertyChanged: onButtonPaddingPropertyChanged);
+        public static readonly BindableProperty ButtonPaddingProperty = BindableProperty.Create("ButtonPadding", typeof(Thickness), typeof(UC_System_Calib_ButtonBase));
 
         public Thickness ButtonPadding
         {
             get { return (Thickness)GetValue(ButtonPaddingProperty); }
             set { SetValue(ButtonPaddingProperty, value); }
-        }
-
-        private static void onButtonPaddingPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            //if (newValue != null)
-            //{
-            //    (bindable as UC_TabHeaderButton).ButtonPadding = (Thickness)newValue;
-            //}
         }
 
         #endregion ButtonPadding
