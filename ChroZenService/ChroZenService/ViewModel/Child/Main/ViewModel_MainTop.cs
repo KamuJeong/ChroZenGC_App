@@ -12,13 +12,13 @@ namespace ChroZenService
         Timer t;
 
         string _DeviceRuntimeCurrent;
-        public string DeviceRuntimeCurrent { get { return _DeviceRuntimeCurrent; } set { if (_DeviceRuntimeCurrent != value) { _DeviceRuntimeCurrent = value; OnPropertyChanged("DeviceRuntimeCurrent"); } } }
+        public string DeviceRuntimeCurrent { get { return _DeviceRuntimeCurrent; } set { if (_DeviceRuntimeCurrent != value) { _DeviceRuntimeCurrent = value;  OnPropertyChanged("DeviceRuntimeCurrent"); } } }
 
         string _DeviceRuntimeTotal;
-        public string DeviceRuntimeTotal { get { return _DeviceRuntimeTotal; } set { if (_DeviceRuntimeTotal != value) { _DeviceRuntimeTotal = value; OnPropertyChanged("DeviceRuntimeTotal"); } } }
+        public string DeviceRuntimeTotal { get { return _DeviceRuntimeTotal; } set { if (_DeviceRuntimeTotal != value) { _DeviceRuntimeTotal = value;  OnPropertyChanged("DeviceRuntimeTotal"); } } }
 
         string _DeviceRunStartCurrent;
-        public string DeviceRunStartCurrent { get { return _DeviceRunStartCurrent; } set { if (_DeviceRunStartCurrent != value) { _DeviceRunStartCurrent = value; OnPropertyChanged("DeviceRunStartCurrent"); } } }
+        public string DeviceRunStartCurrent { get { return _DeviceRunStartCurrent; } set { if (_DeviceRunStartCurrent != value) { _DeviceRunStartCurrent = value;  OnPropertyChanged("DeviceRunStartCurrent"); } } }
 
         string _DeviceRunStartTotal;
         public string DeviceRunStartTotal { get { return _DeviceRunStartTotal; } set { if (_DeviceRunStartTotal != value) { _DeviceRunStartTotal = value; OnPropertyChanged("DeviceRunStartTotal"); } } }

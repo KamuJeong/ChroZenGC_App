@@ -18,17 +18,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty ChartElementRawDataProperty =
         BindableProperty.Create("ChartElementRawData", typeof(YL_ChartElementRawData), typeof(ViewModel_MainChart),
-            defaultValue: new YL_ChartElementRawData(),
-            propertyChanged: onChartRawDataPropertyChanged
+            defaultValue: new YL_ChartElementRawData()
             , defaultBindingMode: BindingMode.OneWay);
-
-        private static void onChartRawDataPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainChart).ChartElementRawData = (newValue as YL_ChartElementRawData);
-            }
-        }
 
         public YL_ChartElementRawData ChartElementRawData
         {

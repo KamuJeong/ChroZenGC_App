@@ -21,47 +21,47 @@ namespace ChroZenService
         #region Property
 
         string _ModelName = "ChrozenGC";
-        public string ModelName { get { return _ModelName; } set { _ModelName = value; OnPropertyChanged("ModelName"); } }
+        public string ModelName { get { return _ModelName; } set { if (_ModelName != value) { _ModelName = value; OnPropertyChanged("ModelName"); } } }
 
         string _InstDate;
 
         /// <summary>
         /// T_INST_INFORM
         /// </summary>
-        public string InstDate { get { return _InstDate; } set { _InstDate = value; OnPropertyChanged("InstDate"); } }
+        public string InstDate { get { return _InstDate; } set { if (_InstDate != value) { _InstDate = value; OnPropertyChanged("InstDate"); } } }
 
         string _InstVersion;
 
         /// <summary>
         /// T_INST_INFORM
         /// </summary>
-        public string InstVersion { get { return _InstVersion; } set { _InstVersion = value; OnPropertyChanged("InstVersion"); } }
+        public string InstVersion { get { return _InstVersion; } set { if (_InstVersion != value) { _InstVersion = value; OnPropertyChanged("InstVersion"); } } }
 
         string _InstSerialNo;
 
         /// <summary>
         /// T_INST_INFORM
         /// </summary>
-        public string InstSerialNo { get { return _InstSerialNo; } set { _InstSerialNo = value; OnPropertyChanged("InstSerialNo"); } }
+        public string InstSerialNo { get { return _InstSerialNo; } set { if (_InstSerialNo != value) { _InstSerialNo = value; OnPropertyChanged("InstSerialNo"); } } }
         string _IPAddress;
 
         /// <summary>
         /// T_SYSTEM_CONFIG
         /// </summary>
-        public string IPAddress { get { return _IPAddress; } set { _IPAddress = value; OnPropertyChanged("IPAddress"); } }
+        public string IPAddress { get { return _IPAddress; } set { if (_IPAddress != value) { _IPAddress = value; OnPropertyChanged("IPAddress"); } } }
 
         string _cPortNo;
 
         /// <summary>
         /// T_SYSTEM_CONFIG
         /// </summary>
-        public string cPortNo { get { return _cPortNo; } set { _cPortNo = value; OnPropertyChanged("cPortNo"); } }
+        public string cPortNo { get { return _cPortNo; } set { if (_cPortNo != value) { _cPortNo = value; OnPropertyChanged("cPortNo"); } } }
 
         string _NetMask;
-        public string NetMask { get { return _NetMask; } set { _NetMask = value; OnPropertyChanged("NetMask"); } }
+        public string NetMask { get { return _NetMask; } set { if (_NetMask != value) { _NetMask = value; OnPropertyChanged("NetMask"); } } }
 
         string _GateWay;
-        public string GateWay { get { return _GateWay; } set { _GateWay = value; OnPropertyChanged("GateWay"); } }
+        public string GateWay { get { return _GateWay; } set { if (_GateWay != value) { _GateWay = value; OnPropertyChanged("GateWay"); } } }
 
         #endregion Property
 

@@ -67,10 +67,10 @@ namespace ChroZenService
         }
 
         float _fMaxDet = 0.02f;
-        public float fMaxDet { get { return _fMaxDet; } set { _fMaxDet = value; OnPropertyChanged("fMaxDet"); } }
+        public float fMaxDet { get { return _fMaxDet; } set { if (_fMaxDet != value) { _fMaxDet = value; OnPropertyChanged("fMaxDet"); } } }
 
         float _fMinDet = 0;
-        public float fMinDet { get { return _fMaxDet; } set { _fMaxDet = value; OnPropertyChanged("fMinDet"); } }
+        public float fMinDet { get { return _fMaxDet; } set { if (_fMaxDet != value) { _fMaxDet = value; OnPropertyChanged("fMinDet"); } } }
 
         private static void onYL_ChartElementRawDataPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {

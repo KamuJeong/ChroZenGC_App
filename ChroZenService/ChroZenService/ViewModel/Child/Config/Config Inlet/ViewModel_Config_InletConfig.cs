@@ -50,44 +50,44 @@ namespace ChroZenService
         TCPManager tcpManager;
 
         E_INLET_TYPE _e_INLET_TYPE = E_INLET_TYPE.Not_Installed;
-        public E_INLET_TYPE e_INLET_TYPE { get { return _e_INLET_TYPE; } set { _e_INLET_TYPE = value; OnPropertyChanged("e_INLET_TYPE"); } }
+        public E_INLET_TYPE e_INLET_TYPE { get { return _e_INLET_TYPE; } set { if (_e_INLET_TYPE != value) { _e_INLET_TYPE = value; OnPropertyChanged("e_INLET_TYPE"); } } }
 
         int _btCarriergas;
-        public int btCarriergas { get { return _btCarriergas; } set { _btCarriergas = value; OnPropertyChanged("btCarriergas"); } }
+        public int btCarriergas { get { return _btCarriergas; } set { if (_btCarriergas != value) { _btCarriergas = value; OnPropertyChanged("btCarriergas"); } } }
 
         int _btApcMode;
-        public int btApcMode { get { return _btApcMode; } set { _btApcMode = value; OnPropertyChanged("btApcMode"); } }
+        public int btApcMode { get { return _btApcMode; } set { if (_btApcMode != value) { _btApcMode = value; OnPropertyChanged("btApcMode"); } } }
 
         int _ConnectionToDet;
-        public int ConnectionToDet { get { return _ConnectionToDet; } set { _ConnectionToDet = value; OnPropertyChanged("ConnectionToDet"); } }
+        public int ConnectionToDet { get { return _ConnectionToDet; } set { if (_ConnectionToDet != value) { _ConnectionToDet = value; OnPropertyChanged("ConnectionToDet"); } } }
 
 
         string _fLength;
-        public string fLength { get { return _fLength; } set { _fLength = value; OnPropertyChanged("fLength"); } }
+        public string fLength { get { return _fLength; } set { if (_fLength != value) { _fLength = value; OnPropertyChanged("fLength"); } } }
 
         string _fDiameter;
-        public string fDiameter { get { return _fDiameter; } set { _fDiameter = value; OnPropertyChanged("fDiameter"); } }
+        public string fDiameter { get { return _fDiameter; } set { if (_fDiameter != value) { _fDiameter = value; OnPropertyChanged("fDiameter"); } } }
 
         string _fThickness;
-        public string fThickness { get { return _fThickness; } set { _fThickness = value; OnPropertyChanged("fThickness"); } }
+        public string fThickness { get { return _fThickness; } set { if (_fThickness != value) { _fThickness = value; OnPropertyChanged("fThickness"); } } }
 
         bool _bGasSaverMode;
-        public bool bGasSaverMode { get { return _bGasSaverMode; } set { _bGasSaverMode = value; OnPropertyChanged("bGasSaverMode"); } }
+        public bool bGasSaverMode { get { return _bGasSaverMode; } set { if (_bGasSaverMode != value) { _bGasSaverMode = value; OnPropertyChanged("bGasSaverMode"); } } }
 
         string _fGasSaverFlow;
-        public string fGasSaverFlow { get { return _fGasSaverFlow; } set { _fGasSaverFlow = value; OnPropertyChanged("fGasSaverFlow"); } }
+        public string fGasSaverFlow { get { return _fGasSaverFlow; } set { if (_fGasSaverFlow != value) { _fGasSaverFlow = value; OnPropertyChanged("fGasSaverFlow"); } } }
 
         string _fGasSaverTime;
-        public string fGasSaverTime { get { return _fGasSaverTime; } set { _fGasSaverTime = value; OnPropertyChanged("fGasSaverTime"); } }
+        public string fGasSaverTime { get { return _fGasSaverTime; } set { if (_fGasSaverTime != value) { _fGasSaverTime = value; OnPropertyChanged("fGasSaverTime"); } } }
 
         string _fPressureCorrect;
-        public string fPressureCorrect { get { return _fPressureCorrect; } set { _fPressureCorrect = value; OnPropertyChanged("fPressureCorrect"); } }
+        public string fPressureCorrect { get { return _fPressureCorrect; } set { if (_fPressureCorrect != value) { _fPressureCorrect = value; OnPropertyChanged("fPressureCorrect"); } } }
 
         bool _bPressCorrect;
-        public bool bPressCorrect { get { return _bPressCorrect; } set { _bPressCorrect = value; OnPropertyChanged("bPressCorrect"); } }
+        public bool bPressCorrect { get { return _bPressCorrect; } set { if (_bPressCorrect != value) { _bPressCorrect = value; OnPropertyChanged("bPressCorrect"); } } }
 
         bool _bVacuumCorrect;
-        public bool bVacuumCorrect { get { return _bVacuumCorrect; } set { _bVacuumCorrect = value; OnPropertyChanged("bVacuumCorrect"); } }
+        public bool bVacuumCorrect { get { return _bVacuumCorrect; } set { if (_bVacuumCorrect != value) { _bVacuumCorrect = value; OnPropertyChanged("bVacuumCorrect"); } } }
         #endregion Property
 
         #region Command
@@ -661,6 +661,8 @@ namespace ChroZenService
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.btPortNo = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+
+                        EventManager.ApcSetByInletConfigEvent((byte)btApcMode, E_INLET_LOCATION.FRONT);
                     }
                     break;
                 case "Inlet Center":
@@ -669,6 +671,8 @@ namespace ChroZenService
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.btPortNo = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+
+                        EventManager.ApcSetByInletConfigEvent((byte)btApcMode, E_INLET_LOCATION.CENTER);
                     }
                     break;
                 case "Inlet Rear":
@@ -677,6 +681,8 @@ namespace ChroZenService
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.btPortNo = 2;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+
+                        EventManager.ApcSetByInletConfigEvent((byte)btApcMode, E_INLET_LOCATION.REAR);
                     }
                     break;
             }

@@ -10,10 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace ChroZenService
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class UC_Config_InletSetting_TemperatureSet : UC_System_Calib_LabelBase
-    {
-
-        public UC_Config_InletSetting_TemperatureSet()
+	public partial class UC_Config_INLET_CONFIG_LABEL : UC_System_Calib_LabelBase
+    {       
+        public UC_Config_INLET_CONFIG_LABEL()
 		{
 			InitializeComponent ();
 		}

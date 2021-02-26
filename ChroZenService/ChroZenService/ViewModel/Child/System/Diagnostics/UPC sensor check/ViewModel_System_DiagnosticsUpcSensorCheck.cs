@@ -26,54 +26,54 @@ namespace ChroZenService
         TCPManager tcpManager;
 
         bool _IsFirstPageVisible = true;
-        public bool IsFirstPageVisible { get { return _IsFirstPageVisible; } set { _IsFirstPageVisible = value; OnPropertyChanged("IsFirstPageVisible"); } }
+        public bool IsFirstPageVisible { get { return _IsFirstPageVisible; } set { if (_IsFirstPageVisible != value) { _IsFirstPageVisible = value; OnPropertyChanged("IsFirstPageVisible"); } } }
 
         #region First page
 
         string _FrontInletSensor_1;
-        public string FrontInletSensor_1 { get { return _FrontInletSensor_1; } set { _FrontInletSensor_1 = value; OnPropertyChanged("FrontInletSensor_1"); } }
+        public string FrontInletSensor_1 { get { return _FrontInletSensor_1; } set { if (_FrontInletSensor_1 != value) { _FrontInletSensor_1 = value; OnPropertyChanged("FrontInletSensor_1"); } } }
 
         string _FrontInletSensor_2;
-        public string FrontInletSensor_2 { get { return _FrontInletSensor_2; } set { _FrontInletSensor_2 = value; OnPropertyChanged("FrontInletSensor_2"); } }
+        public string FrontInletSensor_2 { get { return _FrontInletSensor_2; } set { if (_FrontInletSensor_2 != value) { _FrontInletSensor_2 = value; OnPropertyChanged("FrontInletSensor_2"); } } }
 
         string _FrontInletSensor_3;
-        public string FrontInletSensor_3 { get { return _FrontInletSensor_3; } set { _FrontInletSensor_3 = value; OnPropertyChanged("FrontInletSensor_3"); } }
+        public string FrontInletSensor_3 { get { return _FrontInletSensor_3; } set { if (_FrontInletSensor_3 != value) { _FrontInletSensor_3 = value; OnPropertyChanged("FrontInletSensor_3"); } } }
 
         string _CenterInletSensor_1;
-        public string CenterInletSensor_1 { get { return _CenterInletSensor_1; } set { _CenterInletSensor_1 = value; OnPropertyChanged("CenterInletSensor_1"); } }
+        public string CenterInletSensor_1 { get { return _CenterInletSensor_1; } set { if (_CenterInletSensor_1 != value) { _CenterInletSensor_1 = value; OnPropertyChanged("CenterInletSensor_1"); } } }
 
         string _CenterInletSensor_2;
-        public string CenterInletSensor_2 { get { return _CenterInletSensor_2; } set { _CenterInletSensor_2 = value; OnPropertyChanged("CenterInletSensor_2"); } }
+        public string CenterInletSensor_2 { get { return _CenterInletSensor_2; } set { if (_CenterInletSensor_2 != value) { _CenterInletSensor_2 = value; OnPropertyChanged("CenterInletSensor_2"); } } }
 
         string _CenterInletSensor_3;
-        public string CenterInletSensor_3 { get { return _CenterInletSensor_3; } set { _CenterInletSensor_3 = value; OnPropertyChanged("CenterInletSensor_3"); } }
+        public string CenterInletSensor_3 { get { return _CenterInletSensor_3; } set { if (_CenterInletSensor_3 != value) { _CenterInletSensor_3 = value; OnPropertyChanged("CenterInletSensor_3"); } } }
 
         string _RearInletSensor_1;
-        public string RearInletSensor_1 { get { return _RearInletSensor_1; } set { _RearInletSensor_1 = value; OnPropertyChanged("RearInletSensor_1"); } }
+        public string RearInletSensor_1 { get { return _RearInletSensor_1; } set { if (_RearInletSensor_1 != value) { _RearInletSensor_1 = value; OnPropertyChanged("RearInletSensor_1"); } } }
 
         string _RearInletSensor_2;
-        public string RearInletSensor_2 { get { return _RearInletSensor_2; } set { _RearInletSensor_2 = value; OnPropertyChanged("RearInletSensor_2"); } }
+        public string RearInletSensor_2 { get { return _RearInletSensor_2; } set { if (_RearInletSensor_2 != value) { _RearInletSensor_2 = value; OnPropertyChanged("RearInletSensor_2"); } } }
 
         string _RearInletSensor_3;
-        public string RearInletSensor_3 { get { return _RearInletSensor_3; } set { _RearInletSensor_3 = value; OnPropertyChanged("RearInletSensor_3"); } }
+        public string RearInletSensor_3 { get { return _RearInletSensor_3; } set { if (_RearInletSensor_3 != value) { _RearInletSensor_3 = value; OnPropertyChanged("RearInletSensor_3"); } } }
 
         string _FrontDetSensor_1;
-        public string FrontDetSensor_1 { get { return _FrontDetSensor_1; } set { _FrontDetSensor_1 = value; OnPropertyChanged("FrontDetSensor_1"); } }
+        public string FrontDetSensor_1 { get { return _FrontDetSensor_1; } set { if (_FrontDetSensor_1 != value) { _FrontDetSensor_1 = value; OnPropertyChanged("FrontDetSensor_1"); } } }
 
         string _FrontDetSensor_2;
-        public string FrontDetSensor_2 { get { return _FrontDetSensor_2; } set { _FrontDetSensor_2 = value; OnPropertyChanged("FrontDetSensor_2"); } }
+        public string FrontDetSensor_2 { get { return _FrontDetSensor_2; } set { if (_FrontDetSensor_2 != value) { _FrontDetSensor_2 = value; OnPropertyChanged("FrontDetSensor_2"); } } }
 
         string _FrontDetSensor_3;
-        public string FrontDetSensor_3 { get { return _FrontDetSensor_3; } set { _FrontDetSensor_3 = value; OnPropertyChanged("FrontDetSensor_3"); } }
+        public string FrontDetSensor_3 { get { return _FrontDetSensor_3; } set { if (_FrontDetSensor_3 != value) { _FrontDetSensor_3 = value; OnPropertyChanged("FrontDetSensor_3"); } } }
 
         string _CenterDetSensor_1;
-        public string CenterDetSensor_1 { get { return _CenterDetSensor_1; } set { _CenterDetSensor_1 = value; OnPropertyChanged("CenterDetSensor_1"); } }
+        public string CenterDetSensor_1 { get { return _CenterDetSensor_1; } set { _CenterDetSensor_1 = value; if (_CenterDetSensor_1 != value) OnPropertyChanged("CenterDetSensor_1"); } }
 
         string _CenterDetSensor_2;
-        public string CenterDetSensor_2 { get { return _CenterDetSensor_2; } set { _CenterDetSensor_2 = value; OnPropertyChanged("CenterDetSensor_2"); } }
+        public string CenterDetSensor_2 { get { return _CenterDetSensor_2; } set { _CenterDetSensor_2 = value; if (_CenterDetSensor_2 != value) OnPropertyChanged("CenterDetSensor_2"); } }
 
         string _CenterDetSensor_3;
-        public string CenterDetSensor_3 { get { return _CenterDetSensor_3; } set { _CenterDetSensor_3 = value; OnPropertyChanged("CenterDetSensor_3"); } }
+        public string CenterDetSensor_3 { get { return _CenterDetSensor_3; } set { _CenterDetSensor_3 = value; if (_CenterDetSensor_3 != value) OnPropertyChanged("CenterDetSensor_3"); } }
 
         #endregion First page
 

@@ -10,21 +10,12 @@ namespace ChroZenService
 
         #region CornerRadius
 
-        public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create("CornerRadius", typeof(double), typeof(UC_System_Calib_LabelBase),
-          propertyChanged: onCornerRadiusPropertyChanged);
+        public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create("CornerRadius", typeof(double), typeof(UC_System_Calib_LabelBase));
 
         public double CornerRadius
         {
             get { return (double)GetValue(CornerRadiusProperty); }
             set { SetValue(CornerRadiusProperty, value); }
-        }
-
-        private static void onCornerRadiusPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            //if (newValue != null)
-            //{
-            //    (bindable as UC_TabHeaderButton).CornerRadius = (double)newValue;
-            //}
         }
 
         #endregion CornerRadius

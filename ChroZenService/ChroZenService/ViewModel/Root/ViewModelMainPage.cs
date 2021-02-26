@@ -13,7 +13,21 @@ namespace ChroZenService
 {
     public class ViewModelMainPage : BindableNotifyBase
     {
+
+        private static ViewModelMainPage _Instance;
         #region 생성자 & 이벤트 헨들러
+        public static ViewModelMainPage SingleTonInstance
+        {
+            get
+            {
+                if (_Instance == null)
+                {
+                    _Instance = new ViewModelMainPage();
+                }
+
+                return _Instance;
+            }
+        }
 
         TCPManager tcpManager;
 
@@ -29,9 +43,12 @@ namespace ChroZenService
             EventManager.onPACKCODE_Receivce += PACKCODE_ReceivceEventHandler;
             EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
             EventManager.onKeyPadRequest += KeyPadRequest_EventHandler;
-                        
+
+            _Instance = this;
+
             //tcpManager = new TCPManager();
             //Task.Factory.StartNew(() => { tcpManager.ConnectDevice("192.168.0.88", 4242); });
+
         }
 
         
@@ -520,47 +537,47 @@ namespace ChroZenService
         #region Property
 
         bool _IsSplashVisible;
-        public bool IsSplashVisible { get { return _IsSplashVisible; } set { _IsSplashVisible = value; OnPropertyChanged("IsSplashVisible"); } }
+        public bool IsSplashVisible { get { return _IsSplashVisible; } set { if (_IsSplashVisible != value) { _IsSplashVisible = value; OnPropertyChanged("IsSplashVisible"); } } }
 
         ViewModel_MainTop _ViewModel_MainTop = new ViewModel_MainTop();
-        public ViewModel_MainTop ViewModel_MainTop { get { return _ViewModel_MainTop; } set { ViewModel_MainTop = value; OnPropertyChanged("ViewModel_MainTop"); } }
+        public ViewModel_MainTop ViewModel_MainTop { get { return _ViewModel_MainTop; } set { if (_ViewModel_MainTop != value) { _ViewModel_MainTop = value; OnPropertyChanged("ViewModel_MainTop"); } } }
 
         ViewModel_MainBottom _ViewModel_MainBottom = new ViewModel_MainBottom();
-        public ViewModel_MainBottom ViewModel_MainBottom { get { return _ViewModel_MainBottom; } set { ViewModel_MainBottom = value; OnPropertyChanged("ViewModel_MainBottom"); } }
+        public ViewModel_MainBottom ViewModel_MainBottom { get { return _ViewModel_MainBottom; } set { if (_ViewModel_MainBottom != value) { _ViewModel_MainBottom = value; OnPropertyChanged("ViewModel_MainBottom"); } } }
 
         ViewModel_MainCenter _ViewModel_MainCenter = new ViewModel_MainCenter();
-        public ViewModel_MainCenter ViewModel_MainCenter { get { return _ViewModel_MainCenter; } set { ViewModel_MainCenter = value; OnPropertyChanged("ViewModel_MainCenter"); } }
+        public ViewModel_MainCenter ViewModel_MainCenter { get { return _ViewModel_MainCenter; } set { if (_ViewModel_MainCenter != value) { _ViewModel_MainCenter = value; OnPropertyChanged("ViewModel_MainCenter"); } } }
 
         ViewModel_MainSide_Left _ViewModel_MainSide_Left = new ViewModel_MainSide_Left();
-        public ViewModel_MainSide_Left ViewModel_MainSide_Left { get { return _ViewModel_MainSide_Left; } set { ViewModel_MainSide_Left = value; OnPropertyChanged("ViewModel_MainSide_Left"); } }
+        public ViewModel_MainSide_Left ViewModel_MainSide_Left { get { return _ViewModel_MainSide_Left; } set { if (_ViewModel_MainSide_Left != value) { _ViewModel_MainSide_Left = value; OnPropertyChanged("ViewModel_MainSide_Left"); } } }
 
         ViewModel_MainSide_Right _ViewModel_MainSide_Right = new ViewModel_MainSide_Right();
-        public ViewModel_MainSide_Right ViewModel_MainSide_Right { get { return _ViewModel_MainSide_Right; } set { ViewModel_MainSide_Right = value; OnPropertyChanged("ViewModel_MainSide_Right"); } }
+        public ViewModel_MainSide_Right ViewModel_MainSide_Right { get { return _ViewModel_MainSide_Right; } set { if (_ViewModel_MainSide_Right != value) { _ViewModel_MainSide_Right = value; OnPropertyChanged("ViewModel_MainSide_Right"); } } }
 
         ViewModel_MainChart _ViewModel_MainChart = new ViewModel_MainChart();
-        public ViewModel_MainChart ViewModel_MainChart { get { return _ViewModel_MainChart; } set { _ViewModel_MainChart = value; OnPropertyChanged("ViewModel_MainChart"); } }
+        public ViewModel_MainChart ViewModel_MainChart { get { return _ViewModel_MainChart; } set { if (_ViewModel_MainChart != value) { _ViewModel_MainChart = value; OnPropertyChanged("ViewModel_MainChart"); } } }
 
         bool _IsErrorPopupVisible = false;
-        public bool IsErrorPopupVisible { get { return _IsErrorPopupVisible; } set { _IsErrorPopupVisible = value; OnPropertyChanged("IsErrorPopupVisible"); } }
+        public bool IsErrorPopupVisible { get { return _IsErrorPopupVisible; } set { if (_IsErrorPopupVisible != value) { _IsErrorPopupVisible = value; OnPropertyChanged("IsErrorPopupVisible"); } } }
 
         bool _IsConfigPageVisible = false;
-        public bool IsConfigPageVisible { get { return _IsConfigPageVisible; } set { _IsConfigPageVisible = value; OnPropertyChanged("IsConfigPageVisible"); } }
+        public bool IsConfigPageVisible { get { return _IsConfigPageVisible; } set { if (_IsConfigPageVisible != value) { _IsConfigPageVisible = value; OnPropertyChanged("IsConfigPageVisible"); } } }
 
         bool _IsSystemPageVisible = false;
-        public bool IsSystemPageVisible { get { return _IsSystemPageVisible; } set { _IsSystemPageVisible = value; OnPropertyChanged("IsSystemPageVisible"); } }
+        public bool IsSystemPageVisible { get { return _IsSystemPageVisible; } set { if (_IsSystemPageVisible != value) { _IsSystemPageVisible = value; OnPropertyChanged("IsSystemPageVisible"); } } }
 
         bool _IsMainPageVisible = true;
-        public bool IsMainPageVisible { get { return _IsMainPageVisible; } set { _IsMainPageVisible = value; OnPropertyChanged("IsMainPageVisible"); } }
+        public bool IsMainPageVisible { get { return _IsMainPageVisible; } set { if (_IsMainPageVisible != value) { _IsMainPageVisible = value; OnPropertyChanged("IsMainPageVisible"); } } }
 
 
         ViewModel_KeyPad _ViewModel_KeyPad = new ViewModel_KeyPad();
-        public ViewModel_KeyPad ViewModel_KeyPad { get { return _ViewModel_KeyPad; } set { _ViewModel_KeyPad = value; OnPropertyChanged("ViewModel_KeyPad"); } }
+        public ViewModel_KeyPad ViewModel_KeyPad { get { return _ViewModel_KeyPad; } set { if (_ViewModel_KeyPad != value) { _ViewModel_KeyPad = value; OnPropertyChanged("ViewModel_KeyPad"); } } }
 
         ViewModelConfigPage _ViewModelConfigPage = new ViewModelConfigPage();
-        public ViewModelConfigPage ViewModelConfigPage { get { return _ViewModelConfigPage; } set { _ViewModelConfigPage = value; OnPropertyChanged("ViewModelConfigPage"); } }
+        public ViewModelConfigPage ViewModelConfigPage { get { return _ViewModelConfigPage; } set { if (_ViewModelConfigPage != value) { _ViewModelConfigPage = value; OnPropertyChanged("ViewModelConfigPage"); } } }
 
         ViewModelSystemPage _ViewModelSystemPage = new ViewModelSystemPage();
-        public ViewModelSystemPage ViewModelSystemPage { get { return _ViewModelSystemPage; } set { _ViewModelSystemPage = value; OnPropertyChanged("ViewModelSystemPage"); } }
+        public ViewModelSystemPage ViewModelSystemPage { get { return _ViewModelSystemPage; } set { if (_ViewModelSystemPage != value) { _ViewModelSystemPage = value; OnPropertyChanged("ViewModelSystemPage"); } } }
         #endregion Property
 
         #region Command
@@ -603,6 +620,7 @@ namespace ChroZenService
         public RelayCommand SelectHomeMenu { get; set; }
         private void SelectHomeMenuAction(object param)
         {
+
             IsSystemPageVisible = false;
             IsConfigPageVisible = false;
             IsMainPageVisible = true;

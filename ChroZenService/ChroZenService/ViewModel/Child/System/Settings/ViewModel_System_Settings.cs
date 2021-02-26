@@ -40,39 +40,39 @@ namespace ChroZenService
         TCPManager tcpManager;
 
         bool _bOnoff;
-        public bool bOnoff { get { return _bOnoff; } set { _bOnoff = value; OnPropertyChanged("bOnoff"); } }
+        public bool bOnoff { get { return _bOnoff; } set { if (_bOnoff != value) { _bOnoff = value; OnPropertyChanged("bOnoff"); } } }
         float _fInitTemp;
-        public float fInitTemp { get { return _fInitTemp; } set { _fInitTemp = value; OnPropertyChanged("fInitTemp"); } }
-        float _fInitTime;
-        public float fInitTime { get { return _fInitTime; } set { _fInitTime = value; OnPropertyChanged("fInitTime"); } }
+        public float fInitTemp { get { return _fInitTemp; } set { if (_fInitTemp != value) { _fInitTemp = value; OnPropertyChanged("fInitTemp"); } } }
+        float _fInitTime; 
+        public float fInitTime { get { return _fInitTime; } set { if (_fInitTime != value) { _fInitTime = value; OnPropertyChanged("fInitTime"); } } }
         float _fRate;
-        public float fRate { get { return _fRate; } set { _fRate = value; OnPropertyChanged("fRate"); } }
+        public float fRate { get { return _fRate; } set { if (_fRate != value) { _fRate = value; OnPropertyChanged("fRate"); } } }
         float _fFinalTemp;
-        public float fFinalTemp { get { return _fFinalTemp; } set { _fFinalTemp = value; OnPropertyChanged("fFinalTemp"); } }
+        public float fFinalTemp { get { return _fFinalTemp; } set { if (_fFinalTemp != value) { _fFinalTemp = value; OnPropertyChanged("fFinalTemp"); } } }
         float _fFinalTime;
-        public float fFinalTime { get { return _fFinalTime; } set { _fFinalTime = value; OnPropertyChanged("fFinalTime"); } }
+        public float fFinalTime { get { return _fFinalTime; } set { if (_fFinalTime != value) { _fFinalTime = value; OnPropertyChanged("fFinalTime"); } } }
 
         float _fTime;
-        public float fTime { get { return _fTime; } set { _fTime = value; OnPropertyChanged("fTime"); } }
+        public float fTime { get { return _fTime; } set { if (_fTime != value) { _fTime = value; OnPropertyChanged("fTime"); } } }
         bool _RemoteAccess_bOnoff;
-        public bool RemoteAccess_bOnoff { get { return _RemoteAccess_bOnoff; } set { _RemoteAccess_bOnoff = value; OnPropertyChanged("RemoteAccess_bOnoff"); } }
+        public bool RemoteAccess_bOnoff { get { return _RemoteAccess_bOnoff; } set { if (_RemoteAccess_bOnoff != value) { _RemoteAccess_bOnoff = value; OnPropertyChanged("RemoteAccess_bOnoff"); } } }
         float _fEventTime1;
-        public float fEventTime1 { get { return _fEventTime1; } set { _fEventTime1 = value; OnPropertyChanged("fEventTime1"); } }
+        public float fEventTime1 { get { return _fEventTime1; } set { if (_fEventTime1 != value) { _fEventTime1 = value; OnPropertyChanged("fEventTime1"); } } }
         float _fEventTime2;
-        public float fEventTime2 { get { return _fEventTime2; } set { _fEventTime2 = value; OnPropertyChanged("fEventTime2"); } }
+        public float fEventTime2 { get { return _fEventTime2; } set { if (_fEventTime2 != value) { _fEventTime2 = value; OnPropertyChanged("fEventTime2"); } } }
 
         string _InstDate;
 
         /// <summary>
         /// T_INST_INFORM
         /// </summary>
-        public string InstDate { get { return _InstDate; } set { _InstDate = value; OnPropertyChanged("InstDate"); } }
+        public string InstDate { get { return _InstDate; } set { if (_InstDate != value) { _InstDate = value; OnPropertyChanged("InstDate"); } } }
 
         string _Date;
-        public string Date { get { return _Date; } set { _Date = value; OnPropertyChanged("Date"); } }
+        public string Date { get { return _Date; } set { if (_Date != value) { _Date = value; OnPropertyChanged("Date"); } } }
 
         string _Time;
-        public string Time { get { return _Time; } set { _Time = value; OnPropertyChanged("Time"); } }
+        public string Time { get { return _Time; } set { if (_Time != value) { _Time = value; OnPropertyChanged("Time"); } } }
 
         #endregion Property
 

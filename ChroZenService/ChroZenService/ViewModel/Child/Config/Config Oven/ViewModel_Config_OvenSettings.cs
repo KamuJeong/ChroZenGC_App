@@ -42,10 +42,10 @@ namespace ChroZenService
         TCPManager tcpManager;
 
         string _ActualTemperature;
-        public string ActualTemperature { get { return _ActualTemperature; } set { _ActualTemperature = value; OnPropertyChanged("ActualTemperature"); } }
+        public string ActualTemperature { get { return _ActualTemperature; } set { if (_ActualTemperature != value) { _ActualTemperature = value; OnPropertyChanged("ActualTemperature"); } } }
 
         string _fTempSet;
-        public string fTempSet { get { return _fTempSet; } set { _fTempSet = value; OnPropertyChanged("fTempSet"); } }
+        public string fTempSet { get { return _fTempSet; } set { if (_fTempSet != value) { _fTempSet = value; OnPropertyChanged("fTempSet"); } } }
 
         bool _bTempOnoff;
 
@@ -82,251 +82,251 @@ namespace ChroZenService
         }
 
         float _fMaxTemp;
-        public float fMaxTemp { get { return _fMaxTemp; } set { _fMaxTemp = value; OnPropertyChanged("fMaxTemp"); } }
+        public float fMaxTemp { get { return _fMaxTemp; } set { if (_fMaxTemp != value) { _fMaxTemp = value; OnPropertyChanged("fMaxTemp"); } } }
 
         float _fInitTime;
-        public float fInitTime { get { return _fInitTime; } set { _fInitTime = value; OnPropertyChanged("fInitTime"); } }
+        public float fInitTime { get { return _fInitTime; } set { if (_fInitTime != value) { _fInitTime = value; OnPropertyChanged("fInitTime"); } } }
 
         //string _fTime;
         //public string fTime { get { return _fTime; } set { _fTime = value; OnPropertyChanged("fTime"); } }
 
         bool _btMode;
-        public bool btMode { get { return _btMode; } set { _btMode = value; OnPropertyChanged("btMode"); } }
+        public bool btMode { get { return _btMode; } set { if (_btMode != value) { _btMode = value; OnPropertyChanged("btMode"); } } }
 
         #region Rate 
 
         string _rate_1;
-        public string rate_1 { get { return _rate_1; } set { _rate_1 = value; OnPropertyChanged("rate_1"); } }
+        public string rate_1 { get { return _rate_1; } set { if (_rate_1 != value) { _rate_1 = value; OnPropertyChanged("rate_1"); } } }
 
         string _rate_2;
-        public string rate_2 { get { return _rate_2; } set { _rate_2 = value; OnPropertyChanged("rate_2"); } }
+        public string rate_2 { get { return _rate_2; } set { if (_rate_2 != value) { _rate_2 = value; OnPropertyChanged("rate_2"); } } }
 
         string _rate_3;
-        public string rate_3 { get { return _rate_3; } set { _rate_3 = value; OnPropertyChanged("rate_3"); } }
+        public string rate_3 { get { return _rate_3; } set { if (_rate_3 != value) { _rate_3 = value; OnPropertyChanged("rate_3"); } } }
 
         string _rate_4;
-        public string rate_4 { get { return _rate_4; } set { _rate_4 = value; OnPropertyChanged("rate_4"); } }
+        public string rate_4 { get { return _rate_4; } set { if (_rate_4 != value) { _rate_4 = value; OnPropertyChanged("rate_4"); } } }
 
         string _rate_5;
-        public string rate_5 { get { return _rate_5; } set { _rate_5 = value; OnPropertyChanged("rate_5"); } }
+        public string rate_5 { get { return _rate_5; } set { if (_rate_5 != value) { _rate_5 = value; OnPropertyChanged("rate_5"); } } }
 
         string _rate_6;
-        public string rate_6 { get { return _rate_6; } set { _rate_6 = value; OnPropertyChanged("rate_6"); } }
+        public string rate_6 { get { return _rate_6; } set { if (_rate_6 != value) { _rate_6 = value; OnPropertyChanged("rate_6"); } } }
 
         string _rate_7;
-        public string rate_7 { get { return _rate_7; } set { _rate_7 = value; OnPropertyChanged("rate_7"); } }
+        public string rate_7 { get { return _rate_7; } set { if (_rate_7 != value) { _rate_7 = value; OnPropertyChanged("rate_7"); } } }
 
         string _rate_8;
-        public string rate_8 { get { return _rate_8; } set { _rate_8 = value; OnPropertyChanged("rate_8"); } }
+        public string rate_8 { get { return _rate_8; } set { if (_rate_8 != value) { _rate_8 = value; OnPropertyChanged("rate_8"); } } }
 
         string _rate_9;
-        public string rate_9 { get { return _rate_9; } set { _rate_9 = value; OnPropertyChanged("rate_9"); } }
+        public string rate_9 { get { return _rate_9; } set { if (_rate_9 != value) { _rate_9 = value; OnPropertyChanged("rate_9"); } } }
 
         string _rate_10;
-        public string rate_10 { get { return _rate_10; } set { _rate_10 = value; OnPropertyChanged("rate_10"); } }
+        public string rate_10 { get { return _rate_10; } set { if (_rate_10 != value) { _rate_10 = value; OnPropertyChanged("rate_10"); } } }
 
         string _rate_11;
-        public string rate_11 { get { return _rate_11; } set { _rate_11 = value; OnPropertyChanged("rate_11"); } }
+        public string rate_11 { get { return _rate_11; } set { if (_rate_11 != value) { _rate_11 = value; OnPropertyChanged("rate_11"); } } }
 
         string _rate_12;
-        public string rate_12 { get { return _rate_12; } set { _rate_12 = value; OnPropertyChanged("rate_12"); } }
+        public string rate_12 { get { return _rate_12; } set { if (_rate_12 != value) { _rate_12 = value; OnPropertyChanged("rate_12"); } } }
 
         string _rate_13;
-        public string rate_13 { get { return _rate_13; } set { _rate_13 = value; OnPropertyChanged("rate_13"); } }
+        public string rate_13 { get { return _rate_13; } set { if (_rate_13 != value) { _rate_13 = value; OnPropertyChanged("rate_13"); } } }
 
         string _rate_14;
-        public string rate_14 { get { return _rate_14; } set { _rate_14 = value; OnPropertyChanged("rate_14"); } }
+        public string rate_14 { get { return _rate_14; } set { if (_rate_14 != value) { _rate_14 = value; OnPropertyChanged("rate_14"); } } }
 
         string _rate_15;
-        public string rate_15 { get { return _rate_15; } set { _rate_15 = value; OnPropertyChanged("rate_15"); } }
+        public string rate_15 { get { return _rate_15; } set { if (_rate_15 != value) { _rate_15 = value; OnPropertyChanged("rate_15"); } } }
 
         string _rate_16;
-        public string rate_16 { get { return _rate_16; } set { _rate_16 = value; OnPropertyChanged("rate_16"); } }
+        public string rate_16 { get { return _rate_16; } set { if (_rate_16 != value) { _rate_16 = value; OnPropertyChanged("rate_16"); } } }
 
         string _rate_17;
-        public string rate_17 { get { return _rate_17; } set { _rate_17 = value; OnPropertyChanged("rate_17"); } }
+        public string rate_17 { get { return _rate_17; } set { if (_rate_17 != value) { _rate_17 = value; OnPropertyChanged("rate_17"); } } }
 
         string _rate_18;
-        public string rate_18 { get { return _rate_18; } set { _rate_18 = value; OnPropertyChanged("rate_18"); } }
+        public string rate_18 { get { return _rate_18; } set { if (_rate_18 != value) { _rate_18 = value; OnPropertyChanged("rate_18"); } } }
 
         string _rate_19;
-        public string rate_19 { get { return _rate_19; } set { _rate_19 = value; OnPropertyChanged("rate_19"); } }
+        public string rate_19 { get { return _rate_19; } set { if (_rate_19 != value) { _rate_19 = value; OnPropertyChanged("rate_19"); } } }
 
         string _rate_20;
-        public string rate_20 { get { return _rate_20; } set { _rate_20 = value; OnPropertyChanged("rate_20"); } }
+        public string rate_20 { get { return _rate_20; } set { if (_rate_20 != value) { _rate_20 = value; OnPropertyChanged("rate_20"); } } }
 
         string _rate_21;
-        public string rate_21 { get { return _rate_21; } set { _rate_21 = value; OnPropertyChanged("rate_21"); } }
+        public string rate_21 { get { return _rate_21; } set { if (_rate_21 != value) { _rate_21 = value; OnPropertyChanged("rate_21"); } } }
 
         string _rate_22;
-        public string rate_22 { get { return _rate_22; } set { _rate_22 = value; OnPropertyChanged("rate_22"); } }
+        public string rate_22 { get { return _rate_22; } set { if (_rate_22 != value) { _rate_22 = value; OnPropertyChanged("rate_22"); } } }
 
         string _rate_23;
-        public string rate_23 { get { return _rate_23; } set { _rate_23 = value; OnPropertyChanged("rate_23"); } }
+        public string rate_23 { get { return _rate_23; } set { if (_rate_23 != value) { _rate_23 = value; OnPropertyChanged("rate_23"); } } }
 
         string _rate_24;
-        public string rate_24 { get { return _rate_24; } set { _rate_24 = value; OnPropertyChanged("rate_24"); } }
+        public string rate_24 { get { return _rate_24; } set { if (_rate_24 != value) { _rate_24 = value; OnPropertyChanged("rate_24"); } } }
 
         string _rate_25;
-        public string rate_25 { get { return _rate_25; } set { _rate_25 = value; OnPropertyChanged("rate_25"); } }
+        public string rate_25 { get { return _rate_25; } set { if (_rate_25 != value) { _rate_25 = value; OnPropertyChanged("rate_25"); } } }
 
         #endregion Rate 
 
         #region FinalTime
 
         string _FinalTime_1;
-        public string FinalTime_1 { get { return _FinalTime_1; } set { _FinalTime_1 = value; OnPropertyChanged("FinalTime_1"); } }
+        public string FinalTime_1 { get { return _FinalTime_1; } set { if (_FinalTime_1 != value) { _FinalTime_1 = value; OnPropertyChanged("FinalTime_1"); } } }
 
         string _FinalTime_2;
-        public string FinalTime_2 { get { return _FinalTime_2; } set { _FinalTime_2 = value; OnPropertyChanged("FinalTime_2"); } }
+        public string FinalTime_2 { get { return _FinalTime_2; } set { if (_FinalTime_2 != value) { _FinalTime_2 = value; OnPropertyChanged("FinalTime_2"); } } }
 
         string _FinalTime_3;
-        public string FinalTime_3 { get { return _FinalTime_3; } set { _FinalTime_3 = value; OnPropertyChanged("FinalTime_3"); } }
+        public string FinalTime_3 { get { return _FinalTime_3; } set { if (_FinalTime_3 != value) { _FinalTime_3 = value; OnPropertyChanged("FinalTime_3"); } } }
 
         string _FinalTime_4;
-        public string FinalTime_4 { get { return _FinalTime_4; } set { _FinalTime_4 = value; OnPropertyChanged("FinalTime_4"); } }
+        public string FinalTime_4 { get { return _FinalTime_4; } set { if (_FinalTime_4 != value) { _FinalTime_4 = value; OnPropertyChanged("FinalTime_4"); } } }
 
         string _FinalTime_5;
-        public string FinalTime_5 { get { return _FinalTime_5; } set { _FinalTime_5 = value; OnPropertyChanged("FinalTime_5"); } }
+        public string FinalTime_5 { get { return _FinalTime_5; } set { if (_FinalTime_5 != value) { _FinalTime_5 = value; OnPropertyChanged("FinalTime_5"); } } }
 
         string _FinalTime_6;
-        public string FinalTime_6 { get { return _FinalTime_6; } set { _FinalTime_6 = value; OnPropertyChanged("FinalTime_6"); } }
+        public string FinalTime_6 { get { return _FinalTime_6; } set { if (_FinalTime_6 != value) { _FinalTime_6 = value; OnPropertyChanged("FinalTime_6"); } } }
 
         string _FinalTime_7;
-        public string FinalTime_7 { get { return _FinalTime_7; } set { _FinalTime_7 = value; OnPropertyChanged("FinalTime_7"); } }
+        public string FinalTime_7 { get { return _FinalTime_7; } set { if (_FinalTime_7 != value) { _FinalTime_7 = value; OnPropertyChanged("FinalTime_7"); } } }
 
         string _FinalTime_8;
-        public string FinalTime_8 { get { return _FinalTime_8; } set { _FinalTime_8 = value; OnPropertyChanged("FinalTime_8"); } }
+        public string FinalTime_8 { get { return _FinalTime_8; } set { if (_FinalTime_8 != value) { _FinalTime_8 = value; OnPropertyChanged("FinalTime_8"); } } }
 
         string _FinalTime_9;
-        public string FinalTime_9 { get { return _FinalTime_9; } set { _FinalTime_9 = value; OnPropertyChanged("FinalTime_9"); } }
+        public string FinalTime_9 { get { return _FinalTime_9; } set { if (_FinalTime_9 != value) { _FinalTime_9 = value; OnPropertyChanged("FinalTime_9"); } } }
 
         string _FinalTime_10;
-        public string FinalTime_10 { get { return _FinalTime_10; } set { _FinalTime_10 = value; OnPropertyChanged("FinalTime_10"); } }
+        public string FinalTime_10 { get { return _FinalTime_10; } set { if (_FinalTime_10 != value) { _FinalTime_10 = value; OnPropertyChanged("FinalTime_10"); } } }
 
         string _FinalTime_11;
-        public string FinalTime_11 { get { return _FinalTime_11; } set { _FinalTime_11 = value; OnPropertyChanged("FinalTime_11"); } }
+        public string FinalTime_11 { get { return _FinalTime_11; } set { if (_FinalTime_11 != value) { _FinalTime_11 = value; OnPropertyChanged("FinalTime_11"); } } }
 
         string _FinalTime_12;
-        public string FinalTime_12 { get { return _FinalTime_12; } set { _FinalTime_12 = value; OnPropertyChanged("FinalTime_12"); } }
+        public string FinalTime_12 { get { return _FinalTime_12; } set { if (_FinalTime_12 != value) { _FinalTime_12 = value; OnPropertyChanged("FinalTime_12"); } } }
 
         string _FinalTime_13;
-        public string FinalTime_13 { get { return _FinalTime_13; } set { _FinalTime_13 = value; OnPropertyChanged("FinalTime_13"); } }
+        public string FinalTime_13 { get { return _FinalTime_13; } set { if (_FinalTime_13 != value) { _FinalTime_13 = value; OnPropertyChanged("FinalTime_13"); } } }
 
         string _FinalTime_14;
-        public string FinalTime_14 { get { return _FinalTime_14; } set { _FinalTime_14 = value; OnPropertyChanged("FinalTime_14"); } }
+        public string FinalTime_14 { get { return _FinalTime_14; } set { if (_FinalTime_14 != value) { _FinalTime_14 = value; OnPropertyChanged("FinalTime_14"); } } }
 
         string _FinalTime_15;
-        public string FinalTime_15 { get { return _FinalTime_15; } set { _FinalTime_15 = value; OnPropertyChanged("FinalTime_15"); } }
+        public string FinalTime_15 { get { return _FinalTime_15; } set { if (_FinalTime_15 != value) { _FinalTime_15 = value; OnPropertyChanged("FinalTime_15"); } } }
 
         string _FinalTime_16;
-        public string FinalTime_16 { get { return _FinalTime_16; } set { _FinalTime_16 = value; OnPropertyChanged("FinalTime_16"); } }
+        public string FinalTime_16 { get { return _FinalTime_16; } set { if (_FinalTime_16 != value) { _FinalTime_16 = value; OnPropertyChanged("FinalTime_16"); } } }
 
         string _FinalTime_17;
-        public string FinalTime_17 { get { return _FinalTime_17; } set { _FinalTime_17 = value; OnPropertyChanged("FinalTime_17"); } }
+        public string FinalTime_17 { get { return _FinalTime_17; } set { if (_FinalTime_17 != value) { _FinalTime_17 = value; OnPropertyChanged("FinalTime_17"); } } }
 
         string _FinalTime_18;
-        public string FinalTime_18 { get { return _FinalTime_18; } set { _FinalTime_18 = value; OnPropertyChanged("FinalTime_18"); } }
+        public string FinalTime_18 { get { return _FinalTime_18; } set { if (_FinalTime_18 != value) { _FinalTime_18 = value; OnPropertyChanged("FinalTime_18"); } } }
 
         string _FinalTime_19;
-        public string FinalTime_19 { get { return _FinalTime_19; } set { _FinalTime_19 = value; OnPropertyChanged("FinalTime_19"); } }
+        public string FinalTime_19 { get { return _FinalTime_19; } set { if (_FinalTime_19 != value) { _FinalTime_19 = value; OnPropertyChanged("FinalTime_19"); } } }
 
         string _FinalTime_20;
-        public string FinalTime_20 { get { return _FinalTime_20; } set { _FinalTime_20 = value; OnPropertyChanged("FinalTime_20"); } }
+        public string FinalTime_20 { get { return _FinalTime_20; } set { if (_FinalTime_20 != value) { _FinalTime_20 = value; OnPropertyChanged("FinalTime_20"); } } }
 
         string _FinalTime_21;
-        public string FinalTime_21 { get { return _FinalTime_21; } set { _FinalTime_21 = value; OnPropertyChanged("FinalTime_21"); } }
+        public string FinalTime_21 { get { return _FinalTime_21; } set { if (_FinalTime_21 != value) { _FinalTime_21 = value; OnPropertyChanged("FinalTime_21"); } } }
 
         string _FinalTime_22;
-        public string FinalTime_22 { get { return _FinalTime_22; } set { _FinalTime_22 = value; OnPropertyChanged("FinalTime_22"); } }
+        public string FinalTime_22 { get { return _FinalTime_22; } set { if (_FinalTime_22 != value) { _FinalTime_22 = value; OnPropertyChanged("FinalTime_22"); } } }
 
         string _FinalTime_23;
-        public string FinalTime_23 { get { return _FinalTime_23; } set { _FinalTime_23 = value; OnPropertyChanged("FinalTime_23"); } }
+        public string FinalTime_23 { get { return _FinalTime_23; } set { if (_FinalTime_23 != value) { _FinalTime_23 = value; OnPropertyChanged("FinalTime_23"); } } }
 
         string _FinalTime_24;
-        public string FinalTime_24 { get { return _FinalTime_24; } set { _FinalTime_24 = value; OnPropertyChanged("FinalTime_24"); } }
+        public string FinalTime_24 { get { return _FinalTime_24; } set { if (_FinalTime_24 != value) { _FinalTime_24 = value; OnPropertyChanged("FinalTime_24"); } } }
 
         string _FinalTime_25;
-        public string FinalTime_25 { get { return _FinalTime_25; } set { _FinalTime_25 = value; OnPropertyChanged("FinalTime_25"); } }
+        public string FinalTime_25 { get { return _FinalTime_25; } set { if (_FinalTime_25 != value) { _FinalTime_25 = value; OnPropertyChanged("FinalTime_25"); } } }
 
         #endregion FinalTime
 
         #region FinalTemp
 
         string _FinalTemp_1;
-        public string FinalTemp_1 { get { return _FinalTemp_1; } set { _FinalTemp_1 = value; OnPropertyChanged("FinalTemp_1"); } }
+        public string FinalTemp_1 { get { return _FinalTemp_1; } set { if (_FinalTemp_1 != value) { _FinalTemp_1 = value; OnPropertyChanged("FinalTemp_1"); } } }
 
         string _FinalTemp_2;
-        public string FinalTemp_2 { get { return _FinalTemp_2; } set { _FinalTemp_2 = value; OnPropertyChanged("FinalTemp_2"); } }
+        public string FinalTemp_2 { get { return _FinalTemp_2; } set { if (_FinalTemp_2 != value) { _FinalTemp_2 = value; OnPropertyChanged("FinalTemp_2"); } } }
 
         string _FinalTemp_3;
-        public string FinalTemp_3 { get { return _FinalTemp_3; } set { _FinalTemp_3 = value; OnPropertyChanged("FinalTemp_3"); } }
+        public string FinalTemp_3 { get { return _FinalTemp_3; } set { if (_FinalTemp_3 != value) { _FinalTemp_3 = value; OnPropertyChanged("FinalTemp_3"); } } }
 
         string _FinalTemp_4;
-        public string FinalTemp_4 { get { return _FinalTemp_4; } set { _FinalTemp_4 = value; OnPropertyChanged("FinalTemp_4"); } }
+        public string FinalTemp_4 { get { return _FinalTemp_4; } set { if (_FinalTemp_4 != value) { _FinalTemp_4 = value; OnPropertyChanged("FinalTemp_4"); } } }
 
         string _FinalTemp_5;
-        public string FinalTemp_5 { get { return _FinalTemp_5; } set { _FinalTemp_5 = value; OnPropertyChanged("FinalTemp_5"); } }
+        public string FinalTemp_5 { get { return _FinalTemp_5; } set { if (_FinalTemp_5 != value) { _FinalTemp_5 = value; OnPropertyChanged("FinalTemp_5"); } } }
 
         string _FinalTemp_6;
-        public string FinalTemp_6 { get { return _FinalTemp_6; } set { _FinalTemp_6 = value; OnPropertyChanged("FinalTemp_6"); } }
+        public string FinalTemp_6 { get { return _FinalTemp_6; } set { if (_FinalTemp_6 != value) { _FinalTemp_6 = value; OnPropertyChanged("FinalTemp_6"); } } }
 
         string _FinalTemp_7;
-        public string FinalTemp_7 { get { return _FinalTemp_7; } set { _FinalTemp_7 = value; OnPropertyChanged("FinalTemp_7"); } }
+        public string FinalTemp_7 { get { return _FinalTemp_7; } set { if (_FinalTemp_7 != value) { _FinalTemp_7 = value; OnPropertyChanged("FinalTemp_7"); } } }
 
         string _FinalTemp_8;
-        public string FinalTemp_8 { get { return _FinalTemp_8; } set { _FinalTemp_8 = value; OnPropertyChanged("FinalTemp_8"); } }
+        public string FinalTemp_8 { get { return _FinalTemp_8; } set { if (_FinalTemp_8 != value) { _FinalTemp_8 = value; OnPropertyChanged("FinalTemp_8"); } } }
 
         string _FinalTemp_9;
-        public string FinalTemp_9 { get { return _FinalTemp_9; } set { _FinalTemp_9 = value; OnPropertyChanged("FinalTemp_9"); } }
+        public string FinalTemp_9 { get { return _FinalTemp_9; } set { if (_FinalTemp_9 != value) { _FinalTemp_9 = value; OnPropertyChanged("FinalTemp_9"); } } }
 
         string _FinalTemp_10;
-        public string FinalTemp_10 { get { return _FinalTemp_10; } set { _FinalTemp_10 = value; OnPropertyChanged("FinalTemp_10"); } }
+        public string FinalTemp_10 { get { return _FinalTemp_10; } set { if (_FinalTemp_10 != value) { _FinalTemp_10 = value; OnPropertyChanged("FinalTemp_10"); } } }
 
         string _FinalTemp_11;
-        public string FinalTemp_11 { get { return _FinalTemp_11; } set { _FinalTemp_11 = value; OnPropertyChanged("FinalTemp_11"); } }
+        public string FinalTemp_11 { get { return _FinalTemp_11; } set { if (_FinalTemp_11 != value) { _FinalTemp_11 = value; OnPropertyChanged("FinalTemp_11"); } } }
 
         string _FinalTemp_12;
-        public string FinalTemp_12 { get { return _FinalTemp_12; } set { _FinalTemp_12 = value; OnPropertyChanged("FinalTemp_12"); } }
+        public string FinalTemp_12 { get { return _FinalTemp_12; } set { if (_FinalTemp_12 != value) { _FinalTemp_12 = value; OnPropertyChanged("FinalTemp_12"); } } }
 
         string _FinalTemp_13;
-        public string FinalTemp_13 { get { return _FinalTemp_13; } set { _FinalTemp_13 = value; OnPropertyChanged("FinalTemp_13"); } }
+        public string FinalTemp_13 { get { return _FinalTemp_13; } set { if (_FinalTemp_13 != value) { _FinalTemp_13 = value; OnPropertyChanged("FinalTemp_13"); } } }
 
         string _FinalTemp_14;
-        public string FinalTemp_14 { get { return _FinalTemp_14; } set { _FinalTemp_14 = value; OnPropertyChanged("FinalTemp_14"); } }
+        public string FinalTemp_14 { get { return _FinalTemp_14; } set { if (_FinalTemp_14 != value) { _FinalTemp_14 = value; OnPropertyChanged("FinalTemp_14"); } } }
 
         string _FinalTemp_15;
-        public string FinalTemp_15 { get { return _FinalTemp_15; } set { _FinalTemp_15 = value; OnPropertyChanged("FinalTemp_15"); } }
+        public string FinalTemp_15 { get { return _FinalTemp_15; } set { if (_FinalTemp_15 != value) { _FinalTemp_15 = value; OnPropertyChanged("FinalTemp_15"); } } }
 
         string _FinalTemp_16;
-        public string FinalTemp_16 { get { return _FinalTemp_16; } set { _FinalTemp_16 = value; OnPropertyChanged("FinalTemp_16"); } }
+        public string FinalTemp_16 { get { return _FinalTemp_16; } set { if (_FinalTemp_16 != value) { _FinalTemp_16 = value; OnPropertyChanged("FinalTemp_16"); } } }
 
         string _FinalTemp_17;
-        public string FinalTemp_17 { get { return _FinalTemp_17; } set { _FinalTemp_17 = value; OnPropertyChanged("FinalTemp_17"); } }
+        public string FinalTemp_17 { get { return _FinalTemp_17; } set { if (_FinalTemp_17 != value) { _FinalTemp_17 = value; OnPropertyChanged("FinalTemp_17"); } } }
 
         string _FinalTemp_18;
-        public string FinalTemp_18 { get { return _FinalTemp_18; } set { _FinalTemp_18 = value; OnPropertyChanged("FinalTemp_18"); } }
+        public string FinalTemp_18 { get { return _FinalTemp_18; } set { if (_FinalTemp_18 != value) { _FinalTemp_18 = value; OnPropertyChanged("FinalTemp_18"); } } }
 
         string _FinalTemp_19;
-        public string FinalTemp_19 { get { return _FinalTemp_19; } set { _FinalTemp_19 = value; OnPropertyChanged("FinalTemp_19"); } }
+        public string FinalTemp_19 { get { return _FinalTemp_19; } set { if (_FinalTemp_19 != value) { _FinalTemp_19 = value; OnPropertyChanged("FinalTemp_19"); } } }
 
         string _FinalTemp_20;
-        public string FinalTemp_20 { get { return _FinalTemp_20; } set { _FinalTemp_20 = value; OnPropertyChanged("FinalTemp_20"); } }
+        public string FinalTemp_20 { get { return _FinalTemp_20; } set { if (_FinalTemp_20 != value) { _FinalTemp_20 = value; OnPropertyChanged("FinalTemp_20"); } } }
 
         string _FinalTemp_21;
-        public string FinalTemp_21 { get { return _FinalTemp_21; } set { _FinalTemp_21 = value; OnPropertyChanged("FinalTemp_21"); } }
+        public string FinalTemp_21 { get { return _FinalTemp_21; } set { if (_FinalTemp_21 != value) { _FinalTemp_21 = value; OnPropertyChanged("FinalTemp_21"); } } }
 
         string _FinalTemp_22;
-        public string FinalTemp_22 { get { return _FinalTemp_22; } set { _FinalTemp_22 = value; OnPropertyChanged("FinalTemp_22"); } }
+        public string FinalTemp_22 { get { return _FinalTemp_22; } set { if (_FinalTemp_22 != value) { _FinalTemp_22 = value; OnPropertyChanged("FinalTemp_22"); } } }
 
         string _FinalTemp_23;
-        public string FinalTemp_23 { get { return _FinalTemp_23; } set { _FinalTemp_23 = value; OnPropertyChanged("FinalTemp_23"); } }
+        public string FinalTemp_23 { get { return _FinalTemp_23; } set { if (_FinalTemp_23 != value) { _FinalTemp_23 = value; OnPropertyChanged("FinalTemp_23"); } } }
 
         string _FinalTemp_24;
-        public string FinalTemp_24 { get { return _FinalTemp_24; } set { _FinalTemp_24 = value; OnPropertyChanged("FinalTemp_24"); } }
+        public string FinalTemp_24 { get { return _FinalTemp_24; } set { if (_FinalTemp_24 != value) { _FinalTemp_24 = value; OnPropertyChanged("FinalTemp_24"); } } }
 
         string _FinalTemp_25;
-        public string FinalTemp_25 { get { return _FinalTemp_25; } set { _FinalTemp_25 = value; OnPropertyChanged("FinalTemp_25"); } }
+        public string FinalTemp_25 { get { return _FinalTemp_25; } set { if (_FinalTemp_25 != value) { _FinalTemp_25 = value; OnPropertyChanged("FinalTemp_25"); } } }
 
         #endregion FinalTemp
 

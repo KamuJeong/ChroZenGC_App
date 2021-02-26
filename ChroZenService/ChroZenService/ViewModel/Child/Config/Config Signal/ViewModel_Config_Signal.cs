@@ -44,48 +44,48 @@ namespace ChroZenService
         public int nSignalIndex;
 
         float _fZero;
-        public float fZero { get { return _fZero; } set { _fZero = value; OnPropertyChanged("fZero"); } }
+        public float fZero { get { return _fZero; } set { if (_fZero != value) { _fZero = value; OnPropertyChanged("fZero"); } } }
 
         float _fSensitivity;
-        public float fSensitivity { get { return _fSensitivity; } set { _fSensitivity = value; OnPropertyChanged("fSensitivity"); } }
+        public float fSensitivity { get { return _fSensitivity; } set { if (_fSensitivity != value) { _fSensitivity = value; OnPropertyChanged("fSensitivity"); } } }
 
         bool _bSignalChange;
-        public bool bSignalChange { get { return _bSignalChange; } set { _bSignalChange = value; OnPropertyChanged("bSignalChange"); } }
+        public bool bSignalChange { get { return _bSignalChange; } set { if (_bSignalChange != value) { _bSignalChange = value; OnPropertyChanged("bSignalChange"); } } }
 
 
 
         int _btDet_0;
-        public int btDet_0 { get { return _btDet_0; } set { _btDet_0 = value; OnPropertyChanged("btDet_0"); } }
+        public int btDet_0 { get { return _btDet_0; } set { if (_btDet_0 != value) { _btDet_0 = value; OnPropertyChanged("btDet_0"); } } }
 
         float _fTime_1;
-        public float fTime_1 { get { return _fTime_1; } set { _fTime_1 = value; OnPropertyChanged("fTime_1"); } }
+        public float fTime_1 { get { return _fTime_1; } set { if (_fTime_1 != value) { _fTime_1 = value; OnPropertyChanged("fTime_1"); } } }
 
         int _btDet_1;
-        public int btDet_1 { get { return _btDet_1; } set { _btDet_1 = value; OnPropertyChanged("btDet_1"); } }
+        public int btDet_1 { get { return _btDet_1; } set { if (_btDet_1 != value) { _btDet_1 = value; OnPropertyChanged("btDet_1"); } } }
 
         float _fTime_2;
-        public float fTime_2 { get { return _fTime_2; } set { _fTime_2 = value; OnPropertyChanged("fTime_2"); } }
+        public float fTime_2 { get { return _fTime_2; } set { if (_fTime_2 != value) { _fTime_2 = value; OnPropertyChanged("fTime_2"); } } }
 
         int _btDet_2;
-        public int btDet_2 { get { return _btDet_2; } set { _btDet_2 = value; OnPropertyChanged("btDet_2"); } }
+        public int btDet_2 { get { return _btDet_2; } set { if (_btDet_2 != value) { _btDet_2 = value; OnPropertyChanged("btDet_2"); } } }
 
         float _fTime_3;
-        public float fTime_3 { get { return _fTime_3; } set { _fTime_3 = value; OnPropertyChanged("fTime_3"); } }
+        public float fTime_3 { get { return _fTime_3; } set { if (_fTime_3 != value) { _fTime_3 = value; OnPropertyChanged("fTime_3"); } } }
 
         int _btDet_3;
-        public int btDet_3 { get { return _btDet_3; } set { _btDet_3 = value; OnPropertyChanged("btDet_3"); } }
+        public int btDet_3 { get { return _btDet_3; } set { if (_btDet_3 != value) { _btDet_3 = value; OnPropertyChanged("btDet_3"); } } }
 
         float _fTime_4;
-        public float fTime_4 { get { return _fTime_4; } set { _fTime_4 = value; OnPropertyChanged("fTime_4"); } }
+        public float fTime_4 { get { return _fTime_4; } set { if (_fTime_4 != value) { _fTime_4 = value; OnPropertyChanged("fTime_4"); } } }
 
         int _btDet_4;
-        public int btDet_4 { get { return _btDet_4; } set { _btDet_4 = value; OnPropertyChanged("btDet_4"); } }
+        public int btDet_4 { get { return _btDet_4; } set { if (_btDet_4 != value) { _btDet_4 = value; OnPropertyChanged("btDet_4"); } } }
 
         float _fTime_5;
-        public float fTime_5 { get { return _fTime_5; } set { _fTime_5 = value; OnPropertyChanged("fTime_5"); } }
+        public float fTime_5 { get { return _fTime_5; } set { if (_fTime_5 != value) { _fTime_5 = value; OnPropertyChanged("fTime_5"); } } }
 
         int _btDet_5;
-        public int btDet_5 { get { return _btDet_5; } set { _btDet_5 = value; OnPropertyChanged("btDet_5"); } }
+        public int btDet_5 { get { return _btDet_5; } set { if (_btDet_5 != value) { _btDet_5 = value; OnPropertyChanged("btDet_5"); } } }
 
 
         #endregion Property

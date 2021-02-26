@@ -793,14 +793,10 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    #region 20200519 권민경 : Inform정보 전송후 ack 받으면 Config 요청 
-
-
                                     if (bIsSync)
                                         SendSync(T_PACKCODE_CHROZEN_SYSTEM_CONFIGManager.MakePACKCODE_REQ());
                                     else
                                         Send(T_PACKCODE_CHROZEN_SYSTEM_CONFIGManager.MakePACKCODE_REQ());
-                                    #endregion
                                 }
                                 catch (Exception ee)
                                 {

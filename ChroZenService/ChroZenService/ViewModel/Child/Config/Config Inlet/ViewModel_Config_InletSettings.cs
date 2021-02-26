@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using YC_ChroZenGC_Type;
 using static ChroZenService.ChroZenService_Const;
 using static YC_ChroZenGC_Type.T_CHROZEN_GC_SYSTEM_CONFIG;
+using static YC_ChroZenGC_Type.T_CHROZEN_INLET;
 
 namespace ChroZenService
 {
@@ -31,8 +32,10 @@ namespace ChroZenService
 
             Navigation_NextCommand = new RelayCommand(Navigation_NextCommandAction);
             Navigation_PrevCommand = new RelayCommand(Navigation_PrevCommandAction);
-            
+
             EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
+
+
         }
 
         #endregion 생성자 & 이벤트 헨들러
@@ -43,7 +46,7 @@ namespace ChroZenService
         TCPManager tcpManager;
 
         E_INLET_TYPE _e_INLET_TYPE = E_INLET_TYPE.Not_Installed;
-        public E_INLET_TYPE e_INLET_TYPE { get { return _e_INLET_TYPE; } set { _e_INLET_TYPE = value; OnPropertyChanged("e_INLET_TYPE"); } }
+        public E_INLET_TYPE e_INLET_TYPE { get { return _e_INLET_TYPE; } set { if (_e_INLET_TYPE != value) { _e_INLET_TYPE = value; OnPropertyChanged("e_INLET_TYPE"); } } }
 
         byte _ApcMode;
 
@@ -57,86 +60,127 @@ namespace ChroZenService
         ///     column split flow -> disable
         ///     Pressure set -> enable
         /// </summary>
-        
+
         public byte ApcMode
         {
             get { return _ApcMode; }
             set
             {
-                _ApcMode = value;
-                switch (value)
+                if (_ApcMode != value)
                 {
-                    case 0:
-                        {
-                            DisplayString_fPressureSet = "Off";
 
-                            TableTitle = "Constant Flow";
-                        }
-                        break;
-                    case 1:
-                        {
-                            DisplayString_fColumnFlowSet = "Off";
-                            DisplayString_fTotalFlowSet = "Off";
-                            _DisplayString_fSplitFlowSet = "Off";
+                    switch (value)
+                    {
+                        case 0:
+                            {
+                                DisplayString_fPressureSet = "Off";
 
-                            TableTitle = "Constant Press";
-                        }
-                        break;
-                    case 2:
-                        {
-                            DisplayString_fPressureSet = "Off";
+                                TableTitle = "Constant Flow";
+                                if (_fColumnFlowOnoff == true)
+                                    DisplayString_fColumnFlowSet = fColumnFlowSet;
+                                else DisplayString_fColumnFlowSet = "Off";
 
-                            TableTitle = "Programed Flow";
-                        }
-                        break;
-                    case 3:
-                        {
-                            DisplayString_fColumnFlowSet = "Off";
-                            DisplayString_fTotalFlowSet = "Off";
-                            _DisplayString_fSplitFlowSet = "Off";
+                                DisplayString_fTotalFlowSet = fTotalFlowSet;
 
-                            TableTitle = "Programed Press";
-                        }
-                        break;
+                                DisplayString_fSplitFlowSet = fSplitFlowSet;
+                            }
+                            break;
+                        case 1:
+                            {
+                                DisplayString_fColumnFlowSet = "Off";
+                                DisplayString_fTotalFlowSet = "Off";
+                                DisplayString_fSplitFlowSet = "Off";
+
+                                TableTitle = "Constant Press";
+
+                                if (_fPressureOnoff)
+                                    DisplayString_fPressureSet = fPressureSet;
+                                else DisplayString_fPressureSet = "Off";
+                            }
+                            break;
+                        case 2:
+                            {
+                                DisplayString_fPressureSet = "Off";
+
+                                TableTitle = "Programed Flow";
+
+                                if (_fColumnFlowOnoff == true)
+                                    DisplayString_fColumnFlowSet = fColumnFlowSet;
+                                else DisplayString_fColumnFlowSet = "Off";
+
+                                DisplayString_fTotalFlowSet = fTotalFlowSet;
+
+                                DisplayString_fSplitFlowSet = fSplitFlowSet;
+                            }
+                            break;
+                        case 3:
+                            {
+                                DisplayString_fColumnFlowSet = "Off";
+                                DisplayString_fTotalFlowSet = "Off";
+                                DisplayString_fSplitFlowSet = "Off";
+
+                                TableTitle = "Programed Press";
+
+                                if (_fPressureOnoff)
+                                    DisplayString_fPressureSet = fPressureSet;
+                                else DisplayString_fPressureSet = "Off";
+                            }
+                            break;
+                    }
+
+                    _ApcMode = value;
+                    OnPropertyChanged("ApcMode");
                 }
-                OnPropertyChanged("ApcMode");
             }
         }
 
         byte _btTempMode;
-        public byte btTempMode { get { return _btTempMode; } set { _btTempMode = value; OnPropertyChanged("btTempMode"); } }
+        public byte btTempMode { get { return _btTempMode; } set { if (_btTempMode != value) { _btTempMode = value; OnPropertyChanged("btTempMode"); } } }
 
         string _TableTitle;
-        public string TableTitle { get { return _TableTitle; } set { _TableTitle = value; OnPropertyChanged("TableTitle"); } }
+        public string TableTitle { get { return _TableTitle; } set { if (_TableTitle != value) { _TableTitle = value; OnPropertyChanged("TableTitle"); } } }
 
         bool _IsFirstPage = true;
-        public bool IsFirstPage { get { return _IsFirstPage; } set { _IsFirstPage = value; OnPropertyChanged("IsFirstPage"); } }
+        public bool IsFirstPage { get { return _IsFirstPage; } set { if (_IsFirstPage != value) { _IsFirstPage = value; OnPropertyChanged("IsFirstPage"); } } }
 
 
 
         bool _fTempOnoff;
-        public bool fTempOnoff { get { return fTempOnoff; } set { _fTempOnoff = value; OnPropertyChanged("fTempOnoff"); } }
+        public bool fTempOnoff
+        {
+            get { return fTempOnoff; }
+            set
+            {
+                if (_fTempOnoff != value)
+                {
+                    _fTempOnoff = value;
+                    OnPropertyChanged("fTempOnoff");
+
+                    SetTemp();
+                }
+            }
+        }
 
         string _ActualTemperature;
-        public string ActualTemperature { get { return _ActualTemperature; } set { _ActualTemperature = value; OnPropertyChanged("ActualTemperature"); } }
+        public string ActualTemperature { get { return _ActualTemperature; } set { if (_ActualTemperature != value) { _ActualTemperature = value; OnPropertyChanged("ActualTemperature"); } } }
 
-        bool _btInjMode;
-        public bool btInjMode { get { return _btInjMode; } set { _btInjMode = value; OnPropertyChanged("btInjMode"); } }
+        byte _btInjMode;
+        public byte btInjMode { get { return _btInjMode; } set { if (_btInjMode != value) { _btInjMode = value; OnPropertyChanged("btInjMode"); } } }
 
         string _ActualColumnFlow;
-        public string ActualColumnFlow { get { return _ActualColumnFlow; } set { _ActualColumnFlow = value; OnPropertyChanged("ActualColumnFlow"); } }
+        public string ActualColumnFlow { get { return _ActualColumnFlow; } set { if (_ActualColumnFlow != value) { _ActualColumnFlow = value; OnPropertyChanged("ActualColumnFlow"); } } }
 
         string _ActualPressure;
-        public string ActualPressure { get { return _ActualPressure; } set { _ActualPressure = value; OnPropertyChanged("ActualPressure"); } }
+        public string ActualPressure { get { return _ActualPressure; } set { if (_ActualPressure != value) { _ActualPressure = value; OnPropertyChanged("ActualPressure"); } } }
 
         string _ActualTotalFlow;
-        public string ActualTotalFlow { get { return _ActualTotalFlow; } set { _ActualTotalFlow = value; OnPropertyChanged("ActualTotalFlow"); } }
+        public string ActualTotalFlow { get { return _ActualTotalFlow; } set { if (_ActualTotalFlow != value) { _ActualTotalFlow = value; OnPropertyChanged("ActualTotalFlow"); } } }
 
         string _ActualSplitFlow;
-        public string ActualSplitFlow { get { return _ActualSplitFlow; } set { _ActualSplitFlow = value; OnPropertyChanged("ActualSplitFlow"); } }
+        public string ActualSplitFlow { get { return _ActualSplitFlow; } set { if (_ActualSplitFlow != value) { _ActualSplitFlow = value; OnPropertyChanged("ActualSplitFlow"); } } }
 
         string _ActualVelocity;
-        public string ActualVelocity { get { return _ActualVelocity; } set { _ActualVelocity = value; OnPropertyChanged("ActualVelocity"); } }
+        public string ActualVelocity { get { return _ActualVelocity; } set { if (_ActualVelocity != value) { _ActualVelocity = value; OnPropertyChanged("ActualVelocity"); } } }
 
 
 
@@ -146,23 +190,15 @@ namespace ChroZenService
             get { return _fColumnFlowOnoff; }
             set
             {
-                _fColumnFlowOnoff = value;
 
-                switch (value)
+                if (_fColumnFlowOnoff != value)
                 {
-                    case true:
-                        {
-                            DisplayString_fColumnFlowSet = _fColumnFlowSet;
-                        }
-                        break;
-                    case false:
-                        {
-                            DisplayString_fColumnFlowSet = "Off";
-                        }
-                        break;
-                }
+                    _fColumnFlowOnoff = value;
 
-                OnPropertyChanged("fColumnFlowOnoff");
+                    OnPropertyChanged("fColumnFlowOnoff");
+
+                    SetColumnFlow();
+                }
             }
         }
 
@@ -172,22 +208,14 @@ namespace ChroZenService
             get { return _fPressureOnoff; }
             set
             {
-                _fPressureOnoff = value;
-
-                switch (value)
+                if (_fPressureOnoff != value)
                 {
-                    case true:
-                        {
-                            DisplayString_fPressureSet = fPressureSet;
-                        }
-                        break;
-                    case false:
-                        {
-                            DisplayString_fPressureSet = "Off";
-                        }
-                        break;
+                    _fPressureOnoff = value;
+
+                    OnPropertyChanged("fPressureOnoff");
+
+                    SetPressure();
                 }
-                OnPropertyChanged("fPressureOnoff");
             }
         }
 
@@ -197,64 +225,127 @@ namespace ChroZenService
             get { return _fTotalFlowOnoff; }
             set
             {
-                _fTotalFlowOnoff = value;
-                switch (value)
+                if (_fTotalFlowOnoff != value)
                 {
-                    case true:
-                        {
-                            DisplayString_fTotalFlowSet = fTotalFlowSet;
-                        }
-                        break;
-                    case false:
-                        {
-                            DisplayString_fTotalFlowSet = "Off";
-                        }
-                        break;
+                    _fTotalFlowOnoff = value;
+
+                    OnPropertyChanged("fTotalFlowOnoff");
+
+                    //SetTotalFlow();
                 }
-                OnPropertyChanged("fTotalFlowOnoff");
             }
         }
 
 
 
         string _iSplitratio;
-        public string iSplitratio { get { return _iSplitratio; } set { _iSplitratio = value; OnPropertyChanged("iSplitratio"); } }
+        public string iSplitratio
+        {
+            get { return _iSplitratio; }
+            set
+            {
+                //if (_iSplitratio != value)
+                { _iSplitratio = value; OnPropertyChanged("iSplitratio"); }
+            }
+        }
 
         string _fPulsed_FlowPressSet;
-        public string fPulsed_FlowPressSet { get { return _fPulsed_FlowPressSet; } set { _fPulsed_FlowPressSet = value; OnPropertyChanged("fPulsed_FlowPressSet"); } }
+        public string fPulsed_FlowPressSet { get { return _fPulsed_FlowPressSet; } set { if (_fPulsed_FlowPressSet != value) { _fPulsed_FlowPressSet = value; OnPropertyChanged("fPulsed_FlowPressSet"); } } }
 
         string _fSplitOnTime;
-        public string fSplitOnTime { get { return _fSplitOnTime; } set { _fSplitOnTime = value; OnPropertyChanged("fSplitOnTime"); } }
+        public string fSplitOnTime { get { return _fSplitOnTime; } set { if (_fSplitOnTime != value) { _fSplitOnTime = value; OnPropertyChanged("fSplitOnTime"); } } }
 
         string _fPulsed_Time;
-        public string fPulsed_Time { get { return _fPulsed_Time; } set { _fPulsed_Time = value; OnPropertyChanged("fPulsed_Time"); } }
+        public string fPulsed_Time { get { return _fPulsed_Time; } set { if (_fPulsed_Time != value) { _fPulsed_Time = value; OnPropertyChanged("fPulsed_Time"); } } }
 
 
         string _fTempSet;
-        public string fTempSet { get { return _fTempSet; } set { _fTempSet = value; OnPropertyChanged("fTempSet"); } }
+        public string fTempSet
+        {
+            get { return _fTempSet; }
+            set
+            {
+                if (_fTempSet != value)
+                {
+                    _fTempSet = value;
+                    OnPropertyChanged("fTempSet");
+                    SetTemp();
+
+                }
+            }
+        }
 
         string _fColumnFlowSet;
-        public string fColumnFlowSet { get { return _fColumnFlowSet; } set { _fColumnFlowSet = value; OnPropertyChanged("fColumnFlowSet"); } }
+        public string fColumnFlowSet
+        {
+            get { return _fColumnFlowSet; }
+            set
+            {
+                //if (_fColumnFlowSet != value)
+                {
+
+                    _fColumnFlowSet = value;
+                    OnPropertyChanged("fColumnFlowSet");
+                    SetColumnFlow();
+                }
+            }
+        }
 
         string _fPressureSet;
-        public string fPressureSet { get { return _fPressureSet; } set { _fPressureSet = value; OnPropertyChanged("fPressureSet"); } }
+        public string fPressureSet
+        {
+            get { return _fPressureSet; }
+            set
+            {
+                if (_fPressureSet != value)
+                {
+                    _fPressureSet = value;
+                    OnPropertyChanged("fPressureSet");
+                    SetPressure();
+                }
+            }
+        }
 
         string _fTotalFlowSet;
-        public string fTotalFlowSet { get { return _fTotalFlowSet; } set { _fTotalFlowSet = value; OnPropertyChanged("fTotalFlowSet"); } }
+        public string fTotalFlowSet
+        {
+            get { return _fTotalFlowSet; }
+            set
+            {
+                //if (_fTotalFlowSet != value)
+                {
+                    _fTotalFlowSet = value;
+                    OnPropertyChanged("fTotalFlowSet");
+                    SetTotalFlow();
+                }
+            }
+        }
 
         string _fSplitFlowSet;
-        public string fSplitFlowSet { get { return _fSplitFlowSet; } set { _fSplitFlowSet = value; OnPropertyChanged("fSplitFlowSet"); } }
+        public string fSplitFlowSet
+        {
+            get { return _fSplitFlowSet; }
+            set
+            {
+                //if (_fSplitFlowSet != value)
+                {
+                    _fSplitFlowSet = value;
+                    OnPropertyChanged("fSplitFlowSet");
+                    SetSplitFlow();
+                }
+            }
+        }
 
         string _DisplayString_fTempSet;
-        public string DisplayString_fTempSet { get { return _DisplayString_fTempSet; } set { _DisplayString_fTempSet = value; OnPropertyChanged("DisplayString_fTempSet"); } }
+        public string DisplayString_fTempSet { get { return _DisplayString_fTempSet; } set { if (_DisplayString_fTempSet != value) { _DisplayString_fTempSet = value; OnPropertyChanged("DisplayString_fTempSet"); } } }
         string _DisplayString_fColumnFlowSet;
-        public string DisplayString_fColumnFlowSet { get { return _DisplayString_fColumnFlowSet; } set { _DisplayString_fColumnFlowSet = value; OnPropertyChanged("DisplayString_fColumnFlowSet"); } }
+        public string DisplayString_fColumnFlowSet { get { return _DisplayString_fColumnFlowSet; } set { if (_DisplayString_fColumnFlowSet != value) { _DisplayString_fColumnFlowSet = value; OnPropertyChanged("DisplayString_fColumnFlowSet"); } } }
         string _DisplayString_fPressureSet;
-        public string DisplayString_fPressureSet { get { return _DisplayString_fPressureSet; } set { _DisplayString_fPressureSet = value; OnPropertyChanged("DisplayString_fPressureSet"); } }
+        public string DisplayString_fPressureSet { get { return _DisplayString_fPressureSet; } set { if (_DisplayString_fPressureSet != value) { _DisplayString_fPressureSet = value; OnPropertyChanged("DisplayString_fPressureSet"); } } }
         string _DisplayString_fTotalFlowSet;
-        public string DisplayString_fTotalFlowSet { get { return _DisplayString_fTotalFlowSet; } set { _DisplayString_fTotalFlowSet = value; OnPropertyChanged("DisplayString_fTotalFlowSet"); } }
+        public string DisplayString_fTotalFlowSet { get { return _DisplayString_fTotalFlowSet; } set { if (_DisplayString_fTotalFlowSet != value) { _DisplayString_fTotalFlowSet = value; OnPropertyChanged("DisplayString_fTotalFlowSet"); } } }
         string _DisplayString_fSplitFlowSet;
-        public string DisplayString_fSplitFlowSet { get { return _DisplayString_fSplitFlowSet; } set { _DisplayString_fSplitFlowSet = value; OnPropertyChanged("DisplayString_fSplitFlowSet"); } }
+        public string DisplayString_fSplitFlowSet { get { return _DisplayString_fSplitFlowSet; } set { if (_DisplayString_fSplitFlowSet != value) { _DisplayString_fSplitFlowSet = value; OnPropertyChanged("DisplayString_fSplitFlowSet"); } } }
 
         #region Temp Program -> On-Column Only
 
@@ -262,55 +353,55 @@ namespace ChroZenService
         //public string temp_fRate_1 { get { return _temp_fRate_1; } set { _temp_fRate_1 = value; OnPropertyChanged("temp_fRate_1"); } }
 
         string _temp_fRate_2;
-        public string temp_fRate_2 { get { return _temp_fRate_2; } set { _temp_fRate_2 = value; OnPropertyChanged("temp_fRate_2"); } }
+        public string temp_fRate_2 { get { return _temp_fRate_2; } set { if (_temp_fRate_2 != value) { _temp_fRate_2 = value; OnPropertyChanged("temp_fRate_2"); } } }
 
         string _temp_fRate_3;
-        public string temp_fRate_3 { get { return _temp_fRate_3; } set { _temp_fRate_3 = value; OnPropertyChanged("temp_fRate_3"); } }
+        public string temp_fRate_3 { get { return _temp_fRate_3; } set { if (_temp_fRate_3 != value) { _temp_fRate_3 = value; OnPropertyChanged("temp_fRate_3"); } } }
 
         string _temp_fRate_4;
-        public string temp_fRate_4 { get { return _temp_fRate_4; } set { _temp_fRate_4 = value; OnPropertyChanged("temp_fRate_4"); } }
+        public string temp_fRate_4 { get { return _temp_fRate_4; } set { if (_temp_fRate_4 != value) { _temp_fRate_4 = value; OnPropertyChanged("temp_fRate_4"); } } }
 
         string _temp_fRate_5;
-        public string temp_fRate_5 { get { return _temp_fRate_5; } set { _temp_fRate_5 = value; OnPropertyChanged("temp_fRate_5"); } }
+        public string temp_fRate_5 { get { return _temp_fRate_5; } set { if (_temp_fRate_5 != value) { _temp_fRate_5 = value; OnPropertyChanged("temp_fRate_5"); } } }
 
         string _temp_fRate_6;
-        public string temp_fRate_6 { get { return _temp_fRate_6; } set { _temp_fRate_6 = value; OnPropertyChanged("temp_fRate_6"); } }
+        public string temp_fRate_6 { get { return _temp_fRate_6; } set { if (_temp_fRate_6 != value) { _temp_fRate_6 = value; OnPropertyChanged("temp_fRate_6"); } } }
 
         string _temp_fFinalTemp_1;
-        public string temp_fFinalTemp_1 { get { return _temp_fFinalTemp_1; } set { _temp_fFinalTemp_1 = value; OnPropertyChanged("temp_fFinalTemp_1"); } }
+        public string temp_fFinalTemp_1 { get { return _temp_fFinalTemp_1; } set { if (_temp_fFinalTemp_1 != value) { _temp_fFinalTemp_1 = value; OnPropertyChanged("temp_fFinalTemp_1"); } } }
 
         string _temp_fFinalTemp_2;
-        public string temp_fFinalTemp_2 { get { return _temp_fFinalTemp_2; } set { _temp_fFinalTemp_2 = value; OnPropertyChanged("temp_fFinalTemp_2"); } }
+        public string temp_fFinalTemp_2 { get { return _temp_fFinalTemp_2; } set { if (_temp_fFinalTemp_2 != value) { _temp_fFinalTemp_2 = value; OnPropertyChanged("temp_fFinalTemp_2"); } } }
 
         string _temp_fFinalTemp_3;
-        public string temp_fFinalTemp_3 { get { return _temp_fFinalTemp_3; } set { _temp_fFinalTemp_3 = value; OnPropertyChanged("temp_fFinalTemp_3"); } }
+        public string temp_fFinalTemp_3 { get { return _temp_fFinalTemp_3; } set { if (_temp_fFinalTemp_3 != value) { _temp_fFinalTemp_3 = value; OnPropertyChanged("temp_fFinalTemp_3"); } } }
 
         string _temp_fFinalTemp_4;
-        public string temp_fFinalTemp_4 { get { return _temp_fFinalTemp_4; } set { _temp_fFinalTemp_4 = value; OnPropertyChanged("temp_fFinalTemp_4"); } }
+        public string temp_fFinalTemp_4 { get { return _temp_fFinalTemp_4; } set { if (_temp_fFinalTemp_4 != value) { _temp_fFinalTemp_4 = value; OnPropertyChanged("temp_fFinalTemp_4"); } } }
 
         string _temp_fFinalTemp_5;
-        public string temp_fFinalTemp_5 { get { return _temp_fFinalTemp_5; } set { _temp_fFinalTemp_5 = value; OnPropertyChanged("temp_fFinalTemp_5"); } }
+        public string temp_fFinalTemp_5 { get { return _temp_fFinalTemp_5; } set { if (_temp_fFinalTemp_5 != value) { _temp_fFinalTemp_5 = value; OnPropertyChanged("temp_fFinalTemp_5"); } } }
 
         string _temp_fFinalTemp_6;
-        public string temp_fFinalTemp_6 { get { return _temp_fFinalTemp_6; } set { _temp_fFinalTemp_6 = value; OnPropertyChanged("temp_fFinalTemp_6"); } }
+        public string temp_fFinalTemp_6 { get { return _temp_fFinalTemp_6; } set { if (_temp_fFinalTemp_6 != value) { _temp_fFinalTemp_6 = value; OnPropertyChanged("temp_fFinalTemp_6"); } } }
 
         string _temp_fFinalTime_1;
-        public string temp_fFinalTime_1 { get { return _temp_fFinalTime_1; } set { _temp_fFinalTime_1 = value; OnPropertyChanged("temp_fFinalTime_1"); } }
+        public string temp_fFinalTime_1 { get { return _temp_fFinalTime_1; } set { if (_temp_fFinalTime_1 != value) { _temp_fFinalTime_1 = value; OnPropertyChanged("temp_fFinalTime_1"); } } }
 
         string _temp_fFinalTime_2;
-        public string temp_fFinalTime_2 { get { return _temp_fFinalTime_2; } set { _temp_fFinalTime_2 = value; OnPropertyChanged("temp_fFinalTime_2"); } }
+        public string temp_fFinalTime_2 { get { return _temp_fFinalTime_2; } set { if (_temp_fFinalTime_2 != value) { _temp_fFinalTime_2 = value; OnPropertyChanged("temp_fFinalTime_2"); } } }
 
         string _temp_fFinalTime_3;
-        public string temp_fFinalTime_3 { get { return _temp_fFinalTime_3; } set { _temp_fFinalTime_3 = value; OnPropertyChanged("temp_fFinalTime_3"); } }
+        public string temp_fFinalTime_3 { get { return _temp_fFinalTime_3; } set { if (_temp_fFinalTime_3 != value) { _temp_fFinalTime_3 = value; OnPropertyChanged("temp_fFinalTime_3"); } } }
 
         string _temp_fFinalTime_4;
-        public string temp_fFinalTime_4 { get { return _temp_fFinalTime_4; } set { _temp_fFinalTime_4 = value; OnPropertyChanged("temp_fFinalTime_4"); } }
+        public string temp_fFinalTime_4 { get { return _temp_fFinalTime_4; } set { if (_temp_fFinalTime_4 != value) { _temp_fFinalTime_4 = value; OnPropertyChanged("temp_fFinalTime_4"); } } }
 
         string _temp_fFinalTime_5;
-        public string temp_fFinalTime_5 { get { return _temp_fFinalTime_5; } set { _temp_fFinalTime_5 = value; OnPropertyChanged("temp_fFinalTime_5"); } }
+        public string temp_fFinalTime_5 { get { return _temp_fFinalTime_5; } set { if (_temp_fFinalTime_5 != value) { _temp_fFinalTime_5 = value; OnPropertyChanged("temp_fFinalTime_5"); } } }
 
         string _temp_fFinalTime_6;
-        public string temp_fFinalTime_6 { get { return _temp_fFinalTime_6; } set { _temp_fFinalTime_6 = value; OnPropertyChanged("temp_fFinalTime_6"); } }
+        public string temp_fFinalTime_6 { get { return _temp_fFinalTime_6; } set { if (_temp_fFinalTime_6 != value) { _temp_fFinalTime_6 = value; OnPropertyChanged("temp_fFinalTime_6"); } } }
 
         #endregion Temp Program -> On-Column Only
 
@@ -320,55 +411,55 @@ namespace ChroZenService
         //public string flow_fRate_1 { get { return _flow_fRate_1; } set { _flow_fRate_1 = value; OnPropertyChanged("flow_fRate_1"); } }
 
         string _flow_fRate_2;
-        public string flow_fRate_2 { get { return _flow_fRate_2; } set { _flow_fRate_2 = value; OnPropertyChanged("flow_fRate_2"); } }
+        public string flow_fRate_2 { get { return _flow_fRate_2; } set { if (_flow_fRate_2 != value) { _flow_fRate_2 = value; OnPropertyChanged("flow_fRate_2"); } } }
 
         string _flow_fRate_3;
-        public string flow_fRate_3 { get { return _flow_fRate_3; } set { _flow_fRate_3 = value; OnPropertyChanged("flow_fRate_3"); } }
+        public string flow_fRate_3 { get { return _flow_fRate_3; } set { if (_flow_fRate_3 != value) { _flow_fRate_3 = value; OnPropertyChanged("flow_fRate_3"); } } }
 
         string _flow_fRate_4;
-        public string flow_fRate_4 { get { return _flow_fRate_4; } set { _flow_fRate_4 = value; OnPropertyChanged("flow_fRate_4"); } }
+        public string flow_fRate_4 { get { return _flow_fRate_4; } set { if (_flow_fRate_4 != value) { _flow_fRate_4 = value; OnPropertyChanged("flow_fRate_4"); } } }
 
         string _flow_fRate_5;
-        public string flow_fRate_5 { get { return _flow_fRate_5; } set { _flow_fRate_5 = value; OnPropertyChanged("flow_fRate_5"); } }
+        public string flow_fRate_5 { get { return _flow_fRate_5; } set { if (_flow_fRate_5 != value) { _flow_fRate_5 = value; OnPropertyChanged("flow_fRate_5"); } } }
 
         string _flow_fRate_6;
-        public string flow_fRate_6 { get { return _flow_fRate_6; } set { _flow_fRate_6 = value; OnPropertyChanged("flow_fRate_6"); } }
+        public string flow_fRate_6 { get { return _flow_fRate_6; } set { if (_flow_fRate_6 != value) { _flow_fRate_6 = value; OnPropertyChanged("flow_fRate_6"); } } }
 
         string _flow_fFinalFlow_1;
-        public string flow_fFinalFlow_1 { get { return _flow_fFinalFlow_1; } set { _flow_fFinalFlow_1 = value; OnPropertyChanged("flow_fFinalFlow_1"); } }
+        public string flow_fFinalFlow_1 { get { return _flow_fFinalFlow_1; } set { if (_flow_fFinalFlow_1 != value) { _flow_fFinalFlow_1 = value; OnPropertyChanged("flow_fFinalFlow_1"); } } }
 
         string _flow_fFinalFlow_2;
-        public string flow_fFinalFlow_2 { get { return _flow_fFinalFlow_2; } set { _flow_fFinalFlow_2 = value; OnPropertyChanged("flow_fFinalFlow_2"); } }
+        public string flow_fFinalFlow_2 { get { return _flow_fFinalFlow_2; } set { if (_flow_fFinalFlow_2 != value) { _flow_fFinalFlow_2 = value; OnPropertyChanged("flow_fFinalFlow_2"); } } }
 
         string _flow_fFinalFlow_3;
-        public string flow_fFinalFlow_3 { get { return _flow_fFinalFlow_3; } set { _flow_fFinalFlow_3 = value; OnPropertyChanged("flow_fFinalFlow_3"); } }
+        public string flow_fFinalFlow_3 { get { return _flow_fFinalFlow_3; } set { if (_flow_fFinalFlow_3 != value) { _flow_fFinalFlow_3 = value; OnPropertyChanged("flow_fFinalFlow_3"); } } }
 
         string _flow_fFinalFlow_4;
-        public string flow_fFinalFlow_4 { get { return _flow_fFinalFlow_4; } set { _flow_fFinalFlow_4 = value; OnPropertyChanged("flow_fFinalFlow_4"); } }
+        public string flow_fFinalFlow_4 { get { return _flow_fFinalFlow_4; } set { if (_flow_fFinalFlow_4 != value) { _flow_fFinalFlow_4 = value; OnPropertyChanged("flow_fFinalFlow_4"); } } }
 
         string _flow_fFinalFlow_5;
-        public string flow_fFinalFlow_5 { get { return _flow_fFinalFlow_5; } set { _flow_fFinalFlow_5 = value; OnPropertyChanged("flow_fFinalFlow_5"); } }
+        public string flow_fFinalFlow_5 { get { return _flow_fFinalFlow_5; } set { if (_flow_fFinalFlow_5 != value) { _flow_fFinalFlow_5 = value; OnPropertyChanged("flow_fFinalFlow_5"); } } }
 
         string _flow_fFinalFlow_6;
-        public string flow_fFinalFlow_6 { get { return _flow_fFinalFlow_6; } set { _flow_fFinalFlow_6 = value; OnPropertyChanged("flow_fFinalFlow_6"); } }
+        public string flow_fFinalFlow_6 { get { return _flow_fFinalFlow_6; } set { if (_flow_fFinalFlow_6 != value) { _flow_fFinalFlow_6 = value; OnPropertyChanged("flow_fFinalFlow_6"); } } }
 
         string _flow_fFinalTime_1;
-        public string flow_fFinalTime_1 { get { return _flow_fFinalTime_1; } set { _flow_fFinalTime_1 = value; OnPropertyChanged("flow_fFinalTime_1"); } }
+        public string flow_fFinalTime_1 { get { return _flow_fFinalTime_1; } set { if (_flow_fFinalTime_1 != value) { _flow_fFinalTime_1 = value; OnPropertyChanged("flow_fFinalTime_1"); } } }
 
         string _flow_fFinalTime_2;
-        public string flow_fFinalTime_2 { get { return _flow_fFinalTime_2; } set { _flow_fFinalTime_2 = value; OnPropertyChanged("flow_fFinalTime_2"); } }
+        public string flow_fFinalTime_2 { get { return _flow_fFinalTime_2; } set { if (_flow_fFinalTime_2 != value) { _flow_fFinalTime_2 = value; OnPropertyChanged("flow_fFinalTime_2"); } } }
 
         string _flow_fFinalTime_3;
-        public string flow_fFinalTime_3 { get { return _flow_fFinalTime_3; } set { _flow_fFinalTime_3 = value; OnPropertyChanged("flow_fFinalTime_3"); } }
+        public string flow_fFinalTime_3 { get { return _flow_fFinalTime_3; } set { if (_flow_fFinalTime_3 != value) { _flow_fFinalTime_3 = value; OnPropertyChanged("flow_fFinalTime_3"); } } }
 
         string _flow_fFinalTime_4;
-        public string flow_fFinalTime_4 { get { return _flow_fFinalTime_4; } set { _flow_fFinalTime_4 = value; OnPropertyChanged("flow_fFinalTime_4"); } }
+        public string flow_fFinalTime_4 { get { return _flow_fFinalTime_4; } set { if (_flow_fFinalTime_4 != value) { _flow_fFinalTime_4 = value; OnPropertyChanged("flow_fFinalTime_4"); } } }
 
         string _flow_fFinalTime_5;
-        public string flow_fFinalTime_5 { get { return _flow_fFinalTime_5; } set { _flow_fFinalTime_5 = value; OnPropertyChanged("flow_fFinalTime_5"); } }
+        public string flow_fFinalTime_5 { get { return _flow_fFinalTime_5; } set { if (_flow_fFinalTime_5 != value) { _flow_fFinalTime_5 = value; OnPropertyChanged("flow_fFinalTime_5"); } } }
 
         string _flow_fFinalTime_6;
-        public string flow_fFinalTime_6 { get { return _flow_fFinalTime_6; } set { _flow_fFinalTime_6 = value; OnPropertyChanged("flow_fFinalTime_6"); } }
+        public string flow_fFinalTime_6 { get { return _flow_fFinalTime_6; } set { if (_flow_fFinalTime_6 != value) { _flow_fFinalTime_6 = value; OnPropertyChanged("flow_fFinalTime_6"); } } }
 
         #endregion Flow Program 
 
@@ -378,55 +469,55 @@ namespace ChroZenService
         //public string press_fRate_1 { get { return _press_fRate_1; } set { _press_fRate_1 = value; OnPropertyChanged("press_fRate_1"); } }
 
         string _press_fRate_2;
-        public string press_fRate_2 { get { return _press_fRate_2; } set { _press_fRate_2 = value; OnPropertyChanged("press_fRate_2"); } }
+        public string press_fRate_2 { get { return _press_fRate_2; } set { if (_press_fRate_2 != value) { _press_fRate_2 = value; OnPropertyChanged("press_fRate_2"); } } }
 
         string _press_fRate_3;
-        public string press_fRate_3 { get { return _press_fRate_3; } set { _press_fRate_3 = value; OnPropertyChanged("press_fRate_3"); } }
+        public string press_fRate_3 { get { return _press_fRate_3; } set { if (_press_fRate_3 != value) { _press_fRate_3 = value; OnPropertyChanged("press_fRate_3"); } } }
 
         string _press_fRate_4;
-        public string press_fRate_4 { get { return _press_fRate_4; } set { _press_fRate_4 = value; OnPropertyChanged("press_fRate_4"); } }
+        public string press_fRate_4 { get { return _press_fRate_4; } set { if (_press_fRate_4 != value) { _press_fRate_4 = value; OnPropertyChanged("press_fRate_4"); } } }
 
         string _press_fRate_5;
-        public string press_fRate_5 { get { return _press_fRate_5; } set { _press_fRate_5 = value; OnPropertyChanged("press_fRate_5"); } }
+        public string press_fRate_5 { get { return _press_fRate_5; } set { if (_press_fRate_5 != value) { _press_fRate_5 = value; OnPropertyChanged("press_fRate_5"); } } }
 
         string _press_fRate_6;
-        public string press_fRate_6 { get { return _press_fRate_6; } set { _press_fRate_6 = value; OnPropertyChanged("press_fRate_6"); } }
+        public string press_fRate_6 { get { return _press_fRate_6; } set { if (_press_fRate_6 != value) { _press_fRate_6 = value; OnPropertyChanged("press_fRate_6"); } } }
 
         string _press_fFinalPress_1;
-        public string press_fFinalPress_1 { get { return _press_fFinalPress_1; } set { _press_fFinalPress_1 = value; OnPropertyChanged("press_fFinalPress_1"); } }
+        public string press_fFinalPress_1 { get { return _press_fFinalPress_1; } set { if (_press_fFinalPress_1 != value) { _press_fFinalPress_1 = value; OnPropertyChanged("press_fFinalPress_1"); } } }
 
         string _press_fFinalPress_2;
-        public string press_fFinalPress_2 { get { return _press_fFinalPress_2; } set { _press_fFinalPress_2 = value; OnPropertyChanged("press_fFinalPress_2"); } }
+        public string press_fFinalPress_2 { get { return _press_fFinalPress_2; } set { if (_press_fFinalPress_2 != value) { _press_fFinalPress_2 = value; OnPropertyChanged("press_fFinalPress_2"); } } }
 
         string _press_fFinalPress_3;
-        public string press_fFinalPress_3 { get { return _press_fFinalPress_3; } set { _press_fFinalPress_3 = value; OnPropertyChanged("press_fFinalPress_3"); } }
+        public string press_fFinalPress_3 { get { return _press_fFinalPress_3; } set { if (_press_fFinalPress_3 != value) { _press_fFinalPress_3 = value; OnPropertyChanged("press_fFinalPress_3"); } } }
 
         string _press_fFinalPress_4;
-        public string press_fFinalPress_4 { get { return _press_fFinalPress_4; } set { _press_fFinalPress_4 = value; OnPropertyChanged("press_fFinalPress_4"); } }
+        public string press_fFinalPress_4 { get { return _press_fFinalPress_4; } set { if (_press_fFinalPress_4 != value) { _press_fFinalPress_4 = value; OnPropertyChanged("press_fFinalPress_4"); } } }
 
         string _press_fFinalPress_5;
-        public string press_fFinalPress_5 { get { return _press_fFinalPress_5; } set { _press_fFinalPress_5 = value; OnPropertyChanged("press_fFinalPress_5"); } }
+        public string press_fFinalPress_5 { get { return _press_fFinalPress_5; } set { if (_press_fFinalPress_5 != value) { _press_fFinalPress_5 = value; OnPropertyChanged("press_fFinalPress_5"); } } }
 
         string _press_fFinalPress_6;
-        public string press_fFinalPress_6 { get { return _press_fFinalPress_6; } set { _press_fFinalPress_6 = value; OnPropertyChanged("press_fFinalPress_6"); } }
+        public string press_fFinalPress_6 { get { return _press_fFinalPress_6; } set { if (_press_fFinalPress_6 != value) { _press_fFinalPress_6 = value; OnPropertyChanged("press_fFinalPress_6"); } } }
 
         string _press_fFinalTime_1;
-        public string press_fFinalTime_1 { get { return _press_fFinalTime_1; } set { _press_fFinalTime_1 = value; OnPropertyChanged("press_fFinalTime_1"); } }
+        public string press_fFinalTime_1 { get { return _press_fFinalTime_1; } set { if (_press_fFinalTime_1 != value) { _press_fFinalTime_1 = value; OnPropertyChanged("press_fFinalTime_1"); } } }
 
         string _press_fFinalTime_2;
-        public string press_fFinalTime_2 { get { return _press_fFinalTime_2; } set { _press_fFinalTime_2 = value; OnPropertyChanged("press_fFinalTime_2"); } }
+        public string press_fFinalTime_2 { get { return _press_fFinalTime_2; } set { if (_press_fFinalTime_2 != value) { _press_fFinalTime_2 = value; OnPropertyChanged("press_fFinalTime_2"); } } }
 
         string _press_fFinalTime_3;
-        public string press_fFinalTime_3 { get { return _press_fFinalTime_3; } set { _press_fFinalTime_3 = value; OnPropertyChanged("press_fFinalTime_3"); } }
+        public string press_fFinalTime_3 { get { return _press_fFinalTime_3; } set { if (_press_fFinalTime_3 != value) { _press_fFinalTime_3 = value; OnPropertyChanged("press_fFinalTime_3"); } } }
 
         string _press_fFinalTime_4;
-        public string press_fFinalTime_4 { get { return _press_fFinalTime_4; } set { _press_fFinalTime_4 = value; OnPropertyChanged("press_fFinalTime_4"); } }
+        public string press_fFinalTime_4 { get { return _press_fFinalTime_4; } set { if (_press_fFinalTime_4 != value) { _press_fFinalTime_4 = value; OnPropertyChanged("press_fFinalTime_4"); } } }
 
         string _press_fFinalTime_5;
-        public string press_fFinalTime_5 { get { return _press_fFinalTime_5; } set { _press_fFinalTime_5 = value; OnPropertyChanged("press_fFinalTime_5"); } }
+        public string press_fFinalTime_5 { get { return _press_fFinalTime_5; } set { if (_press_fFinalTime_5 != value) { _press_fFinalTime_5 = value; OnPropertyChanged("press_fFinalTime_5"); } } }
 
         string _press_fFinalTime_6;
-        public string press_fFinalTime_6 { get { return _press_fFinalTime_6; } set { _press_fFinalTime_6 = value; OnPropertyChanged("press_fFinalTime_6"); } }
+        public string press_fFinalTime_6 { get { return _press_fFinalTime_6; } set { if (_press_fFinalTime_6 != value) { _press_fFinalTime_6 = value; OnPropertyChanged("press_fFinalTime_6"); } } }
 
         #endregion Press Program 
 
@@ -524,10 +615,16 @@ namespace ChroZenService
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_COLUMN_FLOW:
                         {
+                            ValidateAndSetColumnFlow(tempFloatVal);
                             fColumnFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fColumnFlowSet = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowSet = float.Parse(fTotalFlowSet);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fSplitFlowSet = float.Parse(fSplitFlowSet);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.iSplitratio = short.Parse(iSplitratio);
+
                             tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PRESSURE:
@@ -540,22 +637,31 @@ namespace ChroZenService
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TOTAL_FLOW:
                         {
+                            ValidateAndSetTotalFlow(tempFloatVal);
                             fTotalFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowSet = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fSplitFlowSet = float.Parse(fSplitFlowSet);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.iSplitratio = short.Parse(iSplitratio);
+
                             tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_SPLIT_FLOW:
                         {
+                            ValidateAndSetSplitFlow(tempFloatVal);
                             fSplitFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowSet = float.Parse(fTotalFlowSet);
                             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fSplitFlowSet = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.iSplitratio = short.Parse(iSplitratio);
+
                             tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
                             //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_SPLIT_RATIO:
                         {
+                            ValidateAndSetSplitRatio((int)tempFloatVal);
                             iSplitratio = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
                             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.iSplitratio = (short)tempFloatVal;
                             tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
@@ -1021,6 +1127,7 @@ namespace ChroZenService
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_COLUMN_FLOW:
                         {
+                            ValidateAndSetColumnFlow(tempFloatVal);
                             fColumnFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fColumnFlowSet = tempFloatVal;
                             tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
@@ -1037,6 +1144,7 @@ namespace ChroZenService
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TOTAL_FLOW:
                         {
+                            ValidateAndSetTotalFlow(tempFloatVal);
                             fTotalFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTotalFlowSet = tempFloatVal;
                             tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
@@ -1045,6 +1153,7 @@ namespace ChroZenService
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_SPLIT_FLOW:
                         {
+                            ValidateAndSetSplitFlow(tempFloatVal);
                             fSplitFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fSplitFlowSet = tempFloatVal;
                             tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
@@ -1053,6 +1162,7 @@ namespace ChroZenService
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_SPLIT_RATIO:
                         {
+                            ValidateAndSetSplitRatio((int)tempFloatVal);
                             iSplitratio = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
                             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.iSplitratio = (short)tempFloatVal;
                             tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
@@ -1518,6 +1628,7 @@ namespace ChroZenService
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_COLUMN_FLOW:
                         {
+                            ValidateAndSetColumnFlow(tempFloatVal);
                             fColumnFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
                             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fColumnFlowSet = tempFloatVal;
                             tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
@@ -1534,6 +1645,7 @@ namespace ChroZenService
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TOTAL_FLOW:
                         {
+                            ValidateAndSetTotalFlow(tempFloatVal);
                             fTotalFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTotalFlowSet = tempFloatVal;
                             tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
@@ -1542,6 +1654,7 @@ namespace ChroZenService
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_SPLIT_FLOW:
                         {
+                            ValidateAndSetSplitFlow(tempFloatVal);
                             fSplitFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fSplitFlowSet = tempFloatVal;
                             tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
@@ -1550,6 +1663,7 @@ namespace ChroZenService
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_SPLIT_RATIO:
                         {
+                            ValidateAndSetSplitRatio((int)tempFloatVal);
                             iSplitratio = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
                             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.iSplitratio = (short)tempFloatVal;
                             tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
@@ -2030,7 +2144,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TEMPERATURE:
                     {
                         fTempOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTempOnoff = fTempOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2039,7 +2153,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_COLUMN_FLOW:
                     {
                         fColumnFlowOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fColumnFlowOnoff = fColumnFlowOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2049,28 +2163,28 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PRESSURE:
                     {
                         fPressureOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPressureOnoff = fPressureOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
                         //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TOTAL_FLOW:
-                    {
-                        fTotalFlowOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TOTAL_FLOW:
+                //    {
+                //        fTotalFlowOnoff = true;
+                //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
 
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
+                //        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+                //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                //    }
+                //    break;
 
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TEMPERATURE:
                     {
                         fTempOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTempOnoff = fTempOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2079,7 +2193,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_COLUMN_FLOW:
                     {
                         fColumnFlowOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fColumnFlowOnoff = fColumnFlowOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2089,28 +2203,28 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PRESSURE:
                     {
                         fPressureOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPressureOnoff = fPressureOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
                         //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TOTAL_FLOW:
-                    {
-                        fTotalFlowOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TOTAL_FLOW:
+                //    {
+                //        fTotalFlowOnoff = true;
+                //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
 
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
+                //        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+                //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                //    }
+                //    break;
 
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE:
                     {
                         fTempOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTempOnoff = fTempOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2119,7 +2233,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_COLUMN_FLOW:
                     {
                         fColumnFlowOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fColumnFlowOnoff = fColumnFlowOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2129,23 +2243,23 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PRESSURE:
                     {
                         fPressureOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPressureOnoff = fPressureOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
                         //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TOTAL_FLOW:
-                    {
-                        fTotalFlowOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                    //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TOTAL_FLOW:
+                    //    {
+                    //        fTotalFlowOnoff = true;
+                    //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                    //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
 
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
+                    //        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+                    //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                    //    }
+                    //    break;
             }
         }
 
@@ -2190,16 +2304,16 @@ namespace ChroZenService
                         //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TOTAL_FLOW:
-                    {
-                        fTotalFlowOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TOTAL_FLOW:
+                //    {
+                //        fTotalFlowOnoff = false;
+                //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
 
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
+                //        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+                //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                //    }
+                //    break;
 
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TEMPERATURE:
                     {
@@ -2230,16 +2344,16 @@ namespace ChroZenService
                         //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TOTAL_FLOW:
-                    {
-                        fTotalFlowOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TOTAL_FLOW:
+                //    {
+                //        fTotalFlowOnoff = false;
+                //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
 
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
+                //        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+                //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                //    }
+                //    break;
 
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE:
                     {
@@ -2270,16 +2384,16 @@ namespace ChroZenService
                         //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TOTAL_FLOW:
-                    {
-                        fTotalFlowOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                    //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TOTAL_FLOW:
+                    //    {
+                    //        fTotalFlowOnoff = false;
+                    //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                    //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
 
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
+                    //        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+                    //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                    //    }
+                    //    break;
             }
         }
 
@@ -2387,7 +2501,7 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Temperature";
                         vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
-                        if (fTempOnoff)
+                        if (_fTempOnoff)
                         {
                             vmKeyPad.CurrentValue = fTempSet;
                         }
@@ -2401,7 +2515,7 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Column Flow";
                         vmKeyPad.MaxValue = 30;
-                        if (fColumnFlowOnoff)
+                        if (_fColumnFlowOnoff)
                         {
                             vmKeyPad.CurrentValue = fColumnFlowSet;
                         }
@@ -2414,7 +2528,7 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Pressure";
                         vmKeyPad.MaxValue = 150;
-                        if (fPressureOnoff)
+                        if (_fPressureOnoff)
                         {
                             vmKeyPad.CurrentValue = fPressureSet;
                         }
@@ -2427,12 +2541,9 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Total Flow";
                         vmKeyPad.MaxValue = 1000;
-                        if (fTotalFlowOnoff)
-                        {
-                            vmKeyPad.CurrentValue = fTotalFlowSet;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+
+                        vmKeyPad.CurrentValue = fTotalFlowSet;
+
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TOTAL_FLOW;
                     }
                     break;
@@ -2902,7 +3013,7 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Temperature";
                         vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
-                        if (fTempOnoff)
+                        if (_fTempOnoff)
                         {
                             vmKeyPad.CurrentValue = fTempSet;
                         }
@@ -2916,7 +3027,7 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Column Flow";
                         vmKeyPad.MaxValue = 30;
-                        if (fColumnFlowOnoff)
+                        if (_fColumnFlowOnoff)
                         {
                             vmKeyPad.CurrentValue = fColumnFlowSet;
                         }
@@ -2929,7 +3040,7 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Pressure";
                         vmKeyPad.MaxValue = 150;
-                        if (fPressureOnoff)
+                        if (_fPressureOnoff)
                         {
                             vmKeyPad.CurrentValue = fPressureSet;
                         }
@@ -2942,12 +3053,9 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Total Flow";
                         vmKeyPad.MaxValue = 1000;
-                        if (fTotalFlowOnoff)
-                        {
-                            vmKeyPad.CurrentValue = fTotalFlowSet;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+
+                        vmKeyPad.CurrentValue = fTotalFlowSet;
+
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TOTAL_FLOW;
                     }
                     break;
@@ -2998,7 +3106,7 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Temperature";
                         vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
-                        if (fTempOnoff)
+                        if (_fTempOnoff)
                         {
                             vmKeyPad.CurrentValue = fTempSet;
                         }
@@ -3012,7 +3120,7 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Column Flow";
                         vmKeyPad.MaxValue = 30;
-                        if (fColumnFlowOnoff)
+                        if (_fColumnFlowOnoff)
                         {
                             vmKeyPad.CurrentValue = fColumnFlowSet;
                         }
@@ -3025,7 +3133,7 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Pressure";
                         vmKeyPad.MaxValue = 150;
-                        if (fPressureOnoff)
+                        if (_fPressureOnoff)
                         {
                             vmKeyPad.CurrentValue = fPressureSet;
                         }
@@ -3038,12 +3146,9 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Total Flow";
                         vmKeyPad.MaxValue = 1000;
-                        if (fTotalFlowOnoff)
-                        {
-                            vmKeyPad.CurrentValue = fTotalFlowSet;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+
+                        vmKeyPad.CurrentValue = fTotalFlowSet;
+
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TOTAL_FLOW;
                     }
                     break;
@@ -3106,21 +3211,21 @@ namespace ChroZenService
             {
                 case "Inlet Front":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.btInjMode = btInjMode ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.btInjMode = btInjMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
                     }
                     break;
                 case "Inlet Center":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.btInjMode = btInjMode ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.btInjMode = btInjMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
                     }
                     break;
                 case "Inlet Rear":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.btInjMode = btInjMode ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.btInjMode = btInjMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
                     }
@@ -3140,21 +3245,21 @@ namespace ChroZenService
             {
                 case "Inlet Front":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.btInjMode = btInjMode ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.btTempMode = btTempMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
                     }
                     break;
                 case "Inlet Center":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.btInjMode = btInjMode ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.btTempMode = btTempMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
                     }
                     break;
                 case "Inlet Rear":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.btInjMode = btInjMode ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.btTempMode = btTempMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
                     }
@@ -3193,6 +3298,318 @@ namespace ChroZenService
         #endregion Binding
 
         #region Instance Func
+
+        void SetTemp()
+        {
+            if (_fTempOnoff == false)
+            {
+                DisplayString_fTempSet = "Off";
+            }
+            else
+                DisplayString_fTempSet = fTempSet;
+        }
+
+        void SetColumnFlow()
+        {
+            switch (_ApcMode)
+            {
+                case 0:
+                    {
+                        DisplayString_fPressureSet = "Off";
+
+                        TableTitle = "Constant Flow";
+
+                        if (_fColumnFlowOnoff == true)
+                            DisplayString_fColumnFlowSet = fColumnFlowSet;
+                        else DisplayString_fColumnFlowSet = "Off";
+                    }
+                    break;
+                case 1:
+                    {
+                        DisplayString_fColumnFlowSet = "Off";
+                        DisplayString_fTotalFlowSet = "Off";
+                        DisplayString_fSplitFlowSet = "Off";
+
+                        TableTitle = "Constant Press";
+                    }
+                    break;
+                case 2:
+                    {
+                        DisplayString_fPressureSet = "Off";
+
+                        TableTitle = "Programed Flow";
+
+                        if (_fColumnFlowOnoff == true)
+                            DisplayString_fColumnFlowSet = fColumnFlowSet;
+                        else DisplayString_fColumnFlowSet = "Off";
+                    }
+                    break;
+                case 3:
+                    {
+                        DisplayString_fColumnFlowSet = "Off";
+                        DisplayString_fTotalFlowSet = "Off";
+                        DisplayString_fSplitFlowSet = "Off";
+
+                        TableTitle = "Programed Press";
+                    }
+                    break;
+            }
+        }
+
+        void SetTotalFlow()
+        {
+            switch (_ApcMode)
+            {
+                case 0:
+                    {
+                        DisplayString_fPressureSet = "Off";
+
+                        TableTitle = "Constant Flow";
+
+                        DisplayString_fTotalFlowSet = fTotalFlowSet;
+
+                    }
+                    break;
+                case 1:
+                    {
+                        DisplayString_fColumnFlowSet = "Off";
+                        DisplayString_fTotalFlowSet = "Off";
+                        DisplayString_fSplitFlowSet = "Off";
+
+                        TableTitle = "Constant Press";
+                    }
+                    break;
+                case 2:
+                    {
+                        DisplayString_fPressureSet = "Off";
+
+                        TableTitle = "Programed Flow";
+
+                        DisplayString_fTotalFlowSet = fTotalFlowSet;
+                    }
+                    break;
+                case 3:
+                    {
+                        DisplayString_fColumnFlowSet = "Off";
+                        DisplayString_fTotalFlowSet = "Off";
+                        DisplayString_fSplitFlowSet = "Off";
+
+                        TableTitle = "Programed Press";
+                    }
+                    break;
+            }
+        }
+
+        void SetSplitFlow()
+        {
+            switch (_ApcMode)
+            {
+                case 0:
+                    {
+                        DisplayString_fPressureSet = "Off";
+
+                        TableTitle = "Constant Flow";
+
+                        DisplayString_fSplitFlowSet = fSplitFlowSet;
+                    }
+                    break;
+                case 1:
+                    {
+                        DisplayString_fColumnFlowSet = "Off";
+                        DisplayString_fTotalFlowSet = "Off";
+                        DisplayString_fSplitFlowSet = "Off";
+
+                        TableTitle = "Constant Press";
+                    }
+                    break;
+                case 2:
+                    {
+                        DisplayString_fPressureSet = "Off";
+
+                        TableTitle = "Programed Flow";
+                        DisplayString_fSplitFlowSet = fSplitFlowSet;
+                    }
+                    break;
+                case 3:
+                    {
+                        DisplayString_fColumnFlowSet = "Off";
+                        DisplayString_fTotalFlowSet = "Off";
+                        DisplayString_fSplitFlowSet = "Off";
+
+                        TableTitle = "Programed Press";
+                    }
+                    break;
+            }
+        }
+
+        void SetPressure()
+        {
+            switch (_ApcMode)
+            {
+                case 0:
+                    {
+                        DisplayString_fPressureSet = "Off";
+
+                        TableTitle = "Constant Flow";
+                    }
+                    break;
+                case 1:
+                    {
+                        DisplayString_fColumnFlowSet = "Off";
+                        DisplayString_fTotalFlowSet = "Off";
+                        DisplayString_fSplitFlowSet = "Off";
+
+                        TableTitle = "Constant Press";
+
+                        if (_fPressureOnoff)
+                            DisplayString_fPressureSet = fPressureSet;
+                        else DisplayString_fPressureSet = "Off";
+                    }
+                    break;
+                case 2:
+                    {
+                        DisplayString_fPressureSet = "Off";
+                        TableTitle = "Programed Flow";
+                    }
+                    break;
+                case 3:
+                    {
+                        DisplayString_fColumnFlowSet = "Off";
+                        DisplayString_fTotalFlowSet = "Off";
+                        DisplayString_fSplitFlowSet = "Off";
+
+                        TableTitle = "Programed Press";
+                        if (_fPressureOnoff)
+                            DisplayString_fPressureSet = fPressureSet;
+                        else DisplayString_fPressureSet = "Off";
+                    }
+                    break;
+            }
+        }
+
+        void ValidateAndSetColumnFlow(float fColumnFlow)
+        {
+            if (_fSplitFlowSet != null && _fTotalFlowSet != null && _iSplitratio != null)
+            {
+                switch (e_INLET_TYPE)
+                {
+                    case E_INLET_TYPE.Capillary:
+                        {
+                            float fSplitFlow = float.Parse(_fSplitFlowSet);
+                            float fTotalFlow = float.Parse(_fTotalFlowSet);
+                            int iSplit = int.Parse(_iSplitratio);
+
+                            switch ((E_INLET_INJ_MODE)btInjMode)
+                            {
+                                case E_INLET_INJ_MODE.SPLIT_MODE:
+                                case E_INLET_INJ_MODE.SPLITLESS_MODE:
+                                case E_INLET_INJ_MODE.PULSED_SPLIT_MODE:
+                                case E_INLET_INJ_MODE.PULSED_SPLITLESS_MODE:
+                                    {
+
+
+                                        //fTempRatio, (fTempRatio-1)!=0
+                                        fTotalFlow = (float)((iSplit * fColumnFlow) + 3);
+                                        fTotalFlowSet = fTotalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        SetTotalFlow();
+                                        //methodDataObject.Inlet1DataObject.fTotalFlowSet = (fTempRatio / (float)(fTempRatio - 1)) * methodDataObject.Inlet1DataObject.fSplitFlowSet + 3;
+                                        fSplitFlow = (fTotalFlow - 3) * ((float)(iSplit - 1) / (float)(iSplit));
+                                        fSplitFlowSet = fSplitFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        SetSplitFlow();
+                                    }
+                                    break;
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+
+        void ValidateAndSetTotalFlow(float fTotalFlow)
+        {
+            if (_fSplitFlowSet != null && _fColumnFlowSet != null && _iSplitratio != null)
+            {
+                float fSplitFlow = float.Parse(_fSplitFlowSet);
+                float fColumnFlow = float.Parse(_fColumnFlowSet);
+                int iSplit = int.Parse(_iSplitratio);
+
+                if (iSplit == 0 || fTotalFlow - fSplitFlow - 3 == 0)
+                {
+                    return;
+                }
+                else
+                {
+                    iSplit = (short)Math.Truncate((fTotalFlow - 3) / fColumnFlow);
+                    iSplitratio = iSplit.ToString();
+
+                    //fSplitFlow = (fTotalFlow - 3) * ((float)(iSplit) / (float)(iSplit + 1));
+                    //fSplitFlowSet = fSplitFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                    //fTotalFlow = (float)((iSplit * fColumnFlow) + 3);
+                    fTotalFlowSet = fTotalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    SetTotalFlow();
+
+                    //methodDataObject.Inlet1DataObject.iSplitratio = (short)(Math.Round((float)(fTemp - 3) / (float)(fTemp - methodDataObject.Inlet1DataObject.fSplitFlowSet - 3)));
+                    fSplitFlow = (fTotalFlow - 3) - fColumnFlow;
+                    fSplitFlowSet = fSplitFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    SetSplitFlow();
+
+                    iSplit = (short)Math.Truncate(((float)(fTotalFlow - 3) / (float)(fTotalFlow - fSplitFlow - 3)));
+                    iSplitratio = iSplit.ToString();
+                }
+            }
+        }
+
+        void ValidateAndSetSplitFlow(float fSplitFlow)
+        {
+            if (_fTotalFlowSet != null && _fColumnFlowSet != null && _iSplitratio != null)
+            {
+                float fTotalFlow = float.Parse(_fTotalFlowSet);
+                float fColumnFlow = float.Parse(_fColumnFlowSet);
+                int iSplit = int.Parse(_iSplitratio);
+
+                if (fTotalFlow - fSplitFlow - 3 == 0 || iSplit == 1)
+                {
+                    return;
+                }
+                else
+                {
+
+                    fTotalFlow = (float)fSplitFlow + fColumnFlow + 3;
+                    fTotalFlowSet = fTotalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    SetTotalFlow();
+
+                    //methodDataObject.Inlet1DataObject.fTotalFlowSet = (float)(methodDataObject.Inlet1DataObject.iSplitratio / (float)(methodDataObject.Inlet1DataObject.iSplitratio - 1)) * fTemp + 3;
+                    iSplit = (short)Math.Truncate(((float)(fTotalFlow - 3) / (float)(fTotalFlow - fSplitFlow - 3)));
+                    iSplitratio = iSplit.ToString();
+
+                    //fSplitFlow = (fTotalFlow - 3) * ((float)(iSplit) / (float)(iSplit + 1));
+                    fSplitFlowSet = fSplitFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                    SetSplitFlow();
+                }
+            }
+        }
+
+        void ValidateAndSetSplitRatio(int iSplit)
+        {
+            if (_fSplitFlowSet != null && _fTotalFlowSet != null && _iSplitratio != null)
+            {
+                float fSplitFlow = float.Parse(_fSplitFlowSet);
+                float fTotalFlow = float.Parse(_fTotalFlowSet);
+                float fColumnFlow = float.Parse(_fColumnFlowSet);
+
+                if (iSplit == 0 || iSplit == 1) return;
+
+                //fTempRatio, (fTempRatio-1)!=0
+                fTotalFlow = (float)((iSplit * fColumnFlow) + 3);
+                fTotalFlowSet = fTotalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                SetTotalFlow();
+                //methodDataObject.Inlet1DataObject.fTotalFlowSet = (fTempRatio / (float)(fTempRatio - 1)) * methodDataObject.Inlet1DataObject.fSplitFlowSet + 3;
+                fSplitFlow = (fTotalFlow - 3) * ((float)(iSplit - 1) / (float)(iSplit));
+                fSplitFlowSet = fSplitFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                SetSplitFlow();
+            }
+        }
 
         #endregion Instance Func
     }

@@ -69,19 +69,19 @@ namespace ChroZenService
         public bool bIsDoingValveCalibration { get { return _bIsDoingValveCalibration; } set { if (_bIsDoingValveCalibration != value) { _bIsDoingValveCalibration = value; OnPropertyChanged("bIsDoingValveCalibration"); } } } 
 
         string _Valve_Row_1_State;
-        public string Valve_Row_1_State { get { return _Valve_Row_1_State; } set { if (_Valve_Row_1_State != value) { if (_Valve_Row_1_State != value) { _Valve_Row_1_State = value; OnPropertyChanged("Valve_Row_1_State"); } } } }
+        public string Valve_Row_1_State { get { return _Valve_Row_1_State; } set { if (_Valve_Row_1_State != value) { _Valve_Row_1_State = value; OnPropertyChanged("Valve_Row_1_State"); } } }
 
 
         string _Valve_Row_1_Voltage;
-        public string Valve_Row_1_Voltage { get { return _Valve_Row_1_Voltage; } set { if (_Valve_Row_1_Voltage != value) { if (_Valve_Row_1_Voltage != value) { _Valve_Row_1_Voltage = value; OnPropertyChanged("Valve_Row_1_Voltage"); } } } }
+        public string Valve_Row_1_Voltage { get { return _Valve_Row_1_Voltage; } set { if (_Valve_Row_1_Voltage != value) {  _Valve_Row_1_Voltage = value; OnPropertyChanged("Valve_Row_1_Voltage"); } } } 
 
 
         string _Valve_Row_1_Flow;
-        public string Valve_Row_1_Flow { get { return _Valve_Row_1_Flow; } set { if (_Valve_Row_1_Flow != value) { if (_Valve_Row_1_Flow != value) { _Valve_Row_1_Flow = value; OnPropertyChanged("Valve_Row_1_Flow"); } } } }
+        public string Valve_Row_1_Flow { get { return _Valve_Row_1_Flow; } set { if (_Valve_Row_1_Flow != value) {  _Valve_Row_1_Flow = value; OnPropertyChanged("Valve_Row_1_Flow"); } } } 
 
 
         string _Valve_Row_2_State;
-        public string Valve_Row_2_State { get { return _Valve_Row_2_State; } set { if (_Valve_Row_2_State != value) { if (_Valve_Row_2_State != value) { _Valve_Row_2_State = value; OnPropertyChanged("Valve_Row_2_State"); } } } }
+        public string Valve_Row_2_State { get { return _Valve_Row_2_State; } set { if (_Valve_Row_2_State != value) { _Valve_Row_2_State = value; OnPropertyChanged("Valve_Row_2_State"); } } } 
 
 
         string _Valve_Row_2_Voltage;

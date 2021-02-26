@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -6,12 +7,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
     public partial class View_Main_Root : ContentPage
     {
-
         public View_Main_Root()
         {
             InitializeComponent();
@@ -21,8 +22,7 @@ namespace ChroZenService
             Task.Factory.StartNew(() => { tcpManager.ConnectDevice("192.168.0.88", 4242); });
 
             NavigationPage.SetHasNavigationBar(this, false);
-
-
+         
         }
 
         protected override void OnAppearing()

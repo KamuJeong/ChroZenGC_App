@@ -18,17 +18,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty IsSelectedProperty =
         BindableProperty.Create("IsSelected", typeof(bool), typeof(UC_MainPageDetDetailView),
-            defaultValue: false,
-            propertyChanged: onIsSelectedPropertyChanged
+            defaultValue: false
             , defaultBindingMode: BindingMode.TwoWay);
-
-        private static void onIsSelectedPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as UC_MainPageDetDetailView).IsSelected = (bool)newValue;
-            }
-        }
 
         public bool IsSelected
         {

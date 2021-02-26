@@ -86,13 +86,13 @@ namespace ChroZenService
         /// <summary>
         /// T_TEMP_CALIBRATION.fSet[0]
         /// </summary>
-        public float fSet1_Calib2 { get { return _fSet1_Calib2; } set { if (_fSet1_Calib2 != value) { _fSet1_Calib2 = value; OnPropertyChanged("fSet1_Calib2"); } } }
+        public float fSet1_Calib2 { get { return _fSet1_Calib2; } set { if (_fSet1_Calib2 != value) { _fSet1_Calib2 = value;  OnPropertyChanged("fSet1_Calib2"); } } }
 
         float _fSet2_Calib2 = YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP;
         /// <summary>
         /// T_TEMP_CALIBRATION.fSet[1]
         /// </summary>
-        public float fSet2_Calib2 { get { return _fSet2_Calib2; } set { if (_fSet2_Calib2 != value) { _fSet2_Calib2 = value; OnPropertyChanged("fSet2_Calib2"); } } }
+        public float fSet2_Calib2 { get { return _fSet2_Calib2; } set { if (_fSet2_Calib2 != value) { _fSet2_Calib2 = value;  OnPropertyChanged("fSet2_Calib2"); } } }
 
         float _Measure1_Calib2 = YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP;
         /// <summary>
@@ -104,7 +104,7 @@ namespace ChroZenService
         /// <summary>
         /// T_TEMP_CALIBRATION.fMeasure[1]
         /// </summary>
-        public float Measure2_Calib2 { get { return _Measure2_Calib2; } set { if (_Measure2_Calib2 != value) { _Measure2_Calib2 = value; OnPropertyChanged("Measure2_Calib2"); } } }
+        public float Measure2_Calib2 { get { return _Measure2_Calib2; } set { if (_Measure2_Calib2 != value) { _Measure2_Calib2 = value;  OnPropertyChanged("Measure2_Calib2"); } } }
 
 
         string _ActualTemp_Calib3;
@@ -148,7 +148,7 @@ namespace ChroZenService
         /// <summary>
         /// T_TEMP_CALIBRATION.fSet[0]
         /// </summary>
-        public float fSet1_Calib4 { get { return _fSet1_Calib4; } set { if (_fSet1_Calib4 != value) { _fSet1_Calib4 = value; OnPropertyChanged("fSet1_Calib4"); } } }
+        public float fSet1_Calib4 { get { return _fSet1_Calib4; } set { if (_fSet1_Calib4 != value) { _fSet1_Calib4 = value;  OnPropertyChanged("fSet1_Calib4"); } } }
 
         float _fSet2_Calib4 = YC_Const.FLOAT_DEFAULT_SET_AUX_TEMP;
         /// <summary>
@@ -160,13 +160,13 @@ namespace ChroZenService
         /// <summary>
         /// T_TEMP_CALIBRATION.fMeasure[0]
         /// </summary>
-        public float Measure1_Calib4 { get { return _Measure1_Calib4; } set { if (_Measure1_Calib4 != value) { _Measure1_Calib4 = value; OnPropertyChanged("Measure1_Calib4"); } } }
+        public float Measure1_Calib4 { get { return _Measure1_Calib4; } set { if (_Measure1_Calib4 != value) { _Measure1_Calib4 = value;  OnPropertyChanged("Measure1_Calib4"); } } }
 
         float _Measure2_Calib4 = YC_Const.FLOAT_DEFAULT_MEASURE_AUX_TEMP;
         /// <summary>
         /// T_TEMP_CALIBRATION.fMeasure[1]
         /// </summary>
-        public float Measure2_Calib4 { get { return _Measure2_Calib4; } set { if (_Measure2_Calib4 != value) { _Measure2_Calib4 = value; OnPropertyChanged("Measure2_Calib4"); } } }
+        public float Measure2_Calib4 { get { return _Measure2_Calib4; } set { if (_Measure2_Calib4 != value) { _Measure2_Calib4 = value;  OnPropertyChanged("Measure2_Calib4"); } } }
 
         #endregion Property
 

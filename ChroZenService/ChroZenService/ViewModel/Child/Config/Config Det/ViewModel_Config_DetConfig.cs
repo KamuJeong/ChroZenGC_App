@@ -22,29 +22,29 @@ namespace ChroZenService
         #region Property
 
         E_DET_TYPE _e_DET_TYPE = E_DET_TYPE.Not_Installed;
-        public E_DET_TYPE e_DET_TYPE { get { return _e_DET_TYPE; } set { _e_DET_TYPE = value; OnPropertyChanged("e_DET_TYPE"); } }
+        public E_DET_TYPE e_DET_TYPE { get { return _e_DET_TYPE; } set { if (_e_DET_TYPE != value) { _e_DET_TYPE = value; OnPropertyChanged("e_DET_TYPE"); } } }
 
         int _btMakeupgas;
-        public int btMakeupgas { get { return _btMakeupgas; } set { _btMakeupgas = value; OnPropertyChanged("btMakeupgas"); } }
+        public int btMakeupgas { get { return _btMakeupgas; } set { if (_btMakeupgas != value) { _btMakeupgas = value; OnPropertyChanged("btMakeupgas"); } } }
         int _btConnection;
-        public int btConnection { get { return _btConnection; } set { _btConnection = value; OnPropertyChanged("btConnection"); } }
+        public int btConnection { get { return _btConnection; } set { if (_btConnection != value) { _btConnection = value; OnPropertyChanged("btConnection"); } } }
         int _iSignalrange;
-        public int iSignalrange { get { return _iSignalrange; } set { _iSignalrange = value; OnPropertyChanged("iSignalrange"); } }
+        public int iSignalrange { get { return _iSignalrange; } set { if (_iSignalrange != value) { _iSignalrange = value; OnPropertyChanged("iSignalrange"); } } }
         int _bAutozero;
-        public int bAutozero { get { return _bAutozero; } set { _bAutozero = value; OnPropertyChanged("bAutozero"); } }
+        public int bAutozero { get { return _bAutozero; } set { if (_bAutozero != value) { _bAutozero = value; OnPropertyChanged("bAutozero"); } } }
         int _btBlockSelect;
-        public int btBlockSelect { get { return _btBlockSelect; } set { _btBlockSelect = value; OnPropertyChanged("btBlockSelect"); } }
+        public int btBlockSelect { get { return _btBlockSelect; } set { if (_btBlockSelect != value) { _btBlockSelect = value; OnPropertyChanged("btBlockSelect"); } } }
         int _iSignalvariation;
-        public int iSignalvariation { get { return _iSignalvariation; } set { _iSignalvariation = value; OnPropertyChanged("iSignalvariation"); } }
+        public int iSignalvariation { get { return _iSignalvariation; } set { if (_iSignalvariation != value) { _iSignalvariation = value; OnPropertyChanged("iSignalvariation"); } } }
 
         float _fLitoffset;
-        public float fLitoffset { get { return _fLitoffset; } set { _fLitoffset = value; OnPropertyChanged("fLitoffset"); } }
+        public float fLitoffset { get { return _fLitoffset; } set { if (_fLitoffset != value) { _fLitoffset = value; OnPropertyChanged("fLitoffset"); } } }
         float _fIgnitedelay;
-        public float fIgnitedelay { get { return _fIgnitedelay; } set { _fIgnitedelay = value; OnPropertyChanged("fIgnitedelay"); } }
+        public float fIgnitedelay { get { return _fIgnitedelay; } set { if (_fIgnitedelay != value) { _fIgnitedelay = value; OnPropertyChanged("fIgnitedelay"); } } }
         float _fIgniteflow;
-        public float fIgniteflow { get { return _fIgniteflow; } set { _fIgniteflow = value; OnPropertyChanged("fIgniteflow"); } }
+        public float fIgniteflow { get { return _fIgniteflow; } set { if (_fIgniteflow != value) { _fIgniteflow = value; OnPropertyChanged("fIgniteflow"); } } }
         float _fIgnitetemp;
-        public float fIgnitetemp { get { return _fIgnitetemp; } set { _fIgnitetemp = value; OnPropertyChanged("fIgnitetemp"); } }
+        public float fIgnitetemp { get { return _fIgnitetemp; } set { if (_fIgnitetemp != value) { _fIgnitetemp = value; OnPropertyChanged("fIgnitetemp"); } } }
 
         #endregion Property
 

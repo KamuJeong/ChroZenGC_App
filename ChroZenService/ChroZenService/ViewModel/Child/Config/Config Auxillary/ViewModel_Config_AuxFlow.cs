@@ -40,143 +40,197 @@ namespace ChroZenService
         int nAuxIndex;
 
         string _ActualFlow1;
-        public string ActualFlow1 { get { return _ActualFlow1; } set { _ActualFlow1 = value; OnPropertyChanged("ActualFlow1"); } }
+        public string ActualFlow1 { get { return _ActualFlow1; } set { if (_ActualFlow1 != value) { _ActualFlow1 = value; OnPropertyChanged("ActualFlow1"); } } }
 
         string _ActualFlow2;
-        public string ActualFlow2 { get { return _ActualFlow2; } set { _ActualFlow2 = value; OnPropertyChanged("ActualFlow2"); } }
+        public string ActualFlow2 { get { return _ActualFlow2; } set { if (_ActualFlow2 != value) { _ActualFlow2 = value; OnPropertyChanged("ActualFlow2"); } } }
 
         string _ActualFlow3;
-        public string ActualFlow3 { get { return _ActualFlow3; } set { _ActualFlow3 = value; OnPropertyChanged("ActualFlow3"); } }
+        public string ActualFlow3 { get { return _ActualFlow3; } set { if (_ActualFlow3 != value) { _ActualFlow3 = value; OnPropertyChanged("ActualFlow3"); } } }
 
         byte _btAuxGas;
-        public byte btAuxGas { get { return _btAuxGas; } set { _btAuxGas = value; OnPropertyChanged("btAuxGas"); } }
+        public byte btAuxGas { get { return _btAuxGas; } set { if (_btAuxGas != value) { _btAuxGas = value; OnPropertyChanged("btAuxGas"); } } }
 
         string _fFlowSet1;
-        public string fFlowSet1 { get { return _fFlowSet1; }
-            set {
-                _fFlowSet1 = value;
-                
-                switch (fFlowOnoff1)
+        public string fFlowSet1
+        {
+            get { return _fFlowSet1; }
+            set
+            {
+                if (_fFlowSet1 != value)
                 {
-                    case true:
-                        {
-                            setDisplayString1 = fFlowSet1;
-                        }
-                        break;
-                    case false:
-                        {
-                            setDisplayString1 = "Off";
-                        }
-                        break;
+                    _fFlowSet1 = value;
+
+                    switch (fFlowOnoff1)
+                    {
+                        case true:
+                            {
+                                setDisplayString1 = fFlowSet1;
+                            }
+                            break;
+                        case false:
+                            {
+                                setDisplayString1 = "Off";
+                            }
+                            break;
+                    }
+
+                    OnPropertyChanged("fFlowSet1");
                 }
-                OnPropertyChanged("fFlowSet1"); } }
+            }
+        }
 
         bool _fFlowOnoff1;
-        public bool fFlowOnoff1 { get { return _fFlowOnoff1; }
-            set {
-                _fFlowOnoff1 = value;
-                switch (value)
+        public bool fFlowOnoff1
+        {
+            get { return _fFlowOnoff1; }
+            set
+            {
+                if (_fFlowOnoff1 != value)
                 {
-                    case true:
-                        {
-                            setDisplayString1 = fFlowSet1;
-                        }
-                        break;
-                    case false:
-                        {
-                            setDisplayString1 = "Off";
-                        }
-                        break;
+                    _fFlowOnoff1 = value;
+                    switch (value)
+                    {
+                        case true:
+                            {
+                                setDisplayString1 = fFlowSet1;
+                            }
+                            break;
+                        case false:
+                            {
+                                setDisplayString1 = "Off";
+                            }
+                            break;
+                    }
+
+                    OnPropertyChanged("fFlowOnoff1");
                 }
-                OnPropertyChanged("fFlowOnoff1"); } }
+            }
+        }
 
         string _fFlowSet2;
-        public string fFlowSet2 { get { return _fFlowSet2; }
-            set {
-                _fFlowSet2 = value;
-
-                switch (fFlowOnoff2)
+        public string fFlowSet2
+        {
+            get { return _fFlowSet2; }
+            set
+            {
+                if (_fFlowSet2 != value)
                 {
-                    case true:
-                        {
-                            setDisplayString2 = fFlowSet2;
-                        }
-                        break;
-                    case false:
-                        {
-                            setDisplayString2 = "Off";
-                        }
-                        break;
-                }
+                    _fFlowSet2 = value;
 
-                OnPropertyChanged("fFlowSet2"); } }
+                    switch (fFlowOnoff2)
+                    {
+                        case true:
+                            {
+                                setDisplayString2 = fFlowSet2;
+                            }
+                            break;
+                        case false:
+                            {
+                                setDisplayString2 = "Off";
+                            }
+                            break;
+                    }
+
+                    OnPropertyChanged("fFlowSet2");
+                }
+            }
+        }
 
         bool _fFlowOnoff2;
-        public bool fFlowOnoff2 { get { return _fFlowOnoff2; }
-            set { _fFlowOnoff2 = value;
-                switch (value)
+        public bool fFlowOnoff2
+        {
+            get { return _fFlowOnoff2; }
+            set
+            {
+                if (_fFlowOnoff2 != value)
                 {
-                    case true:
-                        {
-                            setDisplayString2 = fFlowSet2;
-                        }
-                        break;
-                    case false:
-                        {
-                            setDisplayString2 = "Off";
-                        }
-                        break;
+                    _fFlowOnoff2 = value;
+                    switch (value)
+                    {
+                        case true:
+                            {
+                                setDisplayString2 = fFlowSet2;
+                            }
+                            break;
+                        case false:
+                            {
+                                setDisplayString2 = "Off";
+                            }
+                            break;
+                    }
+
+                    OnPropertyChanged("fFlowOnoff2");
                 }
-                OnPropertyChanged("fFlowOnoff2"); } }
+            }
+        }
 
         string _fFlowSet3;
-        public string fFlowSet3 { get { return _fFlowSet3; }
-            set {
-                _fFlowSet3 = value;
-                switch (fFlowOnoff3)
+        public string fFlowSet3
+        {
+            get { return _fFlowSet3; }
+            set
+            {
+                if (_fFlowSet3 != value)
                 {
-                    case true:
-                        {
-                            setDisplayString3 = fFlowSet3;
-                        }
-                        break;
-                    case false:
-                        {
-                            setDisplayString3 = "Off";
-                        }
-                        break;
+                    _fFlowSet3 = value;
+                    switch (fFlowOnoff3)
+                    {
+                        case true:
+                            {
+                                setDisplayString3 = fFlowSet3;
+                            }
+                            break;
+                        case false:
+                            {
+                                setDisplayString3 = "Off";
+                            }
+                            break;
+                    }
+
+                    OnPropertyChanged("fFlowSet3");
                 }
-                OnPropertyChanged("fFlowSet3"); } }
+            }
+        }
 
         bool _fFlowOnoff3;
-        public bool fFlowOnoff3 { get { return _fFlowOnoff3; }
-            set {
-                _fFlowOnoff3 = value;
-                switch (value)
+        public bool fFlowOnoff3
+        {
+            get { return _fFlowOnoff3; }
+            set
+            {
+                if (_fFlowOnoff3 != value)
                 {
-                    case true:
-                        {
-                            setDisplayString3 = fFlowSet3;
-                        }
-                        break;
-                    case false:
-                        {
-                            setDisplayString3 = "Off";
-                        }
-                        break;
+                    _fFlowOnoff3 = value;
+                    switch (value)
+                    {
+                        case true:
+                            {
+                                setDisplayString3 = fFlowSet3;
+                            }
+                            break;
+                        case false:
+                            {
+                                setDisplayString3 = "Off";
+                            }
+                            break;
+                    }
+
+                    OnPropertyChanged("fFlowOnoff3");
                 }
-                OnPropertyChanged("fFlowOnoff3"); } }
+            }
+        }
 
         string _setDisplayString1;
-        public string setDisplayString1 { get { return _setDisplayString1; } set { _setDisplayString1 = value; OnPropertyChanged("setDisplayString1"); } }
+        public string setDisplayString1 { get { return _setDisplayString1; } set { if (_setDisplayString1 != value) { _setDisplayString1 = value; OnPropertyChanged("setDisplayString1"); } } }
         string _setDisplayString2;
-        public string setDisplayString2 { get { return _setDisplayString2; } set { _setDisplayString2 = value; OnPropertyChanged("setDisplayString2"); } }
+        public string setDisplayString2 { get { return _setDisplayString2; } set { if (_setDisplayString2 != value) { _setDisplayString2 = value; OnPropertyChanged("setDisplayString2"); } } }
         string _setDisplayString3;
-        public string setDisplayString3 { get { return _setDisplayString3; } set { _setDisplayString3 = value; OnPropertyChanged("setDisplayString3"); } }
+        public string setDisplayString3 { get { return _setDisplayString3; } set { if (_setDisplayString3 != value) { _setDisplayString3 = value; OnPropertyChanged("setDisplayString3"); } } }
 
         bool _bIsAuxEnabled;
-        public bool bIsAuxEnabled { get { return _bIsAuxEnabled; } set { _bIsAuxEnabled = value; OnPropertyChanged("bIsAuxEnabled"); } }
-        
+        public bool bIsAuxEnabled { get { return _bIsAuxEnabled; } set { if (_bIsAuxEnabled != value) { _bIsAuxEnabled = value; OnPropertyChanged("bIsAuxEnabled"); } } }
+
 
         #endregion Property
 
@@ -211,9 +265,9 @@ namespace ChroZenService
                         tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(
             DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet));
                     }
-                    break;               
+                    break;
             }
-         
+
             //TODO :             
             Debug.WriteLine("ProgramValveIndexChangeCommand Fired");
         }

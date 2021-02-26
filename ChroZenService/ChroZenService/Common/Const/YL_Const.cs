@@ -7,6 +7,12 @@ namespace ChroZenService
     public static class ChroZenService_Const
     {
         #region ENUM    
+        public enum E_HOME_MENU
+        {
+            HOME,
+            CONFIG,
+            SYSTEM
+        }
         //public enum E_METHANIZER
         //{
         //    VALVE,

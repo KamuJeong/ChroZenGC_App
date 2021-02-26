@@ -21,6 +21,28 @@ namespace ChroZenService
             SubMenuSelectCommand = new RelayCommand(SubMenuSelectCommandAction);
 
             EventManager.onPACKCODE_Receivce += PACKCODE_ReceivceEventHandler;
+
+            EventManager.onApcSetByInletConfig += (mode, location) =>
+            {
+                switch (location)
+                {
+                    case E_INLET_LOCATION.FRONT:
+                        {
+                            ViewModel_Config_FrontInletSettings.ApcMode = mode;
+                        }
+                        break;
+                    case E_INLET_LOCATION.CENTER:
+                        {
+                            ViewModel_Config_CenterInletSettings.ApcMode = mode;
+                        }
+                        break;
+                    case E_INLET_LOCATION.REAR:
+                        {
+                            ViewModel_Config_RearInletSettings.ApcMode = mode;
+                        }
+                        break;
+                }
+            };
         }
 
         private void PACKCODE_ReceivceEventHandler(YC_Const.E_PACKCODE e_LC_PACK_CODE, int nIndex)
@@ -523,7 +545,7 @@ namespace ChroZenService
 
                                         }
 
-                                        ViewModel_Config_FrontInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.btInjMode == 1 ? true : false;
+                                        ViewModel_Config_FrontInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.btInjMode;
                                         ViewModel_Config_FrontInletSettings.fTotalFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fTotalFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_Config_FrontInletSettings.fSplitFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fSplitFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_Config_FrontInletSettings.iSplitratio = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.iSplitratio.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
@@ -568,7 +590,7 @@ namespace ChroZenService
 
                                         }
 
-                                        ViewModel_Config_CenterInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btInjMode == 1 ? true : false;
+                                        ViewModel_Config_CenterInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btInjMode;
                                         ViewModel_Config_CenterInletSettings.fTotalFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fTotalFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_Config_CenterInletSettings.fSplitFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fSplitFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_Config_CenterInletSettings.iSplitratio = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.iSplitratio.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
@@ -613,7 +635,7 @@ namespace ChroZenService
 
                                         }
 
-                                        ViewModel_Config_RearInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.btInjMode == 1 ? true : false;
+                                        ViewModel_Config_RearInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.btInjMode;
                                         ViewModel_Config_RearInletSettings.fTotalFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fTotalFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_Config_RearInletSettings.fSplitFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fSplitFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_Config_RearInletSettings.iSplitratio = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.iSplitratio.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
@@ -645,39 +667,39 @@ namespace ChroZenService
 
         #region Oven
         ViewModel_Config_OvenConfig _ViewModel_Config_OvenConfig = new ViewModel_Config_OvenConfig();
-        public ViewModel_Config_OvenConfig ViewModel_Config_OvenConfig { get { return _ViewModel_Config_OvenConfig; } set { _ViewModel_Config_OvenConfig = value; OnPropertyChanged("ViewModel_Config_OvenConfig"); } }
+        public ViewModel_Config_OvenConfig ViewModel_Config_OvenConfig { get { return _ViewModel_Config_OvenConfig; } set { if (_ViewModel_Config_OvenConfig != value) { _ViewModel_Config_OvenConfig = value; OnPropertyChanged("ViewModel_Config_OvenConfig"); } } }
         ViewModel_Config_OvenSettings _ViewModel_Config_OvenSettings = new ViewModel_Config_OvenSettings();
-        public ViewModel_Config_OvenSettings ViewModel_Config_OvenSettings { get { return _ViewModel_Config_OvenSettings; } set { _ViewModel_Config_OvenSettings = value; OnPropertyChanged("ViewModel_Config_OvenSettings"); } }
+        public ViewModel_Config_OvenSettings ViewModel_Config_OvenSettings { get { return _ViewModel_Config_OvenSettings; } set { if (_ViewModel_Config_OvenSettings != value) { _ViewModel_Config_OvenSettings = value; OnPropertyChanged("ViewModel_Config_OvenSettings"); } } }
         #endregion Oven
 
         #region Inlet
         ViewModel_Config_InletConfig _ViewModel_Config_FrontInletConfig = new ViewModel_Config_InletConfig();
-        public ViewModel_Config_InletConfig ViewModel_Config_FrontInletConfig { get { return _ViewModel_Config_FrontInletConfig; } set { _ViewModel_Config_FrontInletConfig = value; OnPropertyChanged("ViewModel_Config_FrontInletConfig"); } }
+        public ViewModel_Config_InletConfig ViewModel_Config_FrontInletConfig { get { return _ViewModel_Config_FrontInletConfig; } set { if (_ViewModel_Config_FrontInletConfig != value) { _ViewModel_Config_FrontInletConfig = value; OnPropertyChanged("ViewModel_Config_FrontInletConfig"); } } }
         ViewModel_Config_InletConfig _ViewModel_Config_CenterInletConfig = new ViewModel_Config_InletConfig();
-        public ViewModel_Config_InletConfig ViewModel_Config_CenterInletConfig { get { return _ViewModel_Config_CenterInletConfig; } set { _ViewModel_Config_CenterInletConfig = value; OnPropertyChanged("ViewModel_Config_CenterInletConfig"); } }
+        public ViewModel_Config_InletConfig ViewModel_Config_CenterInletConfig { get { return _ViewModel_Config_CenterInletConfig; } set { if (_ViewModel_Config_CenterInletConfig != value) { _ViewModel_Config_CenterInletConfig = value; OnPropertyChanged("ViewModel_Config_CenterInletConfig"); } } }
         ViewModel_Config_InletConfig _ViewModel_Config_RearInletConfig = new ViewModel_Config_InletConfig();
-        public ViewModel_Config_InletConfig ViewModel_Config_RearInletConfig { get { return _ViewModel_Config_RearInletConfig; } set { _ViewModel_Config_RearInletConfig = value; OnPropertyChanged("ViewModel_Config_RearInletConfig"); } }
+        public ViewModel_Config_InletConfig ViewModel_Config_RearInletConfig { get { return _ViewModel_Config_RearInletConfig; } set { if (_ViewModel_Config_RearInletConfig != value) { _ViewModel_Config_RearInletConfig = value; OnPropertyChanged("ViewModel_Config_RearInletConfig"); } } }
         ViewModel_Config_InletSettings _ViewModel_Config_FrontInletSettings = new ViewModel_Config_InletSettings();
-        public ViewModel_Config_InletSettings ViewModel_Config_FrontInletSettings { get { return _ViewModel_Config_FrontInletSettings; } set { _ViewModel_Config_FrontInletSettings = value; OnPropertyChanged("ViewModel_Config_FrontInletSettings"); } }
+        public ViewModel_Config_InletSettings ViewModel_Config_FrontInletSettings { get { return _ViewModel_Config_FrontInletSettings; } set { if (_ViewModel_Config_FrontInletSettings != value) { _ViewModel_Config_FrontInletSettings = value; OnPropertyChanged("ViewModel_Config_FrontInletSettings"); } } }
         ViewModel_Config_InletSettings _ViewModel_Config_CenterInletSettings = new ViewModel_Config_InletSettings();
-        public ViewModel_Config_InletSettings ViewModel_Config_CenterInletSettings { get { return _ViewModel_Config_CenterInletSettings; } set { _ViewModel_Config_CenterInletSettings = value; OnPropertyChanged("ViewModel_Config_CenterInletSettings"); } }
+        public ViewModel_Config_InletSettings ViewModel_Config_CenterInletSettings { get { return _ViewModel_Config_CenterInletSettings; } set { if (_ViewModel_Config_CenterInletSettings != value) { _ViewModel_Config_CenterInletSettings = value; OnPropertyChanged("ViewModel_Config_CenterInletSettings"); } } }
         ViewModel_Config_InletSettings _ViewModel_Config_RearInletSettings = new ViewModel_Config_InletSettings();
-        public ViewModel_Config_InletSettings ViewModel_Config_RearInletSettings { get { return _ViewModel_Config_RearInletSettings; } set { _ViewModel_Config_RearInletSettings = value; OnPropertyChanged("ViewModel_Config_RearInletSettings"); } }
+        public ViewModel_Config_InletSettings ViewModel_Config_RearInletSettings { get { return _ViewModel_Config_RearInletSettings; } set { if (_ViewModel_Config_RearInletSettings != value) { _ViewModel_Config_RearInletSettings = value; OnPropertyChanged("ViewModel_Config_RearInletSettings"); } } }
         #endregion Inlet
 
         #region Detector
         ViewModel_Config_DetConfig _ViewModel_Config_FrontDetConfig = new ViewModel_Config_DetConfig();
-        public ViewModel_Config_DetConfig ViewModel_Config_FrontDetConfig { get { return _ViewModel_Config_FrontDetConfig; } set { _ViewModel_Config_FrontDetConfig = value; OnPropertyChanged("ViewModel_Config_FrontDetConfig"); } }
+        public ViewModel_Config_DetConfig ViewModel_Config_FrontDetConfig { get { return _ViewModel_Config_FrontDetConfig; } set { _ViewModel_Config_FrontDetConfig = value; if (_ViewModel_Config_FrontDetConfig != value) OnPropertyChanged("ViewModel_Config_FrontDetConfig"); } }
         ViewModel_Config_DetConfig _ViewModel_Config_CenterDetConfig = new ViewModel_Config_DetConfig();
-        public ViewModel_Config_DetConfig ViewModel_Config_CenterDetConfig { get { return _ViewModel_Config_CenterDetConfig; } set { _ViewModel_Config_CenterDetConfig = value; OnPropertyChanged("ViewModel_Config_CenterDetConfig"); } }
+        public ViewModel_Config_DetConfig ViewModel_Config_CenterDetConfig { get { return _ViewModel_Config_CenterDetConfig; } set { _ViewModel_Config_CenterDetConfig = value; if (_ViewModel_Config_CenterDetConfig != value) OnPropertyChanged("ViewModel_Config_CenterDetConfig"); } }
         ViewModel_Config_DetConfig _ViewModel_Config_RearDetConfig = new ViewModel_Config_DetConfig();
-        public ViewModel_Config_DetConfig ViewModel_Config_RearDetConfig { get { return _ViewModel_Config_RearDetConfig; } set { _ViewModel_Config_RearDetConfig = value; OnPropertyChanged("ViewModel_Config_RearDetConfig"); } }
+        public ViewModel_Config_DetConfig ViewModel_Config_RearDetConfig { get { return _ViewModel_Config_RearDetConfig; } set { _ViewModel_Config_RearDetConfig = value; if (_ViewModel_Config_RearDetConfig != value) OnPropertyChanged("ViewModel_Config_RearDetConfig"); } }
         ViewModel_Config_DetSettings _ViewModel_Config_FrontDetSettings = new ViewModel_Config_DetSettings();
-        public ViewModel_Config_DetSettings ViewModel_Config_FrontDetSettings { get { return _ViewModel_Config_FrontDetSettings; } set { _ViewModel_Config_FrontDetSettings = value; OnPropertyChanged("ViewModel_Config_FrontDetSettings"); } }
+        public ViewModel_Config_DetSettings ViewModel_Config_FrontDetSettings { get { return _ViewModel_Config_FrontDetSettings; } set { _ViewModel_Config_FrontDetSettings = value; if (_ViewModel_Config_FrontDetSettings != value) OnPropertyChanged("ViewModel_Config_FrontDetSettings"); } }
         ViewModel_Config_DetSettings _ViewModel_Config_CenterDetSettings = new ViewModel_Config_DetSettings();
-        public ViewModel_Config_DetSettings ViewModel_Config_CenterDetSettings { get { return _ViewModel_Config_CenterDetSettings; } set { _ViewModel_Config_CenterDetSettings = value; OnPropertyChanged("ViewModel_Config_CenterDetSettings"); } }
+        public ViewModel_Config_DetSettings ViewModel_Config_CenterDetSettings { get { return _ViewModel_Config_CenterDetSettings; } set { _ViewModel_Config_CenterDetSettings = value; if (_ViewModel_Config_CenterDetSettings != value) OnPropertyChanged("ViewModel_Config_CenterDetSettings"); } }
         ViewModel_Config_DetSettings _ViewModel_Config_RearDetSettings = new ViewModel_Config_DetSettings();
-        public ViewModel_Config_DetSettings ViewModel_Config_RearDetSettings { get { return _ViewModel_Config_RearDetSettings; } set { _ViewModel_Config_RearDetSettings = value; OnPropertyChanged("ViewModel_Config_RearDetSettings"); } }
+        public ViewModel_Config_DetSettings ViewModel_Config_RearDetSettings { get { return _ViewModel_Config_RearDetSettings; } set { _ViewModel_Config_RearDetSettings = value; if (_ViewModel_Config_RearDetSettings != value) OnPropertyChanged("ViewModel_Config_RearDetSettings"); } }
         #endregion Detector
 
         #region Signal

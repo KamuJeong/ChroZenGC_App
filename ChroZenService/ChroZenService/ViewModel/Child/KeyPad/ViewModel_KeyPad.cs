@@ -66,17 +66,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty IsKeyPadShownProperty =
         BindableProperty.Create("IsKeyPadShown", typeof(bool), typeof(ViewModel_KeyPad),
-            defaultValue: false,
-            propertyChanged: onIsKeyPadShownPropertyChanged
+            defaultValue: false
             , defaultBindingMode: BindingMode.TwoWay);
-
-        private static void onIsKeyPadShownPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_KeyPad).IsKeyPadShown = (bool)newValue;
-            }
-        }
 
         public bool IsKeyPadShown
         {
@@ -90,17 +81,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty TitleProperty =
         BindableProperty.Create("Title", typeof(string), typeof(ViewModel_KeyPad),
-            defaultValue: "",
-            propertyChanged: onTitlePropertyChanged
+            defaultValue: ""
             , defaultBindingMode: BindingMode.TwoWay);
-
-        private static void onTitlePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_KeyPad).Title = (string)newValue;
-            }
-        }
 
         public string Title
         {
@@ -114,17 +96,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty KeyPadTypeProperty =
         BindableProperty.Create("KeyPadType", typeof(E_KEYPAD_TYPE), typeof(ViewModel_KeyPad),
-            defaultValue: E_KEYPAD_TYPE.INT,
-            propertyChanged: onKeyPadTypePropertyChanged
+            defaultValue: E_KEYPAD_TYPE.INT
             , defaultBindingMode: BindingMode.TwoWay);
-
-        private static void onKeyPadTypePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_KeyPad).KeyPadType = (E_KEYPAD_TYPE)newValue;
-            }
-        }
 
         public E_KEYPAD_TYPE KeyPadType
         {
@@ -138,17 +111,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty MaxValueProperty =
         BindableProperty.Create("MaxValue", typeof(double), typeof(ViewModel_KeyPad),
-            defaultValue: 0d,
-            propertyChanged: onMaxValuePropertyChanged
+            defaultValue: 0d
             , defaultBindingMode: BindingMode.TwoWay);
-
-        private static void onMaxValuePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_KeyPad).MaxValue = (double)newValue;
-            }
-        }
 
         public double MaxValue
         {
@@ -162,17 +126,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty MinValueProperty =
         BindableProperty.Create("MinValue", typeof(double), typeof(ViewModel_KeyPad),
-            defaultValue: 0d,
-            propertyChanged: onMinValuePropertyChanged
+            defaultValue: 0d
             , defaultBindingMode: BindingMode.TwoWay);
-
-        private static void onMinValuePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_KeyPad).MinValue = (double)newValue;
-            }
-        }
 
         public double MinValue
         {

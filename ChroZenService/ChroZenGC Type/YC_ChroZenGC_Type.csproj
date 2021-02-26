@@ -37,20 +37,26 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OpenTK, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\OpenTK.3.0.1\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\OpenTK.GLControl.3.0.1\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
     <Reference Include="SkiaSharp, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SkiaSharp.1.68.1\lib\net45\SkiaSharp.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp.Views.Desktop, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SkiaSharp.Views.1.68.0\lib\net45\SkiaSharp.Views.Desktop.dll</HintPath>
-    </Reference>
-    <Reference Include="SkiaSharp.Views.Forms, Version=1.68.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SkiaSharp.Views.Forms.1.68.0\lib\netstandard1.3\SkiaSharp.Views.Forms.dll</HintPath>
+    <Reference Include="SkiaSharp.Views.Desktop.Common, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SkiaSharp.Views.Desktop.Common.1.68.1\lib\net45\SkiaSharp.Views.Desktop.Common.dll</HintPath>
     </Reference>
     <Reference Include="SkiaSharp.Views.Gtk, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SkiaSharp.Views.1.68.0\lib\net45\SkiaSharp.Views.Gtk.dll</HintPath>
+      <HintPath>..\..\packages\SkiaSharp.Views.Gtk2.1.68.1\lib\net45\SkiaSharp.Views.Gtk.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.WindowsForms, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SkiaSharp.Views.WindowsForms.1.68.1\lib\net45\SkiaSharp.Views.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="SkiaSharp.Views.WPF, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SkiaSharp.Views.1.68.0\lib\net45\SkiaSharp.Views.WPF.dll</HintPath>
+      <HintPath>..\..\packages\SkiaSharp.Views.WPF.1.68.1\lib\net45\SkiaSharp.Views.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -176,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -187,8 +194,10 @@
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.props'))" />
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.targets'))" />
     <Error Condition="!Exists('..\..\packages\SkiaSharp.1.68.1\build\net45\SkiaSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SkiaSharp.1.68.1\build\net45\SkiaSharp.targets'))" />
+    <Error Condition="!Exists('..\..\packages\SkiaSharp.Views.Forms.1.68.1\build\net45\SkiaSharp.Views.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SkiaSharp.Views.Forms.1.68.1\build\net45\SkiaSharp.Views.Forms.targets'))" />
   </Target>
   <Import Project="..\..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.1.68.1\build\net45\SkiaSharp.NativeAssets.Linux.NoDependencies.targets" Condition="Exists('..\..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.1.68.1\build\net45\SkiaSharp.NativeAssets.Linux.NoDependencies.targets')" />
   <Import Project="..\..\packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.targets')" />
   <Import Project="..\..\packages\SkiaSharp.1.68.1\build\net45\SkiaSharp.targets" Condition="Exists('..\..\packages\SkiaSharp.1.68.1\build\net45\SkiaSharp.targets')" />
+  <Import Project="..\..\packages\SkiaSharp.Views.Forms.1.68.1\build\net45\SkiaSharp.Views.Forms.targets" Condition="Exists('..\..\packages\SkiaSharp.Views.Forms.1.68.1\build\net45\SkiaSharp.Views.Forms.targets')" />
 </Project>

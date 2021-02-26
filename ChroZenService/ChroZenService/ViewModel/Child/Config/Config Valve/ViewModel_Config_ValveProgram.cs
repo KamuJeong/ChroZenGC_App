@@ -39,139 +39,139 @@ namespace ChroZenService
         TCPManager tcpManager;
 
         ObservableCollection<string> _valveProgramPickerSource = new ObservableCollection<string>();
-        public ObservableCollection<string> valveProgramPickerSource { get { return _valveProgramPickerSource; } set { _valveProgramPickerSource = value; OnPropertyChanged("valveProgramPickerSource"); } }
+        public ObservableCollection<string> valveProgramPickerSource { get { return _valveProgramPickerSource; } set { if (_valveProgramPickerSource != value) { _valveProgramPickerSource = value; OnPropertyChanged("valveProgramPickerSource"); } } }
 
         float _fTime_1;
-        public float fTime_1 { get { return _fTime_1; } set { _fTime_1 = value; OnPropertyChanged("fTime_1"); } }
+        public float fTime_1 { get { return _fTime_1; } set { if (_fTime_1 != value) { _fTime_1 = value; OnPropertyChanged("fTime_1"); } } }
         float _fTime_2;
-        public float fTime_2 { get { return _fTime_2; } set { _fTime_2 = value; OnPropertyChanged("fTime_2"); } }
+        public float fTime_2 { get { return _fTime_2; } set { if (_fTime_2 != value) { _fTime_2 = value; OnPropertyChanged("fTime_2"); } } }
         float _fTime_3;
-        public float fTime_3 { get { return _fTime_3; } set { _fTime_3 = value; OnPropertyChanged("fTime_3"); } }
+        public float fTime_3 { get { return _fTime_3; } set { if (_fTime_3 != value) { _fTime_3 = value; OnPropertyChanged("fTime_3"); } } }
         float _fTime_4;
-        public float fTime_4 { get { return _fTime_4; } set { _fTime_4 = value; OnPropertyChanged("fTime_4"); } }
+        public float fTime_4 { get { return _fTime_4; } set { if (_fTime_4 != value) { _fTime_4 = value; OnPropertyChanged("fTime_4"); } } }
         float _fTime_5;
-        public float fTime_5 { get { return _fTime_5; } set { _fTime_5 = value; OnPropertyChanged("fTime_5"); } }
+        public float fTime_5 { get { return _fTime_5; } set { if (_fTime_5 != value) { _fTime_5 = value; OnPropertyChanged("fTime_5"); } } }
 
         float _fTime_6;
-        public float fTime_6 { get { return _fTime_6; } set { _fTime_6 = value; OnPropertyChanged("fTime_6"); } }
+        public float fTime_6 { get { return _fTime_6; } set { if (_fTime_6 != value) { _fTime_6 = value; OnPropertyChanged("fTime_6"); } } }
         float _fTime_7;
-        public float fTime_7 { get { return _fTime_7; } set { _fTime_7 = value; OnPropertyChanged("fTime_7"); } }
+        public float fTime_7 { get { return _fTime_7; } set { if (_fTime_7 != value) { _fTime_7 = value; OnPropertyChanged("fTime_7"); } } }
         float _fTime_8;
-        public float fTime_8 { get { return _fTime_8; } set { _fTime_8 = value; OnPropertyChanged("fTime_8"); } }
+        public float fTime_8 { get { return _fTime_8; } set { if (_fTime_8 != value) { _fTime_8 = value; OnPropertyChanged("fTime_8"); } } }
         float _fTime_9;
-        public float fTime_9 { get { return _fTime_9; } set { _fTime_9 = value; OnPropertyChanged("fTime_9"); } }
+        public float fTime_9 { get { return _fTime_9; } set { if (_fTime_9 != value) { _fTime_9 = value; OnPropertyChanged("fTime_9"); } } }
         float _fTime_10;
-        public float fTime_10 { get { return _fTime_10; } set { _fTime_10 = value; OnPropertyChanged("fTime_10"); } }
+        public float fTime_10 { get { return _fTime_10; } set { if (_fTime_10 != value) { _fTime_10 = value; OnPropertyChanged("fTime_10"); } } }
 
         float _fTime_11;
-        public float fTime_11 { get { return _fTime_11; } set { _fTime_11 = value; OnPropertyChanged("fTime_11"); } }
+        public float fTime_11 { get { return _fTime_11; } set { if (_fTime_11 != value) { _fTime_11 = value; OnPropertyChanged("fTime_11"); } } }
         float _fTime_12;
-        public float fTime_12 { get { return _fTime_12; } set { _fTime_12 = value; OnPropertyChanged("fTime_12"); } }
+        public float fTime_12 { get { return _fTime_12; } set { if (_fTime_12 != value) { _fTime_12 = value; OnPropertyChanged("fTime_12"); } } }
         float _fTime_13;
-        public float fTime_13 { get { return _fTime_13; } set { _fTime_13 = value; OnPropertyChanged("fTime_13"); } }
+        public float fTime_13 { get { return _fTime_13; } set { if (_fTime_13 != value) { _fTime_13 = value; OnPropertyChanged("fTime_13"); } } }
         float _fTime_14;
-        public float fTime_14 { get { return _fTime_14; } set { _fTime_14 = value; OnPropertyChanged("fTime_14"); } }
+        public float fTime_14 { get { return _fTime_14; } set { if (_fTime_14 != value) { _fTime_14 = value; OnPropertyChanged("fTime_14"); } } }
         float _fTime_15;
-        public float fTime_15 { get { return _fTime_15; } set { _fTime_15 = value; OnPropertyChanged("fTime_15"); } }
+        public float fTime_15 { get { return _fTime_15; } set { if (_fTime_15 != value) { _fTime_15 = value; OnPropertyChanged("fTime_15"); } } }
 
         float _fTime_16;
-        public float fTime_16 { get { return _fTime_16; } set { _fTime_16 = value; OnPropertyChanged("fTime_16"); } }
+        public float fTime_16 { get { return _fTime_16; } set { if (_fTime_16 != value) { _fTime_16 = value; OnPropertyChanged("fTime_16"); } } }
         float _fTime_17;
-        public float fTime_17 { get { return _fTime_17; } set { _fTime_17 = value; OnPropertyChanged("fTime_17"); } }
+        public float fTime_17 { get { return _fTime_17; } set { if (_fTime_17 != value) { _fTime_17 = value; OnPropertyChanged("fTime_17"); } } }
         float _fTime_18;
-        public float fTime_18 { get { return _fTime_18; } set { _fTime_18 = value; OnPropertyChanged("fTime_18"); } }
+        public float fTime_18 { get { return _fTime_18; } set { if (_fTime_18 != value) { _fTime_18 = value; OnPropertyChanged("fTime_18"); } } }
         float _fTime_19;
-        public float fTime_19 { get { return _fTime_19; } set { _fTime_19 = value; OnPropertyChanged("fTime_19"); } }
+        public float fTime_19 { get { return _fTime_19; } set { if (_fTime_19 != value) { _fTime_19 = value; OnPropertyChanged("fTime_19"); } } }
         float _fTime_20;
-        public float fTime_20 { get { return _fTime_20; } set { _fTime_20 = value; OnPropertyChanged("fTime_20"); } }
+        public float fTime_20 { get { return _fTime_20; } set { if (_fTime_20 != value) { _fTime_20 = value; OnPropertyChanged("fTime_20"); } } }
 
         byte _btNumber_1;
-        public byte btNumber_1 { get { return _btNumber_1; } set { _btNumber_1 = value; OnPropertyChanged("btNumber_1"); } }
+        public byte btNumber_1 { get { return _btNumber_1; } set { if (_btNumber_1 != value) { _btNumber_1 = value; OnPropertyChanged("btNumber_1"); } } }
         byte _btNumber_2;
-        public byte btNumber_2 { get { return _btNumber_2; } set { _btNumber_2 = value; OnPropertyChanged("btNumber_2"); } }
+        public byte btNumber_2 { get { return _btNumber_2; } set { if (_btNumber_2 != value) { _btNumber_2 = value; OnPropertyChanged("btNumber_2"); } } }
         byte _btNumber_3;
-        public byte btNumber_3 { get { return _btNumber_3; } set { _btNumber_3 = value; OnPropertyChanged("btNumber_3"); } }
+        public byte btNumber_3 { get { return _btNumber_3; } set { if (_btNumber_3 != value) { _btNumber_3 = value; OnPropertyChanged("btNumber_3"); } } }
         byte _btNumber_4;
-        public byte btNumber_4 { get { return _btNumber_4; } set { _btNumber_4 = value; OnPropertyChanged("btNumber_4"); } }
+        public byte btNumber_4 { get { return _btNumber_4; } set { if (_btNumber_4 != value) { _btNumber_4 = value; OnPropertyChanged("btNumber_4"); } } }
         byte _btNumber_5;
-        public byte btNumber_5 { get { return _btNumber_5; } set { _btNumber_5 = value; OnPropertyChanged("btNumber_5"); } }
+        public byte btNumber_5 { get { return _btNumber_5; } set { if (_btNumber_5 != value) { _btNumber_5 = value; OnPropertyChanged("btNumber_5"); } } }
 
         byte _btNumber_6;
-        public byte btNumber_6 { get { return _btNumber_6; } set { _btNumber_6 = value; OnPropertyChanged("btNumber_6"); } }
+        public byte btNumber_6 { get { return _btNumber_6; } set { if (_btNumber_6 != value) { _btNumber_6 = value; OnPropertyChanged("btNumber_6"); } } }
         byte _btNumber_7;
-        public byte btNumber_7 { get { return _btNumber_7; } set { _btNumber_7 = value; OnPropertyChanged("btNumber_7"); } }
+        public byte btNumber_7 { get { return _btNumber_7; } set { if (_btNumber_7 != value) { _btNumber_7 = value; OnPropertyChanged("btNumber_7"); } } }
         byte _btNumber_8;
-        public byte btNumber_8 { get { return _btNumber_8; } set { _btNumber_8 = value; OnPropertyChanged("btNumber_8"); } }
+        public byte btNumber_8 { get { return _btNumber_8; } set { if (_btNumber_8 != value) { _btNumber_8 = value; OnPropertyChanged("btNumber_8"); } } }
         byte _btNumber_9;
-        public byte btNumber_9 { get { return _btNumber_9; } set { _btNumber_9 = value; OnPropertyChanged("btNumber_9"); } }
+        public byte btNumber_9 { get { return _btNumber_9; } set { if (_btNumber_9 != value) { _btNumber_9 = value; OnPropertyChanged("btNumber_9"); } } }
         byte _btNumber_10;
-        public byte btNumber_10 { get { return _btNumber_10; } set { _btNumber_10 = value; OnPropertyChanged("btNumber_10"); } }
+        public byte btNumber_10 { get { return _btNumber_10; } set { if (_btNumber_10 != value) { _btNumber_10 = value; OnPropertyChanged("btNumber_10"); } } }
 
         byte _btNumber_11;
-        public byte btNumber_11 { get { return _btNumber_11; } set { _btNumber_11 = value; OnPropertyChanged("btNumber_11"); } }
+        public byte btNumber_11 { get { return _btNumber_11; } set { if (_btNumber_11 != value) { _btNumber_11 = value; OnPropertyChanged("btNumber_11"); } } }
         byte _btNumber_12;
-        public byte btNumber_12 { get { return _btNumber_12; } set { _btNumber_12 = value; OnPropertyChanged("btNumber_12"); } }
+        public byte btNumber_12 { get { return _btNumber_12; } set { if (_btNumber_12 != value) { _btNumber_12 = value; OnPropertyChanged("btNumber_12"); } } }
         byte _btNumber_13;
-        public byte btNumber_13 { get { return _btNumber_13; } set { _btNumber_13 = value; OnPropertyChanged("btNumber_13"); } }
+        public byte btNumber_13 { get { return _btNumber_13; } set { if (_btNumber_13 != value) { _btNumber_13 = value; OnPropertyChanged("btNumber_13"); } } }
         byte _btNumber_14;
-        public byte btNumber_14 { get { return _btNumber_14; } set { _btNumber_14 = value; OnPropertyChanged("btNumber_14"); } }
+        public byte btNumber_14 { get { return _btNumber_14; } set { if (_btNumber_14 != value) { _btNumber_14 = value; OnPropertyChanged("btNumber_14"); } } }
         byte _btNumber_15;
-        public byte btNumber_15 { get { return _btNumber_15; } set { _btNumber_15 = value; OnPropertyChanged("btNumber_15"); } }
+        public byte btNumber_15 { get { return _btNumber_15; } set { if (_btNumber_15 != value) { _btNumber_15 = value; OnPropertyChanged("btNumber_15"); } } }
 
         byte _btNumber_16;
-        public byte btNumber_16 { get { return _btNumber_16; } set { _btNumber_16 = value; OnPropertyChanged("btNumber_16"); } }
+        public byte btNumber_16 { get { return _btNumber_16; } set { if (_btNumber_16 != value) { _btNumber_16 = value; OnPropertyChanged("btNumber_16"); } } }
         byte _btNumber_17;
-        public byte btNumber_17 { get { return _btNumber_17; } set { _btNumber_17 = value; OnPropertyChanged("btNumber_17"); } }
+        public byte btNumber_17 { get { return _btNumber_17; } set { if (_btNumber_17 != value) { _btNumber_17 = value; OnPropertyChanged("btNumber_17"); } } }
         byte _btNumber_18;
-        public byte btNumber_18 { get { return _btNumber_18; } set { _btNumber_18 = value; OnPropertyChanged("btNumber_18"); } }
+        public byte btNumber_18 { get { return _btNumber_18; } set { if (_btNumber_18 != value) { _btNumber_18 = value; OnPropertyChanged("btNumber_18"); } } }
         byte _btNumber_19;
-        public byte btNumber_19 { get { return _btNumber_19; } set { _btNumber_19 = value; OnPropertyChanged("btNumber_19"); } }
+        public byte btNumber_19 { get { return _btNumber_19; } set { if (_btNumber_19 != value) { _btNumber_19 = value; OnPropertyChanged("btNumber_19"); } } }
         byte _btNumber_20;
-        public byte btNumber_20 { get { return _btNumber_20; } set { _btNumber_20 = value; OnPropertyChanged("btNumber_20"); } }
+        public byte btNumber_20 { get { return _btNumber_20; } set { if (_btNumber_20 != value) { _btNumber_20 = value; OnPropertyChanged("btNumber_20"); } } }
 
         byte _btState_1;
-        public byte btState_1 { get { return _btState_1; } set { _btState_1 = value; OnPropertyChanged("btState_1"); } }
+        public byte btState_1 { get { return _btState_1; } set { if (_btState_1 != value) { _btState_1 = value; OnPropertyChanged("btState_1"); } } }
         byte _btState_2;
-        public byte btState_2 { get { return _btState_2; } set { _btState_2 = value; OnPropertyChanged("btState_2"); } }
+        public byte btState_2 { get { return _btState_2; } set { if (_btState_2 != value) { _btState_2 = value; OnPropertyChanged("btState_2"); } } }
         byte _btState_3;
-        public byte btState_3 { get { return _btState_3; } set { _btState_3 = value; OnPropertyChanged("btState_3"); } }
+        public byte btState_3 { get { return _btState_3; } set { if (_btState_3 != value) { _btState_3 = value; OnPropertyChanged("btState_3"); } } }
         byte _btState_4;
-        public byte btState_4 { get { return _btState_4; } set { _btState_4 = value; OnPropertyChanged("btState_4"); } }
+        public byte btState_4 { get { return _btState_4; } set { if (_btState_4 != value) { _btState_4 = value; OnPropertyChanged("btState_4"); } } }
         byte _btState_5;
-        public byte btState_5 { get { return _btState_5; } set { _btState_5 = value; OnPropertyChanged("btState_5"); } }
+        public byte btState_5 { get { return _btState_5; } set { if (_btState_5 != value) { _btState_5 = value; OnPropertyChanged("btState_5"); } } }
 
         byte _btState_6;
-        public byte btState_6 { get { return _btState_6; } set { _btState_6 = value; OnPropertyChanged("btState_6"); } }
+        public byte btState_6 { get { return _btState_6; } set { if (_btState_6 != value) { _btState_6 = value; OnPropertyChanged("btState_6"); } } }
         byte _btState_7;
-        public byte btState_7 { get { return _btState_7; } set { _btState_7 = value; OnPropertyChanged("btState_7"); } }
+        public byte btState_7 { get { return _btState_7; } set { if (_btState_7 != value) { _btState_7 = value; OnPropertyChanged("btState_7"); } } }
         byte _btState_8;
-        public byte btState_8 { get { return _btState_8; } set { _btState_8 = value; OnPropertyChanged("btState_8"); } }
+        public byte btState_8 { get { return _btState_8; } set { if (_btState_8 != value) { _btState_8 = value; OnPropertyChanged("btState_8"); } } }
         byte _btState_9;
-        public byte btState_9 { get { return _btState_9; } set { _btState_9 = value; OnPropertyChanged("btState_9"); } }
+        public byte btState_9 { get { return _btState_9; } set { if (_btState_9 != value) { _btState_9 = value; OnPropertyChanged("btState_9"); } } }
         byte _btState_10;
-        public byte btState_10 { get { return _btState_10; } set { _btState_10 = value; OnPropertyChanged("btState_10"); } }
+        public byte btState_10 { get { return _btState_10; } set { if (_btState_10 != value) { _btState_10 = value; OnPropertyChanged("btState_10"); } } }
 
         byte _btState_11;
-        public byte btState_11 { get { return _btState_11; } set { _btState_11 = value; OnPropertyChanged("btState_11"); } }
+        public byte btState_11 { get { return _btState_11; } set { if (_btState_11 != value) { _btState_11 = value; OnPropertyChanged("btState_11"); } } }
         byte _btState_12;
-        public byte btState_12 { get { return _btState_12; } set { _btState_12 = value; OnPropertyChanged("btState_12"); } }
+        public byte btState_12 { get { return _btState_12; } set { if (_btState_12 != value) { _btState_12 = value; OnPropertyChanged("btState_12"); } } }
         byte _btState_13;
-        public byte btState_13 { get { return _btState_13; } set { _btState_13 = value; OnPropertyChanged("btState_13"); } }
+        public byte btState_13 { get { return _btState_13; } set { if (_btState_13 != value) { _btState_13 = value; OnPropertyChanged("btState_13"); } } }
         byte _btState_14;
-        public byte btState_14 { get { return _btState_14; } set { _btState_14 = value; OnPropertyChanged("btState_14"); } }
+        public byte btState_14 { get { return _btState_14; } set { if (_btState_14 != value) { _btState_14 = value; OnPropertyChanged("btState_14"); } } }
         byte _btState_15;
-        public byte btState_15 { get { return _btState_15; } set { _btState_15 = value; OnPropertyChanged("btState_15"); } }
+        public byte btState_15 { get { return _btState_15; } set { if (_btState_15 != value) { _btState_15 = value; OnPropertyChanged("btState_15"); } } }
 
         byte _btState_16;
-        public byte btState_16 { get { return _btState_16; } set { _btState_16 = value; OnPropertyChanged("btState_16"); } }
+        public byte btState_16 { get { return _btState_16; } set { if (_btState_16 != value) { _btState_16 = value; OnPropertyChanged("btState_16"); } } }
         byte _btState_17;
-        public byte btState_17 { get { return _btState_17; } set { _btState_17 = value; OnPropertyChanged("btState_17"); } }
+        public byte btState_17 { get { return _btState_17; } set { if (_btState_17 != value) { _btState_17 = value; OnPropertyChanged("btState_17"); } } }
         byte _btState_18;
-        public byte btState_18 { get { return _btState_18; } set { _btState_18 = value; OnPropertyChanged("btState_18"); } }
+        public byte btState_18 { get { return _btState_18; } set { if (_btState_18 != value) { _btState_18 = value; OnPropertyChanged("btState_18"); } } }
         byte _btState_19;
-        public byte btState_19 { get { return _btState_19; } set { _btState_19 = value; OnPropertyChanged("btState_19"); } }
+        public byte btState_19 { get { return _btState_19; } set { if (_btState_19 != value) { _btState_19 = value; OnPropertyChanged("btState_19"); } } }
         byte _btState_20;
-        public byte btState_20 { get { return _btState_20; } set { _btState_20 = value; OnPropertyChanged("btState_20"); } }
+        public byte btState_20 { get { return _btState_20; } set { if (_btState_20 != value) { _btState_20 = value; OnPropertyChanged("btState_20"); } } }
 
 
         #endregion Property

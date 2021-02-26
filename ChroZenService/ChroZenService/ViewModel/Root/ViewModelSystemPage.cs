@@ -3375,19 +3375,19 @@ namespace ChroZenService
         TCPManager tcpManager;
 
         ViewModel_System_Calibration _ViewModel_System_Calibration = new ViewModel_System_Calibration();
-        public ViewModel_System_Calibration ViewModel_System_Calibration { get { return _ViewModel_System_Calibration; } set { _ViewModel_System_Calibration = value; OnPropertyChanged("ViewModel_System_Calibration"); } }
+        public ViewModel_System_Calibration ViewModel_System_Calibration { get { return _ViewModel_System_Calibration; } set { if (_ViewModel_System_Calibration != value) { _ViewModel_System_Calibration = value; OnPropertyChanged("ViewModel_System_Calibration"); } } }
         ViewModel_System_Config _ViewModel_System_Config = new ViewModel_System_Config();
-        public ViewModel_System_Config ViewModel_System_Config { get { return _ViewModel_System_Config; } set { _ViewModel_System_Config = value; OnPropertyChanged("ViewModel_System_Config"); } }
+        public ViewModel_System_Config ViewModel_System_Config { get { return _ViewModel_System_Config; } set { if (_ViewModel_System_Config != value) { _ViewModel_System_Config = value; OnPropertyChanged("ViewModel_System_Config"); } } }
         ViewModel_System_Diagnostics _ViewModel_System_Diagnostics = new ViewModel_System_Diagnostics();
-        public ViewModel_System_Diagnostics ViewModel_System_Diagnostics { get { return _ViewModel_System_Diagnostics; } set { _ViewModel_System_Diagnostics = value; OnPropertyChanged("ViewModel_System_Diagnostics"); } }
+        public ViewModel_System_Diagnostics ViewModel_System_Diagnostics { get { return _ViewModel_System_Diagnostics; } set { if (_ViewModel_System_Diagnostics != value) { _ViewModel_System_Diagnostics = value; OnPropertyChanged("ViewModel_System_Diagnostics"); } } }
         ViewModel_System_Information _ViewModel_System_Information = new ViewModel_System_Information();
-        public ViewModel_System_Information ViewModel_System_Information { get { return _ViewModel_System_Information; } set { _ViewModel_System_Information = value; OnPropertyChanged("ViewModel_System_Information"); } }
+        public ViewModel_System_Information ViewModel_System_Information { get { return _ViewModel_System_Information; } set { if (_ViewModel_System_Information != value) { _ViewModel_System_Information = value; OnPropertyChanged("ViewModel_System_Information"); } } }
         ViewModel_System_Method _ViewModel_System_Method = new ViewModel_System_Method();
-        public ViewModel_System_Method ViewModel_System_Method { get { return _ViewModel_System_Method; } set { _ViewModel_System_Method = value; OnPropertyChanged("ViewModel_System_Method"); } }
+        public ViewModel_System_Method ViewModel_System_Method { get { return _ViewModel_System_Method; } set { if (_ViewModel_System_Method != value) { _ViewModel_System_Method = value; OnPropertyChanged("ViewModel_System_Method"); } } }
         ViewModel_System_Settings _ViewModel_System_Settings = new ViewModel_System_Settings();
-        public ViewModel_System_Settings ViewModel_System_Settings { get { return _ViewModel_System_Settings; } set { _ViewModel_System_Settings = value; OnPropertyChanged("ViewModel_System_Settings"); } }
+        public ViewModel_System_Settings ViewModel_System_Settings { get { return _ViewModel_System_Settings; } set { if (_ViewModel_System_Settings != value) { _ViewModel_System_Settings = value; OnPropertyChanged("ViewModel_System_Settings"); } } }
         ViewModel_System_TimeControl _ViewModel_System_TimeControl = new ViewModel_System_TimeControl();
-        public ViewModel_System_TimeControl ViewModel_System_TimeControl { get { return _ViewModel_System_TimeControl; } set { _ViewModel_System_TimeControl = value; OnPropertyChanged("ViewModel_System_TimeControl"); } }
+        public ViewModel_System_TimeControl ViewModel_System_TimeControl { get { return _ViewModel_System_TimeControl; } set { if (_ViewModel_System_TimeControl != value) { _ViewModel_System_TimeControl = value; OnPropertyChanged("ViewModel_System_TimeControl"); } } }
 
         #region 좌측 메뉴 선택 속성
 

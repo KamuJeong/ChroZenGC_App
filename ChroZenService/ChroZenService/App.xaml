@@ -113,7 +113,7 @@
 
         <x:Double x:Key="HEIGHT_INLET_SETTING_GROUP_2ROW">96</x:Double>
         <x:Double x:Key="HEIGHT_INLET_SETTING_GROUP_1ROW">53</x:Double>
-        <x:Double x:Key="HEIGHT_INLET_SETTING_GROUP_5ROW">235</x:Double>
+        <x:Double x:Key="HEIGHT_INLET_SETTING_GROUP_5ROW">205</x:Double>
         <x:Double x:Key="HEIGHT_INLET_SETTING_GROUP_7ROW">291</x:Double>
 
         <x:Double x:Key="WIDTH_CONFIG_INLET_SETTING_COLUMN_TITLE">95</x:Double>
@@ -335,6 +335,13 @@
             <Setter Property="FontSize" Value="16"/>
             <!--<Setter Property="CornerRadius" Value="5"/>-->
             <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
+            <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
+        </Style>
+        <Style x:Key="STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
+            <Setter Property="FontSize" Value="16"/>
+            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            <Setter Property="Margin" Value="0,1,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>

@@ -15,7 +15,7 @@ namespace ChroZenService
     public partial class UC_MainPageButton : ContentView
     {
         MAIN_SIDE_BUTTON_TYPE _ButtonType = MAIN_SIDE_BUTTON_TYPE.DET;
-        public MAIN_SIDE_BUTTON_TYPE ButtonType { get { return _ButtonType; } set { _ButtonType = value; OnPropertyChanged("ButtonType"); } }
+        public MAIN_SIDE_BUTTON_TYPE ButtonType { get { return _ButtonType; } set { if (_ButtonType != value) { _ButtonType = value; OnPropertyChanged("ButtonType"); } } }
 
         public static readonly BindableProperty TapGestureCommandProperty = BindableProperty.Create("TapGestureCommand", typeof(RelayCommand), typeof(UC_MainPageButton),
             defaultBindingMode: BindingMode.OneWay,

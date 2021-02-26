@@ -28,7 +28,6 @@ namespace ChroZenService
         #region ImageMargin
 
         public static readonly BindableProperty ImageMarginProperty = BindableProperty.Create("ImageMargin", typeof(Thickness), typeof(UC_ON_OFF_Button),
-  propertyChanged: onImageMarginPropertyChanged,
   defaultValue: new Thickness(0, 0, 0, -6));
 
         public Thickness ImageMargin
@@ -37,33 +36,16 @@ namespace ChroZenService
             set { SetValue(ImageMarginProperty, value); }
         }
 
-        private static void onImageMarginPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            //if (newValue != null)
-            //{
-            //    (bindable as UC_TabHeaderImage).ImageMargin = (Thickness)newValue;
-            //}
-        }
-
         #endregion ImageMargin
 
         #region ButtonMargin
 
-        public static readonly BindableProperty ButtonMarginProperty = BindableProperty.Create("ButtonMargin", typeof(Thickness), typeof(UC_ON_OFF_Button),
-  propertyChanged: onButtonMarginPropertyChanged);
+        public static readonly BindableProperty ButtonMarginProperty = BindableProperty.Create("ButtonMargin", typeof(Thickness), typeof(UC_ON_OFF_Button));
 
         public Thickness ButtonMargin
         {
             get { return (Thickness)GetValue(ButtonMarginProperty); }
             set { SetValue(ButtonMarginProperty, value); }
-        }
-
-        private static void onButtonMarginPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            //if (newValue != null)
-            //{
-            //    (bindable as UC_TabHeaderButton).ButtonMargin = (Thickness)newValue;
-            //}
         }
 
         #endregion ButtonMargin

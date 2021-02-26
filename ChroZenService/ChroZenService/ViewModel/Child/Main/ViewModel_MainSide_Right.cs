@@ -19,19 +19,19 @@ namespace ChroZenService
         public string CenterType { get { return _CenterType; } set { if (_CenterType != value) { _CenterType = value; OnPropertyChanged("CenterType"); } } }
 
         string _BottomType;
-        public string BottomType { get { return _BottomType; } set { if (_BottomType != value) { _BottomType = value; OnPropertyChanged("BottomType"); } } }
+        public string BottomType { get { return _BottomType; } set { if (_BottomType != value) { _BottomType = value;OnPropertyChanged("BottomType"); } } }
 
         string _TopSignalStrength;
-        public string TopSignalStrength { get { return _TopSignalStrength; } set { if (_TopSignalStrength != value) { _TopSignalStrength = value; OnPropertyChanged("TopSignalStrength"); } } }
+        public string TopSignalStrength { get { return _TopSignalStrength; } set { if (_TopSignalStrength != value) { _TopSignalStrength = value;  OnPropertyChanged("TopSignalStrength"); } } }
 
         string _TopSignalUnit;
         public string TopSignalUnit { get { return _TopSignalUnit; } set { if (_TopSignalUnit != value) { _TopSignalUnit = value; OnPropertyChanged("TopSignalUnit"); } } }
 
         string _TopFlow1Name;
-        public string TopFlow1Name { get { return _TopFlow1Name; } set { if (_TopFlow1Name != value) { _TopFlow1Name = value; OnPropertyChanged("TopFlow1Name"); } } }
+        public string TopFlow1Name { get { return _TopFlow1Name; } set { if (_TopFlow1Name != value) { _TopFlow1Name = value;  OnPropertyChanged("TopFlow1Name"); } } }
 
         string _TopFlow2Name;
-        public string TopFlow2Name { get { return _TopFlow2Name; } set { if (_TopFlow2Name != value) { _TopFlow2Name = value; OnPropertyChanged("TopFlow2Name"); } } }
+        public string TopFlow2Name { get { return _TopFlow2Name; } set { if (_TopFlow2Name != value) { _TopFlow2Name = value;  OnPropertyChanged("TopFlow2Name"); } } }
 
         string _TopFlow3Name;
         public string TopFlow3Name { get { return _TopFlow3Name; } set { if (_TopFlow3Name != value) { _TopFlow3Name = value; OnPropertyChanged("TopFlow3Name"); } } }
@@ -55,16 +55,16 @@ namespace ChroZenService
         public bool TopIsFlow3Using { get { return _TopIsFlow3Using; } set { if (_TopIsFlow3Using != value) { _TopIsFlow3Using = value; OnPropertyChanged("TopIsFlow3Using"); } } }
 
         string _CenterSignalStrength;
-        public string CenterSignalStrength { get { return _CenterSignalStrength; } set { if (_CenterSignalStrength != value) { _CenterSignalStrength = value; OnPropertyChanged("CenterSignalStrength"); } } }
+        public string CenterSignalStrength { get { return _CenterSignalStrength; } set { if (_CenterSignalStrength != value) { _CenterSignalStrength = value;  OnPropertyChanged("CenterSignalStrength"); } } }
 
         string _CenterSignalUnit;
-        public string CenterSignalUnit { get { return _CenterSignalUnit; } set { if (_CenterSignalUnit != value) { _CenterSignalUnit = value; OnPropertyChanged("CenterSignalUnit"); } } }
+        public string CenterSignalUnit { get { return _CenterSignalUnit; } set { if (_CenterSignalUnit != value) { _CenterSignalUnit = value;  OnPropertyChanged("CenterSignalUnit"); } } }
 
         string _CenterFlow1Name;
-        public string CenterFlow1Name { get { return _CenterFlow1Name; } set { if (_CenterFlow1Name != value) { _CenterFlow1Name = value; OnPropertyChanged("CenterFlow1Name"); } } }
+        public string CenterFlow1Name { get { return _CenterFlow1Name; } set { if (_CenterFlow1Name != value) { _CenterFlow1Name = value;  OnPropertyChanged("CenterFlow1Name"); } } }
 
         string _CenterFlow2Name;
-        public string CenterFlow2Name { get { return _CenterFlow2Name; } set { if (_CenterFlow2Name != value) { _CenterFlow2Name = value; OnPropertyChanged("CenterFlow2Name"); } } }
+        public string CenterFlow2Name { get { return _CenterFlow2Name; } set { if (_CenterFlow2Name != value) { _CenterFlow2Name = value;  OnPropertyChanged("CenterFlow2Name"); } } }
 
         string _CenterFlow3Name;
         public string CenterFlow3Name { get { return _CenterFlow3Name; } set { if (_CenterFlow3Name != value) { _CenterFlow3Name = value; OnPropertyChanged("CenterFlow3Name"); } } }
@@ -112,13 +112,13 @@ namespace ChroZenService
         public string BottomFlow3Value { get { return _BottomFlow3Value; } set { if (_BottomFlow3Value != value) { _BottomFlow3Value = value; OnPropertyChanged("BottomFlow3Value"); } } }
 
         bool _BottomIsFlow1Using;
-        public bool BottomIsFlow1Using { get { return _BottomIsFlow1Using; } set { if (_BottomIsFlow1Using != value) { _BottomIsFlow1Using = value; OnPropertyChanged("BottomIsFlow1Using"); } } }
+        public bool BottomIsFlow1Using { get { return _BottomIsFlow1Using; } set { if (_BottomIsFlow1Using != value) { _BottomIsFlow1Using = value;  OnPropertyChanged("BottomIsFlow1Using"); } } }
 
         bool _BottomIsFlow2Using;
-        public bool BottomIsFlow2Using { get { return _BottomIsFlow2Using; } set { if (_BottomIsFlow2Using != value) { _BottomIsFlow2Using = value; OnPropertyChanged("BottomIsFlow2Using"); } } }
+        public bool BottomIsFlow2Using { get { return _BottomIsFlow2Using; } set { if (_BottomIsFlow2Using != value) { _BottomIsFlow2Using = value;  OnPropertyChanged("BottomIsFlow2Using"); } } }
 
         bool _BottomIsFlow3Using;
-        public bool BottomIsFlow3Using { get { return _BottomIsFlow3Using; } set { if (_BottomIsFlow3Using != value) { _BottomIsFlow3Using = value; OnPropertyChanged("BottomIsFlow3Using"); } } }
+        public bool BottomIsFlow3Using { get { return _BottomIsFlow3Using; } set { if (_BottomIsFlow3Using != value) { _BottomIsFlow3Using = value;  OnPropertyChanged("BottomIsFlow3Using"); } } }
 
         bool _IsTopAvailable;
         public bool IsTopAvailable
@@ -130,7 +130,7 @@ namespace ChroZenService
                 {
                     _IsTopAvailable = value;
                     if (value == true) SetElemntVisibility(MAIN_SIDE_ELEMENT_TYPE.TOP);
-                    OnPropertyChanged("IsTopAvailable");
+                        OnPropertyChanged("IsTopAvailable");
                 }
             }
         }
@@ -173,17 +173,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty TopHeightProperty =
         BindableProperty.Create("TopHeight", typeof(GridLength), typeof(ViewModel_MainSide_Right),
-            defaultValue: new GridLength(ChroZenService_Const.dMainPageEnabledSideInfoHeight),
-            propertyChanged: onTopHeightPropertyChanged
+            defaultValue: new GridLength(ChroZenService_Const.dMainPageEnabledSideInfoHeight)
             , defaultBindingMode: BindingMode.OneWay);
-
-        private static void onTopHeightPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainSide_Right).TopHeight = (GridLength)newValue;
-            }
-        }
 
         public GridLength TopHeight
         {
@@ -197,17 +188,9 @@ namespace ChroZenService
 
         public static readonly BindableProperty CenterHeightProperty =
         BindableProperty.Create("CenterHeight", typeof(GridLength), typeof(ViewModel_MainSide_Right),
-            defaultValue: new GridLength(0),
-            propertyChanged: onCenterHeightPropertyChanged
+            defaultValue: new GridLength(0)
             , defaultBindingMode: BindingMode.OneWay);
 
-        private static void onCenterHeightPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainSide_Right).CenterHeight = (GridLength)newValue;
-            }
-        }
 
         public GridLength CenterHeight
         {
@@ -221,17 +204,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty BottomHeightProperty =
         BindableProperty.Create("BottomHeight", typeof(GridLength), typeof(ViewModel_MainSide_Right),
-            defaultValue: new GridLength(0),
-            propertyChanged: onBottomHeightPropertyChanged
+            defaultValue: new GridLength(0)
             , defaultBindingMode: BindingMode.OneWay);
-
-        private static void onBottomHeightPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainSide_Right).BottomHeight = (GridLength)newValue;
-            }
-        }
 
         public GridLength BottomHeight
         {
@@ -245,18 +219,10 @@ namespace ChroZenService
 
         public static readonly BindableProperty IsTopVisibleProperty =
         BindableProperty.Create("IsTopVisible", typeof(bool), typeof(ViewModel_MainSide_Right),
-            defaultValue: true,
-            propertyChanged: onIsTopVisiblePropertyChanged
+            defaultValue: true
             , defaultBindingMode: BindingMode.TwoWay);
 
-        private static void onIsTopVisiblePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainSide_Right).IsTopVisible = (bool)newValue;
-            }
-        }
-
+     
         public bool IsTopVisible
         {
             get { return (bool)GetValue(IsTopVisibleProperty); }
@@ -269,17 +235,9 @@ namespace ChroZenService
 
         public static readonly BindableProperty IsCenterVisibleProperty =
         BindableProperty.Create("IsCenterVisible", typeof(bool), typeof(ViewModel_MainSide_Right),
-            defaultValue: false,
-            propertyChanged: onIsCenterVisiblePropertyChanged
+            defaultValue: false
             , defaultBindingMode: BindingMode.TwoWay);
 
-        private static void onIsCenterVisiblePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainSide_Right).IsCenterVisible = (bool)newValue;
-            }
-        }
 
         public bool IsCenterVisible
         {
@@ -293,18 +251,10 @@ namespace ChroZenService
 
         public static readonly BindableProperty IsBottomVisibleProperty =
         BindableProperty.Create("IsBottomVisible", typeof(bool), typeof(ViewModel_MainSide_Right),
-            defaultValue: false,
-            propertyChanged: onIsBottomVisiblePropertyChanged
+            defaultValue: false
             , defaultBindingMode: BindingMode.TwoWay);
 
-        private static void onIsBottomVisiblePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainSide_Right).IsBottomVisible = (bool)newValue;
-            }
-        }
-
+    
         public bool IsBottomVisible
         {
             get { return (bool)GetValue(IsBottomVisibleProperty); }

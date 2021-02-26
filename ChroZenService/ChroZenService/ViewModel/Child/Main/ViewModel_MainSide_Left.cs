@@ -47,10 +47,10 @@ namespace ChroZenService
 
         string _CenterApcMode;
         public string CenterApcMode { get { return _CenterApcMode; } set { if (_CenterApcMode != value) { _CenterApcMode = value; OnPropertyChanged("CenterApcMode"); } } }
-        
+
         string _BottomType;
         public string BottomType { get { return _BottomType; } set { if (_BottomType != value) { _BottomType = value; OnPropertyChanged("BottomType"); } } }
-             
+
         string _BottomFlow;
         public string BottomFlow { get { return _BottomFlow; } set { if (_BottomFlow != value) { _BottomFlow = value; OnPropertyChanged("BottomFlow"); } } }
 
@@ -65,16 +65,19 @@ namespace ChroZenService
 
         string _BottomApcMode;
         public string BottomApcMode { get { return _BottomApcMode; } set { if (_BottomApcMode != value) { _BottomApcMode = value; OnPropertyChanged("BottomApcMode"); } } }
-        
+
         bool _IsTopAvailable;
         public bool IsTopAvailable
         {
             get { return _IsTopAvailable; }
             set
             {
-                _IsTopAvailable = value;
-                if (value == true) SetElemntVisibility(MAIN_SIDE_ELEMENT_TYPE.TOP);
-                OnPropertyChanged("IsTopAvailable");
+                if (_IsTopAvailable != value)
+                {
+                    _IsTopAvailable = value;
+                    if (value == true) SetElemntVisibility(MAIN_SIDE_ELEMENT_TYPE.TOP);
+                    OnPropertyChanged("IsTopAvailable");
+                }
             }
         }
 
@@ -84,9 +87,12 @@ namespace ChroZenService
             get { return _IsCenterAvailable; }
             set
             {
-                _IsCenterAvailable = value;
-                if (value == true) SetElemntVisibility(MAIN_SIDE_ELEMENT_TYPE.CENTER);
-                OnPropertyChanged("IsCenterAvailable");
+                if (_IsCenterAvailable != value)
+                {
+                    _IsCenterAvailable = value;
+                    if (value == true) SetElemntVisibility(MAIN_SIDE_ELEMENT_TYPE.CENTER);
+                    OnPropertyChanged("IsCenterAvailable");
+                }
             }
         }
 
@@ -96,9 +102,12 @@ namespace ChroZenService
             get { return _IsBottomAvailable; }
             set
             {
-                _IsBottomAvailable = value;
-                if (value == true) SetElemntVisibility(MAIN_SIDE_ELEMENT_TYPE.BOTTOM);
-                OnPropertyChanged("IsBottomAvailable");
+                if (_IsBottomAvailable != value)
+                {
+                    _IsBottomAvailable = value;
+                    if (value == true) SetElemntVisibility(MAIN_SIDE_ELEMENT_TYPE.BOTTOM);
+                    OnPropertyChanged("IsBottomAvailable");
+                }
             }
         }
 
@@ -110,17 +119,9 @@ namespace ChroZenService
 
         public static readonly BindableProperty TopHeightProperty =
         BindableProperty.Create("TopHeight", typeof(GridLength), typeof(ViewModel_MainSide_Left),
-            defaultValue: new GridLength(ChroZenService_Const.dMainPageEnabledSideInfoHeight),
-            propertyChanged: onTopHeightPropertyChanged
+            defaultValue: new GridLength(ChroZenService_Const.dMainPageEnabledSideInfoHeight)
             , defaultBindingMode: BindingMode.OneWay);
 
-        private static void onTopHeightPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainSide_Left).TopHeight = (GridLength)newValue;
-            }
-        }
 
         public GridLength TopHeight
         {
@@ -134,17 +135,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty CenterHeightProperty =
         BindableProperty.Create("CenterHeight", typeof(GridLength), typeof(ViewModel_MainSide_Left),
-            defaultValue: new GridLength(0),
-            propertyChanged: onCenterHeightPropertyChanged
+            defaultValue: new GridLength(0)
             , defaultBindingMode: BindingMode.OneWay);
-
-        private static void onCenterHeightPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainSide_Left).CenterHeight = (GridLength)newValue;
-            }
-        }
 
         public GridLength CenterHeight
         {
@@ -158,17 +150,9 @@ namespace ChroZenService
 
         public static readonly BindableProperty BottomHeightProperty =
         BindableProperty.Create("BottomHeight", typeof(GridLength), typeof(ViewModel_MainSide_Left),
-            defaultValue: new GridLength(0),
-            propertyChanged: onBottomHeightPropertyChanged
+            defaultValue: new GridLength(0)
             , defaultBindingMode: BindingMode.OneWay);
 
-        private static void onBottomHeightPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainSide_Left).BottomHeight = (GridLength)newValue;
-            }
-        }
 
         public GridLength BottomHeight
         {
@@ -182,17 +166,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty IsTopVisibleProperty =
         BindableProperty.Create("IsTopVisible", typeof(bool), typeof(ViewModel_MainSide_Left),
-            defaultValue: true,
-            propertyChanged: onIsTopVisiblePropertyChanged
+            defaultValue: true
             , defaultBindingMode: BindingMode.TwoWay);
-
-        private static void onIsTopVisiblePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainSide_Left).IsTopVisible = (bool)newValue;
-            }
-        }
 
         public bool IsTopVisible
         {
@@ -206,17 +181,9 @@ namespace ChroZenService
 
         public static readonly BindableProperty IsCenterVisibleProperty =
         BindableProperty.Create("IsCenterVisible", typeof(bool), typeof(ViewModel_MainSide_Left),
-            defaultValue: false,
-            propertyChanged: onIsCenterVisiblePropertyChanged
+            defaultValue: false
             , defaultBindingMode: BindingMode.TwoWay);
 
-        private static void onIsCenterVisiblePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainSide_Left).IsCenterVisible = (bool)newValue;
-            }
-        }
 
         public bool IsCenterVisible
         {
@@ -230,17 +197,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty IsBottomVisibleProperty =
         BindableProperty.Create("IsBottomVisible", typeof(bool), typeof(ViewModel_MainSide_Left),
-            defaultValue: false,
-            propertyChanged: onIsBottomVisiblePropertyChanged
+            defaultValue: false
             , defaultBindingMode: BindingMode.TwoWay);
-
-        private static void onIsBottomVisiblePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as ViewModel_MainSide_Left).IsBottomVisible = (bool)newValue;
-            }
-        }
 
         public bool IsBottomVisible
         {

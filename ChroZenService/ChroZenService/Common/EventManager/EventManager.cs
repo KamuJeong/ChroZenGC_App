@@ -9,6 +9,18 @@ namespace ChroZenService
 {
     public static class EventManager
     {
+        #region ApcSetByInletConfig
+
+        public delegate void ApcSetByInletConfig(byte ApcMode, E_INLET_LOCATION e_INLET_LOCATION);
+        public static ApcSetByInletConfig onApcSetByInletConfig;
+        public static void ApcSetByInletConfigEvent(byte ApcMode, E_INLET_LOCATION e_INLET_LOCATION)
+        {
+            onApcSetByInletConfig?.Invoke(ApcMode, e_INLET_LOCATION);
+        }
+
+        #endregion ApcSetByInletConfig
+
+
 
         #region KeyPadOnOff
 
@@ -19,7 +31,7 @@ namespace ChroZenService
             onKeyPadRequest?.Invoke(viewModel_KeyPad);
         }
 
-        #endregion MainInitialized
+        #endregion KeyPadOnOff
 
         #region MainInitialized
 
@@ -66,11 +78,11 @@ namespace ChroZenService
         #endregion MethodUpdated
 
         #region PACKCODE receive
-        public delegate void PACKCODE_Receivce(E_PACKCODE e_LC_PACK_CODE,int nIndex);
+        public delegate void PACKCODE_Receivce(E_PACKCODE e_LC_PACK_CODE, int nIndex);
         public static PACKCODE_Receivce onPACKCODE_Receivce;
         public static void PACKCODE_ReceivceEvent(E_PACKCODE e_LC_PACK_CODE, int nIndex)
         {
-            onPACKCODE_Receivce?.Invoke(e_LC_PACK_CODE,nIndex);
+            onPACKCODE_Receivce?.Invoke(e_LC_PACK_CODE, nIndex);
         }
         #endregion PACKCODE receive
 
@@ -115,18 +127,18 @@ namespace ChroZenService
             onRawDataUpdated?.Invoke();
         }
 
-        public delegate void ChartDeltaChanged( double deltaX, float deltaY);
+        public delegate void ChartDeltaChanged(double deltaX, float deltaY);
         public static ChartDeltaChanged onChartDeltaChanged;
-        public static void ChartDeltaChangedEvent( double deltaX, float deltaY)
+        public static void ChartDeltaChangedEvent(double deltaX, float deltaY)
         {
-            onChartDeltaChanged?.Invoke( deltaX, deltaY);
+            onChartDeltaChanged?.Invoke(deltaX, deltaY);
         }
 
-        public delegate void ChartOffsetChanged( double deltaX, float deltaY);
+        public delegate void ChartOffsetChanged(double deltaX, float deltaY);
         public static ChartOffsetChanged onChartOffsetChanged;
-        public static void ChartOffsetChangedEvent( double deltaX, float deltaY)
+        public static void ChartOffsetChangedEvent(double deltaX, float deltaY)
         {
-            onChartOffsetChanged?.Invoke( deltaX, deltaY);
+            onChartOffsetChanged?.Invoke(deltaX, deltaY);
         }
 
         public delegate void InformDelivered();

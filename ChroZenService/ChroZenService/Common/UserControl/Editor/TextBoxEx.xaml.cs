@@ -13,15 +13,8 @@ namespace ChroZenService.Common.Controls
 	public partial class TextBoxEx : ContentView
 	{
         public static readonly BindableProperty TapGestureCommandProperty = BindableProperty.Create("TapGestureCommand", typeof(RelayCommand), typeof(UC_MainPageButton),
-            defaultBindingMode: BindingMode.OneWay,
-            propertyChanged: onTapGestureCommandChanged);
-
-        private static void onTapGestureCommandChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-                (bindable as UC_MainPageButton).TapGestureCommand = (newValue as RelayCommand);
-        }
-
+            defaultBindingMode: BindingMode.OneWay);
+        
         public RelayCommand TapGestureCommand
         {
             set

@@ -50,17 +50,9 @@ namespace ChroZenService
 
         public static readonly BindableProperty TitleProperty =
         BindableProperty.Create("Title", typeof(string), typeof(KeyPad),
-            defaultValue: "",
-            propertyChanged: onTitlePropertyChanged
+            defaultValue: ""
             , defaultBindingMode: BindingMode.TwoWay);
 
-        private static void onTitlePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as KeyPad).Title = (string)newValue;
-            }
-        }
 
         public string Title
         {
@@ -74,17 +66,8 @@ namespace ChroZenService
 
         public static readonly BindableProperty KeyPadTypeProperty =
         BindableProperty.Create("KeyPadType", typeof(E_KEYPAD_TYPE), typeof(KeyPad),
-            defaultValue: E_KEYPAD_TYPE.INT,
-            propertyChanged: onKeyPadTypePropertyChanged
+            defaultValue: E_KEYPAD_TYPE.INT
             , defaultBindingMode: BindingMode.TwoWay);
-
-        private static void onKeyPadTypePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as KeyPad).KeyPadType = (E_KEYPAD_TYPE)newValue;
-            }
-        }
 
         public E_KEYPAD_TYPE KeyPadType
         {
@@ -98,17 +81,9 @@ namespace ChroZenService
 
         public static readonly BindableProperty MaxValueProperty =
         BindableProperty.Create("MaxValue", typeof(double), typeof(KeyPad),
-            defaultValue: 0d,
-            propertyChanged: onMaxValuePropertyChanged
+            defaultValue: 0d
             , defaultBindingMode: BindingMode.TwoWay);
 
-        private static void onMaxValuePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as KeyPad).MaxValue = (double)newValue;
-            }
-        }
 
         public double MaxValue
         {
@@ -122,17 +97,9 @@ namespace ChroZenService
 
         public static readonly BindableProperty MinValueProperty =
         BindableProperty.Create("MinValue", typeof(double), typeof(KeyPad),
-            defaultValue: 0d,
-            propertyChanged: onMinValuePropertyChanged
+            defaultValue: 0d
             , defaultBindingMode: BindingMode.TwoWay);
 
-        private static void onMinValuePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as KeyPad).MinValue = (double)newValue;
-            }
-        }
 
         public double MinValue
         {

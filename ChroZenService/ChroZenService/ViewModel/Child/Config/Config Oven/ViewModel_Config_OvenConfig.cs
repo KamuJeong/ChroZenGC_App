@@ -51,25 +51,25 @@ namespace ChroZenService
         TCPManager tcpManager;
 
         float _fMaxTemp;
-        public float fMaxTemp { get { return _fMaxTemp; } set { _fMaxTemp = value; OnPropertyChanged("fMaxTemp"); } }
+        public float fMaxTemp { get { return _fMaxTemp; } set { if (_fMaxTemp != value) { _fMaxTemp = value; OnPropertyChanged("fMaxTemp"); } } }
 
         float _fEquibTime;
-        public float fEquibTime { get { return _fEquibTime; } set { _fEquibTime = value; OnPropertyChanged("fEquibTime"); } }
+        public float fEquibTime { get { return _fEquibTime; } set { if (_fEquibTime != value) { _fEquibTime = value; OnPropertyChanged("fEquibTime"); } } }
 
         bool _bAutoReadyrun;
-        public bool bAutoReadyrun { get { return _bAutoReadyrun; } set { _bAutoReadyrun = value; OnPropertyChanged("bAutoReadyrun"); } }
+        public bool bAutoReadyrun { get { return _bAutoReadyrun; } set { if (_bAutoReadyrun != value) { _bAutoReadyrun = value; OnPropertyChanged("bAutoReadyrun"); } } }
 
         bool _bCryogenic;
-        public bool bCryogenic { get { return _bCryogenic; } set { _bCryogenic = value; OnPropertyChanged("bCryogenic"); } }
+        public bool bCryogenic { get { return _bCryogenic; } set { if (_bCryogenic != value) { _bCryogenic = value; OnPropertyChanged("bCryogenic"); } } }
 
         bool _bFastCryo;
-        public bool bFastCryo { get { return _bFastCryo; } set { _bFastCryo = value; OnPropertyChanged("bFastCryo"); } }
+        public bool bFastCryo { get { return _bFastCryo; } set { if (_bFastCryo != value) { _bFastCryo = value; OnPropertyChanged("bFastCryo"); } } }
 
         ViewModel_Config_OvenConfig_Runstart _runstart = new ViewModel_Config_OvenConfig_Runstart();
-        public ViewModel_Config_OvenConfig_Runstart runstart { get { return _runstart; } set { _runstart = value; OnPropertyChanged("runstart"); } }
+        public ViewModel_Config_OvenConfig_Runstart runstart { get { return _runstart; } set { if (_runstart != value) { _runstart = value; OnPropertyChanged("runstart"); } } }
 
         ViewModel_Cofig_OvenConfig_Postrun _Postrun = new ViewModel_Cofig_OvenConfig_Postrun();
-        public ViewModel_Cofig_OvenConfig_Postrun Postrun { get { return _Postrun; } set { _Postrun = value; OnPropertyChanged("Postrun"); } }
+        public ViewModel_Cofig_OvenConfig_Postrun Postrun { get { return _Postrun; } set { if (_Postrun != value) { _Postrun = value; OnPropertyChanged("Postrun"); } } }
 
 
         #endregion Property

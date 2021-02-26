@@ -16,21 +16,12 @@ namespace ChroZenService
 
         #region ButtonWidth
 
-        public static readonly BindableProperty ButtonWidthProperty = BindableProperty.Create("ButtonWidth", typeof(double), typeof(UC_TabHeaderButton),
-  propertyChanged: onButtonWidthPropertyChanged);
+        public static readonly BindableProperty ButtonWidthProperty = BindableProperty.Create("ButtonWidth", typeof(double), typeof(UC_TabHeaderButton));
 
         public double ButtonWidth
         {
             get { return (double)GetValue(ButtonWidthProperty); }
             set { SetValue(ButtonWidthProperty, value); }
-        }
-
-        private static void onButtonWidthPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as UC_TabHeaderButton).ButtonWidth = (double)newValue;
-            }
         }
 
         #endregion ButtonWidth
@@ -58,29 +49,18 @@ namespace ChroZenService
 
         #region ButtonMargin
 
-        public static readonly BindableProperty ButtonMarginProperty = BindableProperty.Create("ButtonMargin", typeof(Thickness), typeof(UC_TabHeaderButton),
-  propertyChanged: onButtonMarginPropertyChanged);
+        public static readonly BindableProperty ButtonMarginProperty = BindableProperty.Create("ButtonMargin", typeof(Thickness), typeof(UC_TabHeaderButton));
 
         public Thickness ButtonMargin
         {
             get { return (Thickness)GetValue(ButtonMarginProperty); }
             set { SetValue(ButtonMarginProperty, value); }
         }
-
-        private static void onButtonMarginPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as UC_TabHeaderButton).ButtonMargin = (Thickness)newValue;
-            }
-        }
-
         #endregion ButtonMargin
 
         #region ButtonPadding
 
-        public static readonly BindableProperty ButtonPaddingProperty = BindableProperty.Create("ButtonPadding", typeof(Thickness), typeof(UC_TabHeaderButton),
-  propertyChanged: onButtonPaddingPropertyChanged);
+        public static readonly BindableProperty ButtonPaddingProperty = BindableProperty.Create("ButtonPadding", typeof(Thickness), typeof(UC_TabHeaderButton));
 
         public Thickness ButtonPadding
         {
@@ -88,35 +68,17 @@ namespace ChroZenService
             set { SetValue(ButtonPaddingProperty, value); }
         }
 
-        private static void onButtonPaddingPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as UC_TabHeaderButton).ButtonPadding = (Thickness)newValue;
-            }
-        }
-
         #endregion ButtonPadding
 
         #region CornerRadius
 
-        public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create("CornerRadius", typeof(double), typeof(UC_TabHeaderButton),
-          propertyChanged: onCornerRadiusPropertyChanged);
+        public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create("CornerRadius", typeof(double), typeof(UC_TabHeaderButton));
 
         public double CornerRadius
         {
             get { return (double)GetValue(CornerRadiusProperty); }
             set { SetValue(CornerRadiusProperty, value); }
         }
-
-        private static void onCornerRadiusPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (newValue != null)
-            {
-                (bindable as UC_TabHeaderButton).CornerRadius = (double)newValue;
-            }
-        }
-
         #endregion CornerRadius
 
         #region InnerItemSelected

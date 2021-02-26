@@ -51,382 +51,382 @@ namespace ChroZenService
         #region TimeControl Table
 
         DateTime _dtDate_1;
-        public DateTime dtDate_1 { get { return _dtDate_1; } set { _dtDate_1 = value; OnPropertyChanged("dtDate_1"); } }
+        public DateTime dtDate_1 { get { return _dtDate_1; } set { if (_dtDate_1 != value) { _dtDate_1 = value; OnPropertyChanged("dtDate_1"); } } }
 
         TimeSpan _dtTime_1;
-        public TimeSpan dtTime_1 { get { return _dtTime_1; } set { _dtTime_1 = value; OnPropertyChanged("dtTime_1"); } }
+        public TimeSpan dtTime_1 { get { return _dtTime_1; } set { if (_dtTime_1 != value) { _dtTime_1 = value; OnPropertyChanged("dtTime_1"); } } }
 
         byte _btFunction_1;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_1 { get { return _btFunction_1; } set { _btFunction_1 = value; OnPropertyChanged("btFunction_1"); } }
+        public byte btFunction_1 { get { return _btFunction_1; } set { if (_btFunction_1 != value) { _btFunction_1 = value; OnPropertyChanged("btFunction_1"); } } }
 
         float _fValue_1;
-        public float fValue_1 { get { return _fValue_1; } set { _fValue_1 = value; OnPropertyChanged("fValue_1"); } }
+        public float fValue_1 { get { return _fValue_1; } set { if (_fValue_1 != value) { _fValue_1 = value; OnPropertyChanged("fValue_1"); } } }
 
         int _nIndex_1 = 1;
-        public int nIndex_1 { get { return _nIndex_1; } set { _nIndex_1 = value; OnPropertyChanged("nIndex_1"); } }
+        public int nIndex_1 { get { return _nIndex_1; } set { if (_nIndex_1 != value) { _nIndex_1 = value; OnPropertyChanged("nIndex_1"); } } }
 
         DateTime _dtDate_2;
-        public DateTime dtDate_2 { get { return _dtDate_2; } set { _dtDate_2 = value; OnPropertyChanged("dtDate_2"); } }
+        public DateTime dtDate_2 { get { return _dtDate_2; } set { if (_dtDate_2 != value) { _dtDate_2 = value; OnPropertyChanged("dtDate_2"); } } }
 
         TimeSpan _dtTime_2;
-        public TimeSpan dtTime_2 { get { return _dtTime_2; } set { _dtTime_2 = value; OnPropertyChanged("dtTime_2"); } }
+        public TimeSpan dtTime_2 { get { return _dtTime_2; } set { if (_dtTime_2 != value) { _dtTime_2 = value; OnPropertyChanged("dtTime_2"); } } }
 
         byte _btFunction_2;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_2 { get { return _btFunction_2; } set { _btFunction_2 = value; OnPropertyChanged("btFunction_2"); } }
+        public byte btFunction_2 { get { return _btFunction_2; } set { if (_btFunction_2 != value) { _btFunction_2 = value; OnPropertyChanged("btFunction_2"); } } }
 
         float _fValue_2;
-        public float fValue_2 { get { return _fValue_2; } set { _fValue_2 = value; OnPropertyChanged("fValue_2"); } }
+        public float fValue_2 { get { return _fValue_2; } set { if (_fValue_2 != value) { _fValue_2 = value; OnPropertyChanged("fValue_2"); } } }
 
         int _nIndex_2 = 2;
-        public int nIndex_2 { get { return _nIndex_2; } set { _nIndex_2 = value; OnPropertyChanged("nIndex_2"); } }
+        public int nIndex_2 { get { return _nIndex_2; } set { if (_nIndex_2 != value) { _nIndex_2 = value; OnPropertyChanged("nIndex_2"); } } }
 
 
         DateTime _dtDate_3;
-        public DateTime dtDate_3 { get { return _dtDate_3; } set { _dtDate_3 = value; OnPropertyChanged("dtDate_3"); } }
+        public DateTime dtDate_3 { get { return _dtDate_3; } set { if (_dtDate_3 != value) { _dtDate_3 = value; OnPropertyChanged("dtDate_3"); } } }
 
         TimeSpan _dtTime_3;
-        public TimeSpan dtTime_3 { get { return _dtTime_3; } set { _dtTime_3 = value; OnPropertyChanged("dtTime_3"); } }
+        public TimeSpan dtTime_3 { get { return _dtTime_3; } set { if (_dtTime_3 != value) { _dtTime_3 = value; OnPropertyChanged("dtTime_3"); } } }
 
         byte _btFunction_3;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_3 { get { return _btFunction_3; } set { _btFunction_3 = value; OnPropertyChanged("btFunction_3"); } }
+        public byte btFunction_3 { get { return _btFunction_3; } set { if (_btFunction_3 != value) { _btFunction_3 = value; OnPropertyChanged("btFunction_3"); } } }
 
         float _fValue_3;
-        public float fValue_3 { get { return _fValue_3; } set { _fValue_3 = value; OnPropertyChanged("fValue_3"); } }
+        public float fValue_3 { get { return _fValue_3; } set { if (_fValue_3 != value) { _fValue_3 = value; OnPropertyChanged("fValue_3"); } } }
 
         int _nIndex_3 = 3;
-        public int nIndex_3 { get { return _nIndex_3; } set { _nIndex_3 = value; OnPropertyChanged("nIndex_3"); } }
+        public int nIndex_3 { get { return _nIndex_3; } set { if (_nIndex_3 != value) { _nIndex_3 = value; OnPropertyChanged("nIndex_3"); } } }
 
 
         DateTime _dtDate_4;
-        public DateTime dtDate_4 { get { return _dtDate_4; } set { _dtDate_4 = value; OnPropertyChanged("dtDate_4"); } }
+        public DateTime dtDate_4 { get { return _dtDate_4; } set { if (_dtDate_4 != value) { _dtDate_4 = value; OnPropertyChanged("dtDate_4"); } } }
 
         TimeSpan _dtTime_4;
-        public TimeSpan dtTime_4 { get { return _dtTime_4; } set { _dtTime_4 = value; OnPropertyChanged("dtTime_4"); } }
+        public TimeSpan dtTime_4 { get { return _dtTime_4; } set { if (_dtTime_4 != value) { _dtTime_4 = value; OnPropertyChanged("dtTime_4"); } } }
 
         byte _btFunction_4;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_4 { get { return _btFunction_4; } set { _btFunction_4 = value; OnPropertyChanged("btFunction_4"); } }
+        public byte btFunction_4 { get { return _btFunction_4; } set { if (_btFunction_4 != value) { _btFunction_4 = value; OnPropertyChanged("btFunction_4"); } } }
 
         float _fValue_4;
-        public float fValue_4 { get { return _fValue_4; } set { _fValue_4 = value; OnPropertyChanged("fValue_4"); } }
+        public float fValue_4 { get { return _fValue_4; } set { if (_fValue_4 != value) { _fValue_4 = value; OnPropertyChanged("fValue_4"); } } }
 
         int _nIndex_4 = 4;
-        public int nIndex_4 { get { return _nIndex_4; } set { _nIndex_4 = value; OnPropertyChanged("nIndex_4"); } }
+        public int nIndex_4 { get { return _nIndex_4; } set { if (_nIndex_4 != value) { _nIndex_4 = value; OnPropertyChanged("nIndex_4"); } } }
 
 
         DateTime _dtDate_5;
-        public DateTime dtDate_5 { get { return _dtDate_5; } set { _dtDate_5 = value; OnPropertyChanged("dtDate_5"); } }
+        public DateTime dtDate_5 { get { return _dtDate_5; } set { if (_dtDate_5 != value) { _dtDate_5 = value; OnPropertyChanged("dtDate_5"); } } }
 
         TimeSpan _dtTime_5;
-        public TimeSpan dtTime_5 { get { return _dtTime_5; } set { _dtTime_5 = value; OnPropertyChanged("dtTime_5"); } }
+        public TimeSpan dtTime_5 { get { return _dtTime_5; } set { if (_dtTime_5 != value) { _dtTime_5 = value; OnPropertyChanged("dtTime_5"); } } }
 
         byte _btFunction_5;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_5 { get { return _btFunction_5; } set { _btFunction_5 = value; OnPropertyChanged("btFunction_5"); } }
+        public byte btFunction_5 { get { return _btFunction_5; } set { if (_btFunction_5 != value) { _btFunction_5 = value; OnPropertyChanged("btFunction_5"); } } }
 
         float _fValue_5;
-        public float fValue_5 { get { return _fValue_5; } set { _fValue_5 = value; OnPropertyChanged("fValue_5"); } }
+        public float fValue_5 { get { return _fValue_5; } set { if (_fValue_5 != value) { _fValue_5 = value; OnPropertyChanged("fValue_5"); } } }
 
         int _nIndex_5 = 5;
-        public int nIndex_5 { get { return _nIndex_5; } set { _nIndex_5 = value; OnPropertyChanged("nIndex_5"); } }
+        public int nIndex_5 { get { return _nIndex_5; } set { if (_nIndex_5 != value) { _nIndex_5 = value; OnPropertyChanged("nIndex_5"); } } }
 
 
         DateTime _dtDate_6;
-        public DateTime dtDate_6 { get { return _dtDate_6; } set { _dtDate_6 = value; OnPropertyChanged("dtDate_6"); } }
+        public DateTime dtDate_6 { get { return _dtDate_6; } set { if (_dtDate_6 != value) { _dtDate_6 = value; OnPropertyChanged("dtDate_6"); } } }
 
         TimeSpan _dtTime_6;
-        public TimeSpan dtTime_6 { get { return _dtTime_6; } set { _dtTime_6 = value; OnPropertyChanged("dtTime_6"); } }
+        public TimeSpan dtTime_6 { get { return _dtTime_6; } set { if (_dtTime_6 != value) { _dtTime_6 = value; OnPropertyChanged("dtTime_6"); } } }
 
         byte _btFunction_6;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_6 { get { return _btFunction_6; } set { _btFunction_6 = value; OnPropertyChanged("btFunction_6"); } }
+        public byte btFunction_6 { get { return _btFunction_6; } set { if (_btFunction_6 != value) { _btFunction_6 = value; OnPropertyChanged("btFunction_6"); } } }
 
         float _fValue_6;
-        public float fValue_6 { get { return _fValue_6; } set { _fValue_6 = value; OnPropertyChanged("fValue_6"); } }
+        public float fValue_6 { get { return _fValue_6; } set { if (_fValue_6 != value) { _fValue_6 = value; OnPropertyChanged("fValue_6"); } } }
 
         int _nIndex_6 = 6;
-        public int nIndex_6 { get { return _nIndex_6; } set { _nIndex_6 = value; OnPropertyChanged("nIndex_6"); } }
+        public int nIndex_6 { get { return _nIndex_6; } set { if (_nIndex_6 != value) { _nIndex_6 = value; OnPropertyChanged("nIndex_6"); } } }
 
 
         DateTime _dtDate_7;
-        public DateTime dtDate_7 { get { return _dtDate_7; } set { _dtDate_7 = value; OnPropertyChanged("dtDate_7"); } }
+        public DateTime dtDate_7 { get { return _dtDate_7; } set { if (_dtDate_7 != value) { _dtDate_7 = value; OnPropertyChanged("dtDate_7"); } } }
 
         TimeSpan _dtTime_7;
-        public TimeSpan dtTime_7 { get { return _dtTime_7; } set { _dtTime_7 = value; OnPropertyChanged("dtTime_7"); } }
+        public TimeSpan dtTime_7 { get { return _dtTime_7; } set { if (_dtTime_7 != value) { _dtTime_7 = value; OnPropertyChanged("dtTime_7"); } } }
 
         byte _btFunction_7;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_7 { get { return _btFunction_7; } set { _btFunction_7 = value; OnPropertyChanged("btFunction_7"); } }
+        public byte btFunction_7 { get { return _btFunction_7; } set { if (_btFunction_7 != value) { _btFunction_7 = value; OnPropertyChanged("btFunction_7"); } } }
 
         float _fValue_7;
-        public float fValue_7 { get { return _fValue_7; } set { _fValue_7 = value; OnPropertyChanged("fValue_7"); } }
+        public float fValue_7 { get { return _fValue_7; } set { if (_fValue_7 != value) { _fValue_7 = value; OnPropertyChanged("fValue_7"); } } }
 
         int _nIndex_7 = 7;
-        public int nIndex_7 { get { return _nIndex_7; } set { _nIndex_7 = value; OnPropertyChanged("nIndex_7"); } }
+        public int nIndex_7 { get { return _nIndex_7; } set { if (_nIndex_7 != value) { _nIndex_7 = value; OnPropertyChanged("nIndex_7"); } } }
 
 
         DateTime _dtDate_8;
-        public DateTime dtDate_8 { get { return _dtDate_8; } set { _dtDate_8 = value; OnPropertyChanged("dtDate_8"); } }
+        public DateTime dtDate_8 { get { return _dtDate_8; } set { if (_dtDate_8 != value) { _dtDate_8 = value; OnPropertyChanged("dtDate_8"); } } }
 
         TimeSpan _dtTime_8;
-        public TimeSpan dtTime_8 { get { return _dtTime_8; } set { _dtTime_8 = value; OnPropertyChanged("dtTime_8"); } }
+        public TimeSpan dtTime_8 { get { return _dtTime_8; } set { if (_dtTime_8 != value) { _dtTime_8 = value; OnPropertyChanged("dtTime_8"); } } }
 
         byte _btFunction_8;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_8 { get { return _btFunction_8; } set { _btFunction_8 = value; OnPropertyChanged("btFunction_8"); } }
+        public byte btFunction_8 { get { return _btFunction_8; } set { if (_btFunction_8 != value) { _btFunction_8 = value; OnPropertyChanged("btFunction_8"); } } }
 
         float _fValue_8;
-        public float fValue_8 { get { return _fValue_8; } set { _fValue_8 = value; OnPropertyChanged("fValue_8"); } }
+        public float fValue_8 { get { return _fValue_8; } set { if (_fValue_8 != value) { _fValue_8 = value; OnPropertyChanged("fValue_8"); } } }
 
         int _nIndex_8 = 8;
-        public int nIndex_8 { get { return _nIndex_8; } set { _nIndex_8 = value; OnPropertyChanged("nIndex_8"); } }
+        public int nIndex_8 { get { return _nIndex_8; } set { if (_nIndex_8 != value) { _nIndex_8 = value; OnPropertyChanged("nIndex_8"); } } }
 
 
         DateTime _dtDate_9;
-        public DateTime dtDate_9 { get { return _dtDate_9; } set { _dtDate_9 = value; OnPropertyChanged("dtDate_9"); } }
+        public DateTime dtDate_9 { get { return _dtDate_9; } set { if (_dtDate_9 != value) { _dtDate_9 = value; OnPropertyChanged("dtDate_9"); } } }
 
         TimeSpan _dtTime_9;
-        public TimeSpan dtTime_9 { get { return _dtTime_9; } set { _dtTime_9 = value; OnPropertyChanged("dtTime_9"); } }
+        public TimeSpan dtTime_9 { get { return _dtTime_9; } set { if (_dtTime_9 != value) { _dtTime_9 = value; OnPropertyChanged("dtTime_9"); } } }
 
         byte _btFunction_9;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_9 { get { return _btFunction_9; } set { _btFunction_9 = value; OnPropertyChanged("btFunction_9"); } }
+        public byte btFunction_9 { get { return _btFunction_9; } set { if (_btFunction_9 != value) { _btFunction_9 = value; OnPropertyChanged("btFunction_9"); } } }
 
         float _fValue_9;
-        public float fValue_9 { get { return _fValue_9; } set { _fValue_9 = value; OnPropertyChanged("fValue_9"); } }
+        public float fValue_9 { get { return _fValue_9; } set { if (_fValue_9 != value) { _fValue_9 = value; OnPropertyChanged("fValue_9"); } } }
 
         int _nIndex_9 = 9;
-        public int nIndex_9 { get { return _nIndex_9; } set { _nIndex_9 = value; OnPropertyChanged("nIndex_9"); } }
+        public int nIndex_9 { get { return _nIndex_9; } set { if (_nIndex_9 != value) { _nIndex_9 = value; OnPropertyChanged("nIndex_9"); } } }
 
 
         DateTime _dtDate_10;
-        public DateTime dtDate_10 { get { return _dtDate_10; } set { _dtDate_10 = value; OnPropertyChanged("dtDate_10"); } }
+        public DateTime dtDate_10 { get { return _dtDate_10; } set { if (_dtDate_10 != value) { _dtDate_10 = value; OnPropertyChanged("dtDate_10"); } } }
 
         TimeSpan _dtTime_10;
-        public TimeSpan dtTime_10 { get { return _dtTime_10; } set { _dtTime_10 = value; OnPropertyChanged("dtTime_10"); } }
+        public TimeSpan dtTime_10 { get { return _dtTime_10; } set { if (_dtTime_10 != value) { _dtTime_10 = value; OnPropertyChanged("dtTime_10"); } } }
 
         byte _btFunction_10;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_10 { get { return _btFunction_10; } set { _btFunction_10 = value; OnPropertyChanged("btFunction_10"); } }
+        public byte btFunction_10 { get { return _btFunction_10; } set { if (_btFunction_10 != value) { _btFunction_10 = value; OnPropertyChanged("btFunction_10"); } } }
 
         float _fValue_10;
-        public float fValue_10 { get { return _fValue_10; } set { _fValue_10 = value; OnPropertyChanged("fValue_10"); } }
+        public float fValue_10 { get { return _fValue_10; } set { if (_fValue_10 != value) { _fValue_10 = value; OnPropertyChanged("fValue_10"); } } }
 
         int _nIndex_10 = 10;
-        public int nIndex_10 { get { return _nIndex_10; } set { _nIndex_10 = value; OnPropertyChanged("nIndex_10"); } }
+        public int nIndex_10 { get { return _nIndex_10; } set { if (_nIndex_10 != value) { _nIndex_10 = value; OnPropertyChanged("nIndex_10"); } } }
 
 
         DateTime _dtDate_11;
-        public DateTime dtDate_11 { get { return _dtDate_11; } set { _dtDate_11 = value; OnPropertyChanged("dtDate_11"); } }
+        public DateTime dtDate_11 { get { return _dtDate_11; } set { if (_dtDate_11 != value) { _dtDate_11 = value; OnPropertyChanged("dtDate_11"); } } }
 
         TimeSpan _dtTime_11;
-        public TimeSpan dtTime_11 { get { return _dtTime_11; } set { _dtTime_11 = value; OnPropertyChanged("dtTime_11"); } }
+        public TimeSpan dtTime_11 { get { return _dtTime_11; } set { if (_dtTime_11 != value) { _dtTime_11 = value; OnPropertyChanged("dtTime_11"); } } }
 
         byte _btFunction_11;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_11 { get { return _btFunction_11; } set { _btFunction_11 = value; OnPropertyChanged("btFunction_11"); } }
+        public byte btFunction_11 { get { return _btFunction_11; } set { if (_btFunction_11 != value) { _btFunction_11 = value; OnPropertyChanged("btFunction_11"); } } }
 
         float _fValue_11;
-        public float fValue_11 { get { return _fValue_11; } set { _fValue_11 = value; OnPropertyChanged("fValue_11"); } }
+        public float fValue_11 { get { return _fValue_11; } set { if (_fValue_11 != value) { _fValue_11 = value; OnPropertyChanged("fValue_11"); } } }
 
         int _nIndex_11 = 11;
-        public int nIndex_11 { get { return _nIndex_11; } set { _nIndex_11 = value; OnPropertyChanged("nIndex_11"); } }
+        public int nIndex_11 { get { return _nIndex_11; } set { if (_nIndex_11 != value) { _nIndex_11 = value; OnPropertyChanged("nIndex_11"); } } }
 
 
         DateTime _dtDate_12;
-        public DateTime dtDate_12 { get { return _dtDate_12; } set { _dtDate_12 = value; OnPropertyChanged("dtDate_12"); } }
+        public DateTime dtDate_12 { get { return _dtDate_12; } set { if (_dtDate_12 != value) { _dtDate_12 = value; OnPropertyChanged("dtDate_12"); } } }
 
         TimeSpan _dtTime_12;
-        public TimeSpan dtTime_12 { get { return _dtTime_12; } set { _dtTime_12 = value; OnPropertyChanged("dtTime_12"); } }
+        public TimeSpan dtTime_12 { get { return _dtTime_12; } set { if (_dtTime_12 != value) { _dtTime_12 = value; OnPropertyChanged("dtTime_12"); } } }
 
         byte _btFunction_12;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_12 { get { return _btFunction_12; } set { _btFunction_12 = value; OnPropertyChanged("btFunction_12"); } }
+        public byte btFunction_12 { get { return _btFunction_12; } set { if (_btFunction_12 != value) { _btFunction_12 = value; OnPropertyChanged("btFunction_12"); } } }
 
         float _fValue_12;
-        public float fValue_12 { get { return _fValue_12; } set { _fValue_12 = value; OnPropertyChanged("fValue_12"); } }
+        public float fValue_12 { get { return _fValue_12; } set { if (_fValue_12 != value) { _fValue_12 = value; OnPropertyChanged("fValue_12"); } } }
 
         int _nIndex_12 = 12;
-        public int nIndex_12 { get { return _nIndex_12; } set { _nIndex_12 = value; OnPropertyChanged("nIndex_12"); } }
+        public int nIndex_12 { get { return _nIndex_12; } set { if (_nIndex_12 != value) { _nIndex_12 = value; OnPropertyChanged("nIndex_12"); } } }
 
 
         DateTime _dtDate_13;
-        public DateTime dtDate_13 { get { return _dtDate_13; } set { _dtDate_13 = value; OnPropertyChanged("dtDate_13"); } }
+        public DateTime dtDate_13 { get { return _dtDate_13; } set { if (_dtDate_13 != value) { _dtDate_13 = value; OnPropertyChanged("dtDate_13"); } } }
 
         TimeSpan _dtTime_13;
-        public TimeSpan dtTime_13 { get { return _dtTime_13; } set { _dtTime_13 = value; OnPropertyChanged("dtTime_13"); } }
+        public TimeSpan dtTime_13 { get { return _dtTime_13; } set { if (_dtTime_13 != value) { _dtTime_13 = value; OnPropertyChanged("dtTime_13"); } } }
 
         byte _btFunction_13;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_13 { get { return _btFunction_13; } set { _btFunction_13 = value; OnPropertyChanged("btFunction_13"); } }
+        public byte btFunction_13 { get { return _btFunction_13; } set { if (_btFunction_13 != value) { _btFunction_13 = value; OnPropertyChanged("btFunction_13"); } } }
 
         float _fValue_13;
-        public float fValue_13 { get { return _fValue_13; } set { _fValue_13 = value; OnPropertyChanged("fValue_13"); } }
+        public float fValue_13 { get { return _fValue_13; } set { if (_fValue_13 != value) { _fValue_13 = value; OnPropertyChanged("fValue_13"); } } }
 
         int _nIndex_13 = 13;
-        public int nIndex_13 { get { return _nIndex_13; } set { _nIndex_13 = value; OnPropertyChanged("nIndex_13"); } }
+        public int nIndex_13 { get { return _nIndex_13; } set { if (_nIndex_13 != value) { _nIndex_13 = value; OnPropertyChanged("nIndex_13"); } } }
 
 
         DateTime _dtDate_14;
-        public DateTime dtDate_14 { get { return _dtDate_14; } set { _dtDate_14 = value; OnPropertyChanged("dtDate_14"); } }
+        public DateTime dtDate_14 { get { return _dtDate_14; } set { if (_dtDate_14 != value) { _dtDate_14 = value; OnPropertyChanged("dtDate_14"); } } }
 
         TimeSpan _dtTime_14;
-        public TimeSpan dtTime_14 { get { return _dtTime_14; } set { _dtTime_14 = value; OnPropertyChanged("dtTime_14"); } }
+        public TimeSpan dtTime_14 { get { return _dtTime_14; } set { if (_dtTime_14 != value) { _dtTime_14 = value; OnPropertyChanged("dtTime_14"); } } }
 
         byte _btFunction_14;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_14 { get { return _btFunction_14; } set { _btFunction_14 = value; OnPropertyChanged("btFunction_14"); } }
+        public byte btFunction_14 { get { return _btFunction_14; } set { if (_btFunction_14 != value) { _btFunction_14 = value; OnPropertyChanged("btFunction_14"); } } }
 
         float _fValue_14;
-        public float fValue_14 { get { return _fValue_14; } set { _fValue_14 = value; OnPropertyChanged("fValue_14"); } }
+        public float fValue_14 { get { return _fValue_14; } set { if (_fValue_14 != value) { _fValue_14 = value; OnPropertyChanged("fValue_14"); } } }
 
         int _nIndex_14 = 14;
-        public int nIndex_14 { get { return _nIndex_14; } set { _nIndex_14 = value; OnPropertyChanged("nIndex_14"); } }
+        public int nIndex_14 { get { return _nIndex_14; } set { if (_nIndex_14 != value) { _nIndex_14 = value; OnPropertyChanged("nIndex_14"); } } }
 
 
         DateTime _dtDate_15;
-        public DateTime dtDate_15 { get { return _dtDate_15; } set { _dtDate_15 = value; OnPropertyChanged("dtDate_15"); } }
+        public DateTime dtDate_15 { get { return _dtDate_15; } set { if (_dtDate_15 != value) { _dtDate_15 = value; OnPropertyChanged("dtDate_15"); } } }
 
         TimeSpan _dtTime_15;
-        public TimeSpan dtTime_15 { get { return _dtTime_15; } set { _dtTime_15 = value; OnPropertyChanged("dtTime_15"); } }
+        public TimeSpan dtTime_15 { get { return _dtTime_15; } set { if (_dtTime_15 != value) { _dtTime_15 = value; OnPropertyChanged("dtTime_15"); } } }
 
         byte _btFunction_15;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_15 { get { return _btFunction_15; } set { _btFunction_15 = value; OnPropertyChanged("btFunction_15"); } }
+        public byte btFunction_15 { get { return _btFunction_15; } set { if (_btFunction_15 != value) { _btFunction_15 = value; OnPropertyChanged("btFunction_15"); } } }
 
         float _fValue_15;
-        public float fValue_15 { get { return _fValue_15; } set { _fValue_15 = value; OnPropertyChanged("fValue_15"); } }
+        public float fValue_15 { get { return _fValue_15; } set { if (_fValue_15 != value) { _fValue_15 = value; OnPropertyChanged("fValue_15"); } } }
 
         int _nIndex_15 = 15;
-        public int nIndex_15 { get { return _nIndex_15; } set { _nIndex_15 = value; OnPropertyChanged("nIndex_15"); } }
+        public int nIndex_15 { get { return _nIndex_15; } set { if (_nIndex_15 != value) { _nIndex_15 = value; OnPropertyChanged("nIndex_15"); } } }
 
 
         DateTime _dtDate_16;
-        public DateTime dtDate_16 { get { return _dtDate_16; } set { _dtDate_16 = value; OnPropertyChanged("dtDate_16"); } }
+        public DateTime dtDate_16 { get { return _dtDate_16; } set { if (_dtDate_16 != value) { _dtDate_16 = value; OnPropertyChanged("dtDate_16"); } } }
 
         TimeSpan _dtTime_16;
-        public TimeSpan dtTime_16 { get { return _dtTime_16; } set { _dtTime_16 = value; OnPropertyChanged("dtTime_16"); } }
+        public TimeSpan dtTime_16 { get { return _dtTime_16; } set { if (_dtTime_16 != value) { _dtTime_16 = value; OnPropertyChanged("dtTime_16"); } } }
 
         byte _btFunction_16;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_16 { get { return _btFunction_16; } set { _btFunction_16 = value; OnPropertyChanged("btFunction_16"); } }
+        public byte btFunction_16 { get { return _btFunction_16; } set { if (_btFunction_16 != value) { _btFunction_16 = value; OnPropertyChanged("btFunction_16"); } } }
 
         float _fValue_16;
-        public float fValue_16 { get { return _fValue_16; } set { _fValue_16 = value; OnPropertyChanged("fValue_16"); } }
+        public float fValue_16 { get { return _fValue_16; } set { if (_fValue_16 != value) { _fValue_16 = value; OnPropertyChanged("fValue_16"); } } }
 
         int _nIndex_16 = 16;
-        public int nIndex_16 { get { return _nIndex_16; } set { _nIndex_16 = value; OnPropertyChanged("nIndex_16"); } }
+        public int nIndex_16 { get { return _nIndex_16; } set { if (_nIndex_16 != value) { _nIndex_16 = value; OnPropertyChanged("nIndex_16"); } } }
 
 
         DateTime _dtDate_17;
-        public DateTime dtDate_17 { get { return _dtDate_17; } set { _dtDate_17 = value; OnPropertyChanged("dtDate_17"); } }
+        public DateTime dtDate_17 { get { return _dtDate_17; } set { if (_dtDate_17 != value) { _dtDate_17 = value; OnPropertyChanged("dtDate_17"); } } }
 
         TimeSpan _dtTime_17;
-        public TimeSpan dtTime_17 { get { return _dtTime_17; } set { _dtTime_17 = value; OnPropertyChanged("dtTime_17"); } }
+        public TimeSpan dtTime_17 { get { return _dtTime_17; } set { if (_dtTime_17 != value) { _dtTime_17 = value; OnPropertyChanged("dtTime_17"); } } }
 
         byte _btFunction_17;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_17 { get { return _btFunction_17; } set { _btFunction_17 = value; OnPropertyChanged("btFunction_17"); } }
+        public byte btFunction_17 { get { return _btFunction_17; } set { if (_btFunction_17 != value) { _btFunction_17 = value; OnPropertyChanged("btFunction_17"); } } }
 
         float _fValue_17;
-        public float fValue_17 { get { return _fValue_17; } set { _fValue_17 = value; OnPropertyChanged("fValue_17"); } }
+        public float fValue_17 { get { return _fValue_17; } set { if (_fValue_17 != value) { _fValue_17 = value; OnPropertyChanged("fValue_17"); } } }
 
         int _nIndex_17 = 17;
-        public int nIndex_17 { get { return _nIndex_17; } set { _nIndex_17 = value; OnPropertyChanged("nIndex_17"); } }
+        public int nIndex_17 { get { return _nIndex_17; } set { if (_nIndex_17 != value) { _nIndex_17 = value; OnPropertyChanged("nIndex_17"); } } }
 
 
         DateTime _dtDate_18;
-        public DateTime dtDate_18 { get { return _dtDate_18; } set { _dtDate_18 = value; OnPropertyChanged("dtDate_18"); } }
+        public DateTime dtDate_18 { get { return _dtDate_18; } set { if (_dtDate_18 != value) { _dtDate_18 = value; OnPropertyChanged("dtDate_18"); } } }
 
         TimeSpan _dtTime_18;
-        public TimeSpan dtTime_18 { get { return _dtTime_18; } set { _dtTime_18 = value; OnPropertyChanged("dtTime_18"); } }
+        public TimeSpan dtTime_18 { get { return _dtTime_18; } set { if (_dtTime_18 != value) { _dtTime_18 = value; OnPropertyChanged("dtTime_18"); } } }
 
         byte _btFunction_18;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_18 { get { return _btFunction_18; } set { _btFunction_18 = value; OnPropertyChanged("btFunction_18"); } }
+        public byte btFunction_18 { get { return _btFunction_18; } set { if (_btFunction_18 != value) { _btFunction_18 = value; OnPropertyChanged("btFunction_18"); } } }
 
         float _fValue_18;
-        public float fValue_18 { get { return _fValue_18; } set { _fValue_18 = value; OnPropertyChanged("fValue_18"); } }
+        public float fValue_18 { get { return _fValue_18; } set { if (_fValue_18 != value) { _fValue_18 = value; OnPropertyChanged("fValue_18"); } } }
 
         int _nIndex_18 = 18;
-        public int nIndex_18 { get { return _nIndex_18; } set { _nIndex_18 = value; OnPropertyChanged("nIndex_18"); } }
+        public int nIndex_18 { get { return _nIndex_18; } set { if (_nIndex_18 != value) { _nIndex_18 = value; OnPropertyChanged("nIndex_18"); } } }
 
 
         DateTime _dtDate_19;
-        public DateTime dtDate_19 { get { return _dtDate_19; } set { _dtDate_19 = value; OnPropertyChanged("dtDate_19"); } }
+        public DateTime dtDate_19 { get { return _dtDate_19; } set { if (_dtDate_19 != value) { _dtDate_19 = value; OnPropertyChanged("dtDate_19"); } } }
 
         TimeSpan _dtTime_19;
-        public TimeSpan dtTime_19 { get { return _dtTime_19; } set { _dtTime_19 = value; OnPropertyChanged("dtTime_19"); } }
+        public TimeSpan dtTime_19 { get { return _dtTime_19; } set { if (_dtTime_19 != value) { _dtTime_19 = value; OnPropertyChanged("dtTime_19"); } } }
 
         byte _btFunction_19;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_19 { get { return _btFunction_19; } set { _btFunction_19 = value; OnPropertyChanged("btFunction_19"); } }
+        public byte btFunction_19 { get { return _btFunction_19; } set { if (_btFunction_19 != value) { _btFunction_19 = value; OnPropertyChanged("btFunction_19"); } } }
 
         float _fValue_19;
-        public float fValue_19 { get { return _fValue_19; } set { _fValue_19 = value; OnPropertyChanged("fValue_19"); } }
+        public float fValue_19 { get { return _fValue_19; } set { if (_fValue_19 != value) { _fValue_19 = value; OnPropertyChanged("fValue_19"); } } }
 
         int _nIndex_19 = 19;
-        public int nIndex_19 { get { return _nIndex_19; } set { _nIndex_19 = value; OnPropertyChanged("nIndex_19"); } }
+        public int nIndex_19 { get { return _nIndex_19; } set { if (_nIndex_19 != value) { _nIndex_19 = value; OnPropertyChanged("nIndex_19"); } } }
 
 
         DateTime _dtDate_20;
-        public DateTime dtDate_20 { get { return _dtDate_20; } set { _dtDate_20 = value; OnPropertyChanged("dtDate_20"); } }
+        public DateTime dtDate_20 { get { return _dtDate_20; } set { if (_dtDate_20 != value) { _dtDate_20 = value; OnPropertyChanged("dtDate_20"); } } }
 
         TimeSpan _dtTime_20;
-        public TimeSpan dtTime_20 { get { return _dtTime_20; } set { _dtTime_20 = value; OnPropertyChanged("dtTime_20"); } }
+        public TimeSpan dtTime_20 { get { return _dtTime_20; } set { if (_dtTime_20 != value) { _dtTime_20 = value; OnPropertyChanged("dtTime_20"); } } }
 
         byte _btFunction_20;
         /// <summary>
         /// 0~6 사용 -> 4 : Load Method 사용 안함 2020-12-22 정부장님 검토 사항
         /// </summary>
-        public byte btFunction_20 { get { return _btFunction_20; } set { _btFunction_20 = value; OnPropertyChanged("btFunction_20"); } }
+        public byte btFunction_20 { get { return _btFunction_20; } set { if (_btFunction_20 != value) { _btFunction_20 = value; OnPropertyChanged("btFunction_20"); } } }
 
         float _fValue_20;
-        public float fValue_20 { get { return _fValue_20; } set { _fValue_20 = value; OnPropertyChanged("fValue_20"); } }
+        public float fValue_20 { get { return _fValue_20; } set { if (_fValue_20 != value) { _fValue_20 = value; OnPropertyChanged("fValue_20"); } } }
 
         int _nIndex_20 = 20;
-        public int nIndex_20 { get { return _nIndex_20; } set { _nIndex_20 = value; OnPropertyChanged("nIndex_20"); } }
+        public int nIndex_20 { get { return _nIndex_20; } set { if (_nIndex_20 != value) { _nIndex_20 = value; OnPropertyChanged("nIndex_20"); } } }
 
         #endregion TimeControl Table
 

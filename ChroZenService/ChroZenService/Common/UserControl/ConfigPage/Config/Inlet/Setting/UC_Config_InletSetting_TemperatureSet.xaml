@@ -4,10 +4,10 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.UC_Config_InletSetting_TemperatureSet">
     <local:UC_System_Calib_LabelBase.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=TapGestureCommand}" 
-                                      CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=TapGestureCommandParameter}"/>
+        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:UC_Config_InletSetting_TemperatureSet}}, Path=TapGestureCommand}" 
+                                      CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type local:UC_Config_InletSetting_TemperatureSet}}, Path=TapGestureCommandParameter}"/>
     </local:UC_System_Calib_LabelBase.GestureRecognizers>
-    <local:UC_System_Calib_LabelBase.Content>
+    <ContentView.Content>
         <AbsoluteLayout >
             <Grid >
                 <Grid.ColumnDefinitions>
@@ -16,19 +16,21 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="31"/>
                 </Grid.RowDefinitions>
-                <Frame CornerRadius="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=CornerRadius}"
-                   Background="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=Background}"
-                   BorderColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_LABEL_BORDER_COLOR}"                        
-                   >
+                <Frame CornerRadius="{Binding Source={RelativeSource AncestorType={x:Type local:UC_Config_InletSetting_TemperatureSet}}, Path=CornerRadius}"                   
+                   BorderColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_LABEL_BORDER_COLOR}" 
+                       Background="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=IsEnabled, Converter={StaticResource BoolToSettingInputBackgroundConverter}}"
+                       IsEnabled="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=IsEnabled}">
+                   
                 </Frame>
-                <Label 
+                <Label Margin="2"
                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=Text}"
-                    TextColor="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=TextColor}"
+                    TextColor="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=TextColor}"                    
+                    Background="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=IsEnabled, Converter={StaticResource BoolToSettingInputBackgroundConverter}}"
                     BackgroundColor="Transparent"                    
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"  
+                    VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                    HorizontalOptions="FillAndExpand"      
                     />
             </Grid>
         </AbsoluteLayout>
-    </local:UC_System_Calib_LabelBase.Content>
+    </ContentView.Content>
 </local:UC_System_Calib_LabelBase>

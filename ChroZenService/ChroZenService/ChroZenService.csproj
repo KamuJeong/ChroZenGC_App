@@ -120,10 +120,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveXAML" Version="2.1.73" />
     <PackageReference Include="SkiaSharp" Version="1.68.1" />
     <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="1.68.1" />
-    <PackageReference Include="SkiaSharp.Views" Version="1.68.0" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
     <PackageReference Include="Xamarin.Forms.BehaviorsPack" Version="2.2.0" />
   </ItemGroup>
@@ -182,18 +182,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Common\UserControl\MainPage\UC_MainPageInletDetailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Common\Resources\XAML\ImageButton.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Common\Resources\XAML\InputBox.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Common\Resources\XAML\TextStyle.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Common\Resources\XAML\Common.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Child\Config\Child\Config Auxillary\View_Config_AuxFlow.xaml">
@@ -316,6 +304,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Inlet\Setting\UC_Config_InletSetting_VelocityActual.xaml.cs">
+      <DependentUpon>UC_Config_InletSetting_VelocityActual.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Inlet\Setting\UC_Config_INLET_CONFIG_LABEL.xaml.cs">
+      <DependentUpon>UC_Config_INLET_CONFIG_LABEL.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Common\UserControl\ConfigPage\Config\Inlet\Setting\UC_Config_INLET_SETTING_LONG_LABEL.xaml.cs">
       <DependentUpon>UC_Config_INLET_SETTING_LONG_LABEL.xaml</DependentUpon>
     </Compile>
