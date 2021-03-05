@@ -165,7 +165,34 @@ namespace ChroZenService
         public string ActualTemperature { get { return _ActualTemperature; } set { if (_ActualTemperature != value) { _ActualTemperature = value; OnPropertyChanged("ActualTemperature"); } } }
 
         byte _btInjMode;
-        public byte btInjMode { get { return _btInjMode; } set { if (_btInjMode != value) { _btInjMode = value; OnPropertyChanged("btInjMode"); } } }
+        public byte btInjMode { get { return _btInjMode; }
+            set
+            {
+                if (_btInjMode != value)
+                {
+                    _btInjMode = value;
+
+                    switch ((E_INLET_INJ_MODE)value)
+                    {
+                        case E_INLET_INJ_MODE.SPLIT_MODE:
+                        case E_INLET_INJ_MODE.SPLITLESS_MODE:
+                            {
+                                DisplayString_fTotalFlowSet = fTotalFlowSet;
+                                DisplayString_fSplitFlowSet = fSplitFlowSet;
+                            }
+                            break;
+                        case E_INLET_INJ_MODE.PULSED_SPLIT_MODE:
+                        case E_INLET_INJ_MODE.PULSED_SPLITLESS_MODE:
+                            {
+                                DisplayString_fTotalFlowSet = "Off";
+                                DisplayString_fSplitFlowSet = "Off";
+                            }
+                            break;                           
+                }
+                    OnPropertyChanged("btInjMode");
+                }
+            }
+        }
 
         string _ActualColumnFlow;
         public string ActualColumnFlow { get { return _ActualColumnFlow; } set { if (_ActualColumnFlow != value) { _ActualColumnFlow = value; OnPropertyChanged("ActualColumnFlow"); } } }
@@ -2676,7 +2703,7 @@ namespace ChroZenService
                         vmKeyPad.Title = "Press 5";
                         vmKeyPad.MaxValue = 150;
                         vmKeyPad.CurrentValue = press_fFinalPress_1;
-                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_6;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_1:
@@ -3102,6 +3129,425 @@ namespace ChroZenService
                     }
                     break;
 
+                #region Center Programed Pressure
+
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_2:
+                    {
+                        vmKeyPad.Title = "Rate 1";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = press_fRate_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_3:
+                    {
+                        vmKeyPad.Title = "Rate 2";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = press_fRate_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_4:
+                    {
+                        vmKeyPad.Title = "Rate 3";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = press_fRate_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_5:
+                    {
+                        vmKeyPad.Title = "Rate 4";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = press_fRate_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_6:
+                    {
+                        vmKeyPad.Title = "Rate 5";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = press_fRate_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_6;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_1:
+                    {
+                        vmKeyPad.Title = "Press Init";
+                        vmKeyPad.MaxValue = 150;
+                        vmKeyPad.CurrentValue = press_fFinalPress_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_1;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_2:
+                    {
+                        vmKeyPad.Title = "Press 1";
+                        vmKeyPad.MaxValue = 150;
+                        vmKeyPad.CurrentValue = press_fFinalPress_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_3:
+                    {
+                        vmKeyPad.Title = "Press 2";
+                        vmKeyPad.MaxValue = 150;
+                        vmKeyPad.CurrentValue = press_fFinalPress_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_4:
+                    {
+                        vmKeyPad.Title = "Press 3";
+                        vmKeyPad.MaxValue = 150;
+                        vmKeyPad.CurrentValue = press_fFinalPress_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_5:
+                    {
+                        vmKeyPad.Title = "Press 4";
+                        vmKeyPad.MaxValue = 150;
+                        vmKeyPad.CurrentValue = press_fFinalPress_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_6:
+                    {
+                        vmKeyPad.Title = "Press 5";
+                        vmKeyPad.MaxValue = 150;
+                        vmKeyPad.CurrentValue = press_fFinalPress_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_6;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_1:
+                    {
+                        vmKeyPad.Title = "Time Init";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = press_fFinalTime_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_1;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_2:
+                    {
+                        vmKeyPad.Title = "Time 1";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = press_fFinalTime_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_3:
+                    {
+                        vmKeyPad.Title = "Time 2";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = press_fFinalTime_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_4:
+                    {
+                        vmKeyPad.Title = "Time 3";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = press_fFinalTime_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_5:
+                    {
+                        vmKeyPad.Title = "Time 4";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = press_fFinalTime_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_6:
+                    {
+                        vmKeyPad.Title = "Time 5";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = press_fFinalTime_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_6;
+                    }
+                    break;
+                #endregion Center Programed Pressure
+
+                #region Center Programed Flow
+
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_2:
+                    {
+                        vmKeyPad.Title = "Rate 1";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fRate_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_3:
+                    {
+                        vmKeyPad.Title = "Rate 2";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fRate_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_4:
+                    {
+                        vmKeyPad.Title = "Rate 3";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fRate_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_5:
+                    {
+                        vmKeyPad.Title = "Rate 4";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fRate_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_6:
+                    {
+                        vmKeyPad.Title = "Rate 5";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fRate_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_6;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_1:
+                    {
+                        vmKeyPad.Title = "Flow Init";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fFinalFlow_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_1;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_2:
+                    {
+                        vmKeyPad.Title = "Flow 1";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fFinalFlow_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_3:
+                    {
+                        vmKeyPad.Title = "Flow 2";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fFinalFlow_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_4:
+                    {
+                        vmKeyPad.Title = "Flow 3";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fFinalFlow_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_5:
+                    {
+                        vmKeyPad.Title = "Flow 4";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fFinalFlow_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_6:
+                    {
+                        vmKeyPad.Title = "Flow 5";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fFinalFlow_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_6;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_1:
+                    {
+                        vmKeyPad.Title = "Time Init";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = flow_fFinalTime_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_1;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_2:
+                    {
+                        vmKeyPad.Title = "Time 1";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = flow_fFinalTime_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_3:
+                    {
+                        vmKeyPad.Title = "Time 2";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = flow_fFinalTime_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_4:
+                    {
+                        vmKeyPad.Title = "Time 3";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = flow_fFinalTime_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_5:
+                    {
+                        vmKeyPad.Title = "Time 4";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = flow_fFinalTime_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_6:
+                    {
+                        vmKeyPad.Title = "Time 5";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = flow_fFinalTime_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_6;
+                    }
+                    break;
+                #endregion Center Programed Flow
+
+                #region Center Programed Temperature
+
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_2:
+                    {
+                        vmKeyPad.Title = "Rate 1";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = temp_fRate_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_3:
+                    {
+                        vmKeyPad.Title = "Rate 2";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = temp_fRate_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_4:
+                    {
+                        vmKeyPad.Title = "Rate 3";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = temp_fRate_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_5:
+                    {
+                        vmKeyPad.Title = "Rate 4";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = temp_fRate_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_6:
+                    {
+                        vmKeyPad.Title = "Rate 5";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = temp_fRate_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_6;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1:
+                    {
+                        vmKeyPad.Title = "Temp Init";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.CurrentValue = temp_fFinalTemp_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2:
+                    {
+                        vmKeyPad.Title = "Temp 1";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.CurrentValue = temp_fFinalTemp_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3:
+                    {
+                        vmKeyPad.Title = "Temp 2";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.CurrentValue = temp_fFinalTemp_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4:
+                    {
+                        vmKeyPad.Title = "Temp 3";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.CurrentValue = temp_fFinalTemp_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5:
+                    {
+                        vmKeyPad.Title = "Temp 4";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.CurrentValue = temp_fFinalTemp_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6:
+                    {
+                        vmKeyPad.Title = "Temp 5";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.CurrentValue = temp_fFinalTemp_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_1:
+                    {
+                        vmKeyPad.Title = "Time Init";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = temp_fFinalTime_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_1;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_2:
+                    {
+                        vmKeyPad.Title = "Time 1";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = temp_fFinalTime_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_3:
+                    {
+                        vmKeyPad.Title = "Time 2";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = temp_fFinalTime_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_4:
+                    {
+                        vmKeyPad.Title = "Time 3";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = temp_fFinalTime_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_5:
+                    {
+                        vmKeyPad.Title = "Time 4";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = temp_fFinalTime_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_6:
+                    {
+                        vmKeyPad.Title = "Time 5";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = temp_fFinalTime_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_6;
+                    }
+                    break;
+                #endregion Center Programed Temperature
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE:
                     {
                         vmKeyPad.Title = "Temperature";
@@ -3194,6 +3640,425 @@ namespace ChroZenService
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PULSED_TIME;
                     }
                     break;
+                #region Rear Programed Pressure
+
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_2:
+                    {
+                        vmKeyPad.Title = "Rate 1";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = press_fRate_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_3:
+                    {
+                        vmKeyPad.Title = "Rate 2";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = press_fRate_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_4:
+                    {
+                        vmKeyPad.Title = "Rate 3";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = press_fRate_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_5:
+                    {
+                        vmKeyPad.Title = "Rate 4";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = press_fRate_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_6:
+                    {
+                        vmKeyPad.Title = "Rate 5";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = press_fRate_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_6;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_1:
+                    {
+                        vmKeyPad.Title = "Press Init";
+                        vmKeyPad.MaxValue = 150;
+                        vmKeyPad.CurrentValue = press_fFinalPress_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_1;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_2:
+                    {
+                        vmKeyPad.Title = "Press 1";
+                        vmKeyPad.MaxValue = 150;
+                        vmKeyPad.CurrentValue = press_fFinalPress_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_3:
+                    {
+                        vmKeyPad.Title = "Press 2";
+                        vmKeyPad.MaxValue = 150;
+                        vmKeyPad.CurrentValue = press_fFinalPress_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_4:
+                    {
+                        vmKeyPad.Title = "Press 3";
+                        vmKeyPad.MaxValue = 150;
+                        vmKeyPad.CurrentValue = press_fFinalPress_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_5:
+                    {
+                        vmKeyPad.Title = "Press 4";
+                        vmKeyPad.MaxValue = 150;
+                        vmKeyPad.CurrentValue = press_fFinalPress_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_6:
+                    {
+                        vmKeyPad.Title = "Press 5";
+                        vmKeyPad.MaxValue = 150;
+                        vmKeyPad.CurrentValue = press_fFinalPress_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_6;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_1:
+                    {
+                        vmKeyPad.Title = "Time Init";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = press_fFinalTime_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_1;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_2:
+                    {
+                        vmKeyPad.Title = "Time 1";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = press_fFinalTime_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_3:
+                    {
+                        vmKeyPad.Title = "Time 2";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = press_fFinalTime_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_4:
+                    {
+                        vmKeyPad.Title = "Time 3";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = press_fFinalTime_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_5:
+                    {
+                        vmKeyPad.Title = "Time 4";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = press_fFinalTime_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_6:
+                    {
+                        vmKeyPad.Title = "Time 5";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = press_fFinalTime_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_6;
+                    }
+                    break;
+                #endregion Rear Programed Pressure
+
+                #region Rear Programed Flow
+
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_2:
+                    {
+                        vmKeyPad.Title = "Rate 1";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fRate_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_3:
+                    {
+                        vmKeyPad.Title = "Rate 2";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fRate_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_4:
+                    {
+                        vmKeyPad.Title = "Rate 3";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fRate_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_5:
+                    {
+                        vmKeyPad.Title = "Rate 4";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fRate_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_6:
+                    {
+                        vmKeyPad.Title = "Rate 5";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fRate_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_6;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_1:
+                    {
+                        vmKeyPad.Title = "Flow Init";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fFinalFlow_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_1;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_2:
+                    {
+                        vmKeyPad.Title = "Flow 1";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fFinalFlow_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_3:
+                    {
+                        vmKeyPad.Title = "Flow 2";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fFinalFlow_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_4:
+                    {
+                        vmKeyPad.Title = "Flow 3";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fFinalFlow_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_5:
+                    {
+                        vmKeyPad.Title = "Flow 4";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fFinalFlow_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_6:
+                    {
+                        vmKeyPad.Title = "Flow 5";
+                        vmKeyPad.MaxValue = 30;
+                        vmKeyPad.CurrentValue = flow_fFinalFlow_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_6;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_1:
+                    {
+                        vmKeyPad.Title = "Time Init";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = flow_fFinalTime_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_1;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_2:
+                    {
+                        vmKeyPad.Title = "Time 1";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = flow_fFinalTime_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_3:
+                    {
+                        vmKeyPad.Title = "Time 2";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = flow_fFinalTime_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_4:
+                    {
+                        vmKeyPad.Title = "Time 3";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = flow_fFinalTime_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_5:
+                    {
+                        vmKeyPad.Title = "Time 4";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = flow_fFinalTime_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_6:
+                    {
+                        vmKeyPad.Title = "Time 5";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = flow_fFinalTime_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_6;
+                    }
+                    break;
+                #endregion Rear Programed Flow
+
+                #region Rear Programed Temperature
+
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_2:
+                    {
+                        vmKeyPad.Title = "Rate 1";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = temp_fRate_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_3:
+                    {
+                        vmKeyPad.Title = "Rate 2";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = temp_fRate_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_4:
+                    {
+                        vmKeyPad.Title = "Rate 3";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = temp_fRate_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_5:
+                    {
+                        vmKeyPad.Title = "Rate 4";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = temp_fRate_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_6:
+                    {
+                        vmKeyPad.Title = "Rate 5";
+                        vmKeyPad.MaxValue = 100;
+                        vmKeyPad.CurrentValue = temp_fRate_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_6;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1:
+                    {
+                        vmKeyPad.Title = "Temp Init";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.CurrentValue = temp_fFinalTemp_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2:
+                    {
+                        vmKeyPad.Title = "Temp 1";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.CurrentValue = temp_fFinalTemp_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3:
+                    {
+                        vmKeyPad.Title = "Temp 2";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.CurrentValue = temp_fFinalTemp_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4:
+                    {
+                        vmKeyPad.Title = "Temp 3";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.CurrentValue = temp_fFinalTemp_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5:
+                    {
+                        vmKeyPad.Title = "Temp 4";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.CurrentValue = temp_fFinalTemp_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6:
+                    {
+                        vmKeyPad.Title = "Temp 5";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.CurrentValue = temp_fFinalTemp_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_1:
+                    {
+                        vmKeyPad.Title = "Time Init";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = temp_fFinalTime_1;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_1;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_2:
+                    {
+                        vmKeyPad.Title = "Time 1";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = temp_fFinalTime_2;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_2;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_3:
+                    {
+                        vmKeyPad.Title = "Time 2";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = temp_fFinalTime_3;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_3;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_4:
+                    {
+                        vmKeyPad.Title = "Time 3";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = temp_fFinalTime_4;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_4;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_5:
+                    {
+                        vmKeyPad.Title = "Time 4";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = temp_fFinalTime_5;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_5;
+                    }
+                    break;
+                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_6:
+                    {
+                        vmKeyPad.Title = "Time 5";
+                        vmKeyPad.MaxValue = 9999;
+                        vmKeyPad.CurrentValue = temp_fFinalTime_6;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_6;
+                    }
+                    break;
+                    #endregion Rear Programed Temperature
             }
 
             EventManager.KeyPadRequestEvent(vmKeyPad);
@@ -3206,7 +4071,7 @@ namespace ChroZenService
         #region InletInjectionModeIndexChangeCommand
         public RelayCommand InletInjectionModeIndexChangeCommand { get; set; }
         private void InletInjectionModeIndexChangeCommandAction(object title)
-        {
+        {           
             switch (title.ToString())
             {
                 case "Inlet Front":

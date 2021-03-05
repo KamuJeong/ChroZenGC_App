@@ -9,6 +9,398 @@ using static YC_ChroZenGC_Type.T_CHROZEN_INLET;
 
 namespace ChroZenService
 {
+    public class E_DET_TYPEToAutoZeroUIHeightConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is E_DET_TYPE)
+            {
+                switch ((E_DET_TYPE)(value))
+                {
+
+                    case E_DET_TYPE.FID:
+                    case E_DET_TYPE.FPD:
+                    case E_DET_TYPE.NPD:
+                    case E_DET_TYPE.PFPD:
+                        {
+                            return Application.Current.Resources["HEIGHT_DET_CONFIG_GROUP_4ROW"];
+                        }
+                    case E_DET_TYPE.TCD:
+                    case E_DET_TYPE.uTCD:
+                    case E_DET_TYPE.ECD:
+                    case E_DET_TYPE.uECD:
+                    case E_DET_TYPE.PDD:
+                    default:
+                        return 0;
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class E_DET_TYPEToAutoZeroUIIndexConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is E_DET_TYPE)
+            {
+                switch ((E_DET_TYPE)(value))
+                {
+
+                    case E_DET_TYPE.FID:
+                    case E_DET_TYPE.FPD:
+                    case E_DET_TYPE.NPD:
+                    case E_DET_TYPE.PFPD:
+                        {
+                            return 2;
+                        }
+                    case E_DET_TYPE.TCD:
+                    case E_DET_TYPE.uTCD:
+                    case E_DET_TYPE.ECD:
+                    case E_DET_TYPE.uECD:
+                    case E_DET_TYPE.PDD:
+                    default:
+                        return 1;
+                }
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class E_DET_TYPEToDetConfigIgniteUIVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is E_DET_TYPE)
+            {
+                switch ((E_DET_TYPE)(value))
+                {
+                    
+                    case E_DET_TYPE.FID:
+                    case E_DET_TYPE.FPD:
+                    case E_DET_TYPE.NPD:
+                    case E_DET_TYPE.PFPD:
+                        {
+                            return true;
+                        }
+                    case E_DET_TYPE.TCD:
+                    case E_DET_TYPE.uTCD:
+                    case E_DET_TYPE.ECD:
+                    case E_DET_TYPE.uECD:
+                    case E_DET_TYPE.PDD:                    
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class DET_CONFIG_PickerIndexToiSignalRangeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            switch((int)value)
+            {
+                case -10:
+                    {
+                        return 0;
+                    }                    
+                case -9:
+                    {
+                        return 1;
+                    }                    
+                case -8:
+                    {
+                        return 2;
+                    }                    
+                case -7:
+                    {
+                        return 3;
+                    }                    
+                case -6:
+                    {
+                        return 4;
+                    }                    
+                case -5:
+                    {
+                        return 5;
+                    }                    
+                case -4:
+                    {
+                        return 6;
+                    }                    
+                case -3:
+                    {
+                        return 7;
+                    }                    
+                case -2:
+                    {
+                        return 8;
+                    }                    
+                case -1:
+                    {
+                        return 9;
+                    }                    
+                case 0:
+                    {
+                        return 10;
+                    }                    
+                case 1:
+                    {
+                        return 11;
+                    }                    
+                case 2:
+                    {
+                        return 12;
+                    }                    
+                case 3:
+                    {
+                        return 13;
+                    }                    
+                case 4:
+                    {
+                        return 14;
+                    }                    
+                case 5:
+                    {
+                        return 15;
+                    }                    
+                case 6:
+                    {
+                        return 16;
+                    }                    
+                case 7:
+                    {
+                        return 17;
+                    }                    
+                case 8:
+                    {
+                        return 18;
+                    }                    
+                case 9:
+                    {
+                        return 19;
+                    }                    
+                case 10:
+                    {
+                        return 20;
+                    }
+                default:
+                    {
+                        return 0;
+                    }
+            }            
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            switch ((int)value)
+            {
+                case 0:
+                    {
+                        return -10;
+                    }
+                case 1:
+                    {
+                        return -9;
+                    }
+                case 2:
+                    {
+                        return -8;
+                    }
+                case 3:
+                    {
+                        return -7;
+                    }
+                case 4:
+                    {
+                        return -6;
+                    }
+                case 5:
+                    {
+                        return -5;
+                    }
+                case 6:
+                    {
+                        return -4;
+                    }
+                case 7:
+                    {
+                        return -3;
+                    }
+                case 8:
+                    {
+                        return -2;
+                    }
+                case 9:
+                    {
+                        return -1;
+                    }
+                case 10:
+                    {
+                        return 0;
+                    }
+                case 11:
+                    {
+                        return 1;
+                    }
+                case 12:
+                    {
+                        return 2;
+                    }
+                case 13:
+                    {
+                        return 3;
+                    }
+                case 14:
+                    {
+                        return 4;
+                    }
+                case 15:
+                    {
+                        return 5;
+                    }
+                case 16:
+                    {
+                        return 6;
+                    }
+                case 17:
+                    {
+                        return 7;
+                    }
+                case 18:
+                    {
+                        return 8;
+                    }
+                case 19:
+                    {
+                        return 9;
+                    }
+                case 20:
+                    {
+                        return 10;
+                    }
+                default:
+                    {
+                        return 0;
+                    }
+            }
+        }
+    }
+
+    public class E_INLET_TYPEToOnColumnOrPackedUIVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is E_INLET_TYPE)
+            {
+                switch ((E_INLET_TYPE)(value))
+                {
+                    case E_INLET_TYPE.On_Column:
+                    case E_INLET_TYPE.Packed:
+                        return true;
+                    case E_INLET_TYPE.Not_Installed:
+                    case E_INLET_TYPE.Capillary:                    
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class E_INLET_TYPEToCapillaryOrOnColumnVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is E_INLET_TYPE)
+            {
+                switch ((E_INLET_TYPE)(value))
+                {
+                    case E_INLET_TYPE.Capillary:
+                    case E_INLET_TYPE.On_Column:
+                        return true;
+                    case E_INLET_TYPE.Not_Installed:                    
+                    case E_INLET_TYPE.Packed:
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class E_INLET_TYPEToPressureGroupUIIndexConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is E_INLET_TYPE)
+            {
+                switch ((E_INLET_TYPE)(value))
+                {
+                    case E_INLET_TYPE.On_Column:
+                        return 4;
+                    case E_INLET_TYPE.Not_Installed:
+                    case E_INLET_TYPE.Capillary:
+                    case E_INLET_TYPE.Packed:
+                        return 5;
+                    default:
+                        return 5;
+                }
+            }
+            else
+            {
+                return 5;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
     public class E_INLET_TEMP_MODEToTemperatureTableEnableConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

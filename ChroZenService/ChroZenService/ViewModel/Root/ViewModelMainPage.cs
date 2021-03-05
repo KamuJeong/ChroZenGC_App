@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 using YC_ChroZenGC_Type;
 using static ChroZenService.ChroZenService_Const;
 using static YC_ChroZenGC_Type.T_CHROZEN_GC_STATE;
@@ -40,10 +42,20 @@ namespace ChroZenService
             ErrorResetSelect = new RelayCommand(ErrorResetSelectAction);
             ErrorCloseSelect = new RelayCommand(ErrorCloseSelectAction);
 
+            SetCommand = new RelayCommand(SetCommandAction);
+            KeyPadApplyCommand = new RelayCommand(KeyPadApplyCommandAction);
+            KeyPadCancelCommand = new RelayCommand(KeyPadCancelCommandAction);
+            KeyPadDeleteCommand = new RelayCommand(KeyPadDeleteCommandAction);
+            KeyPadKeyPadClickCommand = new RelayCommand(KeyPadKeyPadClickCommandAction);
+            KeyPadOffCommand = new RelayCommand(KeyPadOffCommandAction);
+            KeyPadOnCommand = new RelayCommand(KeyPadOnCommandAction);
+
             EventManager.onPACKCODE_Receivce += PACKCODE_ReceivceEventHandler;
             EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
             EventManager.onKeyPadRequest += KeyPadRequest_EventHandler;
 
+            EventManager.onConnectSuccess += onConnectSuccess_EventHandler;
+            EventManager.onDisconnected += onDisconnected_EventHandler;
             _Instance = this;
 
             //tcpManager = new TCPManager();
@@ -51,7 +63,16 @@ namespace ChroZenService
 
         }
 
-        
+        private void onDisconnected_EventHandler()
+        {
+            IsLoginPageVisible = true;
+        }
+
+        private void onConnectSuccess_EventHandler()
+        {
+            IsLoginPageVisible = false;
+        }
+
         private void KeyPadRequest_EventHandler(ViewModel_KeyPad viewModel_KeyPad)
         {
             ViewModel_KeyPad.CopyFrom(viewModel_KeyPad);
@@ -535,6 +556,11 @@ namespace ChroZenService
         #region Binding
 
         #region Property
+        string _IPString;
+        public string IPString { get { return _IPString; } set { if (_IPString != value) { _IPString = value; OnPropertyChanged("IPString"); } } }
+
+        bool _IsLoginPageVisible = true;
+        public bool IsLoginPageVisible { get { return _IsLoginPageVisible; } set { if (_IsLoginPageVisible != value) { _IsLoginPageVisible = value; OnPropertyChanged("IsLoginPageVisible"); } } }
 
         bool _IsSplashVisible;
         public bool IsSplashVisible { get { return _IsSplashVisible; } set { if (_IsSplashVisible != value) { _IsSplashVisible = value; OnPropertyChanged("IsSplashVisible"); } } }
@@ -646,6 +672,240 @@ namespace ChroZenService
             IsMainPageVisible = false;
         }
         #endregion 장비 설정 메뉴
+
+        #region KeyPad : CancelCommand
+
+        public RelayCommand KeyPadCancelCommand { get; set; }
+        private void KeyPadCancelCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+            //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            //{
+            //    IsKeyPadShown = false,
+            //};
+            //EventManager.KeyPadRequestEvent(vmKeyPad);
+        }
+
+        #endregion KeyPad : CancelCommand
+
+        #region KeyPad : DeleteCommand
+
+        public RelayCommand KeyPadDeleteCommand { get; set; }
+        private void KeyPadDeleteCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1)
+            {
+                double tempVal;
+                double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Substring(0, mainVM.ViewModel_KeyPad.CurrentValue.Length - 1), out tempVal);
+                Debug.WriteLine(string.Format("tempVal : {0}", tempVal));
+                mainVM.ViewModel_KeyPad.CurrentValue = tempVal.ToString();
+            }
+            mainVM.ViewModel_KeyPad.IsNeedRefresh = false;
+        }
+
+        #endregion KeyPad : DeleteCommand
+
+        #region KeyPad : ApplyCommand
+
+        public RelayCommand KeyPadApplyCommand { get; set; }
+        private void KeyPadApplyCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+            //.시작 케이스
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+            {
+                double tempVal;
+                double.TryParse("0" + mainVM.ViewModel_KeyPad.CurrentValue, out tempVal);
+                if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                {
+                    mainVM.ViewModel_KeyPad.CurrentValue = "0" + mainVM.ViewModel_KeyPad.CurrentValue;
+                }
+            }
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '-' &&
+                mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+            {
+                double tempVal;
+                double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0"), out tempVal);
+                if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                {
+                    mainVM.ViewModel_KeyPad.CurrentValue = mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0");
+                }
+            }
+            float tempFloatVal = 0;
+            if (float.TryParse(mainVM.ViewModel_KeyPad.CurrentValue, out tempFloatVal))
+            {
+                switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
+                {
+
+                    case E_KEY_PAD_SET_MEASURE_TYPE.IP_SETTING:
+                        {
+                            IPString = tempFloatVal.ToString();
+                            IPAddress ipAddress;
+                            if (IPAddress.TryParse(IPString, out ipAddress))
+                            {
+                                EventManager.TryConnectEvent(IPString);
+                            }
+                        }
+                        break;
+                }
+            }
+
+            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+
+            //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            //{
+            //    IsKeyPadShown = false,
+            //};
+            //EventManager.KeyPadRequestEvent(vmKeyPad);
+        }
+
+        #endregion KeyPad : ApplyCommand
+
+        #region KeyPad : OnCommand
+
+        public RelayCommand KeyPadOnCommand { get; set; }
+        private void KeyPadOnCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+        }
+
+        #endregion KeyPad : OnCommand
+
+        #region KeyPad : OffCommand
+
+        public RelayCommand KeyPadOffCommand { get; set; }
+        private void KeyPadOffCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+        }
+
+        #endregion KeyPad : OffCommand
+
+        #region KeyPad : KeyPadClickCommand
+
+        public RelayCommand KeyPadKeyPadClickCommand { get; set; }
+        private void KeyPadKeyPadClickCommandAction(object param)
+        {
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            if (mainVM.ViewModel_KeyPad.IsNeedRefresh)
+            {
+                mainVM.ViewModel_KeyPad.CurrentValue = "";
+                mainVM.ViewModel_KeyPad.IsNeedRefresh = false;
+            }
+
+            switch (sender.Text)
+            {
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                case "0":
+                    {
+                        //.시작 케이스
+                        if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
+                        {
+                            double tempVal;
+                            double.TryParse("0" + mainVM.ViewModel_KeyPad.CurrentValue, out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                        else if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '-' &&
+                            mainVM.ViewModel_KeyPad.CurrentValue[1] == '.')
+                        {
+                            double tempVal;
+                            double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Insert(1, "0"), out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                        else
+                        {
+                            double tempVal;
+                            double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue + sender.Text, out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                    }
+                    break;
+                    //case ".":
+                    //    {
+                    //        if (!mainVM.ViewModel_KeyPad.CurrentValue.Contains("."))
+                    //        {
+                    //            mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                    //        }
+                    //    }
+                    //    break;
+                    //case "-/+":
+                    //    {
+                    //        if (!mainVM.ViewModel_KeyPad.CurrentValue.Contains("-"))
+                    //        {
+                    //            mainVM.ViewModel_KeyPad.CurrentValue = "-" + mainVM.ViewModel_KeyPad.CurrentValue;
+                    //        }
+                    //    }
+                    //break;
+
+            }
+        }
+
+        #endregion KeyPad : KeyPadClickCommand
+
+        #region SetCommand
+        public RelayCommand SetCommand { get; set; }
+        private void SetCommandAction(object param)
+        {
+            ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+            {
+                IsKeyPadShown = true,
+                KeyPadType = KeyPad.E_KEYPAD_TYPE.DOUBLE,
+                MinValue = 0,
+                CancelCommand = KeyPadCancelCommand,
+                ApplyCommand = KeyPadApplyCommand,
+                DeleteCommand = KeyPadDeleteCommand,
+                OnCommand = KeyPadOnCommand,
+                OffCommand = KeyPadOffCommand,
+                KeyPadClickCommand = KeyPadKeyPadClickCommand,
+            };
+
+            switch ((E_KEY_PAD_SET_MEASURE_TYPE)param)
+            {
+                case E_KEY_PAD_SET_MEASURE_TYPE.IP_SETTING:
+                    {
+                        vmKeyPad.Title = "Set IP";
+
+                        vmKeyPad.CurrentValue = ViewModelSystemPage.ViewModel_System_Information.IPAddress;
+
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.IP_SETTING;
+                    }
+                    break;
+            }
+
+            EventManager.KeyPadRequestEvent(vmKeyPad);
+
+            //TODO :             
+            Debug.WriteLine("SetCommand Fired");
+        }
+        #endregion SetCommand 
 
         #endregion Command
 

@@ -123,6 +123,63 @@ namespace ChroZenService
                             ViewModel_Config_RearInletSettings.ActualVelocity = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Velocity_Inj[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             #endregion InletSetting
+
+                            #region DetSetting
+
+                            ViewModel_Config_FrontDetSettings.ActualTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_CenterDetSettings.ActualTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            ViewModel_Config_RearDetSettings.ActualTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+
+
+                            switch (ViewModel_Config_FrontDetSettings.e_DET_TYPE)
+                            {
+                                case E_DET_TYPE.PDD:
+                                    {
+
+                                    }
+                                    break;
+                                case E_DET_TYPE.ECD:
+                                case E_DET_TYPE.uECD:
+                                    {
+                                        //Mkup
+                                        ViewModel_Config_FrontDetSettings.fFlowAct2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                    }
+                                    break;
+                                case E_DET_TYPE.FID:
+                                case E_DET_TYPE.NPD:
+                                    {
+                                        //Air
+                                        ViewModel_Config_FrontDetSettings.fFlowAct1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        //Mkup
+                                        ViewModel_Config_FrontDetSettings.fFlowAct2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        //H2
+                                        ViewModel_Config_FrontDetSettings.fFlowAct3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                    }
+                                    break;
+                                case E_DET_TYPE.FPD:
+                                case E_DET_TYPE.PFPD:
+                                    {
+                                        //Air2
+                                        ViewModel_Config_FrontDetSettings.fFlowAct1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        //Air1
+                                        ViewModel_Config_FrontDetSettings.fFlowAct2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        //H2
+                                        ViewModel_Config_FrontDetSettings.fFlowAct3 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                    }
+                                    break;
+                                case E_DET_TYPE.TCD:
+                                case E_DET_TYPE.uTCD:
+                                    {
+                                        //Reference
+                                        ViewModel_Config_FrontDetSettings.fFlowAct1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        //Sample
+                                        ViewModel_Config_FrontDetSettings.fFlowAct2 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                    }
+                                    break;
+
+                            }
+                            #endregion DetSetting
                         }
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_OVEN_SETTING:
@@ -404,6 +461,10 @@ namespace ChroZenService
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_CONFIG:
                         {
+                            ViewModel_Config_FrontInletConfig.e_INLET_TYPE = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[0];
+                            ViewModel_Config_CenterInletConfig.e_INLET_TYPE = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[1];
+                            ViewModel_Config_RearInletConfig.e_INLET_TYPE = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[2];
+
                             ViewModel_Config_ValveProgram.valveProgramPickerSource.Clear();
 
                             ViewModel_Config_ValveInitialState.type1_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.ValveConfig.btType1[0] > 0 ? true : false;
@@ -444,6 +505,14 @@ namespace ChroZenService
                             ViewModel_Config_FrontInletSettings.e_INLET_TYPE = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[0];
                             ViewModel_Config_CenterInletSettings.e_INLET_TYPE = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[1];
                             ViewModel_Config_RearInletSettings.e_INLET_TYPE = (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[2];
+
+                            ViewModel_Config_FrontDetConfig.e_DET_TYPE = (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0];
+                            ViewModel_Config_CenterDetConfig.e_DET_TYPE = (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1];
+                            ViewModel_Config_RearDetConfig.e_DET_TYPE = (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2];
+
+                            ViewModel_Config_FrontDetSettings.e_DET_TYPE = (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0];
+                            ViewModel_Config_CenterDetSettings.e_DET_TYPE = (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1];
+                            ViewModel_Config_RearDetSettings.e_DET_TYPE = (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2];
                         }
                         break;
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_AUX_TEMP_SETTING:
@@ -530,7 +599,6 @@ namespace ChroZenService
                                         ViewModel_Config_FrontInletConfig.fPressureCorrect = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fPressCorrect.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
                                         ViewModel_Config_FrontInletConfig.bPressCorrect = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.bPressCorrect == 1 ? true : false;
                                         ViewModel_Config_FrontInletConfig.bVacuumCorrect = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.bVacuumCorrect == 1 ? true : false;
-
                                         #endregion Config
 
                                         #region Setting
@@ -545,7 +613,7 @@ namespace ChroZenService
 
                                         }
 
-                                        ViewModel_Config_FrontInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.btInjMode;
+
                                         ViewModel_Config_FrontInletSettings.fTotalFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fTotalFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_Config_FrontInletSettings.fSplitFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fSplitFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_Config_FrontInletSettings.iSplitratio = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.iSplitratio.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
@@ -557,7 +625,68 @@ namespace ChroZenService
                                         ViewModel_Config_FrontInletSettings.fColumnFlowOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fColumnFlowOnoff == 1 ? true : false;
                                         ViewModel_Config_FrontInletSettings.fPressureOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.fPressureOnoff == 1 ? true : false;
 
+                                        ViewModel_Config_FrontInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.btInjMode;
                                         ViewModel_Config_FrontInletSettings.btTempMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.btTempMode;
+
+                                        ViewModel_Config_FrontInletSettings.press_fFinalPress_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[0].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_FrontInletSettings.press_fFinalPress_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[1].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_FrontInletSettings.press_fFinalPress_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[2].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_FrontInletSettings.press_fFinalPress_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[3].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_FrontInletSettings.press_fFinalPress_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[4].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_FrontInletSettings.press_fFinalPress_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[5].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+
+                                        ViewModel_Config_FrontInletSettings.press_fRate_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[1].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.press_fRate_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[2].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.press_fRate_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[3].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.press_fRate_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[4].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.press_fRate_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[5].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_FrontInletSettings.press_fFinalTime_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[0].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.press_fFinalTime_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[1].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.press_fFinalTime_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[2].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.press_fFinalTime_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[3].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.press_fFinalTime_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[4].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.press_fFinalTime_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.presPrgm[5].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_FrontInletSettings.flow_fFinalFlow_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[0].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_FrontInletSettings.flow_fFinalFlow_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[1].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_FrontInletSettings.flow_fFinalFlow_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[2].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_FrontInletSettings.flow_fFinalFlow_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[3].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_FrontInletSettings.flow_fFinalFlow_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[4].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_FrontInletSettings.flow_fFinalFlow_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[5].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+
+                                        ViewModel_Config_FrontInletSettings.flow_fRate_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[1].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.flow_fRate_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[2].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.flow_fRate_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[3].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.flow_fRate_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[4].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.flow_fRate_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[5].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_FrontInletSettings.flow_fFinalTime_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[0].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.flow_fFinalTime_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[1].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.flow_fFinalTime_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[2].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.flow_fFinalTime_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[3].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.flow_fFinalTime_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[4].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.flow_fFinalTime_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.flowPrgm[5].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_FrontInletSettings.temp_fFinalTemp_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[0].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fFinalTemp_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[1].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fFinalTemp_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[2].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fFinalTemp_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[3].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fFinalTemp_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[4].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fFinalTemp_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[5].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_FrontInletSettings.temp_fRate_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[1].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fRate_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[2].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fRate_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[3].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fRate_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[4].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fRate_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[5].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_FrontInletSettings.temp_fFinalTime_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[0].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fFinalTime_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[1].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fFinalTime_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[2].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fFinalTime_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[3].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fFinalTime_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[4].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontInletSettings.temp_fFinalTime_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.tempPrgm[5].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         #endregion Setting
 
@@ -590,7 +719,7 @@ namespace ChroZenService
 
                                         }
 
-                                        ViewModel_Config_CenterInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btInjMode;
+
                                         ViewModel_Config_CenterInletSettings.fTotalFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fTotalFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_Config_CenterInletSettings.fSplitFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fSplitFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_Config_CenterInletSettings.iSplitratio = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.iSplitratio.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
@@ -602,8 +731,68 @@ namespace ChroZenService
                                         ViewModel_Config_CenterInletSettings.fColumnFlowOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fColumnFlowOnoff == 1 ? true : false;
                                         ViewModel_Config_CenterInletSettings.fPressureOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.fPressureOnoff == 1 ? true : false;
 
+                                        ViewModel_Config_CenterInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btInjMode;
                                         ViewModel_Config_CenterInletSettings.btTempMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btTempMode;
 
+                                        ViewModel_Config_CenterInletSettings.press_fFinalPress_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[0].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_CenterInletSettings.press_fFinalPress_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[1].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_CenterInletSettings.press_fFinalPress_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[2].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_CenterInletSettings.press_fFinalPress_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[3].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_CenterInletSettings.press_fFinalPress_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[4].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_CenterInletSettings.press_fFinalPress_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[5].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+
+                                        ViewModel_Config_CenterInletSettings.press_fRate_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[1].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.press_fRate_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[2].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.press_fRate_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[3].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.press_fRate_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[4].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.press_fRate_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[5].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_CenterInletSettings.press_fFinalTime_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[0].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.press_fFinalTime_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[1].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.press_fFinalTime_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[2].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.press_fFinalTime_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[3].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.press_fFinalTime_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[4].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.press_fFinalTime_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.presPrgm[5].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_CenterInletSettings.flow_fFinalFlow_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[0].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_CenterInletSettings.flow_fFinalFlow_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[1].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_CenterInletSettings.flow_fFinalFlow_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[2].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_CenterInletSettings.flow_fFinalFlow_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[3].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_CenterInletSettings.flow_fFinalFlow_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[4].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_CenterInletSettings.flow_fFinalFlow_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[5].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+
+                                        ViewModel_Config_CenterInletSettings.flow_fRate_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[1].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.flow_fRate_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[2].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.flow_fRate_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[3].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.flow_fRate_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[4].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.flow_fRate_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[5].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_CenterInletSettings.flow_fFinalTime_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[0].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.flow_fFinalTime_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[1].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.flow_fFinalTime_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[2].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.flow_fFinalTime_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[3].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.flow_fFinalTime_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[4].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.flow_fFinalTime_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.flowPrgm[5].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_CenterInletSettings.temp_fFinalTemp_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[0].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fFinalTemp_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[1].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fFinalTemp_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[2].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fFinalTemp_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[3].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fFinalTemp_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[4].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fFinalTemp_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[5].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_CenterInletSettings.temp_fRate_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[1].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fRate_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[2].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fRate_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[3].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fRate_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[4].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fRate_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[5].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_CenterInletSettings.temp_fFinalTime_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[0].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fFinalTime_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[1].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fFinalTime_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[2].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fFinalTime_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[3].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fFinalTime_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[4].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterInletSettings.temp_fFinalTime_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.tempPrgm[5].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         #endregion Setting
 
                                     }
@@ -635,7 +824,7 @@ namespace ChroZenService
 
                                         }
 
-                                        ViewModel_Config_RearInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.btInjMode;
+
                                         ViewModel_Config_RearInletSettings.fTotalFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fTotalFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_Config_RearInletSettings.fSplitFlowSet = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fSplitFlowSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         ViewModel_Config_RearInletSettings.iSplitratio = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.iSplitratio.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
@@ -647,11 +836,161 @@ namespace ChroZenService
                                         ViewModel_Config_RearInletSettings.fColumnFlowOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fColumnFlowOnoff == 1 ? true : false;
                                         ViewModel_Config_RearInletSettings.fPressureOnoff = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.fPressureOnoff == 1 ? true : false;
 
+                                        ViewModel_Config_RearInletSettings.btInjMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.btInjMode;
                                         ViewModel_Config_RearInletSettings.btTempMode = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.btTempMode;
 
+                                        ViewModel_Config_RearInletSettings.press_fFinalPress_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[0].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_RearInletSettings.press_fFinalPress_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[1].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_RearInletSettings.press_fFinalPress_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[2].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_RearInletSettings.press_fFinalPress_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[3].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_RearInletSettings.press_fFinalPress_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[4].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_RearInletSettings.press_fFinalPress_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[5].fFinalPress.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+
+                                        ViewModel_Config_RearInletSettings.press_fRate_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[1].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.press_fRate_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[2].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.press_fRate_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[3].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.press_fRate_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[4].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.press_fRate_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[5].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_RearInletSettings.press_fFinalTime_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[0].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.press_fFinalTime_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[1].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.press_fFinalTime_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[2].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.press_fFinalTime_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[3].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.press_fFinalTime_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[4].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.press_fFinalTime_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.presPrgm[5].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_RearInletSettings.flow_fFinalFlow_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[0].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_RearInletSettings.flow_fFinalFlow_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[1].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_RearInletSettings.flow_fFinalFlow_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[2].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_RearInletSettings.flow_fFinalFlow_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[3].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_RearInletSettings.flow_fFinalFlow_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[4].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                                        ViewModel_Config_RearInletSettings.flow_fFinalFlow_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[5].fFinalFlow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+
+                                        ViewModel_Config_RearInletSettings.flow_fRate_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[1].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.flow_fRate_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[2].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.flow_fRate_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[3].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.flow_fRate_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[4].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.flow_fRate_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[5].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_RearInletSettings.flow_fFinalTime_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[0].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.flow_fFinalTime_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[1].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.flow_fFinalTime_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[2].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.flow_fFinalTime_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[3].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.flow_fFinalTime_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[4].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.flow_fFinalTime_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.flowPrgm[5].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_RearInletSettings.temp_fFinalTemp_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[0].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fFinalTemp_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[1].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fFinalTemp_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[2].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fFinalTemp_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[3].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fFinalTemp_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[4].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fFinalTemp_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[5].fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_RearInletSettings.temp_fRate_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[1].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fRate_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[2].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fRate_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[3].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fRate_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[4].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fRate_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[5].fRate.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_RearInletSettings.temp_fFinalTime_1 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[0].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fFinalTime_2 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[1].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fFinalTime_3 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[2].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fFinalTime_4 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[3].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fFinalTime_5 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[4].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearInletSettings.temp_fFinalTime_6 = DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Received.packet.tempPrgm[5].fFinalTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                                         #endregion Setting
                                     }
                                     break;
+                            }
+                        }
+                        break;
+                    case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_DET_SETTING:
+                        {
+                            switch (nIndex)
+                            {
+                                case 0:
+                                    {
+                                        #region Config
+
+                                        ViewModel_Config_FrontDetConfig.btMakeupgas = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.btMakeupgas;
+                                        ViewModel_Config_FrontDetConfig.btConnection = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.btConnection;
+                                        ViewModel_Config_FrontDetConfig.iSignalrange = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.iSignalrange;
+                                        ViewModel_Config_FrontDetConfig.bAutozero = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.bAutozero == 1 ? true : false;
+                                        ViewModel_Config_FrontDetConfig.btBlockSelect = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.btBlockSelect;
+                                        ViewModel_Config_FrontDetConfig.iSignalvariation = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.iSignalvariation;
+                                        ViewModel_Config_FrontDetConfig.fLitoffset = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.fLitoffset.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_FrontDetConfig.fIgnitedelay = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.fIgnitedelay.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontDetConfig.fIgniteflow = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.fIgniteflow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontDetConfig.fIgnitetemp = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.fIgnitetemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        #endregion Config
+
+                                        #region Settings
+                                        ViewModel_Config_FrontDetSettings.fFlowSet1 = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.fFlowSet1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontDetSettings.fFlowSet2 = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.fFlowSet2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_FrontDetSettings.fFlowSet3 = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.fFlowSet3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_FrontDetSettings.bFlowOnoff1 = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.bFlowOnoff1 == 1 ? true : false;
+                                        ViewModel_Config_FrontDetSettings.bFlowOnoff2 = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.bFlowOnoff2 == 1 ? true : false;
+                                        ViewModel_Config_FrontDetSettings.bFlowOnoff3 = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.bFlowOnoff3 == 1 ? true : false;
+
+                                        ViewModel_Config_FrontDetSettings.bElectrometer = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.bElectrometer == 1 ? true : false;
+
+                                        ViewModel_Config_FrontDetSettings.fTempSet = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.fTempSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_FrontDetSettings.bTempOnoff = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.bTempOnoff == 1 ? true : false;
+
+                                        ViewModel_Config_FrontDetSettings.bAutoIgnition = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.bAutoIgnition == 1 ? true : false;
+
+                                        ViewModel_Config_FrontDetSettings.iBeadVoltageSet = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.iBeadVoltageSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        ViewModel_Config_FrontDetSettings.iBeadVoltageOnoff = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.iBeadVoltageOnoff == 1 ? true : false;
+
+                                        ViewModel_Config_FrontDetSettings.bPolarChange = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.bPolarChange == 1 ? true : false;
+
+
+                                        ViewModel_Config_FrontDetSettings.fFlowSet1 = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Received.packet.fFlowSet1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        #endregion Settings
+                                    }
+                                    break;
+                                case 1:
+                                    {
+                                        #region Config
+
+                                        ViewModel_Config_CenterDetConfig.btMakeupgas = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Received.packet.btMakeupgas;
+                                        ViewModel_Config_CenterDetConfig.btConnection = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Received.packet.btConnection;
+                                        ViewModel_Config_CenterDetConfig.iSignalrange = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Received.packet.iSignalrange;
+                                        ViewModel_Config_CenterDetConfig.bAutozero = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Received.packet.bAutozero == 1 ? true : false;
+                                        ViewModel_Config_CenterDetConfig.btBlockSelect = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Received.packet.btBlockSelect;
+                                        ViewModel_Config_CenterDetConfig.iSignalvariation = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Received.packet.iSignalvariation;
+                                        ViewModel_Config_CenterDetConfig.fLitoffset = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Received.packet.fLitoffset.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_CenterDetConfig.fIgnitedelay = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Received.packet.fIgnitedelay.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterDetConfig.fIgniteflow = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Received.packet.fIgniteflow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_CenterDetConfig.fIgnitetemp = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Received.packet.fIgnitetemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        #endregion Config
+                                    }
+                                    break;
+                                case 2:
+                                    {
+                                        #region Config
+
+                                        ViewModel_Config_RearDetConfig.btMakeupgas = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Received.packet.btMakeupgas;
+                                        ViewModel_Config_RearDetConfig.btConnection = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Received.packet.btConnection;
+                                        ViewModel_Config_RearDetConfig.iSignalrange = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Received.packet.iSignalrange;
+                                        ViewModel_Config_RearDetConfig.bAutozero = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Received.packet.bAutozero == 1 ? true : false;
+                                        ViewModel_Config_RearDetConfig.btBlockSelect = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Received.packet.btBlockSelect;
+                                        ViewModel_Config_RearDetConfig.iSignalvariation = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Received.packet.iSignalvariation;
+                                        ViewModel_Config_RearDetConfig.fLitoffset = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Received.packet.fLitoffset.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                                        ViewModel_Config_RearDetConfig.fIgnitedelay = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Received.packet.fIgnitedelay.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearDetConfig.fIgniteflow = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Received.packet.fIgniteflow.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_Config_RearDetConfig.fIgnitetemp = DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Received.packet.fIgnitetemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+
+                                        #endregion Config
+                                    }
+                                    break;
+
                             }
                         }
                         break;
@@ -812,6 +1151,11 @@ namespace ChroZenService
         private void SubMenuSelectCommandAction(object param)
         {
             SelectedSubMenu = (E_CONFIG_SUB_MENU_TYPE)param;
+
+            ViewModel_Config_FrontInletSettings.IsFirstPage = true;
+            ViewModel_Config_CenterInletSettings.IsFirstPage = true;
+            ViewModel_Config_RearInletSettings.IsFirstPage = true;
+
             //TODO :             
             Debug.WriteLine(string.Format("ViewModelConfigPage : SubMenuSelectCommand to {0} Fired", SelectedSubMenu));
         }

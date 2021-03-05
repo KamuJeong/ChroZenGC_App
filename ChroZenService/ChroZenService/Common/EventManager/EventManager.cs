@@ -9,6 +9,17 @@ namespace ChroZenService
 {
     public static class EventManager
     {
+        #region TryConnect
+
+        public delegate void TryConnect(string IPString);
+        public static TryConnect onTryConnect;
+        public static void TryConnectEvent(string IPString)
+        {
+            onTryConnect?.Invoke(IPString);
+        }
+
+        #endregion TryConnect
+
         #region ApcSetByInletConfig
 
         public delegate void ApcSetByInletConfig(byte ApcMode, E_INLET_LOCATION e_INLET_LOCATION);

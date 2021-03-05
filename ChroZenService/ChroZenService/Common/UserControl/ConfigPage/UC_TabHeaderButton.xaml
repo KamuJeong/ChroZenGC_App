@@ -10,7 +10,7 @@
         <AbsoluteLayout>
             <Grid>
                 <!--<Grid.RowDefinitions>
-                    <RowDefinition Height="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonHeight}"/>
+                    <RowDefinition Height="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonHeight}"/>q
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonWidth}"/>

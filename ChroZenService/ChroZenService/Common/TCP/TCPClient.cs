@@ -76,11 +76,13 @@ namespace ChroZenService
         bool bIsThreadQueueProceed = true;
         private void InitQueue()
         {
-            taskQueue = Task.Factory.StartNew(delegate
+            //taskQueue = 
+            //Task.Factory.StartNew(delegate
+            ThreadPool.QueueUserWorkItem(delegate
             {
-                //Thread.CurrentThread.Priority = ThreadPriority.Normal;
+                    //Thread.CurrentThread.Priority = ThreadPriority.Normal;
 
-                Debug.WriteLine(string.Format("ChroZen GC Process={0}, TCPClient : received PACKCODE queue pumping thread start at Thread Id : {1}", Process.GetCurrentProcess().ProcessName, TaskScheduler.Current.Id));
+                    Debug.WriteLine(string.Format("ChroZen GC Process={0}, TCPClient : received PACKCODE queue pumping thread start at Thread Id : {1}", Process.GetCurrentProcess().ProcessName, TaskScheduler.Current.Id));
 
                 while (bIsThreadQueueProceed)
                 {
@@ -92,29 +94,34 @@ namespace ChroZenService
                             int nIndex = 0;
 
                             W_CHROZEN_GC_PACKET_WITH_PACKCODE wrappedPACKCODE = receivedAsyncPACKCODE_queue.Dequeue();
-                            //동기식 처리가 필요한 경우 이벤트 처리
-                            switch (wrappedPACKCODE.packcode)
+
+                                //동기식 처리가 필요한 경우 이벤트 처리
+                                switch (wrappedPACKCODE.packcode)
                             {
                                 case E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_INFORM:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received = (T_PACKCODE_CHROZEN_SYSTEM_INFORM)wrappedPACKCODE.packet;
                                         DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Send = DataManager.t_PACKCODE_CHROZEN_SYSTEM_INFORM_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_CONFIG:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received = (T_PACKCODE_CHROZEN_SYSTEM_CONFIG)wrappedPACKCODE.packet;
                                         DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Send = DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_OVEN_SETTING:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received = (T_PACKCODE_CHROZEN_OVEN_SETTING)wrappedPACKCODE.packet;
                                         DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_INLET_SETTING:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         Debug.WriteLine(string.Format("{0} {1}", wrappedPACKCODE.packcode.ToString(), ((T_PACKCODE_CHROZEN_INLET_SETTING)wrappedPACKCODE.packet).packet.btPortNo));
                                         switch (((T_PACKCODE_CHROZEN_INLET_SETTING)wrappedPACKCODE.packet).packet.btPortNo)
                                         {
@@ -144,6 +151,7 @@ namespace ChroZenService
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_DET_SETTING:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         switch (((T_PACKCODE_CHROZEN_DET_SETTING)wrappedPACKCODE.packet).packet.btPort)
                                         {
                                             case 0:
@@ -172,18 +180,21 @@ namespace ChroZenService
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_VALVE_SETTING:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Received = (T_PACKCODE_CHROZEN_VALVE_SETTING)wrappedPACKCODE.packet;
                                         DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send = DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_AUX_TEMP_SETTING:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received = (T_PACKCODE_CHROZEN_AUX_TEMP_SETTING)wrappedPACKCODE.packet;
                                         DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send = DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_AUX_APC_SETTING:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         switch (((T_PACKCODE_CHROZEN_AUX_APC_SETTING)wrappedPACKCODE.packet).packet.btPort)
                                         {
                                             case 0:
@@ -212,6 +223,7 @@ namespace ChroZenService
                                     break;
                                 case E_PACKCODE.PACKCODE_YL6200_SIGNAL_SETTING:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         switch (((T_PACKCODE_CHROZEN_DET_SIGNAL_SETTING)wrappedPACKCODE.packet).packet.btPort)
                                         {
                                             case 0:
@@ -240,12 +252,14 @@ namespace ChroZenService
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_SPECIAL_FUNCTION:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received = (T_PACKCODE_CHROZEN_SPECIAL_FUNCTION)wrappedPACKCODE.packet;
                                         DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send = DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_YL6200_TIME_CTRL_SETTING:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.t_PACKCODE_CHROZEN_TIME_CTRL_SETTING_Received = (T_PACKCODE_CHROZEN_TIME_CTRL_SETTING)wrappedPACKCODE.packet;
                                         DataManager.t_PACKCODE_CHROZEN_TIME_CTRL_SETTING_Send = DataManager.t_PACKCODE_CHROZEN_TIME_CTRL_SETTING_Received;
                                     }
@@ -258,12 +272,14 @@ namespace ChroZenService
                                     break;
                                 case E_PACKCODE.PACKCODE_YL6200_SLFEMSG:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.t_PACKCODE_CHROZEN_SLFEMSG_Received = (T_PACKCODE_CHROZEN_SLFEMSG)wrappedPACKCODE.packet;
                                         DataManager.t_PACKCODE_CHROZEN_SLFEMSG_Send = DataManager.t_PACKCODE_CHROZEN_SLFEMSG_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_YL6200_COMMAND:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.t_PACKCODE_CHROZEN_COMMAND_Received = (T_PACKCODE_CHROZEN_COMMAND)wrappedPACKCODE.packet;
                                         DataManager.t_PACKCODE_CHROZEN_COMMAND_Send = DataManager.t_PACKCODE_CHROZEN_COMMAND_Received;
                                     }
@@ -275,52 +291,60 @@ namespace ChroZenService
                                     }
                                     break;
 
-                                #region LCD
+                                    #region LCD
 
-                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_SIGNAL:
+                                    case E_PACKCODE.PACKCODE_CHROZEN_LCD_SIGNAL:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = (T_PACKCODE_CHROZEN_SIGNAL)wrappedPACKCODE.packet;
                                         DataManager.t_PACKCODE_CHROZEN_SIGNAL_Send = DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_CALIB_READ:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received = (T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ)wrappedPACKCODE.packet;
                                         DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Send = DataManager.T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received = (T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE)wrappedPACKCODE.packet;
                                         DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Send = DataManager.T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received = (T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK)wrappedPACKCODE.packet;
                                         DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Send = DataManager.T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received = (T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP)wrappedPACKCODE.packet;
                                         DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_SIGNAL:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL_Received = (T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL)wrappedPACKCODE.packet;
                                         DataManager.T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL_Send = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received = (T_PACKCODE_LCD_COMMAND_TYPE_TEMP)wrappedPACKCODE.packet;
                                         DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send = DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Received;
                                     }
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         switch (((T_PACKCODE_LCD_COMMAND_TYPE_INLET)wrappedPACKCODE.packet).header.nEventIndex)
                                         {
                                             case 0:
@@ -349,6 +373,7 @@ namespace ChroZenService
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         switch (((T_PACKCODE_LCD_COMMAND_TYPE_DET)wrappedPACKCODE.packet).header.nEventIndex)
                                         {
                                             case 0:
@@ -377,6 +402,7 @@ namespace ChroZenService
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_APCAUX:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         switch (((T_PACKCODE_LCD_COMMAND_TYPE_AUX)wrappedPACKCODE.packet).header.nEventIndex)
                                         {
                                             case 0:
@@ -405,17 +431,18 @@ namespace ChroZenService
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG:
                                     {
+                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Received = (T_PACKCODE_CHROZEN_LCD_DIAG)wrappedPACKCODE.packet;
                                         DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Send = DataManager.T_PACKCODE_CHROZEN_LCD_DIAG_Received;
                                     }
                                     break;
 
-                                    #endregion LCD
-                            }
+                                        #endregion LCD
+                                }
 
                             EventManager.PACKCODE_ReceivceEvent(wrappedPACKCODE.packcode, nIndex);
-                            //비동기식 빠른 처리가 필요한 경우 쓰레드 처리
-                        }
+                                //비동기식 빠른 처리가 필요한 경우 쓰레드 처리
+                            }
                     }
                     catch (Exception ee)
                     {
@@ -431,6 +458,7 @@ namespace ChroZenService
             try
             {
                 taskQueue.Dispose();
+
                 Debug.WriteLine(string.Format("Chrozen GC : Process={0} : TCPClient: RestartQueueThread -> threadQueue aborted.", Process.GetCurrentProcess().ProcessName));
             }
             catch (Exception e)
@@ -492,37 +520,37 @@ namespace ChroZenService
             try
             {
                 EventManager.DisconnectedEvent();
+
                 if (bIsThreadQueueProceed == false) return;
-                if (!Socket_Client_DeviceInterface.Connected)
-                {
-                    try
-                    {
-                        RestartQueueThread();
-                        Disconnect();
-                        //Socket_Client_DeviceInterface.Disconnect(true);
-                        //Socket_Client_DeviceInterface.Dispose();
-                    }
-                    catch (Exception ex)
-                    {
-                        //LogEvent?.Invoke(13, "{0} : {1}".FormatA("Dispose", ex.Message));
-                    }
-                    finally
-                    {
-                        Debug.WriteLine("TCPClient : Disconnect and ReConnect");
-                        EventManager.DisconnectedEvent();
 
-                        InitTCP();
-                        ConnectDevice(_ip, _port);
-                        //YC_EventManager.SocketReConnectedEvent();
-                    }
-                }
-                //else
-                {
-                    //Debug.WriteLine("TCPClient : Disconnect and ReConnect");
-                    //YC_EventManager.ConnectErrorEvent();
+                #region 210305 재접속 로직 삭제
 
-                    //YC_EventManager.SocketReConnectedEvent();
-                }
+                //if (!Socket_Client_DeviceInterface.Connected)
+                //{
+                //    try
+                //    {
+                //        RestartQueueThread();
+                //        Disconnect();
+                //        //Socket_Client_DeviceInterface.Disconnect(true);
+                //        //Socket_Client_DeviceInterface.Dispose();
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        //LogEvent?.Invoke(13, "{0} : {1}".FormatA("Dispose", ex.Message));
+                //    }
+                //    finally
+                //    {
+                //        Debug.WriteLine("TCPClient : Disconnect and ReConnect");
+                //        EventManager.DisconnectedEvent();
+
+                //        InitTCP();
+                //        ConnectDevice(_ip, _port);
+                //        //YC_EventManager.SocketReConnectedEvent();
+                //    }
+                //}
+
+                #endregion 210305 재접속 로직 삭제
+
             }
             catch (Exception ee)
             {
@@ -530,6 +558,32 @@ namespace ChroZenService
             }
         }
 
+        public void Login()
+        {
+            if (!Socket_Client_DeviceInterface.Connected)
+            {
+                try
+                {
+                    RestartQueueThread();
+                    Disconnect();
+                    //Socket_Client_DeviceInterface.Disconnect(true);
+                    //Socket_Client_DeviceInterface.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    //LogEvent?.Invoke(13, "{0} : {1}".FormatA("Dispose", ex.Message));
+                }
+                finally
+                {
+                    Debug.WriteLine("TCPClient : Disconnect and ReConnect");
+                    EventManager.DisconnectedEvent();
+
+                    InitTCP();
+                    ConnectDevice(_ip, _port);
+                    //YC_EventManager.SocketReConnectedEvent();
+                }
+            }
+        }
 
         string _ip;
         int _port;
@@ -683,83 +737,92 @@ namespace ChroZenService
         {
             try
             {
-                Task.Factory.StartNew(delegate
+                //Task.Factory.StartNew(delegate
+                ThreadPool.QueueUserWorkItem(delegate
+                //Task.Run(delegate
                 {
                     lock (receiveSyncRoot)
                     {
-                        // Retrieve the state object and the client socket   
-                        // from the asynchronous state object.  
-                        SocketStateObject state = (SocketStateObject)ar.AsyncState;
-                        Socket client = state.workSocket;
-
-                        if (client.Connected == true)
+                        try
                         {
+                            // Retrieve the state object and the client socket   
+                            // from the asynchronous state object.  
+                            SocketStateObject state = (SocketStateObject)ar.AsyncState;
+                            Socket client = state.workSocket;
+
+                            if (client.Connected == true)
                             {
-                                // Read data from the remote device.  
-                                int bytesRead = client.EndReceive(ar);
                                 {
-                                    if (bytesRead > 0)
+                                    // Read data from the remote device.  
+                                    int bytesRead = client.EndReceive(ar);
                                     {
-                                        byte[] dissectedPacket = new byte[bytesRead];
-                                        if (nReservedCount > 0)
+                                        if (bytesRead > 0)
                                         {
-                                            dissectedPacket = new byte[bytesRead + nReservedCount];
-                                            Array.Copy(reserveBytes, 0, dissectedPacket, 0, nReservedCount);
-                                            Array.Copy(state.rawBuffer, 0, dissectedPacket, nReservedCount, bytesRead);
-                                            Debug.WriteLine(string.Format("=============================Reserve Handled============================== {0} at Thread Id : {1}", dissectedPacket.Length, TaskScheduler.Current.Id));
-                                            nReservedCount = 0;
-                                        }
-                                        else
-                                        {
-                                            //바이트 배열을 읽은 수 만큼 state.lengthedBuffer에 복사
-                                            Array.Copy(state.rawBuffer, dissectedPacket, bytesRead);
-                                        }
-                                        while (true)
-                                        {
-                                            int packetLength = (dissectedPacket[0]) + (dissectedPacket[1] << 8) + (dissectedPacket[2] << 16) + (dissectedPacket[3] << 24);
-
-                                            if (
-                                                (dissectedPacket.Length >= packetLength) &&
-                                                (packetLength >= 24)
-                                                )
+                                            byte[] dissectedPacket = new byte[bytesRead];
+                                            if (nReservedCount > 0)
                                             {
-                                                //System.Diagnostics.Debug.WriteLine(string.Format("ReceiveCallback : bytes to read == {0}", bytesRead));
-                                                byte[] packet = new byte[packetLength];
-                                                //읽은 바이트 배열을 nPacketLength 크기에 따라 분할하여 처리
-                                                Array.Copy(dissectedPacket, packet, packetLength);
-
-                                                //원본 바이트 배열에서 nPacketLength 만큼을 제거 후 다시 할당
-                                                dissectedPacket = dissectedPacket.Skip(packetLength).ToArray();
-                                                //nPacketLength 크기에 따라 분할한 packet을 parsing
-                                                ParsePacket(packet, false);
-                                                if (dissectedPacket.Length < 4) break;
+                                                dissectedPacket = new byte[bytesRead + nReservedCount];
+                                                Array.Copy(reserveBytes, 0, dissectedPacket, 0, nReservedCount);
+                                                Array.Copy(state.rawBuffer, 0, dissectedPacket, nReservedCount, bytesRead);
+                                                Debug.WriteLine(string.Format("=============================Reserve Handled============================== {0} at Thread Id : {1}", dissectedPacket.Length, TaskScheduler.Current.Id));
+                                                nReservedCount = 0;
                                             }
                                             else
                                             {
-                                                Array.Copy(dissectedPacket, reserveBytes, dissectedPacket.Length);
-                                                nReservedCount = dissectedPacket.Length;
-                                                Debug.WriteLine(string.Format("=============================Reserve Added============================== {0}", nReservedCount));
-                                                break;
+                                                //바이트 배열을 읽은 수 만큼 state.lengthedBuffer에 복사
+                                                Array.Copy(state.rawBuffer, dissectedPacket, bytesRead);
                                             }
+                                            while (true)
+                                            {
+                                                int packetLength = (dissectedPacket[0]) + (dissectedPacket[1] << 8) + (dissectedPacket[2] << 16) + (dissectedPacket[3] << 24);
+
+                                                if (
+                                                    (dissectedPacket.Length >= packetLength) &&
+                                                    (packetLength >= 24)
+                                                    )
+                                                {
+                                                    //System.Diagnostics.Debug.WriteLine(string.Format("ReceiveCallback : bytes to read == {0}", bytesRead));
+                                                    byte[] packet = new byte[packetLength];
+                                                    //읽은 바이트 배열을 nPacketLength 크기에 따라 분할하여 처리
+                                                    Array.Copy(dissectedPacket, packet, packetLength);
+
+                                                    //원본 바이트 배열에서 nPacketLength 만큼을 제거 후 다시 할당
+                                                    dissectedPacket = dissectedPacket.Skip(packetLength).ToArray();
+                                                    //nPacketLength 크기에 따라 분할한 packet을 parsing
+                                                    ParsePacket(packet, false);
+                                                    if (dissectedPacket.Length < 4) break;
+                                                }
+                                                else
+                                                {
+                                                    Array.Copy(dissectedPacket, reserveBytes, dissectedPacket.Length);
+                                                    nReservedCount = dissectedPacket.Length;
+                                                    Debug.WriteLine(string.Format("=============================Reserve Added============================== {0}", nReservedCount));
+                                                    break;
+                                                }
+                                            }
+
+                                            if (!bIsSync)
+                                                // Get the rest of the data.  
+                                                client.BeginReceive(state.rawBuffer, 0, SocketStateObject.BufferSize, 0,
+                                                    new AsyncCallback(ReceiveCallback), state);
+
                                         }
 
-                                        if (!bIsSync)
-                                            // Get the rest of the data.  
-                                            client.BeginReceive(state.rawBuffer, 0, SocketStateObject.BufferSize, 0,
-                                                new AsyncCallback(ReceiveCallback), state);
-
-                                    }
-
-                                    else
-                                    {
-                                        System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : bytes to read == 0"));
+                                        else
+                                        {
+                                            System.Diagnostics.Debug.WriteLine(string.Format("TCPClient : bytes to read == 0"));
+                                        }
                                     }
                                 }
                             }
+                            else
+                            {
+                                System.Diagnostics.Debug.WriteLine(string.Format("TCPClient.ReceiveCallback : client.Connected == false"));
+                            }
                         }
-                        else
+                        catch (SocketException e)
                         {
-                            System.Diagnostics.Debug.WriteLine(string.Format("TCPClient.ReceiveCallback : client.Connected == false"));
+                            System.Diagnostics.Debug.WriteLine(string.Format("TCPClient.ReceiveCallback : SocketException.Message : {0}, SocketException.StackTrace : {1}", e.Message, e.StackTrace));
                         }
                     }
                 });
@@ -779,7 +842,7 @@ namespace ChroZenService
             byte[] bArr_T_YL9000HPLC_PACKET = new byte[24];
             Array.Copy(packet, bArr_T_YL9000HPLC_PACKET, 24);
             //CL_ReceivedPacket_ChrogenInterface.Add(state.lengthedBuffer);
-            T_HEADER_PACKET temp =  YC_Util.ByteToStruct<T_HEADER_PACKET>(bArr_T_YL9000HPLC_PACKET);
+            T_HEADER_PACKET temp = YC_Util.ByteToStruct<T_HEADER_PACKET>(bArr_T_YL9000HPLC_PACKET);
             //Debug.WriteLine(((E_PACKCODE)temp.nPacketCode).ToString());
             //Debug.WriteLine(((E_PACKCODE)temp.nPacketCode).ToString() + " 수신");
             switch ((E_PACKCODE)temp.nPacketCode)
@@ -873,6 +936,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_INFORM));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SYSTEM_INFORM>(packet), E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_INFORM));
                                 }
                                 catch (Exception e)
@@ -922,6 +986,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_CONFIG));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SYSTEM_CONFIG>(packet), E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_CONFIG));
                                 }
                                 catch (Exception e)
@@ -973,6 +1038,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_OVEN_SETTING));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_OVEN_SETTING>(packet), E_PACKCODE.PACKCODE_CHROZEN_OVEN_SETTING));
                                 }
                                 catch (Exception e)
@@ -1048,7 +1114,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
-                                    Debug.WriteLine(string.Format("{0}", (E_PACKCODE)temp.nPacketCode).ToString());
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_INLET_SETTING));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_INLET_SETTING>(packet), E_PACKCODE.PACKCODE_CHROZEN_INLET_SETTING));
                                 }
                                 catch (Exception e)
@@ -1125,6 +1191,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_DET_SETTING));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_DET_SETTING>(packet), E_PACKCODE.PACKCODE_CHROZEN_DET_SETTING));
                                 }
                                 catch (Exception e)
@@ -1178,6 +1245,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_VALVE_SETTING));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_VALVE_SETTING>(packet), E_PACKCODE.PACKCODE_CHROZEN_VALVE_SETTING));
                                 }
                                 catch (Exception e)
@@ -1232,6 +1300,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_AUX_TEMP_SETTING));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_AUX_TEMP_SETTING>(packet), E_PACKCODE.PACKCODE_CHROZEN_AUX_TEMP_SETTING));
                                 }
                                 catch (Exception e)
@@ -1306,6 +1375,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_AUX_APC_SETTING));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_AUX_APC_SETTING>(packet), E_PACKCODE.PACKCODE_CHROZEN_AUX_APC_SETTING));
                                 }
                                 catch (Exception e)
@@ -1378,6 +1448,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_YL6200_SIGNAL_SETTING));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_DET_SIGNAL_SETTING>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL_SETTING));
                                 }
                                 catch (Exception e)
@@ -1428,6 +1499,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_SPECIAL_FUNCTION));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SPECIAL_FUNCTION>(packet), E_PACKCODE.PACKCODE_CHROZEN_SPECIAL_FUNCTION));
                                 }
                                 catch (Exception e)
@@ -1480,6 +1552,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_YL6200_TIME_CTRL_SETTING));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_TIME_CTRL_SETTING>(packet), E_PACKCODE.PACKCODE_YL6200_TIME_CTRL_SETTING));
                                 }
                                 catch (Exception e)
@@ -1527,6 +1600,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    //Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_STATE));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SYSTEM_STATE>(packet), E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_STATE));
                                 }
                                 catch (Exception e)
@@ -1566,6 +1640,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_YL6200_SLFEMSG));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SLFEMSG>(packet), E_PACKCODE.PACKCODE_YL6200_SLFEMSG));
                                 }
                                 catch (Exception e)
@@ -1605,6 +1680,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_YL6200_COMMAND));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_COMMAND>(packet), E_PACKCODE.PACKCODE_YL6200_COMMAND));
                                 }
                                 catch (Exception e)
@@ -1649,6 +1725,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    //Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_YL6200_SIGNAL));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL));
                                 }
                                 catch (Exception e)
@@ -1696,6 +1773,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_YL6200_SIGNAL));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_SIGNAL>(packet), E_PACKCODE.PACKCODE_YL6200_SIGNAL));
                                 }
                                 catch (Exception e)
@@ -1741,6 +1819,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_CALIB_READ));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_LCD_APC_CALIB_READ>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_CALIB_READ));
                                 }
                                 catch (Exception e)
@@ -1786,6 +1865,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_APC_SENSOR_VOLTAGE));
                                 }
                                 catch (Exception e)
@@ -1831,6 +1911,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_VOLTAGE_CHECK));
                                 }
                                 catch (Exception e)
@@ -1876,6 +1957,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                                 }
                                 catch (Exception e)
@@ -1921,6 +2003,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_SIGNAL));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_SIGNAL>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_SIGNAL));
                                 }
                                 catch (Exception e)
@@ -1966,6 +2049,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_TEMP>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
                                 }
                                 catch (Exception e)
@@ -2047,6 +2131,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_INLET>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
                                 }
                                 catch (Exception e)
@@ -2128,6 +2213,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_DET>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_DET));
                                 }
                                 catch (Exception e)
@@ -2211,6 +2297,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_APCAUX));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_LCD_COMMAND_TYPE_AUX>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_APCAUX));
                                 }
                                 catch (Exception e)
@@ -2256,6 +2343,7 @@ namespace ChroZenService
                             {
                                 try
                                 {
+                                    Debug.WriteLine(string.Format("{0} packet enqueue", E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG));
                                     receivedAsyncPACKCODE_queue.Enqueue(new W_CHROZEN_GC_PACKET_WITH_PACKCODE(YC_Util.ByteToStruct<T_PACKCODE_CHROZEN_LCD_DIAG>(packet), E_PACKCODE.PACKCODE_CHROZEN_LCD_DIAG));
                                 }
                                 catch (Exception e)

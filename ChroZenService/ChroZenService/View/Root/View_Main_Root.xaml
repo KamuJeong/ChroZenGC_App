@@ -62,6 +62,35 @@
             <!--에러 페이지-->
             <local:View_Error IsVisible="{Binding IsErrorPopupVisible}"/>
             <Grid x:Name="WhitePage" BackgroundColor="White" />
+            <Grid x:Name="LoginPage"  IsVisible="{Binding IsLoginPageVisible}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="300"/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="1" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                </Frame>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="210"/>
+                        <ColumnDefinition Width="207"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Set Connection" FontSize="24" HorizontalTextAlignment="Center" TextColor="White"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="IP : " FontSize="24" HorizontalTextAlignment="End" TextColor="White"/>
+                    <local:UC_LogInIP_Set Grid.Row="1" Grid.Column="1" FontSize="24"                                          
+                                          Text="{Binding ViewModelSystemPage.ViewModel_System_Information.IPAddress}" 
+                                          TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetSettings.SetCommand}"
+                                          TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.IP_SETTING}"
+                                          TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" 
+                                          Background="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}" />
+                </Grid>
+            </Grid>
         </Grid>
     </AbsoluteLayout>
 </ContentPage>

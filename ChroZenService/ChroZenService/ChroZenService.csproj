@@ -304,6 +304,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Det\Config\UC_Config_DetConfig_Set.xaml.cs">
+      <DependentUpon>UC_Config_DetConfig_Set.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Det\Setting\UC_Config_DetSetting_SignalActual.xaml.cs">
+      <DependentUpon>UC_Config_DetSetting_SignalActual.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Det\Setting\UC_Config_DetSetting_Actual.xaml.cs">
+      <DependentUpon>UC_Config_DetSetting_Actual.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\ConfigPage\Config\Det\Setting\UC_Config_DetSetting_Set.xaml.cs">
+      <DependentUpon>UC_Config_DetSetting_Set.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Common\UserControl\ConfigPage\Config\Inlet\Setting\UC_Config_InletSetting_VelocityActual.xaml.cs">
       <DependentUpon>UC_Config_InletSetting_VelocityActual.xaml</DependentUpon>
     </Compile>
@@ -369,6 +381,9 @@
     </Compile>
     <Compile Update="Common\UserControl\ConfigPage\Config\Valve\UC_System_ValveProgram_Time.xaml.cs">
       <DependentUpon>UC_System_ValveProgram_Time.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\UserControl\MainPage\LogIn\UC_LogInIP_Set.xaml.cs">
+      <DependentUpon>UC_LogInIP_Set.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetConfig_Front.xaml.cs">
       <DependentUpon>View_Config_DetConfig_Front.xaml</DependentUpon>
