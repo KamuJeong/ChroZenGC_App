@@ -2305,7 +2305,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TEMPERATURE:
                     {
                         fTempOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTempOnoff = fTempOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2314,7 +2314,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_COLUMN_FLOW:
                     {
                         fColumnFlowOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fColumnFlowOnoff = fColumnFlowOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2324,7 +2324,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PRESSURE:
                     {
                         fPressureOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPressureOnoff = fPressureOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2345,7 +2345,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TEMPERATURE:
                     {
                         fTempOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTempOnoff = fTempOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2354,7 +2354,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_COLUMN_FLOW:
                     {
                         fColumnFlowOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fColumnFlowOnoff = fColumnFlowOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2364,7 +2364,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PRESSURE:
                     {
                         fPressureOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPressureOnoff = fPressureOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2385,7 +2385,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE:
                     {
                         fTempOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTempOnoff = fTempOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2394,7 +2394,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_COLUMN_FLOW:
                     {
                         fColumnFlowOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fColumnFlowOnoff = fColumnFlowOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
@@ -2404,7 +2404,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PRESSURE:
                     {
                         fPressureOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPressureOnoff = fPressureOnoff ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;

@@ -160,6 +160,15 @@
     <EmbeddedResource Update="Common\UserControl\ConfigPage\Config\Valve\UC_Config_Valve_Program_Picker.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Common\UserControl\ControlMenu\UC_READYRUN_Button.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\UserControl\ControlMenu\UC_START_Button.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\UserControl\ControlMenu\UC_STOP_Button.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Common\UserControl\KeyPad\KeyPad.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

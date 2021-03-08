@@ -45,7 +45,26 @@ namespace ChroZenService
         public string ActualTemperature { get { return _ActualTemperature; } set { if (_ActualTemperature != value) { _ActualTemperature = value; OnPropertyChanged("ActualTemperature"); } } }
 
         string _fTempSet;
-        public string fTempSet { get { return _fTempSet; } set { if (_fTempSet != value) { _fTempSet = value; OnPropertyChanged("fTempSet"); } } }
+        public string fTempSet { get { return _fTempSet; }
+            set {
+                if (_fTempSet != value)
+                {
+                    if(_bTempOnoff)
+                    {
+                        DisplayString_fTempSet = _fTempSet;
+                    }
+                    else
+                    {
+                        DisplayString_fTempSet = "Off";
+                    }
+                    _fTempSet = value;
+                    OnPropertyChanged("fTempSet");
+                }
+            }
+        }
+
+        string _DisplayString_fTempSet;
+        public string DisplayString_fTempSet { get { return _DisplayString_fTempSet; } set { if (_DisplayString_fTempSet != value) { _DisplayString_fTempSet = value; OnPropertyChanged("DisplayString_fTempSet"); } } }
 
         bool _bTempOnoff;
 
@@ -73,6 +92,12 @@ namespace ChroZenService
                                     }
                                     break;
                             }
+                            DisplayString_fTempSet = _fTempSet;
+                        }
+                        break;
+                    case false:
+                        {
+                            DisplayString_fTempSet = "Off";
                         }
                         break;
                 }
@@ -1061,13 +1086,12 @@ namespace ChroZenService
         public RelayCommand KeyPadOnCommand { get; set; }
         private void KeyPadOnCommandAction(object param)
         {
-            Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
-
             switch ((E_KEY_PAD_SET_MEASURE_TYPE)param)
             {
                 case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TEMP:
                     {
+                        bTempOnoff = true;
+                        DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bTempOnoff = 1;
                         this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_SETTING_TEMPERATURE_ON, tcpManager);
                     }
                     break;
@@ -1082,13 +1106,12 @@ namespace ChroZenService
         public RelayCommand KeyPadOffCommand { get; set; }
         private void KeyPadOffCommandAction(object param)
         {
-            Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
-
             switch ((E_KEY_PAD_SET_MEASURE_TYPE)param)
             {
                 case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TEMP:
                     {
+                        bTempOnoff = false;
+                        DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bTempOnoff = 0;
                         this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_SETTING_TEMPERATURE_OFF, tcpManager);
                     }
                     break;
@@ -1207,6 +1230,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TEMP:
                     {
                         vmKeyPad.Title = "Temperature";
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = fTempSet;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TEMP;
                     }
@@ -1214,6 +1238,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TIME:
                     {
                         vmKeyPad.Title = "Tempreature Time";
+                        vmKeyPad.MaxValue = 9999;
                         vmKeyPad.CurrentValue = fInitTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TIME;
                     }

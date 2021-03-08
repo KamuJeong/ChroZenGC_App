@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.UC_STOP_Button"
+             x:Name="controlRoot" >
+  <ContentView.Content>
+        <AbsoluteLayout>
+            <Grid>
+                <!--<Grid.RowDefinitions>
+                    <RowDefinition Height="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonHeight}"/>q
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonWidth}"/>
+                </Grid.ColumnDefinitions>-->
+                <Button x:Name="innerBtn" BackgroundColor="Transparent" Margin="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonMargin}" Padding="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonPadding}" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=IsVisible}" 
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ClickCommand}" 
+                        CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ClickCommandParameter}"
+                        WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonWidth}" 
+                       HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonHeight}"/>
+
+                <Frame BackgroundColor="#111111" Margin="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonMargin}" Padding="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonPadding}" CornerRadius="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=CornerRadius}" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=IsVisible}" InputTransparent="True" 
+                       WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonWidth}" 
+                       HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentView}}, Path=ButtonHeight}">
+                    <Frame.Triggers>
+                        <DataTrigger TargetType="Frame" Binding="{Binding Source={RelativeSource AncestorType={x:Type local:UC_STOP_Button}}, Path=InnerItemSelected}" Value="true">
+                            <Setter Property="BackgroundColor" Value="#111111"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Frame" Binding="{Binding Source={RelativeSource AncestorType={x:Type local:UC_STOP_Button}}, Path=InnerItemSelected}" Value="false">
+                            <Setter Property="BackgroundColor" Value="Transparent"/>
+                        </DataTrigger>
+                    </Frame.Triggers>
+                    <Label Text="{Binding Source={RelativeSource AncestorType={x:Type local:UC_STOP_Button}}, Path=Text}" FontAttributes="Bold"  FontSize="22" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" Padding="0,8,0,0" >
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type local:UC_STOP_Button}}, Path=InnerItemSelected}" Value="true">
+                                <Setter Property="TextColor" Value="White"/>
+                            </DataTrigger>
+                            <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type local:UC_STOP_Button}}, Path=InnerItemSelected}" Value="false">
+                                <Setter Property="TextColor" Value="LightGray"/>
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </Frame>
+            </Grid>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

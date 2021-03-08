@@ -78,7 +78,7 @@
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="210"/>
+                        <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="207"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Set Connection" FontSize="24" HorizontalTextAlignment="Center" TextColor="White"/>

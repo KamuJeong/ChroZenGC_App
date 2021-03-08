@@ -1,43 +1,497 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:ChroZenService"
+             xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
              x:Class="ChroZenService.View_Config_InletSettings_Rear">
   <ContentView.Content>
         <AbsoluteLayout>
             <Grid HeightRequest="703">
                 <Grid.RowDefinitions>
-                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_2}"/>
-                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
-                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_5}"/>
-                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
-                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
-                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
-                  <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
+                    <RowDefinition Height="659"/>
+                    <RowDefinition Height="44"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="417"/>
+                    <ColumnDefinition Width="209"/>
+                    <ColumnDefinition Width="208"/>
                 </Grid.ColumnDefinitions>
-                <Frame Grid.Row="0" CornerRadius="18" Margin="18,10,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                <Grid Grid.Row="0" Grid.ColumnSpan="2" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.IsFirstPage}">
+                    <Grid Grid.Row="0" Grid.ColumnSpan="2" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToCapillaryUIVisibleConverter}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_SETTING_GROUP_2ROW}"/>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_SETTING_GROUP_1ROW}"/>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_SETTING_GROUP_5ROW}"/>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_SETTING_GROUP_1ROW}"/>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_SETTING_GROUP_1ROW}"/>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_SETTING_GROUP_1ROW}"/>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_SETTING_GROUP_1ROW}"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="417"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0" CornerRadius="18" Margin="18,10,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-                </Frame>
-                <Frame Grid.Row="1" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                        </Frame>
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_NAME}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_ACT}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_SET}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_SPARE}"/>
+                            </Grid.ColumnDefinitions>
+                            <Line Grid.ColumnSpan="6" X1="21" X2="396" Y1="{StaticResource HEIGHT_CONTROLPAGE_1}" Y2="{StaticResource HEIGHT_CONTROLPAGE_1}" Stroke="Gray"/>
+                            <Line Grid.RowSpan="22" X1="{StaticResource WIDTH_AUX_FLOW_COLUMN_NAME}" X2="{StaticResource WIDTH_AUX_FLOW_COLUMN_NAME}" Y1="14" Y2="90" Stroke="Gray"/>
+                            <!--<Label Text="" Grid.Row="0" Grid.Column="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="12,2,0,0"/>-->
+                            <Label Text="Actual" Grid.Row="0" Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                            <Label Text="Setting" Grid.Row="0" Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                            <Label Grid.Row="1"  Grid.Column="0"  Text="Temperature" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20"/>
 
-                </Frame>
-                <Frame Grid.Row="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                            <local:UC_Config_InletSetting_TemperatureActual Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ActualTemperature}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+                            <local:UC_Config_InletSetting_TemperatureSet Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.DisplayString_fTempSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE}" />
 
-                </Frame>
-                <Frame Grid.Row="3" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                        </Grid>
+                        <Frame Grid.Row="1" CornerRadius="18" Margin="18,3,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-                </Frame>
-                <Frame Grid.Row="4" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                        </Frame>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS21}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX}"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="208"/>
+                                <ColumnDefinition Width="140"/>
+                            </Grid.ColumnDefinitions>
+                            <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="7" Y2="50" Grid.RowSpan="4" Stroke="Gray" />
+                            <Label Grid.Row="0" Grid.Column="0" Text="Injection Mode" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,3,10,0"/>
+                            <Picker x:Name="picker_InjectionMode" Title="Inlet Rear" Grid.Row="0"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.btInjMode}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" Margin="0,10,0,8" >
+                                <Picker.Items>
+                                    <x:String>Split</x:String>
+                                    <x:String>Splitless</x:String>
+                                    <x:String>Pulsed Split</x:String>
+                                    <x:String>Pulsed Splitless</x:String>
+                                </Picker.Items>
+                                <Picker.Behaviors>
+                                    <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" 
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.InletInjectionModeIndexChangeCommand}"
+                                          CommandParameter="{Binding Source={x:Reference picker_InjectionMode}, Path=Title}"
+                                          />
+                                </Picker.Behaviors>
+                            </Picker>
+                        </Grid>
+                        <Frame Grid.Row="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-                </Frame>
-                <Frame Grid.Row="5" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                        </Frame>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_NAME}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_ACT}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_SET}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_SPARE}"/>
+                            </Grid.ColumnDefinitions>
+                            <Line Grid.ColumnSpan="6" X1="21" X2="380" Y1="{StaticResource HEIGHT_CONTROLPAGE_1}" Y2="{StaticResource HEIGHT_CONTROLPAGE_1}" Stroke="Gray"/>
+                            <Line Grid.RowSpan="22" X1="{StaticResource WIDTH_AUX_FLOW_COLUMN_NAME}" X2="{StaticResource WIDTH_AUX_FLOW_COLUMN_NAME}" Y1="9" Y2="195" Stroke="Gray"/>
+                            <!--<Label Text="" Grid.Row="0" Grid.Column="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="12,2,0,0"/>-->
+                            <Label Grid.Row="0"  Grid.Column="0"  Text="Column Flow" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20" Margin="20,9,0,0"/>
+                            <Label Grid.Row="1"  Grid.Column="0"  Text="Pressure" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20"/>
+                            <Label Grid.Row="2"  Grid.Column="0"  Text="Total Flow" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20"/>
+                            <Label Grid.Row="3"  Grid.Column="0"  Text="Split Flow" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20"/>
+                            <Label Grid.Row="4"  Grid.Column="0"  Text="Velocity" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20"/>
 
-                </Frame>
-                <Frame Grid.Row="6" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                            <local:UC_Config_InletSetting_TemperatureActual Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ActualColumnFlow}" BackgroundColor="Transparent" UnitText="" TextColor="White"  Margin="0,7,0,0"/>
+                            <local:UC_Config_InletSetting_TemperatureActual Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ActualPressure}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+                            <local:UC_Config_InletSetting_TemperatureActual Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ActualTotalFlow}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+                            <local:UC_Config_InletSetting_TemperatureActual Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ActualSplitFlow}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+                            <local:UC_Config_InletSetting_VelocityActual Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ActualVelocity}" BackgroundColor="Transparent" UnitText="" TextColor="White"/>
 
-                </Frame>
+                            <local:UC_Config_InletSetting_TemperatureSet Grid.Row="0" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.DisplayString_fColumnFlowSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_COLUMN_FLOW}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ApcMode, Converter={StaticResource ApcModeToFlowSetAvailableConverter}}" Margin="0,8,0,0"/>
+                            <local:UC_Config_InletSetting_TemperatureSet Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.DisplayString_fPressureSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PRESSURE}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ApcMode, Converter={StaticResource ApcModeToPressureSetAvailableConverter}}"/>
+                            <local:UC_Config_InletSetting_TemperatureSet Grid.Row="2" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.DisplayString_fTotalFlowSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TOTAL_FLOW}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ApcMode, Converter={StaticResource ApcModeToFlowSetAvailableConverter}}"/>
+                            <local:UC_Config_InletSetting_TemperatureSet Grid.Row="3" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.DisplayString_fSplitFlowSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_SPLIT_FLOW}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ApcMode, Converter={StaticResource ApcModeToFlowSetAvailableConverter}}"/>
+
+                        </Grid>
+                        <Frame Grid.Row="3" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                        </Frame>
+                        <Grid Grid.Row="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX}"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="208"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="114"/>
+                            </Grid.ColumnDefinitions>
+                            <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="8" Y2="45" Grid.RowSpan="4" Stroke="Gray" />
+                            <Label Grid.Row="0" Grid.Column="0" Text="Split Ratio" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,10,10,0"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="1 / " Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,10,10,0"/>
+                            <local:UC_Config_INLET_SETTING_LABEL Grid.Row="0" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.iSplitratio}" Style="{StaticResource STYLE_LABEL_CONFIG_AUX_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_SPLIT_RATIO}"  Margin="0,10,10,0"/>
+                        </Grid>
+                        <Frame Grid.Row="4" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                        </Frame>
+                        <Grid Grid.Row="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX}"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="208"/>
+                                <ColumnDefinition Width="170"/>
+                            </Grid.ColumnDefinitions>
+                            <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="8" Y2="45" Grid.RowSpan="4" Stroke="Gray" />
+                            <Label Grid.Row="0" Grid.Column="0" Text="Pulsed Pressure" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,10,10,0"/>
+                            <local:UC_Config_INLET_SETTING_LONG_LABEL Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.fPulsed_FlowPressSet}" Style="{StaticResource STYLE_LABEL_CONFIG_AUX_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PULSED_PRESSURE}"  Margin="0,10,10,0"/>
+                        </Grid>
+                        <Frame Grid.Row="5" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                        </Frame>
+                        <Grid Grid.Row="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX}"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="208"/>
+                                <ColumnDefinition Width="170"/>
+                            </Grid.ColumnDefinitions>
+                            <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="8" Y2="45" Grid.RowSpan="4" Stroke="Gray" />
+                            <Label Grid.Row="0" Grid.Column="0" Text="Split On Time" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,10,10,0"/>
+                            <local:UC_Config_INLET_SETTING_LONG_LABEL Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.fSplitOnTime}" Style="{StaticResource STYLE_LABEL_CONFIG_AUX_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_SPLIT_ON_TIME}"  Margin="0,10,10,0"/>
+                        </Grid>
+                        <Frame Grid.Row="6" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                        </Frame>
+                        <Grid Grid.Row="6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX}"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="208"/>
+                                <ColumnDefinition Width="170"/>
+                            </Grid.ColumnDefinitions>
+                            <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="8" Y2="45" Grid.RowSpan="4" Stroke="Gray" />
+                            <Label Grid.Row="0" Grid.Column="0" Text="Pulsed Time" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,10,10,0"/>
+                            <local:UC_Config_INLET_SETTING_LONG_LABEL Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.fPulsed_Time}" Style="{StaticResource STYLE_LABEL_CONFIG_AUX_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PULSED_TIME}"  Margin="0,10,10,0"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.ColumnSpan="2" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToOnColumnOrPackedUIVisibilityConverter}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_SETTING_GROUP_2ROW}"/>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_SETTING_GROUP_2ROW}"/>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_SETTING_GROUP_1ROW}"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="417"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0" CornerRadius="18" Margin="18,10,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                        </Frame>
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_NAME}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_ACT}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_SET}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_SPARE}"/>
+                            </Grid.ColumnDefinitions>
+                            <Line Grid.ColumnSpan="6" X1="21" X2="396" Y1="{StaticResource HEIGHT_CONTROLPAGE_1}" Y2="{StaticResource HEIGHT_CONTROLPAGE_1}" Stroke="Gray"/>
+                            <Line Grid.RowSpan="22" X1="{StaticResource WIDTH_AUX_FLOW_COLUMN_NAME}" X2="{StaticResource WIDTH_AUX_FLOW_COLUMN_NAME}" Y1="14" Y2="90" Stroke="Gray"/>
+                            <!--<Label Text="" Grid.Row="0" Grid.Column="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="12,2,0,0"/>-->
+                            <Label Text="Actual" Grid.Row="0" Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                            <Label Text="Setting" Grid.Row="0" Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                            <Label Grid.Row="1"  Grid.Column="0"  Text="Temperature" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20"/>
+
+                            <local:UC_Config_InletSetting_TemperatureActual Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ActualTemperature}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+                            <local:UC_Config_InletSetting_TemperatureSet Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.DisplayString_fTempSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE}" />
+
+                        </Grid>
+                        <Frame Grid.Row="1" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                        </Frame>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_NAME}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_ACT}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_SET}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_AUX_FLOW_COLUMN_SPARE}"/>
+                            </Grid.ColumnDefinitions>
+                            <Line Grid.ColumnSpan="6" X1="21" X2="380" Y1="{StaticResource HEIGHT_CONTROLPAGE_1}" Y2="{StaticResource HEIGHT_CONTROLPAGE_1}" Stroke="Gray"/>
+                            <Line Grid.RowSpan="22" X1="{StaticResource WIDTH_AUX_FLOW_COLUMN_NAME}" X2="{StaticResource WIDTH_AUX_FLOW_COLUMN_NAME}" Y1="9" Y2="90" Stroke="Gray"/>
+                            <!--<Label Text="" Grid.Row="0" Grid.Column="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="12,2,0,0"/>-->
+                            <Label Grid.Row="0"  Grid.Column="0"  Text="Column Flow" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20" Margin="20,9,0,0"/>
+                            <Label Grid.Row="1"  Grid.Column="0"  Text="Pressure" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20"/>
+
+                            <local:UC_Config_InletSetting_TemperatureActual Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ActualColumnFlow}" BackgroundColor="Transparent" UnitText="" TextColor="White"  Margin="0,7,0,0"/>
+                            <local:UC_Config_InletSetting_TemperatureActual Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ActualPressure}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+
+                            <local:UC_Config_InletSetting_TemperatureSet Grid.Row="0" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.DisplayString_fColumnFlowSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_COLUMN_FLOW}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ApcMode, Converter={StaticResource ApcModeToFlowSetAvailableConverter}}" Margin="0,8,0,0"/>
+                            <local:UC_Config_InletSetting_TemperatureSet Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.DisplayString_fPressureSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PRESSURE}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ApcMode, Converter={StaticResource ApcModeToPressureSetAvailableConverter}}"/>
+
+                        </Grid>
+                        <Frame Grid.Row="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToPackedUIVisibleConverter}}">
+
+                        </Frame>
+                        <Grid Grid.Row="2" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToPackedUIVisibleConverter}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS21}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX}"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="208"/>
+                                <ColumnDefinition Width="140"/>
+                            </Grid.ColumnDefinitions>
+                            <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="7" Y2="50" Grid.RowSpan="4" Stroke="Gray" />
+                            <Label Grid.Row="0" Grid.Column="0" Text="Temp Program" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,3,10,0"/>
+                            <Picker x:Name="picker_TempMode" Title="Inlet Rear" Grid.Row="0"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.btTempMode}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" Margin="0,10,0,8" >
+                                <Picker.Items>
+                                    <x:String>Iso</x:String>
+                                    <x:String>Program</x:String>
+                                    <x:String>Track Oven</x:String>
+                                </Picker.Items>
+                                <Picker.Behaviors>
+                                    <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" 
+                                          Command="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.TempModeIndexChangeCommand}"
+                                          CommandParameter="{Binding Source={x:Reference picker_TempMode}, Path=Title}"
+                                          />
+                                </Picker.Behaviors>
+                            </Picker>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="0" Grid.ColumnSpan="2" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.IsFirstPage, Converter={StaticResource BoolReverseConverter}}">
+                    <Grid IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToCapillaryUIVisibleConverter}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_GROUP_MIDDLE}"/>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_SETTING_GROUP_7ROW}"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="417"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.TableTitle}" Style="{StaticResource STYLE_LABEL_INLET_CONFIG_MIDDLE}" />
+                        <Frame Grid.Row="1" CornerRadius="18" Margin="13,3,13,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                        </Frame>
+                        <Grid Grid.Row="1" 
+                          IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ApcMode, Converter={StaticResource ApcModeToPressureTableVisibilityConverter}}" 
+                          IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ApcMode, Converter={StaticResource ApcModeToPressureTableEnableConverter}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="7"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_TITLE}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_ACTUAL}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_SETTING}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_TIME}"/>
+                                <ColumnDefinition Width="10"/>
+                            </Grid.ColumnDefinitions>
+                            <Line Grid.ColumnSpan="6" X1="11" X2="406" Y1="{StaticResource HEIGHT_CONTROLPAGE_1}" Y2="{StaticResource HEIGHT_CONTROLPAGE_1}" Stroke="Gray"/>
+                            <Line Grid.RowSpan="8" X1="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_TITLE}" X2="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_TITLE}" Y1="4" Y2="277" Stroke="Gray"/>
+
+                            <Label Text="No." Grid.Row="0" Grid.Column="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                            <Label Text="Rate" Grid.Row="0" Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                            <Label Text="Final Press&#x0a;       (psi)" Grid.Row="0" Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="0,0,0,0"/>
+                            <Label Text="Final Time&#x0a;     (min)" Grid.Row="0" Grid.Column="3" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="0,0,0,0"/>
+
+                            <Label Text="Init" Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="1" Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="2" Grid.Row="3" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="3" Grid.Row="4" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="4" Grid.Row="5" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="5" Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+
+                            <!--<local:UC_Config_Oven_Setting_Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.rate_1}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_RATE_1}" Margin="0,0,0,0"/>-->
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fFinalPress_1}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_1}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="1" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fFinalTime_1}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_1}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fRate_2}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_2}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="2" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fFinalPress_2}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_2}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="2" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fFinalTime_2}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_2}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fRate_3}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_3}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="3" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fFinalPress_3}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_3}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="3" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fFinalTime_3}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_3}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fRate_4}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_4}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="4" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fFinalPress_4}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_4}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="4" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fFinalTime_4}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_4}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fRate_5}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_5}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="5" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fFinalPress_5}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_5}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="5" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fFinalTime_5}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_5}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fRate_6}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_6}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="6" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fFinalPress_6}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_6}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="6" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.press_fFinalTime_6}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_6}" Margin="0,0,0,0"/>
+
+
+                        </Grid>
+                        <Grid Grid.Row="1" 
+                          IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ApcMode, Converter={StaticResource ApcModeToFlowTableVisibilityConverter}}" 
+                          IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.ApcMode, Converter={StaticResource ApcModeToFlowTableEnableConverter}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="7"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_TITLE}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_ACTUAL}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_SETTING}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_TIME}"/>
+                                <ColumnDefinition Width="10"/>
+                            </Grid.ColumnDefinitions>
+                            <Line Grid.ColumnSpan="6" X1="11" X2="406" Y1="{StaticResource HEIGHT_CONTROLPAGE_1}" Y2="{StaticResource HEIGHT_CONTROLPAGE_1}" Stroke="Gray"/>
+                            <Line Grid.RowSpan="8" X1="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_TITLE}" X2="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_TITLE}" Y1="4" Y2="277" Stroke="Gray"/>
+
+                            <Label Text="No." Grid.Row="0" Grid.Column="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                            <Label Text="Rate" Grid.Row="0" Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                            <Label Text="Final Flow&#x0a;     (ml)" Grid.Row="0" Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="0,0,0,0"/>
+                            <Label Text="Final Time&#x0a;     (min)" Grid.Row="0" Grid.Column="3" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="0,0,0,0"/>
+
+                            <Label Text="Init" Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="1" Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="2" Grid.Row="3" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="3" Grid.Row="4" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="4" Grid.Row="5" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="5" Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+
+                            <!--<local:UC_Config_Oven_Setting_Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.rate_1}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_RATE_1}" Margin="0,0,0,0"/>-->
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fFinalFlow_1}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_1}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="1" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fFinalTime_1}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_1}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fRate_2}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_2}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="2" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fFinalFlow_2}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_2}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="2" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fFinalTime_2}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_2}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fRate_3}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_3}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="3" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fFinalFlow_3}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_3}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="3" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fFinalTime_3}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_3}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fRate_4}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_4}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="4" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fFinalFlow_4}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_4}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="4" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fFinalTime_4}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_4}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fRate_5}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_5}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="5" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fFinalFlow_5}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_5}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="5" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fFinalTime_5}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_5}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fRate_6}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_6}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="6" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fFinalFlow_6}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_6}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="6" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.flow_fFinalTime_6}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_6}" Margin="0,0,0,0"/>
+
+
+                        </Grid>
+                    </Grid>
+                    <Grid IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToOnColumnUIVisibleConverter}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_GROUP_MIDDLE}"/>
+                            <RowDefinition Height="{StaticResource HEIGHT_INLET_SETTING_GROUP_7ROW}"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="417"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.TableTitle}" Style="{StaticResource STYLE_LABEL_INLET_CONFIG_MIDDLE}" />
+                        <Frame Grid.Row="1" CornerRadius="18" Margin="13,3,13,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+
+                        </Frame>
+                        <Grid Grid.Row="1"                            
+                          IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.btTempMode, Converter={StaticResource E_INLET_TEMP_MODEToTemperatureTableEnableConverter}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                                <RowDefinition Height="7"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_TITLE}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_ACTUAL}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_SETTING}"/>
+                                <ColumnDefinition Width="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_TIME}"/>
+                                <ColumnDefinition Width="10"/>
+                            </Grid.ColumnDefinitions>
+                            <Line Grid.ColumnSpan="6" X1="11" X2="406" Y1="{StaticResource HEIGHT_CONTROLPAGE_1}" Y2="{StaticResource HEIGHT_CONTROLPAGE_1}" Stroke="Gray"/>
+                            <Line Grid.RowSpan="8" X1="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_TITLE}" X2="{StaticResource WIDTH_CONFIG_OVEN_SETTING_COLUMN_TITLE}" Y1="4" Y2="277" Stroke="Gray"/>
+
+                            <Label Text="No." Grid.Row="0" Grid.Column="0" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                            <Label Text="Rate" Grid.Row="0" Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
+                            <Label Text="Final Temp&#x0a;       (°C)" Grid.Row="0" Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="0,0,0,0"/>
+                            <Label Text="Final Time&#x0a;     (min)" Grid.Row="0" Grid.Column="3" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}" Margin="0,0,0,0"/>
+
+                            <Label Text="Init" Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="1" Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="2" Grid.Row="3" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="3" Grid.Row="4" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="4" Grid.Row="5" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+                            <Label Text="5" Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_PROGRAM_INDEX}" />
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.rate_1}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_RATE_1}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fFinalTemp_1}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="1" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fFinalTime_1}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_1}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fRate_2}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_2}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="2" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fFinalTemp_2}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="2" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fFinalTime_2}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_2}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fRate_3}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_3}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="3" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fFinalTemp_3}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="3" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fFinalTime_3}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_3}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fRate_4}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_4}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="4" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fFinalTemp_4}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="4" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fFinalTime_4}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_4}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fRate_5}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_5}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="5" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fFinalTemp_5}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="5" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fFinalTime_5}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_5}" Margin="0,0,0,0"/>
+
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fRate_6}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_6}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="6" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fFinalTemp_6}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6}" Margin="0,0,0,0"/>
+                            <local:UC_Config_Oven_Setting_Label Grid.Row="6" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.temp_fFinalTime_6}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_6}" Margin="0,0,0,0"/>
+
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_NAVIGATION_SPLIT}"/>
+                <Button Grid.Row="1" Grid.Column="0" Text="◀ Prev" FontSize="20" HorizontalOptions="Center" VerticalOptions="Start" TextColor="White" Background="Transparent" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.IsFirstPage, Converter={StaticResource BoolReverseConverter}}" Command="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.Navigation_PrevCommand}"/>
+                <Button Grid.Row="1" Grid.Column="1" Text="Next ▶" FontSize="20" HorizontalOptions="Center" VerticalOptions="Start" TextColor="White" Background="Transparent" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.IsFirstPage}" Command="{Binding ViewModelConfigPage.ViewModel_Config_RearInletSettings.Navigation_NextCommand}"/>
             </Grid>
         </AbsoluteLayout>
     </ContentView.Content>
