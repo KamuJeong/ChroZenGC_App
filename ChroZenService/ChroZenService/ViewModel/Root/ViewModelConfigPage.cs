@@ -54,7 +54,7 @@ namespace ChroZenService
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_STATE:
                         {
                             ViewModel_Config_OvenSettings.ActualTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            ViewModel_Config_OvenSettings.fTempSet = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            //ViewModel_Config_OvenSettings.fTempSet = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                             if (DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[0] > 0) ViewModel_Config_AuxTemperature.strActAux_1 = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fAux[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             else ViewModel_Config_AuxTemperature.strActAux_1 = "";

@@ -42,33 +42,33 @@ namespace ChroZenService.Droid
 
             Window.DecorView.SystemUiVisibilityChange += DecorView_SystemUiVisibilityChange;
 
-            Task.Run(async () =>
-            {
-                const int seconds = 30;
-                const string grefTag = "monodroid-gref";
-                const string grefsFile = "grefs.txt";
-                while (true)
-                {
-                    var appDir = Application.ApplicationInfo.DataDir;
-                    var grefFile = Path.Combine("/data/data", PackageName, "files/.__override__", grefsFile);
-                    var grefFilePublic = Path.Combine(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads).AbsolutePath, grefsFile);
-                    if (File.Exists(grefFile))
-                    {
-                        try
-                        {
-                            File.Copy(grefFile, grefFilePublic, true);
-                            Log.Debug(grefTag, $"adb pull {grefFilePublic} {grefsFile}");
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(string.Format("GREF Log Err Message : {0}, StackTrace : {1}", e.Message, e.StackTrace));
-                        }
-                    }
-                    else
-                        Log.Debug(grefTag, "no grefs.txt found, gref logging enabled? (adb shell setprop debug.mono.log gref)");
-                    await Task.Delay(seconds * 1000);
-                }
-            });
+            //Task.Run(async () =>
+            //{
+            //    const int seconds = 30;
+            //    const string grefTag = "monodroid-gref";
+            //    const string grefsFile = "grefs.txt";
+            //    while (true)
+            //    {
+            //        var appDir = Application.ApplicationInfo.DataDir;
+            //        var grefFile = Path.Combine("/data/data", PackageName, "files/.__override__", grefsFile);
+            //        var grefFilePublic = Path.Combine(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads).AbsolutePath, grefsFile);
+            //        if (File.Exists(grefFile))
+            //        {
+            //            try
+            //            {
+            //                File.Copy(grefFile, grefFilePublic, true);
+            //                Log.Debug(grefTag, $"adb pull {grefFilePublic} {grefsFile}");
+            //            }
+            //            catch (Exception e)
+            //            {
+            //                Console.WriteLine(string.Format("GREF Log Err Message : {0}, StackTrace : {1}", e.Message, e.StackTrace));
+            //            }
+            //        }
+            //        else
+            //            Log.Debug(grefTag, "no grefs.txt found, gref logging enabled? (adb shell setprop debug.mono.log gref)");
+            //        await Task.Delay(seconds * 1000);
+            //    }
+            //});
             //Task.Run(async () =>
             //{
             //    const int seconds = 120;

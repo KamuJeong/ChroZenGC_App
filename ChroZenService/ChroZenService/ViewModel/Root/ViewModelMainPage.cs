@@ -92,7 +92,7 @@ namespace ChroZenService
 
                             ViewModel_MainTop.DeviceRuntimeCurrent = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.fRunTime.ToString("F1");
                             ViewModel_MainTop.DeviceRunStartCurrent = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.iCurrentRun.ToString();
-                            ViewModel_MainTop.DeviceRunStartTotal = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btPrgmStep.ToString();
+                            //ViewModel_MainTop.DeviceRunStartTotal = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btPrgmStep.ToString();
 
                             E_STATE state = (E_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState;
                             ViewModel_MainTop.CHROZEN_GC_STATE_String = state.ToString();
@@ -474,6 +474,7 @@ namespace ChroZenService
 
                             #region MainTop
 
+                            ViewModel_MainTop.DeviceRunStartTotal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Runstart.iCount.ToString();
                             ViewModel_MainTop.DeviceRuntimeTotal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTotalRunTime.ToString("F1");
 
                             #endregion MainTop
@@ -519,6 +520,76 @@ namespace ChroZenService
                                 (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1] == E_DET_TYPE.Not_Installed ? false : true;
                             ViewModel_MainSide_Right.IsBottomAvailable =
                                 (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2] == E_DET_TYPE.Not_Installed ? false : true;
+
+                            switch((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0])
+                            {
+                                case E_DET_TYPE.Not_Installed:
+                                    {
+                                        ViewModel_MainSide_Right.TopType = "Not Installed";
+                                    }
+                                    break;
+                                case E_DET_TYPE.ECD:
+                                case E_DET_TYPE.FID:
+                                case E_DET_TYPE.FPD:
+                                case E_DET_TYPE.NPD:
+                                case E_DET_TYPE.PDD:
+                                case E_DET_TYPE.PFPD:
+                                case E_DET_TYPE.TCD:
+                                case E_DET_TYPE.uECD:
+                                case E_DET_TYPE.uTCD:
+                                    {
+                                        ViewModel_MainSide_Right.TopType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0]).ToString();
+                                    }
+                                    break;
+                            }
+                            Debug.WriteLine(string.Format("PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0] : {0}", (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0]));
+
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0])
+                            {
+                                case E_DET_TYPE.Not_Installed:
+                                    {
+                                        ViewModel_MainSide_Right.CenterType = "Not Installed";
+                                    }
+                                    break;
+                                case E_DET_TYPE.ECD:
+                                case E_DET_TYPE.FID:
+                                case E_DET_TYPE.FPD:
+                                case E_DET_TYPE.NPD:
+                                case E_DET_TYPE.PDD:
+                                case E_DET_TYPE.PFPD:
+                                case E_DET_TYPE.TCD:
+                                case E_DET_TYPE.uECD:
+                                case E_DET_TYPE.uTCD:
+                                    {
+                                        ViewModel_MainSide_Right.CenterType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1]).ToString();
+                                    }
+                                    break;
+                            }
+                            Debug.WriteLine(string.Format("PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1] : {0}", (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1]));
+
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0])
+                            {
+                                case E_DET_TYPE.Not_Installed:
+                                    {
+                                        ViewModel_MainSide_Right.BottomType = "Not Installed";
+                                    }
+                                    break;
+                                case E_DET_TYPE.ECD:
+                                case E_DET_TYPE.FID:
+                                case E_DET_TYPE.FPD:
+                                case E_DET_TYPE.NPD:
+                                case E_DET_TYPE.PDD:
+                                case E_DET_TYPE.PFPD:
+                                case E_DET_TYPE.TCD:
+                                case E_DET_TYPE.uECD:
+                                case E_DET_TYPE.uTCD:
+                                    {
+                                        ViewModel_MainSide_Right.BottomType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2]).ToString();
+                                    }
+                                    break;
+                            }
+                            Debug.WriteLine(string.Format("PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2] : {0}", (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2]));
+
                             ViewModel_MainSide_Right.TopType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0]).ToString().Replace("_", " ");
                             ViewModel_MainSide_Right.CenterType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1]).ToString().Replace("_", " ");
                             ViewModel_MainSide_Right.BottomType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2]).ToString().Replace("_", " ");

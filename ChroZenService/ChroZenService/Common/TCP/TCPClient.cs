@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using YC_ChroZenGC_Type;
+using static YC_ChroZenGC_Type.T_CHROZEN_GC_SYSTEM_CONFIG;
 using static YC_ChroZenGC_Type.YC_Const;
 
 namespace ChroZenService
@@ -80,9 +81,9 @@ namespace ChroZenService
             //Task.Factory.StartNew(delegate
             ThreadPool.QueueUserWorkItem(delegate
             {
-                    //Thread.CurrentThread.Priority = ThreadPriority.Normal;
+                //Thread.CurrentThread.Priority = ThreadPriority.Normal;
 
-                    Debug.WriteLine(string.Format("ChroZen GC Process={0}, TCPClient : received PACKCODE queue pumping thread start at Thread Id : {1}", Process.GetCurrentProcess().ProcessName, TaskScheduler.Current.Id));
+                Debug.WriteLine(string.Format("ChroZen GC Process={0}, TCPClient : received PACKCODE queue pumping thread start at Thread Id : {1}", Process.GetCurrentProcess().ProcessName, TaskScheduler.Current.Id));
 
                 while (bIsThreadQueueProceed)
                 {
@@ -95,8 +96,8 @@ namespace ChroZenService
 
                             W_CHROZEN_GC_PACKET_WITH_PACKCODE wrappedPACKCODE = receivedAsyncPACKCODE_queue.Dequeue();
 
-                                //동기식 처리가 필요한 경우 이벤트 처리
-                                switch (wrappedPACKCODE.packcode)
+                            //동기식 처리가 필요한 경우 이벤트 처리
+                            switch (wrappedPACKCODE.packcode)
                             {
                                 case E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_INFORM:
                                     {
@@ -151,7 +152,10 @@ namespace ChroZenService
                                     break;
                                 case E_PACKCODE.PACKCODE_CHROZEN_DET_SETTING:
                                     {
-                                        Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
+                                        Debug.WriteLine(string.Format("{0} packet dequeue at port {1}", wrappedPACKCODE.packcode, ((T_PACKCODE_CHROZEN_DET_SETTING)wrappedPACKCODE.packet).packet.btPort));
+                                        Debug.WriteLine(string.Format("DET 0 : {0}", (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0]));
+                                        Debug.WriteLine(string.Format("DET 1 : {0}", (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1]));
+                                        Debug.WriteLine(string.Format("DET 2 : {0}", (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2]));
                                         switch (((T_PACKCODE_CHROZEN_DET_SETTING)wrappedPACKCODE.packet).packet.btPort)
                                         {
                                             case 0:
@@ -291,9 +295,9 @@ namespace ChroZenService
                                     }
                                     break;
 
-                                    #region LCD
+                                #region LCD
 
-                                    case E_PACKCODE.PACKCODE_CHROZEN_LCD_SIGNAL:
+                                case E_PACKCODE.PACKCODE_CHROZEN_LCD_SIGNAL:
                                     {
                                         Debug.WriteLine(string.Format("{0} packet dequeue", wrappedPACKCODE.packcode));
                                         DataManager.t_PACKCODE_CHROZEN_SIGNAL_Received = (T_PACKCODE_CHROZEN_SIGNAL)wrappedPACKCODE.packet;
@@ -437,12 +441,12 @@ namespace ChroZenService
                                     }
                                     break;
 
-                                        #endregion LCD
-                                }
+                                    #endregion LCD
+                            }
 
                             EventManager.PACKCODE_ReceivceEvent(wrappedPACKCODE.packcode, nIndex);
-                                //비동기식 빠른 처리가 필요한 경우 쓰레드 처리
-                            }
+                            //비동기식 빠른 처리가 필요한 경우 쓰레드 처리
+                        }
                     }
                     catch (Exception ee)
                     {

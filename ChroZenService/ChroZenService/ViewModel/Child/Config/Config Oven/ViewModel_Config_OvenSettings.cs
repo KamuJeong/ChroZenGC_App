@@ -45,11 +45,16 @@ namespace ChroZenService
         public string ActualTemperature { get { return _ActualTemperature; } set { if (_ActualTemperature != value) { _ActualTemperature = value; OnPropertyChanged("ActualTemperature"); } } }
 
         string _fTempSet;
-        public string fTempSet { get { return _fTempSet; }
-            set {
+        public string fTempSet
+        {
+            get { return _fTempSet; }
+            set
+            {
                 if (_fTempSet != value)
                 {
-                    if(_bTempOnoff)
+                    _fTempSet = value;
+                    OnPropertyChanged("fTempSet");
+                    if (_bTempOnoff)
                     {
                         DisplayString_fTempSet = _fTempSet;
                     }
@@ -57,8 +62,7 @@ namespace ChroZenService
                     {
                         DisplayString_fTempSet = "Off";
                     }
-                    _fTempSet = value;
-                    OnPropertyChanged("fTempSet");
+
                 }
             }
         }
@@ -78,20 +82,7 @@ namespace ChroZenService
                 switch (value)
                 {
                     case true:
-                        {
-                            switch ((E_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState)
-                            {
-                                case E_STATE.Run:
-                                    {
-                                        fTempSet = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOvenSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                    }
-                                    break;
-                                default:
-                                    {
-                                        fTempSet = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                    }
-                                    break;
-                            }
+                        {                          
                             DisplayString_fTempSet = _fTempSet;
                         }
                         break;
@@ -432,7 +423,8 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TEMP:
                         {
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TIME:
@@ -1086,13 +1078,17 @@ namespace ChroZenService
         public RelayCommand KeyPadOnCommand { get; set; }
         private void KeyPadOnCommandAction(object param)
         {
-            switch ((E_KEY_PAD_SET_MEASURE_TYPE)param)
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+            switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
             {
                 case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TEMP:
                     {
                         bTempOnoff = true;
                         DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bTempOnoff = 1;
                         this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_SETTING_TEMPERATURE_ON, tcpManager);
+                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
                     }
                     break;
             }
@@ -1106,13 +1102,17 @@ namespace ChroZenService
         public RelayCommand KeyPadOffCommand { get; set; }
         private void KeyPadOffCommandAction(object param)
         {
-            switch ((E_KEY_PAD_SET_MEASURE_TYPE)param)
+            Button sender = (param as Button);
+            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+
+            switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
             {
                 case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TEMP:
                     {
                         bTempOnoff = false;
                         DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bTempOnoff = 0;
                         this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_SETTING_TEMPERATURE_OFF, tcpManager);
+                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
                     }
                     break;
             }

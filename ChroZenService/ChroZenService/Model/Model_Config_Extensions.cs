@@ -35,6 +35,8 @@ namespace ChroZenService
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_POSTRUN_TIME:
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_SETTING_PROGRAM_ON:
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_SETTING_PROGRAM_OFF:
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_SETTING_TEMPERATURE_ON:
+                case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_SETTING_TEMPERATURE_OFF:
                     {
                         tCPManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet));
                     }
@@ -45,6 +47,7 @@ namespace ChroZenService
                     #region Oven Setting
 
 
+
                     #endregion Oven Setting
 
                     #endregion Oven
@@ -53,7 +56,7 @@ namespace ChroZenService
 
                     #region Signal 1
 
-                    
+
 
                     #endregion Signal 1
 
