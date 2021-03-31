@@ -60,7 +60,7 @@ namespace ChroZenService
 
             //tcpManager = new TCPManager();
             //Task.Factory.StartNew(() => { tcpManager.ConnectDevice("192.168.0.88", 4242); });
-
+            
         }
 
         private void onDisconnected_EventHandler()

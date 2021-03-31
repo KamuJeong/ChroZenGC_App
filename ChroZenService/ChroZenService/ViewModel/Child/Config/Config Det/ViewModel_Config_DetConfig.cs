@@ -35,6 +35,7 @@ namespace ChroZenService
             DetSignalvariationIndexChangeCommand = new RelayCommand(DetSignalvariationIndexChangeCommandAction);
 
             EventManager.onMainInitialized += (tcpManagerSource) => { tcpManager = tcpManagerSource; };
+            
         }
 
         #endregion 생성자 & 이벤트 헨들러
