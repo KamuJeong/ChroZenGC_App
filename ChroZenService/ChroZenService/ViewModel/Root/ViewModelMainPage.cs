@@ -133,7 +133,7 @@ namespace ChroZenService
                             #region MainCenter
 
                             //오븐 온도
-                            ViewModel_MainCenter.OvenTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString("F2");
+                            ViewModel_MainCenter.OvenTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString("F0");
 
                             //선택된 인렛 온도
                             if (ViewModel_MainSide_Left.IsTopVisible)
@@ -508,7 +508,7 @@ namespace ChroZenService
 
                             #region MainCenter
 
-                            ViewModel_MainCenter.OvenTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString("F2");
+                            ViewModel_MainCenter.OvenTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString("F0");
 
                             #endregion MainCenter
 

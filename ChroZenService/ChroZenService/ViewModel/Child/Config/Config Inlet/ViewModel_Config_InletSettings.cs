@@ -2165,129 +2165,180 @@ namespace ChroZenService
         {
             Button sender = (param as Button);
             ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
-
-            switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
+            float tempFloatVal = 0;
+            if (float.TryParse(mainVM.ViewModel_KeyPad.CurrentValue, out tempFloatVal))
             {
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TEMPERATURE:
-                    {
-                        fTempOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
+                {
+                    case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TEMPERATURE:
+                        {
+                            fTempOnoff = true;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
 
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                    }
-                    break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_COLUMN_FLOW:
-                    {
-                        fColumnFlowOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            #endregion
 
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PRESSURE:
-                    {
-                        fPressureOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_COLUMN_FLOW:
+                        {
+                            fColumnFlowOnoff = true;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
 
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
-                //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TOTAL_FLOW:
-                //    {
-                //        fTotalFlowOnoff = true;
-                //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            ValidateAndSetColumnFlow(tempFloatVal);
+                            fColumnFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fColumnFlowSet = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowSet = float.Parse(fTotalFlowSet);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fSplitFlowSet = float.Parse(fSplitFlowSet);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.iSplitratio = short.Parse(iSplitratio);
 
-                //        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                //    }
-                //    break;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            #endregion
 
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TEMPERATURE:
-                    {
-                        fTempOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PRESSURE:
+                        {
+                            fPressureOnoff = true;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
 
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                    }
-                    break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_COLUMN_FLOW:
-                    {
-                        fColumnFlowOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fPressureSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPressureSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            #endregion
 
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PRESSURE:
-                    {
-                        fPressureOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
-                //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TOTAL_FLOW:
-                //    {
-                //        fTotalFlowOnoff = true;
-                //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-
-                //        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                //    }
-                //    break;
-
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE:
-                    {
-                        fTempOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                    }
-                    break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_COLUMN_FLOW:
-                    {
-                        fColumnFlowOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PRESSURE:
-                    {
-                        fPressureOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
-                    //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TOTAL_FLOW:
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TOTAL_FLOW:
                     //    {
                     //        fTotalFlowOnoff = true;
-                    //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                    //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                    //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                    //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
 
-                    //        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
                     //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     //    }
                     //    break;
+
+                    case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TEMPERATURE:
+                        {
+                            fTempOnoff = true;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            #endregion
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_COLUMN_FLOW:
+                        {
+                            fColumnFlowOnoff = true;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            ValidateAndSetColumnFlow(tempFloatVal);
+                            fColumnFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fColumnFlowSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            #endregion
+
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PRESSURE:
+                        {
+                            fPressureOnoff = true;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fPressureSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPressureSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            #endregion
+
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TOTAL_FLOW:
+                    //    {
+                    //        fTotalFlowOnoff = true;
+                    //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                    //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+
+                    //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                    //    }
+                    //    break;
+
+                    case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE:
+                        {
+                            fTempOnoff = true;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                            #endregion
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_COLUMN_FLOW:
+                        {
+                            fColumnFlowOnoff = true;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            ValidateAndSetColumnFlow(tempFloatVal);
+                            fColumnFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fColumnFlowSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                            #endregion
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PRESSURE:
+                        {
+                            fPressureOnoff = true;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fPressureSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPressureSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                            #endregion
+
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                        //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TOTAL_FLOW:
+                        //    {
+                        //        fTotalFlowOnoff = true;
+                        //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                        //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+
+                        //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //    }
+                        //    break;
+                }
             }
+
+            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
         }
 
         #endregion KeyPad : OnCommand

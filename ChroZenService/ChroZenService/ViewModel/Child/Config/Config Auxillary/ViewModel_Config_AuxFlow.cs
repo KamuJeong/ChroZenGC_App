@@ -451,102 +451,159 @@ namespace ChroZenService
             Button sender = (param as Button);
             ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
 
-            switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
+            float tempFloatVal = 0;
+            if (float.TryParse(mainVM.ViewModel_KeyPad.CurrentValue, out tempFloatVal))
             {
-                case E_KEY_PAD_SET_MEASURE_TYPE.AUX_1_FLOW_FLOW_1:
-                    {
-                        fFlowOnoff1 = true;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.lcdAuxApc.fFlowOnoff1 = fFlowOnoff1;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.btPort = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet));
+                switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
+                {
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX_1_FLOW_FLOW_1:
+                        {
+                            fFlowOnoff1 = true;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.lcdAuxApc.fFlowOnoff1 = fFlowOnoff1;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.btPort = 0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet));
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.AUX_1_FLOW_FLOW_2:
-                    {
-                        fFlowOnoff2 = true;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.lcdAuxApc.fFlowOnoff2 = fFlowOnoff2;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.btPort = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet));
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.lcdAuxApc.fFlowSet1 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet));
+                            #endregion
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.AUX_1_FLOW_FLOW_3:
-                    {
-                        fFlowOnoff3 = true;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.lcdAuxApc.fFlowOnoff3 = fFlowOnoff3;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.btPort = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX_1_FLOW_FLOW_2:
+                        {
+                            fFlowOnoff2 = true;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.lcdAuxApc.fFlowOnoff2 = fFlowOnoff2;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.btPort = 0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet));
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.lcdAuxApc.fFlowSet2 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet));
+                            #endregion
 
-                case E_KEY_PAD_SET_MEASURE_TYPE.AUX_2_FLOW_FLOW_1:
-                    {
-                        fFlowOnoff1 = true;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.lcdAuxApc.fFlowOnoff1 = fFlowOnoff1;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.btPort = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX_1_FLOW_FLOW_3:
+                        {
+                            fFlowOnoff3 = true;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.lcdAuxApc.fFlowOnoff3 = fFlowOnoff3;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.btPort = 0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet));
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.AUX_2_FLOW_FLOW_2:
-                    {
-                        fFlowOnoff2 = true;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.lcdAuxApc.fFlowOnoff2 = fFlowOnoff2;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.btPort = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet));
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fFlowSet3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet.lcdAuxApc.fFlowSet3 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Front_Send.packet));
+                            #endregion
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.AUX_2_FLOW_FLOW_3:
-                    {
-                        fFlowOnoff3 = true;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.lcdAuxApc.fFlowOnoff3 = fFlowOnoff3;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.btPort = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX_2_FLOW_FLOW_1:
+                        {
+                            fFlowOnoff1 = true;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.lcdAuxApc.fFlowOnoff1 = fFlowOnoff1;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.btPort = 1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet));
 
-                case E_KEY_PAD_SET_MEASURE_TYPE.AUX_3_FLOW_FLOW_1:
-                    {
-                        fFlowOnoff1 = true;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.lcdAuxApc.fFlowOnoff1 = fFlowOnoff1;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.btPort = 2;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet));
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.lcdAuxApc.fFlowSet1 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet));
+                            #endregion
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.AUX_3_FLOW_FLOW_2:
-                    {
-                        fFlowOnoff2 = true;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.lcdAuxApc.fFlowOnoff2 = fFlowOnoff2;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.btPort = 2;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX_2_FLOW_FLOW_2:
+                        {
+                            fFlowOnoff2 = true;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.lcdAuxApc.fFlowOnoff2 = fFlowOnoff2;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.btPort = 1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet));
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
-                case E_KEY_PAD_SET_MEASURE_TYPE.AUX_3_FLOW_FLOW_3:
-                    {
-                        fFlowOnoff3 = true;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.lcdAuxApc.fFlowOnoff3 = fFlowOnoff3;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.btPort = 2;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet));
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.lcdAuxApc.fFlowSet2 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet));
+                            #endregion
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
-                    }
-                    break;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX_2_FLOW_FLOW_3:
+                        {
+                            fFlowOnoff3 = true;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.lcdAuxApc.fFlowOnoff3 = fFlowOnoff3;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.btPort = 1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet));
+
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fFlowSet3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet.lcdAuxApc.fFlowSet3 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Center_Send.packet));
+                            #endregion
+
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX_3_FLOW_FLOW_1:
+                        {
+                            fFlowOnoff1 = true;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.lcdAuxApc.fFlowOnoff1 = fFlowOnoff1;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.btPort = 2;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet));
+
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.lcdAuxApc.fFlowSet1 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet));
+                            #endregion
+
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX_3_FLOW_FLOW_2:
+                        {
+                            fFlowOnoff2 = true;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.lcdAuxApc.fFlowOnoff2 = fFlowOnoff2;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.btPort = 2;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet));
+
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.lcdAuxApc.fFlowSet2 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet));
+                            #endregion
+
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                    case E_KEY_PAD_SET_MEASURE_TYPE.AUX_3_FLOW_FLOW_3:
+                        {
+                            fFlowOnoff3 = true;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.lcdAuxApc.fFlowOnoff3 = fFlowOnoff3;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.btPort = 2;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet));
+
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fFlowSet3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet.lcdAuxApc.fFlowSet3 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_APC_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_APC_SETTING_Rear_Send.packet));
+                            #endregion
+
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        }
+                        break;
+                }
             }
-
             mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
         }
 

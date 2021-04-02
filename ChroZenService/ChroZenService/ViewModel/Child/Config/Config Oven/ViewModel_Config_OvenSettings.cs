@@ -1081,18 +1081,28 @@ namespace ChroZenService
             Button sender = (param as Button);
             ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
 
-            switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
+            float tempFloatVal = 0;
+            if (float.TryParse(mainVM.ViewModel_KeyPad.CurrentValue, out tempFloatVal))
             {
-                case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TEMP:
-                    {
-                        bTempOnoff = true;
-                        DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bTempOnoff = 1;
-                        this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_SETTING_TEMPERATURE_ON, tcpManager);
-                        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                    }
-                    break;
-            }
+                switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
+                {
+                    case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TEMP:
+                        {
+                            bTempOnoff = true;
+                            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.bTempOnoff = 1;
+                            this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_SETTING_TEMPERATURE_ON, tcpManager);
 
+                            #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
+                            fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                            DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet));
+                            #endregion
+
+                            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+                        }
+                        break;
+                }
+            }
         }
 
         #endregion KeyPad : OnCommand
