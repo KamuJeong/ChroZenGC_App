@@ -665,6 +665,9 @@ namespace ChroZenService
             {
                 if (_fFlowSet1 != value)
                 {
+                    _fFlowSet1 = value;
+                    OnPropertyChanged("fFlowSet1");
+
                     if (_bFlowOnoff1)
                     {
                         DisplayString_fFlowSet1 = _fFlowSet1;
@@ -673,9 +676,6 @@ namespace ChroZenService
                     {
                         DisplayString_fFlowSet1 = "Off";
                     }
-
-                    _fFlowSet1 = value;
-                    OnPropertyChanged("fFlowSet1");
                 }
             }
         }
@@ -687,6 +687,8 @@ namespace ChroZenService
             {
                 if (_fFlowSet2 != value)
                 {
+                    _fFlowSet2 = value;
+                    OnPropertyChanged("fFlowSet2");
                     if (_bFlowOnoff2)
                     {
                         DisplayString_fFlowSet2 = _fFlowSet2;
@@ -695,8 +697,6 @@ namespace ChroZenService
                     {
                         DisplayString_fFlowSet2 = "Off";
                     }
-                    _fFlowSet2 = value;
-                    OnPropertyChanged("fFlowSet2");
                 }
             }
         }
@@ -708,6 +708,8 @@ namespace ChroZenService
             {
                 if (_fFlowSet3 != value)
                 {
+                    _fFlowSet3 = value;
+                    OnPropertyChanged("fFlowSet3");
                     if (_bFlowOnoff3)
                     {
                         DisplayString_fFlowSet3 = _fFlowSet3;
@@ -716,9 +718,6 @@ namespace ChroZenService
                     {
                         DisplayString_fFlowSet3 = "Off";
                     }
-
-                    _fFlowSet3 = value;
-                    OnPropertyChanged("fFlowSet3");
                 }
             }
         }
@@ -880,6 +879,8 @@ namespace ChroZenService
             {
                 if (_fTempSet != value)
                 {
+                    _fTempSet = value;
+                    OnPropertyChanged("fTempSet");
                     if (_bTempOnoff)
                     {
                         DisplayString_fTempSet = _fTempSet;
@@ -889,8 +890,8 @@ namespace ChroZenService
                         DisplayString_fTempSet = "Off";
                     }
 
-                    _fTempSet = value;
-                    OnPropertyChanged("fTempSet");
+                    //_fTempSet = value;
+                    //OnPropertyChanged("fTempSet");
                 }
             }
         }
@@ -1812,9 +1813,7 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Temperatrue";
                         vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
-
                         vmKeyPad.CurrentValue = fTempSet;
-
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_TEMPERATURE;
                     }
                     break;
@@ -1827,7 +1826,6 @@ namespace ChroZenService
                                 {
                                     vmKeyPad.Title = "Air2";
                                     vmKeyPad.MaxValue = 500;
-
                                     vmKeyPad.CurrentValue = fFlowSet1;
                                 }
                                 break;

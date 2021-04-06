@@ -130,8 +130,6 @@ namespace ChroZenService
                             ViewModel_Config_CenterDetSettings.ActualTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                             ViewModel_Config_RearDetSettings.ActualTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
-
-
                             switch (ViewModel_Config_FrontDetSettings.e_DET_TYPE)
                             {
                                 case E_DET_TYPE.PDD:

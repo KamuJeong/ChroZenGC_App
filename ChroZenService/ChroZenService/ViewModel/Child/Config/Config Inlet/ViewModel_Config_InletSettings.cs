@@ -2579,12 +2579,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Temperature";
                         vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
-                        if (_fTempOnoff)
-                        {
-                            vmKeyPad.CurrentValue = fTempSet;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (_fTempOnoff)
+                        //{
+                        //    vmKeyPad.CurrentValue = fTempSet;
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fTempSet; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
 
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TEMPERATURE;
                     }
@@ -2593,12 +2594,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Column Flow";
                         vmKeyPad.MaxValue = 30;
-                        if (_fColumnFlowOnoff)
-                        {
-                            vmKeyPad.CurrentValue = fColumnFlowSet;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (_fColumnFlowOnoff)
+                        //{
+                        //    vmKeyPad.CurrentValue = fColumnFlowSet;
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fColumnFlowSet; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_COLUMN_FLOW;
                     }
                     break;
@@ -2606,12 +2608,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Pressure";
                         vmKeyPad.MaxValue = 150;
-                        if (_fPressureOnoff)
-                        {
-                            vmKeyPad.CurrentValue = fPressureSet;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (_fPressureOnoff)
+                        //{
+                        //    vmKeyPad.CurrentValue = fPressureSet;
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fPressureSet; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PRESSURE;
                     }
                     break;
@@ -3091,13 +3094,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Temperature";
                         vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
-                        if (_fTempOnoff)
-                        {
-                            vmKeyPad.CurrentValue = fTempSet;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
-
+                        //if (_fTempOnoff)
+                        //{
+                        //    vmKeyPad.CurrentValue = fTempSet;
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fTempSet; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TEMPERATURE;
                     }
                     break;
@@ -3105,12 +3108,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Column Flow";
                         vmKeyPad.MaxValue = 30;
-                        if (_fColumnFlowOnoff)
-                        {
-                            vmKeyPad.CurrentValue = fColumnFlowSet;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (_fColumnFlowOnoff)
+                        //{
+                        //    vmKeyPad.CurrentValue = fColumnFlowSet;
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fColumnFlowSet; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_COLUMN_FLOW;
                     }
                     break;
@@ -3118,12 +3122,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Pressure";
                         vmKeyPad.MaxValue = 150;
-                        if (_fPressureOnoff)
-                        {
-                            vmKeyPad.CurrentValue = fPressureSet;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (_fPressureOnoff)
+                        //{
+                        //    vmKeyPad.CurrentValue = fPressureSet;
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fPressureSet; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PRESSURE;
                     }
                     break;
@@ -3603,13 +3608,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Temperature";
                         vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
-                        if (_fTempOnoff)
-                        {
-                            vmKeyPad.CurrentValue = fTempSet;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
-
+                        //if (_fTempOnoff)
+                        //{
+                        //    vmKeyPad.CurrentValue = fTempSet;
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fTempSet; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE;
                     }
                     break;
@@ -3617,12 +3622,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Column Flow";
                         vmKeyPad.MaxValue = 30;
-                        if (_fColumnFlowOnoff)
-                        {
-                            vmKeyPad.CurrentValue = fColumnFlowSet;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (_fColumnFlowOnoff)
+                        //{
+                        //    vmKeyPad.CurrentValue = fColumnFlowSet;
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fColumnFlowSet; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_COLUMN_FLOW;
                     }
                     break;
@@ -3630,12 +3636,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Pressure";
                         vmKeyPad.MaxValue = 150;
-                        if (_fPressureOnoff)
-                        {
-                            vmKeyPad.CurrentValue = fPressureSet;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (_fPressureOnoff)
+                        //{
+                        //    vmKeyPad.CurrentValue = fPressureSet;
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fPressureSet; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PRESSURE;
                     }
                     break;

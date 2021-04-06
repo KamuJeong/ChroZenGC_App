@@ -127,6 +127,7 @@ namespace ChroZenService
                 if (_fTempSet_4 != value)
                 {
                     _fTempSet_4 = value;
+                    OnPropertyChanged("fTempSet_4");
                     switch (fTempOnoff_4)
                     {
                         case true:
@@ -140,8 +141,6 @@ namespace ChroZenService
                             }
                             break;
                     }
-
-                    OnPropertyChanged("fTempSet_4");
                 }
             }
         }
@@ -1020,12 +1019,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux 1";
                         vmKeyPad.MaxValue = 250;
-                        if (fTempOnoff_1 == true)
-                        {
-                            vmKeyPad.CurrentValue = fTempSet_1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fTempOnoff_1 == true)
+                        //{
+                        //    vmKeyPad.CurrentValue = fTempSet_1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fTempSet_1.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1); //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_1;
                     }
                     break;
@@ -1033,10 +1033,11 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux 2";
                         vmKeyPad.MaxValue = 250;
-                        if (fTempOnoff_2 == true)
-                            vmKeyPad.CurrentValue = fTempSet_2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fTempOnoff_2 == true)
+                        //    vmKeyPad.CurrentValue = fTempSet_2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fTempSet_2.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1); //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_2;
                     }
                     break;
@@ -1045,10 +1046,11 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux 3";
                         vmKeyPad.MaxValue = 250;
-                        if (fTempOnoff_3 == true)
-                            vmKeyPad.CurrentValue = fTempSet_3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fTempOnoff_3 == true)
+                        //    vmKeyPad.CurrentValue = fTempSet_3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fTempSet_3.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1); //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_3;
                     }
                     break;
@@ -1075,10 +1077,11 @@ namespace ChroZenService
                                 break;
                         }
 
-                        if (fTempOnoff_4 == true)
-                            vmKeyPad.CurrentValue = fTempSet_4.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fTempOnoff_4 == true)
+                        //    vmKeyPad.CurrentValue = fTempSet_4.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fTempSet_4.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1); //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_4;
                     }
                     break;
@@ -1086,10 +1089,11 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux 5";
                         vmKeyPad.MaxValue = 250;
-                        if (fTempOnoff_5 == true)
-                            vmKeyPad.CurrentValue = fTempSet_5.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fTempOnoff_5 == true)
+                        //    vmKeyPad.CurrentValue = fTempSet_5.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fTempSet_5.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1); //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_5;
                     }
                     break;
@@ -1097,10 +1101,11 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux 6";
                         vmKeyPad.MaxValue = 250;
-                        if (fTempOnoff_6 == true)
-                            vmKeyPad.CurrentValue = fTempSet_6.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fTempOnoff_6 == true)
+                        //    vmKeyPad.CurrentValue = fTempSet_6.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fTempSet_6.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1); //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_6;
                     }
                     break;
@@ -1108,10 +1113,11 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux 7";
                         vmKeyPad.MaxValue = 250;
-                        if (fTempOnoff_7 == true)
-                            vmKeyPad.CurrentValue = fTempSet_7.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fTempOnoff_7 == true)
+                        //    vmKeyPad.CurrentValue = fTempSet_7.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fTempSet_7.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1); //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_7;
                     }
                     break;
@@ -1119,10 +1125,11 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux 8";
                         vmKeyPad.MaxValue = 250;
-                        if (fTempOnoff_8 == true)
-                            vmKeyPad.CurrentValue = fTempSet_8.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fTempOnoff_8 == true)
+                        //    vmKeyPad.CurrentValue = fTempSet_8.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fTempSet_8.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1); //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_8;
                     }
                     break;

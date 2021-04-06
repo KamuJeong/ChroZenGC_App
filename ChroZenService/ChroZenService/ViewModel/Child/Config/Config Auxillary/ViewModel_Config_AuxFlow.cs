@@ -820,12 +820,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux1-Flow1";
                         vmKeyPad.MaxValue = 150;
-                        if (fFlowOnoff1 == true)
-                        {
-                            vmKeyPad.CurrentValue = fFlowSet1;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fFlowOnoff1 == true)
+                        //{
+                        //    vmKeyPad.CurrentValue = fFlowSet1;
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fFlowSet1; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_1_FLOW_FLOW_1;
                     }
                     break;
@@ -833,10 +834,11 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux1-Flow2";
                         vmKeyPad.MaxValue = 150;
-                        if (fFlowOnoff2 == true)
-                            vmKeyPad.CurrentValue = fFlowSet2;
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fFlowOnoff2 == true)
+                        //    vmKeyPad.CurrentValue = fFlowSet2;
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fFlowSet2; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_1_FLOW_FLOW_2;
                     }
                     break;
@@ -845,10 +847,11 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux1-Flow3";
                         vmKeyPad.MaxValue = 150;
-                        if (fFlowOnoff3 == true)
-                            vmKeyPad.CurrentValue = fFlowSet3;
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fFlowOnoff3 == true)
+                        //    vmKeyPad.CurrentValue = fFlowSet3;
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fFlowSet3; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_1_FLOW_FLOW_3;
                     }
                     break;
@@ -857,12 +860,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux2-Flow1";
                         vmKeyPad.MaxValue = 150;
-                        if (fFlowOnoff1 == true)
-                        {
-                            vmKeyPad.CurrentValue = fFlowSet1;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fFlowOnoff1 == true)
+                        //{
+                        //    vmKeyPad.CurrentValue = fFlowSet1;
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fFlowSet1; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_2_FLOW_FLOW_1;
                     }
                     break;
@@ -870,10 +874,11 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux2-Flow2";
                         vmKeyPad.MaxValue = 150;
-                        if (fFlowOnoff2 == true)
-                            vmKeyPad.CurrentValue = fFlowSet2;
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fFlowOnoff2 == true)
+                        //    vmKeyPad.CurrentValue = fFlowSet2;
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fFlowSet2; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_2_FLOW_FLOW_2;
                     }
                     break;
@@ -882,10 +887,11 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux2-Flow3";
                         vmKeyPad.MaxValue = 150;
-                        if (fFlowOnoff3 == true)
-                            vmKeyPad.CurrentValue = fFlowSet3;
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fFlowOnoff3 == true)
+                        //    vmKeyPad.CurrentValue = fFlowSet3;
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fFlowSet3; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_2_FLOW_FLOW_3;
                     }
                     break;
@@ -894,12 +900,13 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux3-Flow1";
                         vmKeyPad.MaxValue = 150;
-                        if (fFlowOnoff1 == true)
-                        {
-                            vmKeyPad.CurrentValue = fFlowSet1;
-                        }
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fFlowOnoff1 == true)
+                        //{
+                        //    vmKeyPad.CurrentValue = fFlowSet1;
+                        //}
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fFlowSet1; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_3_FLOW_FLOW_1;
                     }
                     break;
@@ -907,10 +914,11 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux3-Flow2";
                         vmKeyPad.MaxValue = 150;
-                        if (fFlowOnoff2 == true)
-                            vmKeyPad.CurrentValue = fFlowSet2;
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fFlowOnoff2 == true)
+                        //    vmKeyPad.CurrentValue = fFlowSet2;
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fFlowSet2; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_3_FLOW_FLOW_2;
                     }
                     break;
@@ -919,10 +927,11 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Aux3-Flow3";
                         vmKeyPad.MaxValue = 150;
-                        if (fFlowOnoff3 == true)
-                            vmKeyPad.CurrentValue = fFlowSet3;
-                        else
-                            vmKeyPad.CurrentValue = "Off";
+                        //if (fFlowOnoff3 == true)
+                        //    vmKeyPad.CurrentValue = fFlowSet3;
+                        //else
+                        //    vmKeyPad.CurrentValue = "Off";
+                        vmKeyPad.CurrentValue = fFlowSet3; //20210405 권민경 Off일때도 CurrentValue에 표시(On하면 바로 켜지게)
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.AUX_3_FLOW_FLOW_3;
                     }
                     break;
