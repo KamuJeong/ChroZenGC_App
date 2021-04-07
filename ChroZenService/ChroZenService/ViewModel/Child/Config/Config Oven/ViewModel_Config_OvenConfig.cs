@@ -110,7 +110,7 @@ namespace ChroZenService
             Button sender = (param as Button);
             ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
 
-            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1)
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0)
             {
                 double tempVal;
                 double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Substring(0, mainVM.ViewModel_KeyPad.CurrentValue.Length - 1), out tempVal);
@@ -286,6 +286,15 @@ namespace ChroZenService
                                 mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
                             }
                         }
+                        else if (mainVM.ViewModel_KeyPad.CurrentValue == "0") //20210407 권민경: 기존값이 0일때 0 지우기
+                        {
+                            double tempVal;
+                            double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue + sender.Text, out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue = sender.Text;
+                            }
+                        }
                         else
                         {
                             double tempVal;
@@ -342,8 +351,9 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Max Temp";
                         vmKeyPad.CurrentValue = fMaxTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
-                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_INIT_TEMP;
+                        vmKeyPad.MaxValue = 450;
+                        //vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_INIT_TEMP;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_MAX_TEMP;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_EQUILIBRIUM_TIME:
@@ -351,7 +361,8 @@ namespace ChroZenService
                         vmKeyPad.Title = "Equilibrium Time";
                         vmKeyPad.CurrentValue = fEquibTime.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                         vmKeyPad.MaxValue = 9999;
-                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_INIT_TIME;
+                        //vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_INIT_TIME;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_EQUILIBRIUM_TIME;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_NO_OF_RUN:
@@ -359,7 +370,8 @@ namespace ChroZenService
                         vmKeyPad.Title = "No. of run";
                         vmKeyPad.CurrentValue = runstart.iCount.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                         vmKeyPad.MaxValue = 120;
-                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
+                        //vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_NO_OF_RUN;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_CYCLE_TIME:
@@ -367,7 +379,8 @@ namespace ChroZenService
                         vmKeyPad.Title = "Cycle Time";
                         vmKeyPad.CurrentValue = runstart.iCount.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                         vmKeyPad.MaxValue = 120;
-                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
+                        //vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_CYCLE_TIME;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_POSTRUN_TEMP:
@@ -375,7 +388,8 @@ namespace ChroZenService
                         vmKeyPad.Title = "PostRun Temp";
                         vmKeyPad.CurrentValue = runstart.iCount.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                         vmKeyPad.MaxValue = 120;
-                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
+                        //vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_POSTRUN_TEMP;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_POSTRUN_TIME:
@@ -383,7 +397,8 @@ namespace ChroZenService
                         vmKeyPad.Title = "PostRun Time";
                         vmKeyPad.CurrentValue = runstart.iCount.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
                         vmKeyPad.MaxValue = 120;
-                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
+                        //vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE;
+                        vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_POSTRUN_TIME;
                     }
                     break;
                

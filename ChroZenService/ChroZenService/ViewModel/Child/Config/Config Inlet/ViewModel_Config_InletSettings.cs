@@ -586,7 +586,7 @@ namespace ChroZenService
             Button sender = (param as Button);
             ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
 
-            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 1)
+            if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0)
             {
                 double tempVal;
                 double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue.Substring(0, mainVM.ViewModel_KeyPad.CurrentValue.Length - 1), out tempVal);
@@ -2521,6 +2521,15 @@ namespace ChroZenService
                             if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
                             {
                                 mainVM.ViewModel_KeyPad.CurrentValue += sender.Text;
+                            }
+                        }
+                        else if (mainVM.ViewModel_KeyPad.CurrentValue == "0") //20210407 권민경: 기존값이 0일때 0 지우기
+                        {
+                            double tempVal;
+                            double.TryParse(mainVM.ViewModel_KeyPad.CurrentValue + sender.Text, out tempVal);
+                            if (tempVal <= mainVM.ViewModel_KeyPad.MaxValue)
+                            {
+                                mainVM.ViewModel_KeyPad.CurrentValue = sender.Text;
                             }
                         }
                         else
