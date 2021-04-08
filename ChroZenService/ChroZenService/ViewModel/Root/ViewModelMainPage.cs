@@ -90,11 +90,11 @@ namespace ChroZenService
 
                             #region MainTop
 
-                            ViewModel_MainTop.DeviceRuntimeCurrent = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.fRunTime.ToString("F1");
-                            ViewModel_MainTop.DeviceRunStartCurrent = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.iCurrentRun.ToString();
-                            //ViewModel_MainTop.DeviceRunStartTotal = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btPrgmStep.ToString();
+                            ViewModel_MainTop.DeviceRuntimeCurrent = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.fRunTime.ToString("F1");
+                            ViewModel_MainTop.DeviceRunStartCurrent = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.iCurrentRun.ToString();
+                            //ViewModel_MainTop.DeviceRunStartTotal = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.btPrgmStep.ToString();
 
-                            E_STATE state = (E_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState;
+                            E_STATE state = (E_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.btState;
                             ViewModel_MainTop.CHROZEN_GC_STATE_String = state.ToString();
                             switch (state)
                             {
@@ -133,66 +133,66 @@ namespace ChroZenService
                             #region MainCenter
 
                             //오븐 온도
-                            ViewModel_MainCenter.OvenTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString("F0");
+                            ViewModel_MainCenter.OvenTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActTemp.fOven.ToString("F0");
 
                             //선택된 인렛 온도
                             if (ViewModel_MainSide_Left.IsTopVisible)
                             {
-                                ViewModel_MainCenter.SelectedInletTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[0].ToString("F0");
+                                ViewModel_MainCenter.SelectedInletTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActTemp.fInj[0].ToString("F0");
                             }
                             else if (ViewModel_MainSide_Left.IsCenterVisible)
                             {
-                                ViewModel_MainCenter.SelectedInletTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[1].ToString("F0");
+                                ViewModel_MainCenter.SelectedInletTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActTemp.fInj[1].ToString("F0");
                             }
                             else if (ViewModel_MainSide_Left.IsBottomVisible)
                             {
-                                ViewModel_MainCenter.SelectedInletTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fInj[2].ToString("F0");
+                                ViewModel_MainCenter.SelectedInletTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActTemp.fInj[2].ToString("F0");
                             }
 
                             //선택된 디텍터 온도
                             if (ViewModel_MainSide_Right.IsTopVisible)
                             {
-                                ViewModel_MainCenter.SelectedDetTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[0].ToString("F0");
+                                ViewModel_MainCenter.SelectedDetTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActTemp.fDet[0].ToString("F0");
                             }
                             else if (ViewModel_MainSide_Right.IsCenterVisible)
                             {
-                                ViewModel_MainCenter.SelectedDetTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[1].ToString("F0");
+                                ViewModel_MainCenter.SelectedDetTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActTemp.fDet[1].ToString("F0");
                             }
                             else if (ViewModel_MainSide_Right.IsBottomVisible)
                             {
-                                ViewModel_MainCenter.SelectedDetTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fDet[2].ToString("F0");
+                                ViewModel_MainCenter.SelectedDetTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActTemp.fDet[2].ToString("F0");
                             }
 
                             //Step
-                            ViewModel_MainCenter.Step = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btStep.ToString();
+                            ViewModel_MainCenter.Step = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.btStep.ToString();
 
                             #endregion MainCenter
 
                             #region MainLeft
 
-                            ViewModel_MainSide_Left.TopFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[0 * 4 + 2].ToString("F2");
-                            ViewModel_MainSide_Left.TopPressure = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Press[0].ToString("F2");
+                            ViewModel_MainSide_Left.TopFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_InjFlow[0 * 4 + 2].ToString("F2");
+                            ViewModel_MainSide_Left.TopPressure = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_Press[0].ToString("F2");
 
-                            ViewModel_MainSide_Left.CenterFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[0 * 4 + 2].ToString("F2");
-                            ViewModel_MainSide_Left.CenterPressure = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Press[1].ToString("F2");
+                            ViewModel_MainSide_Left.CenterFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_InjFlow[0 * 4 + 2].ToString("F2");
+                            ViewModel_MainSide_Left.CenterPressure = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_Press[1].ToString("F2");
 
-                            ViewModel_MainSide_Left.BottomFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_InjFlow[0 * 4 + 2].ToString("F2");
-                            ViewModel_MainSide_Left.BottomPressure = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_Press[2].ToString("F2");
+                            ViewModel_MainSide_Left.BottomFlow = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_InjFlow[0 * 4 + 2].ToString("F2");
+                            ViewModel_MainSide_Left.BottomPressure = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_Press[2].ToString("F2");
 
                             #endregion MainLeft
 
                             #region MainRight
 
-                            ViewModel_MainSide_Right.TopSignalStrength = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.fSignal[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_MainSide_Right.TopSignalStrength = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.fSignal[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
 
-                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0])
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[0])
                             {
                                 case E_DET_TYPE.FID:
                                 case E_DET_TYPE.NPD:
                                     {
-                                        ViewModel_MainSide_Right.TopFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.TopFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.TopFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.TopFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.TopFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.TopFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.TopFlow1Name = "Air";
                                         ViewModel_MainSide_Right.TopFlow2Name = "H2";
@@ -207,9 +207,9 @@ namespace ChroZenService
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
-                                        ViewModel_MainSide_Right.TopFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.TopFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.TopFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.TopFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.TopFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.TopFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.TopFlow1Name = "Air2";
                                         ViewModel_MainSide_Right.TopFlow2Name = "Air1";
@@ -224,8 +224,8 @@ namespace ChroZenService
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
-                                        ViewModel_MainSide_Right.TopFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.TopFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.TopFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.TopFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.TopFlow1Name = "Ref.";
                                         ViewModel_MainSide_Right.TopFlow2Name = "Sam.";
@@ -239,7 +239,7 @@ namespace ChroZenService
                                 case E_DET_TYPE.ECD:
                                 case E_DET_TYPE.uECD:
                                     {
-                                        ViewModel_MainSide_Right.TopFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.TopFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.TopFlow1Name = "Mkup";
 
@@ -251,7 +251,7 @@ namespace ChroZenService
                                     break;
                                 case E_DET_TYPE.PDD:
                                     {
-                                        ViewModel_MainSide_Right.TopFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.TopFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.TopIsFlow1Using = false;
                                         ViewModel_MainSide_Right.TopIsFlow2Using = false;
@@ -261,16 +261,16 @@ namespace ChroZenService
                                     break;
                             }
 
-                            ViewModel_MainSide_Right.CenterSignalStrength = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.fSignal[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_MainSide_Right.CenterSignalStrength = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.fSignal[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
 
-                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1])
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[1])
                             {
                                 case E_DET_TYPE.FID:
                                 case E_DET_TYPE.NPD:
                                     {
-                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.CenterFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.CenterFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.CenterFlow1Name = "Air";
                                         ViewModel_MainSide_Right.CenterFlow2Name = "H2";
@@ -285,9 +285,9 @@ namespace ChroZenService
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
-                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.CenterFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.CenterFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.CenterFlow1Name = "Air2";
                                         ViewModel_MainSide_Right.CenterFlow2Name = "Air1";
@@ -302,8 +302,8 @@ namespace ChroZenService
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
-                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.CenterFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.CenterFlow1Name = "Ref.";
                                         ViewModel_MainSide_Right.CenterFlow2Name = "Sam.";
@@ -317,7 +317,7 @@ namespace ChroZenService
                                 case E_DET_TYPE.ECD:
                                 case E_DET_TYPE.uECD:
                                     {
-                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.CenterFlow1Name = "Mkup";
 
@@ -329,7 +329,7 @@ namespace ChroZenService
                                     break;
                                 case E_DET_TYPE.PDD:
                                     {
-                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.CenterIsFlow1Using = false;
                                         ViewModel_MainSide_Right.CenterIsFlow2Using = false;
@@ -339,16 +339,16 @@ namespace ChroZenService
                                     break;
                             }
 
-                            ViewModel_MainSide_Right.BottomSignalStrength = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.fSignal[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
+                            ViewModel_MainSide_Right.BottomSignalStrength = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.fSignal[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
 
-                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2])
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[2])
                             {
                                 case E_DET_TYPE.FID:
                                 case E_DET_TYPE.NPD:
                                     {
-                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.BottomFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.BottomFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.BottomFlow1Name = "Air";
                                         ViewModel_MainSide_Right.BottomFlow2Name = "H2";
@@ -363,9 +363,9 @@ namespace ChroZenService
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
-                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.BottomFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.BottomFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.BottomFlow1Name = "Air2";
                                         ViewModel_MainSide_Right.BottomFlow2Name = "Air1";
@@ -380,8 +380,8 @@ namespace ChroZenService
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
-                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.BottomFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.BottomFlow1Name = "Ref.";
                                         ViewModel_MainSide_Right.BottomFlow2Name = "Sam.";
@@ -395,7 +395,7 @@ namespace ChroZenService
                                 case E_DET_TYPE.ECD:
                                 case E_DET_TYPE.uECD:
                                     {
-                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.BottomFlow1Name = "Mkup";
 
@@ -407,7 +407,7 @@ namespace ChroZenService
                                     break;
                                 case E_DET_TYPE.PDD:
                                     {
-                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.BottomIsFlow1Using = false;
                                         ViewModel_MainSide_Right.BottomIsFlow2Using = false;
@@ -434,23 +434,23 @@ namespace ChroZenService
                             {
                                 case 0:
                                     {
-                                        ViewModel_MainSide_Left.TopSplitRatio = string.Format(" 1 / {0}", DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.iSplitratio.ToString());
-                                        ViewModel_MainSide_Left.TopCarrierGasType = ((CARRIER_GAS_TYPE)DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.btCarriergas).ToString();
-                                        ViewModel_MainSide_Left.TopApcMode = ((APC_MODE)DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Received.packet.btPortNo).ToString().Replace("_", ".");
+                                        ViewModel_MainSide_Left.TopSplitRatio = string.Format(" 1 / {0}", DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.iSplitratio.ToString());
+                                        ViewModel_MainSide_Left.TopCarrierGasType = ((CARRIER_GAS_TYPE)DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btCarriergas).ToString();
+                                        ViewModel_MainSide_Left.TopApcMode = ((APC_MODE)DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btPortNo).ToString().Replace("_", ".");
                                     }
                                     break;
                                 case 1:
                                     {
-                                        ViewModel_MainSide_Left.CenterSplitRatio = string.Format(" 1 / {0}", DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.iSplitratio.ToString());
-                                        ViewModel_MainSide_Left.CenterCarrierGasType = ((CARRIER_GAS_TYPE)DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btCarriergas).ToString();
-                                        ViewModel_MainSide_Left.CenterApcMode = ((APC_MODE)DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btPortNo).ToString().Replace("_", ".");
+                                        ViewModel_MainSide_Left.CenterSplitRatio = string.Format(" 1 / {0}", DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.iSplitratio.ToString());
+                                        ViewModel_MainSide_Left.CenterCarrierGasType = ((CARRIER_GAS_TYPE)DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.btCarriergas).ToString();
+                                        ViewModel_MainSide_Left.CenterApcMode = ((APC_MODE)DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.btPortNo).ToString().Replace("_", ".");
                                     }
                                     break;
                                 case 2:
                                     {
-                                        ViewModel_MainSide_Left.BottomSplitRatio = string.Format(" 1 / {0}", DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.iSplitratio.ToString());
-                                        ViewModel_MainSide_Left.BottomCarrierGasType = ((CARRIER_GAS_TYPE)DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btCarriergas).ToString();
-                                        ViewModel_MainSide_Left.BottomApcMode = ((APC_MODE)DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Received.packet.btPortNo).ToString().Replace("_", ".");
+                                        ViewModel_MainSide_Left.BottomSplitRatio = string.Format(" 1 / {0}", DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.iSplitratio.ToString());
+                                        ViewModel_MainSide_Left.BottomCarrierGasType = ((CARRIER_GAS_TYPE)DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.btCarriergas).ToString();
+                                        ViewModel_MainSide_Left.BottomApcMode = ((APC_MODE)DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.btPortNo).ToString().Replace("_", ".");
                                     }
                                     break;
                             }
@@ -474,8 +474,8 @@ namespace ChroZenService
 
                             #region MainTop
 
-                            ViewModel_MainTop.DeviceRunStartTotal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Runstart.iCount.ToString();
-                            ViewModel_MainTop.DeviceRuntimeTotal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTotalRunTime.ToString("F1");
+                            ViewModel_MainTop.DeviceRunStartTotal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Runstart.iCount.ToString();
+                            ViewModel_MainTop.DeviceRuntimeTotal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTotalRunTime.ToString("F1");
 
                             #endregion MainTop
 
@@ -494,34 +494,34 @@ namespace ChroZenService
                             #region MainLeft
 
                             ViewModel_MainSide_Left.IsTopAvailable =
-                                (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[0] == E_INLET_TYPE.Not_Installed ? false : true;
+                                (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btInlet[0] == E_INLET_TYPE.Not_Installed ? false : true;
                             ViewModel_MainSide_Left.IsCenterAvailable =
-                                 (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[1] == E_INLET_TYPE.Not_Installed ? false : true;
+                                 (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btInlet[1] == E_INLET_TYPE.Not_Installed ? false : true;
                             ViewModel_MainSide_Left.IsBottomAvailable =
-                                 (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[2] == E_INLET_TYPE.Not_Installed ? false : true;
-                            ViewModel_MainSide_Left.TopType = ((E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[0]).ToString().Replace("_", " ");
-                            ViewModel_MainSide_Left.CenterType = ((E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[1]).ToString().Replace("_", " ");
-                            ViewModel_MainSide_Left.BottomType = ((E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btInlet[2]).ToString().Replace("_", " ");
+                                 (E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btInlet[2] == E_INLET_TYPE.Not_Installed ? false : true;
+                            ViewModel_MainSide_Left.TopType = ((E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btInlet[0]).ToString().Replace("_", " ");
+                            ViewModel_MainSide_Left.CenterType = ((E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btInlet[1]).ToString().Replace("_", " ");
+                            ViewModel_MainSide_Left.BottomType = ((E_INLET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btInlet[2]).ToString().Replace("_", " ");
 
 
                             #endregion MainLeft
 
                             #region MainCenter
 
-                            ViewModel_MainCenter.OvenTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.ActTemp.fOven.ToString("F0");
+                            ViewModel_MainCenter.OvenTemperature = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActTemp.fOven.ToString("F0");
 
                             #endregion MainCenter
 
                             #region MainRight
 
                             ViewModel_MainSide_Right.IsTopAvailable =
-                                (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0] == E_DET_TYPE.Not_Installed ? false : true;
+                                (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[0] == E_DET_TYPE.Not_Installed ? false : true;
                             ViewModel_MainSide_Right.IsCenterAvailable =
-                                (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1] == E_DET_TYPE.Not_Installed ? false : true;
+                                (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[1] == E_DET_TYPE.Not_Installed ? false : true;
                             ViewModel_MainSide_Right.IsBottomAvailable =
-                                (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2] == E_DET_TYPE.Not_Installed ? false : true;
+                                (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[2] == E_DET_TYPE.Not_Installed ? false : true;
 
-                            switch((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0])
+                            switch((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[0])
                             {
                                 case E_DET_TYPE.Not_Installed:
                                     {
@@ -538,13 +538,13 @@ namespace ChroZenService
                                 case E_DET_TYPE.uECD:
                                 case E_DET_TYPE.uTCD:
                                     {
-                                        ViewModel_MainSide_Right.TopType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0]).ToString();
+                                        ViewModel_MainSide_Right.TopType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[0]).ToString();
                                     }
                                     break;
                             }
-                            Debug.WriteLine(string.Format("PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0] : {0}", (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0]));
+                            Debug.WriteLine(string.Format("PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[0] : {0}", (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[0]));
 
-                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0])
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[0])
                             {
                                 case E_DET_TYPE.Not_Installed:
                                     {
@@ -561,13 +561,13 @@ namespace ChroZenService
                                 case E_DET_TYPE.uECD:
                                 case E_DET_TYPE.uTCD:
                                     {
-                                        ViewModel_MainSide_Right.CenterType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1]).ToString();
+                                        ViewModel_MainSide_Right.CenterType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[1]).ToString();
                                     }
                                     break;
                             }
-                            Debug.WriteLine(string.Format("PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1] : {0}", (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1]));
+                            Debug.WriteLine(string.Format("PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[1] : {0}", (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[1]));
 
-                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0])
+                            switch ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[0])
                             {
                                 case E_DET_TYPE.Not_Installed:
                                     {
@@ -584,15 +584,15 @@ namespace ChroZenService
                                 case E_DET_TYPE.uECD:
                                 case E_DET_TYPE.uTCD:
                                     {
-                                        ViewModel_MainSide_Right.BottomType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2]).ToString();
+                                        ViewModel_MainSide_Right.BottomType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[2]).ToString();
                                     }
                                     break;
                             }
-                            Debug.WriteLine(string.Format("PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2] : {0}", (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2]));
+                            Debug.WriteLine(string.Format("PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[2] : {0}", (E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[2]));
 
-                            ViewModel_MainSide_Right.TopType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[0]).ToString().Replace("_", " ");
-                            ViewModel_MainSide_Right.CenterType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[1]).ToString().Replace("_", " ");
-                            ViewModel_MainSide_Right.BottomType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG_Received.packet.btDet[2]).ToString().Replace("_", " ");
+                            ViewModel_MainSide_Right.TopType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[0]).ToString().Replace("_", " ");
+                            ViewModel_MainSide_Right.CenterType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[1]).ToString().Replace("_", " ");
+                            ViewModel_MainSide_Right.BottomType = ((E_DET_TYPE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_CONFIG.packet.btDet[2]).ToString().Replace("_", " ");
 
                             //ViewModelConfigPage.ViewModel_Config_FrontDetConfig.
                             #endregion MainRight
@@ -705,7 +705,7 @@ namespace ChroZenService
         public RelayCommand ErrorSelect { get; set; }
         private void ErrorSelectAction(object param)
         {
-            if ((E_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btState == E_STATE.Error)
+            if ((E_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.btState == E_STATE.Error)
             {
                 IsErrorPopupVisible = true;
                 Debug.WriteLine("ErrorSelected");

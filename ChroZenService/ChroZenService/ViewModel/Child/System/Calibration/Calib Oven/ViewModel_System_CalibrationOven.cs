@@ -144,25 +144,25 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SET_TEMP_CALIBRATION_T1:
                         {
                             fSet1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket.fSet[0] = fSet1;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket.fSet[0] = fSet1;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SET_TEMP_CALIBRATION_T2:
                         {
                             fSet2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket.fSet[1] = fSet2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket.fSet[1] = fSet2;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_MEASURE_TEMP_CALIBRATION_T1:
                         {
                             Measure1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket.fMeasure[0] = Measure1;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket.fMeasure[0] = Measure1;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.OVEN_MEASURE_TEMP_CALIBRATION_T2:
                         {
                             Measure2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket.fMeasure[1] = Measure2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket.fMeasure[1] = Measure2;
                         }
                         break;
                 }

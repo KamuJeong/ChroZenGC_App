@@ -1077,8 +1077,8 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_TEMPERATURE:
                         {
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fTempSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_FLOW_1:
@@ -1089,24 +1089,24 @@ namespace ChroZenService
                                 case E_DET_TYPE.NPD:
                                     {
                                         fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fFlowSet1 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fFlowSet1 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                                     }
                                     break;
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
                                         fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fFlowSet1 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fFlowSet1 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                                     }
                                     break;
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
                                         fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fFlowSet1 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fFlowSet1 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                                     }
                                     break;
                             }
@@ -1120,24 +1120,24 @@ namespace ChroZenService
                                 case E_DET_TYPE.NPD:
                                     {
                                         fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fFlowSet2 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fFlowSet2 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                                     }
                                     break;
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
                                         fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fFlowSet2 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fFlowSet2 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                                     }
                                     break;
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
                                         fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fFlowSet2 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fFlowSet2 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                                     }
                                     break;
                             }
@@ -1153,8 +1153,8 @@ namespace ChroZenService
                                 case E_DET_TYPE.PFPD:
                                     {
                                         fFlowSet3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fFlowSet3 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fFlowSet3 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                                     }
                                     break;
                             }
@@ -1163,8 +1163,8 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_SENSE:
                         {
                             iBeadVoltageSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.iBeadVoltageSet = (short)tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.iBeadVoltageSet = (short)tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                         }
                         break;
 
@@ -1175,8 +1175,8 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SETTING_TEMPERATURE:
                         {
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.fTempSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SETTING_FLOW_1:
@@ -1187,24 +1187,24 @@ namespace ChroZenService
                                 case E_DET_TYPE.NPD:
                                     {
                                         fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.fFlowSet1 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.fFlowSet1 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                                     }
                                     break;
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
                                         fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.fFlowSet1 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.fFlowSet1 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                                     }
                                     break;
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
                                         fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.fFlowSet1 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.fFlowSet1 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                                     }
                                     break;
                             }
@@ -1218,24 +1218,24 @@ namespace ChroZenService
                                 case E_DET_TYPE.NPD:
                                     {
                                         fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.fFlowSet2 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.fFlowSet2 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                                     }
                                     break;
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
                                         fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.fFlowSet2 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.fFlowSet2 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                                     }
                                     break;
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
                                         fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.fFlowSet2 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.fFlowSet2 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                                     }
                                     break;
                             }
@@ -1251,8 +1251,8 @@ namespace ChroZenService
                                 case E_DET_TYPE.PFPD:
                                     {
                                         fFlowSet3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.fFlowSet3 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.fFlowSet3 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                                     }
                                     break;
                             }
@@ -1261,8 +1261,8 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SETTING_SENSE:
                         {
                             iBeadVoltageSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.iBeadVoltageSet = (short)tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.iBeadVoltageSet = (short)tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                         }
                         break;
 
@@ -1273,8 +1273,8 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_TEMPERATURE:
                         {
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.fTempSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_FLOW_1:
@@ -1285,24 +1285,24 @@ namespace ChroZenService
                                 case E_DET_TYPE.NPD:
                                     {
                                         fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.fFlowSet1 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.fFlowSet1 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                                     }
                                     break;
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
                                         fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.fFlowSet1 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.fFlowSet1 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                                     }
                                     break;
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
                                         fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.fFlowSet1 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.fFlowSet1 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                                     }
                                     break;
                             }
@@ -1316,24 +1316,24 @@ namespace ChroZenService
                                 case E_DET_TYPE.NPD:
                                     {
                                         fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.fFlowSet2 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.fFlowSet2 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                                     }
                                     break;
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
                                         fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.fFlowSet2 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.fFlowSet2 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                                     }
                                     break;
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
                                         fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.fFlowSet2 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.fFlowSet2 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                                     }
                                     break;
                             }
@@ -1349,8 +1349,8 @@ namespace ChroZenService
                                 case E_DET_TYPE.PFPD:
                                     {
                                         fFlowSet3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.fFlowSet3 = tempFloatVal;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.fFlowSet3 = tempFloatVal;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                                     }
                                     break;
                             }
@@ -1359,8 +1359,8 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_SENSE:
                         {
                             iBeadVoltageSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.iBeadVoltageSet = (short)tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.iBeadVoltageSet = (short)tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                         }
                         break;
 
@@ -1395,130 +1395,130 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_TEMPERATURE:
                         {
                             bTempOnoff = true;
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bTempOnoff = _bTempOnoff ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bTempOnoff = _bTempOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fTempSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                             #endregion
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_FLOW_1:
                         {
                             bFlowOnoff1 = true;
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fFlowSet1 = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fFlowSet1 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                             #endregion
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_FLOW_2:
                         {
                             bFlowOnoff2 = true;
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fFlowSet2 = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fFlowSet2 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_FLOW_3:
                         {
                             bFlowOnoff3 = true;
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fFlowSet3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fFlowSet3 = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fFlowSet3 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SETTING_TEMPERATURE:
                         {
                             bTempOnoff = true;
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bTempOnoff = _bTempOnoff ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bTempOnoff = _bTempOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.fTempSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                             #endregion
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SETTING_FLOW_1:
                         {
                             bFlowOnoff1 = true;
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.fFlowSet1 = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.fFlowSet1 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SETTING_FLOW_2:
                         {
                             bFlowOnoff2 = true;
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.fFlowSet2 = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.fFlowSet2 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SETTING_FLOW_3:
                         {
                             bFlowOnoff3 = true;
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fFlowSet3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.fFlowSet3 = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.fFlowSet3 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_TEMPERATURE:
                         {
                             bTempOnoff = true;
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bTempOnoff = _bTempOnoff ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bTempOnoff = _bTempOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.fTempSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                             #endregion
 
                         }
@@ -1526,46 +1526,46 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_FLOW_1:
                         {
                             bFlowOnoff1 = true;
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fFlowSet1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.fFlowSet1 = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.fFlowSet1 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_FLOW_2:
                         {
                             bFlowOnoff2 = true;
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fFlowSet2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.fFlowSet2 = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.fFlowSet2 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_FLOW_3:
                         {
                             bFlowOnoff3 = true;
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fFlowSet3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.fFlowSet3 = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.fFlowSet3 = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                 }
@@ -1589,8 +1589,8 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_TEMPERATURE:
                     {
                         bTempOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bTempOnoff = _bTempOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bTempOnoff = _bTempOnoff ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
                     }
@@ -1598,39 +1598,39 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_FLOW_1:
                     {
                         bFlowOnoff1 = false;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_FLOW_2:
                     {
                         bFlowOnoff2 = false;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_FLOW_3:
                     {
                         bFlowOnoff3 = false;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
 
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SETTING_TEMPERATURE:
                     {
                         bTempOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bTempOnoff = _bTempOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bTempOnoff = _bTempOnoff ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
                     }
@@ -1638,39 +1638,39 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SETTING_FLOW_1:
                     {
                         bFlowOnoff1 = false;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SETTING_FLOW_2:
                     {
                         bFlowOnoff2 = false;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SETTING_FLOW_3:
                     {
                         bFlowOnoff3 = false;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
 
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_TEMPERATURE:
                     {
                         bTempOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bTempOnoff = _bTempOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bTempOnoff = _bTempOnoff ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
                     }
@@ -1678,31 +1678,31 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_FLOW_1:
                     {
                         bFlowOnoff1 = false;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_FLOW_2:
                     {
                         bFlowOnoff2 = false;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_FLOW_3:
                     {
                         bFlowOnoff3 = false;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
             }
@@ -1821,7 +1821,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_TEMPERATURE:
                     {
                         vmKeyPad.Title = "Temperatrue";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = fTempSet;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SETTING_TEMPERATURE;
                     }
@@ -1931,7 +1931,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SETTING_TEMPERATURE:
                     {
                         vmKeyPad.Title = "Temperatrue";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
 
                         vmKeyPad.CurrentValue = fTempSet;
 
@@ -2044,7 +2044,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_TEMPERATURE:
                     {
                         vmKeyPad.Title = "Temperatrue";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
 
                         vmKeyPad.CurrentValue = fTempSet;
 
@@ -2171,23 +2171,23 @@ namespace ChroZenService
             {
                 case E_DET_LOCATION.FRONT:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bElectrometer = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bElectrometer = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bElectrometer = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bElectrometer = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bElectrometer = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bElectrometer = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -2207,23 +2207,23 @@ namespace ChroZenService
             {
                 case E_DET_LOCATION.FRONT:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bElectrometer = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bElectrometer = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bElectrometer = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bElectrometer = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bElectrometer = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bElectrometer = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -2243,23 +2243,23 @@ namespace ChroZenService
             {
                 case E_DET_LOCATION.FRONT:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bAutoIgnition = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bAutoIgnition = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bAutoIgnition = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bAutoIgnition = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bAutoIgnition = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutoIgnition = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -2279,23 +2279,23 @@ namespace ChroZenService
             {
                 case E_DET_LOCATION.FRONT:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bAutoIgnition = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bAutoIgnition = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bAutoIgnition = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bAutoIgnition = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bAutoIgnition = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutoIgnition = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -2315,23 +2315,23 @@ namespace ChroZenService
             {
                 case E_DET_LOCATION.FRONT:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.iBeadVoltageOnoff = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.iBeadVoltageOnoff = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.iBeadVoltageOnoff = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.iBeadVoltageOnoff = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.iBeadVoltageOnoff = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.iBeadVoltageOnoff = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -2351,23 +2351,23 @@ namespace ChroZenService
             {
                 case E_DET_LOCATION.FRONT:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.iBeadVoltageOnoff = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.iBeadVoltageOnoff = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.iBeadVoltageOnoff = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.iBeadVoltageOnoff = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.iBeadVoltageOnoff = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.iBeadVoltageOnoff = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -2387,23 +2387,23 @@ namespace ChroZenService
             {
                 case E_DET_LOCATION.FRONT:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bPolarChange = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bPolarChange = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bPolarChange = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bPolarChange = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bPolarChange = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bPolarChange = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -2423,23 +2423,23 @@ namespace ChroZenService
             {
                 case E_DET_LOCATION.FRONT:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bPolarChange = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bPolarChange = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bPolarChange = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bPolarChange = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bPolarChange = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bPolarChange = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -2465,22 +2465,22 @@ namespace ChroZenService
                 {
                     case E_DET_LOCATION.FRONT:
                         {
-                            btInletIndex = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btCurSignal[0];
+                            btInletIndex = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.btCurSignal[0];
                         }
                         break;
                     case E_DET_LOCATION.CENTER:
                         {
-                            btInletIndex = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btCurSignal[1];
+                            btInletIndex = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.btCurSignal[1];
                         }
                         break;
                     case E_DET_LOCATION.REAR:
                         {
-                            btInletIndex = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.btCurSignal[2];
+                            btInletIndex = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.btCurSignal[2];
                         }
                         break;
                 }
 
-                float fCurrentSignal = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE_Received.packet.fSignal[btInletIndex];
+                float fCurrentSignal = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.fSignal[btInletIndex];
                     
 
                 if (fCurrentSignal > 1000)

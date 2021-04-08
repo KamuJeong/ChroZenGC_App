@@ -72,7 +72,7 @@ namespace ChroZenService
 
             AxisLabels = ChartHelper.GetLabels(ChartHelper.E_LABEL_TYPE.X);
 
-            float fXAxisMaxVal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTotalRunTime;
+            float fXAxisMaxVal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTotalRunTime;
             ChartHelper.TickInfo tickInfo = ChartHelper.GetTickInfo(ChartHelper.E_LABEL_TYPE.X, fXAxisMaxVal);
             //minor tick당 pixel 수
             float fXAxisUnit = fChartWidth / fXAxisMaxVal;

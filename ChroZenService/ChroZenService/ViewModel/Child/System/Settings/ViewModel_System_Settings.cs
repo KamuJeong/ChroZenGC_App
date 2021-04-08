@@ -115,8 +115,8 @@ namespace ChroZenService
         private void RemoteAccess_OnCommandAction(object param)
         {
             RemoteAccess_bOnoff = true;
-            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet.Remote.bOnoff = 1;
-            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet));
+            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet.Remote.bOnoff = 1;
+            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet));
             
             //TODO :             
             Debug.WriteLine("RemoteAccess_OnCommand Fired");
@@ -128,8 +128,8 @@ namespace ChroZenService
         private void RemoteAccess_OffCommandAction(object param)
         {
             RemoteAccess_bOnoff = false;
-            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet.Remote.bOnoff = 0;
-            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet));
+            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet.Remote.bOnoff = 0;
+            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet));
 
             //TODO :             
             Debug.WriteLine("RemoteAccess_OffCommand Fired");
@@ -210,63 +210,63 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.SETTING_INIT_TEMP:
                         {
                             fInitTemp = (float)tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet.Colclean.fInitTemp = fInitTemp;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet.Colclean.fInitTemp = fInitTemp;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.SETTING_INIT_TIME:
                         {
                             fInitTime = (float)tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet.Colclean.fInitTime = fInitTime;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet.Colclean.fInitTime = fInitTime;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.SETTING_RATE:
                         {
                             fRate = (float)tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet.Colclean.fRate = fRate;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet.Colclean.fRate = fRate;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.SETTING_FINAL_TEMP:
                         {
                             fFinalTemp = (float)tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet.Colclean.fFinalTemp = fFinalTemp;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET4_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet.Colclean.fFinalTemp = fFinalTemp;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET4.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.SETTING_FINAL_TIME:
                         {
                             fFinalTime = (float)tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet.Colclean.fFinalTime = fFinalTime;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET5_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet.Colclean.fFinalTime = fFinalTime;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET5.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.SETTING_REMOTE_TIME:
                         {
                             fTime = (float)tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet.Remote.fTime = fTime;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet.Remote.fTime = fTime;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.SETTING_REMOTE_EVENT1:
                         {
                             fEventTime1 = (float)tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet.Remote.fEventTime1 = fEventTime1;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet.Remote.fEventTime1 = fEventTime1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.SETTING_REMOTE_EVENT2:
                         {
                             fEventTime2 = (float)tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet.Remote.fEventTime2 = fEventTime2;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet.Remote.fEventTime2 = fEventTime2;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_SPECIAL_FUNCTIONManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_SPECIAL_FUNCTION.packet));
                         }
                         break;
                 }
@@ -416,7 +416,7 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Init Temp";
                         vmKeyPad.CurrentValue = fInitTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_INIT_TEMP;
                     }
                     break;
@@ -440,7 +440,7 @@ namespace ChroZenService
                     {
                         vmKeyPad.Title = "Final Temp";
                         vmKeyPad.CurrentValue = fFinalTemp.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.SETTING_FINAL_TEMP;
                     }
                     break;

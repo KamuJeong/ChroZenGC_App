@@ -172,24 +172,24 @@ namespace ChroZenService
                             {
                                 case 1:
                                     {
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.fZero = fZero;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.fZero = fZero;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet));
                                     }
                                     break;
                                 case 2:
                                     {
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.fZero = fZero;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.fZero = fZero;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet));
                                     }
                                     break;
                                 case 3:
                                     {
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.fZero = fZero;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.fZero = fZero;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet));
                                     }
                                     break;
                             }
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_1_SENSITIVITY:
@@ -202,24 +202,24 @@ namespace ChroZenService
                             {
                                 case 1:
                                     {
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.fSensitivity = fSensitivity;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.fSensitivity = fSensitivity;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet));
                                     }
                                     break;
                                 case 2:
                                     {
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.fSensitivity = fSensitivity;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.fSensitivity = fSensitivity;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet));
                                     }
                                     break;
                                 case 3:
                                     {
-                                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.fSensitivity = fSensitivity;
-                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet));
+                                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.fSensitivity = fSensitivity;
+                                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet));
                                     }
                                     break;
                             }
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
@@ -232,10 +232,10 @@ namespace ChroZenService
                             SortTimeAndSource();
                             SetTimeAndSourcePrgmAndSend(nSignalIndex);
                            
-                            //DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Prgm[0].fRate = tempFloatVal;
-                            //tcpManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet));
+                            //DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[0].fRate = tempFloatVal;
+                            //tcpManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_1_PROGRAM_TIME_2:
@@ -246,10 +246,10 @@ namespace ChroZenService
 
                             SortTimeAndSource();
                             SetTimeAndSourcePrgmAndSend(nSignalIndex);
-                            //DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Prgm[0].fRate = tempFloatVal;
-                            //tcpManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet));
+                            //DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[0].fRate = tempFloatVal;
+                            //tcpManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_1_PROGRAM_TIME_3:
@@ -260,10 +260,10 @@ namespace ChroZenService
 
                             SortTimeAndSource();
                             SetTimeAndSourcePrgmAndSend(nSignalIndex);
-                            //DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Prgm[0].fRate = tempFloatVal;
-                            //tcpManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet));
+                            //DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[0].fRate = tempFloatVal;
+                            //tcpManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_1_PROGRAM_TIME_4:
@@ -274,10 +274,10 @@ namespace ChroZenService
 
                             SortTimeAndSource();
                             SetTimeAndSourcePrgmAndSend(nSignalIndex);
-                            //DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Prgm[0].fRate = tempFloatVal;
-                            //tcpManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet));
+                            //DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[0].fRate = tempFloatVal;
+                            //tcpManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET4_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET4.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_1_PROGRAM_TIME_5:
@@ -288,10 +288,10 @@ namespace ChroZenService
 
                             SortTimeAndSource();
                             SetTimeAndSourcePrgmAndSend(nSignalIndex);
-                            //DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet.Prgm[0].fRate = tempFloatVal;
-                            //tcpManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet));
+                            //DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[0].fRate = tempFloatVal;
+                            //tcpManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET5_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET5.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
@@ -657,23 +657,23 @@ namespace ChroZenService
             {
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_FRONT_SIGNAL_CHANGE_ON:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.bSignalChange = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.bSignalChange = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet));
 
                         //this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_FRONT_SIGNAL_CHANGE_ON, tcpManager);
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_CENTER_SIGNAL_CHANGE_ON:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.bSignalChange = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.bSignalChange = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet));
                         //this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_CENTER_SIGNAL_CHANGE_ON, tcpManager);
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_REAR_SIGNAL_CHANGE_ON:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.bSignalChange = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.bSignalChange = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet));
                         //this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_REAR_SIGNAL_CHANGE_ON, tcpManager);
                     }
                     break;
@@ -696,22 +696,22 @@ namespace ChroZenService
             {
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_FRONT_SIGNAL_CHANGE_ON:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.bSignalChange = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.bSignalChange = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet));
                         //this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_FRONT_SIGNAL_CHANGE_OFF, tcpManager);
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_CENTER_SIGNAL_CHANGE_ON:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.bSignalChange = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.bSignalChange = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet));
                         //this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_CENTER_SIGNAL_CHANGE_OFF, tcpManager);
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_REAR_SIGNAL_CHANGE_ON:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.bSignalChange = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.bSignalChange = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet));
                         //this.SendCommand(E_GLOBAL_COMMAND_TYPE.E_CONFIG_SIGNAL_REAR_SIGNAL_CHANGE_OFF, tcpManager);
                     }
                     break;
@@ -773,53 +773,53 @@ namespace ChroZenService
             {
                 case 1:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.Prgm[0].fTime = fTime_1;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.Prgm[1].fTime = fTime_2;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.Prgm[2].fTime = fTime_3;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.Prgm[3].fTime = fTime_4;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.Prgm[4].fTime = fTime_5;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.Prgm[0].fTime = fTime_1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.Prgm[1].fTime = fTime_2;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.Prgm[2].fTime = fTime_3;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.Prgm[3].fTime = fTime_4;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.Prgm[4].fTime = fTime_5;
 
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.Prgm[0].btDet = (byte)btDet_1;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.Prgm[1].btDet = (byte)btDet_2;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.Prgm[2].btDet = (byte)btDet_3;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.Prgm[3].btDet = (byte)btDet_4;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet.Prgm[4].btDet = (byte)btDet_5;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.Prgm[0].btDet = (byte)btDet_1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.Prgm[1].btDet = (byte)btDet_2;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.Prgm[2].btDet = (byte)btDet_3;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.Prgm[3].btDet = (byte)btDet_4;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet.Prgm[4].btDet = (byte)btDet_5;
 
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front_Send.packet));
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Front.packet));
                     }
                     break;
                 case 2:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.Prgm[0].fTime = fTime_1;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.Prgm[1].fTime = fTime_2;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.Prgm[2].fTime = fTime_3;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.Prgm[3].fTime = fTime_4;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.Prgm[4].fTime = fTime_5;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.Prgm[0].fTime = fTime_1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.Prgm[1].fTime = fTime_2;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.Prgm[2].fTime = fTime_3;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.Prgm[3].fTime = fTime_4;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.Prgm[4].fTime = fTime_5;
 
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.Prgm[0].btDet = (byte)btDet_1;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.Prgm[1].btDet = (byte)btDet_2;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.Prgm[2].btDet = (byte)btDet_3;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.Prgm[3].btDet = (byte)btDet_4;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet.Prgm[4].btDet = (byte)btDet_5;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.Prgm[0].btDet = (byte)btDet_1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.Prgm[1].btDet = (byte)btDet_2;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.Prgm[2].btDet = (byte)btDet_3;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.Prgm[3].btDet = (byte)btDet_4;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet.Prgm[4].btDet = (byte)btDet_5;
 
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center_Send.packet));
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Center.packet));
                     }
                     break;
                 case 3:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.Prgm[0].fTime = fTime_1;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.Prgm[1].fTime = fTime_2;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.Prgm[2].fTime = fTime_3;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.Prgm[3].fTime = fTime_4;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.Prgm[4].fTime = fTime_5;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.Prgm[0].fTime = fTime_1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.Prgm[1].fTime = fTime_2;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.Prgm[2].fTime = fTime_3;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.Prgm[3].fTime = fTime_4;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.Prgm[4].fTime = fTime_5;
 
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.Prgm[0].btDet = (byte)btDet_1;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.Prgm[1].btDet = (byte)btDet_2;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.Prgm[2].btDet = (byte)btDet_3;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.Prgm[3].btDet = (byte)btDet_4;
-                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet.Prgm[4].btDet = (byte)btDet_5;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.Prgm[0].btDet = (byte)btDet_1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.Prgm[1].btDet = (byte)btDet_2;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.Prgm[2].btDet = (byte)btDet_3;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.Prgm[3].btDet = (byte)btDet_4;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet.Prgm[4].btDet = (byte)btDet_5;
 
-                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear_Send.packet));
+                        tcpManager.Send(T_PACKCODE_CHROZEN_DET_SIGNAL_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SIGNAL_SETTING_Rear.packet));
                     }
                     break;
             }           

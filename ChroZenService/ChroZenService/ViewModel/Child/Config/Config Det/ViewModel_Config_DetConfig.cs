@@ -146,35 +146,35 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_CONFIG_LIT_OFFSET:
                         {
                             fLitoffset = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fLitoffset = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fLitoffset = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_CONFIG_IGNITE_DELAY:
                         {
                             fIgnitedelay = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fIgnitedelay = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fIgnitedelay = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
 
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_CONFIG_IGNITE_FLOW:
                         {
                             fIgniteflow = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fIgniteflow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fIgniteflow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_CONFIG_IGNITE_TEMP:
                         {
                             fIgnitetemp = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.fIgnitetemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.fIgnitetemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                 }
@@ -378,23 +378,23 @@ namespace ChroZenService
             {
                 case "Det Front":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.btMakeupgas = (byte)btMakeupgas;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.btMakeupgas = (byte)btMakeupgas;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case "Det Center":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.btMakeupgas = (byte)btMakeupgas;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.btMakeupgas = (byte)btMakeupgas;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case "Det Rear":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.btMakeupgas = (byte)btMakeupgas;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.btMakeupgas = (byte)btMakeupgas;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -413,23 +413,23 @@ namespace ChroZenService
             {
                 case "Det Front":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.btConnection = (byte)btConnection;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.btConnection = (byte)btConnection;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case "Det Center":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.btConnection = (byte)btConnection;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.btConnection = (byte)btConnection;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case "Det Rear":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.btConnection = (byte)btConnection;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.btConnection = (byte)btConnection;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -446,23 +446,23 @@ namespace ChroZenService
             {
                 case "Det Front":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.btBlockSelect = (byte)btBlockSelect;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.btBlockSelect = (byte)btBlockSelect;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case "Det Center":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.btBlockSelect = (byte)btBlockSelect;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.btBlockSelect = (byte)btBlockSelect;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case "Det Rear":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.btBlockSelect = (byte)btBlockSelect;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.btBlockSelect = (byte)btBlockSelect;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -479,23 +479,23 @@ namespace ChroZenService
             {
                 case "Det Front":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.iSignalrange = (short)iSignalrange;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.iSignalrange = (short)iSignalrange;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case "Det Center":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.iSignalrange = (short)iSignalrange;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.iSignalrange = (short)iSignalrange;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case "Det Rear":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.iSignalrange = (short)iSignalrange;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.iSignalrange = (short)iSignalrange;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -513,23 +513,23 @@ namespace ChroZenService
             {
                 case E_DET_LOCATION.FRONT:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bAutozero = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bAutozero = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bAutozero = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bAutozero = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bAutozero = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutozero = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -547,23 +547,23 @@ namespace ChroZenService
             {
                 case E_DET_LOCATION.FRONT:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.bAutozero = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bAutozero = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.bAutozero = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bAutozero = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.bAutozero = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutozero = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -581,23 +581,23 @@ namespace ChroZenService
             {
                 case "Det Front":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet.iSignalvariation = (short)iSignalvariation;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.iSignalvariation = (short)iSignalvariation;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case "Det Center":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet.iSignalvariation = (short)iSignalvariation;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.iSignalvariation = (short)iSignalvariation;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case "Det Rear":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet.iSignalvariation = (short)iSignalvariation;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.iSignalvariation = (short)iSignalvariation;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
-                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
                     break;
             }

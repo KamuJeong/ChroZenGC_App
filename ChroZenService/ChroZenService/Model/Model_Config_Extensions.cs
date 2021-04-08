@@ -38,7 +38,7 @@ namespace ChroZenService
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_SETTING_TEMPERATURE_ON:
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_SETTING_TEMPERATURE_OFF:
                     {
-                        tCPManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Send.packet));
+                        tCPManager.Send(T_PACKCODE_CHROZEN_OVEN_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet));
                     }
                     break;
 

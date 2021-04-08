@@ -211,127 +211,127 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX1_SET_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket.Aux_flowCalSet[0] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket.Aux_flowCalSet[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX1_SET_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket.Aux_flowCalSet[1] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket.Aux_flowCalSet[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX1_SET_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket.Aux_flowCalSet[2] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket.Aux_flowCalSet[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX1_MEASURE_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket.Aux_flowCalMeasure[0] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket.Aux_flowCalMeasure[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX1_MEASURE_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket.Aux_flowCalMeasure[1] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket.Aux_flowCalMeasure[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX1_MEASURE_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket.Aux_flowCalMeasure[2] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket.Aux_flowCalMeasure[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX2_SET_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket.Aux_flowCalSet[0] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket.Aux_flowCalSet[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket, 1));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX2_SET_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket.Aux_flowCalSet[1] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket.Aux_flowCalSet[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket, 1));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX2_SET_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket.Aux_flowCalSet[2] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket.Aux_flowCalSet[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket, 1));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX2_MEASURE_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket.Aux_flowCalMeasure[0] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket.Aux_flowCalMeasure[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket, 1));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX2_MEASURE_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket.Aux_flowCalMeasure[1] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket.Aux_flowCalMeasure[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket, 1));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX2_MEASURE_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket.Aux_flowCalMeasure[2] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket.Aux_flowCalMeasure[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket, 1));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX3_SET_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket.Aux_flowCalSet[0] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket.Aux_flowCalSet[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket, 2));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX3_SET_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket.Aux_flowCalSet[1] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket.Aux_flowCalSet[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket, 2));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX3_SET_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket.Aux_flowCalSet[2] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket.Aux_flowCalSet[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket, 2));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX3_MEASURE_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket.Aux_flowCalMeasure[0] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket.Aux_flowCalMeasure[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket, 2));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX3_MEASURE_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket.Aux_flowCalMeasure[1] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket.Aux_flowCalMeasure[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket, 2));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX3_MEASURE_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket.Aux_flowCalMeasure[2] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket.Aux_flowCalMeasure[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket, 2));
                         }
                         break;
                 }

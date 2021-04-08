@@ -125,57 +125,57 @@ namespace ChroZenService
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_1:
                     {
                         initState_1 = true;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[0] = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[0] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_2:
                     {
                         initState_2 = true;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[1] = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[1] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_3:
                     {
                         initState_3 = true;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[2] = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[2] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_4:
                     {
                         initState_4 = true;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[3] = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[3] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_5:
                     {
                         initState_5 = true;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[4] = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[4] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_6:
                     {
                         initState_6 = true;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[5] = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[5] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_7:
                     {
                         initState_7 = true;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[6] = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[6] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_8:
                     {
                         initState_8 = true;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[7] = 1;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[7] = 1;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
             }
@@ -194,57 +194,57 @@ namespace ChroZenService
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_1:
                     {
                         initState_1 = false;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[0] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[0] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_2:
                     {
                         initState_2 = false;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[1] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[1] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_3:
                     {
                         initState_3 = false;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[2] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[2] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_4:
                     {
                         initState_4 = false;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[3] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[3] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_5:
                     {
                         initState_5 = false;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[4] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[4] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_6:
                     {
                         initState_6 = false;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[5] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[5] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_7:
                     {
                         initState_7 = false;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[6] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[6] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_VALVE_INITSTATE_8:
                     {
                         initState_8 = false;
-                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet.bInitState[7] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet.bInitState[7] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_VALVE_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_VALVE_SETTING.packet));
                     }
                     break;
             }

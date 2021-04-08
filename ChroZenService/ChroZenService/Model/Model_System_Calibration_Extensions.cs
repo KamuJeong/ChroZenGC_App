@@ -25,7 +25,7 @@ namespace ChroZenService
                             Target_Set = 0
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_CONFIG_OVEN_FAST_COOLING_ON:
@@ -51,7 +51,7 @@ namespace ChroZenService
                             Target_Set = 0
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
                     }
                     break;
                 #endregion Oven
@@ -67,7 +67,7 @@ namespace ChroZenService
                             Target_Set = 0
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_OVEN_TEMP_APPLY:
@@ -80,7 +80,7 @@ namespace ChroZenService
                             Target_Set = 0
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
                     }
                     break;
                 #endregion Oven
@@ -97,7 +97,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_INLET_FRONT_TEMP_APPLY:
@@ -110,7 +110,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 0));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 0));
 
                     }
                     break;
@@ -124,7 +124,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -138,7 +138,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -152,7 +152,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -166,7 +166,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -180,7 +180,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -194,7 +194,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -208,7 +208,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -222,7 +222,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -236,7 +236,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 0));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 0));
 
                     }
                     break;
@@ -250,7 +250,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 0));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 0));
 
                     }
                     break;
@@ -264,7 +264,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
 
                     }
                     break;
@@ -278,7 +278,7 @@ namespace ChroZenService
                             Target_Set = 1
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 0));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 0));
 
                     }
                     break;
@@ -293,7 +293,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_INLET_CENTER_TEMP_APPLY:
@@ -306,7 +306,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket, 1));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket, 1));
 
                     }
                     break;
@@ -320,7 +320,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -334,7 +334,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -348,7 +348,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -362,7 +362,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -376,7 +376,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -390,7 +390,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -404,7 +404,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -418,7 +418,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -432,7 +432,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 1));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 1));
 
                     }
                     break;
@@ -446,7 +446,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 1));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 1));
 
                     }
                     break;
@@ -460,7 +460,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
 
                     }
                     break;
@@ -474,7 +474,7 @@ namespace ChroZenService
                             Target_Set = 2
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 1));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 1));
 
                     }
                     break;
@@ -489,7 +489,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_INLET_REAR_TEMP_APPLY:
@@ -502,7 +502,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket, 2));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket, 2));
 
                     }
                     break;
@@ -516,7 +516,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -530,7 +530,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -544,7 +544,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -558,7 +558,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -572,7 +572,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -586,7 +586,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -600,7 +600,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -614,7 +614,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
 
                     }
                     break;
@@ -628,7 +628,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 2));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 2));
 
                     }
                     break;
@@ -642,7 +642,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 2));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 2));
 
                     }
                     break;
@@ -656,7 +656,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
 
                     }
                     break;
@@ -670,7 +670,7 @@ namespace ChroZenService
                             Target_Set = 3
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 2));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 2));
 
                     }
                     break;
@@ -689,7 +689,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_DET_FRONT_TEMP_APPLY:
@@ -702,7 +702,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -716,7 +716,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -730,7 +730,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -744,7 +744,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -758,7 +758,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -772,7 +772,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -786,7 +786,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -800,7 +800,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -814,7 +814,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -828,7 +828,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -842,7 +842,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -856,7 +856,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -870,7 +870,7 @@ namespace ChroZenService
                             Target_Set = 4
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
 
                     }
                     break;
@@ -885,7 +885,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_DET_CENTER_TEMP_APPLY:
@@ -898,7 +898,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -912,7 +912,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -926,7 +926,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -940,7 +940,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -954,7 +954,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -968,7 +968,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -982,7 +982,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -996,7 +996,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -1010,7 +1010,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -1024,7 +1024,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -1038,7 +1038,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -1052,7 +1052,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -1066,7 +1066,7 @@ namespace ChroZenService
                             Target_Set = 5
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                     }
                     break;
@@ -1081,7 +1081,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_INLET));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_DET_REAR_TEMP_APPLY:
@@ -1094,7 +1094,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1108,7 +1108,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1122,7 +1122,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1136,7 +1136,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1150,7 +1150,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1164,7 +1164,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1178,7 +1178,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1192,7 +1192,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1206,7 +1206,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1220,7 +1220,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1234,7 +1234,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                       tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                       tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1248,7 +1248,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1262,7 +1262,7 @@ namespace ChroZenService
                             Target_Set = 6
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(lcdCommand, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                     }
                     break;
@@ -1280,7 +1280,7 @@ namespace ChroZenService
                             Target_Set = 7
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX1_SENSORZERO_START:
@@ -1319,7 +1319,7 @@ namespace ChroZenService
                             Target_Set = 7
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX1_VALVE_RESET:
@@ -1381,7 +1381,7 @@ namespace ChroZenService
                         };
 
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket, 0));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX1_FLOW_START:
@@ -1395,7 +1395,7 @@ namespace ChroZenService
                         };
 
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket, 0));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX1_FLOW_STOP:
@@ -1409,7 +1409,7 @@ namespace ChroZenService
                         };
 
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket, 0));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX1_FLOW_APPLY:
@@ -1423,7 +1423,7 @@ namespace ChroZenService
                         };
 
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1_Send.auxPacket, 0));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX1.auxPacket, 0));
                     }
                     break;
 
@@ -1536,7 +1536,7 @@ namespace ChroZenService
                         };
 
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket, 1));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX2_FLOW_START:
@@ -1550,7 +1550,7 @@ namespace ChroZenService
                         };
 
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket, 1));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX2_FLOW_STOP:
@@ -1564,7 +1564,7 @@ namespace ChroZenService
                         };
 
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket, 1));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX2_FLOW_APPLY:
@@ -1578,7 +1578,7 @@ namespace ChroZenService
                         };
 
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2_Send.auxPacket, 1));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX2.auxPacket, 1));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX3_SENSORZERO_RESET:
@@ -1591,7 +1591,7 @@ namespace ChroZenService
                             Target_Set = 9
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
+                        //tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_OVEN));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX3_SENSORZERO_START:
@@ -1691,7 +1691,7 @@ namespace ChroZenService
                         };
 
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket, 2));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX3_FLOW_START:
@@ -1705,7 +1705,7 @@ namespace ChroZenService
                         };
 
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket, 2));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX3_FLOW_STOP:
@@ -1719,7 +1719,7 @@ namespace ChroZenService
                         };
 
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket, 2));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUX3_FLOW_APPLY:
@@ -1733,7 +1733,7 @@ namespace ChroZenService
                         };
 
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3_Send.auxPacket, 2));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_AUXManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUX3.auxPacket, 2));
                     }
                     break;
 
@@ -1750,7 +1750,7 @@ namespace ChroZenService
                             Target_Set = 10
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP1_TEMP_APPLY:
@@ -1763,7 +1763,7 @@ namespace ChroZenService
                             Target_Set = 10
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP2_TEMP_RESET:
@@ -1776,7 +1776,7 @@ namespace ChroZenService
                             Target_Set = 11
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP2_TEMP_APPLY:
@@ -1789,7 +1789,7 @@ namespace ChroZenService
                             Target_Set = 11
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP3_TEMP_RESET:
@@ -1802,7 +1802,7 @@ namespace ChroZenService
                             Target_Set = 12
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP3_TEMP_APPLY:
@@ -1815,7 +1815,7 @@ namespace ChroZenService
                             Target_Set = 12
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP4_TEMP_RESET:
@@ -1828,7 +1828,7 @@ namespace ChroZenService
                             Target_Set = 13
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP4_TEMP_APPLY:
@@ -1841,7 +1841,7 @@ namespace ChroZenService
                             Target_Set = 13
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP5_TEMP_RESET:
@@ -1854,7 +1854,7 @@ namespace ChroZenService
                             Target_Set = 14
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP5_TEMP_APPLY:
@@ -1867,7 +1867,7 @@ namespace ChroZenService
                             Target_Set = 14
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP6_TEMP_RESET:
@@ -1880,7 +1880,7 @@ namespace ChroZenService
                             Target_Set = 15
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP6_TEMP_APPLY:
@@ -1893,7 +1893,7 @@ namespace ChroZenService
                             Target_Set = 15
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP7_TEMP_RESET:
@@ -1906,7 +1906,7 @@ namespace ChroZenService
                             Target_Set = 16
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP7_TEMP_APPLY:
@@ -1919,7 +1919,7 @@ namespace ChroZenService
                             Target_Set = 16
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP8_TEMP_RESET:
@@ -1932,7 +1932,7 @@ namespace ChroZenService
                             Target_Set = 17
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                 case E_GLOBAL_COMMAND_TYPE.E_AUXTEMP8_TEMP_APPLY:
@@ -1945,7 +1945,7 @@ namespace ChroZenService
                             Target_Set = 17
                         };
                         tCPManager.Send(T_PACKCODE_LCD_COMMANDManager.MakePACKCODE_SET(command, YC_Const.E_PACKCODE.PACKCODE_YL6200_COMMAND));
-                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP_Send.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
+                        tCPManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_TEMPManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_TEMP.tempPacket, YC_Const.E_PACKCODE.PACKCODE_CHROZEN_LCD_CALIB_AUXTEMP));
                     }
                     break;
                     #endregion AUX TEMP

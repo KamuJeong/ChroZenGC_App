@@ -245,196 +245,196 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION1_T1:
                         {
                             fSet1_Calib1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION1_T2:
                         {
                             fSet2_Calib1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION2_T1:
                         {
                             fSet1_Calib2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[2] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[2] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION2_T2:
                         {
                             fSet2_Calib2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[3] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[3] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION3_T1:
                         {
                             fSet1_Calib3 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[4] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[4] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION3_T2:
                         {
                             fSet2_Calib3 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[5] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[5] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION4_T1:
                         {
                             fSet1_Calib4 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[6] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[6] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_SET_TEMP_CALIBRATION4_T2:
                         {
                             fSet2_Calib4 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[7] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[7] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION1_T1:
                         {
                             Measure1_Calib1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION1_T2:
                         {
                             Measure2_Calib1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION2_T1:
                         {
                             Measure1_Calib2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[2] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[2] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION2_T2:
                         {
                             Measure2_Calib2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[3] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[3] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION3_T1:
                         {
                             Measure1_Calib3 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[4] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[4] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION3_T2:
                         {
                             Measure2_Calib3 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[5] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[5] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION4_T1:
                         {
                             Measure1_Calib4 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[6] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[6] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP1_MEASURE_TEMP_CALIBRATION4_T2:
                         {
                             Measure2_Calib4 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[7] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[7] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION1_T1:
                         {
                             fSet1_Calib1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[8] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[8] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION1_T2:
                         {
                             fSet2_Calib1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[9] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[9] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION2_T1:
                         {
                             fSet1_Calib2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[10] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[10] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION2_T2:
                         {
                             fSet2_Calib2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[11] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[11] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION3_T1:
                         {
                             fSet1_Calib3 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[12] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[12] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION3_T2:
                         {
                             fSet2_Calib3 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[13] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[13] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION4_T1:
                         {
                             fSet1_Calib4 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[14] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[14] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_SET_TEMP_CALIBRATION4_T2:
                         {
                             fSet2_Calib4 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fSet[15] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fSet[15] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION1_T1:
                         {
                             Measure1_Calib1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[8] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[8] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION1_T2:
                         {
                             Measure2_Calib1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[9] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[9] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION2_T1:
                         {
                             Measure1_Calib2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[10] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[10] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION2_T2:
                         {
                             Measure2_Calib2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[11] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[11] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION3_T1:
                         {
                             Measure1_Calib3 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[12] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[12] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION3_T2:
                         {
                             Measure2_Calib3 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[13] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[13] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION4_T1:
                         {
                             Measure1_Calib4 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[14] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[14] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUXTEMP2_MEASURE_TEMP_CALIBRATION4_T2:
                         {
                             Measure2_Calib4 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP_Send.tempPacket.fMeasure[15] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_AUXTEMP.tempPacket.fMeasure[15] = tempFloatVal;
                         }
                         break;
                 }

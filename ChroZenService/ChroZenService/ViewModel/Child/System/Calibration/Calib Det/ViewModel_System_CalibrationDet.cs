@@ -275,163 +275,163 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SET_TEMP_CALIBRATION_T1:
                         {
                             fSet1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SET_TEMP_CALIBRATION_T2:
                         {
                             fSet2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_MEASURE_TEMP_CALIBRATION_T1:
                         {
                             fMeasure1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_MEASURE_TEMP_CALIBRATION_T2:
                         {
                             fMeasure2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SET_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_FlowCalType = 0;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_FlowCalSet[0] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_FlowCalType = 0;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_FlowCalSet[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SET_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_FlowCalType = 1;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_FlowCalSet[1] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_FlowCalType = 1;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_FlowCalSet[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_SET_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_FlowCalType = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_FlowCalSet[2] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_FlowCalType = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_FlowCalSet[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_MEASURE_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_FlowCalType = 0;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_flowCalMeasure[0] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_FlowCalType = 0;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_flowCalMeasure[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_MEASURE_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_FlowCalType = 0;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_flowCalMeasure[1] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_FlowCalType = 0;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_flowCalMeasure[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_MEASURE_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_FlowCalType = 0;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket.Det_flowCalMeasure[2] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1_Send.detPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_FlowCalType = 0;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket.Det_flowCalMeasure[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET1.detPacket, 0));
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SET_TEMP_CALIBRATION_T1:
                         {
                             fSet1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SET_TEMP_CALIBRATION_T2:
                         {
                             fSet2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_MEASURE_TEMP_CALIBRATION_T1:
                         {
                             fMeasure1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_MEASURE_TEMP_CALIBRATION_T2:
                         {
                             fMeasure2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SET_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_FlowCalType = 0;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_FlowCalSet[0] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_FlowCalType = 0;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_FlowCalSet[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SET_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_FlowCalType = 1;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_FlowCalSet[1] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_FlowCalType = 1;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_FlowCalSet[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_SET_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_FlowCalType = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_FlowCalSet[2] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_FlowCalType = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_FlowCalSet[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_MEASURE_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_FlowCalType = 0;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_flowCalMeasure[0] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_FlowCalType = 0;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_flowCalMeasure[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_MEASURE_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_FlowCalType = 1;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_flowCalMeasure[1] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_FlowCalType = 1;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_flowCalMeasure[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_CENTER_MEASURE_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_FlowCalType = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket.Det_flowCalMeasure[2] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2_Send.detPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_FlowCalType = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket.Det_flowCalMeasure[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET2.detPacket, 1));
 
                         }
                         break;
@@ -439,84 +439,84 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SET_TEMP_CALIBRATION_T1:
                         {
                             fSet1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SET_TEMP_CALIBRATION_T2:
                         {
                             fSet2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_MEASURE_TEMP_CALIBRATION_T1:
                         {
                             fMeasure1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_MEASURE_TEMP_CALIBRATION_T2:
                         {
                             fMeasure2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SET_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_FlowCalType = 0;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_FlowCalSet[0] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_FlowCalType = 0;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_FlowCalSet[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SET_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_FlowCalType = 1;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_FlowCalSet[1] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_FlowCalType = 1;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_FlowCalSet[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SET_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_FlowCalType = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_FlowCalSet[2] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_FlowCalType = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_FlowCalSet[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_MEASURE_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_FlowCalType = 0;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_flowCalMeasure[0] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_FlowCalType = 0;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_flowCalMeasure[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_MEASURE_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_FlowCalType = 1;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_flowCalMeasure[1] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_FlowCalType = 1;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_flowCalMeasure[1] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_MEASURE_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_FlowCalType = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket.Det_flowCalMeasure[2] = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3_Send.detPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_FlowCalType = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket.Det_flowCalMeasure[2] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_DETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_DET3.detPacket, 2));
 
                         }
                         break;

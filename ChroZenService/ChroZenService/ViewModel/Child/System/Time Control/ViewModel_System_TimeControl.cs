@@ -507,380 +507,380 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_1:
                         {
                             dtDate_1 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_1:
                         {
                             dtTime_1 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_1:
                         {
                             fValue_1 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_2:
                         {
                             dtDate_2 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_2:
                         {
                             dtTime_2 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_2:
                         {
                             fValue_2 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_3:
                         {
                             dtDate_3 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_3:
                         {
                             dtTime_3 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_3:
                         {
                             fValue_3 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_4:
                         {
                             dtDate_4 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_4:
                         {
                             dtTime_4 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_4:
                         {
                             fValue_4 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_5:
                         {
                             dtDate_5 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_5:
                         {
                             dtTime_5 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_5:
                         {
                             fValue_5 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_6:
                         {
                             dtDate_6 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_6:
                         {
                             dtTime_6 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_6:
                         {
                             fValue_6 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_7:
                         {
                             dtDate_7 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_7:
                         {
                             dtTime_7 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_7:
                         {
                             fValue_7 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_8:
                         {
                             dtDate_8 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_8:
                         {
                             dtTime_8 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_8:
                         {
                             fValue_8 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_9:
                         {
                             dtDate_9 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_9:
                         {
                             dtTime_9 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_9:
                         {
                             fValue_9 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_10:
                         {
                             dtDate_10 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_10:
                         {
                             dtTime_10 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_10:
                         {
                             fValue_10 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_11:
                         {
                             dtDate_11 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_11:
                         {
                             dtTime_11 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_11:
                         {
                             fValue_11 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_12:
                         {
                             dtDate_12 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_12:
                         {
                             dtTime_12 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_12:
                         {
                             fValue_12 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_13:
                         {
                             dtDate_13 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_13:
                         {
                             dtTime_13 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_13:
                         {
                             fValue_13 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_14:
                         {
                             dtDate_14 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_14:
                         {
                             dtTime_14 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_14:
                         {
                             fValue_14 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_15:
                         {
                             dtDate_15 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_15:
                         {
                             dtTime_15 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_15:
                         {
                             fValue_15 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_16:
                         {
                             dtDate_16 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_16:
                         {
                             dtTime_16 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_16:
                         {
                             fValue_16 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_17:
                         {
                             dtDate_17 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_17:
                         {
                             dtTime_17 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_17:
                         {
                             fValue_17 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_18:
                         {
                             dtDate_18 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_18:
                         {
                             dtTime_18 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_18:
                         {
                             fValue_18 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_19:
                         {
                             dtDate_19 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_19:
                         {
                             dtTime_19 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_19:
                         {
                             fValue_19 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_DATE_20:
                         {
                             dtDate_20 = YC_Util.StringToDate(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_TIME_20:
                         {
                             dtTime_20 = YC_Util.StringToTime(mainVM.ViewModel_KeyPad.CurrentValue);
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_20:
                         {
                             fValue_20 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                 }
@@ -1075,7 +1075,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1121,7 +1121,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1167,7 +1167,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1213,7 +1213,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1259,7 +1259,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1305,7 +1305,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1351,7 +1351,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1397,7 +1397,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1443,7 +1443,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1489,7 +1489,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1535,7 +1535,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1581,7 +1581,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1627,7 +1627,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1673,7 +1673,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1719,7 +1719,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1765,7 +1765,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1811,7 +1811,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1857,7 +1857,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1903,7 +1903,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:
@@ -1949,7 +1949,7 @@ namespace ChroZenService
                         {
                             case E_TIMECONTROL_FUNCTION.SET_OVEN:
                                 {
-                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                                    vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                                 }
                                 break;
                             case E_TIMECONTROL_FUNCTION.METHOD:

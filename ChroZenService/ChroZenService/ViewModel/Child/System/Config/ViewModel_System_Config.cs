@@ -417,122 +417,122 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE1_PORT:
                         {
                             btPort1 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE2_PORT:
                         {
                             btPort2 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE3_PORT:
                         {
                             btPort3 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE4_PORT:
                         {
                             btPort4 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET4_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET4.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE5_PORT:
                         {
                             btPort5 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET5_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET5.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE6_PORT:
                         {
                             btPort6 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET6_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET6.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE7_PORT:
                         {
                             btPort7 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET7_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET7.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE8_PORT:
                         {
                             btPort8 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET8_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET8.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVEM1_PORT:
                         {
                             btPortM1 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLETM1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLETM1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVEM2_PORT:
                         {
                             btPortM2 = (byte)tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLETM2_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLETM2.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                        
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE1_FLOW:
                         {
                             fLoop1 = tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE2_FLOW:
                         {
                             fLoop2 = tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[2] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[2] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE3_FLOW:
                         {
                             fLoop3 = tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[3] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[3] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE4_FLOW:
                         {
                             fLoop4 = tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET4_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[4] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET4.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[4] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE5_FLOW:
                         {
                             fLoop5 = tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET5_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[5] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET5.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[5] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE6_FLOW:
                         {
                             fLoop6 = tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET6_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[6] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET6.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[6] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE7_FLOW:
                         {
                             fLoop7 = tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET7_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[7] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET7.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[7] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVE8_FLOW:
                         {
                             fLoop8 = tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET8_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[8] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET8.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[8] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVEM1_FLOW:
                         {
                             fLoopM1 = tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLETM1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[M1] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLETM1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[M1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.CONFIG_VALVEM2_FLOW:
                         {
                             fLoopM2 = tempFloatVal;
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLETM2_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[M2] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLETM2.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[M2] = tempFloatVal;
                         }
                         break;
                 }

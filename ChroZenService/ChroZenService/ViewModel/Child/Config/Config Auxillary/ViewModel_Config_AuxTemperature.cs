@@ -617,66 +617,66 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_1:
                         {
                             fTempSet_1 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[0] = fTempSet_1;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[0] = fTempSet_1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_2:
                         {
                             fTempSet_2 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[1] = fTempSet_2;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[1] = fTempSet_2;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_3:
                         {
                             fTempSet_3 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[2] = fTempSet_3;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[2] = fTempSet_3;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_4:
                         {
                             fTempSet_4 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[3] = fTempSet_4;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[3] = fTempSet_4;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_5:
                         {
                             fTempSet_5 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[4] = fTempSet_5;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[4] = fTempSet_5;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_6:
                         {
                             fTempSet_6 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[5] = fTempSet_6;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[5] = fTempSet_6;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_7:
                         {
                             fTempSet_7 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[6] = fTempSet_7;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[6] = fTempSet_7;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_8:
                         {
                             fTempSet_8 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[7] = fTempSet_8;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[7] = fTempSet_8;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                 }
@@ -709,116 +709,116 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_1:
                         {
                             fTempOnoff_1 = true;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[0] = 1;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[0] = 1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet_1 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[0] = fTempSet_1;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[0] = fTempSet_1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_2:
                         {
                             fTempOnoff_2 = true;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[1] = 1;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[1] = 1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet_2 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[1] = fTempSet_2;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[1] = fTempSet_2;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_3:
                         {
                             fTempOnoff_3 = true;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[2] = 1;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[2] = 1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet_3 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[2] = fTempSet_3;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[2] = fTempSet_3;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
                             #endregion
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_4:
                         {
                             fTempOnoff_4 = true;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[3] = 1;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[3] = 1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet_4 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[3] = fTempSet_4;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[3] = fTempSet_4;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
                             #endregion
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_5:
                         {
                             fTempOnoff_5 = true;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[4] = 1;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[4] = 1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet_5 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[4] = fTempSet_5;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[4] = fTempSet_5;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
                             #endregion
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_6:
                         {
                             fTempOnoff_6 = true;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[5] = 1;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[5] = 1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet_6 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[5] = fTempSet_6;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[5] = fTempSet_6;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
                             #endregion
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_7:
                         {
                             fTempOnoff_7 = true;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[6] = 1;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[6] = 1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet_7 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[6] = fTempSet_7;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[6] = fTempSet_7;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
                             #endregion
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_8:
                         {
                             fTempOnoff_8 = true;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[7] = 1;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[7] = 1;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet_8 = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempSet[7] = fTempSet_8;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempSet[7] = fTempSet_8;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                 }
@@ -841,73 +841,73 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_1:
                     {
                         fTempOnoff_1 = false;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[0] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[0] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_2:
                     {
                         fTempOnoff_2 = false;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[1] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[1] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_3:
                     {
                         fTempOnoff_3 = false;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[2] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[2] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_4:
                     {
                         fTempOnoff_4 = false;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[3] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[3] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_5:
                     {
                         fTempOnoff_5 = false;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[4] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[4] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_6:
                     {
                         fTempOnoff_6 = false;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[5] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[5] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_7:
                     {
                         fTempOnoff_7 = false;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[6] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[6] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.AUX_TEMPERATURE_SET_8:
                     {
                         fTempOnoff_8 = false;
-                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet.fTempOnoff[7] = 0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet.fTempOnoff[7] = 0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_AUX_TEMP_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_AUX_TEMP_SETTING.packet));
 
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
             }

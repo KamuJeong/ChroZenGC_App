@@ -634,91 +634,91 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TEMPERATURE:
                         {
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTempSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_COLUMN_FLOW:
                         {
                             ValidateAndSetColumnFlow(tempFloatVal);
                             fColumnFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fColumnFlowSet = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowSet = float.Parse(fTotalFlowSet);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fSplitFlowSet = float.Parse(fSplitFlowSet);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.iSplitratio = short.Parse(iSplitratio);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fColumnFlowSet = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fTotalFlowSet = float.Parse(fTotalFlowSet);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fSplitFlowSet = float.Parse(fSplitFlowSet);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.iSplitratio = short.Parse(iSplitratio);
 
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
 
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PRESSURE:
                         {
                             fPressureSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPressureSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fPressureSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TOTAL_FLOW:
                         {
                             ValidateAndSetTotalFlow(tempFloatVal);
                             fTotalFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowSet = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fSplitFlowSet = float.Parse(fSplitFlowSet);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.iSplitratio = short.Parse(iSplitratio);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fTotalFlowSet = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fSplitFlowSet = float.Parse(fSplitFlowSet);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.iSplitratio = short.Parse(iSplitratio);
 
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_SPLIT_FLOW:
                         {
                             ValidateAndSetSplitFlow(tempFloatVal);
                             fSplitFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowSet = float.Parse(fTotalFlowSet);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fSplitFlowSet = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.iSplitratio = short.Parse(iSplitratio);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fTotalFlowSet = float.Parse(fTotalFlowSet);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fSplitFlowSet = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.iSplitratio = short.Parse(iSplitratio);
 
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_SPLIT_RATIO:
                         {
                             ValidateAndSetSplitRatio((int)tempFloatVal);
                             iSplitratio = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.iSplitratio = (short)tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.iSplitratio = (short)tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PULSED_PRESSURE:
                         {
                             fPulsed_FlowPressSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPulsed_FlowPressSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fPulsed_FlowPressSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PULSED_TIME:
                         {
                             fPulsed_Time = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPulsed_Time = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fPulsed_Time = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_SPLIT_ON_TIME:
                         {
                             fSplitOnTime = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fSplitOnTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fSplitOnTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
@@ -728,137 +728,137 @@ namespace ChroZenService
                         {
 
                             press_fRate_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[1].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[1].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_RATE_3:
                         {
                             press_fRate_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[2].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[2].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_RATE_4:
                         {
                             press_fRate_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[3].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[3].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_RATE_5:
                         {
                             press_fRate_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[4].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[4].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_RATE_6:
                         {
                             press_fRate_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[5].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[5].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_1:
                         {
                             press_fFinalPress_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[0].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[0].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_2:
                         {
                             press_fFinalPress_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[1].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[1].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_3:
                         {
                             press_fFinalPress_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[2].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[2].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_4:
                         {
                             press_fFinalPress_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[3].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[3].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_5:
                         {
                             press_fFinalPress_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[4].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[4].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_6:
                         {
                             press_fFinalPress_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[5].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[5].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_1:
                         {
                             press_fFinalTime_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[0].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[0].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_2:
                         {
                             press_fFinalTime_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[1].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[1].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_3:
                         {
                             press_fFinalTime_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[2].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[2].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_4:
                         {
                             press_fFinalTime_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[3].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[3].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_5:
                         {
                             press_fFinalTime_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[4].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[4].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_6:
                         {
                             press_fFinalTime_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.presPrgm[5].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.presPrgm[5].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     #endregion Front Programed Pressure
@@ -868,137 +868,137 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_RATE_2:
                         {
                             flow_fRate_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[1].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[1].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_RATE_3:
                         {
                             flow_fRate_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[2].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[2].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_RATE_4:
                         {
                             flow_fRate_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[3].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[3].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_RATE_5:
                         {
                             flow_fRate_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[4].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[4].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_RATE_6:
                         {
                             flow_fRate_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[5].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[5].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_1:
                         {
                             flow_fFinalFlow_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[0].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[0].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_2:
                         {
                             flow_fFinalFlow_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[1].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[1].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_3:
                         {
                             flow_fFinalFlow_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[2].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[2].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_4:
                         {
                             flow_fFinalFlow_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[3].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[3].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_5:
                         {
                             flow_fFinalFlow_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[4].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[4].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_6:
                         {
                             flow_fFinalFlow_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[5].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[5].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_FINAL_TIME_1:
                         {
                             flow_fFinalTime_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[0].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[0].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_FINAL_TIME_2:
                         {
                             flow_fFinalTime_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[1].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[1].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_FINAL_TIME_3:
                         {
                             flow_fFinalTime_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[2].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[2].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_FINAL_TIME_4:
                         {
                             flow_fFinalTime_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[3].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[3].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_FINAL_TIME_5:
                         {
                             flow_fFinalTime_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[4].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[4].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_FLOW_FINAL_TIME_6:
                         {
                             flow_fFinalTime_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.flowPrgm[5].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.flowPrgm[5].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     #endregion Front Programed Flow
@@ -1008,137 +1008,137 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_RATE_2:
                         {
                             temp_fRate_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[1].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[1].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_RATE_3:
                         {
                             temp_fRate_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[2].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[2].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_RATE_4:
                         {
                             temp_fRate_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[3].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[3].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_RATE_5:
                         {
                             temp_fRate_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[4].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[4].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_RATE_6:
                         {
                             temp_fRate_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[5].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[5].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1:
                         {
                             temp_fFinalTemp_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[0].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[0].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2:
                         {
                             temp_fFinalTemp_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[1].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[1].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3:
                         {
                             temp_fFinalTemp_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[2].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[2].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4:
                         {
                             temp_fFinalTemp_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[3].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[3].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5:
                         {
                             temp_fFinalTemp_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[4].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[4].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6:
                         {
                             temp_fFinalTemp_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[5].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[5].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_1:
                         {
                             temp_fFinalTime_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[0].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[0].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_2:
                         {
                             temp_fFinalTime_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[1].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[1].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_3:
                         {
                             temp_fFinalTime_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[2].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[2].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_4:
                         {
                             temp_fFinalTime_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[3].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[3].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_5:
                         {
                             temp_fFinalTime_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[4].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[4].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_6:
                         {
                             temp_fFinalTime_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.tempPrgm[5].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.tempPrgm[5].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     #endregion Front Programed Temperature
@@ -1146,80 +1146,80 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TEMPERATURE:
                         {
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTempSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_COLUMN_FLOW:
                         {
                             ValidateAndSetColumnFlow(tempFloatVal);
                             fColumnFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fColumnFlowSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fColumnFlowSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PRESSURE:
                         {
                             fPressureSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPressureSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fPressureSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TOTAL_FLOW:
                         {
                             ValidateAndSetTotalFlow(tempFloatVal);
                             fTotalFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTotalFlowSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fTotalFlowSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_SPLIT_FLOW:
                         {
                             ValidateAndSetSplitFlow(tempFloatVal);
                             fSplitFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fSplitFlowSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fSplitFlowSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_SPLIT_RATIO:
                         {
                             ValidateAndSetSplitRatio((int)tempFloatVal);
                             iSplitratio = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.iSplitratio = (short)tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.iSplitratio = (short)tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PULSED_PRESSURE:
                         {
                             fPulsed_FlowPressSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPulsed_FlowPressSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fPulsed_FlowPressSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PULSED_TIME:
                         {
                             fPulsed_Time = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPulsed_Time = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fPulsed_Time = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_SPLIT_ON_TIME:
                         {
                             fSplitOnTime = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fSplitOnTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fSplitOnTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
@@ -1229,137 +1229,137 @@ namespace ChroZenService
                         {
 
                             press_fRate_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[1].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[1].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_3:
                         {
                             press_fRate_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[2].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[2].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_4:
                         {
                             press_fRate_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[3].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[3].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_5:
                         {
                             press_fRate_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[4].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[4].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_RATE_6:
                         {
                             press_fRate_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[5].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[5].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_1:
                         {
                             press_fFinalPress_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[0].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[0].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_2:
                         {
                             press_fFinalPress_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[1].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[1].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_3:
                         {
                             press_fFinalPress_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[2].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[2].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_4:
                         {
                             press_fFinalPress_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[3].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[3].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_5:
                         {
                             press_fFinalPress_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[4].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[4].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_6:
                         {
                             press_fFinalPress_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[5].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[5].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_1:
                         {
                             press_fFinalTime_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[0].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[0].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_2:
                         {
                             press_fFinalTime_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[1].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[1].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_3:
                         {
                             press_fFinalTime_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[2].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[2].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_4:
                         {
                             press_fFinalTime_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[3].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[3].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_5:
                         {
                             press_fFinalTime_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[4].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[4].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_6:
                         {
                             press_fFinalTime_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.presPrgm[5].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.presPrgm[5].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     #endregion Center Programed Pressure
@@ -1369,137 +1369,137 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_2:
                         {
                             flow_fRate_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[1].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[1].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_3:
                         {
                             flow_fRate_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[2].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[2].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_4:
                         {
                             flow_fRate_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[3].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[3].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_5:
                         {
                             flow_fRate_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[4].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[4].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_RATE_6:
                         {
                             flow_fRate_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[5].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[5].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_1:
                         {
                             flow_fFinalFlow_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[0].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[0].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_2:
                         {
                             flow_fFinalFlow_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[1].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[1].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_3:
                         {
                             flow_fFinalFlow_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[2].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[2].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_4:
                         {
                             flow_fFinalFlow_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[3].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[3].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_5:
                         {
                             flow_fFinalFlow_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[4].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[4].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_6:
                         {
                             flow_fFinalFlow_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[5].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[5].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_1:
                         {
                             flow_fFinalTime_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[0].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[0].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_2:
                         {
                             flow_fFinalTime_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[1].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[1].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_3:
                         {
                             flow_fFinalTime_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[2].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[2].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_4:
                         {
                             flow_fFinalTime_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[3].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[3].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_5:
                         {
                             flow_fFinalTime_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[4].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[4].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_FLOW_FINAL_TIME_6:
                         {
                             flow_fFinalTime_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.flowPrgm[5].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.flowPrgm[5].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     #endregion Center Programed Flow
@@ -1509,137 +1509,137 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_2:
                         {
                             temp_fRate_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[1].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[1].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_3:
                         {
                             temp_fRate_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[2].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[2].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_4:
                         {
                             temp_fRate_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[3].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[3].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_5:
                         {
                             temp_fRate_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[4].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[4].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_RATE_6:
                         {
                             temp_fRate_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[5].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[5].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1:
                         {
                             temp_fFinalTemp_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[0].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[0].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2:
                         {
                             temp_fFinalTemp_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[1].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[1].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3:
                         {
                             temp_fFinalTemp_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[2].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[2].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4:
                         {
                             temp_fFinalTemp_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[3].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[3].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5:
                         {
                             temp_fFinalTemp_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[4].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[4].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6:
                         {
                             temp_fFinalTemp_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[5].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[5].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_1:
                         {
                             temp_fFinalTime_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[0].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[0].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_2:
                         {
                             temp_fFinalTime_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[1].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[1].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_3:
                         {
                             temp_fFinalTime_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[2].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[2].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_4:
                         {
                             temp_fFinalTime_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[3].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[3].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_5:
                         {
                             temp_fFinalTime_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[4].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[4].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_6:
                         {
                             temp_fFinalTime_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.tempPrgm[5].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.tempPrgm[5].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     #endregion Center Programed Temperature
@@ -1647,80 +1647,80 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE:
                         {
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTempSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_COLUMN_FLOW:
                         {
                             ValidateAndSetColumnFlow(tempFloatVal);
                             fColumnFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fColumnFlowSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fColumnFlowSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PRESSURE:
                         {
                             fPressureSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPressureSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fPressureSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TOTAL_FLOW:
                         {
                             ValidateAndSetTotalFlow(tempFloatVal);
                             fTotalFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTotalFlowSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fTotalFlowSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_SPLIT_FLOW:
                         {
                             ValidateAndSetSplitFlow(tempFloatVal);
                             fSplitFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fSplitFlowSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fSplitFlowSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_SPLIT_RATIO:
                         {
                             ValidateAndSetSplitRatio((int)tempFloatVal);
                             iSplitratio = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_0);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.iSplitratio = (short)tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.iSplitratio = (short)tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PULSED_PRESSURE:
                         {
                             fPulsed_FlowPressSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPulsed_FlowPressSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fPulsed_FlowPressSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PULSED_TIME:
                         {
                             fPulsed_Time = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPulsed_Time = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fPulsed_Time = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_SPLIT_ON_TIME:
                         {
                             fSplitOnTime = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fSplitOnTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fSplitOnTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
 
@@ -1730,137 +1730,137 @@ namespace ChroZenService
                         {
 
                             press_fRate_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[1].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[1].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_3:
                         {
                             press_fRate_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[2].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[2].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_4:
                         {
                             press_fRate_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[3].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[3].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_5:
                         {
                             press_fRate_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[4].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[4].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_RATE_6:
                         {
                             press_fRate_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[5].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[5].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_1:
                         {
                             press_fFinalPress_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[0].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[0].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_2:
                         {
                             press_fFinalPress_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[1].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[1].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_3:
                         {
                             press_fFinalPress_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[2].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[2].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_4:
                         {
                             press_fFinalPress_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[3].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[3].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_5:
                         {
                             press_fFinalPress_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[4].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[4].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_PRESS_6:
                         {
                             press_fFinalPress_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[5].fFinalPress = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[5].fFinalPress = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_1:
                         {
                             press_fFinalTime_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[0].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[0].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_2:
                         {
                             press_fFinalTime_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[1].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[1].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_3:
                         {
                             press_fFinalTime_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[2].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[2].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_4:
                         {
                             press_fFinalTime_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[3].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[3].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_5:
                         {
                             press_fFinalTime_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[4].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[4].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_PRESSURE_FINAL_TIME_6:
                         {
                             press_fFinalTime_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.presPrgm[5].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.presPrgm[5].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     #endregion Rear Programed Pressure
@@ -1870,137 +1870,137 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_2:
                         {
                             flow_fRate_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[1].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[1].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_3:
                         {
                             flow_fRate_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[2].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[2].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_4:
                         {
                             flow_fRate_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[3].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[3].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_5:
                         {
                             flow_fRate_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[4].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[4].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_RATE_6:
                         {
                             flow_fRate_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[5].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[5].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_1:
                         {
                             flow_fFinalFlow_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[0].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[0].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_2:
                         {
                             flow_fFinalFlow_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[1].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[1].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_3:
                         {
                             flow_fFinalFlow_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[2].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[2].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_4:
                         {
                             flow_fFinalFlow_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[3].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[3].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_5:
                         {
                             flow_fFinalFlow_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[4].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[4].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_FLOW_6:
                         {
                             flow_fFinalFlow_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[5].fFinalFlow = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[5].fFinalFlow = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_1:
                         {
                             flow_fFinalTime_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[0].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[0].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_2:
                         {
                             flow_fFinalTime_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[1].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[1].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_3:
                         {
                             flow_fFinalTime_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[2].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[2].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_4:
                         {
                             flow_fFinalTime_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[3].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[3].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_5:
                         {
                             flow_fFinalTime_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[4].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[4].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_FLOW_FINAL_TIME_6:
                         {
                             flow_fFinalTime_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.flowPrgm[5].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.flowPrgm[5].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     #endregion Rear Programed Flow
@@ -2010,137 +2010,137 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_2:
                         {
                             temp_fRate_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[1].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[1].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_3:
                         {
                             temp_fRate_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[2].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[2].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_4:
                         {
                             temp_fRate_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[3].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[3].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_5:
                         {
                             temp_fRate_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[4].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[4].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_RATE_6:
                         {
                             temp_fRate_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[5].fRate = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[5].fRate = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1:
                         {
                             temp_fFinalTemp_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[0].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[0].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2:
                         {
                             temp_fFinalTemp_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[1].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[1].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3:
                         {
                             temp_fFinalTemp_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[2].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[2].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4:
                         {
                             temp_fFinalTemp_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[3].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[3].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5:
                         {
                             temp_fFinalTemp_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[4].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[4].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6:
                         {
                             temp_fFinalTemp_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[5].fFinalTemp = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[5].fFinalTemp = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_1:
                         {
                             temp_fFinalTime_1 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[0].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[0].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_2:
                         {
                             temp_fFinalTime_2 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[1].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[1].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_3:
                         {
                             temp_fFinalTime_3 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[2].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[2].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_4:
                         {
                             temp_fFinalTime_4 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[3].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[3].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_5:
                         {
                             temp_fFinalTime_5 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[4].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[4].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TIME_6:
                         {
                             temp_fFinalTime_6 = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.tempPrgm[5].fFinalTime = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.tempPrgm[5].fFinalTime = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                         #endregion Rear Programed Temperature
@@ -2173,13 +2173,13 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TEMPERATURE:
                         {
                             fTempOnoff = true;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTempSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
                             #endregion
 
                         }
@@ -2187,152 +2187,152 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_COLUMN_FLOW:
                         {
                             fColumnFlowOnoff = true;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             ValidateAndSetColumnFlow(tempFloatVal);
                             fColumnFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fColumnFlowSet = tempFloatVal;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowSet = float.Parse(fTotalFlowSet);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fSplitFlowSet = float.Parse(fSplitFlowSet);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.iSplitratio = short.Parse(iSplitratio);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fColumnFlowSet = tempFloatVal;
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fTotalFlowSet = float.Parse(fTotalFlowSet);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fSplitFlowSet = float.Parse(fSplitFlowSet);
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.iSplitratio = short.Parse(iSplitratio);
 
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PRESSURE:
                         {
                             fPressureOnoff = true;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fPressureSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPressureSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fPressureSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TOTAL_FLOW:
                     //    {
                     //        fTotalFlowOnoff = true;
-                    //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                    //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                    //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                    //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
 
-                    //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                    //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     //    }
                     //    break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TEMPERATURE:
                         {
                             fTempOnoff = true;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTempSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
                             #endregion
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_COLUMN_FLOW:
                         {
                             fColumnFlowOnoff = true;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             ValidateAndSetColumnFlow(tempFloatVal);
                             fColumnFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fColumnFlowSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fColumnFlowSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PRESSURE:
                         {
                             fPressureOnoff = true;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fPressureSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPressureSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fPressureSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TOTAL_FLOW:
                     //    {
                     //        fTotalFlowOnoff = true;
-                    //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                    //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                    //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                    //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
 
-                    //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                    //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     //    }
                     //    break;
 
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE:
                         {
                             fTempOnoff = true;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fTempSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTempSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fTempSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
                             #endregion
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_COLUMN_FLOW:
                         {
                             fColumnFlowOnoff = true;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             ValidateAndSetColumnFlow(tempFloatVal);
                             fColumnFlowSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fColumnFlowSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fColumnFlowSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
                             #endregion
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PRESSURE:
                         {
                             fPressureOnoff = true;
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
 
                             #region 210402 권민경 OnCommand 시에 현재 설정값으로 On 되게끔
                             fPressureSet = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_3);
-                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPressureSet = tempFloatVal;
-                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                            DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fPressureSet = tempFloatVal;
+                            tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
                             #endregion
 
-                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                         //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TOTAL_FLOW:
                         //    {
                         //        fTotalFlowOnoff = true;
-                        //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                        //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                        //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                        //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
 
-                        //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         //    }
                         //    break;
                 }
@@ -2356,8 +2356,8 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TEMPERATURE:
                     {
                         fTempOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
                     }
@@ -2365,39 +2365,39 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_COLUMN_FLOW:
                     {
                         fColumnFlowOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PRESSURE:
                     {
                         fPressureOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TOTAL_FLOW:
                 //    {
                 //        fTotalFlowOnoff = false;
-                //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+                //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
 
                 //        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                 //    }
                 //    break;
 
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TEMPERATURE:
                     {
                         fTempOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
                     }
@@ -2405,39 +2405,39 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_COLUMN_FLOW:
                     {
                         fColumnFlowOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PRESSURE:
                     {
                         fPressureOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TOTAL_FLOW:
                 //    {
                 //        fTotalFlowOnoff = false;
-                //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+                //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
 
                 //        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                 //    }
                 //    break;
 
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE:
                     {
                         fTempOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fTempOnoff = _fTempOnoff ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
                     }
@@ -2445,31 +2445,31 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_COLUMN_FLOW:
                     {
                         fColumnFlowOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fColumnFlowOnoff = _fColumnFlowOnoff ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PRESSURE:
                     {
                         fPressureOnoff = false;
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
-                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fPressureOnoff = _fPressureOnoff ? (byte)1 : (byte)0;
+                        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
 
                         mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     }
                     break;
                     //case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TOTAL_FLOW:
                     //    {
                     //        fTotalFlowOnoff = false;
-                    //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
-                    //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+                    //        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.fTotalFlowOnoff = fTotalFlowOnoff ? (byte)1 : (byte)0;
+                    //        tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
 
                     //        mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-                    //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                    //        //DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                     //    }
                     //    break;
             }
@@ -2587,7 +2587,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TEMPERATURE:
                     {
                         vmKeyPad.Title = "Temperature";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         //if (_fTempOnoff)
                         //{
                         //    vmKeyPad.CurrentValue = fTempSet;
@@ -3004,7 +3004,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1:
                     {
                         vmKeyPad.Title = "Temp Init";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_1;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1;
                     }
@@ -3012,7 +3012,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2:
                     {
                         vmKeyPad.Title = "Temp 1";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_1;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2;
                     }
@@ -3020,7 +3020,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3:
                     {
                         vmKeyPad.Title = "Temp 2";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_2;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3;
                     }
@@ -3028,7 +3028,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4:
                     {
                         vmKeyPad.Title = "Temp 3";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_3;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4;
                     }
@@ -3036,7 +3036,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5:
                     {
                         vmKeyPad.Title = "Temp 4";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_4;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5;
                     }
@@ -3044,7 +3044,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6:
                     {
                         vmKeyPad.Title = "Temp 5";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_5;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6;
                     }
@@ -3102,7 +3102,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_TEMPERATURE:
                     {
                         vmKeyPad.Title = "Temperature";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         //if (_fTempOnoff)
                         //{
                         //    vmKeyPad.CurrentValue = fTempSet;
@@ -3519,7 +3519,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1:
                     {
                         vmKeyPad.Title = "Temp Init";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_1;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1;
                     }
@@ -3527,7 +3527,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2:
                     {
                         vmKeyPad.Title = "Temp 1";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_1;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2;
                     }
@@ -3535,7 +3535,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3:
                     {
                         vmKeyPad.Title = "Temp 2";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_2;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3;
                     }
@@ -3543,7 +3543,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4:
                     {
                         vmKeyPad.Title = "Temp 3";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_3;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4;
                     }
@@ -3551,7 +3551,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5:
                     {
                         vmKeyPad.Title = "Temp 4";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_4;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5;
                     }
@@ -3559,7 +3559,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6:
                     {
                         vmKeyPad.Title = "Temp 5";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_5;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6;
                     }
@@ -3616,7 +3616,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_TEMPERATURE:
                     {
                         vmKeyPad.Title = "Temperature";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         //if (_fTempOnoff)
                         //{
                         //    vmKeyPad.CurrentValue = fTempSet;
@@ -4032,7 +4032,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1:
                     {
                         vmKeyPad.Title = "Temp Init";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_1;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_1;
                     }
@@ -4040,7 +4040,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2:
                     {
                         vmKeyPad.Title = "Temp 1";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_1;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_2;
                     }
@@ -4048,7 +4048,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3:
                     {
                         vmKeyPad.Title = "Temp 2";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_2;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_3;
                     }
@@ -4056,7 +4056,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4:
                     {
                         vmKeyPad.Title = "Temp 3";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_3;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_4;
                     }
@@ -4064,7 +4064,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5:
                     {
                         vmKeyPad.Title = "Temp 4";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_4;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_5;
                     }
@@ -4072,7 +4072,7 @@ namespace ChroZenService
                 case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6:
                     {
                         vmKeyPad.Title = "Temp 5";
-                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fMaxTemp;
+                        vmKeyPad.MaxValue = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fMaxTemp;
                         vmKeyPad.CurrentValue = temp_fFinalTemp_5;
                         vmKeyPad.KEY_PAD_SET_MEASURE_TYPE = E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SETTING_PROGRAMMED_TEMPERATURE_FINAL_TEMPERATURE_6;
                     }
@@ -4143,23 +4143,23 @@ namespace ChroZenService
             {
                 case "Inlet Front":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.btInjMode = btInjMode;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btInjMode = btInjMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
-             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
                     }
                     break;
                 case "Inlet Center":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.btInjMode = btInjMode;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.btInjMode = btInjMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
-             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
                     }
                     break;
                 case "Inlet Rear":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.btInjMode = btInjMode;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.btInjMode = btInjMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
-             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
                     }
                     break;
             }
@@ -4177,23 +4177,23 @@ namespace ChroZenService
             {
                 case "Inlet Front":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet.btTempMode = btTempMode;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btTempMode = btTempMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
-             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front_Send.packet));
+             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
                     }
                     break;
                 case "Inlet Center":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet.btTempMode = btTempMode;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.btTempMode = btTempMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
-             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center_Send.packet));
+             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
                     }
                     break;
                 case "Inlet Rear":
                     {
-                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet.btTempMode = btTempMode;
+                        DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.btTempMode = btTempMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
-             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear_Send.packet));
+             DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet));
                     }
                     break;
             }

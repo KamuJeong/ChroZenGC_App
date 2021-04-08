@@ -273,235 +273,235 @@ namespace ChroZenService
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SET_TEMP_CALIBRATION_T1:
                         {
                             fSet1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SET_TEMP_CALIBRATION_T2:
                         {
                             fSet2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_MEASURE_TEMP_CALIBRATION_T1:
                         {
                             fMeasure1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_MEASURE_TEMP_CALIBRATION_T2:
                         {
                             fMeasure2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SET_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_flowCalSet[0] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_FlowCalType = 0;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_flowCalSet[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_FlowCalType = 0;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SET_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_flowCalSet[1] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_FlowCalType = 1;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_flowCalSet[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_FlowCalType = 1;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SET_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_flowCalSet[2] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_FlowCalType = 2;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_flowCalSet[2] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_FlowCalType = 2;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_MEASURE_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_flowCalMeasure[0] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_FlowCalType = 0;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_flowCalMeasure[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_FlowCalType = 0;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_MEASURE_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_flowCalMeasure[1] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_FlowCalType = 1;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_flowCalMeasure[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_FlowCalType = 1;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_MEASURE_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_flowCalMeasure[2] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket.inj_FlowCalType = 2;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1_Send.inletPacket, 0));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_flowCalMeasure[2] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket.inj_FlowCalType = 2;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET1.inletPacket, 0));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SET_TEMP_CALIBRATION_T1:
                         {
                             fSet1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SET_TEMP_CALIBRATION_T2:
                         {
                             fSet2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_MEASURE_TEMP_CALIBRATION_T1:
                         {
                             fMeasure1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_MEASURE_TEMP_CALIBRATION_T2:
                         {
                             fMeasure2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SET_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_flowCalSet[0] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_FlowCalType = 0;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_flowCalSet[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_FlowCalType = 0;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket, 1));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SET_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_flowCalSet[1] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_FlowCalType = 1;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_flowCalSet[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_FlowCalType = 1;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket, 1));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_SET_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_flowCalSet[2] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_FlowCalType = 2;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_flowCalSet[2] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_FlowCalType = 2;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket, 1));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_MEASURE_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_flowCalMeasure[0] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_FlowCalType = 0;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_flowCalMeasure[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_FlowCalType = 0;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket, 1));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_MEASURE_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_flowCalMeasure[1] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_FlowCalType = 1;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_flowCalMeasure[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_FlowCalType = 1;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket, 1));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_MEASURE_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_flowCalMeasure[2] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket.inj_FlowCalType = 2;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2_Send.inletPacket, 1));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_flowCalMeasure[2] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket.inj_FlowCalType = 2;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET2.inletPacket, 1));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SET_TEMP_CALIBRATION_T1:
                         {
                             fSet1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SET_TEMP_CALIBRATION_T2:
                         {
                             fSet2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fSet[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_MEASURE_TEMP_CALIBRATION_T1:
                         {
                             fMeasure1 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[0] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_MEASURE_TEMP_CALIBRATION_T2:
                         {
                             fMeasure2 = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.t_YL6700GC_TEMP_CALIB_VALUE.fMeasure[1] = tempFloatVal;
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SET_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_flowCalSet[0] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_FlowCalType = 0;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_flowCalSet[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_FlowCalType = 0;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket, 2));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SET_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_flowCalSet[1] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_FlowCalType = 1;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_flowCalSet[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_FlowCalType = 1;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket, 2));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_SET_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Set = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_flowCalSet[2] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_FlowCalType = 2;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_flowCalSet[2] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_FlowCalType = 2;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket, 2));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_MEASURE_FLOW_CALIBRATION1:
                         {
                             Flow_Row_1_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_flowCalMeasure[0] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_FlowCalType = 0;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_flowCalMeasure[0] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_FlowCalType = 0;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket, 2));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_MEASURE_FLOW_CALIBRATION2:
                         {
                             Flow_Row_2_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_flowCalMeasure[1] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_FlowCalType = 1;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_flowCalMeasure[1] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_FlowCalType = 1;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket, 2));
                         }
                         break;
                     case E_KEY_PAD_SET_MEASURE_TYPE.INLET_REAR_MEASURE_FLOW_CALIBRATION3:
                         {
                             Flow_Row_3_Measured = tempFloatVal.ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_2);
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_flowCalMeasure[2] = tempFloatVal;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_CalibState = 2;
-                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket.inj_FlowCalType = 2;
-                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3_Send.inletPacket, 2));
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_flowCalMeasure[2] = tempFloatVal;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_CalibState = 2;
+                            DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket.inj_FlowCalType = 2;
+                            tcpManager.Send(T_PACKCODE_LCD_COMMAND_TYPE_INLETManager.MakePACKCODE_SET(DataManager.T_PACKCODE_LCD_COMMAND_TYPE_INLET3.inletPacket, 2));
                         }
                         break;
                 }

@@ -141,27 +141,27 @@ namespace ChroZenService
             temperaturePaint.StrokeWidth = 2;
             SKPath temperaturePath = new SKPath();
 
-            float fXUnit = 470 / (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTotalRunTime);
-            float fYUnitSeed = (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet * 2) > 400 ? 400 : (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet * 2);
+            float fXUnit = 470 / (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTotalRunTime);
+            float fYUnitSeed = (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTempSet * 2) > 400 ? 400 : (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTempSet * 2);
             float fYUnitForOven = 195 / fYUnitSeed;
 
             canvas.Clear();
 
 
-            switch ((E_OVEN_MODE)DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.btMode)
+            switch ((E_OVEN_MODE)DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.btMode)
             {
                 case E_OVEN_MODE.ISO_THREMAL:
                     {
                         canvas.DrawLine(0,
-                (195f - DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet * fYUnitForOven),
+                (195f - DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTempSet * fYUnitForOven),
                 470,
-                (195f - DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet * fYUnitForOven), temperaturePaint);
+                (195f - DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTempSet * fYUnitForOven), temperaturePaint);
                     }
                     break;
                 case E_OVEN_MODE.PROGRAM_MODE:
                     {
-                        float fTime = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fInitTime;
-                        float fTemp = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet;
+                        float fTime = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fInitTime;
+                        float fTemp = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTempSet;
 
                         float fTotalTime = 0;
                         fTotalTime += fTime;
@@ -175,28 +175,28 @@ namespace ChroZenService
                         SKPoint tempP1 = new SKPoint(fTime * fXUnit, fTemp);
                         sKPoints.Add(tempP1);
 
-                        for (int i = 0; i < DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm.Length; i++)
+                        for (int i = 0; i < DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm.Length; i++)
                         {
-                            if (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fRate <= 0) continue;
+                            if (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fRate <= 0) continue;
 
-                            if (fTempMax < DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fFinalTemp)
+                            if (fTempMax < DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fFinalTemp)
                             {
-                                fTempMax = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fFinalTemp;
+                                fTempMax = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fFinalTemp;
                             }
 
-                            if (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fFinalTemp < fTempMin)
+                            if (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fFinalTemp < fTempMin)
                             {
-                                fTempMin = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fFinalTemp;
+                                fTempMin = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fFinalTemp;
                             }
 
-                            fTime = Math.Abs(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fFinalTemp - fTemp) / DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fRate;
+                            fTime = Math.Abs(DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fFinalTemp - fTemp) / DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fRate;
 
                             fTotalTime += fTime;
-                            sKPoints.Add(new SKPoint(fTotalTime * fXUnit, DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fFinalTemp));
-                            fTemp = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fFinalTemp;
+                            sKPoints.Add(new SKPoint(fTotalTime * fXUnit, DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fFinalTemp));
+                            fTemp = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fFinalTemp;
 
-                            fTotalTime += DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fFinalTime;
-                            sKPoints.Add(new SKPoint(fTotalTime * fXUnit, DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fFinalTemp));
+                            fTotalTime += DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fFinalTime;
+                            sKPoints.Add(new SKPoint(fTotalTime * fXUnit, DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fFinalTemp));
                         }
 
                         fYUnitSeed = (fTempMax * 2) > 400 ? 400 : fTempMax * 2;
@@ -248,7 +248,7 @@ namespace ChroZenService
                 temperaturePaint.Color = new SKColor(0x00, 0xff, 0x00, 0xff);
                 currentTimeMarkerPaint.Color = new SKColor(0xff, 0xa5, 0x0, 0xff);
                 //470 pixel에 fTotalRunTime*60*5개의 data point를 찍고 각 point를 line으로 잇는다.
-                float fXUnit = 470 / (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTotalRunTime);
+                float fXUnit = 470 / (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTotalRunTime);
 
                 float fTStartVal = ChartHelper.GetMaxSignal((float)VerticalDelta, (float)VerticalOffset);
                 float fDetSignalRange = (float)(fTStartVal - VerticalOffset);
@@ -256,7 +256,7 @@ namespace ChroZenService
                 float fChartHeight = 195;
                 float fYUnitForDetector = fChartHeight / fDetSignalRange;
                 float fYUnitOffsetForDetector = (float)(fYUnitForDetector * VerticalOffset);
-                float fYUnitForOven = fChartHeight / DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet;
+                float fYUnitForOven = fChartHeight / DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTempSet;
 
                 float xStart = 0;
                 float xEnd = 0;

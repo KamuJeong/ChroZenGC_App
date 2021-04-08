@@ -27,26 +27,26 @@ namespace ChroZenService
         public static float GetMaxTemperature()
         {
             float fYMaxVal = 0;
-            switch ((E_OVEN_MODE)DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.btMode)
+            switch ((E_OVEN_MODE)DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.btMode)
             {
                 case E_OVEN_MODE.ISO_THREMAL:
                     {
-                        fYMaxVal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet;
+                        fYMaxVal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTempSet;
                     }
                     break;
                 case E_OVEN_MODE.PROGRAM_MODE:
                     {
-                        float fTemp = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTempSet;
+                        float fTemp = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTempSet;
 
                         fYMaxVal = fTemp;
 
-                        for (int i = 0; i < DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm.Length; i++)
+                        for (int i = 0; i < DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm.Length; i++)
                         {
-                            if (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fRate <= 0) continue;
+                            if (DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fRate <= 0) continue;
 
-                            if (fYMaxVal < DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fFinalTemp)
+                            if (fYMaxVal < DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fFinalTemp)
                             {
-                                fYMaxVal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.Prgm[i].fFinalTemp;
+                                fYMaxVal = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.Prgm[i].fFinalTemp;
                             }
                         }
                     }
@@ -69,7 +69,7 @@ namespace ChroZenService
             {
                 case E_LABEL_TYPE.X:
                     {
-                        float fTotalRunTime = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING_Received.packet.fTotalRunTime;
+                        float fTotalRunTime = DataManager.t_PACKCODE_CHROZEN_OVEN_SETTING.packet.fTotalRunTime;
                         float fMaxRunTimeSeed = fTotalRunTime;
 
                         float majorTickSeed = 0;
