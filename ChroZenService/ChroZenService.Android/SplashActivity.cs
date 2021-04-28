@@ -63,8 +63,10 @@ namespace ChroZenService.Droid
 
             Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
 
-            Task startupWork = new Task(() => { StartMain(); });
-            startupWork.Start();
+            //Task startupWork = new Task(() => { StartMain(); });
+            //startupWork.Start();
+            //StartMain(); //20210426
+            StartActivity(new Intent(Application.Context, typeof(MainActivity))); //20210426
         }
 
         protected override void OnStart()

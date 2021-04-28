@@ -36,7 +36,7 @@ namespace ChroZenService
         public E_STATE prevE_STATE;
         private void onPACKCODE_ReceivceEventHandler(YC_Const.E_PACKCODE e_LC_PACK_CODE, int nIndex)
         {
-            Task.Factory.StartNew(() => {
+            //Task.Factory.StartNew(() => {
                 switch (e_LC_PACK_CODE)
                 {
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_STATE:
@@ -63,7 +63,8 @@ namespace ChroZenService
                                 //ChartElementRawData.yC_ChartElementRawDataTemperature.RawData[i] = ((T_PACKCODE_CHROZEN_SYSTEM_STATE)packet).packet.ActTemp.fOven;
                                 ChartElementRawData.yC_ChartElementRawDataTimeStamp.RawData.Add(DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.fRunTime);
 
-                                Task.Factory.StartNew(() => EventManager.RawDataUpdatedEvent());
+                            //Task.Factory.StartNew(() => EventManager.RawDataUpdatedEvent());
+                            EventManager.RawDataUpdatedEvent();
                             }
                             else if ((E_STATE)DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.btState != E_STATE.Run)
                             {
@@ -81,7 +82,7 @@ namespace ChroZenService
                         }
                         break;
                 }
-            });
+            //});
             
         }
 

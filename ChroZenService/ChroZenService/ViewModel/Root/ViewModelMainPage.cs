@@ -80,8 +80,7 @@ namespace ChroZenService
 
         private void PACKCODE_ReceivceEventHandler(YC_Const.E_PACKCODE e_LC_PACK_CODE, int nIndex)
         {
-            Task.Factory.StartNew(() =>
-            {
+            //Task.Factory.StartNew(() =>{
                 switch (e_LC_PACK_CODE)
                 {
                     case YC_Const.E_PACKCODE.PACKCODE_CHROZEN_SYSTEM_STATE:
@@ -618,7 +617,7 @@ namespace ChroZenService
                         }
                         break;
                 }
-            });
+            //});
 
         }
 

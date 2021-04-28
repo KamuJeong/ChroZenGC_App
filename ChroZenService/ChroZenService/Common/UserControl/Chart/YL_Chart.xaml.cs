@@ -300,7 +300,8 @@ namespace ChroZenService
 
         private void onMethodUpdatedEventHandler()
         {
-            Task.Factory.StartNew(() => UpdateChart());
+            //Task.Factory.StartNew(() => UpdateChart());
+            UpdateChart(); //20210426
         }
 
         void DrawGridLine()
