@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ChroZenService.View_Footer">
-  <ContentView.Content>
+    <ContentView.Content>
         <AbsoluteLayout>
             <Grid BackgroundColor="{Binding Source={RelativeSource AncestorType={x:Type ContentView}},Path=BackgroundColor}">
                 <Grid.ColumnDefinitions>
@@ -12,7 +12,8 @@
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Text="Home window" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource CS_COLOR_WHITE_0}" VerticalOptions="Center" Margin="10,0,0,0"/>
+                <!--<Label Grid.Column="0" Text="Home window" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource CS_COLOR_WHITE_0}" VerticalOptions="Center" Margin="10,0,0,0"/>-->
+                <Label Grid.Column="0" Text="{Binding ViewModel_Footer.SelectedWindow}" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource CS_COLOR_WHITE_0}" VerticalOptions="Center" Margin="10,0,0,0"/>
                 <ImageButton Grid.Column="2" WidthRequest="80" HeightRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Source="btn_bot_01.png" Command="{Binding SelectHomeMenu}"/>
                 <ImageButton Grid.Column="3" WidthRequest="80" HeightRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Source="btn_bot_03.png" Command="{Binding SelectConfigMenu}"/>
                 <ImageButton Grid.Column="4" WidthRequest="80" HeightRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Source ="btn_bot_02.png" Command="{Binding SelectSystemMenu}"/>

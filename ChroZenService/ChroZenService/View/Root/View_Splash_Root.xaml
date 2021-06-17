@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChroZenService.View_Splash_Root">
+    <ContentView.Content>
+        <StackLayout Background="White">
+            <Grid 
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="Splash_Img_Text.png" />
+                <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="IP" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" Padding="10" TextColor="Black" />
+                    <Entry Placeholder="192.168.0.88" WidthRequest="200" />
+                    <Button Text="Connect" FontSize="Medium" Padding="10" />
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -29,15 +29,8 @@ namespace ChroZenService
         {
             //Thread t = new Thread(WaitingUntilVisibleThenRemoveSplashScreen);
             //t.Start();
-            WaitingUntilVisibleThenRemoveSplashScreen();
+            //WaitingUntilVisibleThenRemoveSplashScreen();
             Console.WriteLine("==================================Waiting for view visible==================================");
-        }
-
-        private void WaitingUntilVisibleThenRemoveSplashScreen()
-        {
-            //Task.Delay(1000 * 30);
-            var splashAnimation = new Animation(v => WhitePage.Opacity = v, 1, 0);
-            splashAnimation.Commit(this, "SplashAnimation", 16, 3000, Easing.Linear, (v, c) => WhitePage.IsVisible = false);
         }
     }
 }

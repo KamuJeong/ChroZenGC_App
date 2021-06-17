@@ -15,7 +15,7 @@ using System.Threading;
 
 namespace ChroZenService.Droid
 {
-    [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
+    //[Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
     public class SplashActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         static readonly string TAG = "X:" + typeof(SplashActivity).Name;
@@ -39,15 +39,15 @@ namespace ChroZenService.Droid
 
             Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
 
-            Window.DecorView.SystemUiVisibilityChange += DecorView_SystemUiVisibilityChange;
+            //Window.DecorView.SystemUiVisibilityChange += DecorView_SystemUiVisibilityChange;
 
             Log.Debug(TAG, "SplashActivity.OnCreate");
         }
 
-        private void DecorView_SystemUiVisibilityChange(object sender, View.SystemUiVisibilityChangeEventArgs e)
-        {
-            HideNavAndStatusBar();
-        }
+        //private void DecorView_SystemUiVisibilityChange(object sender, View.SystemUiVisibilityChangeEventArgs e)
+        //{
+        //    HideNavAndStatusBar();
+        //}
 
         // Launches the startup task
         protected override void OnResume()

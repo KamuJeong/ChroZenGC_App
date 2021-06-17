@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_Main_Center_Left">
   <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>-->
             <Grid HorizontalOptions="Fill">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="38"/>
@@ -36,25 +36,25 @@
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Text="{Binding ViewModel_MainSide_Left.TopCarrierGasType}" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20"/>
                     <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ViewModel_MainSide_Left.TopFlow}" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" HorizontalOptions="Center"/>
-                    <AbsoluteLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Line  X1="15" X2="100" Y1="28" Y2="28" Stroke="White"  />
-                    </AbsoluteLayout>
+
+                    <Line Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" X1="15" X2="100" Y1="28" Y2="28" Stroke="White"  />
+
                     <Label Grid.Row="3" Grid.Column="2" Text="ml/min" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20"/>
 
                     <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ViewModel_MainSide_Left.TopPressure}" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}"  FontSize="20"/>
-                    <AbsoluteLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Line  X1="15" X2="100" Y1="28" Y2="28" Stroke="White"  />
-                    </AbsoluteLayout>
+
+                    <Line Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" X1="15" X2="100" Y1="28" Y2="28" Stroke="White"  />
+
                     <Label Grid.Row="4" Grid.Column="2" Text="psi"  TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20"/>
 
                     <Label Grid.Row="5" Grid.Column="0" Text="{Binding ViewModel_MainSide_Left.TopApcMode}" Grid.ColumnSpan="3" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" IsVisible="{Binding ViewModel_MainSide_Left.TopType, Converter={StaticResource InletTypeToBoolConverter}}"/>
 
                     <Label Grid.Row="6" Grid.Column="0" Text="Split" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" Margin="10,0,0,0" IsVisible="{Binding ViewModel_MainSide_Left.TopType, Converter={StaticResource InletTypeToBoolConverter}}"/>
-                    <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="60,0,0,0" WidthRequest="90" Text="{Binding ViewModel_MainSide_Left.TopSplitRatio}" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}"  FontSize="20" IsVisible="{Binding ViewModel_MainSide_Left.TopType, Converter={StaticResource InletTypeToBoolConverter}}"/>
-                    <AbsoluteLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding ViewModel_MainSide_Left.TopType, Converter={StaticResource InletTypeToBoolConverter}}">
-                        <Line  X1="60" X2="160" Y1="28" Y2="28" Stroke="White"  />
-                    </AbsoluteLayout>
-                </Grid>
+                <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="60,0,0,0" WidthRequest="90" Text="{Binding ViewModel_MainSide_Left.TopSplitRatio}" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}"  FontSize="20" IsVisible="{Binding ViewModel_MainSide_Left.TopType, Converter={StaticResource InletTypeToBoolConverter}}"/>
+                <Line Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" 
+                          IsVisible="{Binding ViewModel_MainSide_Left.TopType, Converter={StaticResource InletTypeToBoolConverter}}"
+                          X1="60" X2="160" Y1="28" Y2="28" Stroke="White"  />
+            </Grid>
                 <Grid Grid.Row="3" IsVisible="{Binding ViewModel_MainSide_Left.IsCenterVisible}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="55"/>
@@ -72,24 +72,25 @@
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Text="{Binding ViewModel_MainSide_Left.CenterCarrierGasType}" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20"/>
                     <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ViewModel_MainSide_Left.CenterFlow}" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" HorizontalOptions="Center"/>
-                    <AbsoluteLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Line  X1="15" X2="100" Y1="28" Y2="28" Stroke="White"  />
-                    </AbsoluteLayout>
-                    <Label Grid.Row="3" Grid.Column="2" Text="ml/min" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20"/>
+
+                <Line Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" X1="15" X2="100" Y1="28" Y2="28" Stroke="White"  />
+                <Label Grid.Row="3" Grid.Column="2" Text="ml/min" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20"/>
 
                     <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ViewModel_MainSide_Left.CenterPressure}" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}"  FontSize="20"/>
-                    <AbsoluteLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Line  X1="15" X2="100" Y1="28" Y2="28" Stroke="White"  />
-                    </AbsoluteLayout>
+
+                    <Line Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" X1="15" X2="100" Y1="28" Y2="28" Stroke="White"  />
+
                     <Label Grid.Row="4" Grid.Column="2" Text="psi"  TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20"/>
 
                     <Label Grid.Row="5" Grid.Column="0" Text="{Binding ViewModel_MainSide_Left.CenterApcMode}" Grid.ColumnSpan="3" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" IsVisible="{Binding ViewModel_MainSide_Left.CenterType, Converter={StaticResource InletTypeToBoolConverter}}"/>
 
                     <Label Grid.Row="6" Grid.Column="0" Text="Split" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" Margin="10,0,0,0" IsVisible="{Binding ViewModel_MainSide_Left.CenterType, Converter={StaticResource InletTypeToBoolConverter}}"/>
                     <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="60,0,0,0" WidthRequest="90" Text="{Binding ViewModel_MainSide_Left.CenterSplitRatio}" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}"  FontSize="20" IsVisible="{Binding ViewModel_MainSide_Left.CenterType, Converter={StaticResource InletTypeToBoolConverter}}"/>
-                    <AbsoluteLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding ViewModel_MainSide_Left.CenterType, Converter={StaticResource InletTypeToBoolConverter}}">
-                        <Line  X1="60" X2="160" Y1="28" Y2="28" Stroke="White"  />
-                    </AbsoluteLayout>
+
+                    <Line Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" 
+                          IsVisible="{Binding ViewModel_MainSide_Left.CenterType, Converter={StaticResource InletTypeToBoolConverter}}"
+                          X1="60" X2="160" Y1="28" Y2="28" Stroke="White"  />
+
                 </Grid>
                 <Grid Grid.Row="5" IsVisible="{Binding ViewModel_MainSide_Left.IsBottomVisible}">
                     <Grid.ColumnDefinitions>
@@ -108,29 +109,30 @@
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Text="{Binding ViewModel_MainSide_Left.BottomCarrierGasType}" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20"/>
                     <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ViewModel_MainSide_Left.BottomFlow}" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" HorizontalOptions="Center"/>
-                    <AbsoluteLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Line  X1="15" X2="100" Y1="28" Y2="28" Stroke="White"  />
-                    </AbsoluteLayout>
+
+                    <Line Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" X1="15" X2="100" Y1="28" Y2="28" Stroke="White"  />
+
                     <Label Grid.Row="3" Grid.Column="2" Text="ml/min" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20"/>
 
                     <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ViewModel_MainSide_Left.BottomPressure}" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}"  FontSize="20"/>
-                    <AbsoluteLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Line  X1="15" X2="100" Y1="28" Y2="28" Stroke="White"  />
-                    </AbsoluteLayout>
+
+                    <Line Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" X1="15" X2="100" Y1="28" Y2="28" Stroke="White"  />
+
                     <Label Grid.Row="4" Grid.Column="2" Text="psi"  TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20"/>
 
                     <Label Grid.Row="5" Grid.Column="0" Text="{Binding ViewModel_MainSide_Left.BottomApcMode}" Grid.ColumnSpan="3" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" IsVisible="{Binding ViewModel_MainSide_Left.BottomType, Converter={StaticResource InletTypeToBoolConverter}}"/>
 
                     <Label Grid.Row="6" Grid.Column="0" Text="Split" TextColor="{StaticResource CS_COLOR_WHITE_0}" FontSize="20" Margin="10,0,0,0" IsVisible="{Binding ViewModel_MainSide_Left.BottomType, Converter={StaticResource InletTypeToBoolConverter}}"/>
                     <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="60,0,0,0" WidthRequest="90" Text="{Binding ViewModel_MainSide_Left.BottomSplitRatio}" HorizontalOptions="Center" TextColor="{StaticResource CS_COLOR_WHITE_0}"  FontSize="20" IsVisible="{Binding ViewModel_MainSide_Left.BottomType, Converter={StaticResource InletTypeToBoolConverter}}"/>
-                    <AbsoluteLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding ViewModel_MainSide_Left.BottomType, Converter={StaticResource InletTypeToBoolConverter}}">
-                        <Line  X1="60" X2="160" Y1="28" Y2="28" Stroke="White"  />
-                    </AbsoluteLayout>
-                </Grid>
+
+                <Line  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" 
+                           IsVisible="{Binding ViewModel_MainSide_Left.BottomType, Converter={StaticResource InletTypeToBoolConverter}}"
+                           X1="60" X2="160" Y1="28" Y2="28" Stroke="White"  />
+            </Grid>
                 <!--<RadioButton IsChecked="{Binding ViewModel_MainSide_Left.IsTopVisible}" BackgroundColor="#11aa0000" Grid.Column="0" Margin="20,5,0,0" HorizontalOptions="Center" VerticalOptions="Start"/>
                     <RadioButton IsChecked="{Binding ViewModel_MainSide_Left.IsCenterVisible}" BackgroundColor="#1100aa00" Grid.Column="0" Margin="25,5,0,0" HorizontalOptions="Center" VerticalOptions="Start"/>
                     <RadioButton IsChecked="{Binding ViewModel_MainSide_Left.IsBottomVisible}" BackgroundColor="#11aa00aa" Grid.Column="0" Margin="30,5,0,0" HorizontalOptions="Center" VerticalOptions="Start"/>-->
             </Grid>
-        </AbsoluteLayout>
+        <!--</AbsoluteLayout>-->
   </ContentView.Content>
 </ContentView>
