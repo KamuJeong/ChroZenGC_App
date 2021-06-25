@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.UC_System_Aux_Flow_Actual " BackgroundColor="Transparent">
     <ContentView.Content>
-        <AbsoluteLayout BackgroundColor="Transparent" >
+        <AbsoluteLayout BackgroundColor="Transparent">
             <Grid BackgroundColor="Transparent">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="95"/>

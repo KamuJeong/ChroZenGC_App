@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ChroZenService.View_Main_Header">
   <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>-->
             <Grid BackgroundColor="{Binding Source={RelativeSource AncestorType={x:Type ContentView}},Path=BackgroundColor}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="256"/>
@@ -16,6 +16,6 @@
                 <Label Grid.Column="2" Text="{Binding ViewModel_MainTop.CHROZEN_GC_CONNECTION_STATE_String}" FontSize="24" TextColor="{Binding ViewModel_MainTop.ConnectedColorBrush}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" Margin="0,0,30,0" VerticalOptions="Center"/>
 
             </Grid>
-        </AbsoluteLayout>
+        <!--</AbsoluteLayout>-->
   </ContentView.Content>
 </ContentView>

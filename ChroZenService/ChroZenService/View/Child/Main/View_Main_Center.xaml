@@ -4,10 +4,10 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_Main_Center">
   <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>-->
             <Grid>
                 <!--Main Center Image Backgournd Layer-->
-                <Grid >
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="193"/>
                         <ColumnDefinition Width="194"/>
@@ -29,10 +29,10 @@
                         <ColumnDefinition Width="193"/>
                     </Grid.ColumnDefinitions>                    
                     <local:View_Main_Center_Left Grid.Column="0" HorizontalOptions="Fill"/>
-                    <local:View_Main_Center_Center Grid.Column="1" />
+                <local:View_Main_Center_Center Grid.Column="1" HorizontalOptions="Fill" />
                     <local:View_Main_Center_Right Grid.Column="2" HorizontalOptions="Fill"/>
                 </Grid>
             </Grid>
-      </AbsoluteLayout>
+      <!--</AbsoluteLayout>-->
   </ContentView.Content>
 </ContentView>

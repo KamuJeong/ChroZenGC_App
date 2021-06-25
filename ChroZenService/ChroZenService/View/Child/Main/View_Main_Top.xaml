@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ChroZenService.View_Main_Top">
   <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>-->
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0"/>
@@ -29,9 +29,9 @@
                     <Label TextColor="{StaticResource CS_COLOR_GREEN_0}" Text="/" FontSize="24" FontAttributes="Bold" Grid.Column="1" VerticalOptions="End" />
                     <Label TextColor="{StaticResource CS_COLOR_GREEN_0}" Text="{Binding ViewModel_MainTop.DeviceRuntimeTotal}" FontSize="24" FontAttributes="Bold" Grid.Column="2" VerticalOptions="End" HorizontalOptions="Start"/>
                 </Grid>
-                <AbsoluteLayout Grid.Column="2">
-                    <Line  X1="0" X2="200" Y1="45" Y2="45" Stroke="White"  />
-                </AbsoluteLayout>
+                <!--<AbsoluteLayout Grid.Column="2">-->
+                    <Line Grid.Column="2" X1="0" X2="200" Y1="45" Y2="45" Stroke="White"  />
+                <!--</AbsoluteLayout>-->
                 <Label Grid.Column="3" Text="min" FontSize="14"  TextColor="{StaticResource CS_COLOR_GRAY_0}"   HorizontalOptions="Start" VerticalOptions="End" VerticalTextAlignment="End"/>
             </Grid>
 
@@ -53,11 +53,11 @@
                     <Label TextColor="{StaticResource CS_COLOR_GREEN_0}" Text="/" FontSize="24"  Grid.Column="1" FontAttributes="Bold" VerticalOptions="End" />
                     <Label TextColor="{StaticResource CS_COLOR_GREEN_0}" Text="{Binding ViewModel_MainTop.DeviceRunStartTotal}" FontSize="24" FontAttributes="Bold" Grid.Column="2" VerticalOptions="End" HorizontalOptions="Start"/>
                 </Grid>
-                <AbsoluteLayout Grid.Column="2">
-                    <Line  X1="0" X2="160" Y1="50" Y2="50" Stroke="White"  />
-                </AbsoluteLayout>
+                <!--<AbsoluteLayout Grid.Column="2">-->
+                    <Line Grid.Column="2" X1="0" X2="160" Y1="50" Y2="50" Stroke="White"  />
+                <!--</AbsoluteLayout>-->
             </Grid>
             </Grid>
-        </AbsoluteLayout>
+        <!--</AbsoluteLayout>-->
   </ContentView.Content>
 </ContentView>

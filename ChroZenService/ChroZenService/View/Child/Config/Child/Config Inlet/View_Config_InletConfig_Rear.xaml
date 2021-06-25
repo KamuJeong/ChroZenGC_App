@@ -34,7 +34,7 @@
                     </Grid.ColumnDefinitions>
                     <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="15" Y2="153" Grid.RowSpan="4" Stroke="Gray" />
                     <Label Grid.Row="0" Grid.Column="0" Text="Carrier Gas" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,16,10,0"/>
-                    <Picker x:Name="picker_CarrierGas1" Title="Inlet Rear" Grid.Row="0"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_RearInletConfig.btCarriergas}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" Margin="0,16,0,-4" >
+                    <Picker x:Name="picker_CarrierGas1" Title="Inlet Rear" Grid.Row="0"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_RearInletConfig.btCarriergas}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" Margin="0,16,0,0" >
                         <Picker.Items>
                             <x:String>N2</x:String>
                             <x:String>He</x:String>

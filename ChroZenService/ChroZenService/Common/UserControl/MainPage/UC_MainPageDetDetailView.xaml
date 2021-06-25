@@ -16,9 +16,9 @@
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
                 <Label Text="N2" Grid.Row="1" FontSize="{StaticResource FS_MAINPAGE_NORMAL}"/>
-                <AbsoluteLayout Grid.Row="2">
-                    <Line  X1="50" X2="150" Y1="30" Y2="30" Stroke="White"  />
-                </AbsoluteLayout>
+                <!--<AbsoluteLayout Grid.Row="2">-->
+                <Line Grid.Row="2" X1="50" X2="150" Y1="30" Y2="30" Stroke="White"  />
+                <!--</AbsoluteLayout>-->
                 <Label Text="ml/min" HorizontalOptions="Start" Margin="150,0,0,0"/>
             </Grid>
         </StackLayout>

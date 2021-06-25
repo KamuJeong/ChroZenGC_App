@@ -31,9 +31,11 @@
                     <Label Grid.Row="0" Grid.Column="0" Text="Max Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" Margin="0,12,10,0"/>
                     <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="15" Y2="132" Grid.RowSpan="3" Stroke="Gray" />
                     <local:UC_Config_SETTING_LABEL Grid.Row="0" Grid.Column="1"  Text="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.fMaxTemp}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_MAX_TEMP}" Margin="0,15,0,0"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="℃" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="130,19,0,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="14"/>
 
                     <Label Grid.Row="1" Grid.Column="0" Text="Equilibrium Time" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
                     <local:UC_Config_SETTING_LABEL Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.fEquibTime}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_CONFIG_EQUILIBRIUM_TIME}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="min" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="128,7,0,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="14"/>
 
                     <Label Grid.Row="2" Grid.Column="0" Text="Auto Readyrun" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
                     <local:UC_ON_OFF_Button Grid.Row="2" Grid.Column="1" IsOn="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.bAutoReadyrun}"  Margin="0,2,0,0" OnCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.AutoReadyrunOnCommand}" OffCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenConfig.AutoReadyrunOffCommand}" />

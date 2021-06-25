@@ -195,12 +195,12 @@ namespace ChroZenService
 
                                         ViewModel_MainSide_Right.TopFlow1Name = "Air";
                                         ViewModel_MainSide_Right.TopFlow2Name = "H2";
-                                        ViewModel_MainSide_Right.TopFlow3Name = "MakeUp";
+                                        ViewModel_MainSide_Right.TopFlow3Name = "Mkup";
 
                                         ViewModel_MainSide_Right.TopIsFlow1Using = true;
                                         ViewModel_MainSide_Right.TopIsFlow2Using = true;
                                         ViewModel_MainSide_Right.TopIsFlow3Using = true;
-                                        ViewModel_MainSide_Right.TopSignalUnit = "mV";
+                                        ViewModel_MainSide_Right.TopSignalUnit = "nA";
                                     }
                                     break;
                                 case E_DET_TYPE.FPD:
@@ -255,7 +255,7 @@ namespace ChroZenService
                                         ViewModel_MainSide_Right.TopIsFlow1Using = false;
                                         ViewModel_MainSide_Right.TopIsFlow2Using = false;
                                         ViewModel_MainSide_Right.TopIsFlow3Using = false;
-                                        ViewModel_MainSide_Right.TopSignalUnit = "mV";
+                                        ViewModel_MainSide_Right.TopSignalUnit = "nA";
                                     }
                                     break;
                             }
@@ -267,26 +267,26 @@ namespace ChroZenService
                                 case E_DET_TYPE.FID:
                                 case E_DET_TYPE.NPD:
                                     {
-                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.CenterFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.CenterFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.CenterFlow1Name = "Air";
                                         ViewModel_MainSide_Right.CenterFlow2Name = "H2";
-                                        ViewModel_MainSide_Right.CenterFlow3Name = "MakeUp";
+                                        ViewModel_MainSide_Right.CenterFlow3Name = "Mkup";
 
                                         ViewModel_MainSide_Right.CenterIsFlow1Using = true;
                                         ViewModel_MainSide_Right.CenterIsFlow2Using = true;
                                         ViewModel_MainSide_Right.CenterIsFlow3Using = true;
-                                        ViewModel_MainSide_Right.CenterSignalUnit = "mV";
+                                        ViewModel_MainSide_Right.CenterSignalUnit = "nA";
                                     }
                                     break;
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
-                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.CenterFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.CenterFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[5].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.CenterFlow1Name = "Air2";
                                         ViewModel_MainSide_Right.CenterFlow2Name = "Air1";
@@ -301,8 +301,8 @@ namespace ChroZenService
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
-                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.CenterFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[4].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.CenterFlow1Name = "Ref.";
                                         ViewModel_MainSide_Right.CenterFlow2Name = "Sam.";
@@ -316,7 +316,7 @@ namespace ChroZenService
                                 case E_DET_TYPE.ECD:
                                 case E_DET_TYPE.uECD:
                                     {
-                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.CenterFlow1Name = "Mkup";
 
@@ -328,12 +328,12 @@ namespace ChroZenService
                                     break;
                                 case E_DET_TYPE.PDD:
                                     {
-                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.CenterFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[3].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.CenterIsFlow1Using = false;
                                         ViewModel_MainSide_Right.CenterIsFlow2Using = false;
                                         ViewModel_MainSide_Right.CenterIsFlow3Using = false;
-                                        ViewModel_MainSide_Right.CenterSignalUnit = "mV";
+                                        ViewModel_MainSide_Right.CenterSignalUnit = "nA";
                                     }
                                     break;
                             }
@@ -345,26 +345,26 @@ namespace ChroZenService
                                 case E_DET_TYPE.FID:
                                 case E_DET_TYPE.NPD:
                                     {
-                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.BottomFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.BottomFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.BottomFlow1Name = "Air";
                                         ViewModel_MainSide_Right.BottomFlow2Name = "H2";
-                                        ViewModel_MainSide_Right.BottomFlow3Name = "MakeUp";
+                                        ViewModel_MainSide_Right.BottomFlow3Name = "Mkup";
 
                                         ViewModel_MainSide_Right.BottomIsFlow1Using = true;
                                         ViewModel_MainSide_Right.BottomIsFlow2Using = true;
                                         ViewModel_MainSide_Right.BottomIsFlow3Using = true;
-                                        ViewModel_MainSide_Right.BottomSignalUnit = "mV";
+                                        ViewModel_MainSide_Right.BottomSignalUnit = "nA";
                                     }
                                     break;
                                 case E_DET_TYPE.FPD:
                                 case E_DET_TYPE.PFPD:
                                     {
-                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.BottomFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.BottomFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[2].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow3Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[8].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.BottomFlow1Name = "Air2";
                                         ViewModel_MainSide_Right.BottomFlow2Name = "Air1";
@@ -379,8 +379,8 @@ namespace ChroZenService
                                 case E_DET_TYPE.TCD:
                                 case E_DET_TYPE.uTCD:
                                     {
-                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
-                                        ViewModel_MainSide_Right.BottomFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[1].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow2Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[7].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.BottomFlow1Name = "Ref.";
                                         ViewModel_MainSide_Right.BottomFlow2Name = "Sam.";
@@ -394,7 +394,7 @@ namespace ChroZenService
                                 case E_DET_TYPE.ECD:
                                 case E_DET_TYPE.uECD:
                                     {
-                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.BottomFlow1Name = "Mkup";
 
@@ -406,12 +406,12 @@ namespace ChroZenService
                                     break;
                                 case E_DET_TYPE.PDD:
                                     {
-                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[0].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
+                                        ViewModel_MainSide_Right.BottomFlow1Value = DataManager.t_PACKCODE_CHROZEN_SYSTEM_STATE.packet.ActFlow.Disp_DetFlow[6].ToString(ChroZenService_Const.STR_FORMAT_BELOW_POINT_1);
 
                                         ViewModel_MainSide_Right.BottomIsFlow1Using = false;
                                         ViewModel_MainSide_Right.BottomIsFlow2Using = false;
                                         ViewModel_MainSide_Right.BottomIsFlow3Using = false;
-                                        ViewModel_MainSide_Right.BottomSignalUnit = "mV";
+                                        ViewModel_MainSide_Right.BottomSignalUnit = "nA";
                                     }
                                     break;
                             }
@@ -665,9 +665,11 @@ namespace ChroZenService
         bool _IsMainPageVisible = true;
         public bool IsMainPageVisible { get { return _IsMainPageVisible; } set { if (_IsMainPageVisible != value) { _IsMainPageVisible = value; OnPropertyChanged("IsMainPageVisible"); } } }
 
-
         ViewModel_KeyPad _ViewModel_KeyPad = new ViewModel_KeyPad();
         public ViewModel_KeyPad ViewModel_KeyPad { get { return _ViewModel_KeyPad; } set { if (_ViewModel_KeyPad != value) { _ViewModel_KeyPad = value; OnPropertyChanged("ViewModel_KeyPad"); } } }
+
+        //ViewModelSplash _ViewModel_Splash = new ViewModelSplash();
+        //public ViewModelSplash ViewModel_Splash { get { return _ViewModel_Splash; } set { if (_ViewModel_Splash != value) { _ViewModel_Splash = value; OnPropertyChanged("ViewModel_Splash"); } } }
 
         ViewModelConfigPage _ViewModelConfigPage = new ViewModelConfigPage();
         public ViewModelConfigPage ViewModelConfigPage { get { return _ViewModelConfigPage; } set { if (_ViewModelConfigPage != value) { _ViewModelConfigPage = value; OnPropertyChanged("ViewModelConfigPage"); } } }

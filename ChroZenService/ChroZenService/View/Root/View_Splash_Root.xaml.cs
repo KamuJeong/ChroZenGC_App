@@ -9,7 +9,6 @@ using Xamarin.Forms.Xaml;
 
 namespace ChroZenService
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class View_Splash_Root : ContentView
     {
         public View_Splash_Root()

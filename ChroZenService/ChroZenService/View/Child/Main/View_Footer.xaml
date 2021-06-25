@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ChroZenService.View_Footer">
     <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>-->
             <Grid BackgroundColor="{Binding Source={RelativeSource AncestorType={x:Type ContentView}},Path=BackgroundColor}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="140" />
@@ -18,6 +18,6 @@
                 <ImageButton Grid.Column="3" WidthRequest="80" HeightRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Source="btn_bot_03.png" Command="{Binding SelectConfigMenu}"/>
                 <ImageButton Grid.Column="4" WidthRequest="80" HeightRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Source ="btn_bot_02.png" Command="{Binding SelectSystemMenu}"/>
             </Grid>
-        </AbsoluteLayout>
+        <!--</AbsoluteLayout>-->
   </ContentView.Content>
 </ContentView>

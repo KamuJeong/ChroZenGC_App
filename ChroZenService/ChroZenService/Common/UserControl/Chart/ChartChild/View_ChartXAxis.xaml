@@ -9,14 +9,14 @@
         <Grid>
             <SK:SKCanvasView x:Name="sKCanvasViewXAxis" IgnorePixelScaling="True"></SK:SKCanvasView>
             <Label x:Name="label0" TextColor="#FFFFA500" WidthRequest="20" VerticalOptions="Start" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
-            <Label x:Name="label1" TextColor="#FFFFA500" WidthRequest="20" VerticalOptions="Start" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
-            <Label x:Name="label2" TextColor="#FFFFA500" WidthRequest="20" VerticalOptions="Start" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
-            <Label x:Name="label3" TextColor="#FFFFA500" WidthRequest="20" VerticalOptions="Start" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
-            <Label x:Name="label4" TextColor="#FFFFA500" WidthRequest="20" VerticalOptions="Start" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
-            <Label x:Name="label5" TextColor="#FFFFA500" WidthRequest="20" VerticalOptions="Start" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
-            <Label x:Name="label6" TextColor="#FFFFA500" WidthRequest="20" VerticalOptions="Start" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
-            <Label x:Name="label7" TextColor="#FFFFA500" WidthRequest="20" VerticalOptions="Start" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
-            <Label x:Name="label8" TextColor="#FFFFA500" WidthRequest="20" VerticalOptions="Start" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
+            <Label x:Name="label1" TextColor="#FFFFA500" WidthRequest="20" />
+            <Label x:Name="label2" TextColor="#FFFFA500" WidthRequest="20" />
+            <Label x:Name="label3" TextColor="#FFFFA500" WidthRequest="20" />
+            <Label x:Name="label4" TextColor="#FFFFA500" WidthRequest="20" />
+            <Label x:Name="label5" TextColor="#FFFFA500" WidthRequest="30" />
+            <Label x:Name="label6" TextColor="#FFFFA500" WidthRequest="30" />
+            <Label x:Name="label7" TextColor="#FFFFA500" WidthRequest="30" />
+            <Label x:Name="label8" TextColor="#FFFFA500" WidthRequest="20" />
         </Grid>
     </ContentView.Content>
 </local:YL_ChartAxisBase>

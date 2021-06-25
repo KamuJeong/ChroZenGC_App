@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_Config_OvenSettings">
     <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>-->
             <Grid HeightRequest="703">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="{StaticResource HEIGHT_CONFIG_2_LARGE}"/>
@@ -42,7 +42,9 @@
                     <Label Grid.Row="1" Grid.Column="1" Text="℃" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="70,0,0,0" TextColor="White" FontSize="18"/>
                     <!--<local:UC_Config_UnderLine_Button Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_OvenSettings.ActualTemperature}" UnitText="℃" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>-->
                     <local:UC_Config_Oven_Setting_Label Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_OvenSettings.DisplayString_fTempSet}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TEMP}" Margin="0,-2,0,0"/>
-                    <local:UC_Config_Oven_Setting_Label Grid.Row="1" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_OvenSettings.fInitTime}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TIME}" Margin="0,-2,0,0"/>
+                <Label Grid.Row="1" Grid.Column="2" Text="℃" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="60,0,0,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="14"/>
+                <local:UC_Config_Oven_Setting_Label Grid.Row="1" Grid.Column="3" Text="{Binding ViewModelConfigPage.ViewModel_Config_OvenSettings.fInitTime}"  Style="{StaticResource STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_OvenSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.OVEN_SETTING_TIME}" Margin="0,-2,0,0"/>
+                <Label Grid.Row="1" Grid.Column="3" Text="min" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="60,0,0,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="14"/>
                 </Grid>
 
                 <Frame Grid.Row="1" CornerRadius="18" Margin="6,0,7,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
@@ -243,6 +245,6 @@
 
                 </Frame>-->
             </Grid>
-        </AbsoluteLayout>
+        <!--</AbsoluteLayout>-->
     </ContentView.Content>
 </ContentView>

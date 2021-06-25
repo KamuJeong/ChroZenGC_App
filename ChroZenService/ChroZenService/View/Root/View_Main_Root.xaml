@@ -44,9 +44,9 @@
                 </Grid>
 
                 <!--설정 페이지-->
-                <!--<local:View_Config_Root Grid.Row="1" IsVisible="{Binding IsConfigPageVisible}"/>-->
+                <local:View_Config_Root Grid.Row="1" IsVisible="{Binding IsConfigPageVisible}"/>
                 <!--시스템 페이지-->
-                <!--<local:View_System_Root Grid.Row="1" IsVisible="{Binding IsSystemPageVisible}"/>-->
+                <local:View_System_Root Grid.Row="1" IsVisible="{Binding IsSystemPageVisible}"/>
 
                 <!--Footer-->
                 <local:View_Footer Grid.Row="5" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}"/>
@@ -63,7 +63,7 @@
 
             <!--에러 페이지-->
             <!--<local:View_Error IsVisible="{Binding IsErrorPopupVisible}"/>-->
-            <local:View_Splash_Root IsVisible="true" />
+        <!--<local:View_Splash_Root x:Name="SplashPage" IsVisible="true" />-->
             <!--<Grid x:Name="LoginPage"  IsVisible="{Binding IsLoginPageVisible}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="300"/>

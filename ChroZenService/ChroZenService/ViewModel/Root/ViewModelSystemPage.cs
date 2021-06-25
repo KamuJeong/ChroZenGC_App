@@ -3590,11 +3590,11 @@ namespace ChroZenService
                         SelectedSubMenu = E_SYSTEM_SUB_MENU_TYPE.INFO_ROOT;
                     }
                     break;
-                case E_SYSTEM_MENU_TYPE.METHOD:
-                    {
-                        SelectedSubMenu = E_SYSTEM_SUB_MENU_TYPE.METHOD_ROOT;
-                    }
-                    break;
+                //case E_SYSTEM_MENU_TYPE.METHOD:
+                //    {
+                //        SelectedSubMenu = E_SYSTEM_SUB_MENU_TYPE.METHOD_ROOT;
+                //    }
+                //    break;
                 case E_SYSTEM_MENU_TYPE.SETTINGS:
                     {
                         SelectedSubMenu = E_SYSTEM_SUB_MENU_TYPE.SETTINGS_ROOT;
