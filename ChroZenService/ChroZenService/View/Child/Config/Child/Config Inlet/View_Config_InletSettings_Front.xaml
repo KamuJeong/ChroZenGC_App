@@ -49,9 +49,11 @@
                             <Label Text="Actual" Grid.Row="0" Grid.Column="1" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
                             <Label Text="Setting" Grid.Row="0" Grid.Column="2" Style="{StaticResource STYLE_LABEL_SYSTEM_CONFIG_COLUMN_TITLE}"/>
                             <Label Grid.Row="1"  Grid.Column="0"  Text="Temperature" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20"/>
-
+                            
                             <local:UC_Config_InletSetting_TemperatureActual Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ActualTemperature}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="℃" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,10,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
                             <local:UC_Config_InletSetting_TemperatureSet Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.DisplayString_fTempSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TEMPERATURE}" />
+                            <Label Grid.Row="1" Grid.Column="2" Text="℃" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,10,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
 
                         </Grid>
                         <Frame Grid.Row="1" CornerRadius="18" Margin="18,3,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
@@ -109,16 +111,34 @@
                             <Label Grid.Row="3"  Grid.Column="0"  Text="Split Flow" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20"/>
                             <Label Grid.Row="4"  Grid.Column="0"  Text="Velocity" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20"/>
 
-                            <local:UC_Config_InletSetting_TemperatureActual Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ActualColumnFlow}" BackgroundColor="Transparent" UnitText="" TextColor="White"  Margin="0,7,0,0"/>
+                            <local:UC_Config_InletSetting_TemperatureActual Grid.Row="0" Grid.Column="1" 
+                                                                            Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ActualColumnFlow}" 
+                                                                            BackgroundColor="Transparent" UnitText="" TextColor="White" Margin="0,7,0,0" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="ml/min" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,10,5,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+
                             <local:UC_Config_InletSetting_TemperatureActual Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ActualPressure}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="psi" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,5,0"  TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+
                             <local:UC_Config_InletSetting_TemperatureActual Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ActualTotalFlow}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+                            <Label Grid.Row="2" Grid.Column="1" Text="ml/min" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,5,0"  TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+                            
                             <local:UC_Config_InletSetting_TemperatureActual Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ActualSplitFlow}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+                            <Label Grid.Row="3" Grid.Column="1" Text="ml/min" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,5,0"  TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+
                             <local:UC_Config_InletSetting_VelocityActual Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ActualVelocity}" BackgroundColor="Transparent" UnitText="" TextColor="White"/>
+                            <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="cm/s" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,15,0"  TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
 
                             <local:UC_Config_InletSetting_TemperatureSet Grid.Row="0" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.DisplayString_fColumnFlowSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_COLUMN_FLOW}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ApcMode, Converter={StaticResource ApcModeToFlowSetAvailableConverter}}" Margin="0,8,0,0"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="ml/min" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,10,5,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+
                             <local:UC_Config_InletSetting_TemperatureSet Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.DisplayString_fPressureSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PRESSURE}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ApcMode, Converter={StaticResource ApcModeToPressureSetAvailableConverter}}"/>
+                            <Label Grid.Row="1" Grid.Column="2" Text="psi" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,5,0"  TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+                            
                             <local:UC_Config_InletSetting_TemperatureSet Grid.Row="2" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.DisplayString_fTotalFlowSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TOTAL_FLOW}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ApcMode, Converter={StaticResource ApcModeToFlowSetAvailableConverter}}"/>
+                            <Label Grid.Row="2" Grid.Column="2" Text="ml/min" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,5,0"  TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+                            
                             <local:UC_Config_InletSetting_TemperatureSet Grid.Row="3" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.DisplayString_fSplitFlowSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_SPLIT_FLOW}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ApcMode, Converter={StaticResource ApcModeToFlowSetAvailableConverter}}"/>
+                            <Label Grid.Row="3" Grid.Column="2" Text="ml/min" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,5,0"  TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
 
                         </Grid>
                         <Frame Grid.Row="3" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
@@ -154,6 +174,8 @@
                             <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="8" Y2="45" Grid.RowSpan="4" Stroke="Gray" />
                             <Label Grid.Row="0" Grid.Column="0" Text="Pulsed Pressure" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,10,10,0"/>
                             <local:UC_Config_INLET_SETTING_LONG_LABEL Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.fPulsed_FlowPressSet}" Style="{StaticResource STYLE_LABEL_CONFIG_AUX_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PULSED_PRESSURE}"  Margin="0,10,10,0"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="psi" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,10,10,0"  TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+
                         </Grid>
                         <Frame Grid.Row="5" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
@@ -170,6 +192,8 @@
                             <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="8" Y2="45" Grid.RowSpan="4" Stroke="Gray" />
                             <Label Grid.Row="0" Grid.Column="0" Text="Split On Time" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,10,10,0"/>
                             <local:UC_Config_INLET_SETTING_LONG_LABEL Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.fSplitOnTime}" Style="{StaticResource STYLE_LABEL_CONFIG_AUX_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_SPLIT_ON_TIME}"  Margin="0,10,10,0"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="min" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,10,10,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+
                         </Grid>
                         <Frame Grid.Row="6" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
@@ -186,6 +210,8 @@
                             <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="8" Y2="45" Grid.RowSpan="4" Stroke="Gray" />
                             <Label Grid.Row="0" Grid.Column="0" Text="Pulsed Time" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,10,10,0"/>
                             <local:UC_Config_INLET_SETTING_LONG_LABEL Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.fPulsed_Time}" Style="{StaticResource STYLE_LABEL_CONFIG_AUX_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PULSED_TIME}"  Margin="0,10,10,0"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="min" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,10,10,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="0" Grid.ColumnSpan="2" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToOnColumnOrPackedUIVisibilityConverter}}">
@@ -219,7 +245,10 @@
                             <Label Grid.Row="1"  Grid.Column="0"  Text="Temperature" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20"/>
 
                             <local:UC_Config_InletSetting_TemperatureActual Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ActualTemperature}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="℃" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,10,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+                            
                             <local:UC_Config_InletSetting_TemperatureSet Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.DisplayString_fTempSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_TEMPERATURE}" />
+                            <Label Grid.Row="1" Grid.Column="2" Text="℃" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,10,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
 
                         </Grid>
                         <Frame Grid.Row="1" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
@@ -243,16 +272,22 @@
                             <Label Grid.Row="1"  Grid.Column="0"  Text="Pressure" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20"/>
 
                             <local:UC_Config_InletSetting_TemperatureActual Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ActualColumnFlow}" BackgroundColor="Transparent" UnitText="" TextColor="White"  Margin="0,7,0,0"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="ml/min" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,10,5,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+                            
                             <local:UC_Config_InletSetting_TemperatureActual Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ActualPressure}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="psi" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,5,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
 
                             <local:UC_Config_InletSetting_TemperatureSet Grid.Row="0" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.DisplayString_fColumnFlowSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_COLUMN_FLOW}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ApcMode, Converter={StaticResource ApcModeToFlowSetAvailableConverter}}" Margin="0,8,0,0"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="ml/min" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,10,5,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+                            
                             <local:UC_Config_InletSetting_TemperatureSet Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.DisplayString_fPressureSet}" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_FRONT_SETTING_PRESSURE}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.ApcMode, Converter={StaticResource ApcModeToPressureSetAvailableConverter}}"/>
+                            <Label Grid.Row="1" Grid.Column="2" Text="psi" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,0,5,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
 
                         </Grid>
-                        <Frame Grid.Row="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToPackedUIVisibleConverter}}">
+                        <Frame Grid.Row="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToOnColumnUIVisibleConverter}}">
 
                         </Frame>
-                        <Grid Grid.Row="2" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToPackedUIVisibleConverter}}">
+                        <Grid Grid.Row="2" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletSettings.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToOnColumnUIVisibleConverter}}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS21}"/>
                                 <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX}"/>
