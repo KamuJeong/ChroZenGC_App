@@ -23,11 +23,12 @@
                    
                 </Frame>
                 <Label Margin="2"
+                       Padding="20,0,0,0"
                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=Text}"
                     TextColor="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=TextColor}"                    
                     Background="{Binding Source={RelativeSource AncestorType={x:Type local:UC_System_Calib_LabelBase}}, Path=IsEnabled, Converter={StaticResource BoolToSettingInputBackgroundConverter}}"
                     BackgroundColor="Transparent"                    
-                    VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                    VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"
                     HorizontalOptions="FillAndExpand"      
                     />
             </Grid>

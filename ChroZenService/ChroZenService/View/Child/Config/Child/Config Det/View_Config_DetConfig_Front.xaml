@@ -117,13 +117,20 @@
                     <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="7" Y2="175" Grid.RowSpan="4" Stroke="Gray" />
                     <Label Grid.Row="0" Grid.Column="0" Text="Lit Offset" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,6,10,0"/>
                     <local:UC_Config_DetConfig_Set Grid.Row="0"  Grid.Column="1"  Style="{StaticResource STYLE_LABEL_CONFIG_DET_CONFIG_SET_EDITOR}" Margin="0,8,0,0" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.fLitoffset}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_CONFIG_LIT_OFFSET}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="nA" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+                    
                     <Label Grid.Row="1" Grid.Column="0" Text="Ignite Delay" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
                     <local:UC_Config_DetConfig_Set Grid.Row="1"  Grid.Column="1"  Style="{StaticResource STYLE_LABEL_CONFIG_DET_CONFIG_SET_EDITOR}" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.fIgnitedelay}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_CONFIG_IGNITE_DELAY}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="min" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+                    
                     <Label Grid.Row="2" Grid.Column="0" Text="Ignite Flow" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
                     <local:UC_Config_DetConfig_Set Grid.Row="2"  Grid.Column="1"  Style="{StaticResource STYLE_LABEL_CONFIG_DET_CONFIG_SET_EDITOR}" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.fIgniteflow}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_CONFIG_IGNITE_FLOW}"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="ml/min" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+
                     <Label Grid.Row="3" Grid.Column="0" Text="Ignite Temp" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
                     <local:UC_Config_DetConfig_Set Grid.Row="3"  Grid.Column="1"  Style="{StaticResource STYLE_LABEL_CONFIG_DET_CONFIG_SET_EDITOR}" Text="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.fIgnitetemp}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.DET_FRONT_CONFIG_IGNITE_TEMP}"/>
-
+                    <Label Grid.Row="3" Grid.Column="1" Text="℃" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+                    
                 </Grid>
                 <Frame Grid.Row="2" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 

@@ -47,14 +47,32 @@
                     <Label Grid.Row="6"  Grid.Column="0"  Text="Sense" Style="{StaticResource STYLE_LABEL_CONFIG_SIGNAL_ROW_TITLE}" FontAttributes="Bold" FontSize="20" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.SenseEnabled}"/>
 
                     <local:UC_Config_DetSetting_Actual Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.ActualTemperature}" BackgroundColor="Transparent" UnitText="" TextColor="White" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="℃" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+
                     <local:UC_Config_DetSetting_Set Grid.Row="1" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.DisplayString_fTempSet}" Style="{StaticResource STYLE_LABEL_CONFIG_DET_SETTINGS_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_TEMPERATURE}" />
+                    <Label Grid.Row="1" Grid.Column="2" Text="℃" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+
                     <local:UC_Config_DetSetting_Actual Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.fFlowAct1}" BackgroundColor="Transparent" UnitText="" TextColor="White" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.Flow1Title}"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="ml/min" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+
                     <local:UC_Config_DetSetting_Set Grid.Row="2" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.DisplayString_fFlowSet1}" Style="{StaticResource STYLE_LABEL_CONFIG_DET_SETTINGS_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_FLOW_1}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.Flow1Enabled}"/>
+                    <Label Grid.Row="2" Grid.Column="2" Text="ml/min" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+
                     <local:UC_Config_DetSetting_Actual Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.fFlowAct3}" BackgroundColor="Transparent" UnitText="" TextColor="White"  IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.Flow1Title}"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="ml/min" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+
                     <local:UC_Config_DetSetting_Set Grid.Row="3" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.DisplayString_fFlowSet3}" Style="{StaticResource STYLE_LABEL_CONFIG_DET_SETTINGS_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_FLOW_3}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.Flow3Enabled}"/>
+                    <Label Grid.Row="3" Grid.Column="2" Text="ml/min" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+
                     <local:UC_Config_DetSetting_Actual Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.fFlowAct2}" BackgroundColor="Transparent" UnitText="" TextColor="White" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.Flow1Title}"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="ml/min" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+
                     <local:UC_Config_DetSetting_Set Grid.Row="4" Grid.Column="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.DisplayString_fFlowSet2}" Style="{StaticResource STYLE_LABEL_CONFIG_DET_SETTINGS_SET_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.DET_REAR_SETTING_FLOW_2}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.Flow2Enabled}"/>
+                    <Label Grid.Row="4" Grid.Column="2" Text="ml/min" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+
                     <local:UC_Config_DetSetting_SignalActual Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.DisplayCurrentSignal}" BackgroundColor="Transparent" UnitText="" TextColor="White" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.SignalEnabled}"/>
+                    <Label Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.SignalUnit}" Style="{StaticResource STYLE_LABEL_UNIT}"/>
+
                     <local:UC_Config_DetSetting_SignalActual Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.iBeadVoltageSet}" BackgroundColor="Transparent" UnitText="" TextColor="White" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearDetSettings.SenseEnabled}"/>
                     <Grid Grid.Row="7" Grid.RowSpan="2" Grid.ColumnSpan="4">
                         <Grid.RowDefinitions>

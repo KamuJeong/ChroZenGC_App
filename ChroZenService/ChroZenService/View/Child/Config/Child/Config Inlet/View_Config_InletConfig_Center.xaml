@@ -98,15 +98,15 @@
                     <Label Grid.Row="0" Grid.Column="0" Text="Length" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,9,10,0"/>
                     <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="10" Y2="124" Grid.RowSpan="4" Stroke="Gray" />
                     <local:UC_Config_INLET_CONFIG_LABEL Grid.Row="0" Grid.Column="1"  Text="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.fLength}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_CONFIG_LENGTH}" Margin="0,12,0,0"/>
-                    <Label Grid.Row="0" Grid.Column="1" Text="m" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,15,10,0"  TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="m" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,15,10,0" />
 
                     <Label Grid.Row="1" Grid.Column="0" Text="I.D." Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
                     <local:UC_Config_INLET_CONFIG_LABEL Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.fDiameter}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_CONFIG_ID}"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="mm" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,10,10,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="mm" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,10,10,0"/>
 
                     <Label Grid.Row="2" Grid.Column="0" Text="Film Thickness" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
                     <local:UC_Config_INLET_CONFIG_LABEL Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.fThickness}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_CONFIG_FILM_THICKNESS}"/>
-                    <Label Grid.Row="2" Grid.Column="1" Text="um" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,10,10,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="um" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,10,10,0"/>
                 
                 </Grid>
                 <Label Grid.Row="3" Text="Gas Saver Mode" Style="{StaticResource STYLE_LABEL_INLET_CONFIG_MIDDLE}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToCapillaryUIVisibleConverter}}"/>
@@ -131,11 +131,11 @@
 
                     <Label Grid.Row="1" Grid.Column="0" Text="Flow" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
                     <local:UC_Config_INLET_CONFIG_LABEL Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.fGasSaverFlow}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_CONFIG_FLOW}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.bGasSaverMode}"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="ml/min" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,10,10,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="ml/min" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,10,10,0"/>
 
                     <Label Grid.Row="2" Grid.Column="0" Text="Time" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
                     <local:UC_Config_INLET_CONFIG_LABEL Grid.Row="2" Grid.Column="1"  Text="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.fGasSaverTime}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_CONFIG_TIME}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.bGasSaverMode}"/>
-                    <Label Grid.Row="2" Grid.Column="1" Text="min" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,10,10,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="min" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,10,10,0"/>
                 </Grid>
                 <Frame Grid.Row="5" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToCapillaryUIVisibleConverter}}">
 
@@ -157,7 +157,7 @@
 
                     <Label Grid.Row="1" Grid.Column="0" Text="Pressure Correct Value" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
                     <local:UC_Config_INLET_CONFIG_LABEL Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.fPressureCorrect}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.INLET_CENTER_CONFIG_PRESSURE_CORRECT}" IsEnabled="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.bPressCorrect}"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="psi" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="0,10,10,0" TextColor="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}" FontSize="12"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="psi" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,10,10,0"/>
 
                     <Label Grid.Row="2" Grid.Column="0" Text="Vacuum Correct" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
                     <local:UC_ON_OFF_Button Grid.Row="2" Grid.Column="1" IsOn="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.bVacuumCorrect}"  Margin="0,2,0,0" OnCommand="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.VacuumCorrectOnCommand}" OffCommand="{Binding ViewModelConfigPage.ViewModel_Config_CenterInletConfig.VacuumCorrectOffCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_INLET_LOCATION.CENTER}"/>

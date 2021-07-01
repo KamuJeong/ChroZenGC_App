@@ -69,7 +69,9 @@ namespace ChroZenService
                                 PolarityChangeEnabled = false;
                                 LineHeight = 90;
                                 BottomLineHeight = 2;
+
                                 FrameHeight = (double)Application.Current.Resources["HEIGHT_DET_SETTING_GROUP_PDD"];
+                                SignalUnit = "mV";
                             }
                             break;
                         case E_DET_TYPE.ECD:
@@ -90,6 +92,7 @@ namespace ChroZenService
                                 FrameHeight = (double)Application.Current.Resources["HEIGHT_DET_SETTING_GROUP_ECD"];
 
                                 Flow2Title = "Make up";
+                                SignalUnit = "mV";
                             }
                             break;
                         case E_DET_TYPE.FID:
@@ -112,6 +115,7 @@ namespace ChroZenService
                                 Flow1Title = "Air";
                                 Flow3Title = "H2";
                                 Flow2Title = "Make up";
+                                SignalUnit = "nA";
                             }
                             break;
                         case E_DET_TYPE.FPD:
@@ -134,6 +138,7 @@ namespace ChroZenService
                                 Flow1Title = "Air2";
                                 Flow3Title = "H2";
                                 Flow2Title = "Air1";
+                                SignalUnit = "mV";
                             }
                             break;
                         case E_DET_TYPE.TCD:
@@ -155,11 +160,26 @@ namespace ChroZenService
 
                                 Flow1Title = "Reference";
                                 Flow2Title = "Sample";
+                                SignalUnit = "mV";
                             }
                             break;
                     }
                     _e_DET_TYPE = value;
                     OnPropertyChanged("e_DET_TYPE");
+                }
+            }
+        }
+
+        string _SignalUnit;
+        public string SignalUnit
+        {
+            get { return _SignalUnit; }
+            set
+            {
+                if (_SignalUnit != value)
+                {
+                    _SignalUnit = value;
+                    OnPropertyChanged("SignalUnit");
                 }
             }
         }
