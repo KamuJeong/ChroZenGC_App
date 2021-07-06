@@ -112,7 +112,6 @@
                 <Label Grid.Row="3" Text="Gas Saver Mode" Style="{StaticResource STYLE_LABEL_INLET_CONFIG_MIDDLE}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToCapillaryUIVisibleConverter}}"/>
                 <Frame Grid.Row="4" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}" 
                        IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToCapillaryOrOnColumnVisibilityConverter}}">
-
                 </Frame>
                 <Grid Grid.Row="4" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToCapillaryUIVisibleConverter}}">
                     <Grid.RowDefinitions>
@@ -141,7 +140,7 @@
                 <Frame Grid.Row="5" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToCapillaryUIVisibleConverter}}">
 
                 </Frame>
-                <Grid Grid.Row="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToPressureGroupUIIndexConverter}}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToOnColumnUIVisibleConverter}}">
+                <Grid Grid.Row="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToPressureGroupUIIndexConverter}}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToCapillaryOrOnColumnVisibilityConverter}}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
                         <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>

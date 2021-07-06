@@ -132,7 +132,7 @@
                 </Label>
                 <Image Grid.Row="10" Grid.Column="1" Source="right_btn02.png" Aspect="AspectFill" ScaleX="1.225" ScaleY="1.075" Margin="13,3,-13,-8" VerticalOptions="Start" HorizontalOptions="Start" IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC1}}"/>
                 <Button Grid.Row="10" Grid.Column="1" BackgroundColor="Transparent" Margin="2,-3,0,-3" Command="{Binding ViewModelSystemPage.SubMenuSelectCommand}" CommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC1}"/>
-                <Label Grid.Row="10" Grid.Column="1" Text="APC&#x0a;Aux 1" FontSize="22" FontAttributes="Bold" Margin="-2,-3,20,-3" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True">
+                <Label Grid.Row="10" Grid.Column="1" Text="UPC&#x0a;Aux 1" FontSize="22" FontAttributes="Bold" Margin="-2,-3,20,-3" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True">
                     <Label.Triggers>
                         <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC1}}" Value="true">
                             <Setter Property="FontSize" Value="18"/>
@@ -146,7 +146,7 @@
                 </Label>
                 <Image Grid.Row="11" Grid.Column="1" Source="right_btn02.png" Aspect="AspectFill" ScaleX="1.225" ScaleY="1.075" Margin="13,3,-13,-8" VerticalOptions="Start" HorizontalOptions="Start" IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC2}}"/>
                 <Button Grid.Row="11" Grid.Column="1" BackgroundColor="Transparent" Margin="2,-3,0,-3" Command="{Binding ViewModelSystemPage.SubMenuSelectCommand}" CommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC2}"/>
-                <Label Grid.Row="11" Grid.Column="1" Text="APC&#x0a;Aux 2" FontSize="22" FontAttributes="Bold" Margin="-2,-3,20,-3" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True">
+                <Label Grid.Row="11" Grid.Column="1" Text="UPC&#x0a;Aux 2" FontSize="22" FontAttributes="Bold" Margin="-2,-3,20,-3" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True">
                     <Label.Triggers>
                         <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC2}}" Value="true">
                             <Setter Property="FontSize" Value="18"/>
@@ -160,7 +160,7 @@
                 </Label>
                 <Image Grid.Row="12" Grid.Column="1" Source="right_btn02.png" Aspect="AspectFill" ScaleX="1.225" ScaleY="1.075" Margin="13,3,-13,-8" VerticalOptions="Start" HorizontalOptions="Start" IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC3}}"/>
                 <Button Grid.Row="12" Grid.Column="1" BackgroundColor="Transparent" Margin="2,-3,0,-3" Command="{Binding ViewModelSystemPage.SubMenuSelectCommand}" CommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC3}"/>
-                <Label Grid.Row="12" Grid.Column="1" Text="APC&#x0a;Aux 3" FontSize="22" FontAttributes="Bold" Margin="-2,-3,20,-3" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True">
+                <Label Grid.Row="12" Grid.Column="1" Text="UPC&#x0a;Aux 3" FontSize="22" FontAttributes="Bold" Margin="-2,-3,20,-3" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="End" InputTransparent="True">
                     <Label.Triggers>
                         <DataTrigger TargetType="Label" Binding="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_UPC3}}" Value="true">
                             <Setter Property="FontSize" Value="18"/>

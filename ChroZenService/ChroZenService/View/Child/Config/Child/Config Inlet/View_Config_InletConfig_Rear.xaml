@@ -67,7 +67,7 @@
                     <Label Grid.Row="2" Grid.Column="0" Text="Connection" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
                     <Picker x:Name="picker_Connection1" Title="Inlet Rear" Grid.Row="2"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_RearInletConfig.ConnectionToDet}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}"  >
                         <Picker.Items>
-                            <x:String>Rear Detector</x:String>
+                            <x:String>Inlet Detector</x:String>
                             <x:String>Center Detector</x:String>
                             <x:String>Rear Detector</x:String>
                             <x:String>MSD</x:String>
@@ -140,7 +140,7 @@
                 <Frame Grid.Row="5" CornerRadius="18" Margin="18,3,18,3" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToCapillaryUIVisibleConverter}}">
 
                 </Frame>
-                <Grid Grid.Row="{Binding ViewModelConfigPage.ViewModel_Config_RearInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToPressureGroupUIIndexConverter}}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToOnColumnUIVisibleConverter}}">
+                <Grid Grid.Row="{Binding ViewModelConfigPage.ViewModel_Config_RearInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToPressureGroupUIIndexConverter}}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_RearInletConfig.e_INLET_TYPE, Converter={StaticResource E_INLET_TYPEToCapillaryOrOnColumnVisibilityConverter}}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
                         <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>

@@ -53,6 +53,9 @@ namespace ChroZenService
             {
                 if (_e_DET_TYPE != value)
                 {
+                    _e_DET_TYPE = value;
+                    OnPropertyChanged("e_DET_TYPE");
+
                     switch (value)
                     {
                         case E_DET_TYPE.PDD:
@@ -164,8 +167,6 @@ namespace ChroZenService
                             }
                             break;
                     }
-                    _e_DET_TYPE = value;
-                    OnPropertyChanged("e_DET_TYPE");
                 }
             }
         }
@@ -375,6 +376,9 @@ namespace ChroZenService
             {
                 if (_Flow1Enabled != value)
                 {
+                    _Flow1Enabled = value;
+                    OnPropertyChanged("Flow1Enabled");
+
                     if (value)
                     {
                         Flow1Height = (double)Application.Current.Resources["HEIGHT_CONTROLPAGE_NARROW_1"];
@@ -383,8 +387,6 @@ namespace ChroZenService
                     {
                         Flow1Height = 0;
                     }
-                    _Flow1Enabled = value;
-                    OnPropertyChanged("Flow1Enabled");
                 }
             }
         }
@@ -397,6 +399,9 @@ namespace ChroZenService
             {
                 if (_Flow2Enabled != value)
                 {
+                    _Flow2Enabled = value;
+                    OnPropertyChanged("Flow2Enabled");
+
                     if (value)
                     {
                         Flow2Height = (double)Application.Current.Resources["HEIGHT_CONTROLPAGE_NARROW_1"];
@@ -405,8 +410,6 @@ namespace ChroZenService
                     {
                         Flow2Height = 0;
                     }
-                    _Flow2Enabled = value;
-                    OnPropertyChanged("Flow2Enabled");
                 }
             }
         }
@@ -419,6 +422,9 @@ namespace ChroZenService
             {
                 if (_Flow3Enabled != value)
                 {
+                    _Flow3Enabled = value;
+                    OnPropertyChanged("Flow3Enabled");
+
                     if (value)
                     {
                         Flow3Height = (double)Application.Current.Resources["HEIGHT_CONTROLPAGE_NARROW_1"];
@@ -427,9 +433,6 @@ namespace ChroZenService
                     {
                         Flow3Height = 0;
                     }
-
-                    _Flow3Enabled = value;
-                    OnPropertyChanged("Flow3Enabled");
                 }
             }
         }
@@ -442,6 +445,9 @@ namespace ChroZenService
             {
                 if (_SenseEnabled != value)
                 {
+                    _SenseEnabled = value;
+                    OnPropertyChanged("SenseEnabled");
+
                     if (value)
                     {
                         SenseHeight = (double)Application.Current.Resources["HEIGHT_CONTROLPAGE_NARROW_1"];
@@ -450,9 +456,6 @@ namespace ChroZenService
                     {
                         SenseHeight = 0;
                     }
-
-                    _SenseEnabled = value;
-                    OnPropertyChanged("SenseEnabled");
                 }
             }
         }
@@ -465,6 +468,9 @@ namespace ChroZenService
             {
                 if (_SignalEnabled != value)
                 {
+                    _SignalEnabled = value;
+                    OnPropertyChanged("SignalEnabled");
+
                     if (value)
                     {
                         SignalHeight = (double)Application.Current.Resources["HEIGHT_CONTROLPAGE_NARROW_1"];
@@ -473,9 +479,6 @@ namespace ChroZenService
                     {
                         SignalHeight = 0;
                     }
-
-                    _SignalEnabled = value;
-                    OnPropertyChanged("SignalEnabled");
                 }
             }
         }
@@ -488,6 +491,9 @@ namespace ChroZenService
             {
                 if (_ElectrometerEnabled != value)
                 {
+                    _ElectrometerEnabled = value;
+                    OnPropertyChanged("ElectrometerEnabled");
+
                     if (value)
                     {
                         ElectrometerHeight = (double)Application.Current.Resources["HEIGHT_CONTROLPAGE_NARROW_1"];
@@ -496,9 +502,6 @@ namespace ChroZenService
                     {
                         ElectrometerHeight = 0;
                     }
-
-                    _ElectrometerEnabled = value;
-                    OnPropertyChanged("ElectrometerEnabled");
                 }
             }
         }
@@ -511,6 +514,9 @@ namespace ChroZenService
             {
                 if (_AutoIgnitionEnabled != value)
                 {
+                    _AutoIgnitionEnabled = value;
+                    OnPropertyChanged("AutoIgnitionEnabled");
+
                     if (value)
                     {
                         AutoIgnitionHeight = (double)Application.Current.Resources["HEIGHT_CONTROLPAGE_NARROW_1"];
@@ -519,9 +525,6 @@ namespace ChroZenService
                     {
                         AutoIgnitionHeight = 0;
                     }
-
-                    _AutoIgnitionEnabled = value;
-                    OnPropertyChanged("AutoIgnitionEnabled");
                 }
             }
         }
@@ -534,6 +537,9 @@ namespace ChroZenService
             {
                 if (_FilamentEnabled != value)
                 {
+                    _FilamentEnabled = value;
+                    OnPropertyChanged("FilamentEnabled");
+
                     if (value)
                     {
                         FilamentHeight = (double)Application.Current.Resources["HEIGHT_CONTROLPAGE_NARROW_1"];
@@ -542,9 +548,6 @@ namespace ChroZenService
                     {
                         FilamentHeight = 0;
                     }
-
-                    _FilamentEnabled = value;
-                    OnPropertyChanged("FilamentEnabled");
                 }
             }
         }
@@ -557,6 +560,9 @@ namespace ChroZenService
             {
                 if (_PolarityChangeEnabled != value)
                 {
+                    _PolarityChangeEnabled = value;
+                    OnPropertyChanged("PolarityChangeEnabled");
+
                     if (value)
                     {
                         PolarityChangeHeight = (double)Application.Current.Resources["HEIGHT_CONTROLPAGE_NARROW_1"];
@@ -565,9 +571,6 @@ namespace ChroZenService
                     {
                         PolarityChangeHeight = 0;
                     }
-
-                    _PolarityChangeEnabled = value;
-                    OnPropertyChanged("PolarityChangeEnabled");
                 }
             }
         }
@@ -580,6 +583,9 @@ namespace ChroZenService
             {
                 if (_PDD_UIEnabled != value)
                 {
+                    _PDD_UIEnabled = value;
+                    OnPropertyChanged("PDD_UIEnabled");
+
                     if (value)
                     {
                         PDD_UIHeight = (double)Application.Current.Resources["HEIGHT_CONTROLPAGE_NARROW_1"];
@@ -588,9 +594,6 @@ namespace ChroZenService
                     {
                         PDD_UIHeight = 0;
                     }
-
-                    _PDD_UIEnabled = value;
-                    OnPropertyChanged("PDD_UIEnabled");
                 }
             }
         }
@@ -709,6 +712,7 @@ namespace ChroZenService
                 {
                     _fFlowSet2 = value;
                     OnPropertyChanged("fFlowSet2");
+
                     if (_bFlowOnoff2)
                     {
                         DisplayString_fFlowSet2 = _fFlowSet2;
@@ -730,6 +734,7 @@ namespace ChroZenService
                 {
                     _fFlowSet3 = value;
                     OnPropertyChanged("fFlowSet3");
+
                     if (_bFlowOnoff3)
                     {
                         DisplayString_fFlowSet3 = _fFlowSet3;
@@ -792,6 +797,9 @@ namespace ChroZenService
             {
                 if (_bFlowOnoff1 != value)
                 {
+                    _bFlowOnoff1 = value;
+                    OnPropertyChanged("bFlowOnoff1");
+
                     if (value)
                     {
                         DisplayString_fFlowSet1 = _fFlowSet1;
@@ -800,9 +808,6 @@ namespace ChroZenService
                     {
                         DisplayString_fFlowSet1 = "Off";
                     }
-
-                    _bFlowOnoff1 = value;
-                    OnPropertyChanged("bFlowOnoff1");
                 }
             }
         }
@@ -814,6 +819,9 @@ namespace ChroZenService
             {
                 if (_bFlowOnoff2 != value)
                 {
+                    _bFlowOnoff2 = value;
+                    OnPropertyChanged("bFlowOnoff2");
+
                     if (value)
                     {
                         DisplayString_fFlowSet2 = _fFlowSet2;
@@ -822,8 +830,6 @@ namespace ChroZenService
                     {
                         DisplayString_fFlowSet2 = "Off";
                     }
-                    _bFlowOnoff2 = value;
-                    OnPropertyChanged("bFlowOnoff2");
                 }
             }
         }
@@ -835,6 +841,9 @@ namespace ChroZenService
             {
                 if (_bFlowOnoff3 != value)
                 {
+                    _bFlowOnoff3 = value;
+                    OnPropertyChanged("bFlowOnoff3");
+
                     if (value)
                     {
                         DisplayString_fFlowSet3 = _fFlowSet3;
@@ -843,9 +852,6 @@ namespace ChroZenService
                     {
                         DisplayString_fFlowSet3 = "Off";
                     }
-
-                    _bFlowOnoff3 = value;
-                    OnPropertyChanged("bFlowOnoff3");
                 }
             }
         }
@@ -891,6 +897,7 @@ namespace ChroZenService
                 }
             }
         }
+
         string _fTempSet;
         public string fTempSet
         {
@@ -901,6 +908,7 @@ namespace ChroZenService
                 {
                     _fTempSet = value;
                     OnPropertyChanged("fTempSet");
+
                     if (_bTempOnoff)
                     {
                         DisplayString_fTempSet = _fTempSet;
@@ -938,6 +946,9 @@ namespace ChroZenService
             {
                 if (_bTempOnoff != value)
                 {
+                    _bTempOnoff = value;
+                    OnPropertyChanged("bTempOnoff");
+
                     if (value)
                     {
                         DisplayString_fTempSet = _fTempSet;
@@ -946,8 +957,6 @@ namespace ChroZenService
                     {
                         DisplayString_fTempSet = "Off";
                     }
-                    _bTempOnoff = value;
-                    OnPropertyChanged("bTempOnoff");
                 }
             }
         }

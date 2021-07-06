@@ -31,7 +31,8 @@
                     <Label Grid.Row="0" Grid.Column="0" Text="Signal Zero" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" Margin="0,12,10,0"/>
                     <Line Grid.RowSpan="3" X1="208" X2="208" Y1="14" Y2="85" Stroke="Gray"/>
                     <local:UC_Config_SETTING_LABEL Grid.Row="0" Grid.Column="1"  Text="{Binding ViewModelConfigPage.ViewModel_Config_Signal1.fZero}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_Signal1.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_1_SIGNAL_ZERO}" Margin="0,15,0,0"/>
-
+                    <Label Grid.Row="0" Grid.Column="1" Text="mV" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,23,10,0"/>
+                    
                     <Label Grid.Row="1" Grid.Column="0" Text="Sensitivity" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
                     <local:UC_Config_SETTING_LABEL Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelConfigPage.ViewModel_Config_Signal1.fSensitivity}"  Style="{StaticResource STYLE_LABEL_CONFIG_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelConfigPage.ViewModel_Config_Signal1.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.SIGNAL_1_SENSITIVITY}"/>
 
