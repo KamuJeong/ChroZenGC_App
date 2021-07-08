@@ -32,7 +32,7 @@
                     </Grid.ColumnDefinitions>
                     <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="15" Y2="195" Grid.RowSpan="4" Stroke="Gray" />
                     <Label Grid.Row="0" Grid.Column="0" Text="Make up Gas" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,13,10,0"/>
-                    <Picker x:Name="picker_MkupGas" Title="Det Front" Grid.Row="0"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.btMakeupgas}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" Margin="0,17,0,0" >
+                    <Picker x:Name="picker_MkupGas" Title="Front Det" Grid.Row="0"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.btMakeupgas}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" Margin="0,17,0,0" >
                         <Picker.Items>
                             <x:String>N2</x:String>
                             <x:String>He</x:String>
@@ -48,11 +48,11 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label Grid.Row="1" Grid.Column="0" Text="Connection" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,3,10,0"/>
-                    <Picker x:Name="picker_Connection" Title="Det Front" Grid.Row="1"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.btConnection}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" >
+                    <Picker x:Name="picker_Connection" Title="Front Det" Grid.Row="1"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.btConnection}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" >
                         <Picker.Items>
-                            <x:String>Inlet Front</x:String>
-                            <x:String>Inlet Center</x:String>
-                            <x:String>Inlet Rear</x:String>
+                            <x:String>Front Inlet</x:String>
+                            <x:String>Center Inlet</x:String>
+                            <x:String>Rear Inlet</x:String>
                         </Picker.Items>
                         <Picker.Behaviors>
                             <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" 
@@ -62,7 +62,7 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label Grid.Row="2" Grid.Column="0" Text="Block Select" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,3,10,0"/>
-                    <Picker x:Name="picker_BlockSelect" Title="Det Front" Grid.Row="2"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.btBlockSelect}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" >
+                    <Picker x:Name="picker_BlockSelect" Title="Front Det" Grid.Row="2"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.btBlockSelect}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" >
                         <Picker.Items>
                             <x:String>0</x:String>
                             <x:String>1</x:String>
@@ -77,7 +77,7 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label Grid.Row="3" Grid.Column="0" Text="Signal Range" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,3,10,0"/>
-                    <Picker x:Name="picker_SignalRange" Title="Det Front" Grid.Row="3"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.iSignalrange}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}"  >
+                    <Picker x:Name="picker_SignalRange" Title="Front Det" Grid.Row="3"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.iSignalrange}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}"  >
                         <Picker.Items>
                             <x:String>0</x:String>
                             <x:String>1</x:String>
@@ -148,7 +148,7 @@
                     <Label Grid.Row="0" Grid.Column="0" Text="Signal Autozeo" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" Margin="0,8,10,0"/>
                     <local:UC_ON_OFF_Button Grid.Row="0" Grid.Column="1" IsOn="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.bAutozero}"  Margin="0,5,0,0" OnCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.AutozeroOnCommand}" OffCommand="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.AutozeroOffCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_DET_LOCATION.FRONT}"/>
                     <Label Grid.Row="1" Grid.Column="0" Text="Sensitivity" Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_INPUT_TITLE}" />
-                    <Picker x:Name="picker_Sensitivity" Title="Det Front" Grid.Row="1"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.iSignalvariation, Converter={StaticResource DET_CONFIG_PickerIndexToiSignalRangeConverter}}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}"  >
+                    <Picker x:Name="picker_Sensitivity" Title="Front Det" Grid.Row="1"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetConfig.iSignalvariation, Converter={StaticResource DET_CONFIG_PickerIndexToiSignalRangeConverter}}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}"  >
                         <Picker.Items>
                             <x:String>-10</x:String>
                             <x:String>-9</x:String>

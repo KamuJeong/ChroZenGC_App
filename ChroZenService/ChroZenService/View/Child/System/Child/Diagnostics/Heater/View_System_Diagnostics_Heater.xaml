@@ -44,37 +44,37 @@
                     <Label Grid.Row="0" Grid.Column="1" Text="℃" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,0,35,0"/>
 
                     <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                    <Label Grid.Row="1" Grid.Column="0" Text="Inlet Front Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Label Grid.Row="1" Grid.Column="0" Text="Front Inlet Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
                     <Label Grid.Row="1" Grid.Column="1" Text="℃" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,0,35,0"/>
 
                     <Frame Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                    <Label Grid.Row="2" Grid.Column="0" Text="Inlet Center Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Label Grid.Row="2" Grid.Column="0" Text="Center Inlet Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
                     <Label Grid.Row="2" Grid.Column="1" Text="℃" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,0,35,0"/>
 
                     <Frame Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                    <Label Grid.Row="3" Grid.Column="0" Text="Inlet Rear Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Label Grid.Row="3" Grid.Column="0" Text="Rear Inlet Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="3" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <Label Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fInj_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
                     <Label Grid.Row="3" Grid.Column="1" Text="℃" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,0,35,0"/>
 
                     <Frame Grid.Row="4" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                    <Label Grid.Row="4" Grid.Column="0" Text="Det Front Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Front Det Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}"/>
                     <Line  Grid.Row="4" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
                     <Label Grid.Row="4" Grid.Column="1" Text="℃" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,0,35,0"/>
 
                     <Frame Grid.Row="5" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                    <Label Grid.Row="5" Grid.Column="0" Text="Det Center Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Label Grid.Row="5" Grid.Column="0" Text="Center Det Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="5" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
                     <Label Grid.Row="5" Grid.Column="1" Text="℃" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,0,35,0"/>
 
                     <Frame Grid.Row="6" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}"/>
-                    <Label Grid.Row="6" Grid.Column="0" Text="Det Rear Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Label Grid.Row="6" Grid.Column="0" Text="Rear Det Temp" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsHeater.fDet_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
                     <Label Grid.Row="6" Grid.Column="1" Text="℃" Style="{StaticResource STYLE_LABEL_UNIT}" Margin="0,0,35,0"/>

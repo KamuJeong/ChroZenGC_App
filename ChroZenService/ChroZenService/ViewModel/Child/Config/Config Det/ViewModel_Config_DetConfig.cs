@@ -376,21 +376,21 @@ namespace ChroZenService
         {
             switch (title.ToString())
             {
-                case "Det Front":
+                case "Front Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.btMakeupgas = (byte)btMakeupgas;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
-                case "Det Center":
+                case "Center Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.btMakeupgas = (byte)btMakeupgas;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
-                case "Det Rear":
+                case "Rear Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.btMakeupgas = (byte)btMakeupgas;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
@@ -411,21 +411,21 @@ namespace ChroZenService
         {
             switch (title.ToString())
             {
-                case "Det Front":
+                case "Front Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.btConnection = (byte)btConnection;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
-                case "Det Center":
+                case "Center Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.btConnection = (byte)btConnection;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
-                case "Det Rear":
+                case "Rear Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.btConnection = (byte)btConnection;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
@@ -444,21 +444,21 @@ namespace ChroZenService
         {
             switch (title.ToString())
             {
-                case "Det Front":
+                case "Front Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.btBlockSelect = (byte)btBlockSelect;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
-                case "Det Center":
+                case "Center Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.btBlockSelect = (byte)btBlockSelect;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
-                case "Det Rear":
+                case "Rear Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.btBlockSelect = (byte)btBlockSelect;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
@@ -477,21 +477,21 @@ namespace ChroZenService
         {
             switch (title.ToString())
             {
-                case "Det Front":
+                case "Front Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.iSignalrange = (short)iSignalrange;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
-                case "Det Center":
+                case "Center Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.iSignalrange = (short)iSignalrange;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
-                case "Det Rear":
+                case "Rear Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.iSignalrange = (short)iSignalrange;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
@@ -509,25 +509,27 @@ namespace ChroZenService
         public RelayCommand AutozeroOnCommand { get; set; }
         private void AutozeroOnCommandAction(object param)
         {
+            bAutozero = true; //20210706 권민경
+
             switch ((E_DET_LOCATION)param)
             {
                 case E_DET_LOCATION.FRONT:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bAutozero = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bAutozero = bAutozero ? (byte)1 : (byte)0; //20210706 권민경
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bAutozero = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bAutozero = bAutozero ? (byte)1 : (byte)0; //20210706 권민경
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutozero = 1;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutozero = bAutozero ? (byte)1 : (byte)0; //20210706 권민경
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
@@ -543,25 +545,27 @@ namespace ChroZenService
         public RelayCommand AutozeroOffCommand { get; set; }
         private void AutozeroOffCommandAction(object param)
         {
+            bAutozero = false; //20210706 권민경
+
             switch ((E_DET_LOCATION)param)
             {
                 case E_DET_LOCATION.FRONT:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bAutozero = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bAutozero = bAutozero ? (byte)1 : (byte)0; //20210706 권민경
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bAutozero = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bAutozero = bAutozero ? (byte)1 : (byte)0; //20210706 권민경
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutozero = 0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutozero = bAutozero ? (byte)1 : (byte)0; //20210706 권민경
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }
@@ -579,21 +583,21 @@ namespace ChroZenService
         {
             switch (title.ToString())
             {
-                case "Det Front":
+                case "Front Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.iSignalvariation = (short)iSignalvariation;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
                     }
                     break;
-                case "Det Center":
+                case "Center Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.iSignalvariation = (short)iSignalvariation;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
-                case "Det Rear":
+                case "Rear Det":
                     {
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.iSignalvariation = (short)iSignalvariation;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(

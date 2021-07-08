@@ -2267,11 +2267,20 @@ namespace ChroZenService
         private void AutoIgnitionOnCommandAction(object param)
         {
             bAutoIgnition = true;
+            bFlowOnoff1 = true;
+            bFlowOnoff2 = true;
+            bFlowOnoff3 = true;
 
             switch ((E_DET_LOCATION)param)
             {
                 case E_DET_LOCATION.FRONT:
                     {
+                        ElectrometerOnCommandAction(param);
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutoIgnition = _bAutoIgnition ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
+
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bAutoIgnition = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
@@ -2279,6 +2288,12 @@ namespace ChroZenService
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
+                        ElectrometerOnCommandAction(param);
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutoIgnition = _bAutoIgnition ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
+
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bAutoIgnition = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
@@ -2286,6 +2301,12 @@ namespace ChroZenService
                     break;
                 case E_DET_LOCATION.REAR:
                     {
+                        ElectrometerOnCommandAction(param);
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutoIgnition = _bAutoIgnition ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
+
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutoIgnition = 1;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
@@ -2303,11 +2324,20 @@ namespace ChroZenService
         private void AutoIgnitionOffCommandAction(object param)
         {
             bAutoIgnition = false;
+            bFlowOnoff1 = false;
+            bFlowOnoff2 = false;
+            bFlowOnoff3 = false;
 
             switch ((E_DET_LOCATION)param)
             {
                 case E_DET_LOCATION.FRONT:
                     {
+                        ElectrometerOffCommandAction(param);
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bAutoIgnition = _bAutoIgnition ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
+
                         DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bAutoIgnition = 0;
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet));
@@ -2315,14 +2345,24 @@ namespace ChroZenService
                     break;
                 case E_DET_LOCATION.CENTER:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bAutoIgnition = 0;
+                        ElectrometerOffCommandAction(param);
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet.bAutoIgnition = _bAutoIgnition ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
+
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Center.packet));
                     }
                     break;
                 case E_DET_LOCATION.REAR:
                     {
-                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutoIgnition = 0;
+                        ElectrometerOffCommandAction(param);
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet.bAutoIgnition = _bAutoIgnition ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff1 = _bFlowOnoff1 ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff2 = _bFlowOnoff2 ? (byte)1 : (byte)0;
+                        DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Front.packet.bFlowOnoff3 = _bFlowOnoff3 ? (byte)1 : (byte)0;
+
                         tcpManager.Send(T_PACKCODE_CHROZEN_DET_SETTINGManager.MakePACKCODE_SET(
                             DataManager.t_PACKCODE_CHROZEN_DET_SETTING_Rear.packet));
                     }

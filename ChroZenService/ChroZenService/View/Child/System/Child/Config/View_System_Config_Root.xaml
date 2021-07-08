@@ -41,21 +41,21 @@
                     <Frame Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,7,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="0" Grid.Column="0" Text="Inlet Front" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" Margin="32,6,0,0"/>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Front Inlet" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" Margin="32,6,0,0"/>
                     <Line  Grid.Row="0" Grid.Column="0" X1="195" X2="195" Y1="11" Y2="37" Stroke="Gray"/>
                     <Label Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Config.btInlet1, Converter={StaticResource InletTypeConverter}}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
 
                     <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="1" Grid.Column="0" Text="Inlet Center" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Label Grid.Row="1" Grid.Column="0" Text="Center Inlet" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Config.btInlet2, Converter={StaticResource InletTypeConverter}}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
                     <Frame Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
                     </Frame>
-                    <Label Grid.Row="2" Grid.Column="0" Text="Inlet Rear" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Label Grid.Row="2" Grid.Column="0" Text="Rear Inlet" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
                     <Line  Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE}"/>
                     <Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Config.btInlet3, Converter={StaticResource InletTypeConverter}}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 

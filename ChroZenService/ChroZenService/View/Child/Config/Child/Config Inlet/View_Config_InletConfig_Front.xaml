@@ -34,7 +34,7 @@
                     </Grid.ColumnDefinitions>                    
                     <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="15" Y2="153" Grid.RowSpan="4" Stroke="Gray" />
                     <Label Grid.Row="0" Grid.Column="0" Text="Carrier Gas" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" Margin="0,16,10,0"/>
-                    <Picker x:Name="picker_CarrierGas1" Title="Inlet Front" Grid.Row="0"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.btCarriergas}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" Margin="0,16,0,0" >
+                    <Picker x:Name="picker_CarrierGas1" Title="Front Inlet" Grid.Row="0"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.btCarriergas}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}" Margin="0,16,0,0" >
                         <Picker.Items>
                             <x:String>N2</x:String>
                             <x:String>He</x:String>
@@ -50,7 +50,7 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label Grid.Row="1" Grid.Column="0" Text="UPC mode" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
-                    <Picker x:Name="picker_UPCMode1" Title="Inlet Front" Grid.Row="1"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.btApcMode}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}"  >
+                    <Picker x:Name="picker_UPCMode1" Title="Front Inlet" Grid.Row="1"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.btApcMode}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}"  >
                         <Picker.Items>
                             <x:String>Constant Flow</x:String>
                             <x:String>Constant Pressure</x:String>
@@ -65,7 +65,7 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label Grid.Row="2" Grid.Column="0" Text="Connection" Style="{StaticResource STYLE_LABEL_CONFIG_INLET_TITLE}" />
-                    <Picker x:Name="picker_Connection1" Title="Inlet Front" Grid.Row="2"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.ConnectionToDet}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}"  >
+                    <Picker x:Name="picker_Connection1" Title="Front Inlet" Grid.Row="2"  Grid.Column="1"  SelectedIndex="{Binding ViewModelConfigPage.ViewModel_Config_FrontInletConfig.ConnectionToDet}" Style="{StaticResource STYLE_PICKER_CONFIG_INLET_CONFIG}"  >
                         <Picker.Items>
                             <x:String>Front Detector</x:String>
                             <x:String>Center Detector</x:String>

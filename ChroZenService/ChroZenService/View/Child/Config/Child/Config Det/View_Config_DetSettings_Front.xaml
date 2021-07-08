@@ -86,7 +86,7 @@
                             <ColumnDefinition Width="140"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Text="Electrometer" Style="{StaticResource STYLE_LABEL_CONFIG_DET_SETTINGS_TITLE}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetSettings.ElectrometerEnabled}"/>
-                        <Label Grid.Row="1" Grid.Column="0" Text="Auto ignitioin" Style="{StaticResource STYLE_LABEL_CONFIG_DET_SETTINGS_TITLE}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetSettings.AutoIgnitionEnabled}"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="Auto ignition" Style="{StaticResource STYLE_LABEL_CONFIG_DET_SETTINGS_TITLE}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetSettings.AutoIgnitionEnabled}"/>
                         <Label Grid.Row="2" Grid.Column="0" Text="Filament" Style="{StaticResource STYLE_LABEL_CONFIG_DET_SETTINGS_TITLE}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetSettings.FilamentEnabled}"/>
                         <Label Grid.Row="3" Grid.Column="0" Text="Polarity Change" Style="{StaticResource STYLE_LABEL_CONFIG_DET_SETTINGS_TITLE}" IsVisible="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetSettings.PolarityChangeEnabled}"/>
                         <Line  Grid.Row="0" Grid.Column="0" X1="207" X2="207" Y1="2" Y2="{Binding ViewModelConfigPage.ViewModel_Config_FrontDetSettings.BottomLineHeight}" Grid.RowSpan="4" Stroke="Gray" />

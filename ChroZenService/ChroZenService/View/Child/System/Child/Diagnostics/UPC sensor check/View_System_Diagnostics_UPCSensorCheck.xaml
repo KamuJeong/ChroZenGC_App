@@ -3,257 +3,257 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Diagnostics_UPCSensorCheck">
-  <ContentView.Content>
-    <AbsoluteLayout>
-      <Grid>
-        <Grid.RowDefinitions>
-          <RowDefinition Height="634"/>
-          <RowDefinition Height="44"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="209"/>
-          <ColumnDefinition Width="208"/>
-        </Grid.ColumnDefinitions>
-        <Grid HeightRequest="634" Grid.ColumnSpan="2" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.IsFirstPageVisible}">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-          </Grid.RowDefinitions>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="277"/>
-            <ColumnDefinition Width="140"/>
-          </Grid.ColumnDefinitions>
-          <Frame Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,7,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="634"/>
+                    <RowDefinition Height="44"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="209"/>
+                    <ColumnDefinition Width="208"/>
+                </Grid.ColumnDefinitions>
+                <Grid HeightRequest="634" Grid.ColumnSpan="2" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.IsFirstPageVisible}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="277"/>
+                        <ColumnDefinition Width="140"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,7,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="0" Grid.Column="0" Text="Front Inlet Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" Margin="32,6,0,0"/>
-          <Line  Grid.Row="0" Grid.Column="0" X1="277" X2="277" Y1="11" Y2="37" Stroke="Gray"/>
-          <Label Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontInletSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
+                    </Frame>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Front Inlet Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" Margin="32,6,0,0"/>
+                    <Line  Grid.Row="0" Grid.Column="0" X1="277" X2="277" Y1="11" Y2="37" Stroke="Gray"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontInletSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
 
-          <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="1" Grid.Column="0" Text="Front Inlet Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontInletSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Front Inlet Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontInletSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="2" Grid.Column="0" Text="Front Inlet Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontInletSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Front Inlet Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontInletSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="3" Grid.Column="0" Text="Center Inlet Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="3" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterInletSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Center Inlet Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="3" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterInletSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="4" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="4" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="4" Grid.Column="0" Text="Center Inlet Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}"/>
-          <Line  Grid.Row="4" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterInletSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Center Inlet Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}"/>
+                    <Line  Grid.Row="4" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterInletSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="5" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="5" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="5" Grid.Column="0" Text="Center Inlet Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="5" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterInletSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="5" Grid.Column="0" Text="Center Inlet Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="5" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterInletSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="6" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="6" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="6" Grid.Column="0" Text="Rear Inlet Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearInletSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="6" Grid.Column="0" Text="Rear Inlet Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearInletSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="7" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="7" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="7" Grid.Column="0" Text="Rear Inlet Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="7" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="7" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearInletSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="7" Grid.Column="0" Text="Rear Inlet Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="7" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearInletSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="8" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="8" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="8" Grid.Column="0" Text="Rear Inlet Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="8" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="8" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearInletSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="8" Grid.Column="0" Text="Rear Inlet Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="8" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="8" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearInletSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="9" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="9" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="9" Grid.Column="0" Text="Front Det Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="9" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="9" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontDetSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="9" Grid.Column="0" Text="Front Det Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="9" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="9" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontDetSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="10" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="10" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="10" Grid.Column="0" Text="Front Det Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="10" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="10" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontDetSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="10" Grid.Column="0" Text="Front Det Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="10" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="10" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontDetSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="11" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="11" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="11" Grid.Column="0" Text="Front Det Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="11" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="11" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontDetSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="11" Grid.Column="0" Text="Front Det Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="11" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="11" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontDetSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="12" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="12" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="12" Grid.Column="0" Text="Center Det Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="12" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="12" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterDetSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="12" Grid.Column="0" Text="Center Det Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="12" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="12" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterDetSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="13" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="13" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="13" Grid.Column="0" Text="Center Det Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="13" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="13" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterDetSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="13" Grid.Column="0" Text="Center Det Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="13" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="13" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterDetSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="14" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="14" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="14" Grid.Column="0" Text="Center Det Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="14" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="14" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterDetSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="14" Grid.Column="0" Text="Center Det Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="14" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="14" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterDetSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-        </Grid>
-        <Grid HeightRequest="634" Grid.ColumnSpan="2" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.IsFirstPageVisible, Converter={StaticResource BoolReverseConverter}}">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-            <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
-          </Grid.RowDefinitions>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="277"/>
-            <ColumnDefinition Width="140"/>
-          </Grid.ColumnDefinitions>
-          <Frame Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,7,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                </Grid>
+                <Grid HeightRequest="634" Grid.ColumnSpan="2" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.IsFirstPageVisible, Converter={StaticResource BoolReverseConverter}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1_PLUS7}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                        <RowDefinition Height="{StaticResource HEIGHT_CONTROLPAGE_NARROW_1}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="277"/>
+                        <ColumnDefinition Width="140"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,7,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="0" Grid.Column="0" Text="Det Rear Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" Margin="32,6,0,0"/>
-          <Line  Grid.Row="0" Grid.Column="0" X1="277" X2="277" Y1="11" Y2="37" Stroke="Gray"/>
-          <Label Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearDetSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
+                    </Frame>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Rear Det Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" Margin="32,6,0,0"/>
+                    <Line  Grid.Row="0" Grid.Column="0" X1="277" X2="277" Y1="11" Y2="37" Stroke="Gray"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearDetSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" Margin="0,7,0,0"/>
 
-          <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="1" Grid.Column="0" Text="Det Rear Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearDetSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Rear Det Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearDetSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="2" Grid.Column="0" Text="Det Rear Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearDetSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Rear Det Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="2" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearDetSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="3" Grid.Column="0" Text="AuxUPC Front Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="3" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontAuxAPCSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="3" Grid.Column="0" Text="AuxUPC Front Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="3" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontAuxAPCSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="4" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="4" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="4" Grid.Column="0" Text="AuxUPC Front Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}"/>
-          <Line  Grid.Row="4" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontAuxAPCSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="4" Grid.Column="0" Text="AuxUPC Front Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}"/>
+                    <Line  Grid.Row="4" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontAuxAPCSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="5" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="5" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="5" Grid.Column="0" Text="AuxUPC Front Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="5" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontAuxAPCSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="5" Grid.Column="0" Text="AuxUPC Front Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="5" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.FrontAuxAPCSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="6" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="6" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="6" Grid.Column="0" Text="AuxUPC Center Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterAuxAPCSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="6" Grid.Column="0" Text="AuxUPC Center Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="6" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterAuxAPCSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="7" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="7" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="7" Grid.Column="0" Text="AuxUPC Center Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="7" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="7" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterAuxAPCSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="7" Grid.Column="0" Text="AuxUPC Center Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="7" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterAuxAPCSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="8" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="8" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="8" Grid.Column="0" Text="AuxUPC Center Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="8" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="8" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterAuxAPCSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="8" Grid.Column="0" Text="AuxUPC Center Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="8" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="8" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.CenterAuxAPCSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="9" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="9" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="9" Grid.Column="0" Text="AuxUPC Rear Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="9" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="9" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearAuxAPCSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="9" Grid.Column="0" Text="AuxUPC Rear Sensor 1" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="9" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="9" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearAuxAPCSensor_1}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="10" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="10" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="10" Grid.Column="0" Text="AuxUPC Rear Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="10" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="10" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearAuxAPCSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="10" Grid.Column="0" Text="AuxUPC Rear Sensor 2" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="10" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="10" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearAuxAPCSensor_2}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
-          <Frame Grid.Row="11" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
+                    <Frame Grid.Row="11" Grid.ColumnSpan="2" CornerRadius="18" Margin="18,0,18,0" Background="{StaticResource SCB_CONTROL_BACKGROUND_DARK_0}">
 
-          </Frame>
-          <Label Grid.Row="11" Grid.Column="0" Text="AuxUPC Rear Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
-          <Line  Grid.Row="11" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
-          <Label Grid.Row="11" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearAuxAPCSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
+                    </Frame>
+                    <Label Grid.Row="11" Grid.Column="0" Text="AuxUPC Rear Sensor 3" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_TITLE}" />
+                    <Line  Grid.Row="11" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_TITLE_LONG}"/>
+                    <Label Grid.Row="11" Grid.Column="1" Text="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.RearAuxAPCSensor_3}" Style="{StaticResource STYLE_LABEL_SYSTEM_INFORMATION_COLUMN_VALUE}" />
 
 
-        </Grid>
-        <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_NAVIGATION_SPLIT}"/>
-        <Button Grid.Row="1" Grid.Column="0" Text="◀ Prev" FontSize="20" HorizontalOptions="Center" VerticalOptions="Start" TextColor="White" Background="Transparent" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.IsFirstPageVisible, Converter={StaticResource BoolReverseConverter}}" Command="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.Navigation_PrevCommand}"/>
-        <Button Grid.Row="1" Grid.Column="1" Text="Next ▶" FontSize="20" HorizontalOptions="Center" VerticalOptions="Start" TextColor="White" Background="Transparent" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.IsFirstPageVisible}" Command="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.Navigation_NextCommand}"/>
-        
-        <local:UC_System_Calib_Settings_StartStopButton Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="false" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.START_UPC_SENSOR_CHECK}"/>
-        <local:UC_System_Calib_Settings_StartStopButton Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="true" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.STOP_UPC_SENSOR_CHECK}"/>
-      </Grid>
-    </AbsoluteLayout>
-  </ContentView.Content>
+                </Grid>
+                <Line  Grid.Row="1" Grid.Column="0" Style="{StaticResource STYLE_LINE_SYSTEM_SETTING_NAVIGATION_SPLIT}"/>
+                <Button Grid.Row="1" Grid.Column="0" Text="◀ Prev" FontSize="20" HorizontalOptions="Center" VerticalOptions="Start" TextColor="White" Background="Transparent" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.IsFirstPageVisible, Converter={StaticResource BoolReverseConverter}}" Command="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.Navigation_PrevCommand}"/>
+                <Button Grid.Row="1" Grid.Column="1" Text="Next ▶" FontSize="20" HorizontalOptions="Center" VerticalOptions="Start" TextColor="White" Background="Transparent" IsVisible="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.IsFirstPageVisible}" Command="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.Navigation_NextCommand}"/>
+
+                <local:UC_System_Calib_Settings_StartStopButton Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="false" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.START_UPC_SENSOR_CHECK}"/>
+                <local:UC_System_Calib_Settings_StartStopButton Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="true" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsUpcSensorCheck.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.STOP_UPC_SENSOR_CHECK}"/>
+            </Grid>
+        </AbsoluteLayout>
+    </ContentView.Content>
 </ContentView>

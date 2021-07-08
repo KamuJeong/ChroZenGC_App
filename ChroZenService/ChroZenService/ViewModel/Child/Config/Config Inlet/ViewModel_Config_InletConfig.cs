@@ -627,7 +627,7 @@ namespace ChroZenService
         {
             switch (title.ToString())
             {
-                case "Inlet Front":
+                case "Front Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btCarriergas = (byte)btCarriergas;
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btPortNo = 0;
@@ -635,7 +635,7 @@ namespace ChroZenService
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
                     }
                     break;
-                case "Inlet Center":
+                case "Center Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btCarriergas = (byte)btCarriergas;
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btPortNo = 1;
@@ -643,7 +643,7 @@ namespace ChroZenService
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
                     }
                     break;
-                case "Inlet Rear":
+                case "Rear Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btCarriergas = (byte)btCarriergas;
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btPortNo = 2;
@@ -664,7 +664,7 @@ namespace ChroZenService
         {
             switch (title.ToString())
             {
-                case "Inlet Front":
+                case "Front Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btApcMode = (byte)btApcMode;
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btPortNo = 0;
@@ -674,7 +674,7 @@ namespace ChroZenService
                         EventManager.ApcSetByInletConfigEvent((byte)btApcMode, E_INLET_LOCATION.FRONT);
                     }
                     break;
-                case "Inlet Center":
+                case "Center Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btApcMode = (byte)btApcMode;
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btPortNo = 1;
@@ -684,7 +684,7 @@ namespace ChroZenService
                         EventManager.ApcSetByInletConfigEvent((byte)btApcMode, E_INLET_LOCATION.CENTER);
                     }
                     break;
-                case "Inlet Rear":
+                case "Rear Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btApcMode = (byte)btApcMode;
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btPortNo = 2;
@@ -707,7 +707,7 @@ namespace ChroZenService
         {
             switch (title.ToString())
             {
-                case "Inlet Front":
+                case "Front Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.__btConnection = (byte)ConnectionToDet;
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btPortNo = 0;
@@ -715,7 +715,7 @@ namespace ChroZenService
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
                     }
                     break;
-                case "Inlet Center":
+                case "Center Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.__btConnection = (byte)ConnectionToDet;
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btPortNo = 1;
@@ -723,7 +723,7 @@ namespace ChroZenService
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
                     }
                     break;
-                case "Inlet Rear":
+                case "Rear Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.__btConnection = (byte)ConnectionToDet;
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btPortNo = 2;

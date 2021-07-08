@@ -4141,21 +4141,21 @@ namespace ChroZenService
         {           
             switch (title.ToString())
             {
-                case "Inlet Front":
+                case "Front Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btInjMode = btInjMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
                     }
                     break;
-                case "Inlet Center":
+                case "Center Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.btInjMode = btInjMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
                     }
                     break;
-                case "Inlet Rear":
+                case "Rear Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.btInjMode = btInjMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
@@ -4175,21 +4175,21 @@ namespace ChroZenService
         {
             switch (title.ToString())
             {
-                case "Inlet Front":
+                case "Front Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet.btTempMode = btTempMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Front.packet));
                     }
                     break;
-                case "Inlet Center":
+                case "Center Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet.btTempMode = btTempMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
              DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Center.packet));
                     }
                     break;
-                case "Inlet Rear":
+                case "Rear Inlet":
                     {
                         DataManager.t_PACKCODE_CHROZEN_INLET_SETTING_Rear.packet.btTempMode = btTempMode;
                         tcpManager.Send(T_PACKCODE_CHROZEN_INLET_SETTINGManager.MakePACKCODE_SET(
