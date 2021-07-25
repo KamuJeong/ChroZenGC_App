@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"     
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.KeyPad" BackgroundColor="#20FFFFFF">
+    <ContentPage.Content>
+        <Frame BorderColor="{StaticResource CS_COLOR_KEYPAD_BACKGROUND}" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BACKGROUND}" CornerRadius="10" Margin="20" Padding="20" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+            <Grid>
+                <Grid.Resources>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger TargetType="Button"  Property="IsEnabled" Value="False">
+                                <Setter Property="BackgroundColor" Value="Transparent" />
+                                <Setter Property="TextColor" Value="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" />
+                                <Setter Property="BorderColor" Value="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" />
+                            </Trigger>
+                        </Style.Triggers>
+
+                        <Setter Property="FontSize" Value="Medium" />
+                        <Setter Property="TextColor" Value="White" />
+                        <Setter Property="CornerRadius" Value="10" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" />
+                        <Setter Property="BorderWidth" Value="1" />
+                        <Setter Property="BorderColor" Value="White"/>
+                        <Setter Property="Command" Value="{Binding KeyCommand}"/>
+                        <Setter Property="CommandParameter" Value="{Binding Source={RelativeSource Self}, Path=Text}" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="{Binding ButtonWidth}"/>
+                    <RowDefinition Height="{Binding ButtonWidth}"/>
+                    <RowDefinition Height="{Binding ButtonWidth}"/>
+                    <RowDefinition Height="{Binding ButtonWidth}"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{Binding ButtonWidth}"/>
+                    <ColumnDefinition Width="{Binding ButtonWidth}"/>
+                    <ColumnDefinition Width="{Binding ButtonWidth}"/>
+                    <ColumnDefinition Width="{Binding ButtonWidth}"/>
+                    <ColumnDefinition Width="{Binding ButtonWidth}"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"  CornerRadius="10" BorderColor="White" Padding="0">
+                    <Label Text="{Binding Name}" TextColor="White"  FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
+                <Label Grid.Row="0" Grid.Column="2" Text="MAX" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontSize="Medium"/>
+                <Label Grid.Row="1" Grid.Column="2" TextColor="White" Text="{Binding MaxValue}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Medium"/>
+                <Frame BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="2"  CornerRadius="10" BorderColor="White" Padding="0">
+                    <Frame.Triggers>
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsModified}" Value="False">
+                            <Setter Property="BackgroundColor" Value="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsValid}" Value="False">
+                            <Setter Property="BackgroundColor" Value="red"/>
+                        </DataTrigger>
+                    </Frame.Triggers>
+
+                    <Label Text="{Binding CurrentValue}" TextColor="White"  FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
+
+
+                <Button Grid.Row="2" Grid.RowSpan="2" Text="ON" FontSize="Medium" />
+                <Button Grid.Row="4" Grid.RowSpan="2" Text="OFF" FontSize="Medium" />
+
+                <Button Grid.Row="2" Grid.Column="4" Text="CE" BackgroundColor="Red" FontSize="Medium" />
+                <Button Grid.Row="3" Grid.Column="4" Text="DEL" FontSize="Medium" />
+                <Button Grid.Row="4" Grid.Column="4" Text="OK" Grid.RowSpan="2" FontSize="Medium" />
+
+                <Button Grid.Row="2" Grid.Column="1" Text="1" />
+                <Button Grid.Row="2" Grid.Column="2" Text="2" />
+                <Button Grid.Row="2" Grid.Column="3" Text="3" />
+                <Button Grid.Row="3" Grid.Column="1" Text="4" />
+                <Button Grid.Row="3" Grid.Column="2" Text="5" />
+                <Button Grid.Row="3" Grid.Column="3" Text="6" />
+                <Button Grid.Row="4" Grid.Column="1" Text="7" />
+                <Button Grid.Row="4" Grid.Column="2" Text="8" />
+                <Button Grid.Row="4" Grid.Column="3" Text="9" />
+                <Button Grid.Row="5" Grid.Column="1" Text="." />
+                <Button Grid.Row="5" Grid.Column="2" Text="0" />
+                <Button Grid.Row="5" Grid.Column="3" Text="-" />
+            </Grid>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

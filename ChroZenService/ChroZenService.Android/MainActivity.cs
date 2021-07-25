@@ -9,10 +9,11 @@ using Android.OS;
 using System.Threading.Tasks;
 using System.IO;
 using Android.Util;
+using Xamarin.Essentials;
 
 namespace ChroZenService.Droid
 {
-    [Activity(Label = "ChroZenService", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true,  HardwareAccelerated =true,  ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "ChroZenService", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -26,6 +27,8 @@ namespace ChroZenService.Droid
             Window.AddFlags(WindowManagerFlags.Fullscreen);
             Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
             base.OnCreate(savedInstanceState);
+
+//            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             global::Xamarin.Forms.Forms.SetFlags(new string[] { "RadioButton_Experimental", "Brush_Experimental", "Shapes_Experimental" });
 
@@ -91,14 +94,9 @@ namespace ChroZenService.Droid
             //    }
             //});
 
-            try
-            {
-                LoadApplication(new App()); 
-            }
-            catch (Exception e)
-            {
-                string errString = string.Format("Message : {0}, StackTrace : {1}", e.Message, e.StackTrace);
-            }
+            LoadApplication(new App());
+
+
         }
 
         private void DecorView_SystemUiVisibilityChange(object sender, View.SystemUiVisibilityChangeEventArgs e)

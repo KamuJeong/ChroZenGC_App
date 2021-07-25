@@ -4,28 +4,24 @@
              xmlns:local="clr-namespace:ChroZenService"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             x:Class="ChroZenService.View_Main_Root"
-             WidthRequest="600"
-             HeightRequest="945">
-    <ContentPage.BindingContext>
-        <local:ViewModelMainPage/>
-    </ContentPage.BindingContext>
-    <!--<AbsoluteLayout>-->
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <!--메인 페이지-->
-            <Grid BackgroundColor="{StaticResource CS_COLOR_ROOT_BACKGROUND}" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="55"/>
-                    <RowDefinition Height="793"/>
-                    <RowDefinition Height="0"/>
-                    <RowDefinition Height="0"/>
-                    <RowDefinition Height="0"/>
-                    <RowDefinition Height="85"/>
-                </Grid.RowDefinitions>
-                <!--Header-->
-                <local:View_Main_Header Grid.Row="0" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}"/>
+             x:Class="ChroZenService.View_Root"
+            >
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid BackgroundColor="{StaticResource CS_COLOR_ROOT_BACKGROUND}" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-                <!--메인 페이지-->
+            <local:View_Header Grid.Row="0" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}" VerticalOptions="Start" />
+
+
+            <ContentView Grid.Row="1" Content="{Binding MainView}" />
+
+
+            <!--메인 페이지-->
+            <!--
                 <Grid Grid.Row="1" IsVisible="{Binding IsMainPageVisible}">
 
                     <Grid.RowDefinitions>
@@ -40,31 +36,30 @@
  
                     <local:YL_Chart Grid.Row="3" HorizontalOptions="Center" WidthRequest="600" ChartRawData="{Binding ViewModel_MainChart.ChartElementRawData}" />
 
-                    <local:View_Main_Center Grid.Row="4"/>
-                </Grid>
+                </Grid>-->
 
-                <!--설정 페이지-->
+            <!--설정 페이지-->
+            <!--
                 <local:View_Config_Root Grid.Row="1" IsVisible="{Binding IsConfigPageVisible}"/>
-                <!--시스템 페이지-->
-                <local:View_System_Root Grid.Row="1" IsVisible="{Binding IsSystemPageVisible}"/>
+                -->
+            <!--시스템 페이지-->
+            <!--
+                <local:View_System_Root Grid.Row="1" IsVisible="{Binding IsSystemPageVisible}"/>-->
 
-                <!--Footer-->
-                <local:View_Footer Grid.Row="5" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}"/>
 
-            </Grid>
-            <local:KeyPad HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" 
-                          IsVisible="{Binding ViewModel_KeyPad.IsKeyPadShown}"
-                          CurrentValue="{Binding ViewModel_KeyPad.CurrentValue}"
-                          Title="{Binding ViewModel_KeyPad.Title}"
-                          KeyPadType="{Binding ViewModel_KeyPad.KeyPadType}"
-                          MaxValue="{Binding ViewModel_KeyPad.MaxValue}"
-                          MinValue="{Binding ViewModel_KeyPad.MinValue}"
-                          />
+            <!--<local:View_Main_Center Grid.Row="2"/>-->
 
-            <!--에러 페이지-->
-            <!--<local:View_Error IsVisible="{Binding IsErrorPopupVisible}"/>-->
+
+
+            <local:View_Footer Grid.Row="2" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}"/>
+
+        </Grid>
+
+
+        <!--에러 페이지-->
+        <!--<local:View_Error IsVisible="{Binding IsErrorPopupVisible}"/>-->
         <!--<local:View_Splash_Root x:Name="SplashPage" IsVisible="true" />-->
-            <!--<Grid x:Name="LoginPage"  IsVisible="{Binding IsLoginPageVisible}">
+        <!--<Grid x:Name="LoginPage"  IsVisible="{Binding IsLoginPageVisible}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="300"/>
                     <RowDefinition Height="150"/>
@@ -93,6 +88,6 @@
                                           Background="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}" />
                 </Grid>
             </Grid>-->
-        </Grid>
-    <!--</AbsoluteLayout>-->
+    </Grid>
+
 </ContentPage>

@@ -11,7 +11,7 @@ namespace ChroZenService
         {
             InitializeComponent();
 
-            MainPage = new View_Main_Root();
+            MainPage = new View_Root();
         }
 
         protected override void OnStart()

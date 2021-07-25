@@ -10,113 +10,113 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Common\Resources\Images\bg.png" />
-    <None Remove="Common\Resources\Images\bg_info.png" />
-    <None Remove="Common\Resources\Images\book_20.png" />
-    <None Remove="Common\Resources\Images\Brukerlogo.png" />
-    <None Remove="Common\Resources\Images\btnTemperature.png" />
-    <None Remove="Common\Resources\Images\btnTemperatureHover.png" />
-    <None Remove="Common\Resources\Images\btn_bot_01.png" />
-    <None Remove="Common\Resources\Images\btn_bot_02.png" />
-    <None Remove="Common\Resources\Images\btn_bot_03.png" />
-    <None Remove="Common\Resources\Images\btn_bot_11.png" />
-    <None Remove="Common\Resources\Images\btn_bot_12.png" />
-    <None Remove="Common\Resources\Images\btn_bot_13.png" />
-    <None Remove="Common\Resources\Images\btn_off.png" />
-    <None Remove="Common\Resources\Images\btn_off.svg" />
-    <None Remove="Common\Resources\Images\btn_on.png" />
-    <None Remove="Common\Resources\Images\btn_on.svg" />
-    <None Remove="Common\Resources\Images\calib_stop.jpg" />
-    <None Remove="Common\Resources\Images\chrozen.gif" />
-    <None Remove="Common\Resources\Images\chrozen.jpg" />
-    <None Remove="Common\Resources\Images\Closebox.png" />
-    <None Remove="Common\Resources\Images\close_pop.png" />
-    <None Remove="Common\Resources\Images\compass_bg.png" />
-    <None Remove="Common\Resources\Images\flash_20%402x.png" />
-    <None Remove="Common\Resources\Images\home_center.png" />
-    <None Remove="Common\Resources\Images\home_side1.png" />
-    <None Remove="Common\Resources\Images\home_side2.png" />
-    <None Remove="Common\Resources\Images\home_side3.png" />
-    <None Remove="Common\Resources\Images\ico_01.png" />
-    <None Remove="Common\Resources\Images\ico_02.png" />
-    <None Remove="Common\Resources\Images\ico_03.png" />
-    <None Remove="Common\Resources\Images\logo.png" />
-    <None Remove="Common\Resources\Images\MinusGray.png" />
-    <None Remove="Common\Resources\Images\MinusGrayHover.png" />
-    <None Remove="Common\Resources\Images\monitor_error.jpg" />
-    <None Remove="Common\Resources\Images\monitor_warning.jpg" />
-    <None Remove="Common\Resources\Images\PlusGray.png" />
-    <None Remove="Common\Resources\Images\PlusGrayHover.png" />
-    <None Remove="Common\Resources\Images\reset_20.png" />
-    <None Remove="Common\Resources\Images\right_bg.png" />
-    <None Remove="Common\Resources\Images\right_btn01.png" />
-    <None Remove="Common\Resources\Images\right_btn02.png" />
-    <None Remove="Common\Resources\Images\settings_20.png" />
-    <None Remove="Common\Resources\Images\side_bot.png" />
-    <None Remove="Common\Resources\Images\side_mid.png" />
-    <None Remove="Common\Resources\Images\side_top.png" />
-    <None Remove="Common\Resources\Images\start.png" />
-    <None Remove="Common\Resources\Images\temperature_30.png" />
-    <None Remove="Common\Resources\Images\toggle_off.png" />
-    <None Remove="Common\Resources\Images\toggle_off.svg" />
-    <None Remove="Common\Resources\Images\toggle_on.png" />
-    <None Remove="Common\Resources\Images\toggle_on.svg" />
-    <None Remove="Common\Resources\Images\Warning.png" />
+    <None Remove="Images\bg.png" />
+    <None Remove="Images\bg_info.png" />
+    <None Remove="Images\book_20.png" />
+    <None Remove="Images\Brukerlogo.png" />
+    <None Remove="Images\btnTemperature.png" />
+    <None Remove="Images\btnTemperatureHover.png" />
+    <None Remove="Images\btn_bot_01.png" />
+    <None Remove="Images\btn_bot_02.png" />
+    <None Remove="Images\btn_bot_03.png" />
+    <None Remove="Images\btn_bot_11.png" />
+    <None Remove="Images\btn_bot_12.png" />
+    <None Remove="Images\btn_bot_13.png" />
+    <None Remove="Images\btn_off.png" />
+    <None Remove="Images\btn_off.svg" />
+    <None Remove="Images\btn_on.png" />
+    <None Remove="Images\btn_on.svg" />
+    <None Remove="Images\calib_stop.jpg" />
+    <None Remove="Images\chrozen.gif" />
+    <None Remove="Images\chrozen.jpg" />
+    <None Remove="Images\Closebox.png" />
+    <None Remove="Images\close_pop.png" />
+    <None Remove="Images\compass_bg.png" />
+    <None Remove="Images\flash_20%402x.png" />
+    <None Remove="Images\home_center.png" />
+    <None Remove="Images\home_side1.png" />
+    <None Remove="Images\home_side2.png" />
+    <None Remove="Images\home_side3.png" />
+    <None Remove="Images\ico_01.png" />
+    <None Remove="Images\ico_02.png" />
+    <None Remove="Images\ico_03.png" />
+    <None Remove="Images\logo.png" />
+    <None Remove="Images\MinusGray.png" />
+    <None Remove="Images\MinusGrayHover.png" />
+    <None Remove="Images\monitor_error.jpg" />
+    <None Remove="Images\monitor_warning.jpg" />
+    <None Remove="Images\PlusGray.png" />
+    <None Remove="Images\PlusGrayHover.png" />
+    <None Remove="Images\reset_20.png" />
+    <None Remove="Images\right_bg.png" />
+    <None Remove="Images\right_btn01.png" />
+    <None Remove="Images\right_btn02.png" />
+    <None Remove="Images\settings_20.png" />
+    <None Remove="Images\side_bot.png" />
+    <None Remove="Images\side_mid.png" />
+    <None Remove="Images\side_top.png" />
+    <None Remove="Images\start.png" />
+    <None Remove="Images\temperature_30.png" />
+    <None Remove="Images\toggle_off.png" />
+    <None Remove="Images\toggle_off.svg" />
+    <None Remove="Images\toggle_on.png" />
+    <None Remove="Images\toggle_on.svg" />
+    <None Remove="Images\Warning.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Common\Resources\Images\bg.png" />
-    <EmbeddedResource Include="Common\Resources\Images\bg_info.png" />
-    <EmbeddedResource Include="Common\Resources\Images\book_20.png" />
-    <EmbeddedResource Include="Common\Resources\Images\Brukerlogo.png" />
-    <EmbeddedResource Include="Common\Resources\Images\btnTemperature.png" />
-    <EmbeddedResource Include="Common\Resources\Images\btnTemperatureHover.png" />
-    <EmbeddedResource Include="Common\Resources\Images\btn_bot_01.png" />
-    <EmbeddedResource Include="Common\Resources\Images\btn_bot_02.png" />
-    <Content Include="Common\Resources\Images\btn_bot_03.png" />
-    <EmbeddedResource Include="Common\Resources\Images\btn_bot_11.png" />
-    <EmbeddedResource Include="Common\Resources\Images\btn_bot_12.png" />
-    <EmbeddedResource Include="Common\Resources\Images\btn_bot_13.png" />
-    <EmbeddedResource Include="Common\Resources\Images\btn_off.png" />
-    <EmbeddedResource Include="Common\Resources\Images\btn_off.svg" />
-    <EmbeddedResource Include="Common\Resources\Images\btn_on.png" />
-    <EmbeddedResource Include="Common\Resources\Images\btn_on.svg" />
-    <EmbeddedResource Include="Common\Resources\Images\calib_stop.jpg" />
-    <EmbeddedResource Include="Common\Resources\Images\chrozen.gif" />
-    <EmbeddedResource Include="Common\Resources\Images\chrozen.jpg" />
-    <EmbeddedResource Include="Common\Resources\Images\Closebox.png" />
-    <EmbeddedResource Include="Common\Resources\Images\close_pop.png" />
-    <EmbeddedResource Include="Common\Resources\Images\compass_bg.png" />
-    <EmbeddedResource Include="Common\Resources\Images\flash_20@2x.png" />
-    <EmbeddedResource Include="Common\Resources\Images\home_center.png" />
-    <EmbeddedResource Include="Common\Resources\Images\home_side1.png" />
-    <EmbeddedResource Include="Common\Resources\Images\home_side2.png" />
-    <EmbeddedResource Include="Common\Resources\Images\home_side3.png" />
-    <EmbeddedResource Include="Common\Resources\Images\ico_01.png" />
-    <EmbeddedResource Include="Common\Resources\Images\ico_02.png" />
-    <EmbeddedResource Include="Common\Resources\Images\ico_03.png" />
-    <EmbeddedResource Include="Common\Resources\Images\logo.png" />
-    <EmbeddedResource Include="Common\Resources\Images\MinusGray.png" />
-    <EmbeddedResource Include="Common\Resources\Images\MinusGrayHover.png" />
-    <EmbeddedResource Include="Common\Resources\Images\monitor_error.jpg" />
-    <EmbeddedResource Include="Common\Resources\Images\monitor_warning.jpg" />
-    <EmbeddedResource Include="Common\Resources\Images\PlusGray.png" />
-    <EmbeddedResource Include="Common\Resources\Images\PlusGrayHover.png" />
-    <EmbeddedResource Include="Common\Resources\Images\reset_20.png" />
-    <EmbeddedResource Include="Common\Resources\Images\right_bg.png" />
-    <EmbeddedResource Include="Common\Resources\Images\right_btn01.png" />
-    <EmbeddedResource Include="Common\Resources\Images\right_btn02.png" />
-    <EmbeddedResource Include="Common\Resources\Images\settings_20.png" />
-    <EmbeddedResource Include="Common\Resources\Images\side_bot.png" />
-    <EmbeddedResource Include="Common\Resources\Images\side_mid.png" />
-    <EmbeddedResource Include="Common\Resources\Images\side_top.png" />
-    <EmbeddedResource Include="Common\Resources\Images\start.png" />
-    <EmbeddedResource Include="Common\Resources\Images\temperature_30.png" />
-    <EmbeddedResource Include="Common\Resources\Images\toggle_off.png" />
-    <EmbeddedResource Include="Common\Resources\Images\toggle_off.svg" />
-    <EmbeddedResource Include="Common\Resources\Images\toggle_on.png" />
-    <EmbeddedResource Include="Common\Resources\Images\toggle_on.svg" />
-    <EmbeddedResource Include="Common\Resources\Images\Warning.png" />
+    <EmbeddedResource Include="Images\bg.png" />
+    <EmbeddedResource Include="Images\bg_info.png" />
+    <EmbeddedResource Include="Images\book_20.png" />
+    <EmbeddedResource Include="Images\Brukerlogo.png" />
+    <EmbeddedResource Include="Images\btnTemperature.png" />
+    <EmbeddedResource Include="Images\btnTemperatureHover.png" />
+    <EmbeddedResource Include="Images\btn_bot_01.png" />
+    <EmbeddedResource Include="Images\btn_bot_02.png" />
+    <EmbeddedResource Include="Images\btn_bot_03.png" />
+    <EmbeddedResource Include="Images\btn_bot_11.png" />
+    <EmbeddedResource Include="Images\btn_bot_12.png" />
+    <EmbeddedResource Include="Images\btn_bot_13.png" />
+    <EmbeddedResource Include="Images\btn_off.png" />
+    <EmbeddedResource Include="Images\btn_off.svg" />
+    <EmbeddedResource Include="Images\btn_on.png" />
+    <EmbeddedResource Include="Images\btn_on.svg" />
+    <EmbeddedResource Include="Images\calib_stop.jpg" />
+    <EmbeddedResource Include="Images\chrozen.gif" />
+    <EmbeddedResource Include="Images\chrozen.jpg" />
+    <EmbeddedResource Include="Images\Closebox.png" />
+    <EmbeddedResource Include="Images\close_pop.png" />
+    <EmbeddedResource Include="Images\compass_bg.png" />
+    <EmbeddedResource Include="Images\flash_20@2x.png" />
+    <EmbeddedResource Include="Images\home_center.png" />
+    <EmbeddedResource Include="Images\home_side1.png" />
+    <EmbeddedResource Include="Images\home_side2.png" />
+    <EmbeddedResource Include="Images\home_side3.png" />
+    <EmbeddedResource Include="Images\ico_01.png" />
+    <EmbeddedResource Include="Images\ico_02.png" />
+    <EmbeddedResource Include="Images\ico_03.png" />
+    <EmbeddedResource Include="Images\logo.png" />
+    <EmbeddedResource Include="Images\MinusGray.png" />
+    <EmbeddedResource Include="Images\MinusGrayHover.png" />
+    <EmbeddedResource Include="Images\monitor_error.jpg" />
+    <EmbeddedResource Include="Images\monitor_warning.jpg" />
+    <EmbeddedResource Include="Images\PlusGray.png" />
+    <EmbeddedResource Include="Images\PlusGrayHover.png" />
+    <EmbeddedResource Include="Images\reset_20.png" />
+    <EmbeddedResource Include="Images\right_bg.png" />
+    <EmbeddedResource Include="Images\right_btn01.png" />
+    <EmbeddedResource Include="Images\right_btn02.png" />
+    <EmbeddedResource Include="Images\settings_20.png" />
+    <EmbeddedResource Include="Images\side_bot.png" />
+    <EmbeddedResource Include="Images\side_mid.png" />
+    <EmbeddedResource Include="Images\side_top.png" />
+    <EmbeddedResource Include="Images\start.png" />
+    <EmbeddedResource Include="Images\temperature_30.png" />
+    <EmbeddedResource Include="Images\toggle_off.png" />
+    <EmbeddedResource Include="Images\toggle_off.svg" />
+    <EmbeddedResource Include="Images\toggle_on.png" />
+    <EmbeddedResource Include="Images\toggle_on.svg" />
+    <EmbeddedResource Include="Images\Warning.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -124,6 +124,7 @@
     <PackageReference Include="SkiaSharp" Version="1.68.1" />
     <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="1.68.1" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
     <PackageReference Include="Xamarin.Forms.BehaviorsPack" Version="2.2.0" />
   </ItemGroup>
@@ -169,19 +170,19 @@
     <EmbeddedResource Update="Common\UserControl\ControlMenu\UC_STOP_Button.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Common\UserControl\KeyPad\KeyPad.xaml">
+    <EmbeddedResource Update="View\KeyPad.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Common\UserControl\Editor\TextBoxEx.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Common\UserControl\Chart\ChartChild\View_ChartXAxis.xaml">
+    <EmbeddedResource Update="View\Main\Chart\ChartChild\View_ChartXAxis.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Common\UserControl\Chart\ChartChild\View_ChartYAxis.xaml">
+    <EmbeddedResource Update="View\Main\Chart\ChartChild\View_ChartYAxis.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Common\UserControl\Chart\YL_Chart.xaml">
+    <EmbeddedResource Update="View\Main\Chart\YL_Chart.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Common\UserControl\Common\UC_MainPageButton.xaml">
@@ -193,64 +194,67 @@
     <EmbeddedResource Update="Common\UserControl\MainPage\UC_MainPageInletDetailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Auxillary\View_Config_AuxFlow.xaml">
+    <EmbeddedResource Update="View\Config\Config Auxillary\View_Config_AuxFlow.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Auxillary\View_Config_AuxTemperature.xaml">
+    <EmbeddedResource Update="View\Config\Config Auxillary\View_Config_AuxTemperature.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Det\View_Config_DetConfig_Front.xaml">
+    <EmbeddedResource Update="View\Config\Config Det\View_Config_DetConfig_Front.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Det\View_Config_DetSettings_Front.xaml">
+    <EmbeddedResource Update="View\Config\Config Det\View_Config_DetSettings_Front.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Inlet\View_Config_InletConfig_Center.xaml">
+    <EmbeddedResource Update="View\Config\Config Inlet\View_Config_InletConfig_Center.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Inlet\View_Config_InletSettings_Rear.xaml">
+    <EmbeddedResource Update="View\Config\Config Inlet\View_Config_InletSettings_Rear.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Oven\View_Config_OvenConfig.xaml">
+    <EmbeddedResource Update="View\Config\Config Oven\View_Config_OvenConfig.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Oven\View_Config_OvenSettings.xaml">
+    <EmbeddedResource Update="View\Config\Config Oven\View_Config_OvenSettings.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Signal\View_Config_Signal1.xaml">
+    <EmbeddedResource Update="View\Config\Config Signal\View_Config_Signal1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Valve\View_Config_ValveInitialState.xaml">
+    <EmbeddedResource Update="View\Config\Config Valve\View_Config_ValveInitialState.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Config\Child\Config Valve\View_Config_ValveProgram.xaml">
+    <EmbeddedResource Update="View\Config\Config Valve\View_Config_ValveProgram.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Root\View_Config_Root.xaml">
+    <EmbeddedResource Update="View\Config\View_Config_Root.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Child\Error\View_Error.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Main\CenterChild\View_Main_Center_Center.xaml">
+    <EmbeddedResource Update="View\Main\View_Main.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Main\CenterChild\View_Main_Center_Left.xaml">
+    <EmbeddedResource Update="View\Main\Center\View_Main_Center_Center.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Main\CenterChild\View_Main_Center_Right.xaml">
+    <EmbeddedResource Update="View\Main\Center\View_Main_Center_Left.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Main\View_Footer.xaml">
+    <EmbeddedResource Update="View\Main\Center\View_Main_Center_Right.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Main\View_Main_Center.xaml">
+    <EmbeddedResource Update="View\Root\View_Footer.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Main\View_Main_Header.xaml">
+    <EmbeddedResource Update="View\Main\Center\View_Main_Center.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Child\Main\View_Main_Top.xaml">
+    <EmbeddedResource Update="View\Root\View_Header.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\Main\View_Main_Top.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Child\System\Child\Calib\Calib AuxTemp\View_System_Calib_AuxTemp.xaml">
@@ -310,7 +314,7 @@
     <EmbeddedResource Update="View\Root\View_Splash_Root.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Root\View_System_Root.xaml">
+    <EmbeddedResource Update="View\Child\View_System_Root.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -397,49 +401,49 @@
     <Compile Update="Common\UserControl\MainPage\LogIn\UC_LogInIP_Set.xaml.cs">
       <DependentUpon>UC_LogInIP_Set.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetConfig_Front.xaml.cs">
+    <Compile Update="View\Config\Config Det\View_Config_DetConfig_Front.xaml.cs">
       <DependentUpon>View_Config_DetConfig_Front.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetConfig_Rear.xaml.cs">
+    <Compile Update="View\Config\Config Det\View_Config_DetConfig_Rear.xaml.cs">
       <DependentUpon>View_Config_DetConfig_Rear.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetConfig_Center.xaml.cs">
+    <Compile Update="View\Config\Config Det\View_Config_DetConfig_Center.xaml.cs">
       <DependentUpon>View_Config_DetConfig_Center.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetSettings_Front.xaml.cs">
+    <Compile Update="View\Config\Config Det\View_Config_DetSettings_Front.xaml.cs">
       <DependentUpon>View_Config_DetSettings_Front.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetSettings_Rear.xaml.cs">
+    <Compile Update="View\Config\Config Det\View_Config_DetSettings_Rear.xaml.cs">
       <DependentUpon>View_Config_DetSettings_Rear.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Det\View_Config_DetSettings_Center.xaml.cs">
+    <Compile Update="View\Config\Config Det\View_Config_DetSettings_Center.xaml.cs">
       <DependentUpon>View_Config_DetSettings_Center.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Inlet\View_Config_InletConfig_Center.xaml.cs">
+    <Compile Update="View\Config\Config Inlet\View_Config_InletConfig_Center.xaml.cs">
       <DependentUpon>View_Config_InletConfig_Center.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Inlet\View_Config_InletConfig_Rear.xaml.cs">
+    <Compile Update="View\Config\Config Inlet\View_Config_InletConfig_Rear.xaml.cs">
       <DependentUpon>View_Config_InletConfig_Rear.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Inlet\View_Config_InletConfig_Front.xaml.cs">
+    <Compile Update="View\Config\Config Inlet\View_Config_InletConfig_Front.xaml.cs">
       <DependentUpon>View_Config_InletConfig_Front.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Inlet\View_Config_InletSettings_Rear.xaml.cs">
+    <Compile Update="View\Config\Config Inlet\View_Config_InletSettings_Rear.xaml.cs">
       <DependentUpon>View_Config_InletSettings_Rear.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Inlet\View_Config_InletSettings_Front.xaml.cs">
+    <Compile Update="View\Config\Config Inlet\View_Config_InletSettings_Front.xaml.cs">
       <DependentUpon>View_Config_InletSettings_Front.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Inlet\View_Config_InletSettings_Center.xaml.cs">
+    <Compile Update="View\Config\Config Inlet\View_Config_InletSettings_Center.xaml.cs">
       <DependentUpon>View_Config_InletSettings_Center.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Signal\View_Config_Signal1.xaml.cs">
+    <Compile Update="View\Config\Config Signal\View_Config_Signal1.xaml.cs">
       <DependentUpon>View_Config_Signal1.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Signal\View_Config_Signal3.xaml.cs">
+    <Compile Update="View\Config\Config Signal\View_Config_Signal3.xaml.cs">
       <DependentUpon>View_Config_Signal3.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Child\Config\Child\Config Signal\View_Config_Signal2.xaml.cs">
+    <Compile Update="View\Config\Config Signal\View_Config_Signal2.xaml.cs">
       <DependentUpon>View_Config_Signal2.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\Child\System\Child\Calib\Calib AuxTemp\View_System_Calib_AuxTemp2.xaml.cs">
@@ -478,12 +482,19 @@
     <Compile Update="View\Child\System\Child\Calib\View_System_Calib_Root.xaml.cs">
       <DependentUpon>View_System_Calib_Root.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Root\View_Main_Root.xaml.cs">
-      <DependentUpon>View_Main_Root.xaml</DependentUpon>
+    <Compile Update="View\Main\View_Main.xaml.cs">
+      <DependentUpon>View_Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Root\View_Header.xaml.cs">
+      <DependentUpon>View_Header.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Root\View_Root.xaml.cs">
+      <DependentUpon>View_Root.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Common\Resources\" />
     <Folder Include="ViewModel\Child\System\Method\Child\NewFolder1\" />
     <Folder Include="ViewModel\Child\System\Method\Child\NewFolder\" />
   </ItemGroup>

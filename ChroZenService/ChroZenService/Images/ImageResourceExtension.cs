@@ -4,7 +4,7 @@ using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ChroZenService.Common.Util
+namespace ChroZenService
 {
     [ContentProperty("Source")]
     public class ImageResourceExtension : IMarkupExtension

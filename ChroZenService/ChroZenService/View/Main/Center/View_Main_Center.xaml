@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.View_Main_Center">
+    <ContentView.Content>
+        <Grid Margin="10,0,10,0">
+            <!--Main Center Image Backgournd Layer-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="{local:ImageResource ChroZenService.Images.home_side1.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Left.IsTopVisible}"/>
+                <Image Grid.Column="0" Source="{local:ImageResource ChroZenService.Images.home_side2.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Left.IsCenterVisible}"/>
+                <Image Grid.Column="0" Source="{local:ImageResource ChroZenService.Images.home_side3.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Left.IsBottomVisible}"/>
+                <Image Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.home_center.png}" Aspect="Fill" />
+                <Image Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.home_side1.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Right.IsTopVisible}"/>
+                <Image Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.home_side2.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Right.IsCenterVisible}"/>
+                <Image Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.home_side3.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Right.IsBottomVisible}"/>
+            </Grid>
+            <!--Main Center Control Layer-->
+            <!--<Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="193"/>
+                    <ColumnDefinition Width="194"/>
+                    <ColumnDefinition Width="193"/>
+                </Grid.ColumnDefinitions>
+                <local:View_Main_Center_Left Grid.Column="0" HorizontalOptions="Fill"/>
+                <local:View_Main_Center_Center Grid.Column="1" HorizontalOptions="Fill" />
+                <local:View_Main_Center_Right Grid.Column="2" HorizontalOptions="Fill"/>
+            </Grid>-->
+        </Grid>
+    </ContentView.Content>
+</ContentView>

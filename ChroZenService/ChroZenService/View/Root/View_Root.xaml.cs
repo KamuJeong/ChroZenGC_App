@@ -11,22 +11,27 @@ using static ChroZenService.ChroZenService_Const;
 
 namespace ChroZenService
 {
-    public partial class View_Main_Root : ContentPage
+    public partial class View_Root : ContentPage
     {
-        public View_Main_Root()
+        public View_Root()
         {
             InitializeComponent();
 
-            TCPManager tcpManager = new TCPManager();
-            EventManager.MainInitializedEvent(tcpManager);
-            Task.Factory.StartNew(() => { tcpManager.ConnectDevice("192.168.0.88", 4242); });
+            //TCPManager tcpManager = new TCPManager();
+            //EventManager.MainInitializedEvent(tcpManager);
+            //Task.Factory.StartNew(() => { tcpManager.ConnectDevice("192.168.0.88", 4242); });
 
-            NavigationPage.SetHasNavigationBar(this, false);
+            //NavigationPage.SetHasNavigationBar(this, false);
+
+            BindingContext = new ViewModel_Root();
          
         }
 
         protected override void OnAppearing()
         {
+
+
+
             //Thread t = new Thread(WaitingUntilVisibleThenRemoveSplashScreen);
             //t.Start();
             //WaitingUntilVisibleThenRemoveSplashScreen();

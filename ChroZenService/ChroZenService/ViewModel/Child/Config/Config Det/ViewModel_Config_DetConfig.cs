@@ -309,7 +309,6 @@ namespace ChroZenService
             ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
             {
                 IsKeyPadShown = true,
-                KeyPadType = KeyPad.E_KEYPAD_TYPE.DOUBLE,
                 MinValue = 0,
                 CancelCommand = KeyPadCancelCommand,
                 ApplyCommand = KeyPadApplyCommand,

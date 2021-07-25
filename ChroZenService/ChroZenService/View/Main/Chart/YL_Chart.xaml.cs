@@ -81,51 +81,51 @@ namespace ChroZenService
         {
             InitializeComponent();
             //skb = new SKBitmap(470, 235, SKColorType.Bgra8888, SKAlphaType.Opaque);
-            sKCanvasViewGrid.PaintSurface += OnsKCanvasViewGridPaintSurface;
-            sKCanvasViewChart.PaintSurface += OnCanvasViewPaintSurface;
-            sKCanvasViewTemperatureChart.PaintSurface += SKCanvasViewTemperatureChart_PaintSurface;
-            EventManager.onRunStarted += onRunStartedEventHandler;
-            EventManager.onRunStopped += onRunStoppedEventHandler;
-            EventManager.onMethodUpdated += onMethodUpdatedEventHandler;
-            EventManager.onRawDataUpdated += onRawDataUpdatedHandler;
-            EventManager.onTemperatureUpdated += onTemperatureUpdatedEventHandler;
-            EventManager.onDetectorSelectionChangedTo += onDetectorSelectionChangedToEventHandler;
+            //sKCanvasViewGrid.PaintSurface += OnsKCanvasViewGridPaintSurface;
+            //sKCanvasViewChart.PaintSurface += OnCanvasViewPaintSurface;
+            //sKCanvasViewTemperatureChart.PaintSurface += SKCanvasViewTemperatureChart_PaintSurface;
+            //EventManager.onRunStarted += onRunStartedEventHandler;
+            //EventManager.onRunStopped += onRunStoppedEventHandler;
+            //EventManager.onMethodUpdated += onMethodUpdatedEventHandler;
+            //EventManager.onRawDataUpdated += onRawDataUpdatedHandler;
+            //EventManager.onTemperatureUpdated += onTemperatureUpdatedEventHandler;
+            //EventManager.onDetectorSelectionChangedTo += onDetectorSelectionChangedToEventHandler;
         }
 
         private void onDetectorSelectionChangedToEventHandler(int nDetIndex)
         {
-            nSelectedDetectorIndex = nDetIndex;
-            sKCanvasViewChart.InvalidateSurface();
-            sKCanvasViewGrid.InvalidateSurface();
+            //nSelectedDetectorIndex = nDetIndex;
+            //sKCanvasViewChart.InvalidateSurface();
+            //sKCanvasViewGrid.InvalidateSurface();
         }
 
         private void OnsKCanvasViewGridPaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
-            SKImageInfo info = e.Info;
-            SKSurface surface = e.Surface;
-            SKCanvas canvas = surface.Canvas;
-            SKPaint paint = new SKPaint();
-            paint.Color = new SKColor(0x00, 0x00, 0xff, 0xff);//blue
-            canvas.Clear();
+            //SKImageInfo info = e.Info;
+            //SKSurface surface = e.Surface;
+            //SKCanvas canvas = surface.Canvas;
+            //SKPaint paint = new SKPaint();
+            //paint.Color = new SKColor(0x00, 0x00, 0xff, 0xff);//blue
+            //canvas.Clear();
 
-            //세로 Grid선          
-            for (int j = 0; j < xAxis.AxisLabels.Count; j++)
-            {
-                if (xAxis.AxisLabels[j].IsMajorTick == true)
-                {
-                    canvas.DrawLine(xAxis.AxisLabels[j].startPoint.X, 195f - 195, xAxis.AxisLabels[j].startPoint.X, 195f - 0, paint);
-                }
-            }
+            ////세로 Grid선          
+            //for (int j = 0; j < xAxis.AxisLabels.Count; j++)
+            //{
+            //    if (xAxis.AxisLabels[j].IsMajorTick == true)
+            //    {
+            //        canvas.DrawLine(xAxis.AxisLabels[j].startPoint.X, 195f - 195, xAxis.AxisLabels[j].startPoint.X, 195f - 0, paint);
+            //    }
+            //}
 
-            //가로 Grid선
-            for (int j = 0; j < detAxis.AxisLabelsArr[nSelectedDetectorIndex].Count; j++)
-            {
-                if (detAxis.AxisLabelsArr[nSelectedDetectorIndex][j].IsMajorTick == true)
-                {
-                    canvas.DrawLine(0, detAxis.AxisLabelsArr[nSelectedDetectorIndex][j].startPoint.Y, 470, detAxis.AxisLabelsArr[nSelectedDetectorIndex][j].startPoint.Y, paint);
-                    //Debug.WriteLine("Y : {0}", detAxis.AxisLabels[j].startPoint.Y);
-                }
-            }
+            ////가로 Grid선
+            //for (int j = 0; j < detAxis.AxisLabelsArr[nSelectedDetectorIndex].Count; j++)
+            //{
+            //    if (detAxis.AxisLabelsArr[nSelectedDetectorIndex][j].IsMajorTick == true)
+            //    {
+            //        canvas.DrawLine(0, detAxis.AxisLabelsArr[nSelectedDetectorIndex][j].startPoint.Y, 470, detAxis.AxisLabelsArr[nSelectedDetectorIndex][j].startPoint.Y, paint);
+            //        //Debug.WriteLine("Y : {0}", detAxis.AxisLabels[j].startPoint.Y);
+            //    }
+            //}
         }
 
         private void SKCanvasViewTemperatureChart_PaintSurface(object sender, SKPaintSurfaceEventArgs e)
@@ -216,7 +216,7 @@ namespace ChroZenService
         private void onTemperatureUpdatedEventHandler()
         {
             //Task.Factory.StartNew(() => {
-            sKCanvasViewTemperatureChart.InvalidateSurface();
+            //sKCanvasViewTemperatureChart.InvalidateSurface();
             //});
         }
 
@@ -228,7 +228,7 @@ namespace ChroZenService
         private void onRawDataUpdatedHandler()
         {
             //Task.Factory.StartNew(() => {
-            sKCanvasViewChart.InvalidateSurface();
+            //sKCanvasViewChart.InvalidateSurface();
             //});
         }
 
@@ -340,10 +340,10 @@ namespace ChroZenService
 
             if (e.StatusType == GestureStatus.Running)
             {
-                VerticalDelta += e.TotalY * VerticalDelta / 400;
-                sKCanvasViewChart.InvalidateSurface();
-                sKCanvasViewGrid.InvalidateSurface();
-                EventManager.ChartDeltaChangedEvent(e.TotalX, (float)VerticalDelta);
+                //VerticalDelta += e.TotalY * VerticalDelta / 400;
+                //sKCanvasViewChart.InvalidateSurface();
+                //sKCanvasViewGrid.InvalidateSurface();
+                //EventManager.ChartDeltaChangedEvent(e.TotalX, (float)VerticalDelta);
             }
             //Debug.WriteLine(string.Format("Axis : Pan StatusType={0}, VerticalDelta={1}, TotalY={2}", e.StatusType.ToString(), VerticalDelta, e.TotalY));
 
@@ -355,11 +355,11 @@ namespace ChroZenService
 
             if (e.StatusType == GestureStatus.Running)
             {
-                VerticalOffset += (e.TotalY * VerticalDelta * 7);
+                //VerticalOffset += (e.TotalY * VerticalDelta * 7);
 
-                sKCanvasViewChart.InvalidateSurface();
-                sKCanvasViewGrid.InvalidateSurface();
-                EventManager.ChartOffsetChangedEvent(e.TotalX, (float)VerticalOffset);
+                //sKCanvasViewChart.InvalidateSurface();
+                //sKCanvasViewGrid.InvalidateSurface();
+                //EventManager.ChartOffsetChangedEvent(e.TotalX, (float)VerticalOffset);
             }
             //Debug.WriteLine(string.Format("Chart : Pan StatusType={0}, VerticalOffset={1}, TotalY={2}", e.StatusType.ToString(), VerticalOffset, e.TotalY));
 
