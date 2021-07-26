@@ -2,26 +2,25 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ChroZenService
 {
-    public class ViewModel_Root : INotifyPropertyChanged
+    public class ViewModel_Root : Observable
     {
-        private View mainView;
-        public View MainView 
+        public ViewModel_Root()
         {
-            get => mainView;
-            set
-            {
-                if(mainView != value)
-                {
-                    mainView = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MainView)));
-                }
-            }
+            MainView = Resolver.Resolve<View_Main>();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public View MainView { get; set; }
+
+        public ICommand Home => new Command(() => MainView = Resolver.Resolve<View_Main>());
+
+        public ICommand Config => new Command(() => MainView = Resolver.Resolve<View_Config>());
+
+        public ICommand System => new Command(() => MainView = Resolver.Resolve<View_System>());
+
     }
 }

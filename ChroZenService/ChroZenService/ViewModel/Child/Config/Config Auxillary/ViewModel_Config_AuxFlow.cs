@@ -279,7 +279,7 @@ namespace ChroZenService
         private void KeyPadCancelCommandAction(object param)
         {
             Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
             mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
             //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
             //{
@@ -296,7 +296,7 @@ namespace ChroZenService
         private void KeyPadDeleteCommandAction(object param)
         {
             Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
 
             if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0)
             {
@@ -316,7 +316,7 @@ namespace ChroZenService
         private void KeyPadApplyCommandAction(object param)
         {
             Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
 
             //.시작 케이스
             if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
@@ -449,7 +449,7 @@ namespace ChroZenService
         private void KeyPadOnCommandAction(object param)
         {
             Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
 
             float tempFloatVal = 0;
             if (float.TryParse(mainVM.ViewModel_KeyPad.CurrentValue, out tempFloatVal))
@@ -615,7 +615,7 @@ namespace ChroZenService
         private void KeyPadOffCommandAction(object param)
         {
             Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
 
             switch (mainVM.ViewModel_KeyPad.KEY_PAD_SET_MEASURE_TYPE)
             {
@@ -724,7 +724,7 @@ namespace ChroZenService
         private void KeyPadKeyPadClickCommandAction(object param)
         {
             Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
             if (mainVM.ViewModel_KeyPad.IsNeedRefresh)
             {
                 mainVM.ViewModel_KeyPad.CurrentValue = "";

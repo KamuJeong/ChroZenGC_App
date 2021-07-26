@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -32,7 +31,7 @@ namespace ChroZenService
 
         public int Decimals { get; }
 
-        public string OnOffProeprty { get;  }
+        public string OnOffProeprty { get; }
     }
 
 
@@ -45,6 +44,9 @@ namespace ChroZenService
 
         public KeyPad(object propertyOwner, PropertyInfo valueProperty, PropertyInfo onoffProperty = null)
         {
+            double buttonHeight = (int)((double)Application.Current.Resources["ButtonFontSizeKey"] * 3);
+            Resources.Add("ButtonHeightKey", buttonHeight);
+
             InitializeComponent();
 
             instance = propertyOwner ?? throw new ArgumentNullException(nameof(propertyOwner));
@@ -55,22 +57,12 @@ namespace ChroZenService
             maxValue = attr?.MaxValue ?? double.PositiveInfinity;
             minValue = attr?.MinValue ?? double.NegativeInfinity;
             decimals = attr?.Decimals ?? 0;
-            onoffPropertyInfo = attr?.OnOffProeprty == null? null : instance.GetType().GetProperty(attr?.OnOffProeprty);
+            onoffPropertyInfo = attr?.OnOffProeprty == null ? null : instance.GetType().GetProperty(attr?.OnOffProeprty);
 
             CurrentValue = string.Format($"{{0:F{decimals}}}", Convert.ChangeType(valueProperty.GetValue(propertyOwner), typeof(double)));
             IsModified = false;
 
             BindingContext = this;
-        }
-
-        public double ButtonWidth
-        {
-            get
-            {
-                double w = Math.Min(DeviceDisplay.MainDisplayInfo.Width, DeviceDisplay.MainDisplayInfo.Height) / DeviceDisplay.MainDisplayInfo.Density;
-                w = Math.Floor((w - 110) / 5);
-                return w;
-            }
         }
 
         public string Name { get; }
@@ -97,7 +89,7 @@ namespace ChroZenService
 
         public string CurrentValue
         {
-            get 
+            get
             {
                 var value = (string)GetValue(CurrentValueProperty);
                 return string.IsNullOrEmpty(value) ? "0" : value;
@@ -144,6 +136,9 @@ namespace ChroZenService
                 case "ON":
                 case "OFF":
                     return OnOffKeyEnabled;
+
+                case ".":
+                    return decimals > 0;
             }
 
             return true;
@@ -212,6 +207,9 @@ namespace ChroZenService
 
         public KeyPad()
         {
+            double buttonHeight = (int)((double)Application.Current.Resources["ButtonFontSizeKey"] * 3);
+            Resources.Add("ButtonHeightKey", buttonHeight);
+
             InitializeComponent();
 
         }

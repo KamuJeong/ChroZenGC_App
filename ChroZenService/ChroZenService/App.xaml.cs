@@ -7,11 +7,20 @@ namespace ChroZenService
 {
     public partial class App : Application
     {
+        public static double ScreenHeight {get; set; }
+        public static double ScreenWidth { get; set; }
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new View_Root();
+
+            MainPage = Resolver.Resolve<View_Root>();
+
+            Resources.Add("DefaultFontSizeKey", ScreenHeight / 60);
+            Resources.Add("ButtonFontSizeKey", ScreenHeight / 45);
+            
+
         }
 
         protected override void OnStart()

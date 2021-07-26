@@ -1147,8 +1147,8 @@ namespace ChroZenService
 
         #region Property
 
-        ViewModel_Footer _ViewModel_Footer = new ViewModel_Footer();
-        public ViewModel_Footer ViewModel_Footer { get { return _ViewModel_Footer; } set { if (_ViewModel_Footer != value) { _ViewModel_Footer = value; OnPropertyChanged("ViewModel_Footer"); } } }
+//        ViewModel_Footer _ViewModel_Footer = new ViewModel_Footer();
+//        public ViewModel_Footer ViewModel_Footer { get { return _ViewModel_Footer; } set { if (_ViewModel_Footer != value) { _ViewModel_Footer = value; OnPropertyChanged("ViewModel_Footer"); } } }
 
         #region Oven
         ViewModel_Config_OvenConfig _ViewModel_Config_OvenConfig = new ViewModel_Config_OvenConfig();
@@ -1242,7 +1242,7 @@ namespace ChroZenService
                     {
                         SelectedSubMenu = E_CONFIG_SUB_MENU_TYPE.AUX_TEMPERATURE;
 
-                        _ViewModel_Footer.SelectedWindow = "Config";
+//                        _ViewModel_Footer.SelectedWindow = "Config";
                     }
                     break;
                 case E_CONFIG_MENU_TYPE.CENTER_DET:

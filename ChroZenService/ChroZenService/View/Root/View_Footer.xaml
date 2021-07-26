@@ -35,23 +35,23 @@
             <ImageButton Grid.Column="4" WidthRequest="80" HeightRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Source ="btn_bot_02.png" Command="{Binding SelectSystemMenu}"/>
         </Grid>-->
 
-        <Grid Margin="10,0,5,0" HeightRequest="72">
+        <Grid Margin="10,0,5,0" HeightRequest="80">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <!--<Label Grid.Column="0" Text="Home window" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource CS_COLOR_WHITE_0}" VerticalOptions="Center" Margin="10,0,0,0"/>-->
             <!--<Label Text="{Binding ViewModel_Footer.SelectedWindow}" FontSize="Large" FontAttributes="Bold" TextColor="{StaticResource CS_COLOR_WHITE_0}" VerticalOptions="Center" Margin="10,0,0,0"/>-->
-            <ImageButton Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.btn_bot_01.png}" Command="{Binding SelectHomeMenu}" >
+            <ImageButton Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.btn_bot_01.png}" Command="{Binding Home}" >
                 <ImageButton.Triggers>
                     <Trigger TargetType="ImageButton" Property="IsPressed" Value="True">
                         <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.btn_bot_11.png}" />
                     </Trigger>
                 </ImageButton.Triggers>
             </ImageButton>
-            <ImageButton Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.btn_bot_03.png}" Command="{Binding SelectHomeMenu}" >
+            <ImageButton Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.btn_bot_03.png}" Command="{Binding Config}" >
                 <ImageButton.Triggers>
                     <Trigger TargetType="ImageButton" Property="IsPressed" Value="True">
                         <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.btn_bot_13.png}" />

@@ -2,35 +2,110 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
-             x:Class="ChroZenService.View_Main_Center">
+             xmlns:model="clr-namespace:ChroZenService.ViewModel.Main"
+             x:Class="ChroZenService.View_Main_Center"
+             x:DataType="model:ViewModel_Main_Center">
+    <ContentView.Resources>
+        <model:ContentHeightConverter x:Key="ContentHeightConverter" />
+
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontSize" Value="{DynamicResource  ButtonFontSizeKey}" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="VerticalOptions" Value="Start" />
+
+            <Style.Triggers>
+                <Trigger TargetType="Button" Property="IsEnabled" Value="False">
+                    <Setter Property="Text" Value="Not Installed" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </ContentView.Resources>
+
     <ContentView.Content>
-        <Grid Margin="10,0,10,0">
-            <!--Main Center Image Backgournd Layer-->
+        <Grid Margin="10">
+
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Source="{local:ImageResource ChroZenService.Images.home_side1.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Left.IsTopVisible}"/>
-                <Image Grid.Column="0" Source="{local:ImageResource ChroZenService.Images.home_side2.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Left.IsCenterVisible}"/>
-                <Image Grid.Column="0" Source="{local:ImageResource ChroZenService.Images.home_side3.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Left.IsBottomVisible}"/>
+
+                <Image Grid.Column="0" Aspect="Fill">
+                    <Image.Triggers>
+                        <DataTrigger TargetType="Image" Binding="{Binding ActiveInlet}" Value="0">
+                            <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side1.png}" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Image" Binding="{Binding ActiveInlet}" Value="1">
+                            <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side2.png}" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Image" Binding="{Binding ActiveInlet}" Value="2">
+                            <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side3.png}" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="9.2*"/>
+                        <RowDefinition Height="{Binding Path=ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=0}"/>
+                        <RowDefinition Height="9.2*"/>
+                        <RowDefinition Height="{Binding Path=ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=1}"/>
+                        <RowDefinition Height="9.2*"/>
+                        <RowDefinition Height="{Binding Path=ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=2}"/>
+                        <RowDefinition Height="0.5*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Command="{Binding Inlet}" CommandParameter="0" Text="{Binding Configuration.InletType[0]}" />
+                    <Rectangle Grid.Row="1"></Rectangle>
+                    <Button Grid.Row="2" Command="{Binding Inlet}" CommandParameter="1" Text="{Binding Configuration.InletType[1]}" />
+                    <Rectangle Grid.Row="3"></Rectangle>
+                    <Button Grid.Row="4" Command="{Binding Inlet}" CommandParameter="2" Text="{Binding Configuration.InletType[2]}" />
+                    <Rectangle Grid.Row="5"></Rectangle>
+                </Grid>
+
+
+
+                <!--<Image Grid.Column="0" Source="{local:ImageResource ChroZenService.Images.home_side2.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Left.IsCenterVisible}"/>
+                <Image Grid.Column="0" Source="{local:ImageResource ChroZenService.Images.home_side3.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Left.IsBottomVisible}"/>-->
                 <Image Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.home_center.png}" Aspect="Fill" />
-                <Image Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.home_side1.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Right.IsTopVisible}"/>
-                <Image Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.home_side2.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Right.IsCenterVisible}"/>
-                <Image Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.home_side3.png}" Aspect="Fill" IsVisible="{Binding ViewModel_MainSide_Right.IsBottomVisible}"/>
+
+
+                <Image Grid.Column="2" Aspect="Fill">
+                    <Image.Triggers>
+                        <DataTrigger TargetType="Image" Binding="{Binding ActiveDetector}" Value="0">
+                            <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side1.png}" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Image" Binding="{Binding ActiveDetector}" Value="1">
+                            <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side2.png}" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Image" Binding="{Binding ActiveDetector}" Value="2">
+                            <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side3.png}" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="9.2*"/>
+                        <RowDefinition Height="{Binding Path=ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=0}"/>
+                        <RowDefinition Height="9.2*"/>
+                        <RowDefinition Height="{Binding Path=ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=1}"/>
+                        <RowDefinition Height="9.2*"/>
+                        <RowDefinition Height="{Binding Path=ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=2}"/>
+                        <RowDefinition Height="0.5*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Command="{Binding Detector}" CommandParameter="0" Text="{Binding Configuration.DetectorType[0]}" />
+                    <Rectangle Grid.Row="1"></Rectangle>
+                    <Button Grid.Row="2" Command="{Binding Detector}" CommandParameter="1" Text="{Binding Configuration.DetectorType[1]}" />
+                    <Rectangle Grid.Row="3"></Rectangle>
+                    <Button Grid.Row="4" Command="{Binding Detector}" CommandParameter="2" Text="{Binding Configuration.DetectorType[2]}" />
+                    <Rectangle Grid.Row="5"></Rectangle>
+                </Grid>
             </Grid>
-            <!--Main Center Control Layer-->
-            <!--<Grid >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="193"/>
-                    <ColumnDefinition Width="194"/>
-                    <ColumnDefinition Width="193"/>
-                </Grid.ColumnDefinitions>
-                <local:View_Main_Center_Left Grid.Column="0" HorizontalOptions="Fill"/>
-                <local:View_Main_Center_Center Grid.Column="1" HorizontalOptions="Fill" />
-                <local:View_Main_Center_Right Grid.Column="2" HorizontalOptions="Fill"/>
-            </Grid>-->
         </Grid>
     </ContentView.Content>
 </ContentView>

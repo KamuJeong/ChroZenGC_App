@@ -9,7 +9,6 @@ using Android.OS;
 using System.Threading.Tasks;
 using System.IO;
 using Android.Util;
-using Xamarin.Essentials;
 
 namespace ChroZenService.Droid
 {
@@ -28,11 +27,11 @@ namespace ChroZenService.Droid
             Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
             base.OnCreate(savedInstanceState);
 
-//            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             global::Xamarin.Forms.Forms.SetFlags(new string[] { "RadioButton_Experimental", "Brush_Experimental", "Shapes_Experimental" });
-
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            Bootstrapper.Init();
 
             int uiOptions = (int)Window.DecorView.SystemUiVisibility;
 
@@ -45,54 +44,8 @@ namespace ChroZenService.Droid
 
             Window.DecorView.SystemUiVisibilityChange += DecorView_SystemUiVisibilityChange;
 
-            //Task.Run(async () =>
-            //{
-            //    const int seconds = 30;
-            //    const string grefTag = "monodroid-gref";
-            //    const string grefsFile = "grefs.txt";
-            //    while (true)
-            //    {
-            //        var appDir = Application.ApplicationInfo.DataDir;
-            //        var grefFile = Path.Combine("/data/data", PackageName, "files/.__override__", grefsFile);
-            //        var grefFilePublic = Path.Combine(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads).AbsolutePath, grefsFile);
-            //        if (File.Exists(grefFile))
-            //        {
-            //            try
-            //            {
-            //                File.Copy(grefFile, grefFilePublic, true);
-            //                Log.Debug(grefTag, $"adb pull {grefFilePublic} {grefsFile}");
-            //            }
-            //            catch (Exception e)
-            //            {
-            //                Console.WriteLine(string.Format("GREF Log Err Message : {0}, StackTrace : {1}", e.Message, e.StackTrace));
-            //            }
-            //        }
-            //        else
-            //            Log.Debug(grefTag, "no grefs.txt found, gref logging enabled? (adb shell setprop debug.mono.log gref)");
-            //        await Task.Delay(seconds * 1000);
-            //    }
-            //});
-            //Task.Run(async () =>
-            //{
-            //    const int seconds = 120;
-            //    const string grefTag = "monodroid-gref";
-            //    const string grefsFile = "grefs.txt";
-            //    while (true)
-            //    {
-            //        var appDir = Application.ApplicationInfo.DataDir;
-            //        var grefFile = System.IO.Path.Combine("/data/data", PackageName, "files/.__override__", grefsFile);
-            //        //var grefFilePublic = System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory + Java.IO.File.Separator + "download", grefsFile);
-            //        var grefFilePublic = System.IO.Path.Combine(Android.OS.Environment.DirectoryDownloads, grefsFile);
-            //        if (System.IO.File.Exists(grefFile))
-            //        {
-            //            System.IO.File.Copy(grefFile, grefFilePublic, true);
-            //            System.Console.Write(grefTag, $"adb pull {grefFilePublic} {grefsFile}");
-            //        }
-            //        else
-            //            System.Console.Write(grefTag, "no grefs.txt found, gref logging enabled? (adb shell setprop debug.mono.log gref)");
-            //        await Task.Delay(seconds * 1000);
-            //    }
-            //});
+            App.ScreenHeight = (double)Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density;
+            App.ScreenWidth = (double)Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density;
 
             LoadApplication(new App());
 

@@ -13,7 +13,7 @@ namespace ChroZenService
 {
     public partial class View_Root : ContentPage
     {
-        public View_Root()
+        public View_Root(ViewModel_Root viewModel)
         {
             InitializeComponent();
 
@@ -23,7 +23,7 @@ namespace ChroZenService
 
             //NavigationPage.SetHasNavigationBar(this, false);
 
-            BindingContext = new ViewModel_Root();
+            BindingContext = viewModel;
          
         }
 

@@ -25,197 +25,6 @@ namespace ChroZenService.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Xamarin.Essentials.Resource.Attribute.alpha = global::ChroZenService.Droid.Resource.Attribute.alpha;
-			global::Xamarin.Essentials.Resource.Attribute.font = global::ChroZenService.Droid.Resource.Attribute.font;
-			global::Xamarin.Essentials.Resource.Attribute.fontProviderAuthority = global::ChroZenService.Droid.Resource.Attribute.fontProviderAuthority;
-			global::Xamarin.Essentials.Resource.Attribute.fontProviderCerts = global::ChroZenService.Droid.Resource.Attribute.fontProviderCerts;
-			global::Xamarin.Essentials.Resource.Attribute.fontProviderFetchStrategy = global::ChroZenService.Droid.Resource.Attribute.fontProviderFetchStrategy;
-			global::Xamarin.Essentials.Resource.Attribute.fontProviderFetchTimeout = global::ChroZenService.Droid.Resource.Attribute.fontProviderFetchTimeout;
-			global::Xamarin.Essentials.Resource.Attribute.fontProviderPackage = global::ChroZenService.Droid.Resource.Attribute.fontProviderPackage;
-			global::Xamarin.Essentials.Resource.Attribute.fontProviderQuery = global::ChroZenService.Droid.Resource.Attribute.fontProviderQuery;
-			global::Xamarin.Essentials.Resource.Attribute.fontStyle = global::ChroZenService.Droid.Resource.Attribute.fontStyle;
-			global::Xamarin.Essentials.Resource.Attribute.fontVariationSettings = global::ChroZenService.Droid.Resource.Attribute.fontVariationSettings;
-			global::Xamarin.Essentials.Resource.Attribute.fontWeight = global::ChroZenService.Droid.Resource.Attribute.fontWeight;
-			global::Xamarin.Essentials.Resource.Attribute.ttcIndex = global::ChroZenService.Droid.Resource.Attribute.ttcIndex;
-			global::Xamarin.Essentials.Resource.Color.androidx_core_ripple_material_light = global::ChroZenService.Droid.Resource.Color.androidx_core_ripple_material_light;
-			global::Xamarin.Essentials.Resource.Color.androidx_core_secondary_text_default_material_light = global::ChroZenService.Droid.Resource.Color.androidx_core_secondary_text_default_material_light;
-			global::Xamarin.Essentials.Resource.Color.browser_actions_bg_grey = global::ChroZenService.Droid.Resource.Color.browser_actions_bg_grey;
-			global::Xamarin.Essentials.Resource.Color.browser_actions_divider_color = global::ChroZenService.Droid.Resource.Color.browser_actions_divider_color;
-			global::Xamarin.Essentials.Resource.Color.browser_actions_text_color = global::ChroZenService.Droid.Resource.Color.browser_actions_text_color;
-			global::Xamarin.Essentials.Resource.Color.browser_actions_title_color = global::ChroZenService.Droid.Resource.Color.browser_actions_title_color;
-			global::Xamarin.Essentials.Resource.Color.notification_action_color_filter = global::ChroZenService.Droid.Resource.Color.notification_action_color_filter;
-			global::Xamarin.Essentials.Resource.Color.notification_icon_bg_color = global::ChroZenService.Droid.Resource.Color.notification_icon_bg_color;
-			global::Xamarin.Essentials.Resource.Dimension.browser_actions_context_menu_max_width = global::ChroZenService.Droid.Resource.Dimension.browser_actions_context_menu_max_width;
-			global::Xamarin.Essentials.Resource.Dimension.browser_actions_context_menu_min_padding = global::ChroZenService.Droid.Resource.Dimension.browser_actions_context_menu_min_padding;
-			global::Xamarin.Essentials.Resource.Dimension.compat_button_inset_horizontal_material = global::ChroZenService.Droid.Resource.Dimension.compat_button_inset_horizontal_material;
-			global::Xamarin.Essentials.Resource.Dimension.compat_button_inset_vertical_material = global::ChroZenService.Droid.Resource.Dimension.compat_button_inset_vertical_material;
-			global::Xamarin.Essentials.Resource.Dimension.compat_button_padding_horizontal_material = global::ChroZenService.Droid.Resource.Dimension.compat_button_padding_horizontal_material;
-			global::Xamarin.Essentials.Resource.Dimension.compat_button_padding_vertical_material = global::ChroZenService.Droid.Resource.Dimension.compat_button_padding_vertical_material;
-			global::Xamarin.Essentials.Resource.Dimension.compat_control_corner_material = global::ChroZenService.Droid.Resource.Dimension.compat_control_corner_material;
-			global::Xamarin.Essentials.Resource.Dimension.compat_notification_large_icon_max_height = global::ChroZenService.Droid.Resource.Dimension.compat_notification_large_icon_max_height;
-			global::Xamarin.Essentials.Resource.Dimension.compat_notification_large_icon_max_width = global::ChroZenService.Droid.Resource.Dimension.compat_notification_large_icon_max_width;
-			global::Xamarin.Essentials.Resource.Dimension.notification_action_icon_size = global::ChroZenService.Droid.Resource.Dimension.notification_action_icon_size;
-			global::Xamarin.Essentials.Resource.Dimension.notification_action_text_size = global::ChroZenService.Droid.Resource.Dimension.notification_action_text_size;
-			global::Xamarin.Essentials.Resource.Dimension.notification_big_circle_margin = global::ChroZenService.Droid.Resource.Dimension.notification_big_circle_margin;
-			global::Xamarin.Essentials.Resource.Dimension.notification_content_margin_start = global::ChroZenService.Droid.Resource.Dimension.notification_content_margin_start;
-			global::Xamarin.Essentials.Resource.Dimension.notification_large_icon_height = global::ChroZenService.Droid.Resource.Dimension.notification_large_icon_height;
-			global::Xamarin.Essentials.Resource.Dimension.notification_large_icon_width = global::ChroZenService.Droid.Resource.Dimension.notification_large_icon_width;
-			global::Xamarin.Essentials.Resource.Dimension.notification_main_column_padding_top = global::ChroZenService.Droid.Resource.Dimension.notification_main_column_padding_top;
-			global::Xamarin.Essentials.Resource.Dimension.notification_media_narrow_margin = global::ChroZenService.Droid.Resource.Dimension.notification_media_narrow_margin;
-			global::Xamarin.Essentials.Resource.Dimension.notification_right_icon_size = global::ChroZenService.Droid.Resource.Dimension.notification_right_icon_size;
-			global::Xamarin.Essentials.Resource.Dimension.notification_right_side_padding_top = global::ChroZenService.Droid.Resource.Dimension.notification_right_side_padding_top;
-			global::Xamarin.Essentials.Resource.Dimension.notification_small_icon_background_padding = global::ChroZenService.Droid.Resource.Dimension.notification_small_icon_background_padding;
-			global::Xamarin.Essentials.Resource.Dimension.notification_small_icon_size_as_large = global::ChroZenService.Droid.Resource.Dimension.notification_small_icon_size_as_large;
-			global::Xamarin.Essentials.Resource.Dimension.notification_subtext_size = global::ChroZenService.Droid.Resource.Dimension.notification_subtext_size;
-			global::Xamarin.Essentials.Resource.Dimension.notification_top_pad = global::ChroZenService.Droid.Resource.Dimension.notification_top_pad;
-			global::Xamarin.Essentials.Resource.Dimension.notification_top_pad_large_text = global::ChroZenService.Droid.Resource.Dimension.notification_top_pad_large_text;
-			global::Xamarin.Essentials.Resource.Drawable.notification_action_background = global::ChroZenService.Droid.Resource.Drawable.notification_action_background;
-			global::Xamarin.Essentials.Resource.Drawable.notification_bg = global::ChroZenService.Droid.Resource.Drawable.notification_bg;
-			global::Xamarin.Essentials.Resource.Drawable.notification_bg_low = global::ChroZenService.Droid.Resource.Drawable.notification_bg_low;
-			global::Xamarin.Essentials.Resource.Drawable.notification_bg_low_normal = global::ChroZenService.Droid.Resource.Drawable.notification_bg_low_normal;
-			global::Xamarin.Essentials.Resource.Drawable.notification_bg_low_pressed = global::ChroZenService.Droid.Resource.Drawable.notification_bg_low_pressed;
-			global::Xamarin.Essentials.Resource.Drawable.notification_bg_normal = global::ChroZenService.Droid.Resource.Drawable.notification_bg_normal;
-			global::Xamarin.Essentials.Resource.Drawable.notification_bg_normal_pressed = global::ChroZenService.Droid.Resource.Drawable.notification_bg_normal_pressed;
-			global::Xamarin.Essentials.Resource.Drawable.notification_icon_background = global::ChroZenService.Droid.Resource.Drawable.notification_icon_background;
-			global::Xamarin.Essentials.Resource.Drawable.notification_template_icon_bg = global::ChroZenService.Droid.Resource.Drawable.notification_template_icon_bg;
-			global::Xamarin.Essentials.Resource.Drawable.notification_template_icon_low_bg = global::ChroZenService.Droid.Resource.Drawable.notification_template_icon_low_bg;
-			global::Xamarin.Essentials.Resource.Drawable.notification_tile_bg = global::ChroZenService.Droid.Resource.Drawable.notification_tile_bg;
-			global::Xamarin.Essentials.Resource.Drawable.notify_panel_notification_icon_bg = global::ChroZenService.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
-			global::Xamarin.Essentials.Resource.Id.accessibility_action_clickable_span = global::ChroZenService.Droid.Resource.Id.accessibility_action_clickable_span;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_0 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_0;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_1 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_1;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_10 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_10;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_11 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_11;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_12 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_12;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_13 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_13;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_14 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_14;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_15 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_15;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_16 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_16;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_17 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_17;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_18 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_18;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_19 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_19;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_2 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_2;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_20 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_20;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_21 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_21;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_22 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_22;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_23 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_23;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_24 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_24;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_25 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_25;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_26 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_26;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_27 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_27;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_28 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_28;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_29 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_29;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_3 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_3;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_30 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_30;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_31 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_31;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_4 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_4;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_5 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_5;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_6 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_6;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_7 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_7;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_8 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_8;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_9 = global::ChroZenService.Droid.Resource.Id.accessibility_custom_action_9;
-			global::Xamarin.Essentials.Resource.Id.actions = global::ChroZenService.Droid.Resource.Id.actions;
-			global::Xamarin.Essentials.Resource.Id.action_container = global::ChroZenService.Droid.Resource.Id.action_container;
-			global::Xamarin.Essentials.Resource.Id.action_divider = global::ChroZenService.Droid.Resource.Id.action_divider;
-			global::Xamarin.Essentials.Resource.Id.action_image = global::ChroZenService.Droid.Resource.Id.action_image;
-			global::Xamarin.Essentials.Resource.Id.action_text = global::ChroZenService.Droid.Resource.Id.action_text;
-			global::Xamarin.Essentials.Resource.Id.async = global::ChroZenService.Droid.Resource.Id.async;
-			global::Xamarin.Essentials.Resource.Id.blocking = global::ChroZenService.Droid.Resource.Id.blocking;
-			global::Xamarin.Essentials.Resource.Id.browser_actions_header_text = global::ChroZenService.Droid.Resource.Id.browser_actions_header_text;
-			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_items = global::ChroZenService.Droid.Resource.Id.browser_actions_menu_items;
-			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_item_icon = global::ChroZenService.Droid.Resource.Id.browser_actions_menu_item_icon;
-			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_item_text = global::ChroZenService.Droid.Resource.Id.browser_actions_menu_item_text;
-			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_view = global::ChroZenService.Droid.Resource.Id.browser_actions_menu_view;
-			global::Xamarin.Essentials.Resource.Id.chronometer = global::ChroZenService.Droid.Resource.Id.chronometer;
-			global::Xamarin.Essentials.Resource.Id.dialog_button = global::ChroZenService.Droid.Resource.Id.dialog_button;
-			global::Xamarin.Essentials.Resource.Id.forever = global::ChroZenService.Droid.Resource.Id.forever;
-			global::Xamarin.Essentials.Resource.Id.icon = global::ChroZenService.Droid.Resource.Id.icon;
-			global::Xamarin.Essentials.Resource.Id.icon_group = global::ChroZenService.Droid.Resource.Id.icon_group;
-			global::Xamarin.Essentials.Resource.Id.info = global::ChroZenService.Droid.Resource.Id.info;
-			global::Xamarin.Essentials.Resource.Id.italic = global::ChroZenService.Droid.Resource.Id.italic;
-			global::Xamarin.Essentials.Resource.Id.line1 = global::ChroZenService.Droid.Resource.Id.line1;
-			global::Xamarin.Essentials.Resource.Id.line3 = global::ChroZenService.Droid.Resource.Id.line3;
-			global::Xamarin.Essentials.Resource.Id.normal = global::ChroZenService.Droid.Resource.Id.normal;
-			global::Xamarin.Essentials.Resource.Id.notification_background = global::ChroZenService.Droid.Resource.Id.notification_background;
-			global::Xamarin.Essentials.Resource.Id.notification_main_column = global::ChroZenService.Droid.Resource.Id.notification_main_column;
-			global::Xamarin.Essentials.Resource.Id.notification_main_column_container = global::ChroZenService.Droid.Resource.Id.notification_main_column_container;
-			global::Xamarin.Essentials.Resource.Id.right_icon = global::ChroZenService.Droid.Resource.Id.right_icon;
-			global::Xamarin.Essentials.Resource.Id.right_side = global::ChroZenService.Droid.Resource.Id.right_side;
-			global::Xamarin.Essentials.Resource.Id.tag_accessibility_actions = global::ChroZenService.Droid.Resource.Id.tag_accessibility_actions;
-			global::Xamarin.Essentials.Resource.Id.tag_accessibility_clickable_spans = global::ChroZenService.Droid.Resource.Id.tag_accessibility_clickable_spans;
-			global::Xamarin.Essentials.Resource.Id.tag_accessibility_heading = global::ChroZenService.Droid.Resource.Id.tag_accessibility_heading;
-			global::Xamarin.Essentials.Resource.Id.tag_accessibility_pane_title = global::ChroZenService.Droid.Resource.Id.tag_accessibility_pane_title;
-			global::Xamarin.Essentials.Resource.Id.tag_screen_reader_focusable = global::ChroZenService.Droid.Resource.Id.tag_screen_reader_focusable;
-			global::Xamarin.Essentials.Resource.Id.tag_transition_group = global::ChroZenService.Droid.Resource.Id.tag_transition_group;
-			global::Xamarin.Essentials.Resource.Id.tag_unhandled_key_event_manager = global::ChroZenService.Droid.Resource.Id.tag_unhandled_key_event_manager;
-			global::Xamarin.Essentials.Resource.Id.tag_unhandled_key_listeners = global::ChroZenService.Droid.Resource.Id.tag_unhandled_key_listeners;
-			global::Xamarin.Essentials.Resource.Id.text = global::ChroZenService.Droid.Resource.Id.text;
-			global::Xamarin.Essentials.Resource.Id.text2 = global::ChroZenService.Droid.Resource.Id.text2;
-			global::Xamarin.Essentials.Resource.Id.time = global::ChroZenService.Droid.Resource.Id.time;
-			global::Xamarin.Essentials.Resource.Id.title = global::ChroZenService.Droid.Resource.Id.title;
-			global::Xamarin.Essentials.Resource.Id.view_tree_lifecycle_owner = global::ChroZenService.Droid.Resource.Id.view_tree_lifecycle_owner;
-			global::Xamarin.Essentials.Resource.Integer.status_bar_notification_info_maxnum = global::ChroZenService.Droid.Resource.Integer.status_bar_notification_info_maxnum;
-			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_page = global::ChroZenService.Droid.Resource.Layout.browser_actions_context_menu_page;
-			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_row = global::ChroZenService.Droid.Resource.Layout.browser_actions_context_menu_row;
-			global::Xamarin.Essentials.Resource.Layout.custom_dialog = global::ChroZenService.Droid.Resource.Layout.custom_dialog;
-			global::Xamarin.Essentials.Resource.Layout.notification_action = global::ChroZenService.Droid.Resource.Layout.notification_action;
-			global::Xamarin.Essentials.Resource.Layout.notification_action_tombstone = global::ChroZenService.Droid.Resource.Layout.notification_action_tombstone;
-			global::Xamarin.Essentials.Resource.Layout.notification_template_custom_big = global::ChroZenService.Droid.Resource.Layout.notification_template_custom_big;
-			global::Xamarin.Essentials.Resource.Layout.notification_template_icon_group = global::ChroZenService.Droid.Resource.Layout.notification_template_icon_group;
-			global::Xamarin.Essentials.Resource.Layout.notification_template_part_chronometer = global::ChroZenService.Droid.Resource.Layout.notification_template_part_chronometer;
-			global::Xamarin.Essentials.Resource.Layout.notification_template_part_time = global::ChroZenService.Droid.Resource.Layout.notification_template_part_time;
-			global::Xamarin.Essentials.Resource.String.copy_toast_msg = global::ChroZenService.Droid.Resource.String.copy_toast_msg;
-			global::Xamarin.Essentials.Resource.String.fallback_menu_item_copy_link = global::ChroZenService.Droid.Resource.String.fallback_menu_item_copy_link;
-			global::Xamarin.Essentials.Resource.String.fallback_menu_item_open_in_browser = global::ChroZenService.Droid.Resource.String.fallback_menu_item_open_in_browser;
-			global::Xamarin.Essentials.Resource.String.fallback_menu_item_share_link = global::ChroZenService.Droid.Resource.String.fallback_menu_item_share_link;
-			global::Xamarin.Essentials.Resource.String.status_bar_notification_info_overflow = global::ChroZenService.Droid.Resource.String.status_bar_notification_info_overflow;
-			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification = global::ChroZenService.Droid.Resource.Style.TextAppearance_Compat_Notification;
-			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification_Info = global::ChroZenService.Droid.Resource.Style.TextAppearance_Compat_Notification_Info;
-			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::ChroZenService.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2;
-			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification_Time = global::ChroZenService.Droid.Resource.Style.TextAppearance_Compat_Notification_Time;
-			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification_Title = global::ChroZenService.Droid.Resource.Style.TextAppearance_Compat_Notification_Title;
-			global::Xamarin.Essentials.Resource.Style.Widget_Compat_NotificationActionContainer = global::ChroZenService.Droid.Resource.Style.Widget_Compat_NotificationActionContainer;
-			global::Xamarin.Essentials.Resource.Style.Widget_Compat_NotificationActionText = global::ChroZenService.Droid.Resource.Style.Widget_Compat_NotificationActionText;
-			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem = global::ChroZenService.Droid.Resource.Styleable.ColorStateListItem;
-			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem_alpha = global::ChroZenService.Droid.Resource.Styleable.ColorStateListItem_alpha;
-			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem_android_alpha = global::ChroZenService.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
-			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem_android_color = global::ChroZenService.Droid.Resource.Styleable.ColorStateListItem_android_color;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily = global::ChroZenService.Droid.Resource.Styleable.FontFamily;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont = global::ChroZenService.Droid.Resource.Styleable.FontFamilyFont;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_font = global::ChroZenService.Droid.Resource.Styleable.FontFamilyFont_android_font;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_fontStyle = global::ChroZenService.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::ChroZenService.Droid.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_fontWeight = global::ChroZenService.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::ChroZenService.Droid.Resource.Styleable.FontFamilyFont_android_ttcIndex;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_font = global::ChroZenService.Droid.Resource.Styleable.FontFamilyFont_font;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_fontStyle = global::ChroZenService.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::ChroZenService.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_fontWeight = global::ChroZenService.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_ttcIndex = global::ChroZenService.Droid.Resource.Styleable.FontFamilyFont_ttcIndex;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderAuthority = global::ChroZenService.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderCerts = global::ChroZenService.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::ChroZenService.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::ChroZenService.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderPackage = global::ChroZenService.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderQuery = global::ChroZenService.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor = global::ChroZenService.Droid.Resource.Styleable.GradientColor;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColorItem = global::ChroZenService.Droid.Resource.Styleable.GradientColorItem;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColorItem_android_color = global::ChroZenService.Droid.Resource.Styleable.GradientColorItem_android_color;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColorItem_android_offset = global::ChroZenService.Droid.Resource.Styleable.GradientColorItem_android_offset;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_centerColor = global::ChroZenService.Droid.Resource.Styleable.GradientColor_android_centerColor;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_centerX = global::ChroZenService.Droid.Resource.Styleable.GradientColor_android_centerX;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_centerY = global::ChroZenService.Droid.Resource.Styleable.GradientColor_android_centerY;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_endColor = global::ChroZenService.Droid.Resource.Styleable.GradientColor_android_endColor;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_endX = global::ChroZenService.Droid.Resource.Styleable.GradientColor_android_endX;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_endY = global::ChroZenService.Droid.Resource.Styleable.GradientColor_android_endY;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_gradientRadius = global::ChroZenService.Droid.Resource.Styleable.GradientColor_android_gradientRadius;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_startColor = global::ChroZenService.Droid.Resource.Styleable.GradientColor_android_startColor;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_startX = global::ChroZenService.Droid.Resource.Styleable.GradientColor_android_startX;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_startY = global::ChroZenService.Droid.Resource.Styleable.GradientColor_android_startY;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_tileMode = global::ChroZenService.Droid.Resource.Styleable.GradientColor_android_tileMode;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_type = global::ChroZenService.Droid.Resource.Styleable.GradientColor_android_type;
-			global::Xamarin.Essentials.Resource.Xml.image_share_filepaths = global::ChroZenService.Droid.Resource.Xml.image_share_filepaths;
-			global::Xamarin.Essentials.Resource.Xml.xamarin_essentials_fileprovider_file_paths = global::ChroZenService.Droid.Resource.Xml.xamarin_essentials_fileprovider_file_paths;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_in = global::ChroZenService.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_out = global::ChroZenService.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::ChroZenService.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -7338,343 +7147,337 @@ namespace ChroZenService.Droid
 			public const int accent_material_light = 2131034137;
 			
 			// aapt resource value: 0x7F05001A
-			public const int androidx_core_ripple_material_light = 2131034138;
+			public const int background_floating_material_dark = 2131034138;
 			
 			// aapt resource value: 0x7F05001B
-			public const int androidx_core_secondary_text_default_material_light = 2131034139;
+			public const int background_floating_material_light = 2131034139;
 			
 			// aapt resource value: 0x7F05001C
-			public const int background_floating_material_dark = 2131034140;
+			public const int background_material_dark = 2131034140;
 			
 			// aapt resource value: 0x7F05001D
-			public const int background_floating_material_light = 2131034141;
+			public const int background_material_light = 2131034141;
 			
 			// aapt resource value: 0x7F05001E
-			public const int background_material_dark = 2131034142;
+			public const int bright_foreground_disabled_material_dark = 2131034142;
 			
 			// aapt resource value: 0x7F05001F
-			public const int background_material_light = 2131034143;
+			public const int bright_foreground_disabled_material_light = 2131034143;
 			
 			// aapt resource value: 0x7F050020
-			public const int bright_foreground_disabled_material_dark = 2131034144;
+			public const int bright_foreground_inverse_material_dark = 2131034144;
 			
 			// aapt resource value: 0x7F050021
-			public const int bright_foreground_disabled_material_light = 2131034145;
+			public const int bright_foreground_inverse_material_light = 2131034145;
 			
 			// aapt resource value: 0x7F050022
-			public const int bright_foreground_inverse_material_dark = 2131034146;
+			public const int bright_foreground_material_dark = 2131034146;
 			
 			// aapt resource value: 0x7F050023
-			public const int bright_foreground_inverse_material_light = 2131034147;
+			public const int bright_foreground_material_light = 2131034147;
 			
 			// aapt resource value: 0x7F050024
-			public const int bright_foreground_material_dark = 2131034148;
+			public const int browser_actions_bg_grey = 2131034148;
 			
 			// aapt resource value: 0x7F050025
-			public const int bright_foreground_material_light = 2131034149;
+			public const int browser_actions_divider_color = 2131034149;
 			
 			// aapt resource value: 0x7F050026
-			public const int browser_actions_bg_grey = 2131034150;
+			public const int browser_actions_text_color = 2131034150;
 			
 			// aapt resource value: 0x7F050027
-			public const int browser_actions_divider_color = 2131034151;
+			public const int browser_actions_title_color = 2131034151;
 			
 			// aapt resource value: 0x7F050028
-			public const int browser_actions_text_color = 2131034152;
+			public const int button_material_dark = 2131034152;
 			
 			// aapt resource value: 0x7F050029
-			public const int browser_actions_title_color = 2131034153;
+			public const int button_material_light = 2131034153;
 			
 			// aapt resource value: 0x7F05002A
-			public const int button_material_dark = 2131034154;
+			public const int cardview_dark_background = 2131034154;
 			
 			// aapt resource value: 0x7F05002B
-			public const int button_material_light = 2131034155;
+			public const int cardview_light_background = 2131034155;
 			
 			// aapt resource value: 0x7F05002C
-			public const int cardview_dark_background = 2131034156;
+			public const int cardview_shadow_end_color = 2131034156;
 			
 			// aapt resource value: 0x7F05002D
-			public const int cardview_light_background = 2131034157;
+			public const int cardview_shadow_start_color = 2131034157;
 			
 			// aapt resource value: 0x7F05002E
-			public const int cardview_shadow_end_color = 2131034158;
+			public const int colorAccent = 2131034158;
 			
 			// aapt resource value: 0x7F05002F
-			public const int cardview_shadow_start_color = 2131034159;
+			public const int colorPrimary = 2131034159;
 			
 			// aapt resource value: 0x7F050030
-			public const int colorAccent = 2131034160;
+			public const int colorPrimaryDark = 2131034160;
 			
 			// aapt resource value: 0x7F050031
-			public const int colorPrimary = 2131034161;
+			public const int design_bottom_navigation_shadow_color = 2131034161;
 			
 			// aapt resource value: 0x7F050032
-			public const int colorPrimaryDark = 2131034162;
+			public const int design_default_color_primary = 2131034162;
 			
 			// aapt resource value: 0x7F050033
-			public const int design_bottom_navigation_shadow_color = 2131034163;
+			public const int design_default_color_primary_dark = 2131034163;
 			
 			// aapt resource value: 0x7F050034
-			public const int design_default_color_primary = 2131034164;
+			public const int design_error = 2131034164;
 			
 			// aapt resource value: 0x7F050035
-			public const int design_default_color_primary_dark = 2131034165;
+			public const int design_fab_shadow_end_color = 2131034165;
 			
 			// aapt resource value: 0x7F050036
-			public const int design_error = 2131034166;
+			public const int design_fab_shadow_mid_color = 2131034166;
 			
 			// aapt resource value: 0x7F050037
-			public const int design_fab_shadow_end_color = 2131034167;
+			public const int design_fab_shadow_start_color = 2131034167;
 			
 			// aapt resource value: 0x7F050038
-			public const int design_fab_shadow_mid_color = 2131034168;
+			public const int design_fab_stroke_end_inner_color = 2131034168;
 			
 			// aapt resource value: 0x7F050039
-			public const int design_fab_shadow_start_color = 2131034169;
+			public const int design_fab_stroke_end_outer_color = 2131034169;
 			
 			// aapt resource value: 0x7F05003A
-			public const int design_fab_stroke_end_inner_color = 2131034170;
+			public const int design_fab_stroke_top_inner_color = 2131034170;
 			
 			// aapt resource value: 0x7F05003B
-			public const int design_fab_stroke_end_outer_color = 2131034171;
+			public const int design_fab_stroke_top_outer_color = 2131034171;
 			
 			// aapt resource value: 0x7F05003C
-			public const int design_fab_stroke_top_inner_color = 2131034172;
+			public const int design_snackbar_background_color = 2131034172;
 			
 			// aapt resource value: 0x7F05003D
-			public const int design_fab_stroke_top_outer_color = 2131034173;
+			public const int design_tint_password_toggle = 2131034173;
 			
 			// aapt resource value: 0x7F05003E
-			public const int design_snackbar_background_color = 2131034174;
+			public const int dim_foreground_disabled_material_dark = 2131034174;
 			
 			// aapt resource value: 0x7F05003F
-			public const int design_tint_password_toggle = 2131034175;
+			public const int dim_foreground_disabled_material_light = 2131034175;
 			
 			// aapt resource value: 0x7F050040
-			public const int dim_foreground_disabled_material_dark = 2131034176;
+			public const int dim_foreground_material_dark = 2131034176;
 			
 			// aapt resource value: 0x7F050041
-			public const int dim_foreground_disabled_material_light = 2131034177;
+			public const int dim_foreground_material_light = 2131034177;
 			
 			// aapt resource value: 0x7F050042
-			public const int dim_foreground_material_dark = 2131034178;
+			public const int error_color_material_dark = 2131034178;
 			
 			// aapt resource value: 0x7F050043
-			public const int dim_foreground_material_light = 2131034179;
+			public const int error_color_material_light = 2131034179;
 			
 			// aapt resource value: 0x7F050044
-			public const int error_color_material_dark = 2131034180;
+			public const int foreground_material_dark = 2131034180;
 			
 			// aapt resource value: 0x7F050045
-			public const int error_color_material_light = 2131034181;
+			public const int foreground_material_light = 2131034181;
 			
 			// aapt resource value: 0x7F050046
-			public const int foreground_material_dark = 2131034182;
+			public const int highlighted_text_material_dark = 2131034182;
 			
 			// aapt resource value: 0x7F050047
-			public const int foreground_material_light = 2131034183;
+			public const int highlighted_text_material_light = 2131034183;
 			
 			// aapt resource value: 0x7F050048
-			public const int highlighted_text_material_dark = 2131034184;
+			public const int launcher_background = 2131034184;
 			
 			// aapt resource value: 0x7F050049
-			public const int highlighted_text_material_light = 2131034185;
+			public const int material_blue_grey_800 = 2131034185;
 			
 			// aapt resource value: 0x7F05004A
-			public const int launcher_background = 2131034186;
+			public const int material_blue_grey_900 = 2131034186;
 			
 			// aapt resource value: 0x7F05004B
-			public const int material_blue_grey_800 = 2131034187;
+			public const int material_blue_grey_950 = 2131034187;
 			
 			// aapt resource value: 0x7F05004C
-			public const int material_blue_grey_900 = 2131034188;
+			public const int material_deep_teal_200 = 2131034188;
 			
 			// aapt resource value: 0x7F05004D
-			public const int material_blue_grey_950 = 2131034189;
+			public const int material_deep_teal_500 = 2131034189;
 			
 			// aapt resource value: 0x7F05004E
-			public const int material_deep_teal_200 = 2131034190;
+			public const int material_grey_100 = 2131034190;
 			
 			// aapt resource value: 0x7F05004F
-			public const int material_deep_teal_500 = 2131034191;
+			public const int material_grey_300 = 2131034191;
 			
 			// aapt resource value: 0x7F050050
-			public const int material_grey_100 = 2131034192;
+			public const int material_grey_50 = 2131034192;
 			
 			// aapt resource value: 0x7F050051
-			public const int material_grey_300 = 2131034193;
+			public const int material_grey_600 = 2131034193;
 			
 			// aapt resource value: 0x7F050052
-			public const int material_grey_50 = 2131034194;
+			public const int material_grey_800 = 2131034194;
 			
 			// aapt resource value: 0x7F050053
-			public const int material_grey_600 = 2131034195;
+			public const int material_grey_850 = 2131034195;
 			
 			// aapt resource value: 0x7F050054
-			public const int material_grey_800 = 2131034196;
+			public const int material_grey_900 = 2131034196;
 			
 			// aapt resource value: 0x7F050055
-			public const int material_grey_850 = 2131034197;
+			public const int mtrl_bottom_nav_colored_item_tint = 2131034197;
 			
 			// aapt resource value: 0x7F050056
-			public const int material_grey_900 = 2131034198;
+			public const int mtrl_bottom_nav_item_tint = 2131034198;
 			
 			// aapt resource value: 0x7F050057
-			public const int mtrl_bottom_nav_colored_item_tint = 2131034199;
+			public const int mtrl_btn_bg_color_disabled = 2131034199;
 			
 			// aapt resource value: 0x7F050058
-			public const int mtrl_bottom_nav_item_tint = 2131034200;
+			public const int mtrl_btn_bg_color_selector = 2131034200;
 			
 			// aapt resource value: 0x7F050059
-			public const int mtrl_btn_bg_color_disabled = 2131034201;
+			public const int mtrl_btn_ripple_color = 2131034201;
 			
 			// aapt resource value: 0x7F05005A
-			public const int mtrl_btn_bg_color_selector = 2131034202;
+			public const int mtrl_btn_stroke_color_selector = 2131034202;
 			
 			// aapt resource value: 0x7F05005B
-			public const int mtrl_btn_ripple_color = 2131034203;
+			public const int mtrl_btn_text_btn_ripple_color = 2131034203;
 			
 			// aapt resource value: 0x7F05005C
-			public const int mtrl_btn_stroke_color_selector = 2131034204;
+			public const int mtrl_btn_text_color_disabled = 2131034204;
 			
 			// aapt resource value: 0x7F05005D
-			public const int mtrl_btn_text_btn_ripple_color = 2131034205;
+			public const int mtrl_btn_text_color_selector = 2131034205;
 			
 			// aapt resource value: 0x7F05005E
-			public const int mtrl_btn_text_color_disabled = 2131034206;
+			public const int mtrl_btn_transparent_bg_color = 2131034206;
 			
 			// aapt resource value: 0x7F05005F
-			public const int mtrl_btn_text_color_selector = 2131034207;
+			public const int mtrl_chip_background_color = 2131034207;
 			
 			// aapt resource value: 0x7F050060
-			public const int mtrl_btn_transparent_bg_color = 2131034208;
+			public const int mtrl_chip_close_icon_tint = 2131034208;
 			
 			// aapt resource value: 0x7F050061
-			public const int mtrl_chip_background_color = 2131034209;
+			public const int mtrl_chip_ripple_color = 2131034209;
 			
 			// aapt resource value: 0x7F050062
-			public const int mtrl_chip_close_icon_tint = 2131034210;
+			public const int mtrl_chip_text_color = 2131034210;
 			
 			// aapt resource value: 0x7F050063
-			public const int mtrl_chip_ripple_color = 2131034211;
+			public const int mtrl_fab_ripple_color = 2131034211;
 			
 			// aapt resource value: 0x7F050064
-			public const int mtrl_chip_text_color = 2131034212;
+			public const int mtrl_scrim_color = 2131034212;
 			
 			// aapt resource value: 0x7F050065
-			public const int mtrl_fab_ripple_color = 2131034213;
+			public const int mtrl_tabs_colored_ripple_color = 2131034213;
 			
 			// aapt resource value: 0x7F050066
-			public const int mtrl_scrim_color = 2131034214;
+			public const int mtrl_tabs_icon_color_selector = 2131034214;
 			
 			// aapt resource value: 0x7F050067
-			public const int mtrl_tabs_colored_ripple_color = 2131034215;
+			public const int mtrl_tabs_icon_color_selector_colored = 2131034215;
 			
 			// aapt resource value: 0x7F050068
-			public const int mtrl_tabs_icon_color_selector = 2131034216;
+			public const int mtrl_tabs_legacy_text_color_selector = 2131034216;
 			
 			// aapt resource value: 0x7F050069
-			public const int mtrl_tabs_icon_color_selector_colored = 2131034217;
-			
-			// aapt resource value: 0x7F05006A
-			public const int mtrl_tabs_legacy_text_color_selector = 2131034218;
+			public const int mtrl_tabs_ripple_color = 2131034217;
 			
 			// aapt resource value: 0x7F05006B
-			public const int mtrl_tabs_ripple_color = 2131034219;
-			
-			// aapt resource value: 0x7F05006D
-			public const int mtrl_textinput_default_box_stroke_color = 2131034221;
-			
-			// aapt resource value: 0x7F05006E
-			public const int mtrl_textinput_disabled_color = 2131034222;
-			
-			// aapt resource value: 0x7F05006F
-			public const int mtrl_textinput_filled_box_default_background_color = 2131034223;
-			
-			// aapt resource value: 0x7F050070
-			public const int mtrl_textinput_hovered_box_stroke_color = 2131034224;
+			public const int mtrl_textinput_default_box_stroke_color = 2131034219;
 			
 			// aapt resource value: 0x7F05006C
-			public const int mtrl_text_btn_text_color_selector = 2131034220;
+			public const int mtrl_textinput_disabled_color = 2131034220;
+			
+			// aapt resource value: 0x7F05006D
+			public const int mtrl_textinput_filled_box_default_background_color = 2131034221;
+			
+			// aapt resource value: 0x7F05006E
+			public const int mtrl_textinput_hovered_box_stroke_color = 2131034222;
+			
+			// aapt resource value: 0x7F05006A
+			public const int mtrl_text_btn_text_color_selector = 2131034218;
+			
+			// aapt resource value: 0x7F05006F
+			public const int notification_action_color_filter = 2131034223;
+			
+			// aapt resource value: 0x7F050070
+			public const int notification_icon_bg_color = 2131034224;
 			
 			// aapt resource value: 0x7F050071
-			public const int notification_action_color_filter = 2131034225;
+			public const int notification_material_background_media_default_color = 2131034225;
 			
 			// aapt resource value: 0x7F050072
-			public const int notification_icon_bg_color = 2131034226;
+			public const int primary_dark_material_dark = 2131034226;
 			
 			// aapt resource value: 0x7F050073
-			public const int notification_material_background_media_default_color = 2131034227;
+			public const int primary_dark_material_light = 2131034227;
 			
 			// aapt resource value: 0x7F050074
-			public const int primary_dark_material_dark = 2131034228;
+			public const int primary_material_dark = 2131034228;
 			
 			// aapt resource value: 0x7F050075
-			public const int primary_dark_material_light = 2131034229;
+			public const int primary_material_light = 2131034229;
 			
 			// aapt resource value: 0x7F050076
-			public const int primary_material_dark = 2131034230;
+			public const int primary_text_default_material_dark = 2131034230;
 			
 			// aapt resource value: 0x7F050077
-			public const int primary_material_light = 2131034231;
+			public const int primary_text_default_material_light = 2131034231;
 			
 			// aapt resource value: 0x7F050078
-			public const int primary_text_default_material_dark = 2131034232;
+			public const int primary_text_disabled_material_dark = 2131034232;
 			
 			// aapt resource value: 0x7F050079
-			public const int primary_text_default_material_light = 2131034233;
+			public const int primary_text_disabled_material_light = 2131034233;
 			
 			// aapt resource value: 0x7F05007A
-			public const int primary_text_disabled_material_dark = 2131034234;
+			public const int ripple_material_dark = 2131034234;
 			
 			// aapt resource value: 0x7F05007B
-			public const int primary_text_disabled_material_light = 2131034235;
+			public const int ripple_material_light = 2131034235;
 			
 			// aapt resource value: 0x7F05007C
-			public const int ripple_material_dark = 2131034236;
+			public const int secondary_text_default_material_dark = 2131034236;
 			
 			// aapt resource value: 0x7F05007D
-			public const int ripple_material_light = 2131034237;
+			public const int secondary_text_default_material_light = 2131034237;
 			
 			// aapt resource value: 0x7F05007E
-			public const int secondary_text_default_material_dark = 2131034238;
+			public const int secondary_text_disabled_material_dark = 2131034238;
 			
 			// aapt resource value: 0x7F05007F
-			public const int secondary_text_default_material_light = 2131034239;
+			public const int secondary_text_disabled_material_light = 2131034239;
 			
 			// aapt resource value: 0x7F050080
-			public const int secondary_text_disabled_material_dark = 2131034240;
+			public const int splash_background = 2131034240;
 			
 			// aapt resource value: 0x7F050081
-			public const int secondary_text_disabled_material_light = 2131034241;
+			public const int switch_thumb_disabled_material_dark = 2131034241;
 			
 			// aapt resource value: 0x7F050082
-			public const int splash_background = 2131034242;
+			public const int switch_thumb_disabled_material_light = 2131034242;
 			
 			// aapt resource value: 0x7F050083
-			public const int switch_thumb_disabled_material_dark = 2131034243;
+			public const int switch_thumb_material_dark = 2131034243;
 			
 			// aapt resource value: 0x7F050084
-			public const int switch_thumb_disabled_material_light = 2131034244;
+			public const int switch_thumb_material_light = 2131034244;
 			
 			// aapt resource value: 0x7F050085
-			public const int switch_thumb_material_dark = 2131034245;
+			public const int switch_thumb_normal_material_dark = 2131034245;
 			
 			// aapt resource value: 0x7F050086
-			public const int switch_thumb_material_light = 2131034246;
+			public const int switch_thumb_normal_material_light = 2131034246;
 			
 			// aapt resource value: 0x7F050087
-			public const int switch_thumb_normal_material_dark = 2131034247;
+			public const int tooltip_background_dark = 2131034247;
 			
 			// aapt resource value: 0x7F050088
-			public const int switch_thumb_normal_material_light = 2131034248;
-			
-			// aapt resource value: 0x7F050089
-			public const int tooltip_background_dark = 2131034249;
-			
-			// aapt resource value: 0x7F05008A
-			public const int tooltip_background_light = 2131034250;
+			public const int tooltip_background_light = 2131034248;
 			
 			static Color()
 			{
@@ -9579,16 +9382,13 @@ namespace ChroZenService.Droid
 			public const int view_offset_helper = 2131230966;
 			
 			// aapt resource value: 0x7F0800F7
-			public const int view_tree_lifecycle_owner = 2131230967;
+			public const int visible = 2131230967;
 			
 			// aapt resource value: 0x7F0800F8
-			public const int visible = 2131230968;
+			public const int withText = 2131230968;
 			
 			// aapt resource value: 0x7F0800F9
-			public const int withText = 2131230969;
-			
-			// aapt resource value: 0x7F0800FA
-			public const int wrap_content = 2131230970;
+			public const int wrap_content = 2131230969;
 			
 			static Id()
 			{
@@ -10058,52 +9858,40 @@ namespace ChroZenService.Droid
 			public const int character_counter_pattern = 2131558430;
 			
 			// aapt resource value: 0x7F0D001F
-			public const int copy_toast_msg = 2131558431;
+			public const int fab_transformation_scrim_behavior = 2131558431;
 			
 			// aapt resource value: 0x7F0D0020
-			public const int fab_transformation_scrim_behavior = 2131558432;
+			public const int fab_transformation_sheet_behavior = 2131558432;
 			
 			// aapt resource value: 0x7F0D0021
-			public const int fab_transformation_sheet_behavior = 2131558433;
+			public const int hide_bottom_view_on_scroll_behavior = 2131558433;
 			
 			// aapt resource value: 0x7F0D0022
-			public const int fallback_menu_item_copy_link = 2131558434;
+			public const int mtrl_chip_close_icon_content_description = 2131558434;
 			
 			// aapt resource value: 0x7F0D0023
-			public const int fallback_menu_item_open_in_browser = 2131558435;
+			public const int overflow_tab_title = 2131558435;
 			
 			// aapt resource value: 0x7F0D0024
-			public const int fallback_menu_item_share_link = 2131558436;
+			public const int password_toggle_content_description = 2131558436;
 			
 			// aapt resource value: 0x7F0D0025
-			public const int hide_bottom_view_on_scroll_behavior = 2131558437;
+			public const int path_password_eye = 2131558437;
 			
 			// aapt resource value: 0x7F0D0026
-			public const int mtrl_chip_close_icon_content_description = 2131558438;
+			public const int path_password_eye_mask_strike_through = 2131558438;
 			
 			// aapt resource value: 0x7F0D0027
-			public const int overflow_tab_title = 2131558439;
+			public const int path_password_eye_mask_visible = 2131558439;
 			
 			// aapt resource value: 0x7F0D0028
-			public const int password_toggle_content_description = 2131558440;
+			public const int path_password_strike_through = 2131558440;
 			
 			// aapt resource value: 0x7F0D0029
-			public const int path_password_eye = 2131558441;
+			public const int search_menu_title = 2131558441;
 			
 			// aapt resource value: 0x7F0D002A
-			public const int path_password_eye_mask_strike_through = 2131558442;
-			
-			// aapt resource value: 0x7F0D002B
-			public const int path_password_eye_mask_visible = 2131558443;
-			
-			// aapt resource value: 0x7F0D002C
-			public const int path_password_strike_through = 2131558444;
-			
-			// aapt resource value: 0x7F0D002D
-			public const int search_menu_title = 2131558445;
-			
-			// aapt resource value: 0x7F0D002E
-			public const int status_bar_notification_info_overflow = 2131558446;
+			public const int status_bar_notification_info_overflow = 2131558442;
 			
 			static String()
 			{
@@ -14696,25 +14484,6 @@ namespace ChroZenService.Droid
 			}
 			
 			private Styleable()
-			{
-			}
-		}
-		
-		public partial class Xml
-		{
-			
-			// aapt resource value: 0x7F100000
-			public const int image_share_filepaths = 2131755008;
-			
-			// aapt resource value: 0x7F100001
-			public const int xamarin_essentials_fileprovider_file_paths = 2131755009;
-			
-			static Xml()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Xml()
 			{
 			}
 		}

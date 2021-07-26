@@ -144,7 +144,7 @@ namespace ChroZenService
         private void KeyPadCancelCommandAction(object param)
         {
             Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
             mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
             //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
             //{
@@ -161,7 +161,7 @@ namespace ChroZenService
         private void KeyPadDeleteCommandAction(object param)
         {
             Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
 
             if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0)
             {
@@ -181,7 +181,7 @@ namespace ChroZenService
         private void KeyPadApplyCommandAction(object param)
         {
             Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
 
             //.시작 케이스
             if (mainVM.ViewModel_KeyPad.CurrentValue.Length > 0 && mainVM.ViewModel_KeyPad.CurrentValue[0] == '.')
@@ -354,7 +354,7 @@ namespace ChroZenService
         private void KeyPadOnCommandAction(object param)
         {
             Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
         }
 
         #endregion KeyPad : OnCommand
@@ -365,7 +365,7 @@ namespace ChroZenService
         private void KeyPadOffCommandAction(object param)
         {
             Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
         }
 
         #endregion KeyPad : OffCommand
@@ -376,7 +376,7 @@ namespace ChroZenService
         private void KeyPadKeyPadClickCommandAction(object param)
         {
             Button sender = (param as Button);
-            ViewModelMainPage mainVM = (ViewModelMainPage)sender.BindingContext;
+            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
             if (mainVM.ViewModel_KeyPad.IsNeedRefresh)
             {
                 mainVM.ViewModel_KeyPad.CurrentValue = "";

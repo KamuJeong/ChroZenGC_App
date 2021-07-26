@@ -2,15 +2,14 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
-             x:Class="ChroZenService.View_Config_Root">
+             x:Class="ChroZenService.View_Config">
     <ContentView.Content>
-        <AbsoluteLayout>
-            <Grid >
-                <!--이미지 전시-->
-                <Grid>
-                    <Image Source="bg.png" Aspect="Fill" />
-                    <!--<Image Margin="17,43,0,0" Source="side_top.png" VerticalOptions="FillAndExpand"  />-->
-                    <Grid>
+        <Grid >
+            <!--이미지 전시-->
+            <Grid>
+                <Image Source="bg.png" Aspect="Fill" />
+                <!--<Image Margin="17,43,0,0" Source="side_top.png" VerticalOptions="FillAndExpand"  />-->
+                <!--<Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="70"/>
@@ -346,9 +345,8 @@
                                 </Grid>
                             </Grid>
                         </Grid>
-                    </Grid>
-                </Grid>
+                    </Grid>-->
             </Grid>
-        </AbsoluteLayout>
+        </Grid>
     </ContentView.Content>
 </ContentView>

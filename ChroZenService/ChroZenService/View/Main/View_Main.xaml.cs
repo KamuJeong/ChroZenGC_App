@@ -15,6 +15,8 @@ namespace ChroZenService
         public View_Main()
         {
             InitializeComponent();
+
+//            BindingContext = viewModel;
         }
     }
 }
