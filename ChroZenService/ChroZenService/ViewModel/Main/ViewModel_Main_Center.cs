@@ -25,9 +25,9 @@ namespace ChroZenService.ViewModel.Main
     {
         private Model model;
 
-        public ConfigurationWrapper Configuration => model.Configuration;
+        private ConfigurationWrapper Configuration => model.Configuration;
 
-        public StateWrapper State => model.State;
+        private StateWrapper State => model.State;
 
         public ViewModel_Main_Center()
         {

@@ -15,11 +15,7 @@ namespace ChroZenService
     {
         public View_Main_Center()
         {
-            
-
             InitializeComponent();
-
-            BindingContext = Resolver.Resolve<ViewModel_Main_Center>();
         }
 
     }

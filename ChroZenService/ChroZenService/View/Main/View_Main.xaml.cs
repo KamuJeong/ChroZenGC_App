@@ -12,11 +12,11 @@ namespace ChroZenService
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class View_Main : ContentView
     {
-        public View_Main()
+        public View_Main(ViewModel_Main viewModel)
         {
             InitializeComponent();
 
-//            BindingContext = viewModel;
+            BindingContext = viewModel;
         }
     }
 }

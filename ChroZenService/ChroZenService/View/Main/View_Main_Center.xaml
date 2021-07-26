@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChroZenService"
              xmlns:model="clr-namespace:ChroZenService.ViewModel.Main"
              x:Class="ChroZenService.View_Main_Center"
-             x:DataType="model:ViewModel_Main_Center">
+             x:DataType="local:ViewModel_Main">
     <ContentView.Resources>
         <model:ContentHeightConverter x:Key="ContentHeightConverter" />
 
@@ -37,13 +37,13 @@
 
                 <Image Grid.Column="0" Aspect="Fill">
                     <Image.Triggers>
-                        <DataTrigger TargetType="Image" Binding="{Binding ActiveInlet}" Value="0">
+                        <DataTrigger TargetType="Image" Binding="{Binding Center.ActiveInlet}" Value="0">
                             <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side1.png}" />
                         </DataTrigger>
-                        <DataTrigger TargetType="Image" Binding="{Binding ActiveInlet}" Value="1">
+                        <DataTrigger TargetType="Image" Binding="{Binding Center.ActiveInlet}" Value="1">
                             <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side2.png}" />
                         </DataTrigger>
-                        <DataTrigger TargetType="Image" Binding="{Binding ActiveInlet}" Value="2">
+                        <DataTrigger TargetType="Image" Binding="{Binding Center.ActiveInlet}" Value="2">
                             <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side3.png}" />
                         </DataTrigger>
                     </Image.Triggers>
@@ -51,19 +51,19 @@
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="9.2*"/>
-                        <RowDefinition Height="{Binding Path=ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=0}"/>
+                        <RowDefinition Height="{Binding Path=Center.ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=0}"/>
                         <RowDefinition Height="9.2*"/>
-                        <RowDefinition Height="{Binding Path=ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=1}"/>
+                        <RowDefinition Height="{Binding Path=Center.ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=1}"/>
                         <RowDefinition Height="9.2*"/>
-                        <RowDefinition Height="{Binding Path=ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=2}"/>
+                        <RowDefinition Height="{Binding Path=Center.ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=2}"/>
                         <RowDefinition Height="0.5*"/>
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Row="0" Command="{Binding Inlet}" CommandParameter="0" Text="{Binding Configuration.InletType[0]}" />
+                    <Button Grid.Row="0" Command="{Binding Center.Inlet}" CommandParameter="0" Text="{Binding Configuration.InletType[0]}" />
                     <Rectangle Grid.Row="1"></Rectangle>
-                    <Button Grid.Row="2" Command="{Binding Inlet}" CommandParameter="1" Text="{Binding Configuration.InletType[1]}" />
+                    <Button Grid.Row="2" Command="{Binding Center.Inlet}" CommandParameter="1" Text="{Binding Configuration.InletType[1]}" />
                     <Rectangle Grid.Row="3"></Rectangle>
-                    <Button Grid.Row="4" Command="{Binding Inlet}" CommandParameter="2" Text="{Binding Configuration.InletType[2]}" />
+                    <Button Grid.Row="4" Command="{Binding Center.Inlet}" CommandParameter="2" Text="{Binding Configuration.InletType[2]}" />
                     <Rectangle Grid.Row="5"></Rectangle>
                 </Grid>
 
@@ -76,13 +76,13 @@
 
                 <Image Grid.Column="2" Aspect="Fill">
                     <Image.Triggers>
-                        <DataTrigger TargetType="Image" Binding="{Binding ActiveDetector}" Value="0">
+                        <DataTrigger TargetType="Image" Binding="{Binding Center.ActiveDetector}" Value="0">
                             <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side1.png}" />
                         </DataTrigger>
-                        <DataTrigger TargetType="Image" Binding="{Binding ActiveDetector}" Value="1">
+                        <DataTrigger TargetType="Image" Binding="{Binding Center.ActiveDetector}" Value="1">
                             <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side2.png}" />
                         </DataTrigger>
-                        <DataTrigger TargetType="Image" Binding="{Binding ActiveDetector}" Value="2">
+                        <DataTrigger TargetType="Image" Binding="{Binding Center.ActiveDetector}" Value="2">
                             <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side3.png}" />
                         </DataTrigger>
                     </Image.Triggers>
@@ -90,19 +90,19 @@
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="9.2*"/>
-                        <RowDefinition Height="{Binding Path=ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=0}"/>
+                        <RowDefinition Height="{Binding Path=Center.ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=0}"/>
                         <RowDefinition Height="9.2*"/>
-                        <RowDefinition Height="{Binding Path=ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=1}"/>
+                        <RowDefinition Height="{Binding Path=Center.ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=1}"/>
                         <RowDefinition Height="9.2*"/>
-                        <RowDefinition Height="{Binding Path=ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=2}"/>
+                        <RowDefinition Height="{Binding Path=Center.ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=2}"/>
                         <RowDefinition Height="0.5*"/>
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Row="0" Command="{Binding Detector}" CommandParameter="0" Text="{Binding Configuration.DetectorType[0]}" />
+                    <Button Grid.Row="0" Command="{Binding Center.Detector}" CommandParameter="0" Text="{Binding Configuration.DetectorType[0]}" />
                     <Rectangle Grid.Row="1"></Rectangle>
-                    <Button Grid.Row="2" Command="{Binding Detector}" CommandParameter="1" Text="{Binding Configuration.DetectorType[1]}" />
+                    <Button Grid.Row="2" Command="{Binding Center.Detector}" CommandParameter="1" Text="{Binding Configuration.DetectorType[1]}" />
                     <Rectangle Grid.Row="3"></Rectangle>
-                    <Button Grid.Row="4" Command="{Binding Detector}" CommandParameter="2" Text="{Binding Configuration.DetectorType[2]}" />
+                    <Button Grid.Row="4" Command="{Binding Center.Detector}" CommandParameter="2" Text="{Binding Configuration.DetectorType[2]}" />
                     <Rectangle Grid.Row="5"></Rectangle>
                 </Grid>
             </Grid>

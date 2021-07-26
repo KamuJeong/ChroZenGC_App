@@ -11,10 +11,19 @@ using Xamarin.Forms.Xaml;
 
 namespace ChroZenService
 {
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = true, Inherited = false)]
     public class ConstraintsAttribute : Attribute
     {
-        public ConstraintsAttribute(string name, double max = double.PositiveInfinity, double min = double.NegativeInfinity, int decimals = 0, string onoff = null)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name">Description of target property</param>
+        /// <param name="max"></param>
+        /// <param name="min"></param>
+        /// <param name="decimals"></param>
+        /// <param name="onoff">Corresponding property for switching on or off</param>
+        /// <param name="predicate">Method name for constraint's validity </param>
+        public ConstraintsAttribute(string name, double max = double.PositiveInfinity, double min = double.NegativeInfinity, int decimals = 0, string onoff = null, string predicate = null)
         {
             Name = name;
             MaxValue = max;
@@ -24,14 +33,11 @@ namespace ChroZenService
         }
 
         public string Name { get; }
-
         public double MaxValue { get; }
-
         public double MinValue { get; }
-
         public int Decimals { get; }
-
         public string OnOffProeprty { get; }
+        public string Predicate { get; }
     }
 
 
@@ -42,7 +48,7 @@ namespace ChroZenService
         private PropertyInfo valuePropertyInfo;
         private PropertyInfo onoffPropertyInfo;
 
-        public KeyPad(object propertyOwner, PropertyInfo valueProperty, PropertyInfo onoffProperty = null)
+        public KeyPad(object propertyOwner, PropertyInfo valueProperty)
         {
             double buttonHeight = (int)((double)Application.Current.Resources["ButtonFontSizeKey"] * 3);
             Resources.Add("ButtonHeightKey", buttonHeight);
@@ -52,12 +58,37 @@ namespace ChroZenService
             instance = propertyOwner ?? throw new ArgumentNullException(nameof(propertyOwner));
             valuePropertyInfo = valueProperty ?? throw new ArgumentNullException(nameof(valueProperty));
 
-            var attr = valuePropertyInfo.GetCustomAttribute<ConstraintsAttribute>();
-            Name = attr?.Name ?? valueProperty.Name;
-            maxValue = attr?.MaxValue ?? double.PositiveInfinity;
-            minValue = attr?.MinValue ?? double.NegativeInfinity;
-            decimals = attr?.Decimals ?? 0;
-            onoffPropertyInfo = attr?.OnOffProeprty == null ? null : instance.GetType().GetProperty(attr?.OnOffProeprty);
+            Name = valueProperty.Name;
+            maxValue = double.PositiveInfinity;
+            minValue = double.NegativeInfinity;
+            decimals = 0;
+            onoffPropertyInfo = null;
+
+            ConstraintsAttribute attr = null;
+            foreach (var at in valueProperty.GetCustomAttributes<ConstraintsAttribute>())
+            {
+                if(at.Predicate == null)
+                {
+                    attr = at;
+                    break;
+                }
+
+                var m = instance.GetType().GetMethod(at.Predicate, BindingFlags.Public | BindingFlags.Instance);
+                if(m != null && (bool)m.Invoke(instance, null))
+                {
+                    attr = at;
+                }
+            }
+
+            if(attr != null)
+            {
+                Name = attr.Name;
+                maxValue = attr.MaxValue;
+                minValue = attr.MinValue;
+                decimals = attr.Decimals;
+                onoffPropertyInfo = attr.OnOffProeprty == null ? null : instance.GetType().GetProperty(attr.OnOffProeprty);
+
+            }
 
             CurrentValue = string.Format($"{{0:F{decimals}}}", Convert.ChangeType(valueProperty.GetValue(propertyOwner), typeof(double)));
             IsModified = false;

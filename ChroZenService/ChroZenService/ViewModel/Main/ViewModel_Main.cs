@@ -1,5 +1,6 @@
 ﻿using ChroZenGC.Core;
 using ChroZenGC.Core.Wrappers;
+using ChroZenService.ViewModel.Main;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,11 +24,14 @@ namespace ChroZenService
 
         public StateWrapper State => model.State;
 
-        public ViewModel_Main()
+
+        public ViewModel_Main_Center Center { get; }
+
+        public ViewModel_Main(ViewModel_Main_Center center)
         {
             model = Resolver.Resolve<Model>();
 
-
+            Center = center;
 
             //SelectHomeMenu = new RelayCommand(SelectHomeMenuAction);
             //SelectSystemMenu = new RelayCommand(SelectSystemMenuAction);
