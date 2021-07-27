@@ -87,6 +87,8 @@ namespace ChroZenService
             ovenSetup.PropertyModified += (s, e) => Redraw();
             ovenSetup.PropertyChanged += (s, e) => { if (e.PropertyName == "Binary") Redraw(); };
 
+            model.State.PropertyChanged += OnStatePropertyChanged;
+
 
 
             //skb = new SKBitmap(470, 235, SKColorType.Bgra8888, SKAlphaType.Opaque);
@@ -99,6 +101,39 @@ namespace ChroZenService
             //EventManager.onRawDataUpdated += onRawDataUpdatedHandler;
             //EventManager.onTemperatureUpdated += onTemperatureUpdatedEventHandler;
             //EventManager.onDetectorSelectionChangedTo += onDetectorSelectionChangedToEventHandler;
+        }
+
+        private int counterStateReceived = 0;
+        private int counterLastRedrawn = 0;
+        private List<ValueTuple<float, float, float, float>> SignalPoints = new List<ValueTuple<float, float, float, float>>();
+
+        private void OnStatePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            ++counterStateReceived;
+
+            if(e.PropertyName == "Binary")
+            {
+                var state = sender as StateWrapper;
+                if(state.Mode == ChroZenGC.Core.Packets.Modes.Run)
+                {
+                    if(state.RunTime <= SignalPoints.LastOrDefault().Item1)
+                    {
+                        SignalPoints.Clear();
+                        counterStateReceived = 0;
+                    }
+                    SignalPoints.Add((state.RunTime, state.Signal[0], state.Signal[1], state.Signal[2]));
+                }
+            }
+            else
+            {
+                if (counterStateReceived != counterLastRedrawn + 1)
+                    Redraw();
+
+                counterLastRedrawn = counterStateReceived;
+            }
+
+            if (Math.Abs(counterStateReceived - counterLastRedrawn) >= 5)   // per 1 second
+                Redraw();
         }
 
         private void onDetectorSelectionChangedToEventHandler(int nDetIndex)
@@ -251,7 +286,12 @@ namespace ChroZenService
                 view.Redraw();
 
         }
-        public void Redraw() => Canvas.InvalidateSurface();
+        public void Redraw()
+        {
+            counterLastRedrawn = counterStateReceived;
+
+            Canvas.InvalidateSurface();
+        }
 
         public static readonly BindableProperty UnitsProperty = BindableProperty.Create("Units", typeof(string), typeof(YL_Chart),
                                                                            defaultValue: "mV", propertyChanged: ChartPropertyChanged);
@@ -284,6 +324,56 @@ namespace ChroZenService
 
         public List<ValueTuple<float, float>> OvenProgramPoints => ovenSetup.ProgramPoints.ToList();
 
+        private float fontScale = 24;
+
+        private float convertX(in SKRectI rect, float x) => x * rect.Width / TotalRunTime + rect.Left;
+
+        private float convertL(in SKRectI rect, float l) => (float)rect.Bottom - l * rect.Height / (Max - Min);
+
+        private float convertR(in SKRectI rect, float r) => (float)rect.Bottom - r * rect.Height / (450 + 88);
+
+        private (List<float> tickers, double interval) prepareTickers(float min, float max)
+        {
+            var diff = max - min;
+            var logDiff = Math.Log10(diff);
+            var exp = Math.Floor(logDiff);
+
+            double tick = Math.Pow(10.0, exp);
+            double small = tick / 5;
+            switch ((int)(diff / tick))
+            {
+                case int n when n > 5:
+                    small = tick;
+                    tick *= 2;
+                    break;
+
+                case 1:
+                    small = tick / 10;
+                    tick /= 5;
+                    break;
+
+                case int n when n <= 2:
+                    small = tick / 5;
+                    tick /= 2;
+                    break;
+
+            }
+
+            var tickers = new List<float>();
+            double value = Math.Floor(min / tick) * tick;
+            while (value <= max)
+            {
+                if (value >= min)
+                {
+                    tickers.Add((float)value);
+                }
+                value += tick;
+            }
+
+            return (tickers, small);
+        }
+
+
         private void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
             SKImageInfo info = e.Info;
@@ -293,24 +383,30 @@ namespace ChroZenService
             canvas.Clear();
 
             var rect = info.Rect;
-            var signalGrids = new List<float> { 0.0f, 1.0f, 2.0f, 3.0f };
-            var timeGrids = new List<float> { 0.0f, 2.0f, 4.0f, 6.0f, 8.0f, 10.0f };
-            var ovenGrids = new List<float> { 0.0f, 100.0f, 200.0f, 300.0f, 400.0f };
+            fontScale = (int)(rect.Height * 0.035);
+
+
+            var signalTick = prepareTickers(Min, Max);
+            var timeTick = prepareTickers(0, TotalRunTime);
+            var ovenTick = prepareTickers(-88, 450);
+
             try
             {
                 DrawBackground(canvas, rect);
 
-                rect.Left += 10;
-                rect.Right -= 10;
-                rect.Top += 10;
-                rect.Bottom -= 20;
+                int margin = (int)(fontScale / 2);
+
+                rect.Left += margin;
+                rect.Right -= margin;
+                rect.Top += margin;
+                rect.Bottom -= margin * 2;
 
                 SKSizeI signalCaptionSize = DrawSignalCaption(canvas, rect, true);
                 SKSizeI ovenCaptionSize = DrawOvenCaption(canvas, rect, true);
                 SKSizeI timeCaptionSize = DrawTimeCaption(canvas, rect, true);
-                int timeScaleHeight = DrawTimeScale(canvas, rect, timeGrids, true);
-                int signalScaleWidth = DrawSignalScale(canvas, rect, signalGrids, true);
-                int ovenScaleWidth = DrawOvenScale(canvas, rect, ovenGrids, true);
+                int timeScaleHeight = DrawTimeScale(canvas, rect, timeTick.tickers, true);
+                int signalScaleWidth = DrawSignalScale(canvas, rect, signalTick.tickers, true);
+                int ovenScaleWidth = DrawOvenScale(canvas, rect, ovenTick.tickers, true);
 
                 var rectDraw = rect;
                 rectDraw.Right = rect.Left + Math.Max(signalScaleWidth, signalCaptionSize.Width);
@@ -320,7 +416,7 @@ namespace ChroZenService
 
                 rectDraw.Top = rectDraw.Bottom;
                 rectDraw.Bottom = rect.Bottom - timeCaptionSize.Height - timeScaleHeight;
-                DrawSignalScale(canvas, rectDraw, timeGrids, false);
+                DrawSignalScale(canvas, rectDraw, signalTick.tickers, false);
 
                 rectDraw.Left = rect.Right - Math.Max(ovenScaleWidth, ovenCaptionSize.Width);
                 rectDraw.Right = rectDraw.Left + ovenCaptionSize.Width;
@@ -330,7 +426,7 @@ namespace ChroZenService
 
                 rectDraw.Top = rectDraw.Bottom;
                 rectDraw.Bottom = rect.Bottom - timeCaptionSize.Height - timeScaleHeight;
-                DrawOvenScale(canvas, rectDraw, ovenGrids, false);
+                DrawOvenScale(canvas, rectDraw, ovenTick.tickers, false);
 
                 rectDraw.Right = rectDraw.Left - 1;
                 rectDraw.Left = rectDraw.Right - timeCaptionSize.Width;
@@ -342,9 +438,11 @@ namespace ChroZenService
                 rectDraw.Top -= timeScaleHeight;
                 rectDraw.Left = rect.Left + Math.Max(signalScaleWidth, signalCaptionSize.Width);
                 rectDraw.Right = rect.Right - Math.Max(ovenScaleWidth, ovenCaptionSize.Width);
-                DrawTimeScale(canvas, rectDraw, timeGrids, false);
+                DrawTimeScale(canvas, rectDraw, timeTick.tickers, false);
 
-
+                rectDraw.Bottom = rectDraw.Top;
+                rectDraw.Top = rect.Top + Math.Max(signalCaptionSize.Height, ovenCaptionSize.Height);
+                DrawOvenData(canvas, rectDraw);
 
                 //rect.Bottom -= DrawTimeCaption(canvas, rect).Height;
 
@@ -427,30 +525,55 @@ namespace ChroZenService
             //}
         }
 
-        private void DrawSignalData(SKCanvas canvas, SKRectI rect, bool measureOnly)
+        private void DrawSignalData(SKCanvas canvas, SKRectI rect)
         {
             throw new NotImplementedException();
         }
 
-        private void DrawOvenData(SKCanvas canvas, SKRectI rect, bool measureOnly)
+        private void DrawOvenData(SKCanvas canvas, SKRectI rect)
+        {
+            using (SKPaint paint = new SKPaint())
+            {
+                SKColor colorStart = new SKColor(255, 100, 100, 100);
+                SKColor colorEnd = new SKColor(100, 100, 255, 100);
+
+                paint.Shader = SKShader.CreateLinearGradient(
+                                    new SKPoint(rect.Left, rect.Top),
+                                    new SKPoint(rect.Left, rect.Bottom),
+                                    new SKColor[] { colorStart, colorEnd },
+                                    new float[] { 0.1f, 0.7f },
+                                    SKShaderTileMode.Clamp);
+
+                var programs = OvenProgramPoints;
+                var path = new SKPath { FillType = SKPathFillType.EvenOdd };
+                path.MoveTo(rect.Left, rect.Bottom);
+                foreach (var pt in programs)
+                {
+                    path.LineTo(convertX(rect, pt.Item1), convertR(rect, pt.Item2));
+                }
+                path.LineTo(convertX(rect, TotalRunTime), convertR(rect, programs.Last().Item2));
+                path.LineTo(rect.Right, rect.Bottom);
+                path.Close();
+
+                paint.Style = SKPaintStyle.StrokeAndFill;
+                canvas.DrawPath(path, paint);
+            }
+        }
+
+        private void DrawGridLines(SKCanvas canvas, SKRectI rect, List<float> tickers, List<float> signalGrids)
         {
             throw new NotImplementedException();
         }
 
-        private void DrawGridLines(SKCanvas canvas, SKRectI rect, List<float> timeGrids, List<float> signalGrids)
-        {
-            throw new NotImplementedException();
-        }
-
-        private int DrawTimeScale(SKCanvas canvas, SKRectI rect, List<float> grids, bool measureOnly)
+        private int DrawTimeScale(SKCanvas canvas, SKRectI rect, List<float> tickers, bool measureOnly)
         {
             using (SKPaint paint = new SKPaint())
             {
                 paint.Color = SKColors.LightGray;
-                paint.TextSize = 10;
+                paint.TextSize = fontScale;
 
                 if (measureOnly)
-                    return (int)(2 * paint.FontSpacing) + 10;
+                    return (int)(2 * paint.FontSpacing + fontScale / 2);
 
 
                 paint.StrokeWidth = 1;
@@ -461,22 +584,22 @@ namespace ChroZenService
             return rect.Height;
         }
 
-        private int DrawOvenScale(SKCanvas canvas, SKRectI rect, List<float> grids, bool measureOnly)
+        private int DrawOvenScale(SKCanvas canvas, SKRectI rect, List<float> tickers, bool measureOnly)
         {
             using (SKPaint paint = new SKPaint())
             {
                 paint.Color = SKColors.White;
-                paint.TextSize = 10;
+                paint.TextSize = fontScale;
                 if (measureOnly)
                 {
                     int width = 0;
                     SKRect rcText = new SKRect();
-                    foreach (var g in grids)
+                    foreach (var g in tickers)
                     {
                         paint.MeasureText($"{g:G}", ref rcText);
                         width = Math.Max((int)Math.Ceiling(rcText.Width) + 1, width);
                     }
-                    return width + 10;
+                    return width + (int)(fontScale / 2);
                 }
 
                 paint.StrokeWidth = 1;
@@ -490,22 +613,22 @@ namespace ChroZenService
             return rect.Width;
         }
 
-        private int DrawSignalScale(SKCanvas canvas, SKRectI rect, List<float> grids, bool measureOnly)
+        private int DrawSignalScale(SKCanvas canvas, SKRectI rect, List<float> tickers, bool measureOnly)
         {
             using (SKPaint paint = new SKPaint())
             {
                 paint.Color = SKColors.White;
-                paint.TextSize = 10;
+                paint.TextSize = fontScale;
                 if (measureOnly)
                 {
                     int width = 0;
                     SKRect rcText = new SKRect();
-                    foreach (var g in grids)
+                    foreach (var g in tickers)
                     {
                         paint.MeasureText($"{g:G}", ref rcText);
                         width = Math.Max((int)Math.Ceiling(rcText.Width) + 1, width);
                     }
-                    return width + 10;
+                    return width + (int)(fontScale / 2);
                 }
 
 
@@ -521,13 +644,13 @@ namespace ChroZenService
             using (SKPaint paint = new SKPaint())
             {
                 paint.Color = SKColors.LightGray;
-                paint.TextSize = 24;
+                paint.TextSize = fontScale;
 
                 SKRect rcText = new SKRect();
                 paint.MeasureText("Time (min)", ref rcText);
 
                 if (measureOnly)
-                    return new SKSizeI((int)Math.Ceiling(rcText.Width) + 1, (int)paint.FontSpacing + 10);
+                    return new SKSizeI((int)Math.Ceiling(rcText.Width) + 1, (int)(paint.FontSpacing + fontScale / 2));
 
                 canvas.DrawText("Time (min)", rect.Left, rect.Bottom, paint);
             }
@@ -540,17 +663,17 @@ namespace ChroZenService
             using (SKPaint paint = new SKPaint())
             {
                 paint.Color = SKColors.LightGray;
-                paint.TextSize = 24;
+                paint.TextSize = fontScale;
 
                 SKRect rcText = new SKRect();
                 paint.MeasureText("Temp", ref rcText);
 
                 if (measureOnly)
-                    return new SKSizeI((int)Math.Ceiling(rcText.Width) + 1, (int)(2 * paint.FontSpacing) + 10);
+                    return new SKSizeI((int)Math.Ceiling(rcText.Width) + 1, (int)(2 * paint.FontSpacing + fontScale / 2));
 
-                canvas.DrawText("Temp", rect.Left, paint.FontSpacing, paint);
+                canvas.DrawText("Temp", rect.Left, rect.Top + paint.FontSpacing, paint);
                 paint.MeasureText("(℃)", ref rcText);
-                canvas.DrawText("(℃)", rect.Left + (rect.Width - rcText.Width) / 2, rect.Top + 2 * paint.FontSpacing - 10, paint);
+                canvas.DrawText("(℃)", rect.Left + (rect.Width - rcText.Width) / 2, rect.Top + 2 * paint.FontSpacing - fontScale / 5, paint);
             }
             return rect.Size;
         }
@@ -560,17 +683,17 @@ namespace ChroZenService
             using (SKPaint paint = new SKPaint())
             {
                 paint.Color = SKColors.LightGray;
-                paint.TextSize = 24;
+                paint.TextSize = fontScale;
 
                 SKRect rcText = new SKRect();
                 paint.MeasureText("Signal", ref rcText);
 
                 if (measureOnly)
-                    return new SKSizeI((int)Math.Ceiling(rcText.Width) + 1, (int)(2 * paint.FontSpacing) + 10);
+                    return new SKSizeI((int)Math.Ceiling(rcText.Width) + 1, (int)(2 * paint.FontSpacing + fontScale / 2));
 
-                canvas.DrawText("Signal", rect.Left, paint.FontSpacing, paint);
+                canvas.DrawText("Signal", rect.Left, rect.Top + paint.FontSpacing, paint);
                 paint.MeasureText("(" + Units + ")", ref rcText);
-                canvas.DrawText("(" + Units + ")", rect.Left + (rect.Width - rcText.Width) / 2, rect.Top + 2 * paint.FontSpacing - 10, paint);
+                canvas.DrawText("(" + Units + ")", rect.Left + (rect.Width - rcText.Width) / 2, rect.Top + 2 * paint.FontSpacing - fontScale / 5, paint);
             }
             return rect.Size;
         }
@@ -583,13 +706,13 @@ namespace ChroZenService
                 SKColor colorEnd = ((Color)App.Current.Resources["CS_COLOR_KEYPAD_BUTTON_BACKGROUND"]).ToSKColor();
 
                 paint.Shader = SKShader.CreateLinearGradient(
-                                    new SKPoint(0, 0),
-                                    new SKPoint(0, rect.Height),
+                                    new SKPoint(rect.Left, rect.Top),
+                                    new SKPoint(rect.Left, rect.Height),
                                     new SKColor[] { colorStart, colorEnd },
-                                    new float[] { 0, 1 },
-                                    SKShaderTileMode.Repeat);
+                                    null,
+                                    SKShaderTileMode.Clamp);
 
-                canvas.DrawRect(rect, paint);
+                canvas.DrawPaint(paint);
             }
         }
 

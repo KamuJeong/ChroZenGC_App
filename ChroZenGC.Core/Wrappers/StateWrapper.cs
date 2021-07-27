@@ -136,7 +136,7 @@ namespace ChroZenGC.Core.Wrappers
 
         public Modes Mode 
         {
-            get => Packet.btState;
+            get => (Modes)((byte)Packet.btState & 0x7F);
             set => Packet.btState = value;
         }
 
