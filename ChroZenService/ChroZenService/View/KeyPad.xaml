@@ -65,7 +65,7 @@
                 <Button Grid.Row="2" Grid.RowSpan="2" Text="ON"  />
                 <Button Grid.Row="4" Grid.RowSpan="2" Text="OFF"  />
 
-                <Button Grid.Row="2" Grid.Column="4" Text="CE" BackgroundColor="Red"  />
+                <Button Grid.Row="2" Grid.Column="4" Text="CE" BackgroundColor="Black"  />
                 <Button Grid.Row="3" Grid.Column="4" Text="DEL"  />
                 <Button Grid.Row="4" Grid.Column="4" Text="OK" Grid.RowSpan="2"  />
 

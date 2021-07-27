@@ -14,10 +14,10 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <local:View_Header Grid.Row="0" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}" VerticalOptions="Start" />
+            <local:View_Header Grid.Row="0" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}" />
 
 
-            <ContentView Grid.Row="1" Content="{Binding MainView}" />
+            <ContentView Grid.Row="1" Content="{Binding MainView}" Margin="{x:StaticResource MainMarginKey}"/>
 
 
             <!--메인 페이지-->

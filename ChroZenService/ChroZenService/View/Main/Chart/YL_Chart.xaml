@@ -2,15 +2,27 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
-             xmlns:SK="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              x:Class="ChroZenService.YL_Chart">
-    <Grid x:Name="drawGrid">
-        <!--회색 가이드 선-->
-        <Grid x:Name="gridGuideLineHolder">
+    <ContentView.Content>
+        <skia:SKCanvasView x:Name="Canvas" PaintSurface="OnCanvasViewPaintSurface" HeightRequest="{x:Static local:App.ScreenHeight}" WidthRequest="{x:Static local:App.ScreenWidth}">
+            <skia:SKCanvasView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnCanvasViewTapped" />
+            </skia:SKCanvasView.GestureRecognizers>
+        </skia:SKCanvasView>
+    </ContentView.Content>
+    
+    <!--<Grid x:Name="drawGrid">
+        <SK:SKCanvasView x:Name="sKCanvasViewGrid" HorizontalOptions="Start" IgnorePixelScaling="True"  Margin="70,40,0,45"></SK:SKCanvasView>
+
+
+
+        --><!--회색 가이드 선-->
+        <!--<Grid x:Name="gridGuideLineHolder">
             <Line X1="70" X2="540" Y1="236" Y2="236" Stroke="Gray"/>
             <Line X1="70" X2="70" Y1="0" Y2="236" Stroke="Gray"/>
             <Line X1="540" X2="540" Y1="0" Y2="236" Stroke="Gray"/>
-        </Grid>
+        </Grid>-->
         <!--Axis-->
         <!--<Grid x:Name="gridChartAxis">
             --><!--Signal Label--><!--
@@ -47,6 +59,6 @@
                     <PanGestureRecognizer PanUpdated="Chart_PanUpdated"/>
                 </Image.GestureRecognizers>
             </Image>
-        </Grid>-->
-    </Grid>
+        </Grid>--><!--
+    </Grid>-->
 </ContentView>

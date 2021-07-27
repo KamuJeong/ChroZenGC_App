@@ -11,7 +11,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <local:YL_Chart Grid.Row="1" HorizontalOptions="Center" WidthRequest="600" ChartRawData="{Binding ViewModel_MainChart.ChartElementRawData}" Scale="0.7"/>
+            <local:YL_Chart Grid.Row="1" Padding="0,0,0,10" />
             <local:View_Main_Center Grid.Row="2" />
 
         </Grid>

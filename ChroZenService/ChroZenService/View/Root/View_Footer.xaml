@@ -58,7 +58,7 @@
                     </Trigger>
                 </ImageButton.Triggers>
             </ImageButton>
-            <ImageButton Grid.Column="3" Source="{local:ImageResource ChroZenService.Images.btn_bot_02.png}" Command="{Binding SelectHomeMenu}" >
+            <ImageButton Grid.Column="3" Source="{local:ImageResource ChroZenService.Images.btn_bot_02.png}" Command="{Binding System}" >
                 <ImageButton.Triggers>
                     <Trigger TargetType="ImageButton" Property="IsPressed" Value="True">
                         <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.btn_bot_12.png}" />

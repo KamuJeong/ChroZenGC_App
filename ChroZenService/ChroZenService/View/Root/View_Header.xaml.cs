@@ -29,8 +29,13 @@ namespace ChroZenService
 
         }
 
-        [Constraints("Price", min: 0.0, max: 10.0, onoff: nameof(Sold))]
+        [Constraints("Price", min: 0.0, max: 10.0, onoff: nameof(Sold), predicate: nameof(ValidContraints))]
         public int Price { get; set; } = 12;
         public bool Sold { get; set; }
+
+        public bool ValidContraints()
+        {
+            return true;
+        }
     }
 }

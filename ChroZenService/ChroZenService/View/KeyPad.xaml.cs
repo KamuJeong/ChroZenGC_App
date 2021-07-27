@@ -30,6 +30,7 @@ namespace ChroZenService
             MinValue = min;
             Decimals = decimals;
             OnOffProeprty = onoff;
+            Predicate = predicate;
         }
 
         public string Name { get; }
@@ -91,6 +92,7 @@ namespace ChroZenService
             }
 
             CurrentValue = string.Format($"{{0:F{decimals}}}", Convert.ChangeType(valueProperty.GetValue(propertyOwner), typeof(double)));
+            OnCurrentValueChanged(this, CurrentValue, CurrentValue);
             IsModified = false;
 
             BindingContext = this;

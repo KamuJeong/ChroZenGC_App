@@ -7,7 +7,7 @@
         <Grid >
             <!--이미지 전시-->
             <Grid>
-                <Image Source="bg.png" Aspect="Fill" />
+                <Image Source="bg.png" Aspect="AspectFill" />
                 <!--<Image Margin="17,43,0,0" Source="side_top.png" VerticalOptions="FillAndExpand"  />-->
                 <!--<Grid>
                         <Grid.RowDefinitions>
