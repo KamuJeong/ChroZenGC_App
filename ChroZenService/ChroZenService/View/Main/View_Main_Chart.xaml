@@ -3,14 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
-             x:Class="ChroZenService.YL_Chart">
+             x:Class="ChroZenService.View_Main_Chart">
     <ContentView.Content>
         <skia:SKCanvasView x:Name="Canvas" PaintSurface="OnCanvasViewPaintSurface" HeightRequest="{x:Static local:App.ScreenHeight}" WidthRequest="{x:Static local:App.ScreenWidth}">
             <skia:SKCanvasView.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnCanvasViewTapped" />
+                <PanGestureRecognizer PanUpdated="OnCanvasPanUpdated" />
+                <PinchGestureRecognizer PinchUpdated="OnCanvasPinchUpdated" />
             </skia:SKCanvasView.GestureRecognizers>
         </skia:SKCanvasView>
     </ContentView.Content>
+
+    <ContentView.Effects>
+        
+        
+    </ContentView.Effects>
+    
     
     <!--<Grid x:Name="drawGrid">
         <SK:SKCanvasView x:Name="sKCanvasViewGrid" HorizontalOptions="Start" IgnorePixelScaling="True"  Margin="70,40,0,45"></SK:SKCanvasView>

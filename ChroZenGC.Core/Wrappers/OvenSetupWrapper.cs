@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ChroZenGC.Core.Wrappers
 {
-    public class OvenSetupWrapper : PacketWrapper<OvenSetup>
+    public class OvenWrapper : PacketWrapper<OvenSetup>
     {
         public const uint PacketCode = 0x67120;
         public override uint Code => PacketCode;

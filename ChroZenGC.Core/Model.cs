@@ -110,7 +110,7 @@ namespace ChroZenGC.Core
 
         public StateWrapper State { get; } = new StateWrapper();
 
-        public OvenSetupWrapper Oven { get; } = new OvenSetupWrapper();
+        public OvenWrapper Oven { get; } = new OvenWrapper();
 
     }
 }
