@@ -7,9 +7,10 @@
     <ContentView.Content>
         <skia:SKCanvasView x:Name="Canvas" PaintSurface="OnCanvasViewPaintSurface" HeightRequest="{x:Static local:App.ScreenHeight}" WidthRequest="{x:Static local:App.ScreenWidth}">
             <skia:SKCanvasView.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnCanvasViewTapped" />
+                <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="OnCanvasViewTapped" />
                 <PanGestureRecognizer PanUpdated="OnCanvasPanUpdated" />
                 <PinchGestureRecognizer PinchUpdated="OnCanvasPinchUpdated" />
+
             </skia:SKCanvasView.GestureRecognizers>
         </skia:SKCanvasView>
     </ContentView.Content>

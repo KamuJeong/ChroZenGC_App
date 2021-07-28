@@ -183,7 +183,7 @@ namespace ChroZenService
 
             switch (key)
             {
-                case "CE":
+                case "∇":
                     Navigation.PopModalAsync();
                     return;
 

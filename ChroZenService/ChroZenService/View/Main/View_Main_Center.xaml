@@ -35,7 +35,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Grid.Column="0" Aspect="Fill">
+                <Image Grid.Column="0" Aspect="Fill" Source="{local:ImageResource ChroZenService.Images.home_side3.png}">
                     <Image.Triggers>
                         <DataTrigger TargetType="Image" Binding="{Binding Center.ActiveInlet}" Value="0">
                             <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side1.png}" />
@@ -49,6 +49,10 @@
                     </Image.Triggers>
                 </Image>
                 <Grid Grid.Column="0">
+                    <Grid.GestureRecognizers>
+                        <SwipeGestureRecognizer Direction="Down" Command="{Binding Center.LeftDown}" />
+                        <SwipeGestureRecognizer Direction="Up" Command="{Binding Center.LeftUp}" />
+                    </Grid.GestureRecognizers>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="9.2*"/>
                         <RowDefinition Height="{Binding Path=Center.ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=0}"/>
@@ -74,7 +78,7 @@
                 <Image Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.home_center.png}" Aspect="Fill" />
 
 
-                <Image Grid.Column="2" Aspect="Fill">
+                <Image Grid.Column="2" Aspect="Fill" Source="{local:ImageResource ChroZenService.Images.home_side3.png}">
                     <Image.Triggers>
                         <DataTrigger TargetType="Image" Binding="{Binding Center.ActiveDetector}" Value="0">
                             <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side1.png}" />

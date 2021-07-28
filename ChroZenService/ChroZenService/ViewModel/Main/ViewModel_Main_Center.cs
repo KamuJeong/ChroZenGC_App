@@ -13,7 +13,7 @@ namespace ChroZenService.ViewModel.Main
     public class ContentHeightConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-            => int.Parse((string)parameter) == (int)value ? new GridLength(70.9, GridUnitType.Star) : new GridLength(0);
+            => int.Parse((string)parameter) == (int)value || ((int)value == -1 && int.Parse((string)parameter) == 2) ? new GridLength(70.9, GridUnitType.Star) : new GridLength(0);
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
@@ -33,8 +33,23 @@ namespace ChroZenService.ViewModel.Main
         {
             model = Resolver.Resolve<Model>();
 
-            ActiveInlet = Enumerable.Range(0, 3).FirstOrDefault(i => Configuration.InletType[i] != InletTypes.None);
-            ActiveDetector = Enumerable.Range(0, 3).FirstOrDefault(i => Configuration.InletType[i] != InletTypes.None);
+            try
+            {
+                ActiveInlet = Enumerable.Range(0, 3).First(i => Configuration.InletType[i] != InletTypes.None);
+            }
+            catch
+            {
+                ActiveInlet = -1;
+            }
+
+            try
+            {
+                ActiveDetector = Enumerable.Range(0, 3).First(i => Configuration.InletType[i] != InletTypes.None);
+            }
+            catch
+            {
+                ActiveDetector = -1;
+            }
         }
 
         public int ActiveInlet { get; set; }
@@ -47,6 +62,30 @@ namespace ChroZenService.ViewModel.Main
         {
             ActiveInlet = int.Parse(row);
         }
+
+        public ICommand LeftUp => new Command(() => 
+        {
+            for(int i=0; i<3; ++i)
+            {
+                if (i > ActiveInlet && Configuration.InletType[i] != InletTypes.None)
+                {
+                    ActiveInlet = i;
+                    break;
+                }
+            }
+        });
+        public ICommand LeftDown => new Command(() =>
+        {
+            for (int i = 3; i >=0 ; --i)
+            {
+                if (i < ActiveInlet && Configuration.InletType[i] != InletTypes.None)
+                {
+                    ActiveInlet = i;
+                    break;
+                }
+            }
+        });
+
 
         public int ActiveDetector { get; set; }
 

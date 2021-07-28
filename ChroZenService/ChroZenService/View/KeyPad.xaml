@@ -43,7 +43,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Frame BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"  CornerRadius="10" BorderColor="White" Padding="0">
+                <Frame BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"  CornerRadius="10" BorderColor="White" Padding="0">
                     <Label Text="{Binding Name}" TextColor="White"  FontSize="{StaticResource ButtonFontSizeKey}" VerticalOptions="Center" HorizontalOptions="Center" />
                 </Frame>
                 <Label Grid.Row="0" Grid.Column="2" Text="MAX" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontSize="{StaticResource ButtonFontSizeKey}"/>
@@ -65,7 +65,7 @@
                 <Button Grid.Row="2" Grid.RowSpan="2" Text="ON"  />
                 <Button Grid.Row="4" Grid.RowSpan="2" Text="OFF"  />
 
-                <Button Grid.Row="2" Grid.Column="4" Text="CE" BackgroundColor="Black"  />
+                <Button Grid.Row="2" Grid.Column="4" Text="∇" BackgroundColor="Black" BorderColor="DarkSlateGray" />
                 <Button Grid.Row="3" Grid.Column="4" Text="DEL"  />
                 <Button Grid.Row="4" Grid.Column="4" Text="OK" Grid.RowSpan="2"  />
 

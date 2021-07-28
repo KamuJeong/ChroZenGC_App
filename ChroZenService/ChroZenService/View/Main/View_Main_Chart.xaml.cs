@@ -68,7 +68,7 @@ namespace ChroZenService
         public float TotalRunTime => Model.Oven.TotalRunTime;
         public List<ValueTuple<float, float>> OvenProgramPoints => Model.Oven.ProgramPoints.ToList();
 
-        private ChroZenGC.Core.Model Model { get;  }
+        private ChroZenGC.Core.Model Model { get; }
 
         public View_Main_Chart()
         {
@@ -124,22 +124,30 @@ namespace ChroZenService
             var logDiff = Math.Log10(diff);
             var exp = Math.Floor(logDiff);
 
-            double major = Math.Pow(10.0, exp);
+            double major = Math.Pow(10.0, exp); // (1, 0.2)
             double minor = major / 5;
-            switch ((int)(2 * diff / major))
+            switch ((int)(diff / major))
             {
-                case int n when n > 10:
+                case int n when n > 5: // (2, 1)
                     minor = major;
                     major *= 2;
                     break;
 
-                case 2:
-                    minor = major / 10;
-                    major /= 5;
+                case 1:
+                    if (5 * diff / major > 5)   // (0.5, 0.1)
+                    {
+                        minor = major / 10;
+                        major /= 2;
+                    }
+                    else
+                    {
+                        minor = major / 10;     // (0.2, 0.1)
+                        major /= 5;
+                    }
                     break;
 
-                case int n when n <= 4:
-                    minor = major / 5;
+                case 2:     // (0.5, 0.1)
+                    minor = major / 10;
                     major /= 2;
                     break;
 
@@ -255,7 +263,7 @@ namespace ChroZenService
             {
                 paint.IsAntialias = true;
 
-                if (Model.Configuration.DetectorType[ActiveDetector] != DetectorTypes.None)
+                if (ActiveDetector != -1 && Model.Configuration.DetectorType[ActiveDetector] != DetectorTypes.None)
                 {
                     paint.Color = SKColors.White;
                     paint.Style = SKPaintStyle.Stroke;
@@ -585,9 +593,20 @@ namespace ChroZenService
 
         private void OnCanvasViewTapped(object sender, EventArgs e)
         {
-            Debug.WriteLine("tab");   
-        }
+            if (SignalPoints.Count == 0 || ActiveDetector < 0)
+            {
+                Min = 0.0f;
+                Max = 1000.0f;
+            }
+            else
+            {
+                var pts = SignalPoints.Select(pt => ActiveDetector switch { 0 => pt.Item2, 1 => pt.Item3, 2 => pt.Item4, _ => 0.0f, }).DefaultIfEmpty().OrderBy(v => v).ToArray();
+                var diff = Math.Max(1.0f, pts.Last() - pts.First());
 
+                Min = pts.First() - diff * 0.03f;
+                Max = pts.Last() + diff * 0.05f;
+            }
+        }
 
         int idPanDevice = -1;
         double originalMinValue = 0.0, originalMaxValue = 0.0;
@@ -614,6 +633,10 @@ namespace ChroZenService
                         Max = (float)(originalMaxValue + diff);
                         Min = (float)(originalMinValue + diff);
                     }
+                    else
+                    {
+                        idPanDevice = -1;
+                    }
                     break;
                 default:
                     idPanDevice = -1;
@@ -635,110 +658,5 @@ namespace ChroZenService
                     break;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //private void onRunStartedEventHandler()
-        //{
-        //    DataManager.RunState.e_CHART_DRAW_STATE = DataManager.RunState.E_CHART_DRAW_STATE.DRAW;
-        //}
-
-        //private void onRunStoppedEventHandler()
-        //{
-        //    DataManager.RunState.e_CHART_DRAW_STATE = DataManager.RunState.E_CHART_DRAW_STATE.STOP;
-        //}
-
-        //private void onMethodUpdatedEventHandler()
-        //{
-        //    //Task.Factory.StartNew(() => UpdateChart());
-        //    UpdateChart(); //20210426
-        //}
-
-        //void DrawGridLine()
-        //{
-
-        //}
-
-        //void StartDrawChartData()
-        //{
-
-        //}
-
-        //void StopDrawChartData()
-        //{
-
-        //}
-
-        //void UpdateChart()
-        //{
-        //    DrawGridLine();
-
-        //}
-
-        //private void onVerticalOffsetChanged()
-        //{
-        //    Debug.WriteLine(string.Format("onVerticalOffsetChanged : VerticalOffset={0}", VerticalOffset));
-        //}
-
-        //private void onVerticalDeltaChanged()
-        //{
-        //    //Debug.WriteLine(string.Format("onVerticalDeltaChanged : VerticalDelta={0}", VerticalDelta));
-        //}
-
-        //private void Axis_PanUpdated(object sender, PanUpdatedEventArgs e)
-        //{
-
-        //    if (e.StatusType == GestureStatus.Running)
-        //    {
-        //        //VerticalDelta += e.TotalY * VerticalDelta / 400;
-        //        //sKCanvasViewChart.InvalidateSurface();
-        //        //sKCanvasViewGrid.InvalidateSurface();
-        //        //EventManager.ChartDeltaChangedEvent(e.TotalX, (float)VerticalDelta);
-        //    }
-        //    //Debug.WriteLine(string.Format("Axis : Pan StatusType={0}, VerticalDelta={1}, TotalY={2}", e.StatusType.ToString(), VerticalDelta, e.TotalY));
-
-
-        //}
-
-        //private void Chart_PanUpdated(object sender, PanUpdatedEventArgs e)
-        //{
-
-        //    if (e.StatusType == GestureStatus.Running)
-        //    {
-        //        //VerticalOffset += (e.TotalY * VerticalDelta * 7);
-
-        //        //sKCanvasViewChart.InvalidateSurface();
-        //        //sKCanvasViewGrid.InvalidateSurface();
-        //        //EventManager.ChartOffsetChangedEvent(e.TotalX, (float)VerticalOffset);
-        //    }
-        //    //Debug.WriteLine(string.Format("Chart : Pan StatusType={0}, VerticalOffset={1}, TotalY={2}", e.StatusType.ToString(), VerticalOffset, e.TotalY));
-
-
-        //}
-
-
     }
 }
