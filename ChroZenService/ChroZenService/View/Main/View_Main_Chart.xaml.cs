@@ -134,7 +134,7 @@ namespace ChroZenService
                     break;
 
                 case 1:
-                    if (5 * diff / major > 5)   // (0.5, 0.1)
+                    if ((5 * diff / major) > 5 && (2 * diff / major) > 3)   // (0.5, 0.1)
                     {
                         minor = major / 10;
                         major /= 2;
@@ -199,8 +199,8 @@ namespace ChroZenService
 
             rect.Left += margin;
             rect.Right -= margin;
-            rect.Top += margin;
-            rect.Bottom -= margin * 2;
+//            rect.Top += margin;
+            rect.Bottom -= margin;
 
             SKSizeI signalCaptionSize = DrawSignalCaption(canvas, rect, true);
             SKSizeI ovenCaptionSize = DrawOvenCaption(canvas, rect, true);
@@ -387,13 +387,15 @@ namespace ChroZenService
                 paint.Style = SKPaintStyle.Stroke;
                 paint.StrokeWidth = 1;
 
+                Func<float, string> _Text = v => $"{v:F1}".TrimEnd('0').TrimEnd('.');           
+
                 if (measureOnly)
                 {
                     int width = 0;
                     SKRect rcText = new SKRect();
-                    foreach (var t in ticker.tick)
+                    foreach (float t in ticker.tick)
                     {
-                        paint.MeasureText($"{t:G}", ref rcText);
+                        paint.MeasureText(_Text(t), ref rcText);
                         width = Math.Max((int)Math.Ceiling(rcText.Width) + 1, width);
                     }
                     return width + (int)ruler;
@@ -409,8 +411,8 @@ namespace ChroZenService
                         var y = convertL(rect, t);
                         canvas.DrawLine(rect.Right, y, rect.Right - ruler / 2, y, paint);
 
-                        paint.MeasureText($"{t:G}", ref rcText);
-                        canvas.DrawText($"{t:G}", rect.Right - ruler / 2 - rcText.Width, y + rcText.Height / 2, paint);
+                        paint.MeasureText(_Text(t), ref rcText);
+                        canvas.DrawText(_Text(t), rect.Right - ruler / 2 - rcText.Width, y + rcText.Height / 2, paint);
                     }
 
                     var bottom = Math.Floor(Min / ticker.minor) * ticker.minor;
@@ -464,13 +466,15 @@ namespace ChroZenService
                 paint.Style = SKPaintStyle.Stroke;
                 paint.StrokeWidth = 1;
 
+                Func<float, string> _Text = v => $"{v:F0}";
+
                 if (measureOnly)
                 {
                     int width = 0;
                     SKRect rcText = new SKRect();
-                    foreach (var g in ticker.tick)
+                    foreach (var t in ticker.tick)
                     {
-                        paint.MeasureText($"{g:G}", ref rcText);
+                        paint.MeasureText(_Text(t), ref rcText);
                         width = Math.Max((int)Math.Ceiling(rcText.Width) + 1, width);
                     }
                     return width + (int)ruler;
@@ -486,8 +490,8 @@ namespace ChroZenService
                         var y = convertR(rect, t);
                         canvas.DrawLine(rect.Left, y, rect.Left + ruler / 2, y, paint);
 
-                        paint.MeasureText($"{t:G}", ref rcText);
-                        canvas.DrawText($"{t:G}", rect.Left + ruler / 2, y + rcText.Height / 2, paint);
+                        paint.MeasureText(_Text(t), ref rcText);
+                        canvas.DrawText(_Text(t), rect.Left + ruler / 2, y + rcText.Height / 2, paint);
                     }
 
                     var bottom = Math.Floor(-88 / ticker.minor) * ticker.minor;
@@ -537,6 +541,7 @@ namespace ChroZenService
                 paint.Style = SKPaintStyle.Stroke;
                 paint.StrokeWidth = 1;
 
+                Func<float, string> _Text = v => $"{v:F0}";
 
                 if (measureOnly)
                 {
@@ -553,8 +558,8 @@ namespace ChroZenService
                         var x = convertX(rect, t);
                         canvas.DrawLine(x, rect.Top, x, rect.Top + ruler / 2, paint);
 
-                        paint.MeasureText($"{t:G}", ref rcText);
-                        canvas.DrawText($"{t:G}", x - rcText.Width / 2, rect.Top + rcText.Height + ruler / 2, paint);
+                        paint.MeasureText(_Text(t), ref rcText);
+                        canvas.DrawText(_Text(t), x - rcText.Width / 2, rect.Top + rcText.Height + ruler / 2, paint);
                     }
 
                     var bottom = 0.0;

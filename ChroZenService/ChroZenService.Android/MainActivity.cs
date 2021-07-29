@@ -12,7 +12,8 @@ using Android.Util;
 
 namespace ChroZenService.Droid
 {
-    [Activity(Label = "ChroZenService", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "ChroZenService", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, 
+        ScreenOrientation = ScreenOrientation.SensorPortrait /*, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation*/)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
