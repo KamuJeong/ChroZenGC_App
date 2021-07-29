@@ -48,27 +48,28 @@
                         </DataTrigger>
                     </Image.Triggers>
                 </Image>
-                <Grid Grid.Column="0">
+                <Grid Grid.Column="0" RowSpacing="0">
                     <Grid.GestureRecognizers>
-                        <SwipeGestureRecognizer Direction="Down" Command="{Binding Center.LeftDown}" />
-                        <SwipeGestureRecognizer Direction="Up" Command="{Binding Center.LeftUp}" />
+                        <SwipeGestureRecognizer Direction="Down" Command="{Binding Center.LeftDown}" CommandParameter="Left"/>
+                        <SwipeGestureRecognizer Direction="Up" Command="{Binding Center.LeftUp}" CommandParameter="Left"/>
                     </Grid.GestureRecognizers>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="9.2*"/>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition Height="10.5*"/>
                         <RowDefinition Height="{Binding Path=Center.ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=0}"/>
-                        <RowDefinition Height="9.2*"/>
+                        <RowDefinition Height="10.5*"/>
                         <RowDefinition Height="{Binding Path=Center.ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=1}"/>
-                        <RowDefinition Height="9.2*"/>
+                        <RowDefinition Height="10.5*"/>
                         <RowDefinition Height="{Binding Path=Center.ActiveInlet, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=2}"/>
-                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Row="0" Command="{Binding Center.Inlet}" CommandParameter="0" Text="{Binding Configuration.InletType[0]}" />
-                    <Rectangle Grid.Row="1"></Rectangle>
-                    <Button Grid.Row="2" Command="{Binding Center.Inlet}" CommandParameter="1" Text="{Binding Configuration.InletType[1]}" />
-                    <Rectangle Grid.Row="3"></Rectangle>
-                    <Button Grid.Row="4" Command="{Binding Center.Inlet}" CommandParameter="2" Text="{Binding Configuration.InletType[2]}" />
-                    <Rectangle Grid.Row="5"></Rectangle>
+                    <Button Grid.Row="1" Command="{Binding Center.Inlet}" CommandParameter="0" Text="{Binding Configuration.InletType[0]}" />
+                    <Rectangle Grid.Row="2"></Rectangle>
+                    <Button Grid.Row="3" Command="{Binding Center.Inlet}" CommandParameter="1" Text="{Binding Configuration.InletType[1]}" />
+                    <Rectangle Grid.Row="4"></Rectangle>
+                    <Button Grid.Row="5" Command="{Binding Center.Inlet}" CommandParameter="2" Text="{Binding Configuration.InletType[2]}" />
+                    <Rectangle Grid.Row="6"></Rectangle>
                 </Grid>
 
 
@@ -91,15 +92,20 @@
                         </DataTrigger>
                     </Image.Triggers>
                 </Image>
-                <Grid Grid.Column="2">
+                <Grid Grid.Column="2" RowSpacing="0">
+                    <Grid.GestureRecognizers>
+                        <SwipeGestureRecognizer Direction="Down" Command="{Binding Center.LeftDown}" CommandParameter="Right"/>
+                        <SwipeGestureRecognizer Direction="Up" Command="{Binding Center.LeftUp}" CommandParameter="Right"/>
+                    </Grid.GestureRecognizers>
+
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="9.2*"/>
+                        <RowDefinition Height="10.5*"/>
                         <RowDefinition Height="{Binding Path=Center.ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=0}"/>
-                        <RowDefinition Height="9.2*"/>
+                        <RowDefinition Height="10.5*"/>
                         <RowDefinition Height="{Binding Path=Center.ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=1}"/>
-                        <RowDefinition Height="9.2*"/>
+                        <RowDefinition Height="10.5*"/>
                         <RowDefinition Height="{Binding Path=Center.ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=2}"/>
-                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
 
                     <Button Grid.Row="0" Command="{Binding Center.Detector}" CommandParameter="0" Text="{Binding Configuration.DetectorType[0]}" />

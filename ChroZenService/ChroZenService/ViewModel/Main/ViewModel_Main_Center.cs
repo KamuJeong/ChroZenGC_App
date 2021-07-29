@@ -13,7 +13,7 @@ namespace ChroZenService.ViewModel.Main
     public class ContentHeightConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-            => int.Parse((string)parameter) == (int)value || ((int)value == -1 && int.Parse((string)parameter) == 2) ? new GridLength(70.9, GridUnitType.Star) : new GridLength(0);
+            => int.Parse((string)parameter) == (int)value || ((int)value == -1 && int.Parse((string)parameter) == 2) ? new GridLength(58, GridUnitType.Star) : new GridLength(0);
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
@@ -63,25 +63,47 @@ namespace ChroZenService.ViewModel.Main
             ActiveInlet = int.Parse(row);
         }
 
-        public ICommand LeftUp => new Command(() => 
+        public ICommand LeftUp => new Command((arg) => 
         {
             for(int i=0; i<3; ++i)
             {
-                if (i > ActiveInlet && Configuration.InletType[i] != InletTypes.None)
+                if ("Left".Equals(arg))
                 {
-                    ActiveInlet = i;
-                    break;
+                    if (i > ActiveInlet && Configuration.InletType[i] != InletTypes.None)
+                    {
+                        ActiveInlet = i;
+                        break;
+                    }
+                }
+                else if("Right".Equals(arg))
+                {
+                    if (i > ActiveDetector && Configuration.DetectorType[i] != DetectorTypes.None)
+                    {
+                        ActiveDetector = i;
+                        break;
+                    }
                 }
             }
         });
-        public ICommand LeftDown => new Command(() =>
+        public ICommand LeftDown => new Command((arg) =>
         {
             for (int i = 3; i >=0 ; --i)
             {
-                if (i < ActiveInlet && Configuration.InletType[i] != InletTypes.None)
+                if ("Left".Equals(arg))
                 {
-                    ActiveInlet = i;
-                    break;
+                    if (i < ActiveInlet && Configuration.InletType[i] != InletTypes.None)
+                    {
+                        ActiveInlet = i;
+                        break;
+                    }
+                }
+                else if ("Right".Equals(arg))
+                {
+                    if (i < ActiveDetector && Configuration.DetectorType[i] != DetectorTypes.None)
+                    {
+                        ActiveDetector = i;
+                        break;
+                    }
                 }
             }
         });

@@ -5,7 +5,7 @@
              x:Class="ChroZenService.View_Main_Top"
              x:DataType="local:ViewModel_Main">
     <ContentView.Content>
-        <Grid>
+        <Grid ColumnSpacing="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
@@ -31,11 +31,12 @@
                     <Label Text=" POST RUN " TextColor="Wheat" Background="black" FontSize="10" HorizontalOptions="Start" VerticalOptions="Start" LineHeight="0" />
                 </StackLayout>
 
-                <Grid Grid.Row="1" Grid.Column="1" Margin="3,0,0,5" >
+                <Grid Grid.Row="1" Grid.Column="1" Margin="3,0,0,5" RowSpacing="0" ColumnSpacing="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="110"/>
                         <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
@@ -48,21 +49,31 @@
                     <Label Grid.RowSpan="2" Text="Column Condition" TextColor="White"  FontSize="20" VerticalOptions="Start" MaxLines="2"  LineBreakMode="WordWrap"/>
                     <!--<Rectangle Grid.RowSpan="2" WidthRequest="2" HorizontalOptions="End" VerticalOptions="Fill" Stroke="white" StrokeThickness="1" />-->
 
-                    <Label Grid.Column="1" Text=" Time " TextColor="Wheat" BackgroundColor="black" FontSize="12" VerticalOptions="Start" LineHeight="0" LineBreakMode="NoWrap"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text=" Start " TextColor="Wheat" BackgroundColor="Black"  FontSize="12" VerticalOptions="Start" LineHeight="0" LineBreakMode="NoWrap"/>
+                    <Label Grid.Column="1" Text=" Time " TextColor="Wheat" BackgroundColor="black" FontSize="12" VerticalOptions="End" LineHeight="0" LineBreakMode="NoWrap"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text=" Start " TextColor="Wheat" BackgroundColor="Black"  FontSize="12" VerticalOptions="End" LineHeight="0" LineBreakMode="NoWrap"/>
                     
-                    <Label Grid.Column="2" Text="{Binding State.RunTime, StringFormat='{0:F1}'}" 
-                           TextColor="LimeGreen"  FontSize="20" HorizontalTextAlignment="Right" LineHeight="0" MaxLines="1" LineBreakMode="NoWrap" TextDecorations="Underline" />
-                    <Label Grid.Row="1" Grid.Column="2" Text="{Binding State.CurrentRun}" 
-                           TextColor="LimeGreen"  FontSize="20" HorizontalTextAlignment="End"  LineHeight="0" LineBreakMode="NoWrap" TextDecorations="Underline"/>
+                    <Label Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding State.RunTime, StringFormat='{0:F1}'}" 
+                           TextColor="LimeGreen"  FontSize="18" HorizontalTextAlignment="Right" LineHeight="0" MaxLines="1" LineBreakMode="NoWrap" TextDecorations="Underline" />
+                    <Label Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding State.CurrentRun}" 
+                           TextColor="LimeGreen"  FontSize="18" HorizontalTextAlignment="End"  LineHeight="0" LineBreakMode="NoWrap" TextDecorations="Underline"/>
                     
-                    <Label Grid.Column="3" Text="/ 100.0 min" TextColor="Wheat"  FontSize="12" VerticalOptions="End" LineHeight="0" MaxLines="1" LineBreakMode="TailTruncation" />
-                    <Label Grid.Row="1" Grid.Column="3" Text="/ 0" TextColor="Wheat"  FontSize="12" VerticalOptions="End" LineHeight="0" MaxLines="1" LineBreakMode="TailTruncation" />
+                    <Label Grid.Column="4" Text="/ 10 min" TextColor="Wheat"  FontSize="12" VerticalOptions="End" LineHeight="0" MaxLines="1" LineBreakMode="TailTruncation" />
+                    <Label Grid.Row="1" Grid.Column="4" Text="/ 0" TextColor="Wheat"  FontSize="12" VerticalOptions="End" LineHeight="0" MaxLines="1" LineBreakMode="TailTruncation" />
                 </Grid>
             </Grid>
 
-            <Ellipse Grid.Column="1" Stroke="lightgray" StrokeThickness="3" Aspect="Uniform" HeightRequest="100" WidthRequest="100" HorizontalOptions="End" VerticalOptions="End" Margin="5"/>
-            <Rectangle Grid.Column="1" Stroke="lightgray" StrokeThickness="3" Aspect="Uniform"  HeightRequest="25" WidthRequest="25" HorizontalOptions="End" VerticalOptions="End" Margin="42"/>
+            <Ellipse Grid.Column="1" Stroke="white" StrokeThickness="0.2"  Aspect="Uniform" HeightRequest="90" WidthRequest="90" HorizontalOptions="End" VerticalOptions="End" Margin="10">
+                <Ellipse.Fill>
+                    <RadialGradientBrush Radius="0.5">
+                        <RadialGradientBrush.GradientStops>
+                            <GradientStop Color="Wheat"/>
+                            <GradientStop Color="black" />
+                        </RadialGradientBrush.GradientStops>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Grid.Column="1" Fill="black" Stroke="lightgray" StrokeThickness="1" Aspect="Uniform" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" VerticalOptions="End" Margin="25" Scale="1"/>
+            <Rectangle Grid.Column="1" Stroke="lightgray" StrokeThickness="1" Aspect="Uniform"  HeightRequest="25" WidthRequest="25" HorizontalOptions="End" VerticalOptions="End" Margin="42"/>
 
         </Grid>
 

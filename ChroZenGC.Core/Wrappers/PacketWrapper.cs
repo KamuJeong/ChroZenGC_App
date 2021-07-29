@@ -105,6 +105,7 @@ namespace ChroZenGC.Core.Wrappers
             {
                 packet = value.ConverTo<TPacket>();
                 OnPropertyChanged(nameof(Binary));
+                OnPropertyChanged(null);
             }
         }
 
@@ -112,7 +113,7 @@ namespace ChroZenGC.Core.Wrappers
 
         protected override void NotifyToParent(object sender, PropertyChangedEventArgs args)
         {
-            if (args.PropertyName != nameof(Binary))
+            if (args.PropertyName != null && args.PropertyName != nameof(Binary))
             {
                 PropertyModified?.Invoke(sender, args);
             }

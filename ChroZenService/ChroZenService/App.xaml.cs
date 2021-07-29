@@ -17,8 +17,8 @@ namespace ChroZenService
 
             MainPage = Resolver.Resolve<View_Root>();
 
-            Resources.Add("DefaultFontSizeKey", ScreenHeight / 60);
-            Resources.Add("ButtonFontSizeKey", ScreenHeight / 45);
+            Resources.Add("DefaultFontSizeKey", ScreenHeight / 80);
+            Resources.Add("ButtonFontSizeKey", ScreenHeight / 50);
             
 
         }

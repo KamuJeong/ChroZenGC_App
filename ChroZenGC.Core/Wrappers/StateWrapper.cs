@@ -132,6 +132,8 @@ namespace ChroZenGC.Core.Wrappers
             Signal = new ArrayWrapper<float>(this, () => Packet.fSignal);
             ValveState = new ArrayWrapper<byte>(this, () => Packet.btValveState);
             MultiValveState = new ArrayWrapper<byte>(this, () => Packet.btMultiValveState);
+
+
         }
 
         public Modes Mode 

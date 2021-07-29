@@ -15,7 +15,7 @@ using System.Threading;
 
 namespace ChroZenService.Droid
 {
-    //[Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
+    [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
     public class SplashActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         static readonly string TAG = "X:" + typeof(SplashActivity).Name;
@@ -41,7 +41,7 @@ namespace ChroZenService.Droid
 
             //Window.DecorView.SystemUiVisibilityChange += DecorView_SystemUiVisibilityChange;
 
-            Log.Debug(TAG, "SplashActivity.OnCreate");
+//            Log.Debug(TAG, "SplashActivity.OnCreate");
         }
 
         //private void DecorView_SystemUiVisibilityChange(object sender, View.SystemUiVisibilityChangeEventArgs e)
@@ -63,10 +63,9 @@ namespace ChroZenService.Droid
 
             Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
 
-            //Task startupWork = new Task(() => { StartMain(); });
-            //startupWork.Start();
-            //StartMain(); //20210426
-            StartActivity(new Intent(Application.Context, typeof(MainActivity))); //20210426
+            System.Threading.Thread.Sleep(1000);
+
+            StartActivity(typeof(MainActivity)); //20210426
         }
 
         protected override void OnStart()
@@ -82,29 +81,6 @@ namespace ChroZenService.Droid
             Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
         }
 
-        // Prevent the back button from canceling the startup process
-        public override void OnBackPressed() { }
-
-        //bool bGoodToGo = false;
-
-        //TaskCompletionSource<bool> tcsGoodToGo = new TaskCompletionSource<bool>();
-
-        // Simulates background work that happens behind the splash screen
-        async void StartMain()
-        {
-            //Log.Debug(TAG, "Performing some startup work that takes a bit of time.");
-            //Log.Debug(TAG, "Startup work is finished - starting MainActivity.");
-
-            
-            StartActivity(new Intent(Application.Context, typeof(MainActivity)));
-            //StartActivityForResult(new Intent(Application.Context, typeof(MainActivity)),0);
-
-            Console.WriteLine("==========================Await Main loading==========================");
-            await Task.Delay(1000 * 60 * 2);
-            Console.WriteLine("==========================Main loading finish==========================");
-
-            //Finish();
-        }
 
         private void HideNavAndStatusBar()
         {

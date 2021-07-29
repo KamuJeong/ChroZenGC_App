@@ -10,6 +10,7 @@
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:scaleType="center"
-        android:gravity="center"/>
+        android:gravity="fill_horizontal"
+        />
   </item>
 </layer-list>

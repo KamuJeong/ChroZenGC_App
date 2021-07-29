@@ -12,7 +12,7 @@ using Android.Util;
 
 namespace ChroZenService.Droid
 {
-    [Activity(Label = "ChroZenService", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, 
+    [Activity(Label = "ChroZenService", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, HardwareAccelerated = true, 
         ScreenOrientation = ScreenOrientation.SensorPortrait /*, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation*/)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
