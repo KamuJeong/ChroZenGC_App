@@ -10,15 +10,13 @@
                 <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="OnCanvasViewTapped" />
                 <PanGestureRecognizer PanUpdated="OnCanvasPanUpdated" />
                 <PinchGestureRecognizer PinchUpdated="OnCanvasPinchUpdated" />
-
             </skia:SKCanvasView.GestureRecognizers>
         </skia:SKCanvasView>
     </ContentView.Content>
 
-    <ContentView.Effects>
-        
-        
-    </ContentView.Effects>
+    
+    
+    
     
     
     <!--<Grid x:Name="drawGrid">

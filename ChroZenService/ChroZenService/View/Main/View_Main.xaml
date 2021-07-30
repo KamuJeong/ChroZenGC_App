@@ -13,7 +13,17 @@
             </Grid.RowDefinitions>
             
             <local:View_Main_Top Grid.Row="0" VerticalOptions="FillAndExpand"/>
-            <local:View_Main_Chart Grid.Row="1" Padding="0,0,0,5" ActiveDetector="{Binding Center.ActiveDetector}"/>
+            <local:View_Main_Chart Grid.Row="1" Padding="0,0,0,5" 
+                                   ActiveDetector="{Binding Center.ActiveDetector}" 
+                                   Max="{Binding Chart.Max}" 
+                                   Min="{Binding Chart.Min}"
+                                   Unit="{Binding Center.ActiveDetector, Converter={StaticResource DetectorUnitConverterKey}}"
+                                   Counter="{Binding Chart.Counter}"
+                                   Points="{Binding Chart.Points}"
+                                   Time="{Binding Oven.TotalRunTime}"
+                                   MaxTemp="{Binding Oven.MaxTemp}"
+                                   OvenPoints="{Binding Oven.Points}"
+                                   />
             <local:View_Main_Center Grid.Row="2" />
 
         </Grid>

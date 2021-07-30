@@ -111,11 +111,14 @@ namespace ChroZenGC.Core.Wrappers
 
         public event PropertyChangedEventHandler PropertyModified;
 
+        public event PropertyChangedEventHandler AfterPropertyModified;
+
         protected override void NotifyToParent(object sender, PropertyChangedEventArgs args)
         {
             if (args.PropertyName != null && args.PropertyName != nameof(Binary))
             {
                 PropertyModified?.Invoke(sender, args);
+                AfterPropertyModified?.Invoke(sender, args);
             }
         }
     }

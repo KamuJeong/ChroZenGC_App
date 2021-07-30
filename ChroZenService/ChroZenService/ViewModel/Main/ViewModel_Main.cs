@@ -24,14 +24,20 @@ namespace ChroZenService
 
         public StateWrapper State => model.State;
 
+        public OvenWrapper Oven => model.Oven;
+
 
         public ViewModel_Main_Center Center { get; }
 
-        public ViewModel_Main(ViewModel_Main_Center center)
+        public ViewModel_Main_Chart Chart { get; }
+
+        public ViewModel_Main(ViewModel_Main_Center center, ViewModel_Main_Chart chart)
         {
             model = Resolver.Resolve<Model>();
 
             Center = center;
+            Chart = chart;
+
 
             //SelectHomeMenu = new RelayCommand(SelectHomeMenuAction);
             //SelectSystemMenu = new RelayCommand(SelectSystemMenuAction);

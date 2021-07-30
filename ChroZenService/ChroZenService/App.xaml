@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.App">
     <Application.Resources>
+        <cvt:DetectorTypeConverter x:Key="DetectorTypeConverterKey" />
+        <cvt:DetectorUnitConverter x:Key="DetectorUnitConverterKey" />
+
         <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_T1">T1</x:String>
         <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_T2">T2</x:String>
         <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_SENSOR1">Sensor1</x:String>
@@ -43,7 +46,7 @@
         <x:Double x:Key="HEIGHT_CONTROLPAGE_NARROW_1_PLUS6">39</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_NARROW_1">33</x:Double>
         <x:Double x:Key="HEIGHT_CONTROLPAGE_NARROW_1_SPARE_4PX">4</x:Double>
-        
+
         <x:Double x:Key="HEIGHT_CONFIG_3">130</x:Double>
         <x:Double x:Key="HEIGHT_CONFIG_2">90</x:Double>
         <x:Double x:Key="HEIGHT_CONFIG_2_LARGE">100</x:Double>
@@ -264,20 +267,20 @@
         <cvt:E_INLET_TYPEToCapillaryOrOnColumnVisibilityConverter x:Key="E_INLET_TYPEToCapillaryOrOnColumnVisibilityConverter"/>
         <cvt:E_INLET_TYPEToPressureGroupUIIndexConverter x:Key="E_INLET_TYPEToPressureGroupUIIndexConverter"/>
         <cvt:E_INLET_TEMP_MODEToTemperatureTableEnableConverter x:Key="E_INLET_TEMP_MODEToTemperatureTableEnableConverter"/>
-        
+
         <cvt:E_INLET_TYPEToOnColumnUIVisibleConverter x:Key="E_INLET_TYPEToOnColumnUIVisibleConverter"/>
         <cvt:E_INLET_TYPEToCapillaryUIVisibleConverter x:Key="E_INLET_TYPEToCapillaryUIVisibleConverter"/>
         <cvt:E_INLET_TYPEToPackedUIVisibleConverter x:Key="E_INLET_TYPEToPackedUIVisibleConverter"/>
 
         <cvt:ApcModeToPressureTableEnableConverter x:Key="ApcModeToPressureTableEnableConverter"/>
         <cvt:ApcModeToPressureTableVisibilityConverter x:Key="ApcModeToPressureTableVisibilityConverter"/>
-        
+
         <cvt:ApcModeToFlowTableEnableConverter x:Key="ApcModeToFlowTableEnableConverter"/>
         <cvt:ApcModeToFlowTableVisibilityConverter x:Key="ApcModeToFlowTableVisibilityConverter"/>
-        
+
         <cvt:ApcModeToFlowSetAvailableConverter x:Key="ApcModeToFlowSetAvailableConverter"/>
         <cvt:ApcModeToPressureSetAvailableConverter x:Key="ApcModeToPressureSetAvailableConverter"/>
-        
+
         <cvt:bMethanizerToStringConverter x:Key="bMethanizerToStringConverter"/>
         <cvt:ValveProgramSelectedIndexToParameterConverter x:Key="ValveProgramSelectedIndexToParameterConverter"/>
         <cvt:ValveProgramStateToStringConverter x:Key="ValveProgramStateToStringConverter"/>
@@ -395,7 +398,7 @@
         </Style>
         <Style x:Key="STYLE_LABEL_CONFIG_VALVE_PROGRAM_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <Setter Property="FontSize" Value="16"/>
-            <!--<Setter Property="CornerRadius" Value="5"/>-->            
+            <!--<Setter Property="CornerRadius" Value="5"/>-->
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>

@@ -21,8 +21,13 @@ namespace ChroZenService
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class View_Main_Chart : ContentView
     {
+        public View_Main_Chart()
+        {
+            InitializeComponent();
+        }
+
         public static readonly BindableProperty ActiveDetectorProperty = BindableProperty.Create("ActiveDetector", typeof(int), typeof(View_Main_Chart),
-                                                                           defaultValue: 0, propertyChanged: ChartPropertyChanged);
+                                                                   defaultValue: 0, propertyChanged: ChartPropertyChanged);
 
         public int ActiveDetector
         {
@@ -30,12 +35,17 @@ namespace ChroZenService
             set => SetValue(ActiveDetectorProperty, value);
         }
 
-        public string Units => "mV";
+        public static readonly BindableProperty UnitProperty = BindableProperty.Create("Unit", typeof(string), typeof(View_Main_Chart),
+                                                                           defaultValue: "mV", propertyChanged: ChartPropertyChanged);
+
+        public string Unit
+        {
+            get => (string)GetValue(UnitProperty);
+            set => SetValue(UnitProperty, value);
+        }
 
         public static readonly BindableProperty MaxProperty = BindableProperty.Create("Max", typeof(float), typeof(View_Main_Chart),
                                                                            defaultValue: 1000.0f, propertyChanged: ChartPropertyChanged, coerceValue: CorceMaxValue);
-
-
 
         public float Max
         {
@@ -51,72 +61,75 @@ namespace ChroZenService
             set => SetValue(MinProperty, value);
         }
 
-        private static void ChartPropertyChanged(BindableObject bindable, object oldValue, object newValue) => (bindable as View_Main_Chart).Redraw();
+        private static void ChartPropertyChanged(BindableObject bindable, object oldValue, object newValue) => (bindable as View_Main_Chart)?.Redraw();
         private static object CorceMaxValue(BindableObject bindable, object value) => (float)Math.Max((bindable as View_Main_Chart).Min + 1.0, (float)value);
 
-        private int counterStateReceived = 0;
+        public static readonly BindableProperty PointsProperty = BindableProperty.Create("Points", typeof(List<ValueTuple<float, float, float, float>>), typeof(View_Main_Chart),
+                                                                                         propertyChanged: ChartPropertyChanged);
+
+        public List<ValueTuple<float, float, float, float>> Points
+        {
+            get => (List<ValueTuple<float, float, float, float>>)GetValue(PointsProperty);
+            set => SetValue(PointsProperty, value);
+        }
+
+        public static readonly BindableProperty CounterProperty = BindableProperty.Create("Counter", typeof(int), typeof(View_Main_Chart),
+                                                                                         propertyChanged: ChartPointsPropertyChanged);
+
+        public int Counter
+        {
+            get => (int)GetValue(CounterProperty);
+            set => SetValue(CounterProperty, value);
+        }
+
         private int counterLastRedrawn = 0;
+
+        private static void ChartPointsPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is View_Main_Chart chart)
+            {
+                if (chart.counterLastRedrawn > chart.Points.Count || chart.Points.Count >= chart.counterLastRedrawn)
+                    chart.Redraw();
+            }
+        }
+
+        public static readonly BindableProperty MaxTempProperty = BindableProperty.Create("MaxTemp", typeof(float), typeof(View_Main_Chart),
+                                                                   defaultValue: 450.0f, propertyChanged: ChartPropertyChanged);
+
+        public float MaxTemp
+        {
+            get => (float)GetValue(MaxTempProperty);
+            set => SetValue(MaxTempProperty, value);
+        }
+
+        public static readonly BindableProperty TimeProperty = BindableProperty.Create("Time", typeof(float), typeof(View_Main_Chart),
+                                                                   defaultValue: 10.0f, propertyChanged: ChartPropertyChanged);
+
+        public float Time
+        {
+            get => (float)GetValue(TimeProperty);
+            set => SetValue(TimeProperty, value);
+        }
+
+        public static readonly BindableProperty OvenPointsProperty = BindableProperty.Create("OvenPoints", typeof(List<ValueTuple<float, float>>), typeof(View_Main_Chart),
+                                                                                                propertyChanged: ChartPropertyChanged);
+
+        public List<ValueTuple<float, float>> OvenPoints
+        {
+            get => (List<ValueTuple<float, float>>)GetValue(OvenPointsProperty);
+            set => SetValue(OvenPointsProperty, value);
+        }
+
+
         public void Redraw()
         {
-            counterLastRedrawn = counterStateReceived;
-
+            counterLastRedrawn = Points?.Count ?? 0;
             Canvas.InvalidateSurface();
         }
 
-        private List<ValueTuple<float, float, float, float>> SignalPoints = new List<ValueTuple<float, float, float, float>>();
-
-        public float TotalRunTime => Model.Oven.TotalRunTime;
-        public List<ValueTuple<float, float>> OvenProgramPoints => Model.Oven.ProgramPoints.ToList();
-
-        private ChroZenGC.Core.Model Model { get; }
-
-        public View_Main_Chart()
-        {
-            InitializeComponent();
-
-            Model = Resolver.Resolve<ChroZenGC.Core.Model>();
-
-            Model.Oven.PropertyModified += (s, e) => Redraw();
-            Model.Oven.PropertyChanged += (s, e) => { if (e.PropertyName == "Binary") Redraw(); };
-
-            Model.State.PropertyChanged += OnStatePropertyChanged;
-        }
-
-        private void OnStatePropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            ++counterStateReceived;
-
-            if (e.PropertyName == "Binary")
-            {
-                var state = sender as StateWrapper;
-                if (state.Mode == ChroZenGC.Core.Packets.Modes.Run)
-                {
-                    if (state.RunTime <= SignalPoints.LastOrDefault().Item1)
-                    {
-                        SignalPoints.Clear();
-                        counterStateReceived = 0;
-                    }
-                    SignalPoints.Add((state.RunTime, state.Signal[0], state.Signal[1], state.Signal[2]));
-                }
-            }
-            else
-            {
-                if (counterStateReceived != counterLastRedrawn + 1)
-                    Redraw();
-
-                counterLastRedrawn = counterStateReceived;
-            }
-
-            if (Math.Abs(counterStateReceived - counterLastRedrawn) >= 5)   // per 1 second
-                Redraw();
-        }
-
-
-        private float convertX(in SKRectI rect, float x) => x * rect.Width / TotalRunTime + rect.Left;
-
+        private float convertX(in SKRectI rect, float x) => x * rect.Width / Time + rect.Left;
         private float convertL(in SKRectI rect, float l) => (float)rect.Bottom - (l - Min) * rect.Height / (Max - Min);
-
-        private float convertR(in SKRectI rect, float r) => (float)rect.Bottom - (r + 88) * rect.Height / (450 + 88);
+        private float convertR(in SKRectI rect, float r) => (float)rect.Bottom - (r + 88) * rect.Height / (MaxTemp + 88);
 
         private (List<float> tick, double minor) prepareTickers(float min, float max)
         {
@@ -185,13 +198,13 @@ namespace ChroZenService
 
             canvas.Clear();
 
-            var rect = info.Rect;
+             var rect = info.Rect;
             ruler = (int)(rect.Height * 0.05);
             fontCaption = fontScale = (int)(ruler * 0.8f);
 
             var signalTick = prepareTickers(Min, Max);
-            var timeTick = prepareTickers(0, TotalRunTime);
-            var ovenTick = prepareTickers(-88, 450);
+            var timeTick = prepareTickers(0, Time);
+            var ovenTick = prepareTickers(-88, MaxTemp);
 
             DrawBackground(canvas, rect);
 
@@ -199,7 +212,7 @@ namespace ChroZenService
 
             rect.Left += margin;
             rect.Right -= margin;
-//            rect.Top += margin;
+            //            rect.Top += margin;
             rect.Bottom -= margin;
 
             SKSizeI signalCaptionSize = DrawSignalCaption(canvas, rect, true);
@@ -259,11 +272,14 @@ namespace ChroZenService
 
         private void DrawSignalData(SKCanvas canvas, SKRectI rect)
         {
+            if (Points == null)
+                return;
+
             using (SKPaint paint = new SKPaint())
             {
                 paint.IsAntialias = true;
 
-                if (ActiveDetector != -1 && Model.Configuration.DetectorType[ActiveDetector] != DetectorTypes.None)
+                if (ActiveDetector != -1)
                 {
                     paint.Color = SKColors.White;
                     paint.Style = SKPaintStyle.Stroke;
@@ -271,7 +287,7 @@ namespace ChroZenService
 
                     canvas.ClipRect(rect);
                     canvas.DrawPoints(SKPointMode.Lines,
-                        SignalPoints.Select(pt => new SKPoint(convertX(rect, pt.Item1),
+                        Points.Select(pt => new SKPoint(convertX(rect, pt.Item1),
                                             convertL(rect, ActiveDetector switch { 0 => pt.Item2, 1 => pt.Item3, 2 => pt.Item4, _ => 0.0f, }))).ToArray(), paint);
                 }
 
@@ -279,7 +295,7 @@ namespace ChroZenService
                 paint.Color = SKColors.Orange;
                 paint.StrokeWidth = 2;
 
-                var x = convertX(rect, SignalPoints.LastOrDefault().Item1);
+                var x = convertX(rect, Points.LastOrDefault().Item1);
 
                 canvas.DrawLine(x, rect.Top, x, rect.Bottom, paint);
             }
@@ -311,6 +327,10 @@ namespace ChroZenService
 
         private void DrawOvenData(SKCanvas canvas, SKRectI rect)
         {
+            var programs = OvenPoints;
+            if (programs == null || programs.Count == 0)
+                return;
+
             using (SKPaint paint = new SKPaint())
             {
                 paint.IsAntialias = true;
@@ -325,14 +345,13 @@ namespace ChroZenService
                                     new float[] { 0.1f, 0.7f },
                                     SKShaderTileMode.Clamp);
 
-                var programs = OvenProgramPoints;
                 var path = new SKPath { FillType = SKPathFillType.EvenOdd };
                 path.MoveTo(rect.Left, convertR(rect, programs[0].Item2));
                 foreach (var pt in programs)
                 {
                     path.LineTo(convertX(rect, pt.Item1), convertR(rect, pt.Item2));
                 }
-                path.LineTo(convertX(rect, TotalRunTime), convertR(rect, programs.Last().Item2));
+                path.LineTo(convertX(rect, Time), convertR(rect, programs.Last().Item2));
 
                 var pathLine = new SKPath(path);
 
@@ -370,8 +389,8 @@ namespace ChroZenService
                 rect.Left = rect.Right - (int)Math.Ceiling(rcText.Width + ruler / 2);
 
                 canvas.DrawText("Signal", rect.Left, rect.Top + paint.FontSpacing, paint);
-                paint.MeasureText("(" + Units + ")", ref rcText);
-                canvas.DrawText("(" + Units + ")", rect.Left + (rect.Width - rcText.Width) / 2, rect.Top + 2 * paint.FontSpacing - ruler / 8, paint);
+                paint.MeasureText("(" + Unit + ")", ref rcText);
+                canvas.DrawText("(" + Unit + ")", rect.Left + (rect.Width - rcText.Width) / 2, rect.Top + 2 * paint.FontSpacing - ruler / 8, paint);
             }
             return rect.Size;
         }
@@ -387,7 +406,7 @@ namespace ChroZenService
                 paint.Style = SKPaintStyle.Stroke;
                 paint.StrokeWidth = 1;
 
-                Func<float, string> _Text = v => $"{v:F1}".TrimEnd('0').TrimEnd('.');           
+                Func<float, string> _Text = v => $"{v:F1}".TrimEnd('0').TrimEnd('.');
 
                 if (measureOnly)
                 {
@@ -495,7 +514,7 @@ namespace ChroZenService
                     }
 
                     var bottom = Math.Floor(-88 / ticker.minor) * ticker.minor;
-                    while (bottom <= 450)
+                    while (bottom <= MaxTemp)
                     {
                         if (bottom >= -88)
                         {
@@ -563,7 +582,7 @@ namespace ChroZenService
                     }
 
                     var bottom = 0.0;
-                    while (bottom <= TotalRunTime)
+                    while (bottom <= Time)
                     {
                         if (bottom >= 0)
                         {
@@ -576,7 +595,6 @@ namespace ChroZenService
             }
             return rect.Height;
         }
-
 
         private void DrawBackground(SKCanvas canvas, SKRectI rect)
         {
@@ -598,14 +616,14 @@ namespace ChroZenService
 
         private void OnCanvasViewTapped(object sender, EventArgs e)
         {
-            if (SignalPoints.Count == 0 || ActiveDetector < 0)
+            if (Points == null || Points.Count == 0 || ActiveDetector < 0)
             {
                 Min = 0.0f;
                 Max = 1000.0f;
             }
             else
             {
-                var pts = SignalPoints.Select(pt => ActiveDetector switch { 0 => pt.Item2, 1 => pt.Item3, 2 => pt.Item4, _ => 0.0f, }).DefaultIfEmpty().OrderBy(v => v).ToArray();
+                var pts = Points.Select(pt => ActiveDetector switch { 0 => pt.Item2, 1 => pt.Item3, 2 => pt.Item4, _ => 0.0f, }).DefaultIfEmpty().OrderBy(v => v).ToArray();
                 var diff = Math.Max(1.0f, pts.Last() - pts.First());
 
                 Min = pts.First() - diff * 0.03f;
@@ -617,7 +635,7 @@ namespace ChroZenService
         double originalMinValue = 0.0, originalMaxValue = 0.0;
         private void OnCanvasPanUpdated(object sender, PanUpdatedEventArgs e)
         {
-            var view = Content as SKCanvasView;
+            var view = sender as SKCanvasView;
             double totalY = e.TotalY * view.CanvasSize.Height / Height;
             double diff = totalY * (originalMaxValue - originalMinValue) / rcSignalScreen.Height;
 

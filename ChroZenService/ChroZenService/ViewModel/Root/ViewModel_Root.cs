@@ -19,11 +19,10 @@ namespace ChroZenService
 
         Model model;
 
-        public ViewModel_Root()
+        public ViewModel_Root(Model model)
         {
+            this.model = model;
             MainView = Resolver.Resolve<View_Main>();
-
-            model = Resolver.Resolve<Model>();
         }
 
         public View MainView { get; set; }
