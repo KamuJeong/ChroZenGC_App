@@ -5,26 +5,28 @@
              x:Class="ChroZenService.View_Main"
              x:DataType="local:ViewModel_Main">
     <ContentView.Content>
-        <Grid>
+        <Grid RowSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="0.45*"/>
-                <RowDefinition Height="0.55*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             
-            <local:View_Main_Top Grid.Row="0" VerticalOptions="FillAndExpand"/>
-            <local:View_Main_Chart Grid.Row="1" Padding="0,0,0,5" 
+            <local:View_Main_Top Margin="0,5,0,10" />
+            <local:View_Main_Chart Grid.Row="1" 
                                    ActiveDetector="{Binding Center.ActiveDetector}" 
                                    Max="{Binding Chart.Max}" 
                                    Min="{Binding Chart.Min}"
                                    Unit="{Binding Center.ActiveDetector, Converter={StaticResource DetectorUnitConverterKey}}"
-                                   Counter="{Binding Chart.Counter}"
+                                   Current="{Binding Chart.Current}"
                                    Points="{Binding Chart.Points}"
                                    Time="{Binding Oven.TotalRunTime}"
                                    MaxTemp="{Binding Oven.MaxTemp}"
                                    OvenPoints="{Binding Oven.Points}"
+                                   Cycle="{Binding State.ProgramStep}"
+                                   RunStop="{Binding State.CurrentRun}"
                                    />
-            <local:View_Main_Center Grid.Row="2" />
+            <local:View_Main_Center Grid.Row="2" Margin="0,0,0,10" />
 
         </Grid>
     </ContentView.Content>

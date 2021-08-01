@@ -1,6 +1,7 @@
 ﻿using ChroZenGC.Core;
 using ChroZenGC.Core.Packets;
 using ChroZenGC.Core.Wrappers;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,30 @@ namespace ChroZenService.ViewModel.Main
             }
         }
 
-        public int ActiveInlet { get; set; }
+
+
+        private int activeInlet = -1;
+        [DoNotNotify]
+        public int ActiveInlet 
+        {
+            get => activeInlet;
+            set
+            {
+                if(activeInlet != value)
+                {
+                    activeInlet = value;
+
+                    LeftGridRow = 2 * (activeInlet + 1);
+                    InletType = Configuration.InletType[activeInlet];
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public int LeftGridRow { get; set; }
+        public InletTypes InletType { get; set; }
+
 
         public ICommand Inlet => new Command<string>(execute: InletSelect, canExecute: CanInlet);
 
@@ -63,9 +87,56 @@ namespace ChroZenService.ViewModel.Main
             ActiveInlet = int.Parse(row);
         }
 
-        public ICommand LeftUp => new Command((arg) => 
+
+
+
+
+
+
+
+
+
+
+
+        private int activeDetector = -1;
+        [DoNotNotify]
+        public int ActiveDetector 
+        { 
+            get => activeDetector;
+            set
+            {
+                if (activeDetector != value)
+                {
+                    activeDetector = value;
+                    RightGridRow = 2 * (activeDetector + 1);
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public int RightGridRow { get; set; }
+
+
+
+
+        public ICommand Detector => new Command<string>(execute: DetectorSelect, canExecute: CanDetector);
+
+        private bool CanDetector(string row) => Configuration.DetectorType[int.Parse(row)] != DetectorTypes.None;
+
+        private void DetectorSelect(string row)
         {
-            for(int i=0; i<3; ++i)
+            ActiveDetector = int.Parse(row);
+        }
+
+
+
+
+
+        public int Height => (int)(566 * 0.9 * App.ScreenWidth / 695);
+        public ICommand SwipeUp => new Command((arg) =>
+        {
+            for (int i = 0; i < 3; ++i)
             {
                 if ("Left".Equals(arg))
                 {
@@ -75,7 +146,7 @@ namespace ChroZenService.ViewModel.Main
                         break;
                     }
                 }
-                else if("Right".Equals(arg))
+                else if ("Right".Equals(arg))
                 {
                     if (i > ActiveDetector && Configuration.DetectorType[i] != DetectorTypes.None)
                     {
@@ -85,9 +156,9 @@ namespace ChroZenService.ViewModel.Main
                 }
             }
         });
-        public ICommand LeftDown => new Command((arg) =>
+        public ICommand SwipeDown => new Command((arg) =>
         {
-            for (int i = 3; i >=0 ; --i)
+            for (int i = 3; i >= 0; --i)
             {
                 if ("Left".Equals(arg))
                 {
@@ -107,18 +178,5 @@ namespace ChroZenService.ViewModel.Main
                 }
             }
         });
-
-
-        public int ActiveDetector { get; set; }
-
-        public ICommand Detector => new Command<string>(execute: DetectorSelect, canExecute: CanDetector);
-
-        private bool CanDetector(string row) => Configuration.DetectorType[int.Parse(row)] != DetectorTypes.None;
-
-        private void DetectorSelect(string row)
-        {
-            ActiveDetector = int.Parse(row);
-        }
-
     }
 }

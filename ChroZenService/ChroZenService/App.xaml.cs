@@ -12,14 +12,17 @@ namespace ChroZenService
 
         public App()
         {
+            Resources.Add("SmallFontSizeKey", ScreenWidth / 50);
+            Resources.Add("DefaultFontSizeKey", ScreenWidth / 40);
+            Resources.Add("ButtonFontSizeKey", ScreenWidth / 30);
+
             InitializeComponent();
 
 
             MainPage = Resolver.Resolve<View_Root>();
 
-            Resources.Add("DefaultFontSizeKey", ScreenHeight / 80);
-            Resources.Add("ButtonFontSizeKey", ScreenHeight / 50);
-            
+
+
 
         }
 

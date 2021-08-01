@@ -2,98 +2,57 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
+             xmlns:model="clr-namespace:ChroZenService.ViewModel.Main"
              x:Class="ChroZenService.View_Main_Top"
              x:DataType="local:ViewModel_Main">
+    <ContentView.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="DimGray" />
+            <Setter Property="FontSize" Value="{StaticResource  SmallFontSizeKey}" />
+            <Setter Property="Background" Value="black" />
+        </Style>
+    </ContentView.Resources>
+
     <ContentView.Content>
-        <Grid ColumnSpacing="0">
+        <Grid RowSpacing="0" ColumnSpacing="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <BoxView HeightRequest="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LimeGreen"/>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-
-           
-                <Rectangle Grid.RowSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill" Fill="LimeGreen"/>
-
-                <StackLayout Grid.Column="1" Orientation="Horizontal" Spacing="5" Margin="3,0,0,0" >
-                    <Label Text=" AUTO READY " TextColor="Wheat" Background="black" FontSize="10" HorizontalOptions="Start" VerticalOptions="Start" LineHeight="0" />
-                    <Label Text=" GAS SAVER " TextColor="Wheat" Background="black" FontSize="10" HorizontalOptions="Start" VerticalOptions="Start" LineHeight="0" />
-                    <Label Text=" POST RUN " TextColor="Wheat" Background="black" FontSize="10" HorizontalOptions="Start" VerticalOptions="Start" LineHeight="0" />
-                </StackLayout>
-
-                <Grid Grid.Row="1" Grid.Column="1" Margin="3,0,0,5" RowSpacing="0" ColumnSpacing="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="110"/>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-
-
-                    <Label Grid.RowSpan="2" Text="Column Condition" TextColor="White"  FontSize="20" VerticalOptions="Start" MaxLines="2"  LineBreakMode="WordWrap"/>
-
-                    <Label Grid.Column="1" Text=" Time " TextColor="Wheat" BackgroundColor="black" FontSize="12" VerticalOptions="Start" LineHeight="0" LineBreakMode="NoWrap"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text=" Start " TextColor="Wheat" BackgroundColor="Black"  FontSize="12" VerticalOptions="End" LineHeight="0" LineBreakMode="NoWrap"/>
-
-
-                    <Grid Grid.RowSpan="2" Grid.Column="2" RowSpacing="0" ColumnSpacing="5" HorizontalOptions="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto" />
-                        </Grid.ColumnDefinitions>
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-
-                        <Label Text="{Binding State.RunTime, StringFormat='{0:F1}'}" 
-                           TextColor="LimeGreen"  FontSize="18" HorizontalTextAlignment="Right" LineHeight="0" MaxLines="1" LineBreakMode="NoWrap" TextDecorations="Underline" />
-                        <Label Grid.Row="1" Text="{Binding State.CurrentRun}" 
-                           TextColor="LimeGreen"  FontSize="18" HorizontalTextAlignment="End"  LineHeight="0" LineBreakMode="NoWrap" TextDecorations="Underline"/>
-
-                        <Label Grid.Column="1" Text="/ 10 min" TextColor="Wheat"  FontSize="12" VerticalOptions="End" LineHeight="0" MaxLines="1" LineBreakMode="TailTruncation" />
-                        <Label Grid.Row="1" Grid.Column="1" Text="/ 0" TextColor="Wheat"  FontSize="12" VerticalOptions="End" LineHeight="0" MaxLines="1" LineBreakMode="TailTruncation" />
-
-
-                    </Grid>
-                    
-
-                    
-                    
-                    
-                    
-                </Grid>
-            </Grid>
-
-            <Ellipse Grid.Column="1" Stroke="white" StrokeThickness="0.2"  Aspect="Uniform" HeightRequest="90" WidthRequest="90" HorizontalOptions="End" VerticalOptions="End" Margin="0,10,0,10">
-                <Ellipse.Fill>
-                    <RadialGradientBrush Radius="0.5">
-                        <RadialGradientBrush.GradientStops>
-                            <GradientStop Color="Wheat"/>
-                            <GradientStop Color="black" />
-                        </RadialGradientBrush.GradientStops>
-                    </RadialGradientBrush>
-                </Ellipse.Fill>
-            </Ellipse>
-            <Ellipse Grid.Column="1" Fill="black" Stroke="lightgray" StrokeThickness="1" Aspect="Uniform" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" VerticalOptions="End" Margin="25" Scale="1"/>
-            <Rectangle Grid.Column="1" Stroke="lightgray" StrokeThickness="1" Aspect="Uniform"  HeightRequest="25" WidthRequest="25" HorizontalOptions="End" VerticalOptions="End" Margin="42"/>
+            <StackLayout Grid.Column="1" Orientation="Horizontal" Spacing="5" Margin="5,0,0,0" VerticalOptions="Start">
+                <Label Text=" AUTO READY ">
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label" Binding="{Binding Oven.AutoReadyRun}" Value="True">
+                            <Setter Property="TextColor" Value="LightSteelBlue" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+                <Label Text="{Binding Top.GasSaver}" TextColor="LightSteelBlue">
+                    <Label.Triggers>
+                        <Trigger TargetType="Label" Property="Text" Value=" GAS SAVER ">
+                            <Setter Property="TextColor" Value="DimGray" />
+                        </Trigger>
+                    </Label.Triggers>
+                </Label>
+                <Label Text=" POSTRUN ">
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label" Binding="{Binding Oven.PostRun.OnOff}" Value="True">
+                            <Setter Property="TextColor" Value="LightSteelBlue" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+                <Label Text=" REPEAT RUN ">
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label" Binding="{Binding Oven.RunStart.OnOff}" Value="True">
+                            <Setter Property="TextColor" Value="LightSteelBlue" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </StackLayout>
 
         </Grid>
-
     </ContentView.Content>
 </ContentView>

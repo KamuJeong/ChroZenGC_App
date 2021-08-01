@@ -109,17 +109,27 @@ namespace ChroZenGC.Core.Wrappers
             }
         }
 
+        private bool blockPropertyModifiedEvent = false;
+
         public event PropertyChangedEventHandler PropertyModified;
 
-        public event PropertyChangedEventHandler AfterPropertyModified;
-
-        protected override void NotifyToParent(object sender, PropertyChangedEventArgs args)
+        protected sealed override void NotifyToParent(object sender, PropertyChangedEventArgs args)
         {
-            if (args.PropertyName != null && args.PropertyName != nameof(Binary))
-            {
-                PropertyModified?.Invoke(sender, args);
-                AfterPropertyModified?.Invoke(sender, args);
-            }
+            if (blockPropertyModifiedEvent)
+                return;
+
+            args = new PropertyChangedEventArgs(args.PropertyName ?? string.Empty);
+
+            blockPropertyModifiedEvent = true;
+            OnPrePropertyModified(sender, args.PropertyName == null? new PropertyChangedEventArgs("") : args);
+            blockPropertyModifiedEvent = false;
+
+            PropertyModified?.Invoke(sender, args);
+        }
+
+        protected virtual void OnPrePropertyModified(object sender, PropertyChangedEventArgs args)
+        {
+
         }
     }
 }

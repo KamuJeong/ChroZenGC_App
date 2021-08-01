@@ -73,14 +73,6 @@ namespace ChroZenService
             set => SetValue(PointsProperty, value);
         }
 
-        public static readonly BindableProperty CounterProperty = BindableProperty.Create("Counter", typeof(int), typeof(View_Main_Chart),
-                                                                                         propertyChanged: ChartPointsPropertyChanged);
-
-        public int Counter
-        {
-            get => (int)GetValue(CounterProperty);
-            set => SetValue(CounterProperty, value);
-        }
 
         private int counterLastRedrawn = 0;
 
@@ -102,6 +94,16 @@ namespace ChroZenService
             set => SetValue(MaxTempProperty, value);
         }
 
+
+        public static readonly BindableProperty CurrentProperty = BindableProperty.Create("Current", typeof(float), typeof(View_Main_Chart),
+                                                                                         propertyChanged: ChartPointsPropertyChanged);
+
+        public float Current
+        {
+            get => (float)GetValue(CurrentProperty);
+            set => SetValue(CurrentProperty, value);
+        }
+
         public static readonly BindableProperty TimeProperty = BindableProperty.Create("Time", typeof(float), typeof(View_Main_Chart),
                                                                    defaultValue: 10.0f, propertyChanged: ChartPropertyChanged);
 
@@ -118,6 +120,24 @@ namespace ChroZenService
         {
             get => (List<ValueTuple<float, float>>)GetValue(OvenPointsProperty);
             set => SetValue(OvenPointsProperty, value);
+        }
+
+        public static readonly BindableProperty CycleProperty = BindableProperty.Create("Cycle", typeof(int), typeof(View_Main_Chart),
+                                                                                        propertyChanged: ChartPropertyChanged);
+
+        public int Cycle
+        {
+            get => (int)GetValue(CycleProperty);
+            set => SetValue(CycleProperty, value);
+        }
+
+        public static readonly BindableProperty RunStopProperty = BindableProperty.Create("RunStop", typeof(int), typeof(View_Main_Chart),
+                                                                                        defaultValue:1, propertyChanged: ChartPropertyChanged);
+
+        public int RunStop
+        {
+            get => (int)GetValue(RunStopProperty);
+            set => SetValue(RunStopProperty, value);
         }
 
 
@@ -198,9 +218,10 @@ namespace ChroZenService
 
             canvas.Clear();
 
-             var rect = info.Rect;
-            ruler = (int)(rect.Height * 0.05);
-            fontCaption = fontScale = (int)(ruler * 0.8f);
+            var rect = info.Rect;
+            ruler = (int)(rect.Width * 0.03);
+            fontScale = (int)(ruler * 0.8);
+            fontCaption = (int)(ruler * 0.9);
 
             var signalTick = prepareTickers(Min, Max);
             var timeTick = prepareTickers(0, Time);
@@ -212,8 +233,10 @@ namespace ChroZenService
 
             rect.Left += margin;
             rect.Right -= margin;
-            //            rect.Top += margin;
-            rect.Bottom -= margin;
+//            rect.Bottom -= margin;
+            rect.Top += 2 * margin;
+
+            rect.Top += (int)(DrawTopCaption(canvas, rect) + ruler);
 
             SKSizeI signalCaptionSize = DrawSignalCaption(canvas, rect, true);
             SKSizeI ovenCaptionSize = DrawOvenCaption(canvas, rect, true);
@@ -270,6 +293,98 @@ namespace ChroZenService
 
         }
 
+        private SKRect measureText(string text, float fontSize, SKPaint paint)
+        {
+            SKRect rcText = new SKRect();
+            paint.TextSize = fontSize;
+            paint.MeasureText(text, ref rcText);
+            return rcText;
+        }
+
+        private SKRect drawText(SKCanvas canvas, SKRect rect, string text, float fontSize, SKPaint paint, int horizontal, int vertical, bool measureOnly)
+        {
+            paint.TextSize = fontSize;
+
+            SKRect rcText = measureText(text, fontSize, paint);
+            float x = horizontal switch { 1 => rect.Left + (rect.Width - rcText.Width) / 2, 2 => rect.Right - rcText.Width - 2, _ => rect.Left, };
+            float y = rect.Top + vertical switch { 1 => rcText.Height + (rect.Height - rcText.Height) / 2, 2 => rect.Height, _ => rcText.Height, }; 
+
+            if (!measureOnly) canvas.DrawText(text, x, y, paint);
+
+            rect.Left = x;
+            rect.Right = rect.Left + rcText.Width + 2;
+            rect.Bottom = y;
+
+            return rect;
+        }
+
+
+        private float DrawTopCaption(SKCanvas canvas, SKRectI rect)
+        {
+            using (SKPaint paint = new SKPaint())
+            {
+                paint.IsAntialias = true;
+                paint.StrokeWidth = 1;
+                paint.Style = SKPaintStyle.Fill;
+                
+                
+                var rcTime = rect;
+                rcTime.Right = rcTime.Left + rect.Width / 2;
+
+                string caption = "RUNTIME 999999999999.0";
+                paint.Color = SKColors.Wheat;
+                var rc00 = drawText(canvas, rcTime, caption, fontCaption, paint, 2, 0, true);
+
+                drawText(canvas, rc00, "RUNTIME", fontCaption, paint, 0, 0, false);
+                drawText(canvas, rc00, $"{Time:F1}", fontCaption, paint, 2, 0, false);
+                canvas.DrawLine(rc00.Left, rc00.Top - (ruler / 5), rc00.Right, rc00.Top - (ruler / 5), paint);
+                canvas.DrawLine(rc00.Left, rc00.Bottom + (ruler / 5), rc00.Right, rc00.Bottom + (ruler / 5), paint);
+
+                rc00.Top = rc00.Bottom + (int)(0.4 * ruler);
+                rc00.Bottom = rect.Bottom;
+
+                var rc10 = drawText(canvas, rc00, " min", 2.0f * ruler, paint, 2, 0, true);
+                drawText(canvas, rc10, " min", ruler, paint, 1, 2, false);
+                canvas.DrawLine(rc00.Left, rc10.Bottom + 0.4f * ruler, rc00.Right, rc10.Bottom + 0.4f * ruler, paint);
+
+                rcTime = rect;
+                rcTime.Right = rect.Right - (int)rc00.Left;
+
+                caption = "CYCLE 9999999";
+                var rc01 = drawText(canvas, rcTime, caption, fontCaption, paint, 2, 0, true);
+                drawText(canvas, rc01, "CYCLE", fontCaption, paint, 0, 0, false);
+                drawText(canvas, rc01, $"{Cycle}", fontCaption, paint, 2, 0, false);
+                canvas.DrawLine(rc01.Left, rc01.Top - (ruler / 5), rc01.Right, rc01.Top - (ruler / 5), paint);
+                canvas.DrawLine(rc01.Left, rc01.Bottom + (ruler / 5), rc01.Right, rc01.Bottom + (ruler / 5), paint);
+                canvas.DrawLine(rc01.Left, rc10.Bottom + 0.4f * ruler, rc01.Right, rc10.Bottom + 0.4f * ruler, paint);
+
+                rc01.Top = rc01.Bottom + (int)(0.4 * ruler);
+                rc01.Bottom = rc10.Bottom;
+
+                paint.Style = SKPaintStyle.Stroke;
+                paint.Color = SKColors.Silver;
+                paint.StrokeWidth = 2;
+
+                rc10.Right = rc10.Left;
+                rc10.Left = rc00.Left;
+                drawText(canvas, rc10, $"{Current:F1}", 2.0f * ruler, paint, 2, 2, false);
+
+                string value = $"{RunStop}th";
+                switch (RunStop)
+                {
+                    case 0: value = "---"; break;
+                    case 11: case 12: case 13: break;
+                    case int n when n % 10 == 1: value = $"{RunStop}st"; break;
+                    case int n when n % 10 == 2: value = $"{RunStop}nd"; break;
+                    case int n when n % 10 == 3: value = $"{RunStop}rt"; break;
+                }
+
+                drawText(canvas, rc01, value, 2 * ruler, paint, 2, 2, false);
+
+                return rc10.Bottom - rect.Top;
+            }
+        }
+
         private void DrawSignalData(SKCanvas canvas, SKRectI rect)
         {
             if (Points == null)
@@ -292,7 +407,7 @@ namespace ChroZenService
                 }
 
                 paint.Style = SKPaintStyle.Stroke;
-                paint.Color = SKColors.Orange;
+                paint.Color = SKColors.Wheat;
                 paint.StrokeWidth = 2;
 
                 var x = convertX(rect, Points.LastOrDefault().Item1);
@@ -359,7 +474,7 @@ namespace ChroZenService
                 path.LineTo(rect.Left, rect.Bottom);
                 path.Close();
 
-                paint.Style = SKPaintStyle.StrokeAndFill;
+                paint.Style = SKPaintStyle.Fill;
                 canvas.DrawPath(path, paint);
 
                 paint.Shader = null;
@@ -378,7 +493,7 @@ namespace ChroZenService
                 paint.IsAntialias = true;
 
                 paint.Color = SKColors.LightGray;
-                paint.TextSize = fontCaption;
+                paint.TextSize = fontScale;
 
                 SKRect rcText = new SKRect();
                 paint.MeasureText("Signal", ref rcText);
@@ -403,7 +518,7 @@ namespace ChroZenService
 
                 paint.Color = SKColors.White;
                 paint.TextSize = fontScale;
-                paint.Style = SKPaintStyle.Stroke;
+                paint.Style = SKPaintStyle.Fill;
                 paint.StrokeWidth = 1;
 
                 Func<float, string> _Text = v => $"{v:F1}".TrimEnd('0').TrimEnd('.');
@@ -456,7 +571,7 @@ namespace ChroZenService
                 paint.IsAntialias = true;
 
                 paint.Color = SKColors.LightGray;
-                paint.TextSize = fontCaption;
+                paint.TextSize = fontScale;
 
                 SKRect rcText = new SKRect();
                 paint.MeasureText("Temp", ref rcText);
@@ -482,7 +597,7 @@ namespace ChroZenService
 
                 paint.Color = SKColors.LimeGreen;
                 paint.TextSize = fontScale;
-                paint.Style = SKPaintStyle.Stroke;
+                paint.Style = SKPaintStyle.Fill;
                 paint.StrokeWidth = 1;
 
                 Func<float, string> _Text = v => $"{v:F0}";
@@ -535,7 +650,7 @@ namespace ChroZenService
                 paint.IsAntialias = true;
 
                 paint.Color = SKColors.LightGray;
-                paint.TextSize = fontCaption;
+                paint.TextSize = fontScale;
 
                 SKRect rcText = new SKRect();
                 paint.MeasureText("Time (min)", ref rcText);
@@ -555,9 +670,9 @@ namespace ChroZenService
             {
                 paint.IsAntialias = true;
 
-                paint.Color = SKColors.Orange;
+                paint.Color = SKColors.Wheat;
                 paint.TextSize = fontScale;
-                paint.Style = SKPaintStyle.Stroke;
+                paint.Style = SKPaintStyle.Fill;
                 paint.StrokeWidth = 1;
 
                 Func<float, string> _Text = v => $"{v:F0}";

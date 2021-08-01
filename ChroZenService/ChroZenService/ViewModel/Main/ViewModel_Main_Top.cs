@@ -1,0 +1,33 @@
+﻿using ChroZenGC.Core;
+using ChroZenGC.Core.Wrappers;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using Xamarin.Forms;
+
+namespace ChroZenService.ViewModel.Main
+{
+
+    public class ViewModel_Main_Top : Observable
+    {
+        private Model model;
+
+        public ViewModel_Main_Top()
+        {
+            model = Resolver.Resolve<Model>();
+
+            model.State.PropertyModified += OnStatePropertyChanged;
+        }
+
+        private void OnStatePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {  
+            GasSaver = " GAS SAVER " + string.Concat(model.State.GasSaver.Select((s, i) => new { s, p = $"{i + 1} " })
+                        .Where(t => t.s != 0)
+                        .Select(t => t.p));
+        }
+
+        public string GasSaver { get; set; } = " GAS SAVER ";
+    }
+}

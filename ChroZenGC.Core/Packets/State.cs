@@ -7,7 +7,7 @@ namespace ChroZenGC.Core.Packets
 {
     public enum Modes : byte
     {
-        Init, Ready, NotReady, Run, Error, PowerSave, Diagnostics, Calibration, Unknown, PostRun, AutoReadyRun, ColumnCondition, GasSaver
+        Initialize, Ready, NotReady, Run, Error, PowerSave, Diagnostics, Calibration, Unknown, Postrun, ReadyRun, ColumnCondition, GasSaver
     }
 
 

@@ -15,7 +15,7 @@ namespace ChroZenService
     {
         public View_Root(ViewModel_Root viewModel)
         {
-            Resources.Add("MainMarginKey", new Thickness(App.ScreenWidth / 20, App.ScreenHeight / 100));
+            Resources.Add("MainMarginKey", new Thickness(App.ScreenWidth / 40, 0));
 
             InitializeComponent();
 
@@ -24,8 +24,6 @@ namespace ChroZenService
             //Task.Factory.StartNew(() => { tcpManager.ConnectDevice("192.168.0.88", 4242); });
 
             //NavigationPage.SetHasNavigationBar(this, false);
-
-
 
             BindingContext = viewModel;
          

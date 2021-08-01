@@ -26,18 +26,22 @@ namespace ChroZenService
 
         public OvenWrapper Oven => model.Oven;
 
+        public IList<InletSetupWrapper> Inlet => model.Inlet;
+
 
         public ViewModel_Main_Center Center { get; }
 
         public ViewModel_Main_Chart Chart { get; }
 
-        public ViewModel_Main(ViewModel_Main_Center center, ViewModel_Main_Chart chart)
+        public ViewModel_Main_Top Top { get; }
+
+        public ViewModel_Main(ViewModel_Main_Top top, ViewModel_Main_Chart chart, ViewModel_Main_Center center)
         {
             model = Resolver.Resolve<Model>();
 
             Center = center;
             Chart = chart;
-
+            Top = top;
 
             //SelectHomeMenu = new RelayCommand(SelectHomeMenuAction);
             //SelectSystemMenu = new RelayCommand(SelectSystemMenuAction);

@@ -2,69 +2,75 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
-             x:Class="ChroZenService.View_Footer">
+             x:Class="ChroZenService.View_Footer"
+             x:DataType="local:ViewModel_Root"
+             >
     <ContentView.Resources>
         <Style TargetType="ImageButton">
-            <Style.Triggers>
-                <Trigger TargetType="ImageButton" Property="IsPressed" Value="True">
-                    <Setter Property="Scale" Value="1.2" />
-                </Trigger>
-            </Style.Triggers>
-            
             <Setter Property="BackgroundColor" Value="Transparent"/>
             <Setter Property="HeightRequest" Value="60" />
             <Setter Property="HorizontalOptions" Value="Center" />
             <Setter Property="VerticalOptions" Value="Center" />
             <Setter Property="WidthRequest" Value="60" />
             <Setter Property="Aspect" Value="Fill" />
+            <Setter Property="local:ImageButtonBehavior.Use" Value="True" />
         </Style>
     </ContentView.Resources>
     <ContentView.Content>
-        <!--<Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="140" />
-                <ColumnDefinition Width="140" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="100" />
-            </Grid.ColumnDefinitions>
-            --><!--<Label Grid.Column="0" Text="Home window" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource CS_COLOR_WHITE_0}" VerticalOptions="Center" Margin="10,0,0,0"/>--><!--
-            <Label Grid.Column="0" Text="{Binding ViewModel_Footer.SelectedWindow}" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource CS_COLOR_WHITE_0}" VerticalOptions="Center" Margin="10,0,0,0"/>
-            <ImageButton Grid.Column="2" WidthRequest="80" HeightRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Source="btn_bot_01.png" Command="{Binding SelectHomeMenu}"/>
-            <ImageButton Grid.Column="3" WidthRequest="80" HeightRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Source="btn_bot_03.png" Command="{Binding SelectConfigMenu}"/>
-            <ImageButton Grid.Column="4" WidthRequest="80" HeightRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Source ="btn_bot_02.png" Command="{Binding SelectSystemMenu}"/>
-        </Grid>-->
 
-        <Grid Margin="10,0,5,0" HeightRequest="80">
+        <Grid ColumnSpacing="5" HeightRequest="72" Margin="10,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />                
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
-            <!--<Label Grid.Column="0" Text="Home window" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource CS_COLOR_WHITE_0}" VerticalOptions="Center" Margin="10,0,0,0"/>-->
-            <!--<Label Text="{Binding ViewModel_Footer.SelectedWindow}" FontSize="Large" FontAttributes="Bold" TextColor="{StaticResource CS_COLOR_WHITE_0}" VerticalOptions="Center" Margin="10,0,0,0"/>-->
-            <ImageButton Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.btn_bot_01.png}" Command="{Binding Home}" >
+
+            <ImageButton Grid.Column="0" Source="{local:ImageResource ChroZenService.Images.RunStart.png}" local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.RunStart_Pressed.png}" IsVisible="False">
                 <ImageButton.Triggers>
-                    <Trigger TargetType="ImageButton" Property="IsPressed" Value="True">
-                        <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.btn_bot_11.png}" />
-                    </Trigger>
+                    <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="Ready">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
                 </ImageButton.Triggers>
             </ImageButton>
-            <ImageButton Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.btn_bot_03.png}" Command="{Binding Config}" >
+
+            <ImageButton Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.StopRun.png}" local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.StopRun_Pressed.png}" >
                 <ImageButton.Triggers>
-                    <Trigger TargetType="ImageButton" Property="IsPressed" Value="True">
-                        <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.btn_bot_13.png}" />
-                    </Trigger>
+                    <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="Ready">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="Error">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>                    
                 </ImageButton.Triggers>
             </ImageButton>
-            <ImageButton Grid.Column="3" Source="{local:ImageResource ChroZenService.Images.btn_bot_02.png}" Command="{Binding System}" >
+
+            <ImageButton Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.ReadyRun.png}" local:ImageButtonBehavior.SourcePressed= "{local:ImageResource ChroZenService.Images.ReadyRun_Pressed.png}" IsVisible="False">
                 <ImageButton.Triggers>
-                    <Trigger TargetType="ImageButton" Property="IsPressed" Value="True">
-                        <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.btn_bot_12.png}" />
-                    </Trigger>
+                    <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
                 </ImageButton.Triggers>
             </ImageButton>
+
+            <ImageButton Grid.Column="4" Source="{local:ImageResource ChroZenService.Images.btn_bot_01.png}" local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.btn_bot_11.png}"
+                         Command="{Binding Home}" />
+
+            <ImageButton Grid.Column="5" Source="{local:ImageResource ChroZenService.Images.btn_bot_03.png}" local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.btn_bot_13.png}" 
+                         Command="{Binding Config}" />
+
+            <ImageButton Grid.Column="6" Source="{local:ImageResource ChroZenService.Images.btn_bot_02.png}" local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.btn_bot_12.png}"
+                         Command="{Binding System}" />
+
         </Grid>
 
     </ContentView.Content>

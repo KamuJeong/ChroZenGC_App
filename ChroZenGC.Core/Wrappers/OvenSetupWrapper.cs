@@ -101,9 +101,13 @@ namespace ChroZenGC.Core.Wrappers
 
         public OvenWrapper()
         {
+            Packet.Prgm = new _OvenProgram[25];
             for (int i = 0; i < 25; ++i)
             {
-                Program[i] = new _OvenProgramWrapper(this, () => ref Packet.Prgm[i]);
+                int j = i;      // [IMPORTANT!!!]
+                                // Closure should capture each local variable j, not outer variable i 
+
+                Program[i] = new _OvenProgramWrapper(this, () => ref Packet.Prgm[j]);
             }
             RunStart = new _RunStartWrapper(this, () => ref Packet.Runstart);
             PostRun = new _PostRunWrapper(this, () => ref Packet.Postrun);
@@ -115,15 +119,13 @@ namespace ChroZenGC.Core.Wrappers
             TotalRunTime = 10.0f;
 
             Points = new List<(float, float)> { (0.0f, 50.0f) };
-
-            PropertyChanged += OnOvenProgramChanged;
-            PropertyModified += OnOvenProgramChanged;
         }
 
-        private void OnOvenProgramChanged(object sender, PropertyChangedEventArgs e)
+        protected sealed override void OnPrePropertyModified(object sender, PropertyChangedEventArgs e)
         {
             string propertyName = e.PropertyName.Split('>').FirstOrDefault();
-            if (propertyName == "Binary" || new string[] { nameof(Mode), nameof(InitTime), nameof(TempSet), nameof(_OvenProgramWrapper) }.Any(s => s == propertyName))
+            if (propertyName == "Binary" 
+                || new string[] { nameof(Mode), nameof(InitTime), nameof(TempSet), nameof(_OvenProgramWrapper) }.Any(s => string.Equals(s, propertyName)))
             {
                 // TotalRunTime & Points 계산
                 float temp = TempSet;
@@ -131,7 +133,7 @@ namespace ChroZenGC.Core.Wrappers
                 var pts = new List<ValueTuple<float, float>> { (0.0f, temp) };
                 if (Mode == OvenMode.Program)
                 {
-                    foreach(var p in Program)
+                    foreach (var p in Program)
                     {
                         if (p.Rate <= 0.0f)
                             break;

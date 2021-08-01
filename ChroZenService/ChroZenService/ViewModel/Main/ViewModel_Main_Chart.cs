@@ -17,10 +17,10 @@ namespace ChroZenService.ViewModel.Main
         {
             model = Resolver.Resolve<Model>();
 
-            model.State.PropertyChanged += OnStatePropertyChanged;
+            model.State.PropertyModified += OnStatePropertyChanged;
         }
 
-        public int Counter { get; set; }
+        public float Current { get; set; }
 
         public List<ValueTuple<float, float, float, float>> Points { get; }  = new List<ValueTuple<float, float, float, float>>();
 
@@ -34,10 +34,10 @@ namespace ChroZenService.ViewModel.Main
                     if (state.RunTime < Points.LastOrDefault().Item1)
                     {
                         Points.Clear();
-                        Counter = 0;
+                        Current = 0.0f;
                     }
                     Points.Add((state.RunTime, state.Signal[0], state.Signal[1], state.Signal[2]));
-                    Counter = Points.Count;
+                    Current = state.RunTime;
                 }
             };
         }

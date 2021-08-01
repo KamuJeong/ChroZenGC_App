@@ -1,6 +1,7 @@
 ﻿using ChroZenGC.Core.Packets;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 
@@ -30,15 +31,15 @@ namespace ChroZenGC.Core.Wrappers
             set => Provider.fOven = value;
         }
 
-        public ArrayWrapper<float> Inlet;
+        public ArrayWrapper<float> Inlet { get; }
 
-        public ArrayWrapper<float> InletSet;
+        public ArrayWrapper<float> InletSet { get; }
 
-        public ArrayWrapper<float> Detector;
+        public ArrayWrapper<float> Detector { get;  }
 
-        public ArrayWrapper<float> Aux;
+        public ArrayWrapper<float> Aux { get; }
 
-        public ArrayWrapper<float> Ext;
+        public ArrayWrapper<float> Ext { get; }
     }
 
     public class _CurrentFlowWrapper : StructureWrapper<_CurrentFlow>
@@ -48,8 +49,8 @@ namespace ChroZenGC.Core.Wrappers
         {
             Provider.Disp_Press = new float[3];
             Provider.Disp_FrontInjFlow = new float[4];
-            Provider.Disp_FrontInjFlow = new float[4];
-            Provider.Disp_FrontInjFlow = new float[4];
+            Provider.Disp_CenterInjFlow = new float[4];
+            Provider.Disp_RearInjFlow = new float[4];
             Provider.Disp_Velocity_Inj = new float[3];
             Provider.Disp_Setflow = new float[3];
             Provider.Disp_Setpress = new float[3];
@@ -61,46 +62,47 @@ namespace ChroZenGC.Core.Wrappers
             Provider.Disp_Aux3Flow = new float[3];
 
             Pressure = new ArrayWrapper<float>(this, () => Provider.Disp_Press);
-            FrontInlet = new ArrayWrapper<float>(this, () => Provider.Disp_FrontInjFlow);
-            CenterInlet = new ArrayWrapper<float>(this, () => Provider.Disp_CenterInjFlow);
-            RearInlet = new ArrayWrapper<float>(this, () => Provider.Disp_RearInjFlow);
+
+            Inlets = new ObservableCollection<ArrayWrapper<float>>
+            {
+                new ArrayWrapper<float>(this, () => Provider.Disp_FrontInjFlow),
+                new ArrayWrapper<float>(this, () => Provider.Disp_CenterInjFlow),
+                new ArrayWrapper<float>(this, () => Provider.Disp_RearInjFlow)
+            };
+
             Velocity = new ArrayWrapper<float>(this, () => Provider.Disp_Velocity_Inj);
             SetFlow = new ArrayWrapper<float>(this, () => Provider.Disp_Setflow);
             SetPressure = new ArrayWrapper<float>(this, () => Provider.Disp_Setpress);
-            FrontDetector = new ArrayWrapper<float>(this, () => Provider.Disp_FrontDetFlow);
-            CetnerDetector = new ArrayWrapper<float>(this, () => Provider.Disp_CenterDetFlow);
-            RearDetector = new ArrayWrapper<float>(this, () => Provider.Disp_RearDetFlow);
-            Aux1 = new ArrayWrapper<float>(this, () => Provider.Disp_Aux1Flow);
-            Aux2 = new ArrayWrapper<float>(this, () => Provider.Disp_Aux2Flow);
-            Aux3 = new ArrayWrapper<float>(this, () => Provider.Disp_Aux3Flow);
+
+            Detectors = new ObservableCollection<ArrayWrapper<float>>
+            {
+                new ArrayWrapper<float>(this, () => Provider.Disp_FrontDetFlow),
+                new ArrayWrapper<float>(this, () => Provider.Disp_CenterDetFlow),
+                new ArrayWrapper<float>(this, () => Provider.Disp_RearDetFlow)
+            };
+
+            AuxUPCs = new ObservableCollection<ArrayWrapper<float>>
+            {
+                new ArrayWrapper<float>(this, () => Provider.Disp_Aux1Flow),
+                new ArrayWrapper<float>(this, () => Provider.Disp_Aux2Flow),
+                new ArrayWrapper<float>(this, () => Provider.Disp_Aux3Flow)
+            };
+
         }
 
-        public ArrayWrapper<float> Pressure;
+        public ObservableCollection<ArrayWrapper<float>> Inlets { get; }
 
-        public ArrayWrapper<float> FrontInlet;
+        public ArrayWrapper<float> Pressure { get; }
 
-        public ArrayWrapper<float> CenterInlet;
+        public ArrayWrapper<float> Velocity { get; }
 
-        public ArrayWrapper<float> RearInlet;
+        public ArrayWrapper<float> SetFlow { get; }
 
-        public ArrayWrapper<float> Velocity;
+        public ArrayWrapper<float> SetPressure { get; }
 
-        public ArrayWrapper<float> SetFlow;
+        public ObservableCollection<ArrayWrapper<float>> Detectors { get; }
 
-        public ArrayWrapper<float> SetPressure;
-
-        public ArrayWrapper<float> FrontDetector;
-
-        public ArrayWrapper<float> CetnerDetector;
-
-        public ArrayWrapper<float> RearDetector;
-
-        public ArrayWrapper<float> Aux1;
-
-        public ArrayWrapper<float> Aux2;
-
-        public ArrayWrapper<float> Aux3;
-
+        public ObservableCollection<ArrayWrapper<float>> AuxUPCs { get; }
     }
 
     public class StateWrapper : PacketWrapper<State>
@@ -136,7 +138,7 @@ namespace ChroZenGC.Core.Wrappers
 
         }
 
-        public Modes Mode 
+        public Modes Mode
         {
             get => (Modes)((byte)Packet.btState & 0x7F);
             set => Packet.btState = value;
@@ -172,11 +174,11 @@ namespace ChroZenGC.Core.Wrappers
             set => Packet.btErrorCode = value;
         }
 
-        public ArrayWrapper<byte> GasSaver;
+        public ArrayWrapper<byte> GasSaver { get;  }
 
-        public ArrayWrapper<byte> CurrentSignal;
+        public ArrayWrapper<byte> CurrentSignal { get; }
 
-        public ArrayWrapper<byte> CurrentPolarity;
+        public ArrayWrapper<byte> CurrentPolarity { get; }
 
         public TemperatureFlags TempReady
         {
@@ -202,11 +204,11 @@ namespace ChroZenGC.Core.Wrappers
             set => Packet.FlowOnoff = value;
         }
 
-        public ArrayWrapper<float> Signal;
+        public ArrayWrapper<float> Signal { get; }
 
-        public ArrayWrapper<byte> ValveState;
+        public ArrayWrapper<byte> ValveState { get; }
 
-        public ArrayWrapper<byte> MultiValveState;
+        public ArrayWrapper<byte> MultiValveState { get; }
 
         public byte Step
         {

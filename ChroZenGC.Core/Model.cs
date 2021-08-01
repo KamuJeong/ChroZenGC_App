@@ -2,6 +2,7 @@
 using ChroZenGC.Core.Wrappers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,14 @@ namespace ChroZenGC.Core
 
                     case StateWrapper.PacketCode:
                         Assemble(State, buffer, header.SlotOffset, header.SlotSize);
+                        break;
+
+                    case OvenWrapper.PacketCode:
+                        Assemble(Oven, buffer, header.SlotOffset, header.SlotSize);
+                        break;
+
+                    case InletSetupWrapper.PacketCode:
+                        Assemble(Inlet[header.Index], buffer, header.SlotOffset, header.SlotSize);
                         break;
                 }
 
@@ -103,7 +112,6 @@ namespace ChroZenGC.Core
             }
         }
 
-
         public InformationWrapper Information { get; } = new InformationWrapper();
 
         public ConfigurationWrapper Configuration { get; } = new ConfigurationWrapper();
@@ -111,6 +119,15 @@ namespace ChroZenGC.Core
         public StateWrapper State { get; } = new StateWrapper();
 
         public OvenWrapper Oven { get; } = new OvenWrapper();
+
+        public ObservableCollection<InletSetupWrapper> Inlet { get; } = new ObservableCollection<InletSetupWrapper>
+        {
+            new InletSetupWrapper() { PortNo = 0 },
+            new InletSetupWrapper() { PortNo = 1 },
+            new InletSetupWrapper() { PortNo = 2 }
+        };
+
+
 
     }
 }
