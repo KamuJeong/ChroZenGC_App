@@ -19,7 +19,7 @@
 
             <Style.Triggers>
                 <Trigger TargetType="Button" Property="IsEnabled" Value="False">
-                    <Setter Property="Text" Value="Not Installed" />
+                    <Setter Property="Text" Value="" />
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -79,24 +79,11 @@
                         <StackLayout.Triggers>
                             <Trigger TargetType="StackLayout" Property="Grid.Row" Value="0">
                                 <Setter Property="IsVisible" Value="False" />
-                            </Trigger> 
+                            </Trigger>
                         </StackLayout.Triggers>
 
+                        <Label Text="{Binding Center.InletGasType, StringFormat=' {0}'}"  FontSize="{StaticResource DefaultFontSizeKey}" TextColor="black" BackgroundColor="Silver" />
 
-                        <Label Text=""  FontSize="{StaticResource DefaultFontSizeKey}" TextColor="black" BackgroundColor="Silver" >
-                            <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="0">
-                                    <Setter Property="Text" Value="{Binding Inlet[0].CarrierGas, StringFormat=' {0}'}" />
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="1">
-                                    <Setter Property="Text" Value="{Binding Inlet[1].CarrierGas, StringFormat=' {0}'}" />
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="2">
-                                    <Setter Property="Text" Value="{Binding Inlet[2].CarrierGas, StringFormat=' {0}'}" />
-                                </DataTrigger>
-                            </Label.Triggers>
-                        </Label>
-                        
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -107,81 +94,39 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <Label Text="" HorizontalOptions="End" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
-                                <Label.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="0">
-                                        <Setter Property="Text" Value="{Binding Path=State.Flow.Inlets[0], StringFormat='{0:F2}', Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=2}" />
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="1">
-                                        <Setter Property="Text" Value="{Binding Path=State.Flow.Inlets[1], StringFormat='{0:F2}', Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=2}" />
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="2">
-                                        <Setter Property="Text" Value="{Binding Path=State.Flow.Inlets[2], StringFormat='{0:F2}', Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=2}" />
-                                    </DataTrigger>
-                                </Label.Triggers>
-                            </Label>
+                            <Label Text="{Binding Center.InletFlow, StringFormat='{0:F2}'}" 
+                                   HorizontalOptions="End" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver"/>
 
-                            <Label Grid.Column="1" Text="mL/min" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver"  />
+                            <Label Text="mL/min" Grid.Column="1" 
+                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver"  />
 
+                            <Label Text="{Binding Center.InletPressure, StringFormat='{0:F3}'}" Grid.Row="1"  
+                                   HorizontalOptions="End" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver"/>
 
-                            <Label Text="" Grid.Row="1"  HorizontalOptions="End" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
-                                <Label.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="0">
-                                        <Setter Property="Text" Value="{Binding Path=State.Flow.Pressure[0], StringFormat='{0:F3}'}" />
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="1">
-                                        <Setter Property="Text" Value="{Binding Path=State.Flow.Pressure[1], StringFormat='{0:F3}'}" />
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="2">
-                                        <Setter Property="Text" Value="{Binding Path=State.Flow.Pressure[2], StringFormat='{0:F3}'}" />
-                                    </DataTrigger>
-                                </Label.Triggers>
-                            </Label>
-
-                            <Label Grid.Row="1"  Grid.Column="1" Text="psi" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver"  />
+                            <Label Text="psi" Grid.Row="1"  Grid.Column="1" 
+                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver"  />
                         </Grid>
 
-                        <Label Text="" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="black" BackgroundColor="Silver" >
-                            <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="0">
-                                    <Setter Property="Text" Value="{Binding Inlet[0].APCMode, StringFormat=' {0}'}" />
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="1">
-                                    <Setter Property="Text" Value="{Binding Inlet[1].APCMode, StringFormat=' {0}'}" />
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="2">
-                                    <Setter Property="Text" Value="{Binding Inlet[2].APCMode, StringFormat=' {0}'}" />
-                                </DataTrigger>
-                            </Label.Triggers>
-                        </Label>
+                        <Label Text="{Binding Center.APCMode, StringFormat=' {0}', Converter={StaticResource EnumGapAdderKey}}" 
+                               FontSize="{StaticResource DefaultFontSizeKey}" TextColor="black" BackgroundColor="Silver" />
 
-                        <Grid IsVisible="False">
+                        <Grid IsVisible="True">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.Triggers>
-                                <DataTrigger TargetType="Grid" Binding="{Binding Center.InletType}" Value="Capillary">
-                                    <Setter Property="IsVisible" Value="True"/>
+                                <DataTrigger TargetType="Grid" Binding="{Binding Center.SplitRatio}" Value="0">
+                                    <Setter Property="IsVisible" Value="False"/>
                                 </DataTrigger>
                             </Grid.Triggers>
-                            <Label Text=" Split " FontSize="{StaticResource DefaultFontSizeKey}" TextColor="black" BackgroundColor="Silver" />
-                            <Label Text="" Grid.Column="1" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver" HorizontalOptions="Center" >
-                                <Label.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="0">
-                                        <Setter Property="Text" Value="{Binding Inlet[0].SplitRatio, StringFormat='1 : {0}'}" />
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="1">
-                                        <Setter Property="Text" Value="{Binding Inlet[1].SplitRatio, StringFormat='1 : {0}'}" />
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Center.ActiveInlet}" Value="2">
-                                        <Setter Property="Text" Value="{Binding Inlet[2].SplitRatio, StringFormat='1 : {0}'}" />
-                                    </DataTrigger>
-                                </Label.Triggers>
-                            </Label>
+                            <Label Text=" Split " 
+                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="black" BackgroundColor="Silver" />
+
+                            <Label Text="{Binding Center.SplitRatio, StringFormat='1 :  {0}'}" Grid.Column="1" 
+                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver" HorizontalOptions="Center" />
                         </Grid>
                     </StackLayout>
-                       
                 </Grid>
 
 
@@ -208,6 +153,7 @@
                     </Grid.GestureRecognizers>
 
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="0"/>
                         <RowDefinition Height="10.5*"/>
                         <RowDefinition Height="{Binding Path=Center.ActiveDetector, Converter={x:StaticResource ContentHeightConverter}, ConverterParameter=0}"/>
                         <RowDefinition Height="10.5*"/>
@@ -217,14 +163,112 @@
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Row="0" Command="{Binding Center.Detector}" CommandParameter="0" Text="{Binding Configuration.DetectorType[0]}" />
-                    <Rectangle Grid.Row="1"></Rectangle>
-                    <Button Grid.Row="2" Command="{Binding Center.Detector}" CommandParameter="1" Text="{Binding Configuration.DetectorType[1]}" />
-                    <Rectangle Grid.Row="3"></Rectangle>
-                    <Button Grid.Row="4" Command="{Binding Center.Detector}" CommandParameter="2" Text="{Binding Configuration.DetectorType[2]}" />
-                    <Rectangle Grid.Row="5"></Rectangle>
+                    <Button Grid.Row="1" Command="{Binding Center.Detector}" CommandParameter="0" Text="{Binding Configuration.DetectorType[0]}" />
+                    <Rectangle Grid.Row="2"></Rectangle>
+                    <Button Grid.Row="3" Command="{Binding Center.Detector}" CommandParameter="1" Text="{Binding Configuration.DetectorType[1]}" />
+                    <Rectangle Grid.Row="4"></Rectangle>
+                    <Button Grid.Row="5" Command="{Binding Center.Detector}" CommandParameter="2" Text="{Binding Configuration.DetectorType[2]}" />
+                    <Rectangle Grid.Row="6"></Rectangle>
 
+                    <StackLayout Grid.Row="{Binding Center.RightGridRow}" Spacing="10" Margin="15, 0" VerticalOptions="Center">
+                        <StackLayout.Triggers>
+                            <Trigger TargetType="StackLayout" Property="Grid.Row" Value="0">
+                                <Setter Property="IsVisible" Value="False" />
+                            </Trigger>
+                        </StackLayout.Triggers>
 
+                        <Label Text=" Flame OFF"  
+                               FontSize="{StaticResource DefaultFontSizeKey}" TextColor="black" BackgroundColor="DimGray">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Center.Flame}" Value="FlameON">
+                                    <Setter Property="Text" Value=" Flame ON" />
+                                    <Setter Property="Background" Value="Silver" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Center.Flame}" Value="NotInstalled">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Label Text="{Binding Center.DetectorSignal, StringFormat='{0:F3}'}" 
+                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver" HorizontalOptions="End" />
+                            <Label Text="{Binding Center.DetectorType, Converter={StaticResource DetectorUnitConverterKey}}" Grid.Column="1"
+                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver"/>
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=0}" 
+                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
+                                <Label.Triggers>
+                                    <Trigger TargetType="Label" Property="Text" Value="">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </Trigger>
+                                </Label.Triggers>           
+                            </Label>
+
+                            <Label Text="{Binding Center.DetectorFlow1, StringFormat='{0:F1}'}" Grid.Column="1" 
+                                   HorizontalOptions="End" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=0}" Value="">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+
+                            <Label Text="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=1}" Grid.Row="1"
+                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
+                                <Label.Triggers>
+                                    <Trigger TargetType="Label" Property="Text" Value="">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </Trigger>
+                                </Label.Triggers>
+                            </Label>
+
+                            <Label Text="{Binding Center.DetectorFlow1, StringFormat='{0:F1}'}" Grid.Row="1" Grid.Column="1" 
+                                   HorizontalOptions="End" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=1}" Value="">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+
+                            <Label Text="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=2}" Grid.Row="2"
+                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
+                                <Label.Triggers>
+                                    <Trigger TargetType="Label" Property="Text" Value="">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </Trigger>
+                                </Label.Triggers>
+                            </Label>
+
+                            <Label Text="{Binding Center.DetectorFlow1, StringFormat='{0:F1}'}" Grid.Row="2" Grid.Column="1" 
+                                   HorizontalOptions="End" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=2}" Value="">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+
+                        </Grid>
+                    </StackLayout>
 
                 </Grid>
             </Grid>

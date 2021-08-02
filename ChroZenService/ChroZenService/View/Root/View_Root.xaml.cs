@@ -15,7 +15,7 @@ namespace ChroZenService
     {
         public View_Root(ViewModel_Root viewModel)
         {
-            Resources.Add("MainMarginKey", new Thickness(App.ScreenWidth / 40, 0));
+
 
             InitializeComponent();
 

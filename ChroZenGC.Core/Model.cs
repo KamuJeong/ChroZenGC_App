@@ -38,7 +38,7 @@ namespace ChroZenGC.Core
                         break;
 
                     case InletSetupWrapper.PacketCode:
-                        Assemble(Inlet[header.Index], buffer, header.SlotOffset, header.SlotSize);
+                        Assemble(Inlets[header.Index], buffer, header.SlotOffset, header.SlotSize);
                         break;
                 }
 
@@ -120,14 +120,19 @@ namespace ChroZenGC.Core
 
         public OvenWrapper Oven { get; } = new OvenWrapper();
 
-        public ObservableCollection<InletSetupWrapper> Inlet { get; } = new ObservableCollection<InletSetupWrapper>
+        public ObservableCollection<InletSetupWrapper> Inlets { get; } = new ObservableCollection<InletSetupWrapper>
         {
             new InletSetupWrapper() { PortNo = 0 },
             new InletSetupWrapper() { PortNo = 1 },
             new InletSetupWrapper() { PortNo = 2 }
         };
 
-
+        public ObservableCollection<DetectorSetupWrapper> Detectors { get; } = new ObservableCollection<DetectorSetupWrapper>
+        {
+            new DetectorSetupWrapper() { PortNo = 0 },
+            new DetectorSetupWrapper() { PortNo = 1 },
+            new DetectorSetupWrapper() { PortNo = 2 },
+        };
 
     }
 }

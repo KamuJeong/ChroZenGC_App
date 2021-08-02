@@ -1,6 +1,7 @@
 ﻿using ChroZenGC.Core.Packets;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -93,7 +94,7 @@ namespace ChroZenGC.Core.Wrappers
         public const uint PacketCode = 0x67120;
         public override uint Code => PacketCode;
 
-        public _OvenProgramWrapper[] Program { get; } = new _OvenProgramWrapper[25];
+        public ObservableCollection<_OvenProgramWrapper> Program { get; } = new ObservableCollection<_OvenProgramWrapper>();
 
         public _RunStartWrapper RunStart { get; }
 
@@ -107,7 +108,7 @@ namespace ChroZenGC.Core.Wrappers
                 int j = i;      // [IMPORTANT!!!]
                                 // Closure should capture each local variable j, not outer variable i 
 
-                Program[i] = new _OvenProgramWrapper(this, () => ref Packet.Prgm[j]);
+                Program.Add(new _OvenProgramWrapper(this, () => ref Packet.Prgm[j]));
             }
             RunStart = new _RunStartWrapper(this, () => ref Packet.Runstart);
             PostRun = new _PostRunWrapper(this, () => ref Packet.Postrun);

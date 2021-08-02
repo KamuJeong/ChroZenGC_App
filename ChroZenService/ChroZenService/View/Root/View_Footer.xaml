@@ -18,7 +18,7 @@
     </ContentView.Resources>
     <ContentView.Content>
 
-        <Grid ColumnSpacing="5" HeightRequest="72" Margin="10,0">
+        <Grid ColumnSpacing="5" HeightRequest="{x:Static local:App.FooterHeight}" Margin="10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />

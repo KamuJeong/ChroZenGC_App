@@ -5,7 +5,7 @@
              x:Class="ChroZenService.View_Main"
              x:DataType="local:ViewModel_Main">
     <ContentView.Content>
-        <Grid RowSpacing="10">
+        <Grid RowSpacing="10" Margin="{x:StaticResource MainMarginKey}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -17,7 +17,7 @@
                                    ActiveDetector="{Binding Center.ActiveDetector}" 
                                    Max="{Binding Chart.Max}" 
                                    Min="{Binding Chart.Min}"
-                                   Unit="{Binding Center.ActiveDetector, Converter={StaticResource DetectorUnitConverterKey}}"
+                                   Unit="{Binding Center.DetectorType, Converter={StaticResource DetectorUnitConverterKey}}"
                                    Current="{Binding Chart.Current}"
                                    Points="{Binding Chart.Points}"
                                    Time="{Binding Oven.TotalRunTime}"

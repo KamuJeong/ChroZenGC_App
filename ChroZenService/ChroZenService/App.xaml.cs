@@ -7,14 +7,24 @@ namespace ChroZenService
 {
     public partial class App : Application
     {
-        public static double ScreenHeight {get; set; }
+        public static double ScreenHeight { get; set; }
         public static double ScreenWidth { get; set; }
+
+        public static double ClientHeight { get; private set; }
+
+        public static Thickness HeaderMargin { get; } = new Thickness(10, 5);
+        public static double FooterHeight {get; } = 72;
 
         public App()
         {
+            double fontDefault = ScreenWidth / 40;
+
+            Resources.Add("MainMarginKey", new Thickness(App.ScreenWidth / 40, 0));
             Resources.Add("SmallFontSizeKey", ScreenWidth / 50);
-            Resources.Add("DefaultFontSizeKey", ScreenWidth / 40);
+            Resources.Add("DefaultFontSizeKey", fontDefault);
             Resources.Add("ButtonFontSizeKey", ScreenWidth / 30);
+
+            ClientHeight = ScreenHeight - HeaderMargin.Top - HeaderMargin.Bottom - fontDefault - FooterHeight; 
 
             InitializeComponent();
 

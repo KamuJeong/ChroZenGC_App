@@ -1,6 +1,7 @@
 ﻿using ChroZenGC.Core.Packets;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 
@@ -95,9 +96,9 @@ namespace ChroZenGC.Core.Wrappers
             for (int i = 0; i < 6; ++i)
             {
                 int j = i;
-                TempProgram[j] = new _InletTempProgramWrapper(this, () => ref Packet.tempPrgm[j]);
-                FlowProgram[j] = new _ApcFlowProgramWrapper(this, () => ref Packet.flowPrgm[j]);
-                PressProgram[j] = new _ApcPressProgramWrapper(this, () => ref Packet.presPrgm[j]);
+                TempProgram.Add(new _InletTempProgramWrapper(this, () => ref Packet.tempPrgm[j]));
+                FlowProgram.Add(new _ApcFlowProgramWrapper(this, () => ref Packet.flowPrgm[j]));
+                PressProgram.Add(new _ApcPressProgramWrapper(this, () => ref Packet.presPrgm[j]));
             }
 
             SplitRatio = 10;
@@ -297,11 +298,11 @@ namespace ChroZenGC.Core.Wrappers
             set => Provider.fTotalFlowOnoff = (byte)(value ? 1 : 0);
         }
 
-        public _InletTempProgramWrapper[] TempProgram = new _InletTempProgramWrapper[6];
+        public ObservableCollection<_InletTempProgramWrapper> TempProgram = new ObservableCollection<_InletTempProgramWrapper>();
 
-        public _ApcFlowProgramWrapper[] FlowProgram = new _ApcFlowProgramWrapper[6];
+        public ObservableCollection<_ApcFlowProgramWrapper> FlowProgram = new ObservableCollection<_ApcFlowProgramWrapper>();
 
-        public _ApcPressProgramWrapper[] PressProgram = new _ApcPressProgramWrapper[6];
+        public ObservableCollection<_ApcPressProgramWrapper> PressProgram = new ObservableCollection<_ApcPressProgramWrapper>();
 
     }
 }

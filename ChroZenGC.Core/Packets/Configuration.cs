@@ -24,12 +24,12 @@ namespace ChroZenGC.Core.Packets
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public ValveTypes[] btType1;                            // 2-Position Valve1~8의 밸브타입   [8] 
-                                                          // #define TYPE_NONE		0 // 설치안됨
-                                                          // #define TYPE_GSV			1
-                                                          // #define TYPE_LSV			2
+                                                                // #define TYPE_NONE		0 // 설치안됨
+                                                                // #define TYPE_GSV			1
+                                                                // #define TYPE_LSV			2
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public ActuatorTypes[] btType2;                            // #define TYPE_AIR			1		// Air Actuator [8]
-                                                          // #define TYPE_ELE			2		// Electronic Actuator
+                                                                   // #define TYPE_ELE			2		// Electronic Actuator
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public byte[] btPort;                             // 2-Position Valve1~Valve8의 포트수 [8]
@@ -42,9 +42,9 @@ namespace ChroZenGC.Core.Packets
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public ValveTypes[] btMultiType;                        // Multi Position Valve1~2의 밸브타입 [2]
-                                                          // #define TYPE_NONE			0  // 설치안됨
-                                                          // #define TYPE_GSV			1
-                                                          // #define TYPE_LSV			2
+                                                                // #define TYPE_NONE			0  // 설치안됨
+                                                                // #define TYPE_GSV			1
+                                                                // #define TYPE_LSV			2
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] btMultiPort;                        // Multi Position Valve1~2의 포트수 [2]
@@ -56,13 +56,59 @@ namespace ChroZenGC.Core.Packets
 
     public enum InletTypes : byte
     {
-        None, Capillary, Packed, OnColumn,
+        NotInstalled, Capillary, Packed, OnColumn,
     }
 
     public enum DetectorTypes : byte
     {
-        None, FID, TCD, FPD_Not_used, NPD_Not_used, ECD, PFPD, PDD, FPD, NPD, uTCD, uECD,
+        NotInstalled, FID, TCD, FPD_Not_used, NPD_Not_used, ECD, PFPD, PDD, FPD, NPD, µTCD, µECD,
     }
+
+    public static class DetectorTypeExtension
+    {
+        public static string Unit(this DetectorTypes type)
+            => type switch
+            {
+                DetectorTypes.FID => "nA",
+                DetectorTypes.PDD => "nA",
+                DetectorTypes.NPD => "nA",
+                _ => "mV",
+            };
+
+        public static string Gas1(this DetectorTypes type)
+            => type switch
+            {
+                DetectorTypes.FID => "Air",
+                DetectorTypes.TCD => "Reference",
+                DetectorTypes.FPD => "Air2",
+                DetectorTypes.NPD => "Air",
+                DetectorTypes.PFPD => "Air2",
+                _ => "",
+            };
+
+        public static string Gas2(this DetectorTypes type)
+            => type switch
+            {
+                DetectorTypes.FID => "Makeup",
+                DetectorTypes.TCD => "Sample",
+                DetectorTypes.FPD => "Air1",
+                DetectorTypes.NPD => "Makeup",
+                DetectorTypes.PFPD => "Air1",
+                _ => "",
+            };
+
+        public static string Gas3(this DetectorTypes type)
+            => type switch
+            {
+                DetectorTypes.FID => "H2",
+                DetectorTypes.FPD => "H2",
+                DetectorTypes.NPD => "H2",
+                DetectorTypes.PFPD => "H2",
+                _ => "",
+            };
+    }
+
+
 
     public enum Aux4Types : byte
     {
@@ -89,7 +135,7 @@ namespace ChroZenGC.Core.Packets
         public byte bAutosampler;                          // AutoSampler - (0:Not Install / 1:Install)
 
         public Aux4Types bMethanizer;                           // Methanizer- (0:Not Install / 1:Install)
-                                                           // Auxiliary 8개 중 하나 // Valve port 4로 고정한다.
+                                                                // Auxiliary 8개 중 하나 // Valve port 4로 고정한다.
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public byte[] bAuxTemp;              // Sampling Valve의 히터 설치여부 [AUX_TEMP_COUNT]

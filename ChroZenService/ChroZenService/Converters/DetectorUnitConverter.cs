@@ -8,17 +8,8 @@ namespace ChroZenService
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            DetectorTypes detectorType = DetectorTypes.None;
-
-            int detectorIndex = (int)value;
-            if (detectorIndex >= 0 && detectorIndex <= 3)
-                detectorType = Resolver.Resolve<ChroZenGC.Core.Model>().Configuration.DetectorType[detectorIndex];
-
-            
-
-
-
-            return "mV";
+            DetectorTypes detectorType = value != null? (DetectorTypes)value : DetectorTypes.NotInstalled;
+            return detectorType.Unit();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

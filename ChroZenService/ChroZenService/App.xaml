@@ -4,8 +4,8 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.App">
     <Application.Resources>
-        <cvt:DetectorTypeConverter x:Key="DetectorTypeConverterKey" />
         <cvt:DetectorUnitConverter x:Key="DetectorUnitConverterKey" />
+        <cvt:DetectorGasConverter x:Key="DetectorGasConverterKey" />
         <cvt:EnumGapAdder x:Key="EnumGapAdderKey" />
         <cvt:FloatArrayPicker x:Key="FloatArrayPickerKey" />
 
