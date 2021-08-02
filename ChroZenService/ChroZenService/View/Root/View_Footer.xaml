@@ -62,14 +62,14 @@
                 </ImageButton.Triggers>
             </ImageButton>
 
-            <ImageButton Grid.Column="4" Source="{local:ImageResource ChroZenService.Images.btn_bot_01.png}" local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.btn_bot_11.png}"
-                         Command="{Binding Home}" />
+            <ImageButton x:Name="HomeButton" Grid.Column="4" Source="{local:ImageResource ChroZenService.Images.btn_bot_01.png}"
+                         local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.btn_bot_11.png}" />
 
-            <ImageButton Grid.Column="5" Source="{local:ImageResource ChroZenService.Images.btn_bot_03.png}" local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.btn_bot_13.png}" 
-                         Command="{Binding Config}" />
+            <ImageButton x:Name="ConfigButton" Grid.Column="5" Source="{local:ImageResource ChroZenService.Images.btn_bot_03.png}" 
+                         local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.btn_bot_13.png}"  />
 
-            <ImageButton Grid.Column="6" Source="{local:ImageResource ChroZenService.Images.btn_bot_02.png}" local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.btn_bot_12.png}"
-                         Command="{Binding System}" />
+            <ImageButton x:Name="SystemButton" Grid.Column="6" Source="{local:ImageResource ChroZenService.Images.btn_bot_02.png}" 
+                         local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.btn_bot_12.png}" />
 
         </Grid>
 

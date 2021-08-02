@@ -14,11 +14,11 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <local:View_Header Grid.Row="0" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}" />
+            <local:View_Header x:Name="Header" Grid.Row="0" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}" />
 
-
-            <ContentView Grid.Row="1" Content="{Binding MainView}"/>
-
+            <ContentView x:Name="Home" Grid.Row="1" />
+            <ContentView x:Name="Config" Grid.Row="1" IsVisible="False"/>
+            <ContentView x:Name="System" Grid.Row="1" IsVisible="False"/>
 
             <!--메인 페이지-->
             <!--
@@ -51,7 +51,7 @@
 
 
 
-            <local:View_Footer Grid.Row="2" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}"/>
+            <local:View_Footer x:Name="Footer" Grid.Row="2" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}"/>
 
         </Grid>
 
