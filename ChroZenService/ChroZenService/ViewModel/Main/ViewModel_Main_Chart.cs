@@ -37,8 +37,8 @@ namespace ChroZenService.ViewModel.Main
                         Current = 0.0f;
                     }
                     Points.Add((state.RunTime, state.Signal[0], state.Signal[1], state.Signal[2]));
-                    Current = state.RunTime;
                 }
+                Current = state.RunTime;
             };
         }
 

@@ -13,6 +13,7 @@ namespace ChroZenGC.Core.Network
         string Port { get; set; }
 
         Task ConnectAsync();
+        Task WaitAsync();
         bool IsConnected { get; }   
         void Close();
 

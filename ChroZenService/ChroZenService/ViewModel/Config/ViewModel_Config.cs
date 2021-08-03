@@ -14,14 +14,7 @@ namespace ChroZenService
         {
             Model = Resolver.Resolve<Model>();
 
-            ScaleX = 1.798 * App.ScreenWidth / BackgroundImageSize.Width;
-            ScaleY = 2.01 * App.ClientHeight / BackgroundImageSize.Height;
         }
 
-
-        private Size BackgroundImageSize = new Size(569, 792);
-
-        public double ScaleX { get; }
-        public double ScaleY { get; }
     }
 }

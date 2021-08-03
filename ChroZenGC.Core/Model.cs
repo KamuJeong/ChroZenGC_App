@@ -80,14 +80,15 @@ namespace ChroZenGC.Core
         {
             if (networkManager != null)
             {
+                var arr = wrapper.Binary;
                 Header header = new Header
                 {
-                    Length = 24,
+                    Length = 24 + arr.Length,
                     Id = 0,
                     Code = wrapper.Code,
                     Index = 0,
                     SlotOffset = 0,
-                    SlotSize = wrapper.Binary.Length
+                    SlotSize = arr.Length,
                 };
 
                 await networkManager.SendAsync(wrapper.ToBytes(ref header));

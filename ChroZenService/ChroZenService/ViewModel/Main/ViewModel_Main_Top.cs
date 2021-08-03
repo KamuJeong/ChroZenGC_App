@@ -21,12 +21,24 @@ namespace ChroZenService.ViewModel.Main
             model.State.PropertyModified += OnStatePropertyChanged;
         }
 
+
         private void OnStatePropertyChanged(object sender, PropertyChangedEventArgs e)
         {  
+            switch(model.State.Mode)
+            {
+                case ChroZenGC.Core.Packets.Modes.Ready:    LED = Color.LimeGreen; break;
+                case ChroZenGC.Core.Packets.Modes.Run:      LED = Color.Gold; break;
+                case ChroZenGC.Core.Packets.Modes.Error:    LED = Color.OrangeRed; break;
+                case ChroZenGC.Core.Packets.Modes.Postrun:  LED = Color.SteelBlue; break;
+                default:                                    LED = Color.Silver; break;
+            }
+
             GasSaver = " GAS SAVER " + string.Concat(model.State.GasSaver.Select((s, i) => new { s, p = $"{i + 1} " })
                         .Where(t => t.s != 0)
                         .Select(t => t.p));
         }
+
+        public Color LED { get; set; } = Color.DimGray;
 
         public string GasSaver { get; set; } = " GAS SAVER ";
     }

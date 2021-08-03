@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace ChroZenGC.Core.Network
 {
-    public class TCPManger : INetworkManager, INotifyPropertyChanged
+    public class TCPManager : INetworkManager, INotifyPropertyChanged
     {
         private Model Model { get; }
 
-        public TCPManger(Model model)
+        public TCPManager(Model model)
         {
             if (model == null)
                 throw new ArgumentNullException(nameof(model));
@@ -39,25 +39,35 @@ namespace ChroZenGC.Core.Network
 
         private NetworkStream NetworkStream => tcpClient?.GetStream();
 
-        public bool IsConnected => tcpClient == null || tcpClient.Connected;
+        public bool IsConnected => tcpClient != null && tcpClient.Connected;
 
         public async Task ConnectAsync()
         {
             if (!IsConnected)
             {
+                tcpClient = new TcpClient();
                 await tcpClient.ConnectAsync(Host, int.Parse(Port));
-
-                if (IsConnected)
-                    await Task.Factory.StartNew(c => ReceiveAndParse(c), SynchronizationContext.Current, TaskCreationOptions.LongRunning);
-
-                Close();
             }
+        }
+
+
+        public async Task WaitAsync()
+        {
+            if (IsConnected)
+                await Task.Factory.StartNew(c => ReceiveAndParse(c), SynchronizationContext.Current, TaskCreationOptions.LongRunning);
+
+            Close();
         }
 
         public void Close()
         {
-            tcpClient?.Close();
-            tcpClient = null;
+            if (IsConnected)
+            {
+                NetworkStream?.Close();
+                tcpClient?.Close();
+                tcpClient = null;
+                Model.networkManager = null;
+            }
         }
 
         private void ReceiveAndParse(object context)
@@ -71,7 +81,7 @@ namespace ChroZenGC.Core.Network
             {
                 while (NetworkStream != null)
                 {
-                    int rlen = NetworkStream.Read(buffer, pos, Math.Min(0, buffer.Length - pos));
+                    int rlen = NetworkStream.Read(buffer, pos, Math.Min(4096, buffer.Length - pos));
                     if (rlen <= 0)
                         break;
 
@@ -117,7 +127,6 @@ namespace ChroZenGC.Core.Network
 
             }
         }
-
 
         public async Task SendAsync(byte[] buffer)
         {

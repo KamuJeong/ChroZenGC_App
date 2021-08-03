@@ -40,7 +40,10 @@
                 </ImageButton.Triggers>
             </ImageButton>
 
-            <ImageButton Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.StopRun.png}" local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.StopRun_Pressed.png}" >
+            <ImageButton Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.StopRun.png}" 
+                         local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.StopRun_Pressed.png}" 
+                         Command="{Binding StopCommand}"
+                         >
                 <ImageButton.Triggers>
                     <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
                         <Setter Property="IsVisible" Value="False" />

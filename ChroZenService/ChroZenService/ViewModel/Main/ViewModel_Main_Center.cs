@@ -31,10 +31,8 @@ namespace ChroZenService.ViewModel.Main
 
         private StateWrapper State => model.State;
 
-        public ViewModel_Main_Center()
+        public void Initialize()
         {
-            model = Resolver.Resolve<Model>();
-
             try
             {
                 ActiveInlet = Enumerable.Range(0, 3).First(i => Configuration.InletType[i] != InletTypes.NotInstalled);
@@ -52,6 +50,11 @@ namespace ChroZenService.ViewModel.Main
             {
                 ActiveDetector = -1;
             }
+        }
+
+        public ViewModel_Main_Center()
+        {
+            model = Resolver.Resolve<Model>();
 
             model.State.PropertyModified += OnStateModified;
 
@@ -61,6 +64,7 @@ namespace ChroZenService.ViewModel.Main
             foreach (var detector in model.Detectors)
                 detector.PropertyModified += OnDetectorModified;
 
+            Initialize();
         }
 
 
@@ -85,6 +89,7 @@ namespace ChroZenService.ViewModel.Main
 
                 InletFlow = State.Flow.Inlets[activeInlet][2];
                 InletPressure = State.Flow.Pressure[activeInlet];
+                InletTemperature = State.Temperature.Inlet[activeInlet];
             }
             else
             {
@@ -95,6 +100,7 @@ namespace ChroZenService.ViewModel.Main
                 APCMode = APCModes.ConstantFlow;
                 InletFlow = 0.0f;
                 InletPressure = 0.0f;
+                InletTemperature = 0.0f;
             }
         }
 
@@ -127,15 +133,15 @@ namespace ChroZenService.ViewModel.Main
         public float InletPressure { get; set; }
         public APCModes APCMode { get; set; }
         public int SplitRatio { get; set; }
+        public float InletTemperature { get; set; }
 
 
-        public ICommand Inlet => new Command<string>(execute: InletSelect, canExecute: CanInlet);
-
-        private bool CanInlet(string row) => Configuration.InletType[int.Parse(row)] != InletTypes.NotInstalled;
+        public ICommand Inlet => new Command<string>(InletSelect);
 
         private void InletSelect(string row)
         {
-            ActiveInlet = int.Parse(row);
+            if(Configuration.InletType[int.Parse(row)] != InletTypes.NotInstalled)
+                ActiveInlet = int.Parse(row);
         }
 
         // Right Pane : Detector data
@@ -164,6 +170,7 @@ namespace ChroZenService.ViewModel.Main
                 DetectorFlow1 = State.Flow.Detectors[activeDetector][0];
                 DetectorFlow2 = State.Flow.Detectors[activeDetector][1];
                 DetectorFlow3 = State.Flow.Detectors[activeDetector][2];
+                DetectorTemperature = State.Temperature.Detector[activeDetector];
             }
             else
             {
@@ -174,6 +181,7 @@ namespace ChroZenService.ViewModel.Main
                 DetectorFlow1 = 0.0f;
                 DetectorFlow2 = 0.0f;
                 DetectorFlow3 = 0.0f;
+                DetectorTemperature = 0.0f;
             }
         }
 
@@ -199,14 +207,14 @@ namespace ChroZenService.ViewModel.Main
         public float DetectorFlow1 { get; set; }
         public float DetectorFlow2 { get; set; }
         public float DetectorFlow3 { get; set; }
+        public float DetectorTemperature { get; set; }
 
-        public ICommand Detector => new Command<string>(execute: DetectorSelect, canExecute: CanDetector);
-
-        private bool CanDetector(string row) => Configuration.DetectorType[int.Parse(row)] != DetectorTypes.NotInstalled;
+        public ICommand Detector => new Command<string>(DetectorSelect);
 
         private void DetectorSelect(string row)
         {
-            ActiveDetector = int.Parse(row);
+            if(Configuration.DetectorType[int.Parse(row)] != DetectorTypes.NotInstalled)
+                ActiveDetector = int.Parse(row);
         }
 
         // Control

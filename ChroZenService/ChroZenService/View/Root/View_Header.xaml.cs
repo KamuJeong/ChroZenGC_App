@@ -12,30 +12,32 @@ namespace ChroZenService
         public View_Header()
         {
             InitializeComponent();
+
+            
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
+        //private async void Button_Clicked(object sender, EventArgs e)
+        //{
 
-            await Navigation.PushModalAsync(new KeyPad(this, GetType().GetProperty(nameof(Price))));
+        //    await Navigation.PushModalAsync(new KeyPad(this, GetType().GetProperty(nameof(Price))));
 
-            Debug.WriteLine($"Price {Price} : {Sold}");
+        //    Debug.WriteLine($"Price {Price} : {Sold}");
 
-            //if (BindingContext is ViewModel_Root vm)
-            //{
-            //    vm.MainView = new View_Main();
-            //}
+        //    //if (BindingContext is ViewModel_Root vm)
+        //    //{
+        //    //    vm.MainView = new View_Main();
+        //    //}
 
 
-        }
+        //}
 
-        [Constraints("Price", min: 0.0, max: 10.0, onoff: nameof(Sold), predicate: nameof(ValidContraints))]
-        public int Price { get; set; } = 12;
-        public bool Sold { get; set; }
+        //[Constraints("Price", min: 0.0, max: 10.0, onoff: nameof(Sold), predicate: nameof(ValidContraints))]
+        //public int Price { get; set; } = 12;
+        //public bool Sold { get; set; }
 
-        public bool ValidContraints()
-        {
-            return true;
-        }
+        //public bool ValidContraints()
+        //{
+        //    return true;
+        //}
     }
 }

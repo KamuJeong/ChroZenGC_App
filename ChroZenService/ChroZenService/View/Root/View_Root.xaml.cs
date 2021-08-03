@@ -14,6 +14,7 @@ namespace ChroZenService
 
     public partial class View_Root : ContentPage
     {
+
         public View_Root(ViewModel_Root viewModel)
         {
             InitializeComponent();
@@ -34,6 +35,9 @@ namespace ChroZenService
             {
                 system.Clicked += OnSystemButtonClicked;
             }
+
+            
+
         }
 
         private void OnHomeButtonClicked(object sender, EventArgs e)

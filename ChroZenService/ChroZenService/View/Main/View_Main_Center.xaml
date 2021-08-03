@@ -16,10 +16,9 @@
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="Padding" Value="0"/>
             <Setter Property="VerticalOptions" Value="Start" />
-
             <Style.Triggers>
-                <Trigger TargetType="Button" Property="IsEnabled" Value="False">
-                    <Setter Property="Text" Value="" />
+                <Trigger TargetType="Button" Property="Text" Value="Not Installed">
+                    <Setter Property="TextColor" Value="DimGray" />
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -67,11 +66,11 @@
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>              
                     
-                    <Button Grid.Row="1" Command="{Binding Center.Inlet}" CommandParameter="0" Text="{Binding Configuration.InletType[0]}" />
+                    <Button Grid.Row="1" Command="{Binding Center.Inlet}" CommandParameter="0" Text="{Binding Configuration.InletType[0], Converter={StaticResource EnumGapAdderKey}}" />
                     <Rectangle Grid.Row="2"></Rectangle>
-                    <Button Grid.Row="3" Command="{Binding Center.Inlet}" CommandParameter="1" Text="{Binding Configuration.InletType[1]}" />
+                    <Button Grid.Row="3" Command="{Binding Center.Inlet}" CommandParameter="1" Text="{Binding Configuration.InletType[1], Converter={StaticResource EnumGapAdderKey}}" />
                     <Rectangle Grid.Row="4"></Rectangle>
-                    <Button Grid.Row="5" Command="{Binding Center.Inlet}" CommandParameter="2" Text="{Binding Configuration.InletType[2]}" />
+                    <Button Grid.Row="5" Command="{Binding Center.Inlet}" CommandParameter="2" Text="{Binding Configuration.InletType[2], Converter={StaticResource EnumGapAdderKey}}" />
                     <Rectangle Grid.Row="6"></Rectangle>
 
 
@@ -131,6 +130,62 @@
 
 
                 <Image Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.home_center.png}" Aspect="Fill" />
+                <Grid Grid.Column="1" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="14*" />
+                        <RowDefinition Height="12*" />
+                        <RowDefinition Height="7.5*" />
+                        <RowDefinition Height="45*" />
+                        <RowDefinition Height="8*" />
+                        <RowDefinition Height="5*" />
+
+                    </Grid.RowDefinitions>
+
+                    <Grid RowSpacing="0" ColumnSpacing="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.2*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.4*" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="0.95*" />
+                            <RowDefinition Height="0.05*" />                            
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Inlet" TextColor="Black" BackgroundColor="Silver" HorizontalTextAlignment="Center"
+                               Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="{StaticResource DefaultFontSizeKey}" HorizontalOptions="FillAndExpand" />
+                        
+                        <Label Text="{Binding Center.InletTemperature, StringFormat='{0:F0}'}" TextColor="LimeGreen" BackgroundColor="Transparent"
+                               Grid.Row="2" Grid.Column="1" FontSize="{StaticResource ButtonFontSizeKey}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" HorizontalOptions="Fill" />
+
+                        <Label Text="Detector " TextColor="Black" BackgroundColor="Silver" HorizontalTextAlignment="Center"
+                               Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" FontSize="{StaticResource DefaultFontSizeKey}" HorizontalOptions="FillAndExpand" />
+
+                        <Label Text="{Binding Center.DetectorTemperature, StringFormat='{0:F0}'}" TextColor="LimeGreen" BackgroundColor="Transparent"
+                               Grid.Row="2" Grid.Column="3" FontSize="{StaticResource ButtonFontSizeKey}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" HorizontalOptions="Fill" />
+
+                    </Grid>
+
+                    <Label Text="{Binding State.Temperature.Oven, StringFormat='{0:F0}'}" TextColor="LimeGreen" BackgroundColor="Transparent"
+                            Grid.Row="2" FontSize="{StaticResource ButtonFontSizeKey}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" />
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding State.Step}" TextColor="LimeGreen" BackgroundColor="Transparent"
+                            Grid.Column="2" FontSize="{StaticResource ButtonFontSizeKey}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" />
+                    </Grid>
+                    
+                </Grid>
 
 
                 <Image Grid.Column="2" Aspect="Fill" Source="{local:ImageResource ChroZenService.Images.home_side3.png}">
@@ -163,11 +218,11 @@
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Row="1" Command="{Binding Center.Detector}" CommandParameter="0" Text="{Binding Configuration.DetectorType[0]}" />
+                    <Button Grid.Row="1" Command="{Binding Center.Detector}" CommandParameter="0" Text="{Binding Configuration.DetectorType[0], Converter={StaticResource EnumGapAdderKey}}" />
                     <Rectangle Grid.Row="2"></Rectangle>
-                    <Button Grid.Row="3" Command="{Binding Center.Detector}" CommandParameter="1" Text="{Binding Configuration.DetectorType[1]}" />
+                    <Button Grid.Row="3" Command="{Binding Center.Detector}" CommandParameter="1" Text="{Binding Configuration.DetectorType[1], Converter={StaticResource EnumGapAdderKey}}" />
                     <Rectangle Grid.Row="4"></Rectangle>
-                    <Button Grid.Row="5" Command="{Binding Center.Detector}" CommandParameter="2" Text="{Binding Configuration.DetectorType[2]}" />
+                    <Button Grid.Row="5" Command="{Binding Center.Detector}" CommandParameter="2" Text="{Binding Configuration.DetectorType[2], Converter={StaticResource EnumGapAdderKey}}" />
                     <Rectangle Grid.Row="6"></Rectangle>
 
                     <StackLayout Grid.Row="{Binding Center.RightGridRow}" Spacing="10" Margin="15, 0" VerticalOptions="Center">

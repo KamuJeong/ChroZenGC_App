@@ -16,11 +16,11 @@
     <ContentView.Content>
         <Grid RowSpacing="0" ColumnSpacing="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="2"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <BoxView HeightRequest="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LimeGreen"/>
+            <BoxView HeightRequest="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{Binding Top.LED}"/>
 
             <StackLayout Grid.Column="1" Orientation="Horizontal" Spacing="5" Margin="5,0,0,0" VerticalOptions="Start">
                 <Label Text=" AUTO READY ">

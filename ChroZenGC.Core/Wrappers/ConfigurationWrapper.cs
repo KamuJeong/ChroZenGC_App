@@ -78,8 +78,8 @@ namespace ChroZenGC.Core.Wrappers
 
         public ConfigurationWrapper()
         {
-            Packet.btInlet = new InletTypes[3] { InletTypes.Capillary, InletTypes.Packed, InletTypes.OnColumn };
-            Packet.btDet = new DetectorTypes[3] { DetectorTypes.FID, DetectorTypes.TCD, DetectorTypes.PFPD };
+            Packet.btInlet = new InletTypes[3] { InletTypes.Capillary, InletTypes.NotInstalled, InletTypes.NotInstalled };
+            Packet.btDet = new DetectorTypes[3] { DetectorTypes.FID, DetectorTypes.TCD, DetectorTypes.NotInstalled };
             Packet.bAuxAPC = new byte[3];
 
             InletType = new ArrayWrapper<InletTypes>(this, () => Packet.btInlet);

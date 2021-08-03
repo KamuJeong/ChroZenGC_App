@@ -21,11 +21,8 @@
             </Grid.ColumnDefinitions>
             
             <Label Text="ChroZen GC" />
-            <Label Grid.Column="0" Grid.ColumnSpan="3" Text="10:00" HorizontalOptions="Center" />
+            <Label Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding TimeTicker}" HorizontalOptions="Center" />
             <Label Grid.Column="2" Text="{Binding Model.State.Mode, Converter={StaticResource EnumGapAdderKey}}" HorizontalOptions="End" />
-
-
-            <!--<Label Grid.Column="2" Text="MENU" FontSize="24" TextColor="{Binding ViewModel_MainTop.ConnectedColorBrush}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" Margin="0,0,30,0" VerticalOptions="Center"/>-->
 
         </Grid>
     </ContentView.Content>
