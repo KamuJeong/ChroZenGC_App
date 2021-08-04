@@ -16,9 +16,10 @@
 
             <local:View_Header x:Name="Header" Grid.Row="0" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}" />
 
-            <ContentView x:Name="Home" Grid.Row="1" />
+            <ContentView x:Name="Home" Grid.Row="1" IsVisible="true"/>
             <ContentView x:Name="Config" Grid.Row="1" IsVisible="False"/>
             <ContentView x:Name="System" Grid.Row="1" IsVisible="False"/>
+            <ContentView x:Name="Gate" Grid.Row="1" Background="white" />
 
             <!--메인 페이지-->
             <!--

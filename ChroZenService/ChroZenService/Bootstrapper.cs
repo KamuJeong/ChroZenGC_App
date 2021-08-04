@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using ChroZenGC.Core.Network;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,9 +37,7 @@ namespace ChroZenService
             ContainerBuilder.RegisterType<View_Main>().SingleInstance();
             ContainerBuilder.RegisterType<View_Config>().SingleInstance();
             ContainerBuilder.RegisterType<View_System>().SingleInstance();
-
-            //ContainerBuilder.RegisterType<TodoItemRepository>().SingleInstance();
-
+            ContainerBuilder.RegisterType<DeviceIPFinder>().SingleInstance();
 
         }
 

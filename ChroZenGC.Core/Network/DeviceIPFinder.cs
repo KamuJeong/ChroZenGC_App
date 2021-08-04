@@ -13,31 +13,57 @@ using System.Threading.Tasks;
 
 namespace ChroZenGC.Core.Network
 {
-    public class DeviceIPFinder : INotifyPropertyChanged
+    public class DeviceInterface : INotifyPropertyChanged
     {
-        public ObservableCollection<string> Results { get; } = new ObservableCollection<string>();
-
-        private Socket receiver = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+        public string SerialNumber { get; set; }
+        public string IPAddress { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string MulticastAddress { get; set; } = "224.0.0.88";
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
 
-        public void Start(NetworkInterfaceType type = 0)
+
+    public class DeviceIPFinder : INotifyPropertyChanged
+    {
+        public ObservableCollection<DeviceInterface> Results { get; } = new ObservableCollection<DeviceInterface>();
+
+        private List<UdpClient> udpClinets = new List<UdpClient>();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public string MulticastAddress { get; } = "224.0.0.88";
+        public int MulticastPort { get; } = 4041;
+
+
+        public void Start()
         {
             Results.Clear();
+            Stop();
 
-            var localIP = LocalNetworks.GetAllLocalIPv4(type).FirstOrDefault();
-            if (localIP != null)
+            foreach (var localIP in LocalNetworks.GetAllLocalIPv4(0))
             {
-                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-                IPEndPoint localEP = new IPEndPoint(localIP, 0);
-                socket.Bind(localEP);
+                UdpClient udpClient = new UdpClient(AddressFamily.InterNetwork);
+                udpClient.JoinMulticastGroup(IPAddress.Parse(MulticastAddress), 1);
+                udpClinets.Add(udpClient);
 
-                MulticastOption mcastOption = new MulticastOption(IPAddress.Parse(MulticastAddress), localIP);
-                socket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.AddMembership, mcastOption);
+                Ping(udpClient);
+            }
+        }
 
-                IPEndPoint remoteEP = new IPEndPoint(IPAddress.Parse(MulticastAddress), 4242);
+        private void Ping(UdpClient udpClient)
+        {
+            Task.Run(() =>
+            {
+                var context = SynchronizationContext.Current;
+
                 Header header = new Header
                 {
                     Length = 24,
@@ -48,48 +74,29 @@ namespace ChroZenGC.Core.Network
                     SlotSize = 0
                 };
 
-                WaitAsync();
+                udpClient.Send(header.ToBytes(), 24, MulticastAddress, MulticastPort);
 
-                socket.SendTo(header.ToBytes(), remoteEP);
-
-                socket.Close();
-            }
-
-        }
-
-        private async void WaitAsync()
-        {
-            await Task.Factory.StartNew(c => ReceiveAndParse(c), SynchronizationContext.Current, TaskCreationOptions.LongRunning);
-
-            Stop();
-        }
-
-        private void ReceiveAndParse(object context)
-        {
-            SynchronizationContext synchronizationContext = context as SynchronizationContext;
-
-
-            byte[] buffer = new byte[1024];
-
-            EndPoint remoteEP = (EndPoint)new IPEndPoint(IPAddress.Any, 0);
-            try
-            {
-                if (receiver.ReceiveFrom(buffer, ref remoteEP) == new InformationWrapper().Binary.Length)
+                try
                 {
-                    if (synchronizationContext != null)
+                    IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(MulticastAddress), 4241);
+                    byte[] buffer = udpClient.Receive(ref endPoint);
+                    if (buffer.Length >= new InformationWrapper().Binary.Length)
                     {
-                        synchronizationContext.Post(new SendOrPostCallback(registIPAddress), buffer.ToArray());
-                    }
-                    else
-                    {
-                        registIPAddress(buffer);
+                        if (context != null)
+                        {
+                            context.Post(new SendOrPostCallback(registIPAddress), buffer.ToArray());
+                        }
+                        else
+                        {
+                            registIPAddress(buffer);
+                        }
                     }
                 }
-            }
-            catch
-            {
+                catch
+                {
 
-            }
+                }
+            });
         }
 
         private void registIPAddress(object o)
@@ -99,17 +106,29 @@ namespace ChroZenGC.Core.Network
             InformationWrapper inform = new InformationWrapper();
             inform.Binary = buffer;
 
-            Results.Add(inform.IPAddress);
+            if(Results.All(r => !string.Equals(r.IPAddress, inform.IPAddress) || !string.Equals(r.SerialNumber, inform.InstInfo.InstSerialNo)))
+            {
+                Results.Add(new DeviceInterface { IPAddress = inform.IPAddress, SerialNumber = inform.InstInfo.InstSerialNo });
+            }
         }
 
 
         public void Stop()
         {
-            if(receiver.IsBound)
+            foreach (var udp in udpClinets)
             {
-                receiver.Close();
-            }
-        }
+                try 
+                {
+                    udp.Close();
+                
+                }
+                catch
+                {
 
-    }    
+                }
+            }
+
+            udpClinets.Clear();
+        }
+    }
 }
