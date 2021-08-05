@@ -17,64 +17,75 @@
         </Style>
     </ContentView.Resources>
     <ContentView.Content>
-
-        <Grid ColumnSpacing="5" HeightRequest="{x:Static local:App.FooterHeight}" Margin="10,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />                
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-            </Grid.ColumnDefinitions>
-
-            <ImageButton Grid.Column="0" Source="{local:ImageResource ChroZenService.Images.RunStart.png}" local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.RunStart_Pressed.png}" IsVisible="False">
-                <ImageButton.Triggers>
-                    <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
-                        <Setter Property="IsVisible" Value="True" />
-                    </DataTrigger>
-                    <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="Ready">
-                        <Setter Property="IsVisible" Value="True" />
-                    </DataTrigger>
-                </ImageButton.Triggers>
-            </ImageButton>
-
-            <ImageButton Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.StopRun.png}" 
-                         local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.StopRun_Pressed.png}" 
-                         Command="{Binding StopCommand}"
-                         >
-                <ImageButton.Triggers>
-                    <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
+        <Grid RowSpacing="0" ColumnSpacing="0" BackgroundColor="Black">
+            <Grid RowSpacing="0" ColumnSpacing="0" HeightRequest="{x:Static local:App.FooterHeight}">
+                <Grid.Triggers>
+                    <DataTrigger TargetType="Grid" Binding="{Binding IsConnected}" Value="True">
                         <Setter Property="IsVisible" Value="False" />
                     </DataTrigger>
-                    <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="Ready">
-                        <Setter Property="IsVisible" Value="False" />
-                    </DataTrigger>
-                    <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="Error">
-                        <Setter Property="IsVisible" Value="False" />
-                    </DataTrigger>                    
-                </ImageButton.Triggers>
-            </ImageButton>
+                </Grid.Triggers>
+                
+                <ImageButton Source="{local:ImageResource ChroZenService.Images.Connect.png}"
+                            local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.Connect_Pressed.png}"
+                             Command="{Binding ConnectCommand}"/>
+            </Grid>
 
-            <ImageButton Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.ReadyRun.png}" local:ImageButtonBehavior.SourcePressed= "{local:ImageResource ChroZenService.Images.ReadyRun_Pressed.png}" IsVisible="False">
-                <ImageButton.Triggers>
-                    <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
-                        <Setter Property="IsVisible" Value="True" />
-                    </DataTrigger>
-                </ImageButton.Triggers>
-            </ImageButton>
+            <Grid RowSpacing="0" ColumnSpacing="5" HeightRequest="{x:Static local:App.FooterHeight}" Padding="10,0" IsVisible="{Binding IsConnected}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
 
-            <ImageButton x:Name="HomeButton" Grid.Column="4" Source="{local:ImageResource ChroZenService.Images.btn_bot_01.png}"
+                <ImageButton Grid.Column="0" Source="{local:ImageResource ChroZenService.Images.RunStart.png}" 
+                             local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.RunStart_Pressed.png}" IsVisible="False">
+                    <ImageButton.Triggers>
+                        <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
+                            <Setter Property="IsVisible" Value="True" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="Ready">
+                            <Setter Property="IsVisible" Value="True" />
+                        </DataTrigger>
+                    </ImageButton.Triggers>
+                </ImageButton>
+
+                <ImageButton Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.StopRun.png}" 
+                         local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.StopRun_Pressed.png}" >
+                    <ImageButton.Triggers>
+                        <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
+                            <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="Ready">
+                            <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="Error">
+                            <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                    </ImageButton.Triggers>
+                </ImageButton>
+
+                <ImageButton Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.ReadyRun.png}" local:ImageButtonBehavior.SourcePressed= "{local:ImageResource ChroZenService.Images.ReadyRun_Pressed.png}" IsVisible="False">
+                    <ImageButton.Triggers>
+                        <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
+                            <Setter Property="IsVisible" Value="True" />
+                        </DataTrigger>
+                    </ImageButton.Triggers>
+                </ImageButton>
+
+                <ImageButton x:Name="HomeButton" Grid.Column="4" Source="{local:ImageResource ChroZenService.Images.btn_bot_01.png}"
                          local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.btn_bot_11.png}" />
 
-            <ImageButton x:Name="ConfigButton" Grid.Column="5" Source="{local:ImageResource ChroZenService.Images.btn_bot_03.png}" 
+                <ImageButton x:Name="ConfigButton" Grid.Column="5" Source="{local:ImageResource ChroZenService.Images.btn_bot_03.png}" 
                          local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.btn_bot_13.png}"  />
 
-            <ImageButton x:Name="SystemButton" Grid.Column="6" Source="{local:ImageResource ChroZenService.Images.btn_bot_02.png}" 
+                <ImageButton x:Name="SystemButton" Grid.Column="6" Source="{local:ImageResource ChroZenService.Images.btn_bot_02.png}" 
                          local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.btn_bot_12.png}" />
 
+            </Grid>
         </Grid>
-
     </ContentView.Content>
 </ContentView>

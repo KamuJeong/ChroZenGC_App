@@ -13,7 +13,7 @@
     </ContentView.Resources>
     
     <ContentView.Content>
-        <Grid Margin="10,5">
+        <Grid Padding="10,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"  />
                 <ColumnDefinition Width="*"/>
@@ -22,7 +22,7 @@
             
             <Label Text="ChroZen GC" />
             <Label Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding TimeTicker}" HorizontalOptions="Center" />
-            <Label Grid.Column="2" Text="{Binding Model.State.Mode, Converter={StaticResource EnumGapAdderKey}}" HorizontalOptions="End" />
+            <Label Grid.Column="2" Text="{Binding Model.State.Mode, Converter={StaticResource EnumGapAdderKey}}" HorizontalOptions="End" IsVisible="{Binding IsConnected}" />
 
         </Grid>
     </ContentView.Content>

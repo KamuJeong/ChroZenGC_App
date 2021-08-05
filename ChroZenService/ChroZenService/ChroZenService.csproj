@@ -33,6 +33,8 @@
     <None Remove="Images\Closebox.png" />
     <None Remove="Images\close_pop.png" />
     <None Remove="Images\compass_bg.png" />
+    <None Remove="Images\Connect.png" />
+    <None Remove="Images\Connect_Pressed.png" />
     <None Remove="Images\flash_20%402x.png" />
     <None Remove="Images\home_center.png" />
     <None Remove="Images\home_side1.png" />
@@ -94,6 +96,8 @@
     <EmbeddedResource Include="Images\Closebox.png" />
     <EmbeddedResource Include="Images\close_pop.png" />
     <EmbeddedResource Include="Images\compass_bg.png" />
+    <EmbeddedResource Include="Images\Connect.png" />
+    <EmbeddedResource Include="Images\Connect_Pressed.png" />
     <EmbeddedResource Include="Images\flash_20@2x.png" />
     <EmbeddedResource Include="Images\home_center.png" />
     <EmbeddedResource Include="Images\home_side1.png" />
@@ -158,6 +162,15 @@
     <Compile Update="View\System\View_System.xaml.cs">
       <DependentUpon>View_System.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="View\Config\View_Config_Tab.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\Root\View_Reception.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

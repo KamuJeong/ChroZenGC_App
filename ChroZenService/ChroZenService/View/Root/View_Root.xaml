@@ -6,23 +6,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              x:Class="ChroZenService.View_Root"
             >
-    <Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <Grid BackgroundColor="{StaticResource CS_COLOR_ROOT_BACKGROUND}" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+    <Grid RowSpacing="0" BackgroundColor="{StaticResource CS_COLOR_ROOT_BACKGROUND}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <local:View_Header x:Name="Header" Grid.Row="0" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}" />
+        <local:View_Header x:Name="Header" Grid.Row="0" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}" />
 
-            <ContentView x:Name="Home" Grid.Row="1" IsVisible="true"/>
-            <ContentView x:Name="Config" Grid.Row="1" IsVisible="False"/>
-            <ContentView x:Name="System" Grid.Row="1" IsVisible="False"/>
-            <ContentView x:Name="Gate" Grid.Row="1" Background="white" />
-
+        <ContentView x:Name="Home" Grid.Row="1" IsVisible="true"/>
+        <ContentView x:Name="Config" Grid.Row="1" IsVisible="False"/>
+        <ContentView x:Name="System" Grid.Row="1" IsVisible="False"/>
+        <ContentView Grid.Row="1">
+            <ContentView.Triggers>
+                <DataTrigger TargetType="ContentView" Binding="{Binding IsConnected}" Value="True">
+                    <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+            </ContentView.Triggers>
+            <local:View_Reception x:Name="Gate" Grid.Row="1" BackgroundColor="White" />
+        </ContentView>
+        
+        
             <!--메인 페이지-->
-            <!--
+        <!--
                 <Grid Grid.Row="1" IsVisible="{Binding IsMainPageVisible}">
 
                     <Grid.RowDefinitions>
@@ -39,25 +46,25 @@
 
                 </Grid>-->
 
-            <!--설정 페이지-->
-            <!--
+        <!--설정 페이지-->
+        <!--
                 <local:View_Config_Root Grid.Row="1" IsVisible="{Binding IsConfigPageVisible}"/>
                 -->
-            <!--시스템 페이지-->
-            <!--
+        <!--시스템 페이지-->
+        <!--
                 <local:View_System_Root Grid.Row="1" IsVisible="{Binding IsSystemPageVisible}"/>-->
 
 
-            <!--<local:View_Main_Center Grid.Row="2"/>-->
+        <!--<local:View_Main_Center Grid.Row="2"/>-->
 
 
 
-            <local:View_Footer x:Name="Footer" Grid.Row="2" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}"/>
+        <local:View_Footer x:Name="Footer" Grid.Row="2" BackgroundColor="{StaticResource CS_COLOR_BLACK_0}"/>
 
-        </Grid>
+    </Grid>
 
 
-        <!--에러 페이지-->
+    <!--에러 페이지-->
         <!--<local:View_Error IsVisible="{Binding IsErrorPopupVisible}"/>-->
         <!--<local:View_Splash_Root x:Name="SplashPage" IsVisible="true" />-->
         <!--<Grid x:Name="LoginPage"  IsVisible="{Binding IsLoginPageVisible}">
@@ -89,6 +96,5 @@
                                           Background="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}" />
                 </Grid>
             </Grid>-->
-    </Grid>
 
 </ContentPage>

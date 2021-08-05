@@ -13,11 +13,36 @@ namespace ChroZenService
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class View_Config : ContentView
     {
+        private Dictionary<int, Xamarin.Forms.View> Views { get; } = new Dictionary<int, Xamarin.Forms.View>();
+
+
         public View_Config(ViewModel_Config model)
         {
             InitializeComponent();
 
             BindingContext = model;
+
+            ShowView();
+        }
+
+        private void ShowView()
+        {
+            if (Views.TryGetValue(SelectedItem, out Xamarin.Forms.View view))
+            {
+                selectedView.Content = view;
+            }
+            else
+            {
+                //switch(SelectedItem)
+                //{
+ 
+
+
+
+
+                //}
+
+            }
         }
 
         public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create("SelectedItem", typeof(int), typeof(View_Config), 1);
@@ -26,6 +51,38 @@ namespace ChroZenService
         {
             get => (int)GetValue(SelectedItemProperty);
             set => SetValue(SelectedItemProperty, value);
+        }
+
+        public static readonly BindableProperty Tab1Property = BindableProperty.Create("Tab1", typeof(string), typeof(View_Config), "Config");
+
+        public string Tab1
+        {
+            get => (string)GetValue(Tab1Property);
+            set => SetValue(Tab1Property, value);
+        }
+
+        public static readonly BindableProperty Tab2Property = BindableProperty.Create("Tab2", typeof(string), typeof(View_Config), "Settings");
+
+        public string Tab2
+        {
+            get => (string)GetValue(Tab2Property);
+            set => SetValue(Tab2Property, value);
+        }
+
+        public static readonly BindableProperty Tab3Property = BindableProperty.Create("Tab3", typeof(string), typeof(View_Config), "");
+
+        public string Tab3
+        {
+            get => (string)GetValue(Tab3Property);
+            set => SetValue(Tab3Property, value);
+        }
+
+        public static readonly BindableProperty SelectedTabItemProperty = BindableProperty.Create("SelectedTabItem", typeof(int), typeof(View_Config), 1);
+
+        public int SelectedTabItem
+        {
+            get => (int)GetValue(SelectedTabItemProperty);
+            set => SetValue(SelectedTabItemProperty, value);
         }
 
         private void OnSelectorClicked(object sender, EventArgs e)
@@ -37,7 +94,7 @@ namespace ChroZenService
                 if (select != SelectedItem)
                 {
                     var unselectedItems = selector.Children.Where(i => (int)i.GetValue(Grid.RowProperty) == SelectedItem)
-                                                            .Except(new View[] { topDeco, midDeco, botDeco });
+                                                            .Except(new Xamarin.Forms.View[] { topDeco, midDeco, botDeco });
 
                     foreach (var item in unselectedItems)
                     {
@@ -52,7 +109,7 @@ namespace ChroZenService
                         midDeco.SetValue(Grid.RowProperty, select);
 
                     var selectedItems = selector.Children.Where(i => (int)i.GetValue(Grid.RowProperty) == select)
-                                                            .Except(new View[] { topDeco, midDeco, botDeco });
+                                                            .Except(new Xamarin.Forms.View[] { topDeco, midDeco, botDeco });
 
                     foreach (var item in selectedItems)
                     {
@@ -63,6 +120,8 @@ namespace ChroZenService
                     }
 
                     SelectedItem = select;
+
+                    ShowView();
                 }
             }
         }
@@ -73,21 +132,19 @@ namespace ChroZenService
             {
                 foreach (var child in grid.Children)
                 {
-                    if(child is Label label)
+                    if (child is Label label)
                     {
                         if (select)
                         {
                             label.TextColor = Color.White;
                             label.FontAttributes = FontAttributes.Bold;
                             label.Scale = 1.3;
-                            //label.FontSize = (double)Application.Current.Resources["ButtonFontSizeKey"];
                         }
                         else
                         {
                             label.TextColor = Color.Silver;
                             label.FontAttributes = FontAttributes.None;
                             label.Scale = 1.2;
-                            //label.FontSize = (double)Application.Current.Resources["DefaultFontSizeKey"];
                         }
                     }
                 }

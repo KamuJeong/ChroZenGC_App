@@ -13,7 +13,9 @@ namespace ChroZenGC.Core.Network
         public static List<IPAddress> GetAllLocalIPv4(NetworkInterfaceType type = 0)
         {
             return NetworkInterface.GetAllNetworkInterfaces()
-                           .Where(x => (type == 0 || x.NetworkInterfaceType == type) && x.OperationalStatus == OperationalStatus.Up)
+                           .Where(x => (type == 0 || x.NetworkInterfaceType == type) 
+                                    && x.NetworkInterfaceType != NetworkInterfaceType.Loopback 
+                                    && x.OperationalStatus == OperationalStatus.Up)
                            .SelectMany(x => x.GetIPProperties().UnicastAddresses)
                            .Where(x => x.Address.AddressFamily == AddressFamily.InterNetwork)
                            .Select(x => x.Address)

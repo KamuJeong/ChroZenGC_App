@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -61,13 +62,28 @@ namespace ChroZenGC.Core.Network
 
         public void Close()
         {
-            if (IsConnected)
+            try
             {
                 NetworkStream?.Close();
-                tcpClient?.Close();
-                tcpClient = null;
-                Model.networkManager = null;
             }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+            try 
+            {
+                tcpClient?.Close();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+            finally
+            {
+                tcpClient = null;
+
+            }
+            Model.networkManager = null;
         }
 
         private void ReceiveAndParse(object context)
@@ -122,9 +138,9 @@ namespace ChroZenGC.Core.Network
                     }
                 }
             }
-            catch
+            catch (Exception e)
             {
-
+                Debug.WriteLine(e);
             }
         }
 

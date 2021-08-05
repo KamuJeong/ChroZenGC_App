@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.View_Config_Tab"
+             x:DataType="local:ViewModel_Config">
+    <ContentView.Resources>
+        <RelativeSource x:Key="ParentKey" Mode="FindAncestor" AncestorType="{x:Type local:View_Config}" AncestorLevel="1" />
+        <Style TargetType="Button">
+            <Setter Property="TextColor" Value="Silver"/>
+        </Style>
+        
+    </ContentView.Resources>
+    
+    <ContentView.Content>
+        <Grid RowSpacing="0" ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="728*"/>
+                <RowDefinition Height="12*"/>
+            </Grid.RowDefinitions>
+
+            <Button Text="{Binding Source={StaticResource ParentKey}, Path=Tab1}" />
+            <Button Grid.Column="1" Text="{Binding Source={StaticResource ParentKey}, Path=Tab2}" />
+            <Button Grid.Column="2" Text="{Binding Source={StaticResource ParentKey}, Path=Tab2}" />
+
+
+
+
+
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>

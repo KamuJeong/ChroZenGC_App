@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -29,7 +30,8 @@ namespace ChroZenGC.Core.Network
 
     public class DeviceIPFinder : INotifyPropertyChanged
     {
-        public ObservableCollection<DeviceInterface> Results { get; } = new ObservableCollection<DeviceInterface>();
+        public ObservableCollection<DeviceInterface> Results { get; } = new ObservableCollection<DeviceInterface>() { new DeviceInterface { IPAddress = "10.10.10.10", SerialNumber = "GN709876" },
+                                                                                                                      new DeviceInterface { IPAddress = "10.10.10.12", SerialNumber = "GN709899" } };
 
         private List<UdpClient> udpClinets = new List<UdpClient>();
 
@@ -40,7 +42,7 @@ namespace ChroZenGC.Core.Network
         }
 
         public string MulticastAddress { get; } = "224.0.0.88";
-        public int MulticastPort { get; } = 4041;
+        public int MulticastPort { get; } = 4241;
 
 
         public void Start()
@@ -48,22 +50,28 @@ namespace ChroZenGC.Core.Network
             Results.Clear();
             Stop();
 
-            foreach (var localIP in LocalNetworks.GetAllLocalIPv4(0))
+            try
             {
-                UdpClient udpClient = new UdpClient(AddressFamily.InterNetwork);
-                udpClient.JoinMulticastGroup(IPAddress.Parse(MulticastAddress), 1);
-                udpClinets.Add(udpClient);
+                foreach (var localIP in LocalNetworks.GetAllLocalIPv4(0))
+                {
+                    UdpClient udpClient = new UdpClient(AddressFamily.InterNetwork);
+                    udpClient.JoinMulticastGroup(IPAddress.Parse(MulticastAddress), 5);
+                    udpClinets.Add(udpClient);
 
-                Ping(udpClient);
+                    Ping(udpClient);
+                }
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine(e);
             }
         }
 
         private void Ping(UdpClient udpClient)
         {
+            var context = SynchronizationContext.Current;
             Task.Run(() =>
             {
-                var context = SynchronizationContext.Current;
-
                 Header header = new Header
                 {
                     Length = 24,
@@ -92,9 +100,9 @@ namespace ChroZenGC.Core.Network
                         }
                     }
                 }
-                catch
+                catch (Exception e)
                 {
-
+                    Debug.WriteLine(e);
                 }
             });
         }
@@ -122,9 +130,9 @@ namespace ChroZenGC.Core.Network
                     udp.Close();
                 
                 }
-                catch
+                catch (Exception e)
                 {
-
+                    Debug.WriteLine(e);
                 }
             }
 

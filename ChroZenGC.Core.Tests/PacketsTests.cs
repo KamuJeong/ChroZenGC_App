@@ -96,14 +96,6 @@ namespace ChroZenGC.Core.Tests
             int expected = 320;
 
             Assert.AreEqual(expected, Marshal.SizeOf<State>());
-
-
-            DeviceIPFinder finder = new DeviceIPFinder();
-            finder.Start();
-            System.Threading.Thread.Sleep(2000);
-            finder.Stop();
-
-            Assert.AreNotEqual(0, finder.Results.Count);
         }
 
         [TestMethod]

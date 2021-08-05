@@ -26,10 +26,10 @@ namespace ChroZenService.ViewModel.Main
         {  
             switch(model.State.Mode)
             {
-                case ChroZenGC.Core.Packets.Modes.Ready:    LED = Color.LimeGreen; break;
-                case ChroZenGC.Core.Packets.Modes.Run:      LED = Color.Gold; break;
+//                case ChroZenGC.Core.Packets.Modes.Ready:    LED = Color.LimeGreen; break;
+//                case ChroZenGC.Core.Packets.Modes.Run:      LED = Color.Gold; break;
                 case ChroZenGC.Core.Packets.Modes.Error:    LED = Color.OrangeRed; break;
-                case ChroZenGC.Core.Packets.Modes.Postrun:  LED = Color.SteelBlue; break;
+//                case ChroZenGC.Core.Packets.Modes.Postrun:  LED = Color.SteelBlue; break;
                 default:                                    LED = Color.Silver; break;
             }
 
