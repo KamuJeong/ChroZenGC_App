@@ -212,7 +212,7 @@ namespace ChroZenService
             //{
             //    IsKeyPadShown = false,
             //};
-            //EventManager.KeyPadRequestEvent(vmKeyPad);
+            //
         }
 
         #endregion KeyPad : CancelCommand
@@ -513,7 +513,7 @@ namespace ChroZenService
             //{
             //    IsKeyPadShown = false,
             //};
-            //EventManager.KeyPadRequestEvent(vmKeyPad);
+            //
         }
 
         #endregion KeyPad : ApplyCommand
@@ -772,7 +772,7 @@ namespace ChroZenService
                     }
                     break;
             }
-            EventManager.KeyPadRequestEvent(vmKeyPad);
+            
             //TODO :             
             Debug.WriteLine(string.Format("{0} Inlet : {1} SetCommand Fired", _e_INLET_TYPE, (E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE)param));
         }
@@ -922,7 +922,7 @@ namespace ChroZenService
                     }
                     break;
             }
-            EventManager.KeyPadRequestEvent(vmKeyPad);
+            
 
             //TODO :             
             Debug.WriteLine(string.Format("{0} Inlet : {1} MeasuredCommand Fired", _e_INLET_TYPE, (E_SYSTEM_CALIBRATION_INLET_SET_MEASURE_COMMAND_TYPE)param));

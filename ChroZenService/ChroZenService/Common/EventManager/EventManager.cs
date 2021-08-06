@@ -35,12 +35,12 @@ namespace ChroZenService
 
         #region KeyPadOnOff
 
-        public delegate void KeyPadRequest(ViewModel_KeyPad viewModel_KeyPad);
-        public static KeyPadRequest onKeyPadRequest;
-        public static void KeyPadRequestEvent(ViewModel_KeyPad viewModel_KeyPad)
-        {
-            onKeyPadRequest?.Invoke(viewModel_KeyPad);
-        }
+        //public delegate void KeyPadRequest(ViewModel_KeyPad viewModel_KeyPad);
+        //public static KeyPadRequest onKeyPadRequest;
+        //public static void KeyPadRequestEvent(ViewModel_KeyPad viewModel_KeyPad)
+        //{
+        //    onKeyPadRequest?.Invoke(viewModel_KeyPad);
+        //}
 
         #endregion KeyPadOnOff
 

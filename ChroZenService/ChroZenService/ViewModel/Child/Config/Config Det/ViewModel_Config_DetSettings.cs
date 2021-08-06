@@ -18,7 +18,6 @@ namespace ChroZenService
             DefaultCommand = new RelayCommand(DefaultCommandAction);
 
             KeyPadApplyCommand = new RelayCommand(KeyPadApplyCommandAction);
-            KeyPadCancelCommand = new RelayCommand(KeyPadCancelCommandAction);
             KeyPadDeleteCommand = new RelayCommand(KeyPadDeleteCommandAction);
             KeyPadKeyPadClickCommand = new RelayCommand(KeyPadKeyPadClickCommandAction);
             KeyPadOffCommand = new RelayCommand(KeyPadOffCommandAction);
@@ -1033,18 +1032,18 @@ namespace ChroZenService
 
         #region KeyPad : CancelCommand
 
-        public RelayCommand KeyPadCancelCommand { get; set; }
-        private void KeyPadCancelCommandAction(object param)
-        {
-            Button sender = (param as Button);
-            ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
-            mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
-            //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
-            //{
-            //    IsKeyPadShown = false,
-            //};
-            //EventManager.KeyPadRequestEvent(vmKeyPad);
-        }
+        //public RelayCommand KeyPadCancelCommand { get; set; }
+        //private void KeyPadCancelCommandAction(object param)
+        //{
+        //    Button sender = (param as Button);
+        //    ViewModel_Main mainVM = (ViewModel_Main)sender.BindingContext;
+        //    mainVM.ViewModel_KeyPad.IsKeyPadShown = false;
+        //    //ViewModel_KeyPad vmKeyPad = new ViewModel_KeyPad
+        //    //{
+        //    //    IsKeyPadShown = false,
+        //    //};
+        //    //
+        //}
 
         #endregion KeyPad : CancelCommand
 
@@ -1403,7 +1402,7 @@ namespace ChroZenService
             //{
             //    IsKeyPadShown = false,
             //};
-            //EventManager.KeyPadRequestEvent(vmKeyPad);
+            //
         }
 
         #endregion KeyPad : ApplyCommand
@@ -1835,8 +1834,7 @@ namespace ChroZenService
             {
                 IsKeyPadShown = true,
                 KeyPadType = KeyPad.E_KEYPAD_TYPE.DOUBLE,
-                MinValue = 0,
-                CancelCommand = KeyPadCancelCommand,
+
                 ApplyCommand = KeyPadApplyCommand,
                 DeleteCommand = KeyPadDeleteCommand,
                 OnCommand = KeyPadOnCommand,
@@ -2183,7 +2181,7 @@ namespace ChroZenService
                     #endregion Rear
             }
 
-            EventManager.KeyPadRequestEvent(vmKeyPad);
+            
 
             //TODO :             
             Debug.WriteLine("SetCommand Fired");

@@ -55,7 +55,7 @@ namespace ChroZenService
             return (bool)view.GetValue(UseProperty);
         }
 
-        public static void SetUSe(BindableObject view, bool value)
+        public static void SetUse(BindableObject view, bool value)
         {
             view.SetValue(UseProperty, value);
         }

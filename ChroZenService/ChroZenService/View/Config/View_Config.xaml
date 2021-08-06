@@ -195,7 +195,7 @@
                     
                 </Grid>
 
-                <local:View_Config_Tab x:Name="selectedView" Grid.Column="2" />
+                <ContentView x:Name="selectedView" Grid.Column="2" />
 
 
             </Grid>          

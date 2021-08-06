@@ -10,6 +10,18 @@
         <cvt:FloatArrayPicker x:Key="FloatArrayPickerKey" />
         <cvt:EnumInstalledConverter x:Key="EnumInstalledKey" />
 
+        <LinearGradientBrush x:Key="ValueEditorBackgroundKey" StartPoint="0.4,0.2" EndPoint="1,0.7">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#546497" Offset="0" />
+                <GradientStop Color="#546497" Offset="0.4" />
+                <GradientStop Color="#42477f" Offset="0.7" />
+                <GradientStop Color="#3b4077" Offset="1" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+
+
+
         <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_T1">T1</x:String>
         <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_T2">T2</x:String>
         <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_SENSOR1">Sensor1</x:String>

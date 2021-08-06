@@ -573,7 +573,7 @@ namespace ChroZenService
             //{
             //    IsKeyPadShown = false,
             //};
-            //EventManager.KeyPadRequestEvent(vmKeyPad);
+            //
         }
 
         #endregion KeyPad : CancelCommand
@@ -2153,7 +2153,7 @@ namespace ChroZenService
             //{
             //    IsKeyPadShown = false,
             //};
-            //EventManager.KeyPadRequestEvent(vmKeyPad);
+            //
         }
 
         #endregion KeyPad : ApplyCommand
@@ -4128,7 +4128,7 @@ namespace ChroZenService
                     #endregion Rear Programed Temperature
             }
 
-            EventManager.KeyPadRequestEvent(vmKeyPad);
+
 
             //TODO :             
             Debug.WriteLine("SetCommand Fired");

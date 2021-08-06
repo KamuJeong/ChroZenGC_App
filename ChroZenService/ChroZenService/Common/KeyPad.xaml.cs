@@ -327,11 +327,6 @@ namespace ChroZenService
 
         #endregion Property
 
-        #region Command
-
-
-
-        #endregion Command
 
     }
 

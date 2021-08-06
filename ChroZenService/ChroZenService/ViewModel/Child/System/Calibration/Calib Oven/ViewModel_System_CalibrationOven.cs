@@ -83,7 +83,7 @@ namespace ChroZenService
             //{
             //    IsKeyPadShown = false,
             //};
-            //EventManager.KeyPadRequestEvent(vmKeyPad);
+            //
         }
 
         #endregion KeyPad : CancelCommand
@@ -174,7 +174,7 @@ namespace ChroZenService
             //{
             //    IsKeyPadShown = false,
             //};
-            //EventManager.KeyPadRequestEvent(vmKeyPad);
+            //
         }
 
         #endregion KeyPad : ApplyCommand
@@ -323,7 +323,7 @@ namespace ChroZenService
                     }
                     break;
             }
-            EventManager.KeyPadRequestEvent(vmKeyPad);
+            
 
             //TODO :             
             Debug.WriteLine(string.Format("Oven : {0} SetCommand Fired", (E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE)param));
@@ -364,7 +364,7 @@ namespace ChroZenService
                     }
                     break;
             }
-            EventManager.KeyPadRequestEvent(vmKeyPad);
+            
             //TODO :             
             Debug.WriteLine(string.Format("Oven : {0} MeasuredCommand Fired", (E_SYSTEM_CALIBRATION_OVEN_COMMAND_TYPE)param));
         }

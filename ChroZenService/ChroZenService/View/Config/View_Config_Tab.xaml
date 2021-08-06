@@ -3,36 +3,95 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_Config_Tab"
-             x:DataType="local:ViewModel_Config">
+             x:DataType="local:ViewModel_Config"
+             x:Name="This">
     <ContentView.Resources>
-        <RelativeSource x:Key="ParentKey" Mode="FindAncestor" AncestorType="{x:Type local:View_Config}" AncestorLevel="1" />
-        <Style TargetType="Button">
-            <Setter Property="TextColor" Value="Silver"/>
-        </Style>
-        
+        <local:LastTabWidthConverter x:Key="LastTabWidthKey" />
     </ContentView.Resources>
     
     <ContentView.Content>
         <Grid RowSpacing="0" ColumnSpacing="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
             <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
                 <RowDefinition Height="50*"/>
-                <RowDefinition Height="728*"/>
-                <RowDefinition Height="12*"/>
+                <RowDefinition Height="710*"/>
+                <RowDefinition Height="22*"/>
             </Grid.RowDefinitions>
 
-            <Button Text="{Binding Source={StaticResource ParentKey}, Path=Tab1}" />
-            <Button Grid.Column="1" Text="{Binding Source={StaticResource ParentKey}, Path=Tab2}" />
-            <Button Grid.Column="2" Text="{Binding Source={StaticResource ParentKey}, Path=Tab2}" />
+            <Grid Grid.Row="1" Margin="10, 0" ColumnSpacing="0">
+                <Grid.Resources>
+                    <Style TargetType="Frame">
+                        <Setter Property="BorderColor" Value="Transparent" />
+                        <Setter Property="CornerRadius" Value="10" />
+                        <Setter Property="HasShadow" Value="False" />
+                        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BackgroundColor" Value="Transparent" />
+                        <Setter Property="FontSize" Value="{StaticResource ButtonFontSizeKey}" />
+                        <Setter Property="VerticalOptions" Value="Center" />
+                        <Setter Property="HorizontalOptions" Value="Center" />
+                    </Style>
+                </Grid.Resources>
 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="{Binding Source={x:Reference This}, Path=Tab3, Converter={StaticResource LastTabWidthKey}}"/>
+                </Grid.ColumnDefinitions>
 
+                <Frame BackgroundColor="Transparent">
+                    <Frame.Triggers>
+                        <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference This}, Path=SelectedTabItem}" Value="0">
+                            <Setter Property="BackgroundColor" Value="#111111" />
+                        </DataTrigger>
+                    </Frame.Triggers>
 
+                    <Button Text="{Binding Source={x:Reference This}, Path=Tab1}" TextColor="Gray" Clicked="OnSelectTabItem" >
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference This}, Path=SelectedTabItem}" Value="0">
+                                <Setter Property="TextColor" Value="Silver" />
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </Frame>
 
+                <Frame Grid.Column="1" BackgroundColor="Transparent">
+                    <Frame.Triggers>
+                        <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference This}, Path=SelectedTabItem}" Value="1">
+                            <Setter Property="BackgroundColor" Value="#111111" />
+                        </DataTrigger>
+                    </Frame.Triggers>
+
+                    <Button Text="{Binding Source={x:Reference This}, Path=Tab2}" TextColor="Gray" Clicked="OnSelectTabItem" >
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference This}, Path=SelectedTabItem}" Value="1">
+                                <Setter Property="TextColor" Value="Silver" />
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </Frame>
+
+                <Frame Grid.Column="2" BackgroundColor="Transparent">
+                    <Frame.Triggers>
+                        <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference This}, Path=SelectedTabItem}" Value="2">
+                            <Setter Property="BackgroundColor" Value="#111111" />
+                        </DataTrigger>
+                    </Frame.Triggers>
+
+                    <Button Text="{Binding Source={x:Reference This}, Path=Tab3}" TextColor="Gray" Clicked="OnSelectTabItem" >
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference This}, Path=SelectedTabItem}" Value="2">
+                                <Setter Property="TextColor" Value="Silver" />
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </Frame>
+            </Grid>
+
+            <ContentView Grid.Row="2" Content="{Binding Source={x:Reference This}, Path=TabContent}" />
 
         </Grid>
 

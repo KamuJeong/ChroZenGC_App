@@ -556,7 +556,7 @@ namespace ChroZenService
             //{
             //    IsKeyPadShown = false,
             //};
-            //EventManager.KeyPadRequestEvent(vmKeyPad);
+            //
         }
 
         #endregion KeyPad : CancelCommand
@@ -688,7 +688,7 @@ namespace ChroZenService
             //{
             //    IsKeyPadShown = false,
             //};
-            //EventManager.KeyPadRequestEvent(vmKeyPad);
+            //
         }
 
         #endregion KeyPad : ApplyCommand
@@ -1145,7 +1145,7 @@ namespace ChroZenService
 
             }
 
-            EventManager.KeyPadRequestEvent(vmKeyPad);
+            
 
             //TODO :             
             Debug.WriteLine("SetCommand Fired");
