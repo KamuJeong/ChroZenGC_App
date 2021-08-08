@@ -22,6 +22,7 @@ namespace ChroZenService
             Resources.Add("MainMarginKey", new Thickness(App.ScreenWidth / 40, 0));
             Resources.Add("SmallFontSizeKey", ScreenWidth / 50);
             Resources.Add("DefaultFontSizeKey", fontDefault);
+            Resources.Add("CaptionFontSizeKey", fontDefault * 1.1);
             Resources.Add("ButtonFontSizeKey", ScreenWidth / 30);
 
             ClientHeight = ScreenHeight - HeaderMargin.Top - HeaderMargin.Bottom - fontDefault - FooterHeight; 

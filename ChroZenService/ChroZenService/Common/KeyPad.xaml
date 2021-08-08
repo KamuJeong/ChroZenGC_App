@@ -2,29 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"     
              xmlns:local="clr-namespace:ChroZenService"
-             x:Class="ChroZenService.KeyPad" BackgroundColor="Transparent">
+             x:Class="ChroZenService.KeyPad" BackgroundColor="Transparent"
+             x:Name="This">
     <ContentPage.Content>
-        <Frame BorderColor="{StaticResource CS_COLOR_KEYPAD_BACKGROUND}" BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BACKGROUND}" CornerRadius="10" Margin="10" Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
+        <Frame BorderColor="Transparent" BackgroundColor="Silver" CornerRadius="5" Margin="10" Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
             <Grid>
                 <Grid.Resources>
                     <Style TargetType="Button">
                         <Style.Triggers>
                             <Trigger TargetType="Button"  Property="IsEnabled" Value="False">
                                 <Setter Property="BackgroundColor" Value="Transparent" />
-                                <Setter Property="TextColor" Value="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" />
-                                <Setter Property="BorderColor" Value="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" />
+                                <Setter Property="TextColor" Value="DimGray" />
+                                <Setter Property="BorderColor" Value="#111111" />
                             </Trigger>
                         </Style.Triggers>
 
                         <Setter Property="FontSize" Value="{StaticResource ButtonFontSizeKey}" />
-                        <Setter Property="TextColor" Value="White" />
-                        <Setter Property="CornerRadius" Value="10" />
-                        <Setter Property="BackgroundColor" Value="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" />
+                        <Setter Property="TextColor" Value="Wheat" />
+                        <Setter Property="CornerRadius" Value="5" />
+                        <Setter Property="BackgroundColor" Value="#111111" />
                         <Setter Property="BorderWidth" Value="1" />
-                        <Setter Property="BorderColor" Value="White"/>
+                        <Setter Property="BorderColor" Value="Wheat"/>
                         <Setter Property="Command" Value="{Binding KeyCommand}"/>
                         <Setter Property="CommandParameter" Value="{Binding Source={RelativeSource Self}, Path=Text}" />
-                        <Setter Property="HeightRequest" Value="{StaticResource ButtonHeightKey}" />
+                        <Setter Property="HeightRequest" Value="{Binding Source={x:Reference This}, Path=ButtonHeight}" />
                     </Style>
                 </Grid.Resources>
                 <Grid.RowDefinitions>
@@ -43,29 +44,29 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Frame BackgroundColor="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"  CornerRadius="10" BorderColor="White" Padding="0">
-                    <Label Text="{Binding Name}" TextColor="White"  FontSize="{StaticResource ButtonFontSizeKey}" VerticalOptions="Center" HorizontalOptions="Center" />
+                <Frame BackgroundColor="Silver" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"  CornerRadius="10" BorderColor="#111111" Padding="0">
+                    <Label Text="{Binding Name}" TextColor="#111111"  FontSize="{StaticResource ButtonFontSizeKey}" VerticalOptions="Center" HorizontalOptions="Center" />
                 </Frame>
-                <Label Grid.Row="0" Grid.Column="2" Text="MAX" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontSize="{StaticResource ButtonFontSizeKey}"/>
-                <Label Grid.Row="1" Grid.Column="2" TextColor="White" Text="{Binding MaxValue}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" FontSize="{StaticResource ButtonFontSizeKey}"/>
-                <Frame BackgroundColor="{StaticResource CS_COLOR_KEYPAD_LABEL_BACKGROUND}" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="2"  CornerRadius="10" BorderColor="White" Padding="0">
+                <Label Grid.Row="0" Grid.Column="2" Text="MAX" TextColor="#111111" HorizontalOptions="Center" VerticalOptions="Center" FontSize="{StaticResource ButtonFontSizeKey}"/>
+                <Label Grid.Row="1" Grid.Column="2" TextColor="#111111" Text="{Binding MaxValue}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="{StaticResource ButtonFontSizeKey}"/>
+                <Frame BackgroundColor="LightSteelBlue" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="2"  CornerRadius="10" BorderColor="#111111" Padding="0">
                     <Frame.Triggers>
                         <DataTrigger TargetType="Frame" Binding="{Binding IsModified}" Value="False">
-                            <Setter Property="BackgroundColor" Value="{StaticResource CS_COLOR_KEYPAD_BUTTON_BACKGROUND}" />
+                            <Setter Property="BackgroundColor" Value="Silver" />
                         </DataTrigger>
                         <DataTrigger TargetType="Frame" Binding="{Binding IsValid}" Value="False">
-                            <Setter Property="BackgroundColor" Value="red"/>
+                            <Setter Property="BackgroundColor" Value="OrangeRed"/>
                         </DataTrigger>
                     </Frame.Triggers>
 
-                    <Label Text="{Binding CurrentValue}" TextColor="White"  FontSize="{StaticResource ButtonFontSizeKey}" VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Label Text="{Binding CurrentValue}" TextColor="Black" FontSize="{StaticResource ButtonFontSizeKey}" VerticalOptions="Center" HorizontalOptions="Center" />
                 </Frame>
 
 
                 <Button Grid.Row="2" Grid.RowSpan="2" Text="ON"  />
                 <Button Grid.Row="4" Grid.RowSpan="2" Text="OFF"  />
 
-                <Button Grid.Row="2" Grid.Column="4" Text="∇" BackgroundColor="Black" BorderColor="DarkSlateGray" />
+                <Button Grid.Row="2" Grid.Column="4" Text="∇" />
                 <Button Grid.Row="3" Grid.Column="4" Text="DEL"  />
                 <Button Grid.Row="4" Grid.Column="4" Text="OK" Grid.RowSpan="2"  />
 

@@ -25,7 +25,7 @@ namespace ChroZenGC.Core.Wrappers
         public float FinalTemp
         {
             get => Provider.fFinalTemp;
-            set => Provider.fFinalTime = value;
+            set => Provider.fFinalTemp = value;
         }
 
         public float FinalTime
@@ -128,6 +128,13 @@ namespace ChroZenGC.Core.Wrappers
             if (propertyName == "Binary" 
                 || new string[] { nameof(Mode), nameof(InitTime), nameof(TempSet), nameof(_OvenProgramWrapper) }.Any(s => string.Equals(s, propertyName)))
             {
+                foreach(var p in Program.SkipWhile(p => p.Rate > 0.0f))
+                {
+                    p.Rate = 0.0f;
+                    p.FinalTemp = 0.0f;
+                    p.FinalTime = 0.0f;
+                }
+
                 // TotalRunTime & Points 계산
                 float temp = TempSet;
                 float total = InitTime;

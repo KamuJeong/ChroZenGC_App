@@ -5,28 +5,32 @@
              x:Class="ChroZenService.View_Reception"
              >
   <ContentView.Content>
-        <Grid VerticalOptions="FillAndExpand">
+        <Grid BackgroundColor="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="0.1*"/>                
+                <ColumnDefinition Width="0.1*"/>
             </Grid.ColumnDefinitions>
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.06*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="0.1*" />
             </Grid.RowDefinitions>
-            
-            <Image Grid.Row="1" Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.logo.png}" VerticalOptions="Start" Aspect="AspectFit" />
 
-            <BoxView Grid.Row="1" Grid.Column="2" VerticalOptions="Start" HeightRequest="3" BackgroundColor="SteelBlue"/>
-            <BoxView Grid.Row="1" Grid.Column="2" VerticalOptions="End" HeightRequest="3" BackgroundColor="SteelBlue"/>
-            <ListView Grid.Row="1" Grid.Column="2" Margin="5" ItemsSource="{Binding IPFinder.Results}" HasUnevenRows="True" 
-                       IsPullToRefreshEnabled="True" RefreshControlColor="SteelBlue" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
-                        SelectedItem="{Binding DeviceInterface, Mode=TwoWay}"
-                      >
+
+            <Image Source="{local:ImageResource ChroZenService.Images.logo.png}"                       
+                   Grid.Row="1" Grid.Column="1"
+                   Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+
+
+            <BoxView BackgroundColor="SteelBlue"
+                     Grid.Row="1" Grid.Column="2" VerticalOptions="Start" HeightRequest="3" />
+
+            <ListView ItemsSource="{Binding IPFinder.Results}" SelectedItem="{Binding DeviceInterface, Mode=TwoWay}"
+                      Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Margin="5" HasUnevenRows="True" 
+                      IsPullToRefreshEnabled="True" RefreshControlColor="SteelBlue" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -39,22 +43,26 @@
                                     <ColumnDefinition Width="10" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-
-                                <BoxView Grid.RowSpan="2" BackgroundColor="SteelBlue" />
-                                <Label Grid.Column="1"  Text="{Binding SerialNumber}" FontSize="Large" TextColor="Black" />
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding IPAddress, StringFormat='IP: {0}'}" FontSize="Small" />
+                                <BoxView BackgroundColor="SteelBlue"
+                                          Grid.RowSpan="2" />
+                                <Label Text="{Binding SerialNumber}" 
+                                       Grid.Column="1" FontSize="Large" TextColor="Black" />
+                                <Label Text="{Binding IPAddress, StringFormat='IP: {0}'}" 
+                                       Grid.Row="1" Grid.Column="1" FontSize="Small" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
 
                 </ListView.ItemTemplate>
             </ListView>
+
+            <BoxView BackgroundColor="SteelBlue"
+                     Grid.Row="2" Grid.Column="2" VerticalOptions="End" HeightRequest="3" />
         </Grid>
 
     </ContentView.Content>

@@ -11,19 +11,41 @@ namespace ChroZenService
         {
             Source = SourceOFF;
             BackgroundColor = Color.Transparent;
+            Aspect = Aspect.AspectFit;
+            HorizontalOptions = LayoutOptions.Start;
+            VerticalOptions = LayoutOptions.Center;
+            HeightRequest = (double)Application.Current.Resources["CaptionFontSizeKey"] * 1.5 + 4;
+            WidthRequest = HeightRequest * 190.0 / 40.0;
 
             Clicked += OnClicked;
         }
         private void OnClicked(object sender, EventArgs e)
         {
+            Element element = this;
+            while (element.BindingContext != null)
+            {
+                var prop = element.BindingContext.GetType().GetProperty("IsEditable");
+                if (prop != null && prop.GetValue(element.BindingContext) is bool editable)
+                {
+                    if (editable)
+                        break;
+                    else
+                        return;
+                }
+                if (element.Parent == null)
+                    break;
+                else
+                    element = element.Parent;
+            }
+
             ON = !ON;
         }
 
         public static readonly BindableProperty ONProperty = BindableProperty.Create("ON", typeof(bool), typeof(SwitchImageButton), false, propertyChanged: OnSwitched, defaultBindingMode: BindingMode.TwoWay);
-        
+
         private static void OnSwitched(BindableObject bindable, object oldValue, object newValue)
         {
-            if(bindable is SwitchImageButton button)
+            if (bindable is SwitchImageButton button)
             {
                 button.Source = (bool)newValue ? SourceON : SourceOFF;
             }

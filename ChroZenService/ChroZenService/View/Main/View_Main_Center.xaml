@@ -75,15 +75,23 @@
 
 
                     <StackLayout Grid.Row="{Binding Center.LeftGridRow}" Spacing="10" Margin="15, 0" VerticalOptions="Center">
+                        <StackLayout.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="FontSize" Value="{StaticResource CaptionFontSizeKey}" />
+                                <Setter Property="TextColor" Value="Silver" />
+                            </Style>
+                        </StackLayout.Resources>
+                        
                         <StackLayout.Triggers>
                             <Trigger TargetType="StackLayout" Property="Grid.Row" Value="0">
                                 <Setter Property="IsVisible" Value="False" />
                             </Trigger>
                         </StackLayout.Triggers>
 
-                        <Label Text="{Binding Center.InletGasType, StringFormat=' {0}'}"  FontSize="{StaticResource DefaultFontSizeKey}" TextColor="black" BackgroundColor="Silver" />
+                        <Label Text="{Binding Center.InletGasType, StringFormat=' {0}'}"
+                               TextColor="black" BackgroundColor="LightSlateGray" />
 
-                        <Grid>
+                        <Grid RowSpacing="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
@@ -94,20 +102,15 @@
                             </Grid.RowDefinitions>
 
                             <Label Text="{Binding Center.InletFlow, StringFormat='{0:F2}'}" 
-                                   HorizontalOptions="End" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver"/>
-
-                            <Label Text="mL/min" Grid.Column="1" 
-                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver"  />
-
-                            <Label Text="{Binding Center.InletPressure, StringFormat='{0:F3}'}" Grid.Row="1"  
-                                   HorizontalOptions="End" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver"/>
-
-                            <Label Text="psi" Grid.Row="1"  Grid.Column="1" 
-                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver"  />
+                                   HorizontalOptions="End"/>
+                            <Label Text="mL/min" Grid.Column="1" />
+                            <Label Text="{Binding Center.InletPressure, StringFormat='{0:F3}'}" 
+                                   Grid.Row="1"  HorizontalOptions="End"/>
+                            <Label Text="psi" Grid.Row="1"  Grid.Column="1" />
                         </Grid>
 
                         <Label Text="{Binding Center.APCMode, StringFormat=' {0}', Converter={StaticResource EnumGapAdderKey}}" 
-                               FontSize="{StaticResource DefaultFontSizeKey}" TextColor="black" BackgroundColor="Silver" />
+                               TextColor="black" BackgroundColor="LightSlateGray" />
 
                         <Grid IsVisible="True">
                             <Grid.ColumnDefinitions>
@@ -118,17 +121,21 @@
                                 <DataTrigger TargetType="Grid" Binding="{Binding Center.SplitRatio}" Value="0">
                                     <Setter Property="IsVisible" Value="False"/>
                                 </DataTrigger>
-                            </Grid.Triggers>
+                           </Grid.Triggers>
+                            
                             <Label Text=" Split " 
-                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="black" BackgroundColor="Silver" />
-
-                            <Label Text="{Binding Center.SplitRatio, StringFormat='1 :  {0}'}" Grid.Column="1" 
-                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver" HorizontalOptions="Center" />
+                                   TextColor="black" BackgroundColor="LightSlateGray" />
+                            <Label Text="{Binding Center.SplitRatio, StringFormat='1 :  {0}'}" 
+                                   TextColor="Silver" Grid.Column="1" HorizontalOptions="Center" />
                         </Grid>
                     </StackLayout>
                 </Grid>
 
 
+                
+                
+                
+                
                 <Image Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.home_center.png}" Aspect="Fill" />
                 <Grid Grid.Column="1" RowSpacing="0">
                     <Grid.RowDefinitions>
@@ -152,20 +159,24 @@
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.4*" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="0.7*" />
                             <RowDefinition Height="0.95*" />
-                            <RowDefinition Height="0.05*" />                            
+                            <RowDefinition Height="0.1*" />                            
                         </Grid.RowDefinitions>
 
-                        <Label Text="Inlet" TextColor="Black" BackgroundColor="Silver" HorizontalTextAlignment="Center"
-                               Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="{StaticResource DefaultFontSizeKey}" HorizontalOptions="FillAndExpand" />
-                        
+                        <Frame Grid.Row="1"  Grid.Column="1" Grid.ColumnSpan="2" Padding="0" BorderColor="#80778899" BackgroundColor="Transparent" HasShadow="False"> 
+                            <Label Text="Inlet" TextColor="white" HorizontalTextAlignment="Center"
+                                FontSize="{StaticResource DefaultFontSizeKey}" HorizontalOptions="FillAndExpand" />
+                        </Frame>
+
                         <Label Text="{Binding Center.InletTemperature, StringFormat='{0:F0}'}" TextColor="LimeGreen" BackgroundColor="Transparent"
                                Grid.Row="2" Grid.Column="1" FontSize="{StaticResource ButtonFontSizeKey}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" HorizontalOptions="Fill" />
 
-                        <Label Text="Detector " TextColor="Black" BackgroundColor="Silver" HorizontalTextAlignment="Center"
-                               Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" FontSize="{StaticResource DefaultFontSizeKey}" HorizontalOptions="FillAndExpand" />
-
+                        <Frame Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Padding="0" BorderColor="#80778899" BackgroundColor="Transparent" HasShadow="False">
+                            <Label Text="Detector " TextColor="white" HorizontalTextAlignment="Center"
+                               FontSize="{StaticResource DefaultFontSizeKey}" HorizontalOptions="FillAndExpand" />
+                        </Frame>
+                        
                         <Label Text="{Binding Center.DetectorTemperature, StringFormat='{0:F0}'}" TextColor="LimeGreen" BackgroundColor="Transparent"
                                Grid.Row="2" Grid.Column="3" FontSize="{StaticResource ButtonFontSizeKey}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" HorizontalOptions="Fill" />
 
@@ -187,6 +198,10 @@
                     
                 </Grid>
 
+                
+                
+                
+                
 
                 <Image Grid.Column="2" Aspect="Fill" Source="{local:ImageResource ChroZenService.Images.home_side3.png}">
                     <Image.Triggers>
@@ -226,6 +241,12 @@
                     <Rectangle Grid.Row="6"></Rectangle>
 
                     <StackLayout Grid.Row="{Binding Center.RightGridRow}" Spacing="10" Margin="15, 0" VerticalOptions="Center">
+                        <StackLayout.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="FontSize" Value="{StaticResource CaptionFontSizeKey}" />
+                                <Setter Property="TextColor" Value="Silver" />
+                            </Style>
+                        </StackLayout.Resources>
                         <StackLayout.Triggers>
                             <Trigger TargetType="StackLayout" Property="Grid.Row" Value="0">
                                 <Setter Property="IsVisible" Value="False" />
@@ -233,11 +254,11 @@
                         </StackLayout.Triggers>
 
                         <Label Text=" Flame OFF"  
-                               FontSize="{StaticResource DefaultFontSizeKey}" TextColor="black" BackgroundColor="DimGray">
+                               TextColor="black" BackgroundColor="DimGray">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Center.Flame}" Value="FlameON">
                                     <Setter Property="Text" Value=" Flame ON" />
-                                    <Setter Property="Background" Value="Silver" />
+                                    <Setter Property="Background" Value="Orange" />
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding Center.Flame}" Value="NotInstalled">
                                     <Setter Property="IsVisible" Value="False" />
@@ -245,19 +266,19 @@
                             </Label.Triggers>
                         </Label>
 
-                        <Grid>
+                        <Grid RowSpacing="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
                             
                             <Label Text="{Binding Center.DetectorSignal, StringFormat='{0:F3}'}" 
-                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver" HorizontalOptions="End" />
-                            <Label Text="{Binding Center.DetectorType, Converter={StaticResource DetectorUnitConverterKey}}" Grid.Column="1"
-                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver"/>
+                                   HorizontalOptions="End" />
+                            <Label Text="{Binding Center.DetectorType, Converter={StaticResource DetectorUnitConverterKey}}" 
+                                   Grid.Column="1"/>
                         </Grid>
 
-                        <Grid>
+                        <Grid RowSpacing="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
@@ -268,35 +289,32 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <Label Text="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=0}" 
-                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
+                            <Label Text="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=0}" >
                                 <Label.Triggers>
                                     <Trigger TargetType="Label" Property="Text" Value="">
                                         <Setter Property="IsVisible" Value="False" />
                                     </Trigger>
-                                </Label.Triggers>           
+                                </Label.Triggers>
                             </Label>
-
-                            <Label Text="{Binding Center.DetectorFlow1, StringFormat='{0:F1}'}" Grid.Column="1" 
-                                   HorizontalOptions="End" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
+                            <Label Text="{Binding Center.DetectorFlow1, StringFormat='{0:F1}'}" 
+                                   Grid.Column="1" HorizontalOptions="End">
                                 <Label.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=0}" Value="">
                                         <Setter Property="IsVisible" Value="False" />
                                     </DataTrigger>
                                 </Label.Triggers>
                             </Label>
-
-                            <Label Text="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=1}" Grid.Row="1"
-                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
+                            
+                            <Label Text="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=1}" 
+                                   Grid.Row="1">
                                 <Label.Triggers>
                                     <Trigger TargetType="Label" Property="Text" Value="">
                                         <Setter Property="IsVisible" Value="False" />
                                     </Trigger>
                                 </Label.Triggers>
                             </Label>
-
-                            <Label Text="{Binding Center.DetectorFlow1, StringFormat='{0:F1}'}" Grid.Row="1" Grid.Column="1" 
-                                   HorizontalOptions="End" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
+                            <Label Text="{Binding Center.DetectorFlow1, StringFormat='{0:F1}'}" 
+                                   Grid.Row="1" Grid.Column="1" HorizontalOptions="End">
                                 <Label.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=1}" Value="">
                                         <Setter Property="IsVisible" Value="False" />
@@ -304,17 +322,16 @@
                                 </Label.Triggers>
                             </Label>
 
-                            <Label Text="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=2}" Grid.Row="2"
-                                   FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
+                            <Label Text="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=2}" 
+                                   Grid.Row="2">
                                 <Label.Triggers>
                                     <Trigger TargetType="Label" Property="Text" Value="">
                                         <Setter Property="IsVisible" Value="False" />
                                     </Trigger>
                                 </Label.Triggers>
                             </Label>
-
-                            <Label Text="{Binding Center.DetectorFlow1, StringFormat='{0:F1}'}" Grid.Row="2" Grid.Column="1" 
-                                   HorizontalOptions="End" FontSize="{StaticResource DefaultFontSizeKey}" TextColor="Silver">
+                            <Label Text="{Binding Center.DetectorFlow1, StringFormat='{0:F1}'}"
+                                   Grid.Row="2" Grid.Column="1" HorizontalOptions="End">
                                 <Label.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding Center.DetectorType, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=2}" Value="">
                                         <Setter Property="IsVisible" Value="False" />

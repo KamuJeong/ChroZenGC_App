@@ -29,12 +29,21 @@ namespace ChroZenService
         {
             if (Views.TryGetValue(SelectedItem, out Xamarin.Forms.View view))
             {
-                selectedView.Content = view;
+                foreach (var v in gridMain.Children.Where(v => (int)v.GetValue(Grid.ColumnProperty) == 2))
+                {
+                    v.IsVisible = v == view;
+                }
             }
             else
             {
+                foreach (var v in gridMain.Children.Where(v => (int)v.GetValue(Grid.ColumnProperty) == 2))
+                {
+                    v.IsVisible = false;
+                }
+
                 var tab = Resolver.Resolve<View_Config_Tab>();
-                selectedView.Content = tab;
+                gridMain.Children.Add(tab);
+                Grid.SetColumn(tab, 2);
 
                 switch (SelectedItem)
                 {
@@ -42,10 +51,20 @@ namespace ChroZenService
                         tab.TabContent = Resolver.Resolve<Grid_Config_Oven>();
                         tab.SelectedTabItem = 1;
                         break;
+                    case 3:
+                        var inlet = Resolver.Resolve<Grid_Config_Inlet>();
+                        inlet.Port = 0;
+                        tab.TabContent = inlet;
+                        break;
+
+
+                    case 13:
+                        tab.TabContent = Resolver.Resolve<View_Config_InletConfig_Front>();
+                        break;
 
 
                 }
-                Views.Add(SelectedItem, selectedView.Content);
+                Views.Add(SelectedItem, tab);
             }
         }
 

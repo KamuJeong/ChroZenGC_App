@@ -32,7 +32,7 @@
     <ContentView.Content>
         <Grid RowSpacing="0" ColumnSpacing="0">
             <Image Source="bg.png" Aspect="Fill" />
-            <Grid ColumnSpacing="0">
+            <Grid x:Name="gridMain" ColumnSpacing="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="28*" />
                     <ColumnDefinition Width="130*"/>
@@ -195,7 +195,7 @@
                     
                 </Grid>
 
-                <ContentView x:Name="selectedView" Grid.Column="2" />
+                <!--<ContentView x:Name="selectedView" Grid.Column="2" />-->
 
 
             </Grid>          

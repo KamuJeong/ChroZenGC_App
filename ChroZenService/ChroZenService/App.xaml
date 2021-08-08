@@ -9,6 +9,7 @@
         <cvt:EnumGapAdder x:Key="EnumGapAdderKey" />
         <cvt:FloatArrayPicker x:Key="FloatArrayPickerKey" />
         <cvt:EnumInstalledConverter x:Key="EnumInstalledKey" />
+        <cvt:IsNonZeroConverter x:Key="IsNonZeroConverterKey" />
 
         <LinearGradientBrush x:Key="ValueEditorBackgroundKey" StartPoint="0.4,0.2" EndPoint="1,0.7">
             <LinearGradientBrush.GradientStops>
@@ -19,6 +20,12 @@
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
 
+        <LinearGradientBrush x:Key="GroupingFrameBackgroudKey" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#ff35343a" Offset="0" />
+                <GradientStop Color="#ff1b1a1f" Offset="1" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
 
 
 

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService" 
+             x:Class="ChroZenService.Grid_Config_Inlet"
+             x:DataType="local:ViewModel_Config"
+             x:Name="This">
+    <ContentView.Resources>
+        <Style x:Key="captionKey" TargetType="Label">
+            <Setter Property="TextColor" Value="Silver" />
+            <Setter Property="FontSize"  Value="{StaticResource CaptionFontSizeKey}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="End" />
+        </Style>
+
+        <Style x:Key="groupKey" TargetType="Frame">
+            <Setter Property="Background" Value="{StaticResource GroupingFrameBackgroudKey}" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+
+        <ColumnDefinitionCollection x:Key="columnConfig">
+            <ColumnDefinition Width="0.57*"/>
+            <ColumnDefinition Width="0.2"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.08*"/>
+        </ColumnDefinitionCollection>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Padding="10" Spacing="10" >
+                <Frame Style="{StaticResource groupKey}">
+                    <Grid ColumnSpacing="10" RowSpacing="11" ColumnDefinitions="{StaticResource columnConfig}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Carrier Gas"
+                               Style="{StaticResource captionKey}" />
+                        <local:EnumPicker Title="Carrier Gas" Value="{Binding Source={x:Reference This}, Path=Inlet.CarrierGas}" 
+                                          Grid.Row="0"  Grid.Column="2" Grid.ColumnSpan="3" />
+                        <Label Text="UPC mode" 
+                               Grid.Row="1"  Style="{StaticResource captionKey}" />
+                        <local:EnumPicker Title="UPC mode" Value="{Binding Source={x:Reference This}, Path=Inlet.APCMode}" Gap="True" 
+                                          Grid.Row="1"  Grid.Column="2" Grid.ColumnSpan="3" />
+
+                        <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="2"/>
+                    </Grid>
+                </Frame>
+
+                
+                
+            </StackLayout>
+
+            <ScrollView Grid.Column="1">
+            </ScrollView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

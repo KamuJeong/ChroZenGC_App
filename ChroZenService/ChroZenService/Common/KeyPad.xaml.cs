@@ -11,94 +11,117 @@ using Xamarin.Forms.Xaml;
 
 namespace ChroZenService
 {
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = true, Inherited = false)]
-    public class ConstraintsAttribute : Attribute
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name">Description of target property</param>
-        /// <param name="max"></param>
-        /// <param name="min"></param>
-        /// <param name="decimals"></param>
-        /// <param name="onoff">Corresponding property for switching on or off</param>
-        /// <param name="predicate">Method name for constraint's validity </param>
-        public ConstraintsAttribute(string name, double max = double.PositiveInfinity, double min = double.NegativeInfinity, int decimals = 0, string onoff = null, string predicate = null)
-        {
-            Name = name;
-            MaxValue = max;
-            MinValue = min;
-            Decimals = decimals;
-            OnOffProeprty = onoff;
-            Predicate = predicate;
-        }
+    //[AttributeUsage(AttributeTargets.Property, AllowMultiple = true, Inherited = false)]
+    //public class ConstraintsAttribute : Attribute
+    //{
+    //    /// <summary>
+    //    /// 
+    //    /// </summary>
+    //    /// <param name="name">Description of target property</param>
+    //    /// <param name="max"></param>
+    //    /// <param name="min"></param>
+    //    /// <param name="decimals"></param>
+    //    /// <param name="onoff">Corresponding property for switching on or off</param>
+    //    /// <param name="predicate">Method name for constraint's validity </param>
+    //    public ConstraintsAttribute(string name, double max = double.PositiveInfinity, double min = double.NegativeInfinity, int decimals = 0, string onoff = null, string predicate = null)
+    //    {
+    //        Name = name;
+    //        MaxValue = max;
+    //        MinValue = min;
+    //        Decimals = decimals;
+    //        OnOffProeprty = onoff;
+    //        Predicate = predicate;
+    //    }
 
-        public string Name { get; }
-        public double MaxValue { get; }
-        public double MinValue { get; }
-        public int Decimals { get; }
-        public string OnOffProeprty { get; }
-        public string Predicate { get; }
-    }
+    //    public string Name { get; }
+    //    public double MaxValue { get; }
+    //    public double MinValue { get; }
+    //    public int Decimals { get; }
+    //    public string OnOffProeprty { get; }
+    //    public string Predicate { get; }
+    //}
 
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class KeyPad : ContentPage
     {
-        private object instance;
-        private PropertyInfo valuePropertyInfo;
-        private PropertyInfo onoffPropertyInfo;
+        ValueEditor instance;
 
-        public KeyPad(object propertyOwner, PropertyInfo valueProperty)
+        public KeyPad(ValueEditor inst)
         {
             double buttonHeight = (int)((double)Application.Current.Resources["ButtonFontSizeKey"] * 3);
             Resources.Add("ButtonHeightKey", buttonHeight);
 
             InitializeComponent();
 
-            instance = propertyOwner ?? throw new ArgumentNullException(nameof(propertyOwner));
-            valuePropertyInfo = valueProperty ?? throw new ArgumentNullException(nameof(valueProperty));
+            instance = inst;
+            minValue = inst.Min;
+            maxValue = inst.Max;
 
-            Name = valueProperty.Name;
-            maxValue = double.PositiveInfinity;
-            minValue = double.NegativeInfinity;
-            decimals = 0;
-            onoffPropertyInfo = null;
+            CurrentValue = instance.Value;
+            int pt = CurrentValue.IndexOf('.');
+            decimals = pt < 0 ? 0 : CurrentValue.Length - 1 - pt;
 
-            ConstraintsAttribute attr = null;
-            foreach (var at in valueProperty.GetCustomAttributes<ConstraintsAttribute>())
-            {
-                if(at.Predicate == null)
-                {
-                    attr = at;
-                    break;
-                }
-
-                var m = instance.GetType().GetMethod(at.Predicate, BindingFlags.Public | BindingFlags.Instance);
-                if(m != null && (bool)m.Invoke(instance, null))
-                {
-                    attr = at;
-                }
-            }
-
-            if(attr != null)
-            {
-                Name = attr.Name;
-                maxValue = attr.MaxValue;
-                minValue = attr.MinValue;
-                decimals = attr.Decimals;
-                onoffPropertyInfo = attr.OnOffProeprty == null ? null : instance.GetType().GetProperty(attr.OnOffProeprty);
-
-            }
-
-            CurrentValue = string.Format($"{{0:F{decimals}}}", Convert.ChangeType(valueProperty.GetValue(propertyOwner), typeof(double)));
             OnCurrentValueChanged(this, CurrentValue, CurrentValue);
             IsModified = false;
 
             BindingContext = this;
         }
 
-        public string Name { get; }
+        //private object instance;
+        //private PropertyInfo valuePropertyInfo;
+        //private PropertyInfo onoffPropertyInfo;
+
+        //public KeyPad(object propertyOwner, PropertyInfo valueProperty)
+        //{
+        //    double buttonHeight = (int)((double)Application.Current.Resources["ButtonFontSizeKey"] * 3);
+        //    Resources.Add("ButtonHeightKey", buttonHeight);
+
+        //    InitializeComponent();
+
+        //    instance = propertyOwner ?? throw new ArgumentNullException(nameof(propertyOwner));
+        //    valuePropertyInfo = valueProperty ?? throw new ArgumentNullException(nameof(valueProperty));
+
+        //    Name = valueProperty.Name;
+        //    maxValue = double.PositiveInfinity;
+        //    minValue = double.NegativeInfinity;
+        //    decimals = 0;
+        //    onoffPropertyInfo = null;
+
+        //    ConstraintsAttribute attr = null;
+        //    foreach (var at in valueProperty.GetCustomAttributes<ConstraintsAttribute>())
+        //    {
+        //        if(at.Predicate == null)
+        //        {
+        //            attr = at;
+        //            break;
+        //        }
+
+        //        var m = instance.GetType().GetMethod(at.Predicate, BindingFlags.Public | BindingFlags.Instance);
+        //        if(m != null && (bool)m.Invoke(instance, null))
+        //        {
+        //            attr = at;
+        //        }
+        //    }
+
+        //    if(attr != null)
+        //    {
+        //        Name = attr.Name;
+        //        maxValue = attr.MaxValue;
+        //        minValue = attr.MinValue;
+        //        decimals = attr.Decimals;
+        //        onoffPropertyInfo = attr.OnOffProeprty == null ? null : instance.GetType().GetProperty(attr.OnOffProeprty);
+
+        //    }
+
+        //    CurrentValue = string.Format($"{{0:F{decimals}}}", Convert.ChangeType(valueProperty.GetValue(propertyOwner), typeof(double)));
+        //    OnCurrentValueChanged(this, CurrentValue, CurrentValue);
+        //    IsModified = false;
+
+        //    BindingContext = this;
+        //}
+
+        public string Name => instance.Caption;
 
         public static readonly BindableProperty CurrentValueProperty = BindableProperty.Create("CurrentValue", typeof(string), typeof(KeyPad), propertyChanged: OnCurrentValueChanged);
 
@@ -140,7 +163,8 @@ namespace ChroZenService
 
         private int decimals = 0;
 
-        public bool OnOffKeyEnabled => onoffPropertyInfo != null;
+        public bool OnKeyEnabled => instance.IsSet(ValueEditor.SwitchProperty) && instance.Switch == false;
+        public bool OffKeyEnabled => instance.IsSet(ValueEditor.SwitchProperty) && instance.Switch == true;
 
         public static readonly BindableProperty IsModifiedProperty = BindableProperty.Create("IsModified", typeof(bool), typeof(KeyPad));
 
@@ -167,8 +191,9 @@ namespace ChroZenService
                     return MinusKeyEnabled;
 
                 case "ON":
+                    return OnKeyEnabled;
                 case "OFF":
-                    return OnOffKeyEnabled;
+                    return OffKeyEnabled;
 
                 case ".":
                     return decimals > 0;
@@ -196,19 +221,19 @@ namespace ChroZenService
 
                 case "ON":
                     if (!IsValid) break;
-                    valuePropertyInfo.SetValue(instance, Convert.ChangeType(CurrentValue, valuePropertyInfo.PropertyType));
-                    onoffPropertyInfo.SetValue(instance, true);
+                    instance.Value = string.Format($"{{0:F{decimals}}}", double.Parse(CurrentValue));  
+                    instance.Switch = true;
                     Navigation.PopModalAsync();
                     return;
 
                 case "OFF":
-                    onoffPropertyInfo.SetValue(instance, false);
+                    instance.Switch = false;
                     Navigation.PopModalAsync();
                     return;
 
                 case "OK":
                     if (!IsValid) break;
-                    valuePropertyInfo.SetValue(instance, Convert.ChangeType(CurrentValue, valuePropertyInfo.PropertyType));
+                    instance.Value = string.Format($"{{0:F{decimals}}}", double.Parse(CurrentValue));
                     Navigation.PopModalAsync();
                     return;
 
@@ -240,12 +265,14 @@ namespace ChroZenService
 
         public KeyPad()
         {
-            double buttonHeight = (int)((double)Application.Current.Resources["ButtonFontSizeKey"] * 3);
-            Resources.Add("ButtonHeightKey", buttonHeight);
+            //double buttonHeight = (int)((double)Application.Current.Resources["ButtonFontSizeKey"] * 3);
+            //Resources.Add("ButtonHeightKey", buttonHeight);
 
             InitializeComponent();
 
         }
+
+        public double ButtonHeight => (double) Application.Current.Resources["ButtonFontSizeKey"] * 3;
 
         #region Property
 
