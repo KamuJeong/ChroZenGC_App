@@ -14,6 +14,7 @@ namespace ChroZenService
             Aspect = Aspect.AspectFit;
             HorizontalOptions = LayoutOptions.Start;
             VerticalOptions = LayoutOptions.Center;
+            Margin = new Thickness(2);
             HeightRequest = (double)Application.Current.Resources["CaptionFontSizeKey"] * 1.5 + 4;
             WidthRequest = HeightRequest * 190.0 / 40.0;
 

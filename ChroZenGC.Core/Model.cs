@@ -58,7 +58,7 @@ namespace ChroZenGC.Core
             wrapper.Binary = assemble;
         }
 
-        public async Task Request<T>(PacketWrapper<T> wrapper) where T : struct
+        public async Task Request<T>(PacketWrapper<T> wrapper, int index = 0) where T : struct
         {
             if (networkManager != null)
             {
@@ -67,7 +67,7 @@ namespace ChroZenGC.Core
                     Length = 24,
                     Id = 0,
                     Code = wrapper.Code,
-                    Index = 0,
+                    Index = index,
                     SlotOffset = 0,
                     SlotSize = wrapper.Binary.Length
                 };

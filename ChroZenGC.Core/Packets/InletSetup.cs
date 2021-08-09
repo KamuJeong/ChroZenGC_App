@@ -25,6 +25,11 @@ namespace ChroZenGC.Core.Packets
         Split, Splitless, PulsedSplit, PulsedSplitless
     }
 
+    public enum InletConnection : byte
+    {
+        FrontDetector, CenterDetector, RearDetector, MSD
+    }
+
 
     [StructLayout(LayoutKind.Sequential)]
     public struct _InletTempProgram
@@ -64,7 +69,7 @@ namespace ChroZenGC.Core.Packets
         public float fDiameter;                // [CO]										// Column I.D. (mm)
                                                //Inlet->APC : Column.Thickness(um)
         public float fThickness;               // [CO]										// Column Film Thickness (um)
-        public byte __btConnection;            // ???  -> 6500GC -> not used - detector에서셋팅
+        public InletConnection btConnection;            // ???  -> 6500GC -> not used - detector에서셋팅
 
         public byte bGasSaverMode;             // [C]	0: OFF 1:ON							// 가스절약모드설정(0:Off / 1:On)  -> 6500GC에서는 BYTE대신 BOOL사용
         public float fGasSaverTime;            // [C]	0: OFF 1:ON							// 가스절약모드 시작시간(0~9999min)

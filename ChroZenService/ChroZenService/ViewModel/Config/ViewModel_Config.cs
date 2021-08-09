@@ -28,6 +28,7 @@ namespace ChroZenService
             Model = Resolver.Resolve<Model>();
 
             Oven.PropertyModified += OvenPropertyChanged;
+
             UpdateOvenProgram();
         }
 
@@ -41,7 +42,7 @@ namespace ChroZenService
 
 
         public ObservableCollection<OvenProgramStep> OvenProgram { get; } = new ObservableCollection<OvenProgramStep>();
-        private void UpdateOvenProgram()
+        public void UpdateOvenProgram()
         {
             int countUpdate = Oven.Program.TakeWhile(p => p.Rate != 0.0f).Count() + 1 - OvenProgram.Count;
 

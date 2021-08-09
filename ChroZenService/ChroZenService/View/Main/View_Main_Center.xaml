@@ -88,8 +88,8 @@
                             </Trigger>
                         </StackLayout.Triggers>
 
-                        <Label Text="{Binding Center.InletGasType, StringFormat=' {0}'}"
-                               TextColor="black" BackgroundColor="LightSlateGray" />
+                        <Label Text="{Binding Center.InletGasType}"
+                               TextColor="black" BackgroundColor="LightSlateGray" Padding="5,0" />
 
                         <Grid RowSpacing="0">
                             <Grid.ColumnDefinitions>
@@ -109,8 +109,8 @@
                             <Label Text="psi" Grid.Row="1"  Grid.Column="1" />
                         </Grid>
 
-                        <Label Text="{Binding Center.APCMode, StringFormat=' {0}', Converter={StaticResource EnumGapAdderKey}}" 
-                               TextColor="black" BackgroundColor="LightSlateGray" />
+                        <Label Text="{Binding Center.APCMode, Converter={StaticResource EnumGapAdderKey}}"  
+                               TextColor="black" BackgroundColor="LightSlateGray" Padding="5,0" />
 
                         <Grid IsVisible="True">
                             <Grid.ColumnDefinitions>
@@ -123,8 +123,8 @@
                                 </DataTrigger>
                            </Grid.Triggers>
                             
-                            <Label Text=" Split " 
-                                   TextColor="black" BackgroundColor="LightSlateGray" />
+                            <Label Text="Split " 
+                                   TextColor="black" BackgroundColor="LightSlateGray" Padding="5,0" />
                             <Label Text="{Binding Center.SplitRatio, StringFormat='1 :  {0}'}" 
                                    TextColor="Silver" Grid.Column="1" HorizontalOptions="Center" />
                         </Grid>
@@ -253,11 +253,11 @@
                             </Trigger>
                         </StackLayout.Triggers>
 
-                        <Label Text=" Flame OFF"  
-                               TextColor="black" BackgroundColor="DimGray">
+                        <Label Text="Flame OFF"  
+                               TextColor="black" BackgroundColor="DimGray" Padding="5,0">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Center.Flame}" Value="FlameON">
-                                    <Setter Property="Text" Value=" Flame ON" />
+                                    <Setter Property="Text" Value="Flame ON" />
                                     <Setter Property="Background" Value="Orange" />
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding Center.Flame}" Value="NotInstalled">

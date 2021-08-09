@@ -135,7 +135,7 @@ namespace ChroZenGC.Core.Wrappers
             ValveState = new ArrayWrapper<byte>(this, () => Packet.btValveState);
             MultiValveState = new ArrayWrapper<byte>(this, () => Packet.btMultiValveState);
 
-
+            Mode = Modes.NotConnected;
         }
 
         public Modes Mode

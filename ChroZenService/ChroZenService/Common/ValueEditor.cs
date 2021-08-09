@@ -146,8 +146,6 @@ namespace ChroZenService
             BackgroundButton = new Button
             {
                 BorderColor = Color.Silver,
-                Margin = new Thickness(0),
-                Padding = new Thickness(0),
                 BorderWidth = 0.5,
                 CornerRadius = 5,
                 Background = (Brush)Application.Current.Resources["ValueEditorBackgroundKey"],
@@ -164,11 +162,11 @@ namespace ChroZenService
             {
                 TextColor = Color.White,
                 FontSize = (double)Application.Current.Resources["CaptionFontSizeKey"],
-                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.End,
                 InputTransparent = true,
-                Margin = new Thickness(3, 3),
+                Margin = new Thickness(3, 4),
             };
             Children.Add(ValueLabel);
 
@@ -176,15 +174,17 @@ namespace ChroZenService
             {
                 TextColor = Color.Silver,
                 FontSize = (double)Application.Current.Resources["DefaultFontSizeKey"],
-                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.End,
                 HorizontalTextAlignment = TextAlignment.Start,
-                Margin = new Thickness(3, 2, 5, 2),
+                Margin = new Thickness(3, 3, 5, 3),
                 InputTransparent = true,
+                MaxLines = 1
             };
             Children.Add(UnitLabel);
             SetColumn(UnitLabel, 1);
 
+            Margin = new Thickness(2);
             HorizontalOptions = LayoutOptions.Fill;
             VerticalOptions = LayoutOptions.Center;
 

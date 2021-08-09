@@ -225,7 +225,7 @@ namespace ChroZenService
 
             var signalTick = prepareTickers(Min, Max);
             var timeTick = prepareTickers(0, Time);
-            var ovenTick = prepareTickers(-88, MaxTemp);
+            var ovenTick = prepareTickers(-80, MaxTemp);
 
             DrawBackground(canvas, rect);
 
@@ -628,10 +628,10 @@ namespace ChroZenService
                         canvas.DrawText(_Text(t), rect.Left + ruler / 2, y + rcText.Height / 2, paint);
                     }
 
-                    var bottom = Math.Floor(-88 / ticker.minor) * ticker.minor;
+                    var bottom = Math.Floor(-80 / ticker.minor) * ticker.minor;
                     while (bottom <= MaxTemp)
                     {
-                        if (bottom >= -88)
+                        if (bottom >= -80)
                         {
                             var y = convertR(rect, (float)bottom);
                             canvas.DrawLine(rect.Left, y, rect.Left + ruler / 3, y, paint);

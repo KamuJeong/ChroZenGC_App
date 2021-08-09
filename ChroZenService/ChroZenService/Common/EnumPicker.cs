@@ -46,7 +46,7 @@ namespace ChroZenService
                     }
                     picker.ItemsSource = picker.dictionaryEnum.Keys.ToList();
                 }
-                picker.SelectedIndex = picker.ItemsSource.IndexOf($"{Convert.ChangeType(newValue, picker.enumType)}");
+                picker.SelectedIndex = picker.dictionaryEnum.Values.TakeWhile(e => !e.Equals(Convert.ChangeType(newValue, picker.enumType))).Count();
             }
         }
 
@@ -62,7 +62,7 @@ namespace ChroZenService
             HorizontalOptions = LayoutOptions.FillAndExpand;
             HorizontalTextAlignment = TextAlignment.Center;
             TextColor = Color.Silver;
-            FontSize = (double)Application.Current.Resources["CaptionFontSizeKey"];
+            FontSize = (double)Application.Current.Resources["DefaultFontSizeKey"];
 
             Element element = this;
             while (element.BindingContext != null)

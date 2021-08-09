@@ -15,6 +15,7 @@ namespace ChroZenService
     {
         private Dictionary<int, Xamarin.Forms.View> Views { get; } = new Dictionary<int, Xamarin.Forms.View>();
 
+        public ViewModel_Config Model => (ViewModel_Config)BindingContext;
 
         public View_Config(ViewModel_Config model)
         {
@@ -25,7 +26,7 @@ namespace ChroZenService
             ShowView();
         }
 
-        private void ShowView()
+        private async void ShowView()
         {
             if (Views.TryGetValue(SelectedItem, out Xamarin.Forms.View view))
             {
@@ -52,11 +53,13 @@ namespace ChroZenService
                         tab.SelectedTabItem = 1;
                         break;
                     case 3:
-                        var inlet = Resolver.Resolve<Grid_Config_Inlet>();
-                        inlet.Port = 0;
-                        tab.TabContent = inlet;
+                        var content = Resolver.Resolve<Grid_Config_Inlet>();
+                        content.Inlet = Model.Inlets[0];
+                        content.Flow = Model.State.Flow.Inlets[0];
+                        content.Pressure = Model.State.Flow.Pressure[0];
+                        content.Velocity = Model.State.Flow.Velocity[0];
+                        tab.TabContent = content;
                         break;
-
 
                     case 13:
                         tab.TabContent = Resolver.Resolve<View_Config_InletConfig_Front>();
@@ -65,6 +68,10 @@ namespace ChroZenService
 
                 }
                 Views.Add(SelectedItem, tab);
+                if(tab.TabContent is IAsyncInitialize initializer)
+                {
+                    await initializer.InitializeAsync();
+                }
             }
         }
 

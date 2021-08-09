@@ -21,9 +21,9 @@
         </Style>
 
         <ColumnDefinitionCollection x:Key="columnConfig">
-            <ColumnDefinition Width="0.57*"/>
+            <ColumnDefinition Width="0.56*"/>
             <ColumnDefinition Width="0.2"/>
-            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="0.26*"/>
             <ColumnDefinition Width="0.1*"/>
             <ColumnDefinition Width="0.08*"/>
         </ColumnDefinitionCollection>
@@ -38,7 +38,7 @@
 
             <StackLayout Padding="10" Spacing="10" >
                 <Frame Style="{StaticResource groupKey}">
-                    <Grid ColumnSpacing="10" RowSpacing="11" ColumnDefinitions="{StaticResource columnConfig}">
+                    <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -48,11 +48,11 @@
                         <Label Text="Maximum Temp"
                                Style="{StaticResource captionKey}" />
                         <local:ValueEditor Value="{Binding Oven.MaxTemp, StringFormat='{0:F1}'}" 
-                                           Max="450" Min="-88" Caption="Maximum Temp" Unit="℃" 
+                                           Max="450" Min="-80" Caption="Maximum Temp" Unit="℃" 
                                            Grid.Column="2" Grid.ColumnSpan="2" UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
                         <Label Text="Equilibrium Time" 
                                Grid.Row="1"  Style="{StaticResource captionKey}" />
-                        <local:ValueEditor Value="{Binding Oven.EquibTime, StringFormat='{0:F1}'}" 
+                        <local:ValueEditor Value="{Binding Oven.EquibTime, StringFormat='{0:F1}'}"
                                            Max="9999" Min="0" Caption="Equilibrium Time" Unit="min"
                                            x:Name="unitWidth" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"/>
                         <Label Text="Auto Readyrun" 
@@ -65,7 +65,7 @@
                 </Frame>
 
                 <Frame Style="{StaticResource groupKey}" >
-                    <Grid ColumnSpacing="10" RowSpacing="11" ColumnDefinitions="{StaticResource columnConfig}">
+                    <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -86,7 +86,7 @@
                 </Frame>
 
                 <Frame Style="{StaticResource groupKey}">
-                    <Grid ColumnSpacing="10" RowSpacing="11" ColumnDefinitions="{StaticResource columnConfig}">
+                    <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -100,7 +100,7 @@
                         <Label Text="Number of Run" 
                                Grid.Row="1"  Style="{StaticResource captionKey}" />
                         <local:ValueEditor Value="{Binding Oven.RunStart.Count}" 
-                                           Max="9999" Min="0" Caption="Number of Run" 
+                                           Max="9999" Min="1" Caption="Number of Run" 
                                            Grid.Row="1" Grid.Column="2" IsEnabled="{Binding Oven.RunStart.OnOff}" />
                         <Label Text="Cycle Time" 
                                Grid.Row="2" Style="{StaticResource captionKey}" />
@@ -114,7 +114,7 @@
                 </Frame>
 
                 <Frame Style="{StaticResource groupKey}" >
-                    <Grid ColumnSpacing="10" RowSpacing="11" ColumnDefinitions="{StaticResource columnConfig}">
+                    <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -128,7 +128,7 @@
                         <Label Text="Postrun Temp" 
                                Grid.Row="1"  Style="{StaticResource captionKey}" />
                         <local:ValueEditor Value="{Binding Oven.PostRun.Temp, StringFormat='{0:F1}'}" 
-                                           Max="{Binding Oven.MaxTemp, StringFormat='{0:F1}'}" Min="-88" Caption="Postrun Temp"  Unit="℃"
+                                           Max="{Binding Oven.MaxTemp, StringFormat='{0:F1}'}" Min="-80" Caption="Postrun Temp"  Unit="℃"
                                            Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" IsEnabled="{Binding Oven.PostRun.OnOff}" 
                                            UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
                         <Label Text="Postrun Time" 
@@ -174,7 +174,7 @@
                             <local:ValueEditor Value="{Binding State.Temperature.Oven, StringFormat='{0:F1}'}" Unit="℃" 
                                                Grid.Row="2" IsEnabled="False"/>
                             <local:ValueEditor Value="{Binding Oven.TempSet, StringFormat='{0:F1}'}" 
-                                               Max="{Binding Oven.MaxTemp}" Min="-88" Caption="Oven Temp." Switch="{Binding Oven.TempOnOff}" Unit="℃" 
+                                               Max="{Binding Oven.MaxTemp}" Min="-80" Caption="Oven Temp." Switch="{Binding Oven.TempOnOff}" Unit="℃" 
                                                Grid.Row="2" Grid.Column="1" />
                             <local:ValueEditor Value="{Binding Oven.InitTime, StringFormat='{0:F1}'}" 
                                                Max="9999" Min="0" Caption="Init Time" Unit="min" 
@@ -228,7 +228,7 @@
                             <BoxView BackgroundColor="Silver" Grid.Row="3" Grid.ColumnSpan="4"/>
 
                             <StackLayout BindableLayout.ItemsSource="{Binding OvenProgram}" 
-                                         Grid.Row="5" Grid.ColumnSpan="4" BackgroundColor="Transparent" Spacing="10" >
+                                         Grid.Row="5" Grid.ColumnSpan="4" BackgroundColor="Transparent" Spacing="5" >
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <Grid x:DataType="local:OvenProgramStep" ColumnSpacing="10" ColumnDefinitions="{StaticResource columnProgram}">
@@ -238,7 +238,7 @@
                                                                Max="100" Min="0" Caption="{Binding Number, StringFormat='Rate {0}'}"
                                                                Grid.Column="1" />
                                             <local:ValueEditor Value="{Binding Step.FinalTemp, StringFormat='{0:F1}'}"  
-                                                               Max="{Binding Source={x:Reference This}, Path=BindingContext.Oven.MaxTemp}" Min="-88" Caption="{Binding Number, StringFormat='Final Temp {0}'}"
+                                                               Max="{Binding Source={x:Reference This}, Path=BindingContext.Oven.MaxTemp}" Min="-80" Caption="{Binding Number, StringFormat='Final Temp {0}'}"
                                                                IsEnabled="{Binding Step.Rate, Converter={StaticResource IsNonZeroConverterKey}}"
                                                                Grid.Column="2" />
                                             <local:ValueEditor Value="{Binding Step.FinalTime, StringFormat='{0:F1}'}"

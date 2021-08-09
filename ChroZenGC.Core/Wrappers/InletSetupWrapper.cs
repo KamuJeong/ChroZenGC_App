@@ -117,6 +117,12 @@ namespace ChroZenGC.Core.Wrappers
 
             switch(args.PropertyName)
             {
+                case nameof(PressureCorrectOn):
+                    VaccumCorrect = PressureCorrectOn ? false : VaccumCorrect;
+                    break;
+                case nameof(VaccumCorrect):
+                    PressureCorrectOn = VaccumCorrect ? false : PressureCorrectOn;
+                    break;
                 case nameof(SplitRatio):
                     SplitFlowSet = SplitRatio * ColumnFlowSet;
                     TotalFlowSet = ColumnFlowSet + SplitFlowSet + 3.0f;
@@ -152,6 +158,12 @@ namespace ChroZenGC.Core.Wrappers
         {
             get => Provider.btApcMode;
             set => Provider.btApcMode = value;
+        }
+
+        public InletConnection Connection
+        {
+            get => Provider.btConnection;
+            set => Provider.btConnection = value;
         }
 
         public float Length

@@ -14,11 +14,6 @@ using Xamarin.Forms;
 
 namespace ChroZenService
 {
-
- 
-
-
-
     public class ViewModel_Root : Observable
     {
         public DeviceIPFinder IPFinder { get; set; }
@@ -28,6 +23,8 @@ namespace ChroZenService
         public Model Model { get; }
 
         public string TimeTicker { get; set; }
+
+        public bool IsDemo { get; set; }
 
         public ViewModel_Root(Model model, DeviceIPFinder finder)
         {
@@ -40,7 +37,7 @@ namespace ChroZenService
                 TimeTicker = DateTime.Now.ToString("T");
 
                 bool isConnected = IsConnected;
-//                IsConnected = networkManager != null ? networkManager.IsConnected : false;
+                IsConnected = networkManager != null ? networkManager.IsConnected : false;
                 if(isConnected && !IsConnected)
                 {
                     OnRefreshReception(null);
@@ -68,15 +65,22 @@ namespace ChroZenService
 
         public DeviceInterface DeviceInterface { get; set; }
 
-        public bool IsConnected { get; set; }
+        private bool isConnected;
+        public bool IsConnected 
+        {
+            get => IsDemo || isConnected;
+            set
+            {
+                isConnected = value;
+                if (!value)
+                    IsDemo = false;
+            }
+        }
 
         public ICommand ConnectCommand => new Command(OnConnected);
 
         private async void OnConnected(object obj)
         {
-            IsConnected = true;
-            return;
-
             if (DeviceInterface != null)
             {
                 networkManager = new ChroZenGC.Core.Network.TCPManager(Model) { Host = DeviceInterface.IPAddress };
@@ -89,7 +93,19 @@ namespace ChroZenService
                     await Model.Request(Model.Information);
                     await Model.Request(Model.Configuration);
                     await Model.Request(Model.Oven);
+                    await Model.Request(Model.Inlets[0], 0);
+                    await Model.Request(Model.Inlets[1], 1);
+                    await Model.Request(Model.Inlets[2], 2);
+                    await Model.Request(Model.Detectors[0], 0);
+                    await Model.Request(Model.Detectors[1], 1);
+                    await Model.Request(Model.Detectors[2], 2);
                 }
+
+                IsDemo = false;
+            }
+            else
+            {
+                IsDemo = true;
             }
         }
 
