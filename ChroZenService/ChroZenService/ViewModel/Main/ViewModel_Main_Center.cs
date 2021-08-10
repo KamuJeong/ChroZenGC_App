@@ -12,17 +12,6 @@ using Xamarin.Forms;
 
 namespace ChroZenService.ViewModel.Main
 {
-    public class ContentHeightConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-            => int.Parse((string)parameter) == (int)value || ((int)value == -1 && int.Parse((string)parameter) == 2) ? new GridLength(58, GridUnitType.Star) : new GridLength(0);
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
     public class ViewModel_Main_Center : Observable
     {
         private Model model;

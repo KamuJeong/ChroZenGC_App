@@ -5,13 +5,11 @@ using Xamarin.Forms;
 
 namespace ChroZenService
 {
-
-    public class IsNonZeroConverter : IValueConverter
+    public class AreEqualConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return (double)System.Convert.ChangeType(value, typeof(double)) != 0;
-
+            return string.Equals($"{value}", $"{parameter}");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -20,12 +18,11 @@ namespace ChroZenService
         }
     }
 
-    public class IsZeroConverter : IValueConverter
+    public class AreNotEqualConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return (double)System.Convert.ChangeType(value, typeof(double)) == 0;
-
+            return !string.Equals($"{value}", $"{parameter}");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

@@ -10,6 +10,9 @@
         <cvt:FloatArrayPicker x:Key="FloatArrayPickerKey" />
         <cvt:EnumInstalledConverter x:Key="EnumInstalledKey" />
         <cvt:IsNonZeroConverter x:Key="IsNonZeroConverterKey" />
+        <cvt:AreEqualConverter x:Key="AreEqualConverterKey" />
+        <cvt:IsZeroConverter x:Key="IsZeroConverterKey" />
+        <cvt:AreNotEqualConverter x:Key="AreNotEqualConverterKey" />
 
         <LinearGradientBrush x:Key="ValueEditorBackgroundKey" StartPoint="0.4,0.2" EndPoint="1,0.7">
             <LinearGradientBrush.GradientStops>

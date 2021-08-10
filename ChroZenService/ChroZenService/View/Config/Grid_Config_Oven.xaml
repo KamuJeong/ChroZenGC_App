@@ -6,6 +6,8 @@
              x:DataType="local:ViewModel_Config"
              x:Name="This">
     <ContentView.Resources>
+        <local:IsOvenProgramModeConverter x:Key="isOvenProgramModeKey" />
+
         <Style x:Key="captionKey" TargetType="Label">
             <Setter Property="TextColor" Value="Silver" />
             <Setter Property="FontSize"  Value="{StaticResource CaptionFontSizeKey}" />
@@ -186,13 +188,13 @@
                             <StackLayout Orientation="Horizontal" Spacing="20" Grid.Row="4" Grid.ColumnSpan="4">
                                 <Label Text="Program Mode"
                                    Style="{StaticResource captionKey}" />
-                                <local:SwitchImageButton ON="{Binding IsOvenInProgramMode}" />
+                                <local:SwitchImageButton ON="{Binding Oven.Mode, Converter={StaticResource isOvenProgramModeKey}}" />
                             </StackLayout>
                         </Grid>
                     </Frame>
 
                     <Frame  Style="{StaticResource groupKey}"
-                            IsVisible="{Binding IsOvenInProgramMode}">
+                            IsVisible="{Binding Oven.Mode, Converter={StaticResource isOvenProgramModeKey}}">
                         <Frame.Resources>
                             <ColumnDefinitionCollection x:Key="columnProgram">
                                 <ColumnDefinition Width="0.3*" />

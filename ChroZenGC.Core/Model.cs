@@ -3,6 +3,7 @@ using ChroZenGC.Core.Wrappers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,21 @@ namespace ChroZenGC.Core
     public class Model
     {
         internal INetworkManager networkManager;
+
+        public Model()
+        {
+            Oven.PropertyModified += OvenPropertyModified;
+
+
+        }
+
+        private async void OvenPropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName != "Binary" || !string.IsNullOrEmpty(e.PropertyName))
+            {
+                await Send(Oven);
+            }
+        }
 
         internal void Parse(in byte[] buffer)
         {
@@ -41,8 +57,6 @@ namespace ChroZenGC.Core
                         Assemble(Inlets[header.Index], buffer, header.SlotOffset, header.SlotSize);
                         break;
                 }
-
-
             }
         }
 
@@ -76,7 +90,7 @@ namespace ChroZenGC.Core
             }
         }
 
-        public async Task Send<T>(PacketWrapper<T> wrapper) where T : struct
+        public async Task Send<T>(PacketWrapper<T> wrapper, int index = 0) where T : struct
         {
             if (networkManager != null)
             {
@@ -86,7 +100,7 @@ namespace ChroZenGC.Core
                     Length = 24 + arr.Length,
                     Id = 0,
                     Code = wrapper.Code,
-                    Index = 0,
+                    Index = index,
                     SlotOffset = 0,
                     SlotSize = arr.Length,
                 };
@@ -95,7 +109,7 @@ namespace ChroZenGC.Core
             }
         }
 
-        public async Task SendOK<T>(PacketWrapper<T> wrapper) where T : struct
+        public async Task SendOK<T>(PacketWrapper<T> wrapper, int index = 0) where T : struct
         {
             if (networkManager != null)
             {
@@ -104,7 +118,7 @@ namespace ChroZenGC.Core
                     Length = 24,
                     Id = 0,
                     Code = wrapper.Code,
-                    Index = 0,
+                    Index = index,
                     SlotOffset = 0,
                     SlotSize = 0
                 };
@@ -124,8 +138,8 @@ namespace ChroZenGC.Core
         public ObservableCollection<InletSetupWrapper> Inlets { get; } = new ObservableCollection<InletSetupWrapper>
         {
             new InletSetupWrapper() { PortNo = 0 },
-            new InletSetupWrapper() { PortNo = 1 },
-            new InletSetupWrapper() { PortNo = 2 }
+            new InletSetupWrapper() { PortNo = 1, CarrierGas = Packets.GasTypes.H2 },
+            new InletSetupWrapper() { PortNo = 2, CarrierGas = Packets.GasTypes.Ar }
         };
 
         public ObservableCollection<DetectorSetupWrapper> Detectors { get; } = new ObservableCollection<DetectorSetupWrapper>

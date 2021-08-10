@@ -2,12 +2,11 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
-             xmlns:model="clr-namespace:ChroZenService.ViewModel.Main"
              x:Class="ChroZenService.View_Main_Center"
              x:DataType="local:ViewModel_Main">
 
     <ContentView.Resources>
-        <model:ContentHeightConverter x:Key="ContentHeightConverter" />
+        <local:ContentHeightConverter x:Key="ContentHeightConverter" />
 
         <Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="Transparent" />

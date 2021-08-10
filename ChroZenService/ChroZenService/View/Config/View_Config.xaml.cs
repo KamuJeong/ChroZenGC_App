@@ -26,13 +26,22 @@ namespace ChroZenService
             ShowView();
         }
 
-        private async void ShowView()
+        private void ShowView()
         {
             if (Views.TryGetValue(SelectedItem, out Xamarin.Forms.View view))
             {
                 foreach (var v in gridMain.Children.Where(v => (int)v.GetValue(Grid.ColumnProperty) == 2))
                 {
                     v.IsVisible = v == view;
+
+                    switch(SelectedItem)
+                    {
+                        case 8:
+                            break;
+                        default:
+                            //(v as View_Config_Tab)?.SelectedTabItem = 1;
+                            break;
+                    }
                 }
             }
             else
@@ -42,47 +51,45 @@ namespace ChroZenService
                     v.IsVisible = false;
                 }
 
-                var tab = Resolver.Resolve<View_Config_Tab>();
-                gridMain.Children.Add(tab);
-                Grid.SetColumn(tab, 2);
-
+                View_Config_Tab tab = null;
                 switch (SelectedItem)
                 {
                     case 1:
+                        tab = Resolver.Resolve<View_Config_Tab>();
                         tab.TabContent = Resolver.Resolve<Grid_Config_Oven>();
                         tab.SelectedTabItem = 1;
                         break;
                     case 3:
-                        var content = Resolver.Resolve<Grid_Config_Inlet>();
-                        content.Inlet = Model.Inlets[0];
-                        content.Flow = Model.State.Flow.Inlets[0];
-                        content.Pressure = Model.State.Flow.Pressure[0];
-                        content.Velocity = Model.State.Flow.Velocity[0];
-                        tab.TabContent = content;
+                    case 4:
+                    case 5:
+                        tab = Resolver.Resolve<View_Config_Tab>();
+                        tab.TabContent = Resolver.Resolve<Grid_Config_Inlet>();
+                        tab.SelectedTabItem = 1;
+                        Views[3] = Views[4] = Views[5] = tab;
                         break;
 
                     case 13:
+                        tab = Resolver.Resolve<View_Config_Tab>();
                         tab.TabContent = Resolver.Resolve<View_Config_InletConfig_Front>();
+                        tab.SelectedTabItem = 0;
                         break;
-
-
                 }
-                Views.Add(SelectedItem, tab);
-                if(tab.TabContent is IAsyncInitialize initializer)
+
+                if (tab != null)
                 {
-                    await initializer.InitializeAsync();
+                    gridMain.Children.Add(tab);
+                    Grid.SetColumn(tab, 2);
+
+                    Views[SelectedItem] = tab;
                 }
             }
         }
 
-        public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create("SelectedItem", typeof(int), typeof(View_Config), 1);
-
         public int SelectedItem
         {
-            get => (int)GetValue(SelectedItemProperty);
-            set => SetValue(SelectedItemProperty, value);
+            get => Model.SelectedItem;
+            set => Model.SelectedItem = value;
         }
-
 
 
         private void OnSelectorClicked(object sender, EventArgs e)

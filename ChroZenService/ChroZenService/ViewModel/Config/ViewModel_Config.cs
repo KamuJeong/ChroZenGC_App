@@ -20,26 +20,40 @@ namespace ChroZenService
 
         public OvenWrapper Oven => Model.Oven;
 
-        public IList<InletSetupWrapper> Inlets => Model.Inlets; 
+        public ViewModel_Config_Inlet Inlet { get;  }
+
+
+
 
 
         public ViewModel_Config()
         {
             Model = Resolver.Resolve<Model>();
+            Inlet = Resolver.Resolve<ViewModel_Config_Inlet>();
 
+            State.PropertyModified += StatePropertyChanged;
             Oven.PropertyModified += OvenPropertyChanged;
-
             UpdateOvenProgram();
+        }
+
+        private void StatePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Inlet.StatePropertyChanged(SelectedItem, State);
         }
 
         public bool IsEditable { get; set; } = true;
 
-        public bool IsOvenInProgramMode
+        private int selectedItem = 1;
+        public int SelectedItem
         {
-            get => Oven.Mode == OvenMode.Program;
-            set => Oven.Mode = value ? OvenMode.Program : OvenMode.Isothermal;
+            get => selectedItem;
+            set
+            {
+                Inlet.OnSelectedItem(selectedItem = value, Model);
+            }
         }
 
+        // Oven setup
 
         public ObservableCollection<OvenProgramStep> OvenProgram { get; } = new ObservableCollection<OvenProgramStep>();
         public void UpdateOvenProgram()
@@ -61,11 +75,15 @@ namespace ChroZenService
 
         private void OvenPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == nameof(_OvenProgramWrapper) + ">" + nameof(_OvenProgramWrapper.Rate))
+            if(e.PropertyName == "Binary" || e.PropertyName == nameof(_OvenProgramWrapper) + ">" + nameof(_OvenProgramWrapper.Rate))
             {
                 UpdateOvenProgram();
             }
         }
+
+        // inlet
+
+
     }
 
     public class OvenProgramStep

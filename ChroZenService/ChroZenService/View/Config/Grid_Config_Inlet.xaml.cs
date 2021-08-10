@@ -1,4 +1,5 @@
-﻿using ChroZenGC.Core.Wrappers;
+﻿using ChroZenGC.Core.Packets;
+using ChroZenGC.Core.Wrappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,70 +12,87 @@ using Xamarin.Forms.Xaml;
 namespace ChroZenService
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Grid_Config_Inlet : ContentView, IAsyncInitialize
+    public partial class Grid_Config_Inlet : ContentView
     {
-        public static readonly BindableProperty InletProperty = BindableProperty.Create("Inlet", typeof(InletSetupWrapper), typeof(Grid_Config_Inlet));
-
-        public InletSetupWrapper Inlet
-        {
-            get => (InletSetupWrapper)GetValue(InletProperty);
-            set => SetValue(InletProperty, value);
-        }
-
-        public static readonly BindableProperty TemperatureProperty = BindableProperty.Create("Temperature", typeof(float), typeof(Grid_Config_Inlet));
-
-        public float Temperature
-        {
-            get => (float)GetValue(TemperatureProperty);
-            set => SetValue(TemperatureProperty, value);
-        }
-
-        public static readonly BindableProperty PressureProperty = BindableProperty.Create("Pressure", typeof(float), typeof(Grid_Config_Inlet));
-
-        public float Pressure
-        {
-            get => (float)GetValue(PressureProperty);
-            set => SetValue(PressureProperty, value);
-        }
-
-        public static readonly BindableProperty ColumnFlowProperty = BindableProperty.Create("ColumnFlow", typeof(float), typeof(Grid_Config_Inlet));
-
-        public float ColumnFlow
-        {
-            get => (float)GetValue(ColumnFlowProperty);
-            set => SetValue(ColumnFlowProperty, value);
-        }
-
-
-        public static readonly BindableProperty FlowProperty = BindableProperty.Create("Flow", typeof(float), typeof(ArrayWrapper<float>));
-
-        public ArrayWrapper<float> Flow
-        {
-            get => (ArrayWrapper<float>)GetValue(FlowProperty);
-            set => SetValue(FlowProperty, value);
-        }
-
-        public static readonly BindableProperty VelocityProperty = BindableProperty.Create("Velocity", typeof(float), typeof(Grid_Config_Inlet));
-
-        public float Velocity
-        {
-            get => (float)GetValue(VelocityProperty);
-            set => SetValue(VelocityProperty, value);
-        }
-
-
-
-
-
-
         public Grid_Config_Inlet()
         {
             InitializeComponent();
         }
+    }
 
-        public async Task InitializeAsync()
+    public class IsCapillaryConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            await Task.CompletedTask;
+            return (InletTypes)value == InletTypes.Capillary;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class IsNotPackedConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return (InletTypes)value != InletTypes.Packed;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class IsOnColumnConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return (InletTypes)value == InletTypes.OnColumn;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class IsPressureModeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            switch ((APCModes)value)
+            {
+                case APCModes.ConstantPressure:
+                case APCModes.ProgrammedPressure:
+                    return true;
+            }
+            return false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class IsFlowModeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            switch ((APCModes)value)
+            {
+                case APCModes.ConstantFlow:
+                case APCModes.ProgrammedFlow:
+                    return true;
+            }
+            return false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 }

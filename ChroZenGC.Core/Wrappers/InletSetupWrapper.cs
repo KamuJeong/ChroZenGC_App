@@ -21,7 +21,7 @@ namespace ChroZenGC.Core.Wrappers
         public float FinalTemp
         {
             get => Provider.fFinalTemp;
-            set => Provider.fFinalTime = value;
+            set => Provider.fFinalTemp = value;
         }
 
         public float FinalTime
@@ -47,7 +47,7 @@ namespace ChroZenGC.Core.Wrappers
         public float FinalFlow
         {
             get => Provider.fFinalFlow;
-            set => Provider.fFinalTime = value;
+            set => Provider.fFinalFlow = value;
         }
 
         public float FinalTime
@@ -69,10 +69,10 @@ namespace ChroZenGC.Core.Wrappers
             set => Provider.fRate = value;
         }
 
-        public float FinalFlow
+        public float FinalPress
         {
             get => Provider.fFinalPress;
-            set => Provider.fFinalTime = value;
+            set => Provider.fFinalPress = value;
         }
 
         public float FinalTime
@@ -107,7 +107,7 @@ namespace ChroZenGC.Core.Wrappers
             TotalFlowSet = 33;
             Length = 30;
             Diameter = 0.32f;
-            Thickness = 0.25f;
+            FilmThickness = 0.25f;
             ColumnFlowSet = 3.0f;
         }
 
@@ -136,9 +136,28 @@ namespace ChroZenGC.Core.Wrappers
                     SplitFlowSet = SplitRatio * ColumnFlowSet;
                     break;
                 case nameof(ColumnFlowSet):
+                    FlowProgram[0].FinalFlow = ColumnFlowSet;
                     SplitFlowSet = SplitRatio * ColumnFlowSet;
                     TotalFlowSet = ColumnFlowSet + SplitFlowSet;
                     break;
+                case "_ApcFlowProgramWrapper>FinalFlow":
+                    ColumnFlowSet = FlowProgram[0].FinalFlow;
+                    SplitFlowSet = SplitRatio * ColumnFlowSet;
+                    TotalFlowSet = ColumnFlowSet + SplitFlowSet;
+                    break;
+                case nameof(PressureSet):
+                    PressProgram[0].FinalPress = PressureSet;
+                    break;
+                case "_ApcPressProgramWrapper>FinalPress":
+                    PressureSet = PressProgram[0].FinalPress;
+                    break;
+                case nameof(TempSet):
+                    TempProgram[0].FinalTemp = TempSet;
+                    break;
+                case "_InletTempProgramWrapper>FinalTemp":
+                    TempSet = TempProgram[0].FinalTemp;
+                    break;
+
             }
         }
 
@@ -178,7 +197,7 @@ namespace ChroZenGC.Core.Wrappers
             set => Provider.fDiameter = value;
         }
 
-        public float Thickness
+        public float FilmThickness
         {
             get => Provider.fThickness;
             set => Provider.fThickness = value;

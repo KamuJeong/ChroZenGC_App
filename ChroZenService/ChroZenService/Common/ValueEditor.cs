@@ -59,12 +59,12 @@ namespace ChroZenService
             if (Switch)
             {
                 ValueLabel.Text = Value;
-                ValueLabel.HorizontalTextAlignment = TextAlignment.End;
+//                ValueLabel.HorizontalTextAlignment = TextAlignment.End;
             }
             else
             {
                 ValueLabel.Text = "OFF";
-                ValueLabel.HorizontalTextAlignment = TextAlignment.Center;
+//                ValueLabel.HorizontalTextAlignment = TextAlignment.Center;
             }
         }
 
