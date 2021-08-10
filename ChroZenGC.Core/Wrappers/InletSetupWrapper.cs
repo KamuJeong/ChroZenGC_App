@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace ChroZenGC.Core.Wrappers
@@ -157,7 +158,25 @@ namespace ChroZenGC.Core.Wrappers
                 case "_InletTempProgramWrapper>FinalTemp":
                     TempSet = TempProgram[0].FinalTemp;
                     break;
+            }
 
+            foreach (var p in TempProgram.Skip(1).SkipWhile(p => p.Rate > 0.0f))
+            {
+                p.Rate = 0.0f;
+                p.FinalTemp = 0.0f;
+                p.FinalTime = 0.0f;
+            }
+            foreach (var p in FlowProgram.Skip(1).SkipWhile(p => p.Rate > 0.0f))
+            {
+                p.Rate = 0.0f;
+                p.FinalFlow = 0.0f;
+                p.FinalTime = 0.0f;
+            }
+            foreach (var p in PressProgram.Skip(1).SkipWhile(p => p.Rate > 0.0f))
+            {
+                p.Rate = 0.0f;
+                p.FinalPress = 0.0f;
+                p.FinalTime = 0.0f;
             }
         }
 

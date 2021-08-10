@@ -17,8 +17,34 @@ namespace ChroZenGC.Core
         public Model()
         {
             Oven.PropertyModified += OvenPropertyModified;
+            Inlets[0].PropertyModified += FrontInletPropertyModified;
+            Inlets[1].PropertyModified += CenternletPropertyModified;
+            Inlets[2].PropertyModified += RearInletPropertyModified;
 
+        }
 
+        private async void RearInletPropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Binary" || !string.IsNullOrEmpty(e.PropertyName))
+            {
+                await Send(Inlets[2], 2);
+            }
+        }
+
+        private async void CenternletPropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Binary" || !string.IsNullOrEmpty(e.PropertyName))
+            {
+                await Send(Inlets[1], 1);
+            }
+        }
+
+        private async void FrontInletPropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Binary" || !string.IsNullOrEmpty(e.PropertyName))
+            {
+                await Send(Inlets[0], 0);
+            }
         }
 
         private async void OvenPropertyModified(object sender, PropertyChangedEventArgs e)

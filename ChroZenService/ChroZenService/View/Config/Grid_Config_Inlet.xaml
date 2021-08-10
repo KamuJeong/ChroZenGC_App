@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChroZenService" 
              x:Class="ChroZenService.Grid_Config_Inlet"
              x:DataType="local:ViewModel_Config"
-             >
+             x:Name="This">
     <ContentView.Resources>
         <local:IsCapillaryConverter x:Key="isCapillaryKey" />
         <local:IsNotPackedConverter x:Key="isNotPackedKey" />
@@ -33,6 +33,13 @@
             <ColumnDefinition Width="0.17*"/>
             <ColumnDefinition Width="0.08*"/>
         </ColumnDefinitionCollection>
+
+        <ColumnDefinitionCollection x:Key="columnProgram">
+            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </ColumnDefinitionCollection>
     </ContentView.Resources>
 
     <ContentView.Content>
@@ -49,23 +56,18 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
 
                             <Label Text="Carrier Gas"
                                    Style="{StaticResource captionKey}" />
                             <local:EnumPicker Title="Carrier Gas" Value="{Binding Inlet.Setup.CarrierGas}"
                                           Grid.Row="0"  Grid.Column="2" Grid.ColumnSpan="3" />
-                            <Label Text="UPC mode" 
-                                   Grid.Row="1"  Style="{StaticResource captionKey}" />
-                            <local:EnumPicker Title="UPC mode" Value="{Binding Inlet.Setup.APCMode}" Gap="True"
-                                          Grid.Row="1"  Grid.Column="2" Grid.ColumnSpan="3" />
                             <Label Text="Connection" 
-                                   Grid.Row="2"  Style="{StaticResource captionKey}" />
+                                   Grid.Row="1"  Style="{StaticResource captionKey}" />
                             <local:EnumPicker Title="Connection" Value="{Binding Inlet.Setup.Connection}" Gap="True"
-                                          Grid.Row="2"  Grid.Column="2" Grid.ColumnSpan="3" />
+                                          Grid.Row="1"  Grid.Column="2" Grid.ColumnSpan="3" />
 
-                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="2"/>
                         </Grid>
                     </Frame>
                     <Label Text="Column Setup" 
@@ -165,7 +167,6 @@
                 </StackLayout>
             </ScrollView>
 
-
             <ScrollView Grid.Column="1">
                 <StackLayout Padding="10" Spacing="10">
                     <Frame Style="{StaticResource groupKey}">
@@ -208,15 +209,6 @@
                     </Frame>
 
                     <Frame Style="{StaticResource groupKey}" IsVisible="{Binding Inlet.Setup.TempMode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Program}">
-                        <Frame.Resources>
-                            <ColumnDefinitionCollection x:Key="columnProgram">
-                                <ColumnDefinition Width="0.3*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </ColumnDefinitionCollection>
-                        </Frame.Resources>
-
                         <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
@@ -266,12 +258,13 @@
                             </StackLayout>
                         </Grid>
                     </Frame>
-                    
-                    
-                    
-                    
+               
                     <Frame Style="{StaticResource groupKey}">
                         <StackLayout Spacing="0">
+                            <StackLayout Orientation="Horizontal" Spacing="40" Margin="0,0,0,5">
+                                <Label Text="UPC mode" Style="{StaticResource captionKey}" />
+                                <local:EnumPicker Title="UPC mode" Value="{Binding Inlet.Setup.APCMode}" Gap="True" />
+                            </StackLayout>
                             <Grid ColumnSpacing="10" RowSpacing="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="4*"/>
@@ -352,6 +345,110 @@
                         </StackLayout>
                     </Frame>
 
+                    <Frame Style="{StaticResource groupKey}" 
+                           IsVisible="{Binding Inlet.Setup.APCMode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=ProgrammedFlow}">
+                        <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="7" />
+                                <RowDefinition Height="0.2" />
+                                <RowDefinition Height="7" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Rate" 
+                                   Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(mL/min2)" 
+                                   Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" FontSize="{StaticResource DefaultFontSizeKey}" Style="{StaticResource captionKey}" />
+                            <Label Text="Final Flow" 
+                                   Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(mL/min)" 
+                                   Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" FontSize="{StaticResource DefaultFontSizeKey}" Style="{StaticResource captionKey}" />
+                            <Label Text="Final Time" 
+                                   Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(min)" 
+                                   Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" FontSize="{StaticResource DefaultFontSizeKey}" Style="{StaticResource captionKey}" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Row="3" Grid.ColumnSpan="4"/>
+
+                            <StackLayout BindableLayout.ItemsSource="{Binding Inlet.FlowProgram}" 
+                                         Grid.Row="5" Grid.ColumnSpan="4" BackgroundColor="Transparent" Spacing="5" >
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid x:DataType="local:InletFlowProgramStep" ColumnSpacing="10" ColumnDefinitions="{StaticResource columnProgram}">
+                                            <Label Text="{Binding Number}" 
+                                                   HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                            <local:ValueEditor Value="{Binding Step.Rate, StringFormat='{0:F1}'}" 
+                                                               Max="100" Min="0" Caption="{Binding Number, StringFormat='Rate {0}'}"
+                                                               Grid.Column="1" IsVisible="{Binding Number, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Init}" />
+                                            <local:ValueEditor Value="{Binding Step.FinalFlow, StringFormat='{0:F1}'}"  
+                                                               Max="{Binding Source={x:Reference This}, Path=BindingContext.Inlet.MaxColumnFlow}" Min="0" Caption="{Binding Number, StringFormat='Final Flow {0}'}"
+                                                               IsEnabled="{Binding Editable}"
+                                                               Grid.Column="2" />
+                                            <local:ValueEditor Value="{Binding Step.FinalTime, StringFormat='{0:F1}'}"
+                                                               Max="9999" Min="0" Caption="{Binding Number, StringFormat='Final Time {0}'}"
+                                                               IsEnabled="{Binding Editable}"
+                                                               Grid.Column="3" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Style="{StaticResource groupKey}" 
+                           IsVisible="{Binding Inlet.Setup.APCMode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=ProgrammedPressure}">
+                        <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="7" />
+                                <RowDefinition Height="0.2" />
+                                <RowDefinition Height="7" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Rate" 
+                                   Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(psi/min)" 
+                                   Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" FontSize="{StaticResource DefaultFontSizeKey}" Style="{StaticResource captionKey}" />
+                            <Label Text="Final Press" 
+                                   Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(psi)" 
+                                   Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" FontSize="{StaticResource DefaultFontSizeKey}" Style="{StaticResource captionKey}" />
+                            <Label Text="Final Time" 
+                                   Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(min)" 
+                                   Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" FontSize="{StaticResource DefaultFontSizeKey}" Style="{StaticResource captionKey}" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Row="3" Grid.ColumnSpan="4"/>
+
+                            <StackLayout BindableLayout.ItemsSource="{Binding Inlet.PressProgram}" 
+                                         Grid.Row="5" Grid.ColumnSpan="4" BackgroundColor="Transparent" Spacing="5" >
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid x:DataType="local:InletPressProgramStep" ColumnSpacing="10" ColumnDefinitions="{StaticResource columnProgram}">
+                                            <Label Text="{Binding Number}" 
+                                                   HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                            <local:ValueEditor Value="{Binding Step.Rate, StringFormat='{0:F1}'}" 
+                                                               Max="100" Min="0" Caption="{Binding Number, StringFormat='Rate {0}'}"
+                                                               Grid.Column="1" IsVisible="{Binding Number, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Init}" />
+                                            <local:ValueEditor Value="{Binding Step.FinalPress, StringFormat='{0:F1}'}"  
+                                                               Max="150" Min="0" Caption="{Binding Number, StringFormat='Final Press {0}'}"
+                                                               IsEnabled="{Binding Editable}"
+                                                               Grid.Column="2" />
+                                            <local:ValueEditor Value="{Binding Step.FinalTime, StringFormat='{0:F1}'}"
+                                                               Max="9999" Min="0" Caption="{Binding Number, StringFormat='Final Time {0}'}"
+                                                               IsEnabled="{Binding Editable}"
+                                                               Grid.Column="3" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+
                     <Frame Style="{StaticResource groupKey}" IsVisible="{Binding Inlet.Type, Converter={StaticResource isCapillaryKey}}">
                         <StackLayout Spacing="0">
                             <Grid ColumnSpacing="10" RowSpacing="0">
@@ -379,7 +476,7 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                            
+
                                 <Label Text="Split Ratio"
                                         Style="{StaticResource captionKey}" />
                                 <Label Text="1 :"
@@ -410,68 +507,6 @@
                             </Grid>
                         </StackLayout>
                     </Frame>
-                    
-                    
-                    <!--<Frame  Style="{StaticResource groupKey}"
-                            IsVisible="{Binding IsOvenInProgramMode}">
-                        <Frame.Resources>
-                            <ColumnDefinitionCollection x:Key="columnProgram">
-                                <ColumnDefinition Width="0.3*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </ColumnDefinitionCollection>
-                        </Frame.Resources>
-
-                        <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="7" />
-                                <RowDefinition Height="0.2" />
-                                <RowDefinition Height="7" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-
-                            <Label Text="Rate" 
-                                   Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
-                            <Label Text="(℃/min)" 
-                                   Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" FontSize="{StaticResource DefaultFontSizeKey}" Style="{StaticResource captionKey}" />
-                            <Label Text="Final Temp" 
-                                   Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
-                            <Label Text="(℃)" 
-                                   Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" FontSize="{StaticResource DefaultFontSizeKey}" Style="{StaticResource captionKey}" />
-                            <Label Text="Final Time" 
-                                   Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
-                            <Label Text="(min)" 
-                                   Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" FontSize="{StaticResource DefaultFontSizeKey}" Style="{StaticResource captionKey}" />
-
-                            <BoxView BackgroundColor="Silver" Grid.Row="3" Grid.ColumnSpan="4"/>
-
-                            <StackLayout BindableLayout.ItemsSource="{Binding OvenProgram}" 
-                                         Grid.Row="5" Grid.ColumnSpan="4" BackgroundColor="Transparent" Spacing="5" >
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid x:DataType="local:OvenProgramStep" ColumnSpacing="10" ColumnDefinitions="{StaticResource columnProgram}">
-                                            <Label Text="{Binding Number}" 
-                                                   HorizontalOptions="Center" Style="{StaticResource captionKey}" />
-                                            <local:ValueEditor Value="{Binding Step.Rate, StringFormat='{0:F1}'}" 
-                                                               Max="100" Min="0" Caption="{Binding Number, StringFormat='Rate {0}'}"
-                                                               Grid.Column="1" />
-                                            <local:ValueEditor Value="{Binding Step.FinalTemp, StringFormat='{0:F1}'}"  
-                                                               Max="{Binding Source={x:Reference This}, Path=BindingContext.Oven.MaxTemp}" Min="-80" Caption="{Binding Number, StringFormat='Final Temp {0}'}"
-                                                               IsEnabled="{Binding Step.Rate, Converter={StaticResource IsNonZeroConverterKey}}"
-                                                               Grid.Column="2" />
-                                            <local:ValueEditor Value="{Binding Step.FinalTime, StringFormat='{0:F1}'}"
-                                                               Max="9999" Min="0" Caption="{Binding Number, StringFormat='Final Time {0}'}"
-                                                               IsEnabled="{Binding Step.Rate, {StaticResource IsNonZeroConverterKey}}"
-                                                               Grid.Column="3" />
-                                        </Grid>
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
-                            </StackLayout>
-                        </Grid>
-                    </Frame>-->
                 </StackLayout>
 
             </ScrollView>
