@@ -83,10 +83,10 @@ namespace ChroZenGC.Core.Wrappers
             get => Packet.fIgnitetemp;
             set => Packet.fIgnitetemp = value;
         }
-        public int Connection
+        public DetectorConnection Connection
         {
             get => Packet.btConnection;
-            set => Packet.btConnection = (byte)value;
+            set => Packet.btConnection = value;
         }
 
         public bool AutoZero

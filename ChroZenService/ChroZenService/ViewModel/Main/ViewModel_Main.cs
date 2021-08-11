@@ -64,8 +64,8 @@ namespace ChroZenService
         public ViewModel_KeyPad ViewModel_KeyPad { get { return _ViewModel_KeyPad; } set { if (_ViewModel_KeyPad != value) { _ViewModel_KeyPad = value; OnPropertyChanged("ViewModel_KeyPad"); } } }
 
 
-        ViewModelConfigPage _ViewModelConfigPage = new ViewModelConfigPage();
-        public ViewModelConfigPage ViewModelConfigPage { get { return _ViewModelConfigPage; } set { if (_ViewModelConfigPage != value) { _ViewModelConfigPage = value; OnPropertyChanged("ViewModelConfigPage"); } } }
+        //ViewModelConfigPage _ViewModelConfigPage = new ViewModelConfigPage();
+        //public ViewModelConfigPage ViewModelConfigPage { get { return _ViewModelConfigPage; } set { if (_ViewModelConfigPage != value) { _ViewModelConfigPage = value; OnPropertyChanged("ViewModelConfigPage"); } } }
 
         ViewModelSystemPage _ViewModelSystemPage = new ViewModelSystemPage();
         public ViewModelSystemPage ViewModelSystemPage { get { return _ViewModelSystemPage; } set { if (_ViewModelSystemPage != value) { _ViewModelSystemPage = value; OnPropertyChanged("ViewModelSystemPage"); } } }

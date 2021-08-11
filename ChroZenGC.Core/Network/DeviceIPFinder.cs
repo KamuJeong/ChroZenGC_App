@@ -33,7 +33,7 @@ namespace ChroZenGC.Core.Network
         public ObservableCollection<DeviceInterface> Results { get; } = new ObservableCollection<DeviceInterface>() { new DeviceInterface { IPAddress = "10.10.10.10", SerialNumber = "GN709876" },
                                                                                                                       new DeviceInterface { IPAddress = "10.10.10.12", SerialNumber = "GN709899" } };
 
-        private List<UdpClient> udpClinets = new List<UdpClient>();
+        private List<UdpClient> udpClients = new List<UdpClient>();
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -56,7 +56,7 @@ namespace ChroZenGC.Core.Network
                 {
                     UdpClient udpClient = new UdpClient(AddressFamily.InterNetwork);
                     udpClient.JoinMulticastGroup(IPAddress.Parse(MulticastAddress), 5);
-                    udpClinets.Add(udpClient);
+                    udpClients.Add(udpClient);
 
                     Ping(udpClient);
                 }
@@ -123,7 +123,7 @@ namespace ChroZenGC.Core.Network
 
         public void Stop()
         {
-            foreach (var udp in udpClinets)
+            foreach (var udp in udpClients)
             {
                 try 
                 {
@@ -136,7 +136,7 @@ namespace ChroZenGC.Core.Network
                 }
             }
 
-            udpClinets.Clear();
+            udpClients.Clear();
         }
     }
 }

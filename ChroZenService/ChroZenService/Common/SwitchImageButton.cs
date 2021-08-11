@@ -18,9 +18,9 @@ namespace ChroZenService
             HeightRequest = (double)Application.Current.Resources["CaptionFontSizeKey"] * 1.5 + 4;
             WidthRequest = HeightRequest * 190.0 / 40.0;
 
-            Clicked += OnClicked;
+            Pressed += OnPressed;
         }
-        private void OnClicked(object sender, EventArgs e)
+        private void OnPressed(object sender, EventArgs e)
         {
             Element element = this;
             while (element.BindingContext != null)

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ChroZenService
@@ -20,16 +21,15 @@ namespace ChroZenService
 
         public OvenWrapper Oven => Model.Oven;
 
-        public ViewModel_Config_Inlet Inlet { get;  }
+        public ViewModel_Config_Inlet Inlet { get; }
 
-
-
-
+        public ViewModel_Config_Detector Detector { get; }
 
         public ViewModel_Config()
         {
             Model = Resolver.Resolve<Model>();
             Inlet = Resolver.Resolve<ViewModel_Config_Inlet>();
+            Detector = Resolver.Resolve<ViewModel_Config_Detector>();
 
             State.PropertyModified += StatePropertyChanged;
             Oven.PropertyModified += OvenPropertyChanged;
@@ -39,6 +39,7 @@ namespace ChroZenService
         private void StatePropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             Inlet.StatePropertyChanged(SelectedItem, State);
+            Detector.StatePropertyChanged(SelectedItem, State);
         }
 
         public bool IsEditable { get; set; } = true;
@@ -50,6 +51,7 @@ namespace ChroZenService
             set
             {
                 Inlet.OnSelectedItem(selectedItem = value, Model);
+                Detector.OnSelectedItem(selectedItem, Model);
             }
         }
 
@@ -80,8 +82,6 @@ namespace ChroZenService
                 UpdateOvenProgram();
             }
         }
-
-        // inlet
 
 
     }

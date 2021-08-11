@@ -10,6 +10,11 @@ namespace ChroZenGC.Core.Packets
         Positive, Negative, End
     }
 
+    public enum DetectorConnection : byte
+    {
+        FrontInlet, CenterInlet, RearInlet
+    }
+
     public struct _TCDPolarityProgram
     {
         public float fTime;            // 극성변환시간
@@ -33,7 +38,7 @@ namespace ChroZenGC.Core.Packets
 
         public float fIgnitetemp;                                              // FID 점화시도 온도 // default : 198	// Max 450
 
-        public byte btConnection;                                              // 연결된 Inlet 위치(0:front / 1 : center / 2 : rear)
+        public DetectorConnection btConnection;                                              // 연결된 Inlet 위치(0:front / 1 : center / 2 : rear)
         public byte bAutozero;                                                 // 시그널출력 자동영점 (0:Off / 1:On) // default : OFF
         public short iSignalrange;                                         // default : 0	// Max 10- TCD
 

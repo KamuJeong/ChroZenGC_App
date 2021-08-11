@@ -11,36 +11,31 @@ using Xamarin.Forms.Xaml;
 
 namespace ChroZenService
 {
-    //[AttributeUsage(AttributeTargets.Property, AllowMultiple = true, Inherited = false)]
-    //public class ConstraintsAttribute : Attribute
-    //{
-    //    /// <summary>
-    //    /// 
-    //    /// </summary>
-    //    /// <param name="name">Description of target property</param>
-    //    /// <param name="max"></param>
-    //    /// <param name="min"></param>
-    //    /// <param name="decimals"></param>
-    //    /// <param name="onoff">Corresponding property for switching on or off</param>
-    //    /// <param name="predicate">Method name for constraint's validity </param>
-    //    public ConstraintsAttribute(string name, double max = double.PositiveInfinity, double min = double.NegativeInfinity, int decimals = 0, string onoff = null, string predicate = null)
-    //    {
-    //        Name = name;
-    //        MaxValue = max;
-    //        MinValue = min;
-    //        Decimals = decimals;
-    //        OnOffProeprty = onoff;
-    //        Predicate = predicate;
-    //    }
+    public class MaxValueConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return double.IsPositiveInfinity((double)value) ? "" : $"{value:g} ≥"; 
+        }
 
-    //    public string Name { get; }
-    //    public double MaxValue { get; }
-    //    public double MinValue { get; }
-    //    public int Decimals { get; }
-    //    public string OnOffProeprty { get; }
-    //    public string Predicate { get; }
-    //}
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
+    public class MinValueConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return double.IsNegativeInfinity((double)value) ? "" : $"{value:g} ≤";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class KeyPad : ContentPage
@@ -55,8 +50,8 @@ namespace ChroZenService
             InitializeComponent();
 
             instance = inst;
-            minValue = inst.Min;
-            maxValue = inst.Max;
+            MinValue = inst.Min;
+            MaxValue = inst.Max;
 
             CurrentValue = instance.Value;
             int pt = CurrentValue.IndexOf('.');
@@ -68,58 +63,6 @@ namespace ChroZenService
             BindingContext = this;
         }
 
-        //private object instance;
-        //private PropertyInfo valuePropertyInfo;
-        //private PropertyInfo onoffPropertyInfo;
-
-        //public KeyPad(object propertyOwner, PropertyInfo valueProperty)
-        //{
-        //    double buttonHeight = (int)((double)Application.Current.Resources["ButtonFontSizeKey"] * 3);
-        //    Resources.Add("ButtonHeightKey", buttonHeight);
-
-        //    InitializeComponent();
-
-        //    instance = propertyOwner ?? throw new ArgumentNullException(nameof(propertyOwner));
-        //    valuePropertyInfo = valueProperty ?? throw new ArgumentNullException(nameof(valueProperty));
-
-        //    Name = valueProperty.Name;
-        //    maxValue = double.PositiveInfinity;
-        //    minValue = double.NegativeInfinity;
-        //    decimals = 0;
-        //    onoffPropertyInfo = null;
-
-        //    ConstraintsAttribute attr = null;
-        //    foreach (var at in valueProperty.GetCustomAttributes<ConstraintsAttribute>())
-        //    {
-        //        if(at.Predicate == null)
-        //        {
-        //            attr = at;
-        //            break;
-        //        }
-
-        //        var m = instance.GetType().GetMethod(at.Predicate, BindingFlags.Public | BindingFlags.Instance);
-        //        if(m != null && (bool)m.Invoke(instance, null))
-        //        {
-        //            attr = at;
-        //        }
-        //    }
-
-        //    if(attr != null)
-        //    {
-        //        Name = attr.Name;
-        //        maxValue = attr.MaxValue;
-        //        minValue = attr.MinValue;
-        //        decimals = attr.Decimals;
-        //        onoffPropertyInfo = attr.OnOffProeprty == null ? null : instance.GetType().GetProperty(attr.OnOffProeprty);
-
-        //    }
-
-        //    CurrentValue = string.Format($"{{0:F{decimals}}}", Convert.ChangeType(valueProperty.GetValue(propertyOwner), typeof(double)));
-        //    OnCurrentValueChanged(this, CurrentValue, CurrentValue);
-        //    IsModified = false;
-
-        //    BindingContext = this;
-        //}
 
         public string Name => instance.Caption;
 
@@ -131,15 +74,20 @@ namespace ChroZenService
             {
                 var pad = (KeyPad)bindable;
 
-                var value = double.Parse(newValue as string);
-                pad.IsValid = value >= pad.minValue && value <= pad.maxValue;
+                double value = 0.0;
+                string dv = newValue as string;
+                if (dv == null || !string.Equals(dv, "-"))
+                {
+                    value = double.Parse(dv);
+                }
+                pad.IsValid = value >= pad.MinValue && value <= pad.MaxValue;
 
                 if (!object.Equals(oldValue, newValue))
                     pad.IsModified = true;
             }
             catch
             {
-
+                
             }
         }
 
@@ -153,13 +101,11 @@ namespace ChroZenService
             set { SetValue(CurrentValueProperty, value); }
         }
 
-        private double minValue = double.NegativeInfinity;
+        public double MinValue { get; set; } = double.NegativeInfinity;
 
-        public bool MinusKeyEnabled => minValue < 0.0;
+        public bool MinusKeyEnabled => MinValue < 0.0;
 
-        private double maxValue = double.PositiveInfinity;
-
-        public string MaxValue => maxValue < double.PositiveInfinity ? string.Format($"{{0:F{decimals}}}", maxValue) : string.Empty;
+        public double MaxValue { get; set; } = double.PositiveInfinity;
 
         private int decimals = 0;
 
@@ -187,7 +133,7 @@ namespace ChroZenService
         {
             switch (key)
             {
-                case "-":
+                case "±":
                     return MinusKeyEnabled;
 
                 case "ON":
@@ -208,7 +154,7 @@ namespace ChroZenService
 
             switch (key)
             {
-                case "∇":
+                case "✖":
                     Navigation.PopModalAsync();
                     return;
 
@@ -244,20 +190,39 @@ namespace ChroZenService
                     if (value.Length > 10)
                         return;
 
-                    if (key == "-" && !string.IsNullOrEmpty(value))
-                        return;
+                    if (key == "±")
+                    {
+                        if (value.Length > 0 && value[0] == '-')
+                        {
+                            value = value.TrimStart('-');
+                        }
+                        else
+                        {
+                            value = "-" + value;
+                        }
+                    }
 
                     if (value.Any(c => c == '.'))
                     {
                         if (key == ".")
                             return;
                     }
-                    else if (key != ".")
+                    else if (key != "." && value.Length > 0)
                     {
-                        value = value.TrimStart('0');
+                        if (value[0] == '-')
+                        {
+                            value = "-" + value.TrimStart('-', '0');
+                        }
+                        else
+                        {
+                            value = value.TrimStart('0');
+                        }
                     }
 
-                    CurrentValue = value + key;
+                    if (key != "±")
+                        CurrentValue = value + key;
+                    else
+                        CurrentValue = value;
 
                     break;
             }

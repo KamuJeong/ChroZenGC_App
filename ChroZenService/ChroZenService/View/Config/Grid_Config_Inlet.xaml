@@ -52,7 +52,7 @@
             <ScrollView>
                 <StackLayout Padding="10" Spacing="10" >
                     <Frame Style="{StaticResource groupKey}">
-                        <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
@@ -75,7 +75,7 @@
                             IsVisible="{Binding Inlet.Type, Converter={StaticResource isNotPackedKey}}"/>
                     <Frame Style="{StaticResource groupKey}"
                            IsVisible="{Binding Inlet.Type, Converter={StaticResource isNotPackedKey}}">
-                        <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
@@ -107,7 +107,7 @@
                             IsVisible="{Binding Inlet.Type, Converter={StaticResource isCapillaryKey}}" />
                     <Frame Style="{StaticResource groupKey}"
                            IsVisible="{Binding Inlet.Type, Converter={StaticResource isCapillaryKey}}">
-                        <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
@@ -138,7 +138,7 @@
 
                     <Frame Style="{StaticResource groupKey}"
                            IsVisible="{Binding Inlet.Type, Converter={StaticResource isNotPackedKey}}">
-                        <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
@@ -265,7 +265,7 @@
                                 <Label Text="UPC mode" Style="{StaticResource captionKey}" />
                                 <local:EnumPicker Title="UPC mode" Value="{Binding Inlet.Setup.APCMode}" Gap="True" />
                             </StackLayout>
-                            <Grid ColumnSpacing="10" RowSpacing="0">
+                            <Grid ColumnSpacing="10" RowSpacing="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="4*"/>
                                     <ColumnDefinition Width="0.2"/>
@@ -380,7 +380,7 @@
                                             <Label Text="{Binding Number}" 
                                                    HorizontalOptions="Center" Style="{StaticResource captionKey}" />
                                             <local:ValueEditor Value="{Binding Step.Rate, StringFormat='{0:F1}'}" 
-                                                               Max="100" Min="0" Caption="{Binding Number, StringFormat='Rate {0}'}"
+                                                               Max="30" Min="0" Caption="{Binding Number, StringFormat='Rate {0}'}"
                                                                Grid.Column="1" IsVisible="{Binding Number, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Init}" />
                                             <local:ValueEditor Value="{Binding Step.FinalFlow, StringFormat='{0:F1}'}"  
                                                                Max="{Binding Source={x:Reference This}, Path=BindingContext.Inlet.MaxColumnFlow}" Min="0" Caption="{Binding Number, StringFormat='Final Flow {0}'}"
@@ -451,7 +451,7 @@
 
                     <Frame Style="{StaticResource groupKey}" IsVisible="{Binding Inlet.Type, Converter={StaticResource isCapillaryKey}}">
                         <StackLayout Spacing="0">
-                            <Grid ColumnSpacing="10" RowSpacing="0">
+                            <Grid ColumnSpacing="10" RowSpacing="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="4*"/>
                                     <ColumnDefinition Width="0.2"/>

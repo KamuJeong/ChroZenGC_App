@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.Grid_Config_Detector"
+             x:DataType="local:ViewModel_Config">
+    <ContentView.Resources>
+        <local:hasIgnitorConverter x:Key="hasIgnitorConverterKey" />
+        <local:hasEletrometerConverter x:Key="hasElectrometerKey" />
+        <local:DetectorMaxTempConverter x:Key="maxTempConverterKey" />
+        <local:DetectorGasEnableConverter x:Key="gasEnableKey" />
+        <local:DetectorGasMaxConverter x:Key="gasMaxKey" />
+        <local:DetectorFlowEnableConverter x:Key="flowEnableKey" />
+
+        <Style x:Key="captionKey" TargetType="Label">
+            <Setter Property="TextColor" Value="Silver" />
+            <Setter Property="FontSize"  Value="{StaticResource CaptionFontSizeKey}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="End" />
+        </Style>
+
+        <Style x:Key="groupKey" TargetType="Frame">
+            <Setter Property="Background" Value="{StaticResource GroupingFrameBackgroudKey}" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+
+        <ColumnDefinitionCollection x:Key="columnConfig">
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.2"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="0.17*"/>
+            <ColumnDefinition Width="0.08*"/>
+        </ColumnDefinitionCollection>
+
+        <ColumnDefinitionCollection x:Key="columnProgram">
+            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </ColumnDefinitionCollection>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollView>
+                <StackLayout Padding="10" Spacing="10" >
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Makeup Gas"
+                                   Style="{StaticResource captionKey}" />
+                            <local:EnumPicker Title="Makeup Gas" Value="{Binding Detector.Setup.MakeupGas}"
+                                          Grid.Row="0"  Grid.Column="2" Grid.ColumnSpan="3" />
+                            <Label Text="Connection" 
+                                   Grid.Row="1"  Style="{StaticResource captionKey}" />
+                            <local:EnumPicker Title="Connection" Value="{Binding Detector.Setup.Connection}" Gap="True"
+                                          Grid.Row="1"  Grid.Column="2" Grid.ColumnSpan="3" />
+
+                            <Label Text="Signal Range" 
+                                        Grid.Row="2"  Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Detector.Setup.SignalRange}" 
+                                           Max="10" Min="0" Caption="Signal Range" 
+                                           Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"/>
+
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Style="{StaticResource groupKey}"
+                           IsVisible="{Binding Detector.Type, Converter={StaticResource hasIgnitorConverterKey}}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Lit Offset"
+                                   Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Detector.Setup.LitOffset, StringFormat='{0:F3}'}" 
+                                                Unit="{Binding Detector.Type, Converter={StaticResource DetectorUnitConverterKey}}" 
+                                                UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}" 
+                                                Max="50" Min="0" Caption="Lit Offset" 
+                                                Grid.Column="2" Grid.ColumnSpan="3"/>                            
+                            <Label Text="Ignite Delay" 
+                                   Grid.Row="1"  Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Detector.Setup.IgniteDelay, StringFormat='{0:F1}'}" 
+                                                Unit="min" UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}" 
+                                                Max="9999" Min="0" Caption="Ignite Delay" 
+                                                Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
+                            <Label Text="Ignite Flow" 
+                                   Grid.Row="2"  Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Detector.Setup.IgniteFlow, StringFormat='{0:F1}'}" 
+                                           Max="300" Min="0" Caption="Ignite Flow" Unit="mL/min" x:Name="unitWidth"
+                                           Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"/>
+                            <Label Text="Ignite Temp" 
+                                   Grid.Row="3"  Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Detector.Setup.IgniteTemp, StringFormat='{0:F1}'}" 
+                                                Unit="℃" UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}" 
+                                                Max="450" Min="0" Caption="Ignite Temp" 
+                                                Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
+
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="4"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Signal Autozero"
+                                   Style="{StaticResource captionKey}" />
+                            <local:SwitchImageButton ON="{Binding Detector.Setup.AutoZero}"
+                                                 Grid.Column="2"  Grid.ColumnSpan="3" />
+                            <Label Text="Sensitivity" 
+                                        Grid.Row="1"  Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Detector.Setup.SignalVariation}" 
+                                           Max="10" Min="-10" Caption="Signal Range" 
+                                           Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
+
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="2"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+
+
+            <ScrollView Grid.Column="1">
+                <StackLayout Padding="10" Spacing="10" >
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="0.2"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="0.2" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Actual"
+                                    Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="Setting"
+                                    Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="Temperature"
+                                   Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Detector.Temperature, StringFormat='{0:F1}'}" Unit="℃" 
+                                               Grid.Row="2" Grid.Column="2" IsEnabled="False"/>
+                            <local:ValueEditor Value="{Binding Inlet.Setup.TempSet, StringFormat='{0:F1}'}" 
+                                               Max="{Binding Detector.Type, Converter={StaticResource maxTempConverterKey}}" Min="0" 
+                                               Caption="Temperature" Switch="{Binding Detector.Setup.TempOnOff}" Unit="℃" 
+                                               Grid.Row="2" Grid.Column="3" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Style="{StaticResource groupKey}"
+                           IsVisible="{Binding Detector.Type, Converter={StaticResource flowEnableKey}}">
+                        <StackLayout Spacing="0">
+                            <Grid ColumnSpacing="10" RowSpacing="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="0.2"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Flow (mL/min)" 
+                                        Style="{StaticResource captionKey}" />
+                                <Label Text="{Binding Detector.Type, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=0}"
+                                            IsVisible="{Binding Detector.Type, Converter={StaticResource gasEnableKey}, ConverterParameter=0}"
+                                            Grid.Row="1" Style="{StaticResource captionKey}" />
+                                <Label Text="{Binding Detector.Type, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=1}"
+                                            IsVisible="{Binding Detector.Type, Converter={StaticResource gasEnableKey}, ConverterParameter=1}"
+                                            Grid.Row="2"  Style="{StaticResource captionKey}" />
+                                <Label Text="{Binding Detector.Type, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=2}"
+                                            IsVisible="{Binding Detector.Type, Converter={StaticResource gasEnableKey}, ConverterParameter=2}"
+                                            Grid.Row="3"  Style="{StaticResource captionKey}" />
+
+                                <local:ValueEditor Value="{Binding Detector.Flow1, StringFormat='{0:F1}'}" 
+                                                    IsVisible="{Binding Detector.Type, Converter={StaticResource gasEnableKey}, ConverterParameter=0}"
+                                                    Grid.Row="1" Grid.Column="2" IsEnabled="False"/>
+                                <local:ValueEditor Value="{Binding Detector.Flow2, StringFormat='{0:F1}'}" 
+                                                    IsVisible="{Binding Detector.Type, Converter={StaticResource gasEnableKey}, ConverterParameter=1}"
+                                                    Grid.Row="2" Grid.Column="2" IsEnabled="False"/>
+                                <local:ValueEditor Value="{Binding Detector.Flow3, StringFormat='{0:F1}'}" 
+                                                    IsVisible="{Binding Detector.Type, Converter={StaticResource gasEnableKey}, ConverterParameter=2}"
+                                                    Grid.Row="3" Grid.Column="2" IsEnabled="False"/>
+
+                                <local:ValueEditor Value="{Binding Detector.Setup.FlowSet1, StringFormat='{0:F1}'}" Switch="{Binding Detector.Setup.Flow1OnOff}"
+                                                    Min="0" Max="{Binding Detector.Type, Converter={StaticResource gasMaxKey}, ConverterParameter=0}" 
+                                                    Caption="{Binding Detector.Type, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=0}"
+                                                    Grid.Row="1" Grid.Column="3" 
+                                                    IsVisible="{Binding Detector.Type, Converter={StaticResource gasEnableKey}, ConverterParameter=0}" />
+                                <local:ValueEditor Value="{Binding Detector.Setup.FlowSet2, StringFormat='{0:F1}'}" Switch="{Binding Detector.Setup.Flow2OnOff}"
+                                                    Min="0" Max="{Binding Detector.Type, Converter={StaticResource gasMaxKey}, ConverterParameter=1}" 
+                                                    Caption="{Binding Detector.Type, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=1}"
+                                                    Grid.Row="2" Grid.Column="3" 
+                                                    IsVisible="{Binding Detector.Type, Converter={StaticResource gasEnableKey}, ConverterParameter=1}" />
+                                <local:ValueEditor Value="{Binding Detector.Setup.FlowSet1, StringFormat='{0:F1}'}" Switch="{Binding Detector.Setup.Flow1OnOff}"
+                                                    Min="0" Max="{Binding Detector.Type, Converter={StaticResource gasMaxKey}, ConverterParameter=2}" 
+                                                    Caption="{Binding Detector.Type, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=2}"
+                                                    Grid.Row="3" Grid.Column="3" 
+                                                    IsVisible="{Binding Detector.Type, Converter={StaticResource gasEnableKey}, ConverterParameter=2}" />
+                                <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="4"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Style="{StaticResource groupKey}">
+                        <StackLayout Spacing="0">
+                            <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Signal" 
+                                        Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Detector.Signal, StringFormat='{0:F3}'}" 
+                                                    Unit="{Binding Detector.Type, Converter={StaticResource DetectorUnitConverterKey}}"
+                                                    Switch="{Binding Detector.Setup.ElectrometerOnOff}"
+                                                   IsVisible="{Binding Detector.Type, Converter={StaticResource hasElectrometerKey}}"
+                                                    Grid.Column="2" Grid.ColumnSpan="3" IsEnabled="False"/>
+                                <Label Text="Electrometer" 
+                                       IsVisible="{Binding Detector.Type, Converter={StaticResource hasElectrometerKey}}"
+                                        Grid.Row="1" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Detector.Setup.ElectrometerOnOff}"
+                                                         IsVisible="{Binding Detector.Type, Converter={StaticResource hasElectrometerKey}}"
+                                                        Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" />
+                                <Label Text="Auto ignition" 
+                                       IsVisible="{Binding Detector.Type, Converter={StaticResource hasIgnitorConverterKey}}"
+                                        Grid.Row="2" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Detector.Setup.AutoIgnition}"
+                                                         IsVisible="{Binding Detector.Type, Converter={StaticResource hasIgnitorConverterKey}}"
+                                                         Grid.Row="2"  Grid.Column="2"  Grid.ColumnSpan="3" 
+                                                         Command="{Binding Detector.IgniteCommand}" CommandParameter="{Binding Source={RelativeSource Mode=Self}, Path=ON}" />
+
+                                <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
+                            </Grid>
+
+                            <!--<Grid ColumnSpacing="10" RowSpacing="5" IsVisible="{Binding Inlet.Type, Converter={StaticResource isCapillaryKey}}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="0.2"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Total Flow"
+                                       Style="{StaticResource captionKey}" />
+                                <Label Text="Split Flow" 
+                                           Grid.Row="1" Style="{StaticResource captionKey}" />
+                                <Label Text="Velocity"  
+                                   Grid.Row="2" Style="{StaticResource captionKey}"/>
+
+                                <local:ValueEditor Value="{Binding Inlet.TotalFlow, StringFormat='{0:F1}'}"
+                                               Grid.Column="2" IsEnabled="False"/>
+                                <local:ValueEditor Value="{Binding Inlet.SplitFlow, StringFormat='{0:F1}'}"
+                                               Grid.Row="1" Grid.Column="2" IsEnabled="False"/>
+                                <local:ValueEditor Value="{Binding Inlet.Velocity, StringFormat='{0:F1}'}"
+                                               Unit="cm/s" x:Name="secondUnit"
+                                               Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" IsEnabled="False"/>
+
+                                <local:ValueEditor Value="{Binding Inlet.Setup.TotalFlowSet, StringFormat='{0:F1}'}" 
+                                               Min="0" Max="1000" Caption="Total Flow"
+                                               Grid.Column="3" IsVisible="{Binding Inlet.Setup.APCMode, Converter={StaticResource isFlowModeKey}}" />
+                                <local:ValueEditor Value="{Binding Inlet.Setup.SplitFlowSet, StringFormat='{0:F1}'}"
+                                               Min="0" Max="1000" Caption="Split Flow"
+                                               Grid.Row="1"  Grid.Column="3" IsVisible="{Binding Inlet.Setup.APCMode, Converter={StaticResource isFlowModeKey}}" />
+
+                                <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
+                            </Grid>-->
+                        </StackLayout>
+                    </Frame>
+
+
+
+                </StackLayout>
+            </ScrollView>
+
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

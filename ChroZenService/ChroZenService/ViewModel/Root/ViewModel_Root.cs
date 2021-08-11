@@ -81,6 +81,8 @@ namespace ChroZenService
 
         private async void OnConnected(object obj)
         {
+            IPFinder.Stop();
+
             if (DeviceInterface != null)
             {
                 networkManager = new ChroZenGC.Core.Network.TCPManager(Model) { Host = DeviceInterface.IPAddress };

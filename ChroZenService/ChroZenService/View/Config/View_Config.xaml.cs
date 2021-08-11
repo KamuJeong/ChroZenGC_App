@@ -67,11 +67,18 @@ namespace ChroZenService
                         tab.SelectedTabItem = 1;
                         Views[3] = Views[4] = Views[5] = tab;
                         break;
-
-                    case 13:
+                    case 7:
+                    case 8:
+                    case 9:
                         tab = Resolver.Resolve<View_Config_Tab>();
-                        tab.TabContent = Resolver.Resolve<View_Config_InletConfig_Front>();
-                        tab.SelectedTabItem = 0;
+                        tab.TabContent = Resolver.Resolve<Grid_Config_Detector>();
+                        tab.SelectedTabItem = 1;
+                        Views[7] = Views[8] = Views[9] = tab;
+                        break;
+                    case 13:
+                        //tab = Resolver.Resolve<View_Config_Tab>();
+                        //tab.TabContent = Resolver.Resolve<View_Config_InletConfig_Front>();
+                        //tab.SelectedTabItem = 0;
                         break;
                 }
 
