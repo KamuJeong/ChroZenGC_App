@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace ChroZenGC.Core.Wrappers
@@ -11,6 +12,7 @@ namespace ChroZenGC.Core.Wrappers
     {
         public _TCDPolarityProgramWrapper(INotifyPropertyChanged parent, ReferenceProvider<_TCDPolarityProgram> provider) : base(parent, provider)
         {
+            Provider.btPolarity = Polarity.Delete;
         }
 
         public float Time
@@ -46,6 +48,14 @@ namespace ChroZenGC.Core.Wrappers
             IgniteTemp = 240.0f;
 
             TempSet = 50.0f;
+        }
+
+        protected override void OnPrePropertyModified(object sender, PropertyChangedEventArgs args)
+        {
+            base.OnPrePropertyModified(sender, args);
+
+            PolarityProgram[5].Time = 0.0f;
+            PolarityProgram[5].Polarity = Polarity.Delete;
         }
 
         public int PortNo
@@ -185,7 +195,7 @@ namespace ChroZenGC.Core.Wrappers
             set => Packet.bPolarChange = (byte)(value ? 1 : 0);
         }
 
-        public Polarity InitialPolarity
+        public InitPolarity InitialPolarity
         {
             get => Packet.btInitPola;
             set => Packet.btInitPola = value;

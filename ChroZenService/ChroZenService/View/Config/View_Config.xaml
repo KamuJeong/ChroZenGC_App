@@ -7,7 +7,7 @@
              >
 
     <ContentView.Resources>
-        <Style x:Key="SelectorStyle" TargetType="ImageButton">
+        <Style x:Key="SelectorStyle" TargetType="Image">
             <Setter Property="Aspect" Value="Fill" />
             <Setter Property="BackgroundColor" Value="Transparent" />
             <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
@@ -19,7 +19,7 @@
             <Setter Property="IsVisible" Value="False" />
         </Style>
 
-        <Style x:Key="SelectorButtonStyle" TargetType="Button">
+        <Style x:Key="SelectorButtonStyle" TargetType="Label">
             <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeKey}" />
             <Setter Property="TextColor" Value="Silver" />
             <Setter Property="BackgroundColor" Value="Transparent" />

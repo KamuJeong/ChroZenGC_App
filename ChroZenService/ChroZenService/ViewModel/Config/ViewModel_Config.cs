@@ -73,6 +73,9 @@ namespace ChroZenService
                 OvenProgram.RemoveAt(OvenProgram.Count - 1);
                 countUpdate++;
             }
+
+            foreach (var p in OvenProgram)
+                p.Update();
         }
 
         private void OvenPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -86,9 +89,14 @@ namespace ChroZenService
 
     }
 
-    public class OvenProgramStep
+    public class OvenProgramStep : Observable
     {
         public int Number { get; set; }
         public _OvenProgramWrapper Step { get; set; }
+
+        public void Update()
+        {
+            OnPropertyChanged(null);
+        }
     }
 }

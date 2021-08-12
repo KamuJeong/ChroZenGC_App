@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,38 +21,134 @@ namespace ChroZenGC.Core
             Inlets[0].PropertyModified += FrontInletPropertyModified;
             Inlets[1].PropertyModified += CenternletPropertyModified;
             Inlets[2].PropertyModified += RearInletPropertyModified;
+            Detectors[0].PropertyModified += FrontDetectorPropertyModified;
+            Detectors[1].PropertyModified += CenterDetectorPropertyModified;
+            Detectors[2].PropertyModified += RearDetectorPropertyModified;
+        }
 
+        private async void RearDetectorPropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
+            {
+                ++Detectors[2].SequenceOfModification;
+                await Task.Delay(250);
+
+                if (--Detectors[2].SequenceOfModification == 0)
+                {
+                    await Send(Detectors[2], 2);
+                }
+                else
+                {
+                    Debug.WriteLine("Skip send Detector 2");
+                }
+            }
+        }
+
+        private async void CenterDetectorPropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
+            {
+                ++Detectors[1].SequenceOfModification;
+                await Task.Delay(250);
+
+                if (--Detectors[1].SequenceOfModification == 0)
+                {
+                    await Send(Detectors[1], 1);
+                }
+                else
+                {
+                    Debug.WriteLine("Skip send Detector 1");
+                }
+            }
+        }
+
+        private async void FrontDetectorPropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
+            {
+                ++Detectors[0].SequenceOfModification;
+                await Task.Delay(250);
+
+                if (--Detectors[0].SequenceOfModification == 0)
+                {
+                    await Send(Detectors[0], 0);
+                }
+                else
+                {
+                    Debug.WriteLine("Skip send Detector 0");
+                }
+            }
         }
 
         private async void RearInletPropertyModified(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName != "Binary" || !string.IsNullOrEmpty(e.PropertyName))
+            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
             {
-                await Send(Inlets[2], 2);
+                ++Inlets[2].SequenceOfModification;
+                await Task.Delay(250);
+
+                if (--Inlets[2].SequenceOfModification == 0)
+                {
+                    await Send(Inlets[2], 2);
+                }
+                else
+                {
+                    Debug.WriteLine("Skip send inlet 2");
+                }
             }
         }
 
         private async void CenternletPropertyModified(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName != "Binary" || !string.IsNullOrEmpty(e.PropertyName))
+            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
             {
-                await Send(Inlets[1], 1);
+                ++Inlets[1].SequenceOfModification;
+                await Task.Delay(250);
+
+                if (--Inlets[1].SequenceOfModification == 0)
+                {
+                    await Send(Inlets[1], 1);
+                }
+                else
+                {
+                    Debug.WriteLine("Skip send inlet 1");
+                }
             }
         }
 
         private async void FrontInletPropertyModified(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName != "Binary" || !string.IsNullOrEmpty(e.PropertyName))
+            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
             {
-                await Send(Inlets[0], 0);
+                ++Inlets[0].SequenceOfModification;
+                await Task.Delay(250);
+
+                if (--Inlets[0].SequenceOfModification == 0)
+                {
+                    await Send(Inlets[0], 0);
+                }
+                else
+                {
+                    Debug.WriteLine("Skip send inlet 0");
+                }
             }
         }
 
         private async void OvenPropertyModified(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName != "Binary" || !string.IsNullOrEmpty(e.PropertyName))
+            if(e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
             {
-                await Send(Oven);
+                ++Oven.SequenceOfModification;
+                await Task.Delay(250);
+
+                if (--Oven.SequenceOfModification == 0)
+                {
+                    await Send(Oven);
+                }
+                else
+                {
+                    Debug.WriteLine("Skip send Oven");
+                }
             }
         }
 
@@ -81,6 +178,10 @@ namespace ChroZenGC.Core
 
                     case InletSetupWrapper.PacketCode:
                         Assemble(Inlets[header.Index], buffer, header.SlotOffset, header.SlotSize);
+                        break;
+
+                    case DetectorSetupWrapper.PacketCode:
+                        Assemble(Detectors[header.Index], buffer, header.SlotOffset, header.SlotSize);
                         break;
                 }
             }

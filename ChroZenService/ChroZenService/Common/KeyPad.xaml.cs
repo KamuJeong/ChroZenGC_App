@@ -170,17 +170,20 @@ namespace ChroZenService
                     instance.Value = string.Format($"{{0:F{decimals}}}", double.Parse(CurrentValue));  
                     instance.Switch = true;
                     Navigation.PopModalAsync();
+                    instance.Command?.Execute(instance.CommandParameter);
                     return;
 
                 case "OFF":
                     instance.Switch = false;
                     Navigation.PopModalAsync();
+                    instance.Command?.Execute(instance.CommandParameter);
                     return;
 
                 case "OK":
                     if (!IsValid) break;
                     instance.Value = string.Format($"{{0:F{decimals}}}", double.Parse(CurrentValue));
                     Navigation.PopModalAsync();
+                    instance.Command?.Execute(instance.CommandParameter);
                     return;
 
                 default:

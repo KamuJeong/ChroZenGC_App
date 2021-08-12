@@ -1,21 +1,71 @@
 ﻿using ChroZenGC.Core;
 using ChroZenGC.Core.Packets;
 using ChroZenGC.Core.Wrappers;
+using ChroZenService;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ChroZenService
-{ 
+{
     public class ViewModel_Config_Detector : Observable
     {
-        public DetectorSetupWrapper Setup { get; set; }
+        private DetectorSetupWrapper setup;
+        public DetectorSetupWrapper Setup
+        {
+            get => setup;
+            set
+            {
+                if (setup != null)
+                    setup.PropertyModified -= OnDetectorPropertyChanged;
+                setup = value;
+                if (setup != null)
+                    setup.PropertyModified += OnDetectorPropertyChanged;
+            }
+        }
+
+        private void OnDetectorPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Binary"
+                || e.PropertyName.StartsWith(nameof(_TCDPolarityProgramWrapper)))
+            {
+                if (e.PropertyName.EndsWith("Polarity"))
+                    SortTable();
+
+                UpdatePolarityProgram();
+            }
+        }
+
+        public ObservableCollection<PolarityProgramStep> PolarityProgram { get; } = new ObservableCollection<PolarityProgramStep>();
+        private void UpdatePolarityProgram()
+        {
+            PolarityProgram.Clear();
+
+            int i = 1;
+            foreach (var p in Setup.PolarityProgram.TakeWhile(p => p.Polarity != Polarity.Delete))
+            {
+                PolarityProgram.Add(new PolarityProgramStep { Editable = true, Number = i++, Step = p });
+            }
+
+            if (PolarityProgram.Count < 5)
+            {
+                PolarityProgram.Add(new PolarityProgramStep { Editable = false, Number = i, Step = Setup.PolarityProgram[i - 1] });
+            }
+
+            foreach(var p in PolarityProgram)
+            {
+                p.Update();
+            }
+        }
 
         internal void StatePropertyChanged(int select, StateWrapper state)
         {
-            switch(select)
+            switch (select)
             {
                 case 7:
                 case 8:
@@ -43,15 +93,7 @@ namespace ChroZenService
                     return;
             }
 
-            //MaxColumnFlow = Type == InletTypes.Capillary ? 30.0f : 200.0f;
-            //Setup.TempMode = Type == InletTypes.OnColumn ? Setup.TempMode : TempModes.Isothermal;
-
-            //TempProgram.Clear();
-            //UpdateTempProgram();
-            //FlowProgram.Clear();
-            //UpdateFlowProgram();
-            //PressProgram.Clear();
-            //UpdatePressProgram();
+            UpdatePolarityProgram();
         }
 
         public DetectorTypes Type { get; set; }
@@ -86,5 +128,42 @@ namespace ChroZenService
             }
         }
 
+        public ICommand TimeChangedCommand => new Command(OnTimeChanged);
+
+        private void OnTimeChanged(object obj)
+        {
+            if (obj is PolarityProgramStep p)
+            {
+                p.Step.Polarity = Polarity.Positive;
+            }
+            SortTable();
+            UpdatePolarityProgram();
+        }
+
+        private void SortTable()
+        {
+            var list = Setup.PolarityProgram.Where(p => p.Polarity != Polarity.Delete).OrderBy(p => p.Time).ToList();
+            var deleted = Setup.PolarityProgram.Where(p => p.Polarity == Polarity.Delete).ToList();
+
+            foreach (var pgm in deleted)
+                pgm.Time = 0.0f;
+
+            list.AddRange(deleted);
+
+            for (int j = 0; j < list.Count; ++j)
+                Setup.PolarityProgram[j] = list[j];
+        }
+    }
+
+    public class PolarityProgramStep : Observable
+    {
+        public int Number { get; set; }
+        public _TCDPolarityProgramWrapper Step { get; set; }
+
+        public bool Editable { get; set; } = true;
+        public void Update()
+        {
+            OnPropertyChanged(null);
+        }
     }
 }

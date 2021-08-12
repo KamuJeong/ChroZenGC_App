@@ -88,6 +88,9 @@ namespace ChroZenGC.Core.Wrappers
     {
         private TPacket packet;
 
+        [DoNotNotify]
+        public int SequenceOfModification { get; set; } = 0;
+
         public ref TPacket Packet => ref Provider;
 
         public PacketWrapper() : base(null)

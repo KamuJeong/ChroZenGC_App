@@ -83,6 +83,7 @@ namespace ChroZenGC.Core.Packets
                 DetectorTypes.FPD => "Air2",
                 DetectorTypes.NPD => "Air",
                 DetectorTypes.PFPD => "Air2",
+                DetectorTypes.µTCD => "Reference",
                 _ => "",
             };
 
@@ -94,6 +95,7 @@ namespace ChroZenGC.Core.Packets
                 DetectorTypes.FPD => "Air1",
                 DetectorTypes.NPD => "Makeup",
                 DetectorTypes.PFPD => "Air1",
+                DetectorTypes.µTCD => "Sample",
                 _ => "",
             };
 

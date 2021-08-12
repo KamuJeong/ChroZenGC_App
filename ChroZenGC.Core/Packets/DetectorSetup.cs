@@ -5,9 +5,14 @@ using System.Text;
 
 namespace ChroZenGC.Core.Packets
 {
+    public enum InitPolarity : byte
+    {
+        Positive, Negative
+    }
+
     public enum Polarity : byte
     {
-        Positive, Negative, End
+        Positive, Negative, Delete
     }
 
     public enum DetectorConnection : byte
@@ -73,7 +78,7 @@ namespace ChroZenGC.Core.Packets
 
         public byte bPolarChange;                                              // TCD 극성변환 (0:OFF / 1:ON) // default : OFF
                                                                                //BYTE btCurPolarity;			                                    // 현재극성의상태
-        public Polarity btInitPola;                                                // TCD 극성변환 사용시 초기값 (0:+ / 1:- ) // default : 0		
+        public InitPolarity btInitPola;                                                // TCD 극성변환 사용시 초기값 (0:+ / 1:- ) // default : 0		
         public short iBeadVoltageSet;                                      // TCD 감도(0-9) // default : 0	// Sense로 화면 표시 	NPD Bead 전압(Volt)
         public byte iBeadVoltageOnoff;
 

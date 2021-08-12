@@ -11,6 +11,25 @@ using Xamarin.Forms.Xaml;
 
 namespace ChroZenService
 {
+    public class isTCDConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            switch ((DetectorTypes)value)
+            {
+                case DetectorTypes.TCD:
+                case DetectorTypes.µTCD:
+                    return true;
+            }
+            return false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class hasIgnitorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -62,6 +81,8 @@ namespace ChroZenService
             {
                 case DetectorTypes.FID:
                     return 450.0f;
+                case DetectorTypes.µTCD:
+                    return 350.0f;
             }
             return 400.0f;
         }
@@ -106,20 +127,31 @@ namespace ChroZenService
         {
             var gas = new DetectorGasConverter().Convert(value, typeof(string), parameter, culture);
 
-            switch (int.Parse((string)parameter))
+            if ((DetectorTypes)value == DetectorTypes.µTCD)
             {
-                case 0:
-                    switch (gas)
-                    {
-                        case "Air":
-                        case "Air2":
-                            return 500.0f;
-                    }
-                    return 100.0f;
-                case 1:
-                    return 100.0f;
-                case 2:
-                    return 150.0f;
+                switch (int.Parse((string)parameter))
+                {
+                    case 0: return 10.0f;
+                    case 1: return 20.0f;
+                }
+            }
+            else
+            {
+                switch (int.Parse((string)parameter))
+                {
+                    case 0:
+                        switch (gas)
+                        {
+                            case "Air":
+                            case "Air2":
+                                return 500.0f;
+                        }
+                        return 100.0f;
+                    case 1:
+                        return 100.0f;
+                    case 2:
+                        return 150.0f;
+                }
             }
             return 0.0f;
         }

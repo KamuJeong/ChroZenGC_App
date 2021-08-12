@@ -50,6 +50,8 @@ namespace ChroZenGC.Core.Network
             Results.Clear();
             Stop();
 
+            Results.Add(new DeviceInterface { IPAddress = "192.168.0.88", SerialNumber = "G67001111" });
+
             try
             {
                 foreach (var localIP in LocalNetworks.GetAllLocalIPv4(0))

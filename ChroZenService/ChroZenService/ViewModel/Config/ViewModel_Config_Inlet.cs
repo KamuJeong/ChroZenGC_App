@@ -129,9 +129,13 @@ namespace ChroZenService
             foreach (var p in TempProgram)
             {
                 p.Editable = true;
+                p.Update();
             }
             if (TempProgram.Count > 0)
+            {
                 TempProgram.Last().Editable = TempProgram.Last().Step.Rate != 0;
+                TempProgram.Last().Update();
+            }
         }
 
         public ObservableCollection<InletFlowProgramStep> FlowProgram { get; } = new ObservableCollection<InletFlowProgramStep>();
@@ -154,9 +158,13 @@ namespace ChroZenService
             foreach (var p in FlowProgram)
             {
                 p.Editable = true;
+                p.Update();
             }
             if (FlowProgram.Count > 0)
+            {
                 FlowProgram.Last().Editable = FlowProgram.Last().Step.Rate != 0;
+                FlowProgram.Last().Update();
+            }
         }
 
         public ObservableCollection<InletPressProgramStep> PressProgram { get; } = new ObservableCollection<InletPressProgramStep>();
@@ -179,9 +187,13 @@ namespace ChroZenService
             foreach (var p in PressProgram)
             {
                 p.Editable = true;
+                p.Update();
             }
             if (PressProgram.Count > 0)
+            {
                 PressProgram.Last().Editable = PressProgram.Last().Step.Rate != 0;
+                PressProgram.Last().Update();
+            }
         }
     }
 
@@ -189,8 +201,11 @@ namespace ChroZenService
     {
         public string Number { get; set; }
         public _InletTempProgramWrapper Step { get; set; }
-
         public bool Editable { get; set; } = true;
+        public void Update()
+        {
+            OnPropertyChanged(null);
+        }
     }
 
     public class InletFlowProgramStep : Observable
@@ -199,6 +214,10 @@ namespace ChroZenService
         public _ApcFlowProgramWrapper Step { get; set; }
 
         public bool Editable { get; set; } = true;
+        public void Update()
+        {
+            OnPropertyChanged(null);
+        }
     }
 
     public class InletPressProgramStep : Observable
@@ -207,5 +226,9 @@ namespace ChroZenService
         public _ApcPressProgramWrapper Step { get; set; }
 
         public bool Editable { get; set; } = true;
+        public void Update()
+        {
+            OnPropertyChanged(null);
+        }
     }
 }
