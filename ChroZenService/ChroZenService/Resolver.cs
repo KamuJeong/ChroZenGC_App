@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Core;
 
 namespace ChroZenService
 {
@@ -14,6 +15,11 @@ namespace ChroZenService
         public static T Resolve<T>()
         {
             return container.Resolve<T>();
+        }
+
+        public static T Resolve<T>(params Parameter[] namedParameters)
+        {
+            return container.Resolve<T>(namedParameters);
         }
     }
 }

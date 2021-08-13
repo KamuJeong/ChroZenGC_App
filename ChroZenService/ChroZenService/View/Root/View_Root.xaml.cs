@@ -39,6 +39,11 @@ namespace ChroZenService
             
 
         }
+    
+        public void Initialize()
+        {
+            Config.Content = Resolver.Resolve<View_Config>();
+        }
 
         private void OnHomeButtonClicked(object sender, EventArgs e)
         {

@@ -112,7 +112,7 @@ namespace ChroZenGC.Core.Wrappers
             ColumnFlowSet = 3.0f;
         }
 
-        protected override void OnPrePropertyModified(object sender, PropertyChangedEventArgs args)
+        protected override void OnPrePropertyModified(object sender, PropertyModifiedEventArgs args)
         {
             base.OnPrePropertyModified(sender, args);
 

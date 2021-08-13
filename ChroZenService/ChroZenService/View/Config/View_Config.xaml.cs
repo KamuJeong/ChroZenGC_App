@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChroZenGC.Core.Packets;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -26,6 +27,37 @@ namespace ChroZenService
             ShowView();
         }
 
+        public void Initialize()
+        {
+            Views.Clear();
+
+            SelectedItem = 1;
+            ShowView();
+            
+            for(int i=0; i<3; ++i)
+            {
+                if (Model.Model.Configuration.InletType[i] != InletTypes.NotInstalled)
+                {
+                    SelectedItem = 3 + i;
+                    ShowView();
+                }
+                if(Model.Model.Configuration.DetectorType[i] != DetectorTypes.NotInstalled)
+                {
+                    SelectedItem = 7 + i;
+                    ShowView();
+                }
+            }
+
+            SelectedItem = 11;
+            ShowView();
+            //SelectedItem = 12;
+            //ShowView();
+            //SelectedItem = 13;
+            //ShowView();
+
+            SelectedItem = 1;
+        }
+
         private void ShowView()
         {
             if (Views.TryGetValue(SelectedItem, out Xamarin.Forms.View view))
@@ -34,7 +66,7 @@ namespace ChroZenService
                 {
                     v.IsVisible = v == view;
 
-                    switch(SelectedItem)
+                    switch (SelectedItem)
                     {
                         case 8:
                             break;
@@ -64,16 +96,24 @@ namespace ChroZenService
                     case 5:
                         tab = Resolver.Resolve<View_Config_Tab>();
                         tab.TabContent = Resolver.Resolve<Grid_Config_Inlet>();
+                        tab.BindingContext = Model.Inlets[SelectedItem - 3];
                         tab.SelectedTabItem = 1;
-                        Views[3] = Views[4] = Views[5] = tab;
                         break;
                     case 7:
                     case 8:
                     case 9:
                         tab = Resolver.Resolve<View_Config_Tab>();
                         tab.TabContent = Resolver.Resolve<Grid_Config_Detector>();
+                        tab.BindingContext = Model.Detectors[SelectedItem - 7];
                         tab.SelectedTabItem = 1;
-                        Views[7] = Views[8] = Views[9] = tab;
+                        break;
+                    case 11:
+                        tab = Resolver.Resolve<View_Config_Tab>();
+                        tab.Tab1 = "Signal 1";
+                        tab.Tab2 = "Signal 2";
+                        tab.Tab3 = "Signal 3";
+                        tab.TabContent = Resolver.Resolve<Grid_Config_Signal>();
+                        tab.SelectedTabItem = 0;
                         break;
                     case 13:
                         //tab = Resolver.Resolve<View_Config_Tab>();

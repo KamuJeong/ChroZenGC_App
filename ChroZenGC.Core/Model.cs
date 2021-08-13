@@ -24,6 +24,63 @@ namespace ChroZenGC.Core
             Detectors[0].PropertyModified += FrontDetectorPropertyModified;
             Detectors[1].PropertyModified += CenterDetectorPropertyModified;
             Detectors[2].PropertyModified += RearDetectorPropertyModified;
+            Signals[0].PropertyModified += Signal1PropertyModified;
+            Signals[1].PropertyModified += Signal2PropertyModified;
+            Signals[2].PropertyModified += Signal3PropertyModified;
+        }
+
+        private async void Signal3PropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
+            {
+                ++Signals[2].SequenceOfModification;
+                await Task.Delay(250);
+
+                if (--Signals[2].SequenceOfModification == 0)
+                {
+                    await Send(Signals[2], 2);
+                }
+                else
+                {
+                    Debug.WriteLine("Skip send Signal 2");
+                }
+            }
+        }
+
+        private async void Signal2PropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
+            {
+                ++Signals[1].SequenceOfModification;
+                await Task.Delay(250);
+
+                if (--Signals[1].SequenceOfModification == 0)
+                {
+                    await Send(Signals[1], 1);
+                }
+                else
+                {
+                    Debug.WriteLine("Skip send Signal 1");
+                }
+            }
+        }
+
+        private async void Signal1PropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
+            {
+                ++Signals[0].SequenceOfModification;
+                await Task.Delay(250);
+
+                if (--Signals[0].SequenceOfModification == 0)
+                {
+                    await Send(Signals[0], 0);
+                }
+                else
+                {
+                    Debug.WriteLine("Skip send Signal 0");
+                }
+            }
         }
 
         private async void RearDetectorPropertyModified(object sender, PropertyChangedEventArgs e)
@@ -183,6 +240,10 @@ namespace ChroZenGC.Core
                     case DetectorSetupWrapper.PacketCode:
                         Assemble(Detectors[header.Index], buffer, header.SlotOffset, header.SlotSize);
                         break;
+
+                    case SignalSetupWrapper.PacketCode:
+                        Assemble(Signals[header.Index], buffer, header.SlotOffset, header.SlotSize);
+                        break;
                 }
             }
         }
@@ -276,5 +337,11 @@ namespace ChroZenGC.Core
             new DetectorSetupWrapper() { PortNo = 2 },
         };
 
+        public ObservableCollection<SignalSetupWrapper> Signals { get; } = new ObservableCollection<SignalSetupWrapper>
+        {
+            new SignalSetupWrapper() { PortNo = 0 },
+            new SignalSetupWrapper() { PortNo = 1 },
+            new SignalSetupWrapper() { PortNo = 2 },
+        };
     }
 }

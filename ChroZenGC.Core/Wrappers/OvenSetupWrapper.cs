@@ -122,8 +122,10 @@ namespace ChroZenGC.Core.Wrappers
             Points = new List<(float, float)> { (0.0f, 50.0f) };
         }
 
-        protected sealed override void OnPrePropertyModified(object sender, PropertyChangedEventArgs e)
+        protected sealed override void OnPrePropertyModified(object sender, PropertyModifiedEventArgs e)
         {
+            base.OnPrePropertyModified(sender, e);
+
             string propertyName = e.PropertyName.Split('>').FirstOrDefault();
             if (propertyName == "Binary" 
                 || new string[] { nameof(Mode), nameof(InitTime), nameof(TempSet), nameof(_OvenProgramWrapper) }.Any(s => string.Equals(s, propertyName)))

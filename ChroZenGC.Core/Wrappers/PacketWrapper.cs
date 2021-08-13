@@ -4,11 +4,22 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using PropertyChanged;
 
 namespace ChroZenGC.Core.Wrappers
 {
     public delegate ref T ReferenceProvider<T>() where T : struct;
+
+    public class PropertyModifiedEventArgs : PropertyChangedEventArgs
+    {
+        public Wrapper Source { get; }
+
+        public PropertyModifiedEventArgs(Wrapper source, string propertyName) : base(propertyName)
+        {
+            Source = source;
+        }
+    }
 
     public class Wrapper
     {
@@ -20,7 +31,14 @@ namespace ChroZenGC.Core.Wrappers
         {
             if (Parent is Wrapper wrapper)
             {
-                wrapper.NotifyToParent(s, new PropertyChangedEventArgs(GetType().Name + ">" + args.PropertyName));
+                if (args is PropertyModifiedEventArgs e)
+                {
+                    wrapper.NotifyToParent(s, new PropertyModifiedEventArgs(e.Source, GetType().Name + ">" + args.PropertyName));
+                }
+                else
+                {
+                    wrapper.NotifyToParent(s, new PropertyChangedEventArgs(GetType().Name + ">" + args.PropertyName));
+                }
             }
         }
     }
@@ -36,7 +54,7 @@ namespace ChroZenGC.Core.Wrappers
 
         protected void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyModifiedEventArgs(this, propertyName));
         }
 
         protected StructureWrapper(INotifyPropertyChanged parent) : base(parent)
@@ -70,7 +88,7 @@ namespace ChroZenGC.Core.Wrappers
                 if (!Provider[index].Equals(value))
                 {
                     Provider[index] = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
+                    PropertyChanged?.Invoke(this, new PropertyModifiedEventArgs(this, null));
                 }
             }
         }
@@ -121,16 +139,26 @@ namespace ChroZenGC.Core.Wrappers
             if (blockPropertyModifiedEvent)
                 return;
 
-            args = new PropertyChangedEventArgs(args.PropertyName ?? string.Empty);
+            if (args.PropertyName == null)
+            {
+                if (args is PropertyModifiedEventArgs e)
+                {
+                    args = new PropertyModifiedEventArgs(e.Source, string.Empty);
+                }
+                else
+                {
+                    args = new PropertyModifiedEventArgs(null, string.Empty);
+                }
+            }
 
             blockPropertyModifiedEvent = true;
-            OnPrePropertyModified(sender, args.PropertyName == null? new PropertyChangedEventArgs("") : args);
+            OnPrePropertyModified(sender, args as PropertyModifiedEventArgs);
             blockPropertyModifiedEvent = false;
 
             PropertyModified?.Invoke(sender, args);
         }
 
-        protected virtual void OnPrePropertyModified(object sender, PropertyChangedEventArgs args)
+        protected virtual void OnPrePropertyModified(object sender, PropertyModifiedEventArgs args)
         {
 
         }

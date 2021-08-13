@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.Grid_Config_Signal"
+             x:DataType="local:ViewModel_Config"
+             x:Name="This">
+    <ContentView.Resources>
+        <Style x:Key="captionKey" TargetType="Label">
+            <Setter Property="TextColor" Value="Silver" />
+            <Setter Property="FontSize"  Value="{StaticResource CaptionFontSizeKey}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="End" />
+        </Style>
+
+        <Style x:Key="groupKey" TargetType="Frame">
+            <Setter Property="Background" Value="{StaticResource GroupingFrameBackgroudKey}" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+
+        <ColumnDefinitionCollection x:Key="columnConfig">
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.2"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="0.17*"/>
+            <ColumnDefinition Width="0.08*"/>
+        </ColumnDefinitionCollection>
+
+        <ColumnDefinitionCollection x:Key="columnProgram">
+            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </ColumnDefinitionCollection>
+
+        <RowDefinitionCollection x:Key="rowProgram">
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="7" />
+            <RowDefinition Height="0.2" />
+            <RowDefinition Height="7" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </RowDefinitionCollection>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="0" />
+                <ColumnDefinition Width="0" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollView>
+                <StackLayout Padding="10" Spacing="10" >
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Signal Zero"
+                                        Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Signals[0].Zero, StringFormat='{0:F1}'}" 
+                                           Caption="Signal Zero" Unit="mV" 
+                                           Grid.Column="2" Grid.ColumnSpan="3"/>
+                            <Label Text="Sensitivity" 
+                                            Grid.Row="1"  Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Signals[0].Sensitivity, StringFormat='{0:F1}'}" 
+                                           Min="-10" Max="10"  Caption="Signal Zero" 
+                                           Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
+
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="2"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame  Style="{StaticResource groupKey}">
+                        <Grid RowSpacing="0" ColumnSpacing="5" RowDefinitions="{StaticResource rowProgram}" ColumnDefinitions="{StaticResource columnProgram}">
+                            <StackLayout Spacing="20" Orientation="Horizontal" Grid.ColumnSpan="3">
+                                <Label Text="Signal Change" 
+                                   Grid.ColumnSpan="2" HorizontalOptions="Start" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Signals[0].SignalChange}" />
+                            </StackLayout>
+
+                            <Label Text="Time(min)" 
+                                   Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="Source" 
+                                   Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource captionKey}" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Row="4" Grid.ColumnSpan="3"/>
+
+                            <Label Text="Init" 
+                                   Grid.Row="6" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <local:EnumPicker Title="Init Source" Value="{Binding Signals[0].InitialDetector}"
+                                              Grid.Row="6"  Grid.Column="2" />
+
+                            <StackLayout BindableLayout.ItemsSource="{Binding Signals.Program1}" 
+                                         IsVisible="{Binding Signals[0].SignalChange}"
+                                         Grid.Row="7" Grid.ColumnSpan="3" BackgroundColor="Transparent" Spacing="0" >
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid x:DataType="local:SignalProgramStep" ColumnSpacing="10" ColumnDefinitions="{StaticResource columnProgram}">
+                                            <Label Text="{Binding Number}" 
+                                                   HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                            <local:ValueEditor Value="{Binding Step.Time, StringFormat='{0:F1}'}" 
+                                                               Max="9999" Min="0" Caption="{Binding Number, StringFormat='Time {0}'}"
+                                                               Grid.Column="1" 
+                                                               IsVisible="{Binding Editable}" />
+
+                                            <local:ValueEditor Value="{Binding Step.Time, StringFormat='{0:F1}'}" 
+                                                               Max="9999" Min="0" Caption="Add Time" Text="Add"
+                                                               Grid.Column="1" IsVisible="{Binding Editable, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                                               Command="{Binding Source={x:Reference This}, Path=BindingContext.Signals.TimeChangedCommand}"
+                                                               CommandParameter="{Binding}"/>
+
+                                            <local:EnumPicker Title="{Binding Number, StringFormat='Source {0}'}" Value="{Binding Step.Detector}"
+                                                                Grid.Column="2" IsVisible="{Binding Editable}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <ScrollView Grid.Column="1">
+                <StackLayout Padding="10" Spacing="10" >
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Signal Zero"
+                                        Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Signals[1].Zero, StringFormat='{0:F1}'}" 
+                                           Caption="Signal Zero" Unit="mV" 
+                                           Grid.Column="2" Grid.ColumnSpan="3"/>
+                            <Label Text="Sensitivity" 
+                                            Grid.Row="1"  Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Signals[1].Sensitivity, StringFormat='{0:F1}'}" 
+                                           Min="-10" Max="10"  Caption="Signal Zero" 
+                                           Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
+
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="2"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame  Style="{StaticResource groupKey}">
+                        <Grid RowSpacing="0" ColumnSpacing="5" RowDefinitions="{StaticResource rowProgram}" ColumnDefinitions="{StaticResource columnProgram}">
+                            <StackLayout Spacing="20" Orientation="Horizontal" Grid.ColumnSpan="3">
+                                <Label Text="Signal Change" 
+                                   Grid.ColumnSpan="2" HorizontalOptions="Start" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Signals[1].SignalChange}" />
+                            </StackLayout>
+
+                            <Label Text="Time(min)" 
+                                   Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="Source" 
+                                   Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource captionKey}" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Row="4" Grid.ColumnSpan="3"/>
+
+                            <Label Text="Init" 
+                                   Grid.Row="6" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <local:EnumPicker Title="Init Source" Value="{Binding Signals[1].InitialDetector}"
+                                              Grid.Row="6"  Grid.Column="2" />
+
+                            <StackLayout BindableLayout.ItemsSource="{Binding Signals.Program2}" 
+                                         IsVisible="{Binding Signals[1].SignalChange}"
+                                         Grid.Row="7" Grid.ColumnSpan="3" BackgroundColor="Transparent" Spacing="0" >
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid x:DataType="local:SignalProgramStep" ColumnSpacing="10" ColumnDefinitions="{StaticResource columnProgram}">
+                                            <Label Text="{Binding Number}" 
+                                                   HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                            <local:ValueEditor Value="{Binding Step.Time, StringFormat='{0:F1}'}" 
+                                                               Max="9999" Min="0" Caption="{Binding Number, StringFormat='Time {0}'}"
+                                                               Grid.Column="1" 
+                                                               IsVisible="{Binding Editable}" />
+
+                                            <local:ValueEditor Value="{Binding Step.Time, StringFormat='{0:F1}'}" 
+                                                               Max="9999" Min="0" Caption="Add Time" Text="Add"
+                                                               Grid.Column="1" IsVisible="{Binding Editable, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                                               Command="{Binding Source={x:Reference This}, Path=BindingContext.Signals.TimeChangedCommand}"
+                                                               CommandParameter="{Binding}"/>
+
+                                            <local:EnumPicker Title="{Binding Number, StringFormat='Source {0}'}" Value="{Binding Step.Detector}"
+                                                                Grid.Column="2" IsVisible="{Binding Editable}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <ScrollView Grid.Column="2">
+                <StackLayout Padding="10" Spacing="10" >
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Signal Zero"
+                                        Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Signals[2].Zero, StringFormat='{0:F1}'}" 
+                                           Caption="Signal Zero" Unit="mV" 
+                                           Grid.Column="2" Grid.ColumnSpan="3"/>
+                            <Label Text="Sensitivity" 
+                                            Grid.Row="1"  Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Signals[2].Sensitivity, StringFormat='{0:F1}'}" 
+                                           Min="-10" Max="10"  Caption="Signal Zero" 
+                                           Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
+
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="2"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame  Style="{StaticResource groupKey}">
+                        <Grid RowSpacing="0" ColumnSpacing="5" RowDefinitions="{StaticResource rowProgram}" ColumnDefinitions="{StaticResource columnProgram}">
+                            <StackLayout Spacing="20" Orientation="Horizontal" Grid.ColumnSpan="3">
+                                <Label Text="Signal Change" 
+                                   Grid.ColumnSpan="2" HorizontalOptions="Start" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Signals[2].SignalChange}" />
+                            </StackLayout>
+
+                            <Label Text="Time(min)" 
+                                   Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="Source" 
+                                   Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource captionKey}" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Row="4" Grid.ColumnSpan="3"/>
+
+                            <Label Text="Init" 
+                                   Grid.Row="6" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <local:EnumPicker Title="Init Source" Value="{Binding Signals[2].InitialDetector}"
+                                              Grid.Row="6"  Grid.Column="2" />
+
+                            <StackLayout BindableLayout.ItemsSource="{Binding Signals.Program3}" 
+                                         IsVisible="{Binding Signals[2].SignalChange}"
+                                         Grid.Row="7" Grid.ColumnSpan="3" BackgroundColor="Transparent" Spacing="0" >
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid x:DataType="local:SignalProgramStep" ColumnSpacing="10" ColumnDefinitions="{StaticResource columnProgram}">
+                                            <Label Text="{Binding Number}" 
+                                                   HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                            <local:ValueEditor Value="{Binding Step.Time, StringFormat='{0:F1}'}" 
+                                                               Max="9999" Min="0" Caption="{Binding Number, StringFormat='Time {0}'}"
+                                                               Grid.Column="1" 
+                                                               IsVisible="{Binding Editable}" />
+
+                                            <local:ValueEditor Value="{Binding Step.Time, StringFormat='{0:F1}'}" 
+                                                               Max="9999" Min="0" Caption="Add Time" Text="Add"
+                                                               Grid.Column="1" IsVisible="{Binding Editable, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                                               Command="{Binding Source={x:Reference This}, Path=BindingContext.Signals.TimeChangedCommand}"
+                                                               CommandParameter="{Binding}"/>
+
+                                            <local:EnumPicker Title="{Binding Number, StringFormat='Source {0}'}" Value="{Binding Step.Detector}"
+                                                                Grid.Column="2" IsVisible="{Binding Editable}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

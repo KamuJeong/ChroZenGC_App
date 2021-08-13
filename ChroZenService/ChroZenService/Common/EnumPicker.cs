@@ -41,6 +41,9 @@ namespace ChroZenService
                     picker.dictionaryEnum = new Dictionary<string, object>();
                     foreach(var e in Enum.GetValues(picker.enumType))
                     {
+                        if (picker.Filter != null && !picker.Filter((Enum)Convert.ChangeType(e, picker.enumType)))
+                            continue;
+
                         picker.dictionaryEnum.Add(picker.Gap ?
                                 Regex.Replace($"{e}", @"((?<=\p{Ll})\p{Lu})|((?!\A)\p{Lu}(?>\p{Ll}))", " $0") : $"{e}", (object)e);
                     }
@@ -55,6 +58,25 @@ namespace ChroZenService
             get => (Enum)GetValue(ValueProperty);
             set => SetValue(ValueProperty, value);
         }
+
+        public static readonly BindableProperty FilterProperty = BindableProperty.Create("Filter", typeof(Predicate<Enum>), typeof(EnumPicker), propertyChanged: FilterChanged);
+
+        private static void FilterChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is EnumPicker picker && newValue.GetType().IsEnum)
+            {
+                var enumType = picker.enumType;
+                picker.enumType = null;
+                ValueChanged(bindable, null, Convert.ChangeType(picker.Value, enumType));
+            }
+        }
+
+        public Predicate<Enum> Filter
+        {
+            get => (Predicate<Enum>)GetValue(FilterProperty);
+            set => SetValue(FilterProperty, value);
+        }
+
 
         public EnumPicker()
         {

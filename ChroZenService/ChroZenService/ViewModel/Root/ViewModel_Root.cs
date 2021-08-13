@@ -29,9 +29,10 @@ namespace ChroZenService
         public ViewModel_Root(Model model, DeviceIPFinder finder)
         {
             Model = model;
+
+            Model.Configuration.PropertyModified += OnConfigurationModified;
+
             IPFinder = finder;
-
-
             Device.StartTimer(TimeSpan.FromSeconds(1.0), () =>
             {
                 TimeTicker = DateTime.Now.ToString("T");
@@ -47,6 +48,15 @@ namespace ChroZenService
             } );
 
             OnRefreshReception(null);
+        }
+
+        private void OnConfigurationModified(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "Binary")
+            {
+                Resolver.Resolve<View_Root>().Initialize();
+                Resolver.Resolve<View_Config>().Initialize();
+            }
         }
 
         public bool IsRefreshing { get; set; }
@@ -101,6 +111,9 @@ namespace ChroZenService
                     await Model.Request(Model.Detectors[0], 0);
                     await Model.Request(Model.Detectors[1], 1);
                     await Model.Request(Model.Detectors[2], 2);
+                    await Model.Request(Model.Signals[0], 0);
+                    await Model.Request(Model.Signals[1], 0);
+                    await Model.Request(Model.Signals[2], 0);
                 }
 
                 IsDemo = false;

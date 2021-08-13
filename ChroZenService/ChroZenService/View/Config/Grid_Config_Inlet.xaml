@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService" 
              x:Class="ChroZenService.Grid_Config_Inlet"
-             x:DataType="local:ViewModel_Config"
+             x:DataType="local:ViewModel_Config_Inlet"
              x:Name="This">
     <ContentView.Resources>
         <local:IsCapillaryConverter x:Key="isCapillaryKey" />
@@ -60,11 +60,11 @@
 
                             <Label Text="Carrier Gas"
                                    Style="{StaticResource captionKey}" />
-                            <local:EnumPicker Title="Carrier Gas" Value="{Binding Inlet.Setup.CarrierGas}"
+                            <local:EnumPicker Title="Carrier Gas" Value="{Binding Setup.CarrierGas}"
                                           Grid.Row="0"  Grid.Column="2" Grid.ColumnSpan="3" />
                             <Label Text="Connection" 
                                    Grid.Row="1"  Style="{StaticResource captionKey}" />
-                            <local:EnumPicker Title="Connection" Value="{Binding Inlet.Setup.Connection}" Gap="True"
+                            <local:EnumPicker Title="Connection" Value="{Binding Setup.Connection}" Gap="True"
                                           Grid.Row="1"  Grid.Column="2" Grid.ColumnSpan="3" />
 
                             <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="2"/>
@@ -72,9 +72,9 @@
                     </Frame>
                     <Label Text="Column Setup" 
                             Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" 
-                            IsVisible="{Binding Inlet.Type, Converter={StaticResource isNotPackedKey}}"/>
+                            IsVisible="{Binding Type, Converter={StaticResource isNotPackedKey}}"/>
                     <Frame Style="{StaticResource groupKey}"
-                           IsVisible="{Binding Inlet.Type, Converter={StaticResource isNotPackedKey}}">
+                           IsVisible="{Binding Type, Converter={StaticResource isNotPackedKey}}">
                         <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
@@ -84,18 +84,18 @@
 
                             <Label Text="Length"
                                     Style="{StaticResource captionKey}" />
-                            <local:ValueEditor Value="{Binding Inlet.Setup.Length, StringFormat='{0:F1}'}" 
+                            <local:ValueEditor Value="{Binding Setup.Length, StringFormat='{0:F1}'}" 
                                                 Max="150" Min="5" Caption="Length" 
                                                 Unit="m" UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"
                                                 Grid.Column="2" Grid.ColumnSpan="3" />
                             <Label Text="I.D." 
                                Grid.Row="1"  Style="{StaticResource captionKey}" />
-                            <local:ValueEditor Value="{Binding Inlet.Setup.Diameter, StringFormat='{0:F2}'}" 
+                            <local:ValueEditor Value="{Binding Setup.Diameter, StringFormat='{0:F2}'}" 
                                            Max="1.0" Min="0.1" Caption="I.D." Unit="mm" 
                                            Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
                             <Label Text="Film Thickness" 
                                Grid.Row="2"  Style="{StaticResource captionKey}" />
-                            <local:ValueEditor Value="{Binding Inlet.Setup.FilmThickness, StringFormat='{0:F2}'}" 
+                            <local:ValueEditor Value="{Binding Setup.FilmThickness, StringFormat='{0:F2}'}" 
                                            Max="50" Min="0" Caption="Film Thickness" Unit="mm" 
                                            Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
 
@@ -104,9 +104,9 @@
                     </Frame>
                     <Label Text="Gas Saver Mode" 
                             Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" 
-                            IsVisible="{Binding Inlet.Type, Converter={StaticResource isCapillaryKey}}" />
+                            IsVisible="{Binding Type, Converter={StaticResource isCapillaryKey}}" />
                     <Frame Style="{StaticResource groupKey}"
-                           IsVisible="{Binding Inlet.Type, Converter={StaticResource isCapillaryKey}}">
+                           IsVisible="{Binding Type, Converter={StaticResource isCapillaryKey}}">
                         <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
@@ -116,20 +116,20 @@
 
                             <Label Text="Gas Saver"
                                Style="{StaticResource captionKey}" />
-                            <local:SwitchImageButton ON="{Binding Inlet.Setup.GasSaverOn}"
+                            <local:SwitchImageButton ON="{Binding Setup.GasSaverOn}"
                                                  Grid.Column="2"  Grid.ColumnSpan="3" />
                             <Label Text="Flow" 
                                Grid.Row="1"  Style="{StaticResource captionKey}" />
-                            <local:ValueEditor Value="{Binding Inlet.Setup.GasSaverFlow, StringFormat='{0:F2}'}" x:Name="unitWidth"
+                            <local:ValueEditor Value="{Binding Setup.GasSaverFlow, StringFormat='{0:F2}'}" x:Name="unitWidth"
                                            Max="1000" Min="1" Caption="Gas Saver Flow" Unit="mL/min" 
-                                           IsEnabled="{Binding Inlet.Setup.GasSaverOn}"
+                                           IsEnabled="{Binding Setup.GasSaverOn}"
                                            Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
                             <Label Text="Time" 
                                Grid.Row="2"  Style="{StaticResource captionKey}" />
-                            <local:ValueEditor Value="{Binding Inlet.Setup.GasSaverTime, StringFormat='{0:F1}'}" 
+                            <local:ValueEditor Value="{Binding Setup.GasSaverTime, StringFormat='{0:F1}'}" 
                                                 Max="9999" Min="0" Caption="Gas Saver Time" 
                                                 Unit="min" UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"
-                                                IsEnabled="{Binding Inlet.Setup.GasSaverOn}"
+                                                IsEnabled="{Binding Setup.GasSaverOn}"
                                                 Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" />
 
                             <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
@@ -137,7 +137,7 @@
                     </Frame>
 
                     <Frame Style="{StaticResource groupKey}"
-                           IsVisible="{Binding Inlet.Type, Converter={StaticResource isNotPackedKey}}">
+                           IsVisible="{Binding Type, Converter={StaticResource isNotPackedKey}}">
                         <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
@@ -147,18 +147,18 @@
 
                             <Label Text="Pressure Correction"
                                Style="{StaticResource captionKey}" />
-                            <local:SwitchImageButton ON="{Binding Inlet.Setup.PressureCorrectOn}"
+                            <local:SwitchImageButton ON="{Binding Setup.PressureCorrectOn}"
                                                  Grid.Column="2"  Grid.ColumnSpan="3" />
                             <Label Text="Value" 
                                Grid.Row="1"  Style="{StaticResource captionKey}" />
-                            <local:ValueEditor Value="{Binding Inlet.Setup.PressureCorrect, StringFormat='{0:F3}'}"
+                            <local:ValueEditor Value="{Binding Setup.PressureCorrect, StringFormat='{0:F3}'}"
                                                 Max="100" Min="0" Caption="Pressure Correct" 
                                                 Unit="psi" UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}" 
-                                                IsEnabled="{Binding Inlet.Setup.PressureCorrectOn}"
+                                                IsEnabled="{Binding Setup.PressureCorrectOn}"
                                                 Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" />
                             <Label Text="Vacuum Correct" 
                                Grid.Row="2"  Style="{StaticResource captionKey}" />
-                            <local:SwitchImageButton ON="{Binding Inlet.Setup.VaccumCorrect}"
+                            <local:SwitchImageButton ON="{Binding Setup.VaccumCorrect}"
                                                  Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" />
 
                             <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
@@ -190,25 +190,25 @@
                                     Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
                             <Label Text="Temperature"
                                    Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
-                            <local:ValueEditor Value="{Binding Inlet.Temperature, StringFormat='{0:F1}'}" Unit="℃" 
+                            <local:ValueEditor Value="{Binding Temperature, StringFormat='{0:F1}'}" Unit="℃" 
                                                Grid.Row="2" Grid.Column="2" IsEnabled="False"/>
-                            <local:ValueEditor Value="{Binding Inlet.Setup.TempSet, StringFormat='{0:F1}'}" 
-                                               Max="450" Min="0" Caption="Temperature" Switch="{Binding Inlet.Setup.TempOnOff}" Unit="℃" 
+                            <local:ValueEditor Value="{Binding Setup.TempSet, StringFormat='{0:F1}'}" 
+                                               Max="450" Min="0" Caption="Temperature" Switch="{Binding Setup.TempOnOff}" Unit="℃" 
                                                Grid.Row="2" Grid.Column="3" />
              
                             <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>
                             <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
 
                             <StackLayout Orientation="Horizontal" Spacing="20" 
-                                         Grid.Row="4" Grid.ColumnSpan="4" IsVisible="{Binding Inlet.Type, Converter={StaticResource isOnColumnKey}}">
+                                         Grid.Row="4" Grid.ColumnSpan="4" IsVisible="{Binding Type, Converter={StaticResource isOnColumnKey}}">
                                 <Label Text="Temperature Program"
                                         Style="{StaticResource captionKey}" />
-                                <local:EnumPicker Title="Temperature Program" Value="{Binding Inlet.Setup.TempMode}" Gap="True"/>
+                                <local:EnumPicker Title="Temperature Program" Value="{Binding Setup.TempMode}" Gap="True"/>
                             </StackLayout>
                         </Grid>
                     </Frame>
 
-                    <Frame Style="{StaticResource groupKey}" IsVisible="{Binding Inlet.Setup.TempMode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Program}">
+                    <Frame Style="{StaticResource groupKey}" IsVisible="{Binding Setup.TempMode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Program}">
                         <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
@@ -234,7 +234,7 @@
 
                             <BoxView BackgroundColor="Silver" Grid.Row="3" Grid.ColumnSpan="4"/>
 
-                            <StackLayout BindableLayout.ItemsSource="{Binding Inlet.TempProgram}" 
+                            <StackLayout BindableLayout.ItemsSource="{Binding TempProgram}" 
                                          Grid.Row="5" Grid.ColumnSpan="4" BackgroundColor="Transparent" Spacing="5" >
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
@@ -263,7 +263,7 @@
                         <StackLayout Spacing="0">
                             <StackLayout Orientation="Horizontal" Spacing="40" Margin="0,0,0,5">
                                 <Label Text="UPC mode" Style="{StaticResource captionKey}" />
-                                <local:EnumPicker Title="UPC mode" Value="{Binding Inlet.Setup.APCMode}" Gap="True" />
+                                <local:EnumPicker Title="UPC mode" Value="{Binding Setup.APCMode}" Gap="True" />
                             </StackLayout>
                             <Grid ColumnSpacing="10" RowSpacing="5">
                                 <Grid.ColumnDefinitions>
@@ -290,22 +290,22 @@
                                        Style="{StaticResource captionKey}" FontSize="{StaticResource DefaultFontSizeKey}" />
                                 </StackLayout>
 
-                                <local:ValueEditor Value="{Binding Inlet.ColumnFlow, StringFormat='{0:F2}'}" 
+                                <local:ValueEditor Value="{Binding ColumnFlow, StringFormat='{0:F2}'}" 
                                                Grid.Column="2" IsEnabled="False"/>
-                                <local:ValueEditor Value="{Binding Inlet.Pressure, StringFormat='{0:F3}'}" 
+                                <local:ValueEditor Value="{Binding Pressure, StringFormat='{0:F3}'}" 
                                                Grid.Row="1" Grid.Column="2" IsEnabled="False"/>
 
-                                <local:ValueEditor Value="{Binding Inlet.Setup.ColumnFlowSet, StringFormat='{0:F2}'}" Switch="{Binding Inlet.Setup.ColumnFlowOnOff}"
-                                               Min="0" Max="{Binding Inlet.MaxColumnFlow}" Caption="Column Flow"
-                                               Grid.Column="3" IsVisible="{Binding Inlet.Setup.APCMode, Converter={StaticResource isFlowModeKey}}" />
-                                <local:ValueEditor Value="{Binding Inlet.Setup.PressureSet, StringFormat='{0:F3}'}" Switch="{Binding Inlet.Setup.ColumnFlowOnOff}"
+                                <local:ValueEditor Value="{Binding Setup.ColumnFlowSet, StringFormat='{0:F2}'}" Switch="{Binding Setup.ColumnFlowOnOff}"
+                                               Min="0" Max="{Binding MaxColumnFlow}" Caption="Column Flow"
+                                               Grid.Column="3" IsVisible="{Binding Setup.APCMode, Converter={StaticResource isFlowModeKey}}" />
+                                <local:ValueEditor Value="{Binding Setup.PressureSet, StringFormat='{0:F3}'}" Switch="{Binding Setup.ColumnFlowOnOff}"
                                                Min="0" Max="150" Caption="Pressure"
-                                               Grid.Row="1"  Grid.Column="3" IsVisible="{Binding Inlet.Setup.APCMode, Converter={StaticResource isPressureModeKey}}" />
+                                               Grid.Row="1"  Grid.Column="3" IsVisible="{Binding Setup.APCMode, Converter={StaticResource isPressureModeKey}}" />
 
                                 <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="2"/>
                             </Grid>
 
-                            <Grid ColumnSpacing="10" RowSpacing="5" IsVisible="{Binding Inlet.Type, Converter={StaticResource isCapillaryKey}}">
+                            <Grid ColumnSpacing="10" RowSpacing="5" IsVisible="{Binding Type, Converter={StaticResource isCapillaryKey}}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="4*"/>
                                     <ColumnDefinition Width="0.2"/>
@@ -325,20 +325,20 @@
                                 <Label Text="Velocity"  
                                    Grid.Row="2" Style="{StaticResource captionKey}"/>
 
-                                <local:ValueEditor Value="{Binding Inlet.TotalFlow, StringFormat='{0:F1}'}"
+                                <local:ValueEditor Value="{Binding TotalFlow, StringFormat='{0:F1}'}"
                                                Grid.Column="2" IsEnabled="False"/>
-                                <local:ValueEditor Value="{Binding Inlet.SplitFlow, StringFormat='{0:F1}'}"
+                                <local:ValueEditor Value="{Binding SplitFlow, StringFormat='{0:F1}'}"
                                                Grid.Row="1" Grid.Column="2" IsEnabled="False"/>
-                                <local:ValueEditor Value="{Binding Inlet.Velocity, StringFormat='{0:F1}'}"
+                                <local:ValueEditor Value="{Binding Velocity, StringFormat='{0:F1}'}"
                                                Unit="cm/s" x:Name="secondUnit"
                                                Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" IsEnabled="False"/>
 
-                                <local:ValueEditor Value="{Binding Inlet.Setup.TotalFlowSet, StringFormat='{0:F1}'}" 
+                                <local:ValueEditor Value="{Binding Setup.TotalFlowSet, StringFormat='{0:F1}'}" 
                                                Min="0" Max="1000" Caption="Total Flow"
-                                               Grid.Column="3" IsVisible="{Binding Inlet.Setup.APCMode, Converter={StaticResource isFlowModeKey}}" />
-                                <local:ValueEditor Value="{Binding Inlet.Setup.SplitFlowSet, StringFormat='{0:F1}'}"
+                                               Grid.Column="3" IsVisible="{Binding Setup.APCMode, Converter={StaticResource isFlowModeKey}}" />
+                                <local:ValueEditor Value="{Binding Setup.SplitFlowSet, StringFormat='{0:F1}'}"
                                                Min="0" Max="1000" Caption="Split Flow"
-                                               Grid.Row="1"  Grid.Column="3" IsVisible="{Binding Inlet.Setup.APCMode, Converter={StaticResource isFlowModeKey}}" />
+                                               Grid.Row="1"  Grid.Column="3" IsVisible="{Binding Setup.APCMode, Converter={StaticResource isFlowModeKey}}" />
 
                                 <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
                             </Grid>
@@ -346,7 +346,7 @@
                     </Frame>
 
                     <Frame Style="{StaticResource groupKey}" 
-                           IsVisible="{Binding Inlet.Setup.APCMode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=ProgrammedFlow}">
+                           IsVisible="{Binding Setup.APCMode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=ProgrammedFlow}">
                         <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
@@ -372,7 +372,7 @@
 
                             <BoxView BackgroundColor="Silver" Grid.Row="3" Grid.ColumnSpan="4"/>
 
-                            <StackLayout BindableLayout.ItemsSource="{Binding Inlet.FlowProgram}" 
+                            <StackLayout BindableLayout.ItemsSource="{Binding FlowProgram}" 
                                          Grid.Row="5" Grid.ColumnSpan="4" BackgroundColor="Transparent" Spacing="5" >
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
@@ -383,7 +383,7 @@
                                                                Max="30" Min="0" Caption="{Binding Number, StringFormat='Rate {0}'}"
                                                                Grid.Column="1" IsVisible="{Binding Number, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Init}" />
                                             <local:ValueEditor Value="{Binding Step.FinalFlow, StringFormat='{0:F1}'}"  
-                                                               Max="{Binding Source={x:Reference This}, Path=BindingContext.Inlet.MaxColumnFlow}" Min="0" Caption="{Binding Number, StringFormat='Final Flow {0}'}"
+                                                               Max="{Binding Source={x:Reference This}, Path=BindingContext.MaxColumnFlow}" Min="0" Caption="{Binding Number, StringFormat='Final Flow {0}'}"
                                                                IsEnabled="{Binding Editable}"
                                                                Grid.Column="2" />
                                             <local:ValueEditor Value="{Binding Step.FinalTime, StringFormat='{0:F1}'}"
@@ -398,7 +398,7 @@
                     </Frame>
 
                     <Frame Style="{StaticResource groupKey}" 
-                           IsVisible="{Binding Inlet.Setup.APCMode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=ProgrammedPressure}">
+                           IsVisible="{Binding Setup.APCMode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=ProgrammedPressure}">
                         <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
@@ -424,7 +424,7 @@
 
                             <BoxView BackgroundColor="Silver" Grid.Row="3" Grid.ColumnSpan="4"/>
 
-                            <StackLayout BindableLayout.ItemsSource="{Binding Inlet.PressProgram}" 
+                            <StackLayout BindableLayout.ItemsSource="{Binding PressProgram}" 
                                          Grid.Row="5" Grid.ColumnSpan="4" BackgroundColor="Transparent" Spacing="5" >
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
@@ -449,7 +449,7 @@
                         </Grid>
                     </Frame>
 
-                    <Frame Style="{StaticResource groupKey}" IsVisible="{Binding Inlet.Type, Converter={StaticResource isCapillaryKey}}">
+                    <Frame Style="{StaticResource groupKey}" IsVisible="{Binding Type, Converter={StaticResource isCapillaryKey}}">
                         <StackLayout Spacing="0">
                             <Grid ColumnSpacing="10" RowSpacing="5">
                                 <Grid.ColumnDefinitions>
@@ -459,7 +459,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Text="Injection Mode"
                                         Style="{StaticResource captionKey}" />
-                                <local:EnumPicker Title="Injection Mode" Value="{Binding Inlet.Setup.InjectMode}" 
+                                <local:EnumPicker Title="Injection Mode" Value="{Binding Setup.InjectMode}" 
                                                   Grid.Column="2" Gap="True"/>
 
                             </Grid>
@@ -481,24 +481,24 @@
                                         Style="{StaticResource captionKey}" />
                                 <Label Text="1 :"
                                         Grid.Column="2" Style="{StaticResource captionKey}" HorizontalOptions="End" />
-                                <local:ValueEditor Value="{Binding Inlet.Setup.SplitRatio}"
+                                <local:ValueEditor Value="{Binding Setup.SplitRatio}"
                                                Min="0" Max="7500" Caption="Split Ratio"
                                                Grid.Column="3" />
                                 <Label Text="Split On Time"
                                        Grid.Row="1" Style="{StaticResource captionKey}" />
-                                <local:ValueEditor Value="{Binding Inlet.Setup.SplitOnTime, StringFormat='{0:F1}'}"
+                                <local:ValueEditor Value="{Binding Setup.SplitOnTime, StringFormat='{0:F1}'}"
                                                 Min="0" Max="9999" Caption="Split On Time"
                                                 Unit="min" UnitWidth="{Binding Source={x:Reference secondUnit}, Path=UnitLabel.Width}" 
                                                 Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" />
                                 <Label Text="Pulsed Pressure"
                                        Grid.Row="2" Style="{StaticResource captionKey}" />
-                                <local:ValueEditor Value="{Binding Inlet.Setup.Pulsed_FlowPressSet, StringFormat='{0:F3}'}"
+                                <local:ValueEditor Value="{Binding Setup.Pulsed_FlowPressSet, StringFormat='{0:F3}'}"
                                                 Min="0" Max="150" Caption="Pulsed Pressure"
                                                 Unit="psi" UnitWidth="{Binding Source={x:Reference secondUnit}, Path=UnitLabel.Width}" 
                                                 Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" />
                                 <Label Text="Pulsed Time"
                                        Grid.Row="3" Style="{StaticResource captionKey}" />
-                                <local:ValueEditor Value="{Binding Inlet.Setup.Pulsed_Time, StringFormat='{0:F1}'}"
+                                <local:ValueEditor Value="{Binding Setup.Pulsed_Time, StringFormat='{0:F1}'}"
                                                 Min="0" Max="9999" Caption="Pulsed Time"
                                                 Unit="min" UnitWidth="{Binding Source={x:Reference secondUnit}, Path=UnitLabel.Width}" 
                                                 Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" />

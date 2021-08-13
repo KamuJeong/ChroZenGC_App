@@ -1,4 +1,5 @@
-﻿using ChroZenGC.Core;
+﻿using Autofac;
+using ChroZenGC.Core;
 using ChroZenGC.Core.Packets;
 using ChroZenGC.Core.Wrappers;
 using System;
@@ -21,39 +22,51 @@ namespace ChroZenService
 
         public OvenWrapper Oven => Model.Oven;
 
-        public ViewModel_Config_Inlet Inlet { get; }
+        public List<ViewModel_Config_Inlet> Inlets { get; } = new List<ViewModel_Config_Inlet>();
 
-        public ViewModel_Config_Detector Detector { get; }
+        public List<ViewModel_Config_Detector> Detectors { get; } = new List<ViewModel_Config_Detector>();
+
+        public ViewModel_Config_Signals Signals { get; }
 
         public ViewModel_Config()
         {
             Model = Resolver.Resolve<Model>();
-            Inlet = Resolver.Resolve<ViewModel_Config_Inlet>();
-            Detector = Resolver.Resolve<ViewModel_Config_Detector>();
+
+            Inlets.Add(Resolver.Resolve<ViewModel_Config_Inlet>(
+                new NamedParameter("type", Model.Configuration.InletType[0]), new NamedParameter("setup", Model.Inlets[0])));
+            Inlets.Add(Resolver.Resolve<ViewModel_Config_Inlet>(
+                new NamedParameter("type", Model.Configuration.InletType[1]), new NamedParameter("setup", Model.Inlets[1])));
+            Inlets.Add(Resolver.Resolve<ViewModel_Config_Inlet>(
+                new NamedParameter("type", Model.Configuration.InletType[2]), new NamedParameter("setup", Model.Inlets[2])));
+
+            Detectors.Add(Resolver.Resolve<ViewModel_Config_Detector>(
+                new NamedParameter("type", Model.Configuration.DetectorType[0]), new NamedParameter("setup", Model.Detectors[0])));
+            Detectors.Add(Resolver.Resolve<ViewModel_Config_Detector>(
+                new NamedParameter("type", Model.Configuration.DetectorType[1]), new NamedParameter("setup", Model.Detectors[1])));
+            Detectors.Add(Resolver.Resolve<ViewModel_Config_Detector>(
+                new NamedParameter("type", Model.Configuration.DetectorType[2]), new NamedParameter("setup", Model.Detectors[2])));
+
+            Signals = Resolver.Resolve<ViewModel_Config_Signals>();
 
             State.PropertyModified += StatePropertyChanged;
             Oven.PropertyModified += OvenPropertyChanged;
             UpdateOvenProgram();
         }
 
+
         private void StatePropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            Inlet.StatePropertyChanged(SelectedItem, State);
-            Detector.StatePropertyChanged(SelectedItem, State);
+            for(int i=0; i<3; ++i)
+            {
+                Inlets[i].StatePropertyChanged(i, State);
+                Detectors[i].StatePropertyChanged(i, State);
+            }
         }
 
         public bool IsEditable { get; set; } = true;
 
-        private int selectedItem = 1;
-        public int SelectedItem
-        {
-            get => selectedItem;
-            set
-            {
-                Inlet.OnSelectedItem(selectedItem = value, Model);
-                Detector.OnSelectedItem(selectedItem, Model);
-            }
-        }
+        public int SelectedItem { get; set; } = 1;
+
 
         // Oven setup
 

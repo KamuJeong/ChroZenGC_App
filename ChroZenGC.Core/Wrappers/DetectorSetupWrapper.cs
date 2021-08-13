@@ -50,12 +50,42 @@ namespace ChroZenGC.Core.Wrappers
             TempSet = 50.0f;
         }
 
-        protected override void OnPrePropertyModified(object sender, PropertyChangedEventArgs args)
+        protected override void OnPrePropertyModified(object sender, PropertyModifiedEventArgs args)
         {
             base.OnPrePropertyModified(sender, args);
 
             PolarityProgram[5].Time = 0.0f;
             PolarityProgram[5].Polarity = Polarity.Delete;
+
+            if(args.PropertyName == "_TCDPolarityProgramWrapper>Time")
+            {
+                if(args.Source is _TCDPolarityProgramWrapper p && p.Polarity == Polarity.Delete)
+                {
+                    p.Polarity = Polarity.Positive;
+                }
+                SortProgram();
+            }
+            else if(args.PropertyName == "_TCDPolarityProgramWrapper>Polarity")
+            {
+                if (args.Source is _TCDPolarityProgramWrapper p && p.Polarity == Polarity.Delete)
+                {
+                    SortProgram();
+                }
+            }
+        }
+
+        private void SortProgram()
+        {
+            var list = Packet.Prgm.Where(p => p.btPolarity != Polarity.Delete).OrderBy(p => p.fTime).ToList();
+            var deleted = Packet.Prgm.Where(p => p.btPolarity == Polarity.Delete).ToList();
+
+            for (int i = 0; i < deleted.Count; ++i)
+                deleted[i] = new _TCDPolarityProgram { btPolarity = Polarity.Delete, fTime = 0.0f };
+
+            list.AddRange(deleted);
+
+            for (int j = 0; j < list.Count; ++j)
+                Packet.Prgm[j] = list[j];
         }
 
         public int PortNo

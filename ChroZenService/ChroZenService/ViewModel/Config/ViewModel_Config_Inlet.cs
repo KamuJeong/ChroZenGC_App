@@ -12,18 +12,21 @@ namespace ChroZenService
 {
     public class ViewModel_Config_Inlet : Observable
     {
-        private InletSetupWrapper setup;
-        public InletSetupWrapper Setup
+        public InletSetupWrapper Setup { get; }
+
+        public ViewModel_Config_Inlet(InletTypes type, InletSetupWrapper setup)
         {
-            get => setup;
-            set
-            {
-                if (setup != null)
-                    setup.PropertyModified -= OnInletPropertyChanged;
-                setup = value;
-                if (setup != null)
-                    setup.PropertyModified += OnInletPropertyChanged;
-            }
+            Type = type;
+
+            Setup = setup ?? throw new ArgumentNullException(nameof(setup));
+            Setup.PropertyChanged += OnInletPropertyChanged;
+
+            MaxColumnFlow = Type == InletTypes.Capillary ? 30.0f : 200.0f;
+            Setup.TempMode = Type == InletTypes.OnColumn ? Setup.TempMode : TempModes.Isothermal;
+
+            UpdateTempProgram();
+            UpdateFlowProgram();
+            UpdatePressProgram();
         }
 
         private void OnInletPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -61,52 +64,14 @@ namespace ChroZenService
         public float Velocity { get; set; }
 
 
-        public void StatePropertyChanged(int select, StateWrapper state)
+        public void StatePropertyChanged(int port, StateWrapper state)
         {
-            switch (select)
-            {
-                case 3:
-                case 4:
-                case 5:
-                    Temperature = state.Temperature.Inlet[select - 3];
-                    ColumnFlow = state.Flow.Inlets[select - 3][2];
-                    TotalFlow = state.Flow.Inlets[select - 3][0];
-                    SplitFlow = state.Flow.Inlets[select - 3][3];
-                    Pressure = state.Flow.Pressure[select - 3];
-                    Velocity = state.Flow.Velocity[select - 3];
-                    break;
-            }
-        }
-
-        public void OnSelectedItem(int select, Model model)
-        {
-            switch (select)
-            {
-                case 3:
-                    Setup = model.Inlets[0];
-                    Type = model.Configuration.InletType[0];
-                    break;
-                case 4:
-                    Setup = model.Inlets[1];
-                    Type = model.Configuration.InletType[1];
-                    break;
-                case 5:
-                    Setup = model.Inlets[2];
-                    Type = model.Configuration.InletType[2];
-                    break;
-                default:
-                    return;
-            }
-
-            MaxColumnFlow = Type == InletTypes.Capillary ? 30.0f : 200.0f;
-            Setup.TempMode = Type == InletTypes.OnColumn ? Setup.TempMode : TempModes.Isothermal;
-
-            TempProgram.Clear();
-            UpdateTempProgram();
-            FlowProgram.Clear();
-            UpdateFlowProgram();
-            PressProgram.Clear();
-            UpdatePressProgram();
+            Temperature = state.Temperature.Inlet[port];
+            ColumnFlow = state.Flow.Inlets[port][2];
+            TotalFlow = state.Flow.Inlets[port][0];
+            SplitFlow = state.Flow.Inlets[port][3];
+            Pressure = state.Flow.Pressure[port];
+            Velocity = state.Flow.Velocity[port];
         }
 
         public ObservableCollection<InletTempProgramStep> TempProgram { get; } = new ObservableCollection<InletTempProgramStep>();

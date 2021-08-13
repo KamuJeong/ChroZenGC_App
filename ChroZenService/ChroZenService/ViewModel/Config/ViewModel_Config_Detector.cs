@@ -15,28 +15,24 @@ namespace ChroZenService
 {
     public class ViewModel_Config_Detector : Observable
     {
-        private DetectorSetupWrapper setup;
-        public DetectorSetupWrapper Setup
+        public DetectorSetupWrapper Setup { get; }
+
+
+        public ViewModel_Config_Detector(DetectorTypes type, DetectorSetupWrapper setup)
         {
-            get => setup;
-            set
-            {
-                if (setup != null)
-                    setup.PropertyModified -= OnDetectorPropertyChanged;
-                setup = value;
-                if (setup != null)
-                    setup.PropertyModified += OnDetectorPropertyChanged;
-            }
+            Setup = setup;
+            Type = type;
+
+            Setup.PropertyModified += OnDetectorPropertyChanged;
+
+            UpdatePolarityProgram();
         }
 
         private void OnDetectorPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "Binary"
+            if (e.PropertyName == "Binary" 
                 || e.PropertyName.StartsWith(nameof(_TCDPolarityProgramWrapper)))
             {
-                if (e.PropertyName.EndsWith("Polarity"))
-                    SortTable();
-
                 UpdatePolarityProgram();
             }
         }
@@ -44,56 +40,39 @@ namespace ChroZenService
         public ObservableCollection<PolarityProgramStep> PolarityProgram { get; } = new ObservableCollection<PolarityProgramStep>();
         private void UpdatePolarityProgram()
         {
-            PolarityProgram.Clear();
+            int countUpdate = Setup.PolarityProgram.TakeWhile(p => p.Polarity != Polarity.Delete).Count() + 1 - PolarityProgram.Count;
 
-            int i = 1;
-            foreach (var p in Setup.PolarityProgram.TakeWhile(p => p.Polarity != Polarity.Delete))
+            while (countUpdate > 0 && PolarityProgram.Count < 5)
             {
-                PolarityProgram.Add(new PolarityProgramStep { Editable = true, Number = i++, Step = p });
+                PolarityProgram.Add(new PolarityProgramStep { Number = PolarityProgram.Count + 1, Step = Setup.PolarityProgram[PolarityProgram.Count] });
+                countUpdate--;
             }
 
-            if (PolarityProgram.Count < 5)
+            while (countUpdate < 0)
             {
-                PolarityProgram.Add(new PolarityProgramStep { Editable = false, Number = i, Step = Setup.PolarityProgram[i - 1] });
+                PolarityProgram.RemoveAt(PolarityProgram.Count - 1);
+                countUpdate++;
             }
 
-            foreach(var p in PolarityProgram)
+            foreach (var p in PolarityProgram)
             {
+                p.Editable = true;
                 p.Update();
             }
-        }
-
-        internal void StatePropertyChanged(int select, StateWrapper state)
-        {
-            switch (select)
+            if (PolarityProgram.Count > 0)
             {
-                case 7:
-                case 8:
-                case 9:
-                    Temperature = state.Temperature.Detector[select - 7];
-                    Flow1 = state.Flow.Detectors[select - 7][0];
-                    Flow2 = state.Flow.Detectors[select - 7][1];
-                    Flow3 = state.Flow.Detectors[select - 7][2];
-                    Signal = state.Signal[select - 7];
-                    break;
+                PolarityProgram.Last().Editable = PolarityProgram.Last().Step.Polarity != Polarity.Delete;
+                PolarityProgram.Last().Update();
             }
         }
 
-        internal void OnSelectedItem(int select, Model model)
+        internal void StatePropertyChanged(int port, StateWrapper state)
         {
-            switch (select)
-            {
-                case 7:
-                case 8:
-                case 9:
-                    Setup = model.Detectors[select - 7];
-                    Type = model.Configuration.DetectorType[select - 7];
-                    break;
-                default:
-                    return;
-            }
-
-            UpdatePolarityProgram();
+            Temperature = state.Temperature.Detector[port];
+            Flow1 = state.Flow.Detectors[port][0];
+            Flow2 = state.Flow.Detectors[port][1];
+            Flow3 = state.Flow.Detectors[port][2];
+            Signal = state.Signal[port];
         }
 
         public DetectorTypes Type { get; set; }
@@ -132,26 +111,11 @@ namespace ChroZenService
 
         private void OnTimeChanged(object obj)
         {
-            if (obj is PolarityProgramStep p)
+            if (obj is PolarityProgramStep p && p.Step.Time == 0.0f)
             {
-                p.Step.Polarity = Polarity.Positive;
+                p.Step.Time = 1.0f;
+                p.Step.Time = 0.0f;
             }
-            SortTable();
-            UpdatePolarityProgram();
-        }
-
-        private void SortTable()
-        {
-            var list = Setup.PolarityProgram.Where(p => p.Polarity != Polarity.Delete).OrderBy(p => p.Time).ToList();
-            var deleted = Setup.PolarityProgram.Where(p => p.Polarity == Polarity.Delete).ToList();
-
-            foreach (var pgm in deleted)
-                pgm.Time = 0.0f;
-
-            list.AddRange(deleted);
-
-            for (int j = 0; j < list.Count; ++j)
-                Setup.PolarityProgram[j] = list[j];
         }
     }
 
