@@ -11,6 +11,7 @@
         <local:IsOnColumnConverter x:Key="isOnColumnKey" />
         <local:IsFlowModeConverter x:Key="isFlowModeKey" />
         <local:IsPressureModeConverter x:Key="isPressureModeKey" />
+        <local:MaxFlowConverter x:Key="maxFlowKey" />
 
         <Style x:Key="captionKey" TargetType="Label">
             <Setter Property="TextColor" Value="Silver" />
@@ -296,7 +297,7 @@
                                                Grid.Row="1" Grid.Column="2" IsEnabled="False"/>
 
                                 <local:ValueEditor Value="{Binding Setup.ColumnFlowSet, StringFormat='{0:F2}'}" Switch="{Binding Setup.ColumnFlowOnOff}"
-                                               Min="0" Max="{Binding MaxColumnFlow}" Caption="Column Flow"
+                                               Min="0" Max="{Binding Type, Converter={StaticResource maxFlowKey}}" Caption="Column Flow"
                                                Grid.Column="3" IsVisible="{Binding Setup.APCMode, Converter={StaticResource isFlowModeKey}}" />
                                 <local:ValueEditor Value="{Binding Setup.PressureSet, StringFormat='{0:F3}'}" Switch="{Binding Setup.ColumnFlowOnOff}"
                                                Min="0" Max="150" Caption="Pressure"
@@ -451,18 +452,13 @@
 
                     <Frame Style="{StaticResource groupKey}" IsVisible="{Binding Type, Converter={StaticResource isCapillaryKey}}">
                         <StackLayout Spacing="0">
-                            <Grid ColumnSpacing="10" RowSpacing="5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="4*"/>
-                                    <ColumnDefinition Width="0.2"/>
-                                    <ColumnDefinition Width="6*"/>
-                                </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Horizontal" Spacing="20" Margin="0,0,0,5">
                                 <Label Text="Injection Mode"
                                         Style="{StaticResource captionKey}" />
                                 <local:EnumPicker Title="Injection Mode" Value="{Binding Setup.InjectMode}" 
-                                                  Grid.Column="2" Gap="True"/>
+                                                  Gap="True"/>
+                            </StackLayout>
 
-                            </Grid>
                             <Grid ColumnSpacing="10" RowSpacing="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>

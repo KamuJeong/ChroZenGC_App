@@ -2,6 +2,7 @@
 using ChroZenGC.Core.Packets;
 using ChroZenGC.Core.Wrappers;
 using ChroZenService;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,20 +16,47 @@ namespace ChroZenService
 {
     public class ViewModel_Config_Detector : Observable
     {
-        public DetectorSetupWrapper Setup { get; }
+        public int Port { get; }
+
+        private Model Model { get; }
+
+        public ConfigurationWrapper Configuration => Model.Configuration;
+
+        public DetectorSetupWrapper Setup => Model.Detectors[Port];
+
+        private StateWrapper State => Model.State;
 
 
-        public ViewModel_Config_Detector(DetectorTypes type, DetectorSetupWrapper setup)
+
+        public ViewModel_Config_Detector(int port)
         {
-            Setup = setup;
-            Type = type;
+            Port = port;
+            Model = Resolver.Resolve<Model>();
 
-            Setup.PropertyModified += OnDetectorPropertyChanged;
+            Configuration.PropertyModified += OnConfigurationModified;
+            State.PropertyModified += OnStatePropertyModified;
+            Setup.PropertyModified += OnDetectorPropertyModified;
 
+            Type = Configuration.DetectorType[Port];
             UpdatePolarityProgram();
         }
 
-        private void OnDetectorPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnStatePropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            Temperature = State.Temperature.Detector[Port];
+            Flow1 = State.Flow.Detectors[Port][0];
+            Flow2 = State.Flow.Detectors[Port][1];
+            Flow3 = State.Flow.Detectors[Port][2];
+            Signal = State.Signal[Port];
+        }
+
+        private void OnConfigurationModified(object sender, PropertyChangedEventArgs e)
+        {
+            Type = Configuration.DetectorType[Port];
+            UpdatePolarityProgram();
+        }
+
+        private void OnDetectorPropertyModified(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "Binary" 
                 || e.PropertyName.StartsWith(nameof(_TCDPolarityProgramWrapper)))
@@ -66,15 +94,6 @@ namespace ChroZenService
             }
         }
 
-        internal void StatePropertyChanged(int port, StateWrapper state)
-        {
-            Temperature = state.Temperature.Detector[port];
-            Flow1 = state.Flow.Detectors[port][0];
-            Flow2 = state.Flow.Detectors[port][1];
-            Flow3 = state.Flow.Detectors[port][2];
-            Signal = state.Signal[port];
-        }
-
         public DetectorTypes Type { get; set; }
 
         public float Temperature { get; set; }
@@ -109,6 +128,7 @@ namespace ChroZenService
 
         public ICommand TimeChangedCommand => new Command(OnTimeChanged);
 
+        [SuppressPropertyChangedWarnings]
         private void OnTimeChanged(object obj)
         {
             if (obj is PolarityProgramStep p && p.Step.Time == 0.0f)

@@ -15,6 +15,7 @@ namespace ChroZenGC.Core.Packets
         FrontDetector, CenterDetector, RearDetector, Delete
     }
 
+    [StructLayout(LayoutKind.Sequential)]
     public struct _SignalProgram
     {
         public float fTime;

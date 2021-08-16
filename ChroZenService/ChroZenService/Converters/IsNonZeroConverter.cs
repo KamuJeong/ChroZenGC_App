@@ -20,6 +20,20 @@ namespace ChroZenService
         }
     }
 
+    public class ByteToBooleanConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return (byte)value != 0;
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return (byte)((bool)value ? 1 : 0);
+        }
+    }
+
     public class IsZeroConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

@@ -1,5 +1,6 @@
 ﻿using ChroZenGC.Core;
 using ChroZenGC.Core.Wrappers;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,6 +25,7 @@ namespace ChroZenService.ViewModel.Main
 
         public List<ValueTuple<float, float, float, float>> Points { get; }  = new List<ValueTuple<float, float, float, float>>();
 
+        [SuppressPropertyChangedWarnings]
         private void OnStatePropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "Binary")

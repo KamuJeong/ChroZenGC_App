@@ -95,4 +95,22 @@ namespace ChroZenService
             throw new NotImplementedException();
         }
     }
+
+    public class MaxFlowConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            switch ((InletTypes)value)
+            {
+                case InletTypes.Capillary:
+                    return 30.0f;
+            }
+            return 200.0f;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

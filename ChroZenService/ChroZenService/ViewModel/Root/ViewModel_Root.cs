@@ -41,6 +41,7 @@ namespace ChroZenService
                 IsConnected = networkManager != null ? networkManager.IsConnected : false;
                 if(isConnected && !IsConnected)
                 {
+                    IsRefreshing = true;
                     OnRefreshReception(null);
                 }
 
@@ -54,7 +55,6 @@ namespace ChroZenService
         {
             if(e.PropertyName == "Binary")
             {
-                Resolver.Resolve<View_Root>().Initialize();
                 Resolver.Resolve<View_Config>().Initialize();
             }
         }
@@ -68,6 +68,7 @@ namespace ChroZenService
             IPFinder.Start();
 
             await Task.Delay(2000);
+
             IsRefreshing = false;
 
             DeviceInterface = null;
@@ -95,32 +96,69 @@ namespace ChroZenService
 
             if (DeviceInterface != null)
             {
-                networkManager = new ChroZenGC.Core.Network.TCPManager(Model) { Host = DeviceInterface.IPAddress };
-                await networkManager.ConnectAsync();
-                if (networkManager.IsConnected)
+                if (DeviceInterface.SerialNumber == "DEMO")
                 {
-                    networkManager.WaitAsync();
-
-                    await Model.Send(Model.Information);
-                    await Model.Request(Model.Information);
-                    await Model.Request(Model.Configuration);
-                    await Model.Request(Model.Oven);
-                    await Model.Request(Model.Inlets[0], 0);
-                    await Model.Request(Model.Inlets[1], 1);
-                    await Model.Request(Model.Inlets[2], 2);
-                    await Model.Request(Model.Detectors[0], 0);
-                    await Model.Request(Model.Detectors[1], 1);
-                    await Model.Request(Model.Detectors[2], 2);
-                    await Model.Request(Model.Signals[0], 0);
-                    await Model.Request(Model.Signals[1], 0);
-                    await Model.Request(Model.Signals[2], 0);
+                    IsDemo = true;
+                    OnConfigurationModified(null, new PropertyChangedEventArgs("Binary"));
                 }
-
-                IsDemo = false;
+                else
+                {
+                    await Connect(DeviceInterface.IPAddress, DeviceInterface.SerialNumber);
+                }
             }
             else
             {
-                IsDemo = true;
+                var addr = await Resolver.Resolve<View_Root>().DisplayPromptAsync("Connection", "Input the device's address to which you would connect", keyboard: Keyboard.Url);
+                if(addr == null)
+                {
+                    IsRefreshing = true;
+                    OnRefreshReception(null);
+                }
+                else
+                {
+                    await Connect(addr, addr);
+                }
+            }
+
+            async Task Connect(string addr, string serial)
+            {
+                try
+                {
+                    networkManager = new ChroZenGC.Core.Network.TCPManager(Model) { Host = addr };
+                    await Task.WhenAny(Task.Delay(3000), networkManager.ConnectAsync());
+                    if (networkManager.IsConnected)
+                    {
+                        networkManager.WaitAsync();
+
+                        await Model.Send(Model.Information);
+                        await Model.Request(Model.Information);
+                        await Model.Request(Model.Configuration);
+                        await Model.Request(Model.Oven);
+                        await Model.Request(Model.Inlets[0], 0);
+                        await Model.Request(Model.Inlets[1], 1);
+                        await Model.Request(Model.Inlets[2], 2);
+                        await Model.Request(Model.Detectors[0], 0);
+                        await Model.Request(Model.Detectors[1], 1);
+                        await Model.Request(Model.Detectors[2], 2);
+                        await Model.Request(Model.Signals[0], 0);
+                        await Model.Request(Model.Signals[1], 1);
+                        await Model.Request(Model.Signals[2], 2);
+                        await Model.Request(Model.Valve);
+                    }
+                    else
+                    {
+                        networkManager.Close();
+                        await Resolver.Resolve<View_Root>().DisplayAlert("Alert", $"'{serial}' has not responded", "OK");
+
+                        IsRefreshing = true;
+                        OnRefreshReception(null);
+                    }
+
+                    IsDemo = false;
+                }
+                catch
+                {
+                }
             }
         }
 

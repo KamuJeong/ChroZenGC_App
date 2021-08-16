@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -68,6 +69,7 @@ namespace ChroZenService
 
         public static readonly BindableProperty CurrentValueProperty = BindableProperty.Create("CurrentValue", typeof(string), typeof(KeyPad), propertyChanged: OnCurrentValueChanged);
 
+        [SuppressPropertyChangedWarnings]
         private static void OnCurrentValueChanged(BindableObject bindable, object oldValue, object newValue)
         {
             try

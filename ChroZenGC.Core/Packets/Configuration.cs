@@ -16,6 +16,11 @@ namespace ChroZenGC.Core.Packets
         Air, Electric,
     }
 
+    public enum ValveConnection : byte
+    {
+        Front, Center, Rear
+    }
+
     [StructLayout(LayoutKind.Sequential)]
     public struct _ValveConfig
     {
@@ -38,7 +43,7 @@ namespace ChroZenGC.Core.Packets
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public float[] fLoop2;                            // 2-Position Valve1~Valve8의 루프2 용량 [8]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-        public byte[] btInlet;                            // 2-Position Valve1~Valve8에 연결된 Inlet. port 번호 [8]
+        public ValveConnection[] btInlet;                            // 2-Position Valve1~Valve8에 연결된 Inlet. port 번호 [8]
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public ValveTypes[] btMultiType;                        // Multi Position Valve1~2의 밸브타입 [2]

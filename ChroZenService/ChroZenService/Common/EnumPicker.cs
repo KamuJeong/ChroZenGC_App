@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -63,7 +64,7 @@ namespace ChroZenService
 
         private static void FilterChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if (bindable is EnumPicker picker && newValue.GetType().IsEnum)
+            if (bindable is EnumPicker picker)
             {
                 var enumType = picker.enumType;
                 picker.enumType = null;
@@ -83,8 +84,10 @@ namespace ChroZenService
             BackgroundColor = Color.Transparent;
             HorizontalOptions = LayoutOptions.FillAndExpand;
             HorizontalTextAlignment = TextAlignment.Center;
-            TextColor = Color.Silver;
+            TextColor = Color.White;
+            //FontAttributes = FontAttributes.Bold;
             FontSize = (double)Application.Current.Resources["DefaultFontSizeKey"];
+            ScaleY = 1.2;
 
             Element element = this;
             while (element.BindingContext != null)
@@ -103,6 +106,7 @@ namespace ChroZenService
             SelectedIndexChanged += OnSelectionChanged;
         }
 
+        [SuppressPropertyChangedWarnings]
         private void OnSelectionChanged(object sender, EventArgs e)
         {
             if(SelectedIndex >= 0 && SelectedIndex < dictionaryEnum.Count)

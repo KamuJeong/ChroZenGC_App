@@ -1,5 +1,6 @@
 ﻿using ChroZenGC.Core;
 using ChroZenGC.Core.Wrappers;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,7 @@ namespace ChroZenService.ViewModel.Main
             model.State.PropertyModified += OnStatePropertyChanged;
         }
 
-
+        [SuppressPropertyChangedWarnings]
         private void OnStatePropertyChanged(object sender, PropertyChangedEventArgs e)
         {  
             switch(model.State.Mode)

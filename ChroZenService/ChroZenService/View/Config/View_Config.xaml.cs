@@ -24,39 +24,116 @@ namespace ChroZenService
 
             BindingContext = model;
 
-            ShowView();
+//            ShowView();
         }
 
-        public void Initialize()
+        public async void PreInitialize()
         {
-            Views.Clear();
+            InitView(1);
+            await Task.Yield();
 
-            SelectedItem = 1;
-            ShowView();
-            
-            for(int i=0; i<3; ++i)
-            {
-                if (Model.Model.Configuration.InletType[i] != InletTypes.NotInstalled)
-                {
-                    SelectedItem = 3 + i;
-                    ShowView();
-                }
-                if(Model.Model.Configuration.DetectorType[i] != DetectorTypes.NotInstalled)
-                {
-                    SelectedItem = 7 + i;
-                    ShowView();
-                }
-            }
+            //for(int i=0; i<3; ++i)
+            //{
 
-            SelectedItem = 11;
-            ShowView();
+
+            //    if (Model.Model.Configuration.InletType[i] != InletTypes.NotInstalled)
+            //    {
+            //        SelectedItem = 3 + i;
+            //        ShowView();
+            //    }
+            //    if(Model.Model.Configuration.DetectorType[i] != DetectorTypes.NotInstalled)
+            //    {
+            //        SelectedItem = 7 + i;
+            //        ShowView();
+            //    }
+            //}
+
+
+
+            InitView(11);
+
             //SelectedItem = 12;
             //ShowView();
             //SelectedItem = 13;
             //ShowView();
 
-            SelectedItem = 1;
         }
+
+        public async void Initialize()
+        {
+            for (int i = 0; i < 3; ++i)
+            {
+                if (Model.Model.Configuration.InletType[i] != InletTypes.NotInstalled)
+                {
+                    InitView(3 + i);
+                    await Task.Yield();
+                }
+                if (Model.Model.Configuration.DetectorType[i] != DetectorTypes.NotInstalled)
+                {
+                    InitView(7 + i);
+                    await Task.Yield();
+                }
+            }
+        }
+
+        private void InitView(int select)
+        {
+            View_Config_Tab tab = null;
+            switch (select)
+            {
+                case 1:
+                    tab = Resolver.Resolve<View_Config_Tab>();
+                    tab.TabContent = Resolver.Resolve<Grid_Config_Oven>();
+                    tab.SelectedTabItem = 1;
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                    tab = Resolver.Resolve<View_Config_Tab>();
+                    tab.TabContent = Resolver.Resolve<Grid_Config_Inlet>();
+                    tab.BindingContext = Model.Inlets[select - 3];
+                    tab.SelectedTabItem = 1;
+                    break;
+                case 7:
+                case 8:
+                case 9:
+                    tab = Resolver.Resolve<View_Config_Tab>();
+                    tab.TabContent = Resolver.Resolve<Grid_Config_Detector>();
+                    tab.BindingContext = Model.Detectors[select - 7];
+                    tab.SelectedTabItem = 1;
+                    break;
+                case 11:
+                    tab = Resolver.Resolve<View_Config_Tab>();
+                    tab.Tab1 = "Signal 1";
+                    tab.Tab2 = "Signal 2";
+                    tab.Tab3 = "Signal 3";
+                    tab.TabContent = Resolver.Resolve<Grid_Config_Signal>();
+                    tab.SelectedTabItem = 0;
+                    break;
+                case 12:
+                    tab = Resolver.Resolve<View_Config_Tab>();
+                    tab.Tab1 = "Initial";
+                    tab.Tab2 = "Program";
+//                    tab.TabContent = Resolver.Resolve<Grid_Config_Signal>();
+                    tab.SelectedTabItem = 0;
+                    break;
+                case 13:
+                    tab = Resolver.Resolve<View_Config_Tab>();
+                    tab.TabContent = Resolver.Resolve<View_Config_ValveInitialState>();
+                    tab.SelectedTabItem = 0;
+                    break;
+            }
+
+            if (tab != null)
+            {
+                gridMain.Children.Add(tab);
+                Grid.SetColumn(tab, 2);
+                Views[select] = tab;
+
+                ShowView();
+            }
+        }
+
 
         private void ShowView()
         {
@@ -83,52 +160,7 @@ namespace ChroZenService
                     v.IsVisible = false;
                 }
 
-                View_Config_Tab tab = null;
-                switch (SelectedItem)
-                {
-                    case 1:
-                        tab = Resolver.Resolve<View_Config_Tab>();
-                        tab.TabContent = Resolver.Resolve<Grid_Config_Oven>();
-                        tab.SelectedTabItem = 1;
-                        break;
-                    case 3:
-                    case 4:
-                    case 5:
-                        tab = Resolver.Resolve<View_Config_Tab>();
-                        tab.TabContent = Resolver.Resolve<Grid_Config_Inlet>();
-                        tab.BindingContext = Model.Inlets[SelectedItem - 3];
-                        tab.SelectedTabItem = 1;
-                        break;
-                    case 7:
-                    case 8:
-                    case 9:
-                        tab = Resolver.Resolve<View_Config_Tab>();
-                        tab.TabContent = Resolver.Resolve<Grid_Config_Detector>();
-                        tab.BindingContext = Model.Detectors[SelectedItem - 7];
-                        tab.SelectedTabItem = 1;
-                        break;
-                    case 11:
-                        tab = Resolver.Resolve<View_Config_Tab>();
-                        tab.Tab1 = "Signal 1";
-                        tab.Tab2 = "Signal 2";
-                        tab.Tab3 = "Signal 3";
-                        tab.TabContent = Resolver.Resolve<Grid_Config_Signal>();
-                        tab.SelectedTabItem = 0;
-                        break;
-                    case 13:
-                        //tab = Resolver.Resolve<View_Config_Tab>();
-                        //tab.TabContent = Resolver.Resolve<View_Config_InletConfig_Front>();
-                        //tab.SelectedTabItem = 0;
-                        break;
-                }
-
-                if (tab != null)
-                {
-                    gridMain.Children.Add(tab);
-                    Grid.SetColumn(tab, 2);
-
-                    Views[SelectedItem] = tab;
-                }
+                InitView(SelectedItem);
             }
         }
 

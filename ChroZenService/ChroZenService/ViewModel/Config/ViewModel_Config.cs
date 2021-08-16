@@ -28,40 +28,27 @@ namespace ChroZenService
 
         public ViewModel_Config_Signals Signals { get; }
 
-        public ViewModel_Config()
+        public ViewModel_Config_Valve Valve { get; }
+
+        public ViewModel_Config(Model model, ViewModel_Config_Signals signals, ViewModel_Config_Valve valve)
         {
-            Model = Resolver.Resolve<Model>();
+            Model = model;
 
-            Inlets.Add(Resolver.Resolve<ViewModel_Config_Inlet>(
-                new NamedParameter("type", Model.Configuration.InletType[0]), new NamedParameter("setup", Model.Inlets[0])));
-            Inlets.Add(Resolver.Resolve<ViewModel_Config_Inlet>(
-                new NamedParameter("type", Model.Configuration.InletType[1]), new NamedParameter("setup", Model.Inlets[1])));
-            Inlets.Add(Resolver.Resolve<ViewModel_Config_Inlet>(
-                new NamedParameter("type", Model.Configuration.InletType[2]), new NamedParameter("setup", Model.Inlets[2])));
+            Inlets.Add(Resolver.Resolve<ViewModel_Config_Inlet>(new NamedParameter("port", 0)));
+            Inlets.Add(Resolver.Resolve<ViewModel_Config_Inlet>(new NamedParameter("port", 1)));
+            Inlets.Add(Resolver.Resolve<ViewModel_Config_Inlet>(new NamedParameter("port", 2)));
 
-            Detectors.Add(Resolver.Resolve<ViewModel_Config_Detector>(
-                new NamedParameter("type", Model.Configuration.DetectorType[0]), new NamedParameter("setup", Model.Detectors[0])));
-            Detectors.Add(Resolver.Resolve<ViewModel_Config_Detector>(
-                new NamedParameter("type", Model.Configuration.DetectorType[1]), new NamedParameter("setup", Model.Detectors[1])));
-            Detectors.Add(Resolver.Resolve<ViewModel_Config_Detector>(
-                new NamedParameter("type", Model.Configuration.DetectorType[2]), new NamedParameter("setup", Model.Detectors[2])));
+            Detectors.Add(Resolver.Resolve<ViewModel_Config_Detector>(new NamedParameter("port", 0)));
+            Detectors.Add(Resolver.Resolve<ViewModel_Config_Detector>(new NamedParameter("port", 1)));
+            Detectors.Add(Resolver.Resolve<ViewModel_Config_Detector>(new NamedParameter("port", 2)));
 
-            Signals = Resolver.Resolve<ViewModel_Config_Signals>();
+            Signals = signals;
+            Valve = valve;           
 
-            State.PropertyModified += StatePropertyChanged;
             Oven.PropertyModified += OvenPropertyChanged;
             UpdateOvenProgram();
         }
 
-
-        private void StatePropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            for(int i=0; i<3; ++i)
-            {
-                Inlets[i].StatePropertyChanged(i, State);
-                Detectors[i].StatePropertyChanged(i, State);
-            }
-        }
 
         public bool IsEditable { get; set; } = true;
 

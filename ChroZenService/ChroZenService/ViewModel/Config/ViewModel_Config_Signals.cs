@@ -1,6 +1,7 @@
 ﻿using ChroZenGC.Core;
 using ChroZenGC.Core.Packets;
 using ChroZenGC.Core.Wrappers;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -95,6 +96,7 @@ namespace ChroZenService
 
         public ICommand TimeChangedCommand => new Command(OnTimeChanged);
 
+        [SuppressPropertyChangedWarnings]
         private void OnTimeChanged(object obj)
         {
             if (obj is SignalProgramStep p && p.Step.Time == 0.0f)

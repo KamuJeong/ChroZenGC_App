@@ -16,5 +16,12 @@ namespace ChroZenService
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private async void OnSetTapped(object sender, EventArgs e)
+        {
+			setButton.Scale = 1.1;
+			await setButton.ScaleTo(1.0, 500, Easing.SpringIn);
+			settable.IsToggled = false;
+        }
+    }
 }

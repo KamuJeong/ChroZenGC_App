@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace ChroZenService
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class View_Config_Signal1 : ContentView
+	public partial class View_System_Config : ContentView
 	{
-		public View_Config_Signal1 ()
+		public View_System_Config ()
 		{
 			InitializeComponent ();
 		}

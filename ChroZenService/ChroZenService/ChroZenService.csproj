@@ -162,6 +162,9 @@
     <Compile Update="View\System\View_System.xaml.cs">
       <DependentUpon>View_System.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\System\View_System_Config.xaml.cs">
+      <DependentUpon>View_System_Config.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -183,6 +186,11 @@
     <EmbeddedResource Update="View\Root\View_Reception.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="View\System\Child\Config\" />
+    <Folder Include="View\System\Child\Information\" />
   </ItemGroup>
 
 </Project>

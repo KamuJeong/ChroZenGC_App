@@ -12,24 +12,52 @@ namespace ChroZenService
 {
     public class ViewModel_Config_Inlet : Observable
     {
-        public InletSetupWrapper Setup { get; }
+        public int Port { get; }
 
-        public ViewModel_Config_Inlet(InletTypes type, InletSetupWrapper setup)
+        private Model Model { get; }
+
+        public ConfigurationWrapper Configuration => Model.Configuration;
+
+        public InletSetupWrapper Setup => Model.Inlets[Port];
+
+        private StateWrapper State => Model.State;
+
+        public ViewModel_Config_Inlet(int port)
         {
-            Type = type;
+            Port = port;
+            Model = Resolver.Resolve<Model>();
 
-            Setup = setup ?? throw new ArgumentNullException(nameof(setup));
-            Setup.PropertyChanged += OnInletPropertyChanged;
+            Configuration.PropertyModified += OnConfigurationModified;
+            State.PropertyModified += OnStatePropertyModified;
+            Setup.PropertyModified += OnInletPropertyModified;
 
-            MaxColumnFlow = Type == InletTypes.Capillary ? 30.0f : 200.0f;
-            Setup.TempMode = Type == InletTypes.OnColumn ? Setup.TempMode : TempModes.Isothermal;
+            Type = Configuration.InletType[Port];
 
             UpdateTempProgram();
             UpdateFlowProgram();
             UpdatePressProgram();
         }
 
-        private void OnInletPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnConfigurationModified(object sender, PropertyChangedEventArgs e)
+        {
+            Type = Configuration.InletType[Port];
+            Setup.TempMode = Type == InletTypes.OnColumn ? Setup.TempMode : TempModes.Isothermal;
+            UpdateTempProgram();
+            UpdateFlowProgram();
+            UpdatePressProgram();
+        }
+
+        private void OnStatePropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            Temperature = State.Temperature.Inlet[Port];
+            ColumnFlow = State.Flow.Inlets[Port][2];
+            TotalFlow = State.Flow.Inlets[Port][0];
+            SplitFlow = State.Flow.Inlets[Port][3];
+            Pressure = State.Flow.Pressure[Port];
+            Velocity = State.Flow.Velocity[Port];
+        }
+
+        private void OnInletPropertyModified(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "Binary"
                 || e.PropertyName == nameof(_InletTempProgramWrapper) + ">" + nameof(_InletTempProgramWrapper.Rate))
@@ -53,7 +81,6 @@ namespace ChroZenService
         public float Temperature { get; set; }
 
         public float ColumnFlow { get; set; }
-        public float MaxColumnFlow { get; set; } = 200.0f;
 
         public float TotalFlow { get; set; }
 
@@ -63,16 +90,6 @@ namespace ChroZenService
 
         public float Velocity { get; set; }
 
-
-        public void StatePropertyChanged(int port, StateWrapper state)
-        {
-            Temperature = state.Temperature.Inlet[port];
-            ColumnFlow = state.Flow.Inlets[port][2];
-            TotalFlow = state.Flow.Inlets[port][0];
-            SplitFlow = state.Flow.Inlets[port][3];
-            Pressure = state.Flow.Pressure[port];
-            Velocity = state.Flow.Velocity[port];
-        }
 
         public ObservableCollection<InletTempProgramStep> TempProgram { get; } = new ObservableCollection<InletTempProgramStep>();
         public void UpdateTempProgram()

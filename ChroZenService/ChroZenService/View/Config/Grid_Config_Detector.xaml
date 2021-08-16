@@ -208,7 +208,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Label Text="Flow (mL/min)" 
-                                        Style="{StaticResource captionKey}" />
+                                        Grid.ColumnSpan="4" HorizontalOptions="Start" Style="{StaticResource captionKey}" />
                                 <Label Text="{Binding Type, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=0}"
                                             IsVisible="{Binding Type, Converter={StaticResource gasEnableKey}, ConverterParameter=0}"
                                             Grid.Row="1" Style="{StaticResource captionKey}" />
@@ -239,12 +239,12 @@
                                                     Caption="{Binding Type, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=1}"
                                                     Grid.Row="2" Grid.Column="3" 
                                                     IsVisible="{Binding Type, Converter={StaticResource gasEnableKey}, ConverterParameter=1}" />
-                                <local:ValueEditor Value="{Binding Setup.FlowSet1, StringFormat='{0:F1}'}" Switch="{Binding Setup.Flow1OnOff}"
+                                <local:ValueEditor Value="{Binding Setup.FlowSet3, StringFormat='{0:F1}'}" Switch="{Binding Setup.Flow3OnOff}"
                                                     Min="0" Max="{Binding Type, Converter={StaticResource gasMaxKey}, ConverterParameter=2}" 
                                                     Caption="{Binding Type, Converter={StaticResource DetectorGasConverterKey}, ConverterParameter=2}"
                                                     Grid.Row="3" Grid.Column="3" 
                                                     IsVisible="{Binding Type, Converter={StaticResource gasEnableKey}, ConverterParameter=2}" />
-                                <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="4"/>
+                                <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"/>
                             </Grid>
                         </StackLayout>
                     </Frame>

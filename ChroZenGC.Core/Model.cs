@@ -27,184 +27,45 @@ namespace ChroZenGC.Core
             Signals[0].PropertyModified += Signal1PropertyModified;
             Signals[1].PropertyModified += Signal2PropertyModified;
             Signals[2].PropertyModified += Signal3PropertyModified;
+            Valve.PropertyModified += ValvePropertyModified;
         }
 
-        private async void Signal3PropertyModified(object sender, PropertyChangedEventArgs e)
+        private async void ValvePropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Valve, 0, e);
+
+        private async void Signal3PropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Signals[2], 2, e);
+
+        private async void Signal2PropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Signals[1], 1, e);
+
+        private async void Signal1PropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Signals[0], 0, e);
+
+        private async void RearDetectorPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Detectors[2], 2, e);
+ 
+        private async void CenterDetectorPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Detectors[1], 1, e);
+
+        private async void FrontDetectorPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Detectors[0], 0, e);
+
+        private async void RearInletPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Inlets[2], 2, e);
+
+        private async void CenternletPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Inlets[1], 1, e);
+
+        private async void FrontInletPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Inlets[0], 0, e);
+
+        private async void OvenPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Oven, 0, e);
+
+        private async Task DelayedSend<T>(PacketWrapper<T> wrapper, int index, PropertyChangedEventArgs e) where T : struct
         {
             if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
             {
-                ++Signals[2].SequenceOfModification;
+                ++wrapper.SequenceOfModification;
                 await Task.Delay(250);
 
-                if (--Signals[2].SequenceOfModification == 0)
+                if (--wrapper.SequenceOfModification == 0)
                 {
-                    await Send(Signals[2], 2);
+                    await Send<T>(wrapper, index);
                 }
                 else
                 {
-                    Debug.WriteLine("Skip send Signal 2");
-                }
-            }
-        }
-
-        private async void Signal2PropertyModified(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
-            {
-                ++Signals[1].SequenceOfModification;
-                await Task.Delay(250);
-
-                if (--Signals[1].SequenceOfModification == 0)
-                {
-                    await Send(Signals[1], 1);
-                }
-                else
-                {
-                    Debug.WriteLine("Skip send Signal 1");
-                }
-            }
-        }
-
-        private async void Signal1PropertyModified(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
-            {
-                ++Signals[0].SequenceOfModification;
-                await Task.Delay(250);
-
-                if (--Signals[0].SequenceOfModification == 0)
-                {
-                    await Send(Signals[0], 0);
-                }
-                else
-                {
-                    Debug.WriteLine("Skip send Signal 0");
-                }
-            }
-        }
-
-        private async void RearDetectorPropertyModified(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
-            {
-                ++Detectors[2].SequenceOfModification;
-                await Task.Delay(250);
-
-                if (--Detectors[2].SequenceOfModification == 0)
-                {
-                    await Send(Detectors[2], 2);
-                }
-                else
-                {
-                    Debug.WriteLine("Skip send Detector 2");
-                }
-            }
-        }
-
-        private async void CenterDetectorPropertyModified(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
-            {
-                ++Detectors[1].SequenceOfModification;
-                await Task.Delay(250);
-
-                if (--Detectors[1].SequenceOfModification == 0)
-                {
-                    await Send(Detectors[1], 1);
-                }
-                else
-                {
-                    Debug.WriteLine("Skip send Detector 1");
-                }
-            }
-        }
-
-        private async void FrontDetectorPropertyModified(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
-            {
-                ++Detectors[0].SequenceOfModification;
-                await Task.Delay(250);
-
-                if (--Detectors[0].SequenceOfModification == 0)
-                {
-                    await Send(Detectors[0], 0);
-                }
-                else
-                {
-                    Debug.WriteLine("Skip send Detector 0");
-                }
-            }
-        }
-
-        private async void RearInletPropertyModified(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
-            {
-                ++Inlets[2].SequenceOfModification;
-                await Task.Delay(250);
-
-                if (--Inlets[2].SequenceOfModification == 0)
-                {
-                    await Send(Inlets[2], 2);
-                }
-                else
-                {
-                    Debug.WriteLine("Skip send inlet 2");
-                }
-            }
-        }
-
-        private async void CenternletPropertyModified(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
-            {
-                ++Inlets[1].SequenceOfModification;
-                await Task.Delay(250);
-
-                if (--Inlets[1].SequenceOfModification == 0)
-                {
-                    await Send(Inlets[1], 1);
-                }
-                else
-                {
-                    Debug.WriteLine("Skip send inlet 1");
-                }
-            }
-        }
-
-        private async void FrontInletPropertyModified(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
-            {
-                ++Inlets[0].SequenceOfModification;
-                await Task.Delay(250);
-
-                if (--Inlets[0].SequenceOfModification == 0)
-                {
-                    await Send(Inlets[0], 0);
-                }
-                else
-                {
-                    Debug.WriteLine("Skip send inlet 0");
-                }
-            }
-        }
-
-        private async void OvenPropertyModified(object sender, PropertyChangedEventArgs e)
-        {
-            if(e.PropertyName != "Binary" && !string.IsNullOrEmpty(e.PropertyName))
-            {
-                ++Oven.SequenceOfModification;
-                await Task.Delay(250);
-
-                if (--Oven.SequenceOfModification == 0)
-                {
-                    await Send(Oven);
-                }
-                else
-                {
-                    Debug.WriteLine("Skip send Oven");
+                    Debug.WriteLine("Skip send {0}", wrapper.GetType().Name);
                 }
             }
         }
@@ -243,6 +104,10 @@ namespace ChroZenGC.Core
 
                     case SignalSetupWrapper.PacketCode:
                         Assemble(Signals[header.Index], buffer, header.SlotOffset, header.SlotSize);
+                        break;
+
+                    case ValveSetupWrapper.PacketCode:
+                        Assemble(Valve, buffer, header.SlotOffset, header.SlotSize);
                         break;
                 }
             }
@@ -343,5 +208,7 @@ namespace ChroZenGC.Core
             new SignalSetupWrapper() { PortNo = 1 },
             new SignalSetupWrapper() { PortNo = 2 },
         };
+
+        public ValveSetupWrapper Valve { get; } = new ValveSetupWrapper();
     }
 }

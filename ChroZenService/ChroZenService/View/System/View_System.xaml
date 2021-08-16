@@ -2,12 +2,243 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChroZenService"
-             x:Class="ChroZenService.View_System">
+             x:Class="ChroZenService.View_System"
+             x:DataType="local:ViewModel_System">
+    <ContentView.Resources>
+        <Style x:Key="SelectorStyle" TargetType="Image">
+            <Setter Property="Aspect" Value="Fill" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            <Setter Property="AnchorX" Value="1.0" />
+            <Setter Property="AnchorY" Value="0" />
+            <Setter Property="ScaleX" Value="1.1" />
+            <Setter Property="ScaleY" Value="1.2"/>
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+
+        <Style x:Key="SelectorButtonStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="{StaticResource DefaultFontSizeKey}" />
+            <Setter Property="TextColor" Value="Silver" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HorizontalOptions" Value="End" />
+            <Setter Property="AnchorX" Value="0.5" />
+            <Setter Property="Scale" Value="1.2" />
+        </Style>
+
+    </ContentView.Resources>
+    
     <ContentView.Content>
-        <Grid >
-            <!--이미지 전시-->
+        <Grid RowSpacing="0" ColumnSpacing="0">
+            <Image Source="{local:ImageResource ChroZenService.Images.bg_info.png}" Aspect="Fill" />
+            <Grid x:Name="gridMain" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="28*" />
+                    <ColumnDefinition Width="130*"/>
+                    <ColumnDefinition Width="370*" />
+                    <ColumnDefinition Width="41*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="selector" Grid.Column="1" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"/>
+
+                        <RowDefinition Height="71*"/>
+                        <RowDefinition Height="71*"/>
+                        <RowDefinition Height="71*"/>
+                        <RowDefinition Height="71*"/>
+                        <RowDefinition Height="71*"/>
+                        <RowDefinition Height="71*"/>
+                        <RowDefinition Height="71*"/>
+                        <RowDefinition Height="71*"/>
+                        <RowDefinition Height="71*"/>
+                        <RowDefinition Height="71*"/>
+                        <RowDefinition Height="30*"/>
+                    </Grid.RowDefinitions>
+
+                    <Image x:Name="topDeco" Source="{local:ImageResource ChroZenService.Images.side_top.png}" Grid.Row="1" IsVisible="True" Style="{StaticResource SelectorStyle}" />
+                    <Image x:Name="midDeco" Source="{local:ImageResource ChroZenService.Images.side_mid.png}" Grid.Row="2" Style="{StaticResource SelectorStyle}" />
+                    <!--<Image x:Name="botDeco" Source="{local:ImageResource ChroZenService.Images.side_bot.png}" Grid.Row="13" Style="{StaticResource SelectorStyle}" />-->
+
+                    <Grid Grid.Row="1" ColumnSpacing="0" RowSpacing="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Information" VerticalOptions="Center" FontAttributes="Bold" Scale="1.3" TextColor="White" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>
+
+                    <Grid Grid.Row="2" ColumnSpacing="0" RowSpacing="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label VerticalOptions="Center" Text="Config" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>
+
+                    <Grid Grid.Row="3" ColumnSpacing="0" RowSpacing="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label VerticalOptions="Center" Text="Settings" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>
+                    
+                    <Grid Grid.Row="4" ColumnSpacing="0" RowSpacing="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label VerticalOptions="Center" Text="Diagnostics" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>
+
+                    <Grid Grid.Row="5" ColumnSpacing="0" RowSpacing="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label VerticalOptions="Center" Text="Calibration" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>
+
+                    <Grid Grid.Row="6" ColumnSpacing="0" RowSpacing="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Time" VerticalOptions="End" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Label Grid.Row="1" VerticalOptions="Start" Text="Control" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.RowSpan="2" Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>
+
+                    <!--<Grid Grid.Row="5" ColumnSpacing="0" RowSpacing="0" 
+                          IsVisible="{Binding Model.Configuration.InletType[2], Converter={StaticResource EnumInstalledKey}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Rear" VerticalOptions="End" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Label Grid.Row="1" VerticalOptions="Start" Text="Inlet" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.RowSpan="2" Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>-->
+
+                    <!--<Grid Grid.Row="7" ColumnSpacing="0" RowSpacing="0" 
+                          IsVisible="{Binding Model.Configuration.DetectorType[0], Converter={StaticResource EnumInstalledKey}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Front" VerticalOptions="End" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Label Grid.Row="1" VerticalOptions="Start" Text="Detector" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.RowSpan="2" Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>-->
+
+                    <!--<Grid Grid.Row="8" ColumnSpacing="0" RowSpacing="0" 
+                          IsVisible="{Binding Model.Configuration.DetectorType[1], Converter={StaticResource EnumInstalledKey}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Center" VerticalOptions="End" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Label Grid.Row="1" VerticalOptions="Start" Text="Detector" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.RowSpan="2" Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>-->
+
+                    <!--<Grid Grid.Row="9" ColumnSpacing="0" RowSpacing="0" 
+                          IsVisible="{Binding Model.Configuration.DetectorType[2], Converter={StaticResource EnumInstalledKey}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Rear" VerticalOptions="End" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Label Grid.Row="1" VerticalOptions="Start" Text="Detector" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.RowSpan="2" Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>-->
+
+                    <!--<Grid Grid.Row="11" ColumnSpacing="0" RowSpacing="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Signal" VerticalOptions="Center" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>-->
+
+                    <!--<Grid Grid.Row="12" ColumnSpacing="0" RowSpacing="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Valve" VerticalOptions="Center" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>-->
+
+                    <!--<Grid Grid.Row="13" ColumnSpacing="0" RowSpacing="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="AUX" VerticalOptions="Center" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>-->
+
+                </Grid>
+
+                <ContentView x:Name="selectedView" Grid.Column="2" />
+            </Grid>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--<Grid >
+            --><!--이미지 전시--><!--
             <Grid>
-                <Image Source="bg_info.png" Aspect="AspectFill" />
+                <Image Source="bg_info.png" Aspect="AspectFill" />-->
                 <!--<Image Margin="17,43,0,0" Source="side_top.png" VerticalOptions="FillAndExpand"  />-->
                 <!--<Grid>
                         <Grid.RowDefinitions>
@@ -191,7 +422,7 @@
                             </Grid>
                         </Grid>
                     </Grid>-->
-            </Grid>
-        </Grid>
+            <!--</Grid>
+        </Grid>-->
     </ContentView.Content>
 </ContentView>

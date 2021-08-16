@@ -16,7 +16,7 @@ namespace ChroZenGC.Core.Wrappers
             Provider.btPort = new byte[8];
             Provider.fLoop1 = new float[8];
             Provider.fLoop2 = new float[8];
-            Provider.btInlet = new byte[8];
+            Provider.btInlet = new ValveConnection[8];
             Provider.btMultiType = new ValveTypes[2];
             Provider.btMultiPort = new byte[2];
             Provider.btMultiInlet = new byte[2];
@@ -27,7 +27,7 @@ namespace ChroZenGC.Core.Wrappers
             PortNumber = new ArrayWrapper<byte>(this, () => Provider.btPort);
             LoopVolume1 = new ArrayWrapper<float>(this, () => Provider.fLoop1);
             LoopVolume2 = new ArrayWrapper<float>(this, () => Provider.fLoop2);
-            Connection = new ArrayWrapper<byte>(this, () => Provider.btInlet);
+            Connection = new ArrayWrapper<ValveConnection>(this, () => Provider.btInlet);
 
             MultiValveType = new ArrayWrapper<ValveTypes>(this, () => Provider.btMultiType);
             MultiValvePortNumber = new ArrayWrapper<byte>(this, () => Provider.btMultiPort);
@@ -57,7 +57,7 @@ namespace ChroZenGC.Core.Wrappers
 
         public ArrayWrapper<float> LoopVolume2 { get; }
 
-        public ArrayWrapper<byte> Connection { get; }
+        public ArrayWrapper<ValveConnection> Connection { get; }
 
         public ArrayWrapper<ValveTypes> MultiValveType { get; }
 
@@ -81,11 +81,12 @@ namespace ChroZenGC.Core.Wrappers
             Packet.btInlet = new InletTypes[3] { InletTypes.Capillary, InletTypes.Packed, InletTypes.OnColumn };
             Packet.btDet = new DetectorTypes[3] { DetectorTypes.PDD, DetectorTypes.µTCD, DetectorTypes.µECD };
             Packet.bAuxAPC = new byte[3];
+            Packet.bAuxTemp = new byte[8];
 
             InletType = new ArrayWrapper<InletTypes>(this, () => Packet.btInlet);
             DetectorType = new ArrayWrapper<DetectorTypes>(this, () => Packet.btDet);
             AuxAPC = new ArrayWrapper<byte>(this, () => Packet.bAuxAPC);
-            AuxTemp = new ArrayWrapper<byte>(this, () => Packet.bAuxAPC);
+            AuxTemp = new ArrayWrapper<byte>(this, () => Packet.bAuxTemp);
             MultiValve = new ArrayWrapper<byte>(this, () => Packet.bMultiValve);
 
             ValveConfig = new _ValveConfigWrapper(this, () => ref Packet.ValveConfig);

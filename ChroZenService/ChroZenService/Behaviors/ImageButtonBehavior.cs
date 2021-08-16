@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,6 +61,7 @@ namespace ChroZenService
             view.SetValue(UseProperty, value);
         }
 
+        [SuppressPropertyChangedWarnings]
         private static void OnUsePropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is ImageButton button)

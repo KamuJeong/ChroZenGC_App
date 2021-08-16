@@ -53,6 +53,7 @@
                                 <Label Text="{Binding SerialNumber}" 
                                        Grid.Column="1" FontSize="Large" TextColor="Black" />
                                 <Label Text="{Binding IPAddress, StringFormat='IP: {0}'}" 
+                                       IsVisible="{Binding SerialNumber, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=DEMO}"
                                        Grid.Row="1" Grid.Column="1" FontSize="Small" />
                             </Grid>
                         </ViewCell>

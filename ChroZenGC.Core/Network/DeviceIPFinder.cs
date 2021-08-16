@@ -30,8 +30,7 @@ namespace ChroZenGC.Core.Network
 
     public class DeviceIPFinder : INotifyPropertyChanged
     {
-        public ObservableCollection<DeviceInterface> Results { get; } = new ObservableCollection<DeviceInterface>() { new DeviceInterface { IPAddress = "10.10.10.10", SerialNumber = "GN709876" },
-                                                                                                                      new DeviceInterface { IPAddress = "10.10.10.12", SerialNumber = "GN709899" } };
+        public ObservableCollection<DeviceInterface> Results { get; } = new ObservableCollection<DeviceInterface>();
 
         private List<UdpClient> udpClients = new List<UdpClient>();
 
@@ -50,7 +49,7 @@ namespace ChroZenGC.Core.Network
             Results.Clear();
             Stop();
 
-            Results.Add(new DeviceInterface { IPAddress = "192.168.0.88", SerialNumber = "G67001111" });
+            Results.Add(new DeviceInterface { SerialNumber = "DEMO" });
 
             try
             {
@@ -116,9 +115,9 @@ namespace ChroZenGC.Core.Network
             InformationWrapper inform = new InformationWrapper();
             inform.Binary = buffer;
 
-            if(Results.All(r => !string.Equals(r.IPAddress, inform.IPAddress) || !string.Equals(r.SerialNumber, inform.InstInfo.InstSerialNo)))
+            if(Results.All(r => !string.Equals(r.IPAddress, inform.IPAddress) || !string.Equals(r.SerialNumber, inform.SerialNumber)))
             {
-                Results.Add(new DeviceInterface { IPAddress = inform.IPAddress, SerialNumber = inform.InstInfo.InstSerialNo });
+                Results.Add(new DeviceInterface { IPAddress = inform.IPAddress, SerialNumber = inform.SerialNumber });
             }
         }
 

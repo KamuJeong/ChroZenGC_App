@@ -51,12 +51,12 @@
                                Style="{StaticResource captionKey}" />
                         <local:ValueEditor Value="{Binding Oven.MaxTemp, StringFormat='{0:F1}'}" 
                                            Max="450" Min="-80" Caption="Maximum Temp" Unit="℃" 
-                                           Grid.Column="2" Grid.ColumnSpan="2" UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
+                                           Grid.Column="2" Grid.ColumnSpan="3" UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
                         <Label Text="Equilibrium Time" 
                                Grid.Row="1"  Style="{StaticResource captionKey}" />
                         <local:ValueEditor Value="{Binding Oven.EquibTime, StringFormat='{0:F1}'}"
                                            Max="9999" Min="0" Caption="Equilibrium Time" Unit="min"
-                                           x:Name="unitWidth" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"/>
+                                           x:Name="unitWidth" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
                         <Label Text="Auto Readyrun" 
                                Grid.Row="2"  Style="{StaticResource captionKey}" />
                         <local:SwitchImageButton ON="{Binding Oven.AutoReadyRun}" 
@@ -108,7 +108,7 @@
                                Grid.Row="2" Style="{StaticResource captionKey}" />
                         <local:ValueEditor Value="{Binding Oven.RunStart.CycleTime, StringFormat='{0:F1}'}" 
                                            Max="9999" Min="0" Caption="Cycle Time" Unit="min"
-                                           Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" IsEnabled="{Binding Oven.RunStart.OnOff}" 
+                                           Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" IsEnabled="{Binding Oven.RunStart.OnOff}" 
                                            UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
 
                         <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
@@ -131,13 +131,13 @@
                                Grid.Row="1"  Style="{StaticResource captionKey}" />
                         <local:ValueEditor Value="{Binding Oven.PostRun.Temp, StringFormat='{0:F1}'}" 
                                            Max="{Binding Oven.MaxTemp, StringFormat='{0:F1}'}" Min="-80" Caption="Postrun Temp"  Unit="℃"
-                                           Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" IsEnabled="{Binding Oven.PostRun.OnOff}" 
+                                           Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" IsEnabled="{Binding Oven.PostRun.OnOff}" 
                                            UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
                         <Label Text="Postrun Time" 
                                Grid.Row="2" Style="{StaticResource captionKey}" />
                         <local:ValueEditor Value="{Binding Oven.PostRun.Time, StringFormat='{0:F1}'}" 
                                            Max="9999" Min="0" Caption="Postrun Time" Unit="min"
-                                           Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" IsEnabled="{Binding Oven.PostRun.OnOff}" 
+                                           Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" IsEnabled="{Binding Oven.PostRun.OnOff}" 
                                            UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
 
                         <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>

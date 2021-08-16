@@ -25,11 +25,6 @@ namespace ChroZenGC.Core.Wrappers
             get => Provider.btDet;
             set => Provider.btDet = value;
         }
-
-        public IEnumerable<object> TakeWhile(Func<object, bool> p)
-        {
-            throw new NotImplementedException();
-        }
     }
 
 

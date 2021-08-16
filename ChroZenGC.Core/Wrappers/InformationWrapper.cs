@@ -12,9 +12,11 @@ namespace ChroZenGC.Core.Wrappers
         public override uint Code => PacketCode;
 
 
-        public ref _SystemConfig SysConfig => ref Packet.SysConfig;
+        public string Model => "ChroZen GC";
 
-        public ref _Inst_Inform InstInfo => ref Packet.InstInfo;
+        public string Version => Packet.InstInfo.InstVersion;
+
+        public string SerialNumber => Packet.InstInfo.InstSerialNo;
 
         public string IPAddress => string.Format("{0}.{1}.{2}.{3}",
                     Packet.SysConfig.cIPAddress[0], Packet.SysConfig.cIPAddress[1],
@@ -24,15 +26,16 @@ namespace ChroZenGC.Core.Wrappers
                     Packet.SysConfig.cIPAddress[4], Packet.SysConfig.cIPAddress[5],
                     Packet.SysConfig.cIPAddress[6], Packet.SysConfig.cIPAddress[7]);
 
-        public string GateWay => string.Format("{0}.{1}.{2}.{3}",
+        public string GateWay => Packet.SysConfig.cIPAddress[8]==0? "" :
+                    string.Format("{0}.{1}.{2}.{3}",
                     Packet.SysConfig.cIPAddress[8], Packet.SysConfig.cIPAddress[9],
                     Packet.SysConfig.cIPAddress[10], Packet.SysConfig.cIPAddress[11]);
 
 
         public InformationWrapper()
         {
-            SysConfig.cIPAddress = new byte[16];
-            InstInfo.InstVersion = "1.0.0";
+            Packet.SysConfig.cIPAddress = new byte[16];
+            Packet.InstInfo.InstVersion = "1.0.0";
         }
     }
 }

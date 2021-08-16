@@ -96,7 +96,7 @@
                             <Label Text="Init" 
                                    Grid.Row="6" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
                             <local:EnumPicker Title="Init Source" Value="{Binding Signals[0].InitialDetector}"
-                                              Grid.Row="6"  Grid.Column="2" />
+                                              Gap="True" Grid.Row="6"  Grid.Column="2" />
 
                             <StackLayout BindableLayout.ItemsSource="{Binding Signals.Program1}" 
                                          IsVisible="{Binding Signals[0].SignalChange}"
@@ -118,7 +118,7 @@
                                                                CommandParameter="{Binding}"/>
 
                                             <local:EnumPicker Title="{Binding Number, StringFormat='Source {0}'}" Value="{Binding Step.Detector}"
-                                                                Grid.Column="2" IsVisible="{Binding Editable}" />
+                                                                Gap="True" Grid.Column="2" IsVisible="{Binding Editable}" />
                                         </Grid>
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
@@ -169,7 +169,7 @@
                             <Label Text="Init" 
                                    Grid.Row="6" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
                             <local:EnumPicker Title="Init Source" Value="{Binding Signals[1].InitialDetector}"
-                                              Grid.Row="6"  Grid.Column="2" />
+                                              Gap="True" Grid.Row="6"  Grid.Column="2" />
 
                             <StackLayout BindableLayout.ItemsSource="{Binding Signals.Program2}" 
                                          IsVisible="{Binding Signals[1].SignalChange}"
@@ -191,7 +191,7 @@
                                                                CommandParameter="{Binding}"/>
 
                                             <local:EnumPicker Title="{Binding Number, StringFormat='Source {0}'}" Value="{Binding Step.Detector}"
-                                                                Grid.Column="2" IsVisible="{Binding Editable}" />
+                                                                Gap="True" Grid.Column="2" IsVisible="{Binding Editable}" />
                                         </Grid>
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
@@ -242,7 +242,7 @@
                             <Label Text="Init" 
                                    Grid.Row="6" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
                             <local:EnumPicker Title="Init Source" Value="{Binding Signals[2].InitialDetector}"
-                                              Grid.Row="6"  Grid.Column="2" />
+                                              Gap="True" Grid.Row="6"  Grid.Column="2" />
 
                             <StackLayout BindableLayout.ItemsSource="{Binding Signals.Program3}" 
                                          IsVisible="{Binding Signals[2].SignalChange}"
@@ -264,7 +264,7 @@
                                                                CommandParameter="{Binding}"/>
 
                                             <local:EnumPicker Title="{Binding Number, StringFormat='Source {0}'}" Value="{Binding Step.Detector}"
-                                                                Grid.Column="2" IsVisible="{Binding Editable}" />
+                                                                Gap="True" Grid.Column="2" IsVisible="{Binding Editable}" />
                                         </Grid>
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
