@@ -51,6 +51,7 @@ namespace ChroZenService
 
 
             InitView(11);
+            InitView(12);
 
             //SelectedItem = 12;
             //ShowView();
@@ -114,7 +115,8 @@ namespace ChroZenService
                     tab = Resolver.Resolve<View_Config_Tab>();
                     tab.Tab1 = "Initial";
                     tab.Tab2 = "Program";
-//                    tab.TabContent = Resolver.Resolve<Grid_Config_Signal>();
+                    tab.TabContent = Resolver.Resolve<Grid_Config_Valve>();
+                    tab.BindingContext = Model.Valve;
                     tab.SelectedTabItem = 0;
                     break;
                 case 13:

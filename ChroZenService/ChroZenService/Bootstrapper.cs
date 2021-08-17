@@ -34,9 +34,13 @@ namespace ChroZenService
             }
             ContainerBuilder.RegisterType<ChroZenGC.Core.Model>().SingleInstance();
             ContainerBuilder.RegisterType<View_Root>().SingleInstance();
+            ContainerBuilder.RegisterType<ViewModel_Root>().SingleInstance();
             ContainerBuilder.RegisterType<View_Main>().SingleInstance();
+            ContainerBuilder.RegisterType<ViewModel_Main>().SingleInstance();
             ContainerBuilder.RegisterType<View_Config>().SingleInstance();
+            ContainerBuilder.RegisterType<ViewModel_Config>().SingleInstance();
             ContainerBuilder.RegisterType<View_System>().SingleInstance();
+            ContainerBuilder.RegisterType<ViewModel_System>().SingleInstance();
             ContainerBuilder.RegisterType<DeviceIPFinder>().SingleInstance();
 
         }

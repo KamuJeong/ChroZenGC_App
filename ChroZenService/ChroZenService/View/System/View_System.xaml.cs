@@ -9,44 +9,32 @@ using Xamarin.Forms.Xaml;
 
 namespace ChroZenService
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class View_System : ContentView
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class View_System : ContentView
+    {
         private Dictionary<int, Xamarin.Forms.View> Views { get; } = new Dictionary<int, Xamarin.Forms.View>();
 
         public ViewModel_System Model => (ViewModel_System)BindingContext;
 
-        public View_System (ViewModel_System model)
-		{
-			InitializeComponent ();
+        public View_System(ViewModel_System model)
+        {
+            InitializeComponent();
 
             BindingContext = model;
-		}
+        }
 
         public async void PreInitialize()
         {
             InitView(1);
             await Task.Yield();
-            InitView(2);
-            await Task.Yield();
+
 
         }
 
         public async void Initialize()
         {
-            //for (int i = 0; i < 3; ++i)
-            //{
-            //    if (Model.Model.Configuration.InletType[i] != InletTypes.NotInstalled)
-            //    {
-            //        InitView(3 + i);
-            //        await Task.Yield();
-            //    }
-            //    if (Model.Model.Configuration.DetectorType[i] != DetectorTypes.NotInstalled)
-            //    {
-            //        InitView(7 + i);
-            //        await Task.Yield();
-            //    }
-            //}
+            InitView(2);
+            await Task.Yield();
         }
 
 
@@ -105,12 +93,12 @@ namespace ChroZenService
         }
 
 
-        public int SelectedItem 
+        public int SelectedItem
         {
             get => Model.SelectedItem;
-            set => Model.SelectedItem = value; 
+            set => Model.SelectedItem = value;
         }
- 
+
         private void OnSelectorClicked(object sender, EventArgs e)
         {
             if (sender is Button button)

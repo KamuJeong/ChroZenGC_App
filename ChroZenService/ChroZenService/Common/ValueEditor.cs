@@ -196,6 +196,7 @@ namespace ChroZenService
                 HorizontalTextAlignment = TextAlignment.End,
                 InputTransparent = true,
                 Margin = new Thickness(3, 4),
+                LineBreakMode = LineBreakMode.CharacterWrap,
             };
             Children.Add(ValueLabel);
 
@@ -233,11 +234,13 @@ namespace ChroZenService
                 {
                     BackgroundButton.Background = (Brush)Application.Current.Resources["ValueEditorBackgroundKey"];
                     BackgroundButton.ClearValue(Button.BackgroundColorProperty);
+                    ValueLabel.TextColor = Color.White;
                 }
                 else
                 {
                     BackgroundButton.BackgroundColor = Color.Transparent;
                     BackgroundButton.ClearValue(Button.BackgroundProperty);
+                    ValueLabel.TextColor = Color.Silver;
                 }
             }
         }

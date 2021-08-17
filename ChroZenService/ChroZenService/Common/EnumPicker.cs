@@ -17,7 +17,7 @@ namespace ChroZenService
 
         private static void GapChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if(bindable is EnumPicker picker && picker.enumType != null && picker.dictionaryEnum != null)
+            if (bindable is EnumPicker picker && picker.enumType != null && picker.dictionaryEnum != null)
             {
                 picker.enumType = null;
                 ValueChanged(bindable, null, picker.Value);
@@ -34,13 +34,13 @@ namespace ChroZenService
 
         private static void ValueChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if(bindable is EnumPicker picker &&  newValue.GetType().IsEnum)
+            if (bindable is EnumPicker picker && newValue.GetType().IsEnum)
             {
-                if(newValue.GetType() != picker.enumType)
+                if (newValue.GetType() != picker.enumType)
                 {
                     picker.enumType = newValue.GetType();
                     picker.dictionaryEnum = new Dictionary<string, object>();
-                    foreach(var e in Enum.GetValues(picker.enumType))
+                    foreach (var e in Enum.GetValues(picker.enumType))
                     {
                         if (picker.Filter != null && !picker.Filter((Enum)Convert.ChangeType(e, picker.enumType)))
                             continue;
@@ -50,7 +50,17 @@ namespace ChroZenService
                     }
                     picker.ItemsSource = picker.dictionaryEnum.Keys.ToList();
                 }
-                picker.SelectedIndex = picker.dictionaryEnum.Values.TakeWhile(e => !e.Equals(Convert.ChangeType(newValue, picker.enumType))).Count();
+
+                int select = -1;
+                for (int i = 0; i < picker.dictionaryEnum.Values.Count; ++i)
+                {
+                    if (picker.dictionaryEnum.Values.ElementAt(i).Equals(Convert.ChangeType(newValue, picker.enumType)))
+                    {
+                        select = i;
+                        break;
+                    }
+                }
+                picker.SelectedIndex = select;
             }
         }
 
@@ -64,7 +74,7 @@ namespace ChroZenService
 
         private static void FilterChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if (bindable is EnumPicker picker)
+            if (bindable is EnumPicker picker && picker.enumType != null)
             {
                 var enumType = picker.enumType;
                 picker.enumType = null;
@@ -109,7 +119,7 @@ namespace ChroZenService
         [SuppressPropertyChangedWarnings]
         private void OnSelectionChanged(object sender, EventArgs e)
         {
-            if(SelectedIndex >= 0 && SelectedIndex < dictionaryEnum.Count)
+            if (SelectedIndex >= 0 && SelectedIndex < dictionaryEnum.Count)
             {
                 Value = (Enum)Convert.ChangeType(dictionaryEnum.Values.ElementAt(SelectedIndex), enumType);
             }

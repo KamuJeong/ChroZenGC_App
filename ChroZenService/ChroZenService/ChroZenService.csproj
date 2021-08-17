@@ -35,6 +35,7 @@
     <None Remove="Images\compass_bg.png" />
     <None Remove="Images\Connect.png" />
     <None Remove="Images\Connect_Pressed.png" />
+    <None Remove="Images\DisabledSwitch.png" />
     <None Remove="Images\flash_20%402x.png" />
     <None Remove="Images\home_center.png" />
     <None Remove="Images\home_side1.png" />
@@ -98,6 +99,7 @@
     <EmbeddedResource Include="Images\compass_bg.png" />
     <EmbeddedResource Include="Images\Connect.png" />
     <EmbeddedResource Include="Images\Connect_Pressed.png" />
+    <EmbeddedResource Include="Images\DisabledSwitch.png" />
     <EmbeddedResource Include="Images\flash_20@2x.png" />
     <EmbeddedResource Include="Images\home_center.png" />
     <EmbeddedResource Include="Images\home_side1.png" />
@@ -178,6 +180,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Config\Grid_Config_Signal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\Config\Grid_Config_Valve.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Config\View_Config_Tab.xaml">

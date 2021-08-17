@@ -55,6 +55,9 @@
                                 <Label Text="{Binding IPAddress, StringFormat='IP: {0}'}" 
                                        IsVisible="{Binding SerialNumber, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=DEMO}"
                                        Grid.Row="1" Grid.Column="1" FontSize="Small" />
+                                <Label Text="{Binding IPAddress, StringFormat='  '}" 
+                                       IsVisible="{Binding SerialNumber, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=DEMO}"
+                                       Grid.Row="1" Grid.Column="1" FontSize="Small" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

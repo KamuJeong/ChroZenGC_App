@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace ChroZenGC.Core.Wrappers
@@ -19,7 +20,7 @@ namespace ChroZenGC.Core.Wrappers
             Provider.btInlet = new ValveConnection[8];
             Provider.btMultiType = new ValveTypes[2];
             Provider.btMultiPort = new byte[2];
-            Provider.btMultiInlet = new byte[2];
+            Provider.btMultiInlet = new ValveConnection[2];
             Provider.fMultiLoop = new float[2];
 
             ValveType = new ArrayWrapper<ValveTypes>(this, () => Provider.btType1);
@@ -31,7 +32,7 @@ namespace ChroZenGC.Core.Wrappers
 
             MultiValveType = new ArrayWrapper<ValveTypes>(this, () => Provider.btMultiType);
             MultiValvePortNumber = new ArrayWrapper<byte>(this, () => Provider.btMultiPort);
-            MultiValveConnection = new ArrayWrapper<byte>(this, () => Provider.btMultiInlet);
+            MultiValveConnection = new ArrayWrapper<ValveConnection>(this, () => Provider.btMultiInlet);
             MultiValveVolume = new ArrayWrapper<float>(this, () => Provider.fMultiLoop);
         }
 
@@ -63,7 +64,7 @@ namespace ChroZenGC.Core.Wrappers
 
         public ArrayWrapper<byte> MultiValvePortNumber { get; }
 
-        public ArrayWrapper<byte> MultiValveConnection { get; }
+        public ArrayWrapper<ValveConnection> MultiValveConnection { get; }
 
         public ArrayWrapper<float> MultiValveVolume { get; }
     }
@@ -90,6 +91,17 @@ namespace ChroZenGC.Core.Wrappers
             MultiValve = new ArrayWrapper<byte>(this, () => Packet.bMultiValve);
 
             ValveConfig = new _ValveConfigWrapper(this, () => ref Packet.ValveConfig);
+        }
+
+        protected override void OnPrePropertyModified(object sender, PropertyModifiedEventArgs args)
+        {
+            base.OnPrePropertyModified(sender, args);
+
+            if(args.PropertyName.StartsWith("_ValveConfigWrapper"))
+            {
+                ValveConfig.ValveCount = ValveConfig.ValveType.Count(t => t != ValveTypes.None);
+                ValveConfig.MultiValveCount = ValveConfig.MultiValveType.Count(t => t != ValveTypes.None);
+            }
         }
 
         public bool IsOvenInstalled

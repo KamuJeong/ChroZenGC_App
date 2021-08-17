@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService" 
+             x:Class="ChroZenService.Grid_Config_Valve"
+             x:DataType="local:ViewModel_Config_Valve"
+             x:Name="This">
+    <ContentView.Resources>
+        <local:MaxMultiValveStateConverter x:Key="maxMultiValveStateKey" />
+        <local:IsMultiValveConverter x:Key="isMultiValveKey" />
+        <local:IsValveConverter x:Key="isValveKey" />
+
+        <Style x:Key="captionKey" TargetType="Label">
+            <Setter Property="TextColor" Value="Silver" />
+            <Setter Property="FontSize"  Value="{StaticResource CaptionFontSizeKey}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="End" />
+        </Style>
+
+        <Style x:Key="groupKey" TargetType="Frame">
+            <Setter Property="Background" Value="{StaticResource GroupingFrameBackgroudKey}" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+
+        <ColumnDefinitionCollection x:Key="columnConfig">
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="0.2"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.3*"/>
+        </ColumnDefinitionCollection>
+
+        <ColumnDefinitionCollection x:Key="columnProgram">
+            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </ColumnDefinitionCollection>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="0" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollView>
+                <StackLayout Padding="10" Spacing="10" >
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Valve1"
+                                   Style="{StaticResource captionKey}" />
+                            <local:SwitchButton ON="{Binding Setup.InitValveOnOff[0]}"
+                                                     IsEnabled="{Binding Configuration.ValveConfig.ValveType[0], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Grid.Column="2"/>                            
+                            <Label Text="Valve2"
+                                   Grid.Row="1" Style="{StaticResource captionKey}" />
+                            <local:SwitchButton ON="{Binding Setup.InitValveOnOff[1]}"
+                                                     IsEnabled="{Binding Configuration.ValveConfig.ValveType[1], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                     Grid.Row="1" Grid.Column="2"/>
+                            <Label Text="Valve3"
+                                   Grid.Row="2" Style="{StaticResource captionKey}" />
+                            <local:SwitchButton ON="{Binding Setup.InitValveOnOff[2]}"
+                                                     IsEnabled="{Binding Configuration.ValveConfig.ValveType[2], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                     Grid.Row="2" Grid.Column="2"/>
+                            <Label Text="Valve4"
+                                   Grid.Row="3" Style="{StaticResource captionKey}" />
+                            <local:SwitchButton ON="{Binding Setup.InitValveOnOff[3]}"
+                                                     IsEnabled="{Binding Configuration.ValveConfig.ValveType[3], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                     Grid.Row="3" Grid.Column="2"/>
+                            <Label Text="Valve5"
+                                   Grid.Row="4" Style="{StaticResource captionKey}" />
+                            <local:SwitchButton ON="{Binding Setup.InitValveOnOff[4]}"
+                                                     IsEnabled="{Binding Configuration.ValveConfig.ValveType[4], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                     Grid.Row="4" Grid.Column="2"/>
+                            <Label Text="Valve6"
+                                   Grid.Row="5" Style="{StaticResource captionKey}" />
+                            <local:SwitchButton ON="{Binding Setup.InitValveOnOff[5]}"
+                                                     IsEnabled="{Binding Configuration.ValveConfig.ValveType[5], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                     Grid.Row="5" Grid.Column="2"/>
+                            <Label Text="Valve7"
+                                   Grid.Row="6" Style="{StaticResource captionKey}" />
+                            <local:SwitchButton ON="{Binding Setup.InitValveOnOff[6]}"
+                                                     IsEnabled="{Binding Configuration.ValveConfig.ValveType[6], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                     Grid.Row="6" Grid.Column="2"/>
+                            <Label Text="Valve8"
+                                   Grid.Row="7" Style="{StaticResource captionKey}" />
+                            <local:SwitchButton ON="{Binding Setup.InitValveOnOff[7]}"
+                                                     IsEnabled="{Binding Configuration.ValveConfig.ValveType[7], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                     Grid.Row="7" Grid.Column="2"/>
+
+                            <Label Text="Multi1"
+                                   Grid.Row="9" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Setup.InitMultiValve[0]}"
+                                                Max="{Binding Configuration.ValveConfig.MultiValvePortNumber[0]}" Min="1" Caption="Multi1" 
+                                                IsEnabled="{Binding Configuration.ValveConfig.MultiValveType[0], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                Grid.Row="9" Grid.Column="2"/>
+                            <Label Text="Multi2"
+                                   Grid.Row="10" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding Setup.InitMultiValve[1]}"
+                                                Max="{Binding Configuration.ValveConfig.MultiValvePortNumber[1]}" Min="1" Caption="Multi2" 
+                                                IsEnabled="{Binding Configuration.ValveConfig.MultiValveType[1], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                Grid.Row="10" Grid.Column="2"/>
+
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="11"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+
+            <ScrollView Grid.Column="1">
+                <StackLayout Padding="10" Spacing="10" >
+                    <Frame Style="{StaticResource groupKey}" >
+                        <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="7" />
+                                <RowDefinition Height="0.2" />
+                                <RowDefinition Height="7" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Time" 
+                                   Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(min)" 
+                                   Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" FontSize="{StaticResource DefaultFontSizeKey}" Style="{StaticResource captionKey}" />
+                            <Label Text="Valve" 
+                                   Grid.RowSpan="2" Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="State" 
+                                   Grid.RowSpan="2" Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Row="3" Grid.ColumnSpan="4"/>
+
+                            <StackLayout BindableLayout.ItemsSource="{Binding Program}" 
+                                         Grid.Row="5" Grid.ColumnSpan="4" BackgroundColor="Transparent" Spacing="5" >
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid x:DataType="local:ValveProgramStep" ColumnSpacing="10" ColumnDefinitions="{StaticResource columnProgram}">
+                                            <Label Text="{Binding Number}" 
+                                                   HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                            <local:ValueEditor Value="{Binding Step.Time, StringFormat='{0:F1}'}" 
+                                                               Max="9999" Min="0" Caption="{Binding Number, StringFormat='Time {0}'}"
+                                                               Grid.Column="1" 
+                                                               IsVisible="{Binding Editable}" />
+                                            <local:ValueEditor Value="{Binding Step.Time, StringFormat='{0:F1}'}" 
+                                                               Max="9999" Min="0" Caption="Add Time" Text="Add"
+                                                               Grid.Column="1" IsVisible="{Binding Editable, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                                               Command="{Binding Source={x:Reference This}, Path=BindingContext.TimeChangedCommand}"
+                                                               CommandParameter="{Binding}"/>
+
+                                            <local:EnumPicker Title="{Binding Number, StringFormat='Valve {0}'}" Value="{Binding Step.Valve}"
+                                                              IsVisible="{Binding Editable}"
+                                                            Grid.Column="2" Filter="{Binding Source={x:Reference This}, Path=BindingContext.ValveFilter}"/>
+
+                                            <local:ValueEditor Value="{Binding Step.State}"  
+                                                           Max="{Binding Step.Valve, Converter={StaticResource maxMultiValveStateKey}}" Min="1" 
+                                                           Caption="{Binding Number, StringFormat='State {0}'}"
+                                                           IsEnabled="{Binding Editable}"
+                                                           IsVisible="{Binding Step.Valve, Converter={StaticResource isMultiValveKey}}"
+                                                           Grid.Column="3" />
+                                            <local:SwitchButton ON="{Binding Step.On}"
+                                                            IsEnabled="{Binding Editable}"
+                                                           IsVisible="{Binding Step.Valve, Converter={StaticResource isValveKey}}"
+                                                           Grid.Column="3" />
+
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                    
+                </StackLayout>
+            </ScrollView>
+            
+        </Grid>
+    </ContentView.Content>
+</ContentView>

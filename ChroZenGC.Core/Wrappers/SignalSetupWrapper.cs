@@ -37,6 +37,8 @@ namespace ChroZenGC.Core.Wrappers
         {
             Packet.Prgm = new _SignalProgram[5];
 
+            Packet.Prgm[0].btDet = SignalDetectors.RearDetector;
+
             for (int i = 0; i < 5; ++i)
             {
                 int j = i;

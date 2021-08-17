@@ -18,6 +18,12 @@ namespace ChroZenService
             HeightRequest = (double)Application.Current.Resources["CaptionFontSizeKey"] * 1.5 + 4;
             WidthRequest = HeightRequest * 190.0 / 40.0;
 
+            var trigger = new Trigger(typeof(SwitchImageButton));
+            trigger.Property = ImageButton.IsEnabledProperty;
+            trigger.Value = false;
+            trigger.Setters.Add(new Setter { Property = ImageButton.SourceProperty, Value = Disable });
+            Triggers.Add(trigger);
+
             Pressed += OnPressed;
         }
         private void OnPressed(object sender, EventArgs e)
@@ -61,5 +67,7 @@ namespace ChroZenService
         static private ImageSource SourceON { get; } = ImageSource.FromResource("ChroZenService.Images.btn_on.png");
 
         static private ImageSource SourceOFF { get; } = ImageSource.FromResource("ChroZenService.Images.btn_off.png");
+
+        static private ImageSource Disable { get; } = ImageSource.FromResource("ChroZenService.Images.DisabledSwitch.png");
     }
 }

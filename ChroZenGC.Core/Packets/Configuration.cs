@@ -56,7 +56,7 @@ namespace ChroZenGC.Core.Packets
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public float[] fMultiLoop;                        // Multi Position Valve1~2의 루프용량 [2]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] btMultiInlet;                       // Multi Position Valve1~2 에 연결된 Inlet. port 번호 [2]
+        public ValveConnection[] btMultiInlet;                       // Multi Position Valve1~2 에 연결된 Inlet. port 번호 [2]
     }
 
     public enum InletTypes : byte

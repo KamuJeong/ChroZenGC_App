@@ -42,7 +42,8 @@
                     <Label Text="Inlet Configuration" 
                             Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
                     <Frame Style="{StaticResource groupKey}">
-                        <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                        <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}"
+                              InputTransparent="{Binding Root.IsActual}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
@@ -52,17 +53,17 @@
                             <Label Text="Front Inlet"
                                     Style="{StaticResource captionKey}" />
                             <local:EnumPicker Title="Front Inlet" Value="{Binding Configuration.InletType[0]}" Gap="True"
-                                          Grid.Column="2" Grid.ColumnSpan="3" InputTransparent="{Binding Root.IsDemo}" />
+                                          Grid.Column="2" Grid.ColumnSpan="3" />
 
                             <Label Text="Center Inlet" 
                                     Grid.Row="1"  Style="{StaticResource captionKey}" />
                             <local:EnumPicker Title="Center Inlet" Value="{Binding Configuration.InletType[1]}" Gap="True"
-                                          Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" InputTransparent="{Binding Root.IsDemo}" />
+                                          Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" />
 
                             <Label Text="Rear Inlet" 
                                     Grid.Row="2"  Style="{StaticResource captionKey}" />
                             <local:EnumPicker Title="Rear Inlet" Value="{Binding Configuration.InletType[2]}" Gap="True"
-                                          Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" InputTransparent="{Binding Root.IsDemo}" />
+                                          Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" />
 
                             <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
                         </Grid>
@@ -71,7 +72,8 @@
                     <Label Text="Detector Configuration" 
                             Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />                    
                     <Frame Style="{StaticResource groupKey}">
-                        <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                        <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}"
+                              InputTransparent="{Binding Root.IsActual}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
@@ -81,17 +83,17 @@
                             <Label Text="Front Detector"
                                     Style="{StaticResource captionKey}" />
                             <local:EnumPicker Title="Front Detector" Value="{Binding Configuration.DetectorType[0]}" Gap="True" Filter="{Binding DetectorFilter}"
-                                          Grid.Column="2" Grid.ColumnSpan="3" InputTransparent="{Binding Root.IsDemo}" />
+                                          Grid.Column="2" Grid.ColumnSpan="3" />
 
                             <Label Text="Center Detector" 
                                     Grid.Row="1"  Style="{StaticResource captionKey}" />
                             <local:EnumPicker Title="Center Detector" Value="{Binding Configuration.DetectorType[1]}" Gap="True" Filter="{Binding DetectorFilter}"
-                                          Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" InputTransparent="{Binding Root.IsDemo}" />
+                                          Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
 
                             <Label Text="Rear Detector" 
                                     Grid.Row="2"  Style="{StaticResource captionKey}" />
                             <local:EnumPicker Title="Rear Detector" Value="{Binding Configuration.DetectorType[2]}" Gap="True" Filter="{Binding DetectorFilter}"
-                                          Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" InputTransparent="{Binding Root.IsDemo}" />
+                                          Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"/>
 
                             <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
                         </Grid>
@@ -138,53 +140,56 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <StackLayout Orientation="Horizontal" Spacing="0" >
+                            <StackLayout Orientation="Horizontal" Spacing="0" InputTransparent="{Binding Root.IsActual}">
                                 <CheckBox IsChecked="{Binding Configuration.AuxTemp[0], Converter={StaticResource ByteToBooleanKey}}" 
-                                          Color="Silver" InputTransparent="{Binding Root.IsDemo}" />
+                                          Color="Silver" />
                                 <Label Text="AUX1"
                                     Style="{StaticResource captionKey}" />
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Column="1">
+                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Column="1" InputTransparent="{Binding Root.IsActual}">
                                 <CheckBox IsChecked="{Binding Configuration.AuxTemp[1], Converter={StaticResource ByteToBooleanKey}}"
-                                          Color="Silver" InputTransparent="{Binding Root.IsDemo}" />
+                                          Color="Silver" />
                                 <Label Text="AUX2"
                                     Style="{StaticResource captionKey}" />
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Column="2" >
+                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Column="2" InputTransparent="{Binding Root.IsActual}">
                                 <CheckBox IsChecked="{Binding Configuration.AuxTemp[2], Converter={StaticResource ByteToBooleanKey}}" 
-                                          Color="Silver" InputTransparent="{Binding Root.IsDemo}"/>
+                                          Color="Silver" />
                                 <Label Text="AUX3"
                                     Style="{StaticResource captionKey}" />
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Row="1" Grid.Column="0" InputTransparent="{Binding Root.IsActual}">
                                 <CheckBox IsChecked="{Binding Configuration.AuxTemp[3], Converter={StaticResource ByteToBooleanKey}}" 
-                                          Color="Silver" InputTransparent="{Binding Root.IsDemo}"/>
+                                          Color="Silver" />
                                 <Label Text="AUX4 : "
                                     Style="{StaticResource captionKey}" />
-
-                                <local:EnumPicker Title="AUX4" Value="{Binding Configuration.Aux4Type}" Gap="True" />
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Row="1" Grid.Column="2" >
+
+                            <local:EnumPicker Title="AUX4" Value="{Binding Configuration.Aux4Type}" Gap="True" 
+                                              Grid.Row="1" Grid.Column="1" 
+                                              IsEnabled="{Binding Configuration.AuxTemp[3], Converter={StaticResource ByteToBooleanKey}}" />
+                            
+                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Row="1" Grid.Column="2" InputTransparent="{Binding Root.IsActual}">
                                 <CheckBox IsChecked="{Binding Configuration.AuxTemp[4], Converter={StaticResource ByteToBooleanKey}}" 
-                                          Color="Silver" InputTransparent="{Binding Root.IsDemo}"/>
+                                          Color="Silver" />
                                 <Label Text="AUX5"
                                     Style="{StaticResource captionKey}" />
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Row="2" Grid.Column="0" >
+                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Row="2" Grid.Column="0" InputTransparent="{Binding Root.IsActual}">
                                 <CheckBox IsChecked="{Binding Configuration.AuxTemp[5], Converter={StaticResource ByteToBooleanKey}}" 
-                                          Color="Silver" InputTransparent="{Binding Root.IsDemo}"/>
+                                          Color="Silver" />
                                 <Label Text="AUX6"
                                     Style="{StaticResource captionKey}" />
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Row="2" Grid.Column="1" >
+                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Row="2" Grid.Column="1" InputTransparent="{Binding Root.IsActual}">
                                 <CheckBox IsChecked="{Binding Configuration.AuxTemp[6], Converter={StaticResource ByteToBooleanKey}}"
-                                          Color="Silver" InputTransparent="{Binding Root.IsDemo}"/>
+                                          Color="Silver" />
                                 <Label Text="AUX7"
                                     Style="{StaticResource captionKey}" />
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Row="2" Grid.Column="2" >
+                            <StackLayout Orientation="Horizontal" Spacing="0" Grid.Row="2" Grid.Column="2" InputTransparent="{Binding Root.IsActual}">
                                 <CheckBox IsChecked="{Binding Configuration.AuxTemp[7], Converter={StaticResource ByteToBooleanKey}}"
-                                          Color="Silver" InputTransparent="{Binding Root.IsDemo}"/>
+                                          Color="Silver" />
                                 <Label Text="AUX8"
                                     Style="{StaticResource captionKey}" />
                             </StackLayout>
@@ -203,19 +208,10 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="2" />
                             </ColumnDefinitionCollection>
-
-                            
                         </Frame.Resources>
-                        
+
                         <StackLayout Spacing="0">
-                            <Grid ColumnSpacing="5" RowSpacing="5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.8*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="2" />
-                                </Grid.ColumnDefinitions>
+                            <Grid ColumnSpacing="5" RowSpacing="5" ColumnDefinitions="{StaticResource colummValve}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="0.2"/>
@@ -263,7 +259,7 @@
 
                                 <local:ValueEditor Value="{Binding Configuration.ValveConfig.PortNumber[0]}" 
                                                    IsEnabled="{Binding Configuration.ValveConfig.ValveType[0], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
-                                                    Max="10"  Min="2" Caption="Value1 Port"  Grid.Row="1"  Grid.Column="1" />
+                                                    Min="1" Caption="Value1 Port"  Grid.Row="1"  Grid.Column="1" />
                                 <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume1[0], StringFormat='{0:G}'}" Unit="cc"
                                                    IsEnabled="{Binding Configuration.ValveConfig.ValveType[0], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
                                                      Min="0" Caption="Value1 Loop1" Grid.Row="1" Grid.Column="2" />
@@ -284,16 +280,21 @@
                                 <local:EnumPicker Title="Valve2 Type1" Value="{Binding Configuration.ValveConfig.ValveType[1]}" 
                                                   Grid.Column="1"/>
                                 <local:EnumPicker Title="Valve2 Type2" Value="{Binding Configuration.ValveConfig.ActuatorType[1]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[1], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
                                                   Grid.Column="2"/>
                                 <local:EnumPicker Title="Valve2 Inlet" Value="{Binding Configuration.ValveConfig.Connection[1]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[1], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
                                                   Grid.Column="3"/>
 
                                 <local:ValueEditor Value="{Binding Configuration.ValveConfig.PortNumber[1]}" 
-                                           Max="10"  Min="2" Caption="Value2 Port"  Grid.Row="1"  Grid.Column="1" />
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[1], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="1" Caption="Value2 Port"  Grid.Row="1"  Grid.Column="1" />
                                 <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume1[1], StringFormat='{0:G}'}" Unit="cc"
-                                           Min="0" Caption="Value2 Loop1" Grid.Row="1" Grid.Column="2" />
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[1], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value2 Loop1" Grid.Row="1" Grid.Column="2" />
                                 <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume2[1], StringFormat='{0:G}'}" Unit="cc"
-                                           Min="0" Caption="Value2 Loop2" Grid.Row="1" Grid.Column="3" />
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[1], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value2 Loop2" Grid.Row="1" Grid.Column="3" />
                             </Grid>
 
                             <Grid ColumnSpacing="5" RowSpacing="0" ColumnDefinitions="{StaticResource colummValve}" BackgroundColor="#10ffffff" Padding="0,0,0,5">
@@ -308,16 +309,21 @@
                                 <local:EnumPicker Title="Valve3 Type1" Value="{Binding Configuration.ValveConfig.ValveType[2]}" 
                                                   Grid.Column="1"/>
                                 <local:EnumPicker Title="Valve3 Type2" Value="{Binding Configuration.ValveConfig.ActuatorType[2]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[2], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
                                                   Grid.Column="2"/>
                                 <local:EnumPicker Title="Valve3 Inlet" Value="{Binding Configuration.ValveConfig.Connection[2]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[2], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
                                                   Grid.Column="3"/>
 
                                 <local:ValueEditor Value="{Binding Configuration.ValveConfig.PortNumber[2]}" 
-                                           Max="10"  Min="2" Caption="Value3 Port"  Grid.Row="1"  Grid.Column="1" />
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[2], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="1" Caption="Value3 Port"  Grid.Row="1"  Grid.Column="1" />
                                 <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume1[2], StringFormat='{0:G}'}" Unit="cc"
-                                           Min="0" Caption="Value3 Loop1" Grid.Row="1" Grid.Column="2" />
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[2], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value3 Loop1" Grid.Row="1" Grid.Column="2" />
                                 <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume2[2], StringFormat='{0:G}'}" Unit="cc"
-                                           Min="0" Caption="Value3 Loop2" Grid.Row="1" Grid.Column="3" />
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[2], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value3 Loop2" Grid.Row="1" Grid.Column="3" />
                             </Grid>
 
                             <Grid ColumnSpacing="5" RowSpacing="0" ColumnDefinitions="{StaticResource colummValve}" Padding="0,0,0,5">
@@ -332,20 +338,185 @@
                                 <local:EnumPicker Title="Valve4 Type1" Value="{Binding Configuration.ValveConfig.ValveType[3]}" 
                                                   Grid.Column="1"/>
                                 <local:EnumPicker Title="Valve4 Type2" Value="{Binding Configuration.ValveConfig.ActuatorType[3]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[3], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
                                                   Grid.Column="2"/>
                                 <local:EnumPicker Title="Valve4 Inlet" Value="{Binding Configuration.ValveConfig.Connection[3]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[3], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
                                                   Grid.Column="3"/>
 
                                 <local:ValueEditor Value="{Binding Configuration.ValveConfig.PortNumber[3]}" 
-                                           Max="10"  Min="2" Caption="Value4 Port"  Grid.Row="1"  Grid.Column="1" />
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[3], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="1" Caption="Value4 Port"  Grid.Row="1"  Grid.Column="1" />
                                 <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume1[3], StringFormat='{0:G}'}" Unit="cc"
-                                           Min="0" Caption="Value4 Loop1" Grid.Row="1" Grid.Column="2" />
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[3], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value4 Loop1" Grid.Row="1" Grid.Column="2" />
                                 <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume2[3], StringFormat='{0:G}'}" Unit="cc"
-                                           Min="0" Caption="Value4 Loop2" Grid.Row="1" Grid.Column="3" />
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[3], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value4 Loop2" Grid.Row="1" Grid.Column="3" />
+                            </Grid>
+
+
+                            <Grid ColumnSpacing="5" RowSpacing="0" ColumnDefinitions="{StaticResource colummValve}" BackgroundColor="#10ffffff" Padding="0,0,0,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Valve5"
+                                       Grid.RowSpan="2" HorizontalOptions="Center" Style="{StaticResource captionKey}"/>
+
+                                <local:EnumPicker Title="Valve5 Type1" Value="{Binding Configuration.ValveConfig.ValveType[4]}" 
+                                                  Grid.Column="1"/>
+                                <local:EnumPicker Title="Valve1 Type2" Value="{Binding Configuration.ValveConfig.ActuatorType[4]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[4], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                  Grid.Column="2"/>
+                                <local:EnumPicker Title="Valve5 Inlet" Value="{Binding Configuration.ValveConfig.Connection[4]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[4], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                  Grid.Column="3"/>
+
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.PortNumber[4]}" 
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[4], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="1" Caption="Value5 Port"  Grid.Row="1"  Grid.Column="1" />
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume1[4], StringFormat='{0:G}'}" Unit="cc"
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[4], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                     Min="0" Caption="Value5 Loop1" Grid.Row="1" Grid.Column="2" />
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume2[4], StringFormat='{0:G}'}" Unit="cc"
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[4], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value5 Loop2" Grid.Row="1" Grid.Column="3" />
+                            </Grid>
+
+                            <Grid ColumnSpacing="5" RowSpacing="0" ColumnDefinitions="{StaticResource colummValve}" Padding="0,0,0,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Valve6"
+                                       Grid.RowSpan="2" HorizontalOptions="Center" Style="{StaticResource captionKey}"/>
+
+                                <local:EnumPicker Title="Valve6 Type1" Value="{Binding Configuration.ValveConfig.ValveType[5]}" 
+                                                  Grid.Column="1"/>
+                                <local:EnumPicker Title="Valve6 Type2" Value="{Binding Configuration.ValveConfig.ActuatorType[5]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[5], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                  Grid.Column="2"/>
+                                <local:EnumPicker Title="Valve6 Inlet" Value="{Binding Configuration.ValveConfig.Connection[5]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[5], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                  Grid.Column="3"/>
+
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.PortNumber[5]}" 
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[5], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="1" Caption="Value6 Port"  Grid.Row="1"  Grid.Column="1" />
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume1[5], StringFormat='{0:G}'}" Unit="cc"
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[5], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value6 Loop1" Grid.Row="1" Grid.Column="2" />
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume2[5], StringFormat='{0:G}'}" Unit="cc"
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[5], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value6 Loop2" Grid.Row="1" Grid.Column="3" />
+                            </Grid>
+
+                            <Grid ColumnSpacing="5" RowSpacing="0" ColumnDefinitions="{StaticResource colummValve}" BackgroundColor="#10ffffff" Padding="0,0,0,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Valve7"
+                                       Grid.RowSpan="2" HorizontalOptions="Center" Style="{StaticResource captionKey}"/>
+
+                                <local:EnumPicker Title="Valve7 Type1" Value="{Binding Configuration.ValveConfig.ValveType[6]}" 
+                                                  Grid.Column="1"/>
+                                <local:EnumPicker Title="Valve7 Type2" Value="{Binding Configuration.ValveConfig.ActuatorType[6]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[6], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                  Grid.Column="2"/>
+                                <local:EnumPicker Title="Valve7 Inlet" Value="{Binding Configuration.ValveConfig.Connection[6]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[6], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                  Grid.Column="3"/>
+
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.PortNumber[6]}" 
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[6], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="1" Caption="Value7 Port"  Grid.Row="1"  Grid.Column="1" />
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume1[6], StringFormat='{0:G}'}" Unit="cc"
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[6], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value7 Loop1" Grid.Row="1" Grid.Column="2" />
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume2[6], StringFormat='{0:G}'}" Unit="cc"
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[6], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value7 Loop2" Grid.Row="1" Grid.Column="3" />
+                            </Grid>
+
+                            <Grid ColumnSpacing="5" RowSpacing="0" ColumnDefinitions="{StaticResource colummValve}" Padding="0,0,0,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Valve8"
+                                       Grid.RowSpan="2" HorizontalOptions="Center" Style="{StaticResource captionKey}"/>
+
+                                <local:EnumPicker Title="Valve8 Type1" Value="{Binding Configuration.ValveConfig.ValveType[7]}" 
+                                                  Grid.Column="1"/>
+                                <local:EnumPicker Title="Valve8 Type2" Value="{Binding Configuration.ValveConfig.ActuatorType[7]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[7], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                  Grid.Column="2"/>
+                                <local:EnumPicker Title="Valve8 Inlet" Value="{Binding Configuration.ValveConfig.Connection[7]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.ValveType[7], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                  Grid.Column="3"/>
+
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.PortNumber[7]}" 
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[7], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="1" Caption="Value8 Port"  Grid.Row="1"  Grid.Column="1" />
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume1[7], StringFormat='{0:G}'}" Unit="cc"
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[7], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value8 Loop1" Grid.Row="1" Grid.Column="2" />
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.LoopVolume2[7], StringFormat='{0:G}'}" Unit="cc"
+                                                   IsEnabled="{Binding Configuration.ValveConfig.ValveType[7], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Value8 Loop2" Grid.Row="1" Grid.Column="3" />
+                            </Grid>
+
+                            <Grid ColumnSpacing="5" RowSpacing="0" ColumnDefinitions="{StaticResource colummValve}" BackgroundColor="#10ffffff" Padding="0,0,0,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Multi1"
+                                       Grid.RowSpan="2" HorizontalOptions="Center" Style="{StaticResource captionKey}"/>
+
+                                <local:EnumPicker Title="Multi1 Type" Value="{Binding Configuration.ValveConfig.MultiValveType[0]}" 
+                                                  Grid.Column="1"/>
+                                <local:EnumPicker Title="Multi1 Inlet" Value="{Binding Configuration.ValveConfig.MultiValveConnection[0]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.MultiValveType[0], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                  Grid.Column="3"/>
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.MultiValvePortNumber[0]}" 
+                                                   IsEnabled="{Binding Configuration.ValveConfig.MultiValveType[0], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="1" Caption="Multi1 Port"  Grid.Row="1"  Grid.Column="1" />
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.MultiValveVolume[0], StringFormat='{0:G}'}" Unit="cc"
+                                                   IsEnabled="{Binding Configuration.ValveConfig.MultiValveType[0], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Multi1 Loop" Grid.Row="1" Grid.Column="2" />
+                            </Grid>
+
+                            <Grid ColumnSpacing="5" RowSpacing="0" ColumnDefinitions="{StaticResource colummValve}" Padding="0,0,0,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Multi2"
+                                       Grid.RowSpan="2" HorizontalOptions="Center" Style="{StaticResource captionKey}"/>
+
+                                <local:EnumPicker Title="Multi2 Type" Value="{Binding Configuration.ValveConfig.MultiValveType[1]}" 
+                                                  Grid.Column="1"/>
+                                <local:EnumPicker Title="Multi2 Inlet" Value="{Binding Configuration.ValveConfig.MultiValveConnection[1]}" 
+                                                  IsEnabled="{Binding Configuration.ValveConfig.MultiValveType[1], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                  Grid.Column="3"/>
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.MultiValvePortNumber[1]}" 
+                                                   IsEnabled="{Binding Configuration.ValveConfig.MultiValveType[1], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="1" Caption="Multi2 Port"  Grid.Row="1"  Grid.Column="1" />
+                                <local:ValueEditor Value="{Binding Configuration.ValveConfig.MultiValveVolume[1], StringFormat='{0:G}'}" Unit="cc"
+                                                   IsEnabled="{Binding Configuration.ValveConfig.MultiValveType[1], Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Min="0" Caption="Multi2 Loop" Grid.Row="1" Grid.Column="2" />
                             </Grid>
 
                         </StackLayout>
-                        
                     </Frame>
 
 

@@ -24,7 +24,7 @@ namespace ChroZenService
 
         public string TimeTicker { get; set; }
 
-        public bool IsDemo { get; set; }
+        public bool IsActual { get; set; } = true;
 
         public ViewModel_Root(Model model, DeviceIPFinder finder)
         {
@@ -56,6 +56,7 @@ namespace ChroZenService
             if(e.PropertyName == "Binary")
             {
                 Resolver.Resolve<View_Config>().Initialize();
+                Resolver.Resolve<View_System>().Initialize();
             }
         }
 
@@ -79,12 +80,12 @@ namespace ChroZenService
         private bool isConnected;
         public bool IsConnected 
         {
-            get => IsDemo || isConnected;
+            get => !IsActual || isConnected;
             set
             {
                 isConnected = value;
                 if (!value)
-                    IsDemo = false;
+                    IsActual = true;
             }
         }
 
@@ -94,11 +95,13 @@ namespace ChroZenService
         {
             IPFinder.Stop();
 
+            IsActual = true;
+
             if (DeviceInterface != null)
             {
                 if (DeviceInterface.SerialNumber == "DEMO")
                 {
-                    IsDemo = true;
+                    IsActual = false;
                     OnConfigurationModified(null, new PropertyChangedEventArgs("Binary"));
                 }
                 else
@@ -153,8 +156,6 @@ namespace ChroZenService
                         IsRefreshing = true;
                         OnRefreshReception(null);
                     }
-
-                    IsDemo = false;
                 }
                 catch
                 {

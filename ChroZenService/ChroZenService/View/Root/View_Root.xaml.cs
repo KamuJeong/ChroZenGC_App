@@ -43,10 +43,11 @@ namespace ChroZenService
         {
             var config = Resolver.Resolve<View_Config>();
             Config.Content = config;
-            config.PreInitialize();
 
             var system = Resolver.Resolve<View_System>();
             System.Content = system;
+
+            config.PreInitialize();
             system.PreInitialize();
         }
 
