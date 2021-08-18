@@ -37,9 +37,11 @@ namespace ChroZenService
             await Task.Yield();
         }
 
-
         private void InitView(int select)
         {
+            if (Views.ContainsKey(select))
+                return;
+
             View view = null;
             switch (select)
             {

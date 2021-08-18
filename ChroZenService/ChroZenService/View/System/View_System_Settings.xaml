@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.View_System_Settings"
+             x:DataType="local:ViewModel_System">
+    <ContentView.Resources>
+        <Style x:Key="captionKey" TargetType="Label">
+            <Setter Property="TextColor" Value="Silver" />
+            <Setter Property="FontSize"  Value="{StaticResource CaptionFontSizeKey}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="End" />
+        </Style>
+
+        <Style x:Key="groupKey" TargetType="Frame">
+            <Setter Property="Background" Value="{StaticResource GroupingFrameBackgroudKey}" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+
+        <ColumnDefinitionCollection x:Key="columnConfig">
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.2"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.08*"/>
+        </ColumnDefinitionCollection>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="710*"/>
+                <RowDefinition Height="22*"/>
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="2">
+                <StackLayout Padding="10" Spacing="10" >
+                    <!--<Label Text="Inlet Configuration" 
+                            Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />-->
+                    <Frame Style="{StaticResource groupKey}">
+                        <!--<Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}"
+                              InputTransparent="{Binding Root.IsActual}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Front Inlet"
+                                    Style="{StaticResource captionKey}" />
+                            <local:EnumPicker Title="Front Inlet" Value="{Binding Configuration.InletType[0]}" Gap="True"
+                                          Grid.Column="2" Grid.ColumnSpan="3" />
+
+                            <Label Text="Center Inlet" 
+                                    Grid.Row="1"  Style="{StaticResource captionKey}" />
+                            <local:EnumPicker Title="Center Inlet" Value="{Binding Configuration.InletType[1]}" Gap="True"
+                                          Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" />
+
+                            <Label Text="Rear Inlet" 
+                                    Grid.Row="2"  Style="{StaticResource captionKey}" />
+                            <local:EnumPicker Title="Rear Inlet" Value="{Binding Configuration.InletType[2]}" Gap="True"
+                                          Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>--><!--
+                        </Grid>-->
+                    </Frame>
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

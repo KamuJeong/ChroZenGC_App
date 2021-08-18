@@ -28,7 +28,22 @@ namespace ChroZenGC.Core
             Signals[1].PropertyModified += Signal2PropertyModified;
             Signals[2].PropertyModified += Signal3PropertyModified;
             Valve.PropertyModified += ValvePropertyModified;
+            AuxTemp.PropertyModified += AuxTempPropertyModified;
+            AuxUPC[0].PropertyModified += AuxUPC1PropertyModified;
+            AuxUPC[1].PropertyModified += AuxUPC2PropertyModified;
+            AuxUPC[2].PropertyModified += AuxUPC3PropertyModified;
+            Special.PropertyModified += SpecialPropertyModified;
         }
+
+        private async void SpecialPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Special, 0, e);
+
+        private async void AuxUPC3PropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(AuxUPC[2], 2, e);
+
+        private async void AuxUPC2PropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(AuxUPC[1], 1, e);
+
+        private async void AuxUPC1PropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(AuxUPC[0], 0, e);
+
+        private async void AuxTempPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(AuxTemp, 0, e);
 
         private async void ValvePropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Valve, 0, e);
 
@@ -108,6 +123,18 @@ namespace ChroZenGC.Core
 
                     case ValveSetupWrapper.PacketCode:
                         Assemble(Valve, buffer, header.SlotOffset, header.SlotSize);
+                        break;
+
+                    case AuxTempSetupWrapper.PacketCode:
+                        Assemble(AuxTemp, buffer, header.SlotOffset, header.SlotSize);
+                        break;
+
+                    case AuxUPCSetupWrapper.PacketCode:
+                        Assemble(AuxUPC[header.Index], buffer, header.SlotOffset, header.SlotSize);
+                        break;
+
+                    case SpecialSetupWrapper.PacketCode:
+                        Assemble(Special, buffer, header.SlotOffset, header.SlotSize);
                         break;
                 }
             }
@@ -210,5 +237,16 @@ namespace ChroZenGC.Core
         };
 
         public ValveSetupWrapper Valve { get; } = new ValveSetupWrapper();
+
+        public AuxTempSetupWrapper AuxTemp { get; } = new AuxTempSetupWrapper();
+
+        public ObservableCollection<AuxUPCSetupWrapper> AuxUPC { get; } = new ObservableCollection<AuxUPCSetupWrapper>
+        {
+            new AuxUPCSetupWrapper() { PortNo = 0 },
+            new AuxUPCSetupWrapper() { PortNo = 1 },
+            new AuxUPCSetupWrapper() { PortNo = 2 },
+        };
+
+        public SpecialSetupWrapper Special { get; } = new SpecialSetupWrapper();
     }
 }

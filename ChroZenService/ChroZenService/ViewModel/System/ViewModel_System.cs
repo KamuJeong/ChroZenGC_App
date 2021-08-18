@@ -1,8 +1,10 @@
 ﻿using ChroZenGC.Core;
 using ChroZenGC.Core.Packets;
 using ChroZenGC.Core.Wrappers;
+using ChroZenService;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
@@ -24,15 +26,89 @@ namespace ChroZenService
         {
             Model = model;
             Root = root;
+
+            Model.Information.PropertyModified += OnInformationPropertyModified;
+
+            IPAddress = Model.Information.IPAddress;
+            NetworkMask = Model.Information.NetworkMask;
+            GateWay = Model.Information.GateWay;
+        }
+
+        private void OnInformationPropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Binary")
+            {
+                IPAddress = Model.Information.IPAddress;
+                NetworkMask = Model.Information.NetworkMask;
+                GateWay = Model.Information.GateWay;
+            }
         }
 
         public int SelectedItem { get; set; } = 1;
 
         public ICommand SetNetworkCommand => new Command(OnSetNetwork);
 
-        private static void OnSetNetwork(object obj)
+        private async  void OnSetNetwork(object obj)
         {
-            
+            var information = new InformationWrapper();
+            information.Version = "SetIP";
+            try
+            {
+                information.IPAddress = IPAddress;
+            }
+            catch
+            {
+                await Resolver.Resolve<View_Root>().DisplayAlert("Alert", "IP address is not valid", "OK");
+                IPAddress = Model.Information.IPAddress;
+                return;
+            }
+            try
+            {
+                information.NetworkMask = NetworkMask;
+            }
+            catch
+            {
+                await Resolver.Resolve<View_Root>().DisplayAlert("Alert", "Netmask is not valid", "OK");
+                NetworkMask = Model.Information.NetworkMask;
+                return;
+            }
+            try
+            {
+                information.GateWay = GateWay;
+            }
+            catch
+            {
+                await Resolver.Resolve<View_Root>().DisplayAlert("Alert", "Gateway is not valid", "OK");
+                GateWay = Model.Information.GateWay;
+                return;
+            }
+
+            await Model.Send(information);
+
+            Model.Information.IPAddress = IPAddress;
+            Model.Information.NetworkMask = NetworkMask;
+            Model.Information.GateWay = GateWay;
+
+        }
+
+        public ICommand SyncDateTimeCommand => new Command(SyncDateTime);
+
+        private async void SyncDateTime(object commandParameter)
+        {
+            var dt = DateTime.Now;
+
+            var information = new InformationWrapper();
+            information.Version = "SetClock";
+            information.Packet.SysConfig.SysTime.wYear = (ushort)dt.Year;
+            information.Packet.SysConfig.SysTime.wMonth = (ushort)dt.Month;
+            information.Packet.SysConfig.SysTime.wDay = (ushort)dt.Day;
+            information.Packet.SysConfig.SysTime.wHour = (ushort)dt.Hour;
+            information.Packet.SysConfig.SysTime.wMinute = (ushort)dt.Minute;
+            information.Packet.SysConfig.SysTime.wSecond = (ushort)dt.Second;
+
+            await Model.Send(information);
+
+            Model.Information.TimeDiffernece = TimeSpan.Zero;
         }
 
         public string IPAddress { get; set; }
@@ -43,5 +119,7 @@ namespace ChroZenService
 
         public Predicate<Enum> DetectorFilter => (e) => !new List<DetectorTypes> { DetectorTypes.FPD_Not_used, DetectorTypes.NPD_Not_used, DetectorTypes.ECD }
                                                                 .Any(n => object.Equals(n, e));
+
+
     }
 }

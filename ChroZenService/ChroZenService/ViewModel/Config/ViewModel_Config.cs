@@ -3,6 +3,7 @@ using ChroZenGC.Core;
 using ChroZenGC.Core.Packets;
 using ChroZenGC.Core.Wrappers;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -20,6 +21,8 @@ namespace ChroZenService
 
         public StateWrapper State => Model.State;
 
+        public ConfigurationWrapper Configuration => Model.Configuration;
+
         public OvenWrapper Oven => Model.Oven;
 
         public List<ViewModel_Config_Inlet> Inlets { get; } = new List<ViewModel_Config_Inlet>();
@@ -29,6 +32,10 @@ namespace ChroZenService
         public ViewModel_Config_Signals Signals { get; }
 
         public ViewModel_Config_Valve Valve { get; }
+
+        public AuxTempSetupWrapper AuxTemp => Model.AuxTemp;
+
+        public ObservableCollection<AuxUPCSetupWrapper> AuxUPC => Model.AuxUPC;
 
         public ViewModel_Config(Model model, ViewModel_Config_Signals signals, ViewModel_Config_Valve valve)
         {
@@ -43,7 +50,7 @@ namespace ChroZenService
             Detectors.Add(Resolver.Resolve<ViewModel_Config_Detector>(new NamedParameter("port", 2)));
 
             Signals = signals;
-            Valve = valve;           
+            Valve = valve;
 
             Oven.PropertyModified += OvenPropertyChanged;
             UpdateOvenProgram();

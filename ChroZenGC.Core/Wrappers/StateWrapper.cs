@@ -81,13 +81,10 @@ namespace ChroZenGC.Core.Wrappers
                 new ArrayWrapper<float>(this, () => Provider.Disp_RearDetFlow)
             };
 
-            AuxUPCs = new ObservableCollection<ArrayWrapper<float>>
-            {
-                new ArrayWrapper<float>(this, () => Provider.Disp_Aux1Flow),
-                new ArrayWrapper<float>(this, () => Provider.Disp_Aux2Flow),
-                new ArrayWrapper<float>(this, () => Provider.Disp_Aux3Flow)
-            };
 
+            AuxUPC1 = new ArrayWrapper<float>(this, () => Provider.Disp_Aux1Flow);
+            AuxUPC2 = new ArrayWrapper<float>(this, () => Provider.Disp_Aux2Flow);
+            AuxUPC3 = new ArrayWrapper<float>(this, () => Provider.Disp_Aux3Flow);
         }
 
         public ObservableCollection<ArrayWrapper<float>> Inlets { get; }
@@ -102,7 +99,10 @@ namespace ChroZenGC.Core.Wrappers
 
         public ObservableCollection<ArrayWrapper<float>> Detectors { get; }
 
-        public ObservableCollection<ArrayWrapper<float>> AuxUPCs { get; }
+        public ArrayWrapper<float> AuxUPC1 { get; }
+        public ArrayWrapper<float> AuxUPC2 { get; }
+        public ArrayWrapper<float> AuxUPC3 { get; }
+
     }
 
     public class StateWrapper : PacketWrapper<State>

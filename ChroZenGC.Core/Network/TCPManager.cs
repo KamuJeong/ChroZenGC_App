@@ -38,7 +38,7 @@ namespace ChroZenGC.Core.Network
 
         private TcpClient tcpClient;
 
-        private NetworkStream NetworkStream => tcpClient?.GetStream();
+        private NetworkStream NetworkStream;
 
         public bool IsConnected => tcpClient != null && tcpClient.Connected;
 
@@ -48,6 +48,7 @@ namespace ChroZenGC.Core.Network
             {
                 tcpClient = new TcpClient();
                 await tcpClient.ConnectAsync(Host, int.Parse(Port));
+                NetworkStream = tcpClient.GetStream();
             }
         }
 
@@ -81,6 +82,7 @@ namespace ChroZenGC.Core.Network
             finally
             {
                 tcpClient = null;
+                NetworkStream = null;
 
             }
             Model.networkManager = null;

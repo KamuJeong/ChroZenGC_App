@@ -24,40 +24,18 @@ namespace ChroZenService
 
             BindingContext = model;
 
-//            ShowView();
         }
 
         public async void PreInitialize()
         {
             InitView(1);
             await Task.Yield();
-
-            //for(int i=0; i<3; ++i)
-            //{
-
-
-            //    if (Model.Model.Configuration.InletType[i] != InletTypes.NotInstalled)
-            //    {
-            //        SelectedItem = 3 + i;
-            //        ShowView();
-            //    }
-            //    if(Model.Model.Configuration.DetectorType[i] != DetectorTypes.NotInstalled)
-            //    {
-            //        SelectedItem = 7 + i;
-            //        ShowView();
-            //    }
-            //}
-
-
-
             InitView(11);
+            await Task.Yield();
             InitView(12);
-
-            //SelectedItem = 12;
-            //ShowView();
-            //SelectedItem = 13;
-            //ShowView();
-
+            await Task.Yield();
+            InitView(13);
+            await Task.Yield();
         }
 
         public async void Initialize()
@@ -79,6 +57,9 @@ namespace ChroZenService
 
         private void InitView(int select)
         {
+            if (Views.ContainsKey(select))
+                return;
+
             View_Config_Tab tab = null;
             switch (select)
             {
@@ -121,7 +102,9 @@ namespace ChroZenService
                     break;
                 case 13:
                     tab = Resolver.Resolve<View_Config_Tab>();
-                    tab.TabContent = Resolver.Resolve<View_Config_ValveInitialState>();
+                    tab.Tab1 = "Temperature";
+                    tab.Tab2 = "Flow";
+                    tab.TabContent = Resolver.Resolve<Grid_Config_Aux>();
                     tab.SelectedTabItem = 0;
                     break;
             }

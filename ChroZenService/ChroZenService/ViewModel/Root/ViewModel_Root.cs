@@ -24,6 +24,8 @@ namespace ChroZenService
 
         public string TimeTicker { get; set; }
 
+        public int WatchdogTimer { get; set; }
+
         public bool IsActual { get; set; } = true;
 
         public ViewModel_Root(Model model, DeviceIPFinder finder)
@@ -31,11 +33,23 @@ namespace ChroZenService
             Model = model;
 
             Model.Configuration.PropertyModified += OnConfigurationModified;
+            Model.State.PropertyModified += OnStateModified;
+
 
             IPFinder = finder;
             Device.StartTimer(TimeSpan.FromSeconds(1.0), () =>
             {
                 TimeTicker = DateTime.Now.ToString("T");
+                Model.Information.UpdateDateTime();
+
+                if (IsConnected && IsActual)
+                {
+                    if (++WatchdogTimer > 5)
+                    {
+                        networkManager?.Close();
+                        WatchdogTimer = 0;
+                    }
+                }
 
                 bool isConnected = IsConnected;
                 IsConnected = networkManager != null ? networkManager.IsConnected : false;
@@ -49,6 +63,11 @@ namespace ChroZenService
             } );
 
             OnRefreshReception(null);
+        }
+
+        private void OnStateModified(object sender, PropertyChangedEventArgs e)
+        {
+            WatchdogTimer = 0;
         }
 
         private void OnConfigurationModified(object sender, PropertyChangedEventArgs e)
@@ -133,7 +152,7 @@ namespace ChroZenService
                     {
                         networkManager.WaitAsync();
 
-                        await Model.Send(Model.Information);
+                        await Model.Send(new InformationWrapper());
                         await Model.Request(Model.Information);
                         await Model.Request(Model.Configuration);
                         await Model.Request(Model.Oven);
@@ -147,6 +166,7 @@ namespace ChroZenService
                         await Model.Request(Model.Signals[1], 1);
                         await Model.Request(Model.Signals[2], 2);
                         await Model.Request(Model.Valve);
+                        await Model.Request(Model.Special);
                     }
                     else
                     {
@@ -162,32 +182,5 @@ namespace ChroZenService
                 }
             }
         }
-
-
-        //public ICommand StopCommand => new Command(OnStopCommand);
-
-        //private async void OnStopCommand(object obj)
-        //{
-        //    if (networkManager != null)
-        //    {
-        //        networkManager.Close();
-        //        networkManager = null;
-        //    }
-        //    else
-        //    {
-        //        networkManager = new ChroZenGC.Core.Network.TCPManager(Model) { Host = "192.168.0.88" };
-        //        await networkManager.ConnectAsync();
-        //        if (networkManager.IsConnected)
-        //        {
-        //            networkManager.WaitAsync();
-
-        //            await Model.Send(Model.Information);
-        //            await Model.Request(Model.Information);
-        //            await Model.Request(Model.Configuration);
-        //            await Model.Request(Model.Oven);
-
-        //        }
-        //    }
-        //}
     }
 }

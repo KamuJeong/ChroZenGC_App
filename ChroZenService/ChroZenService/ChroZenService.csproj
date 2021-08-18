@@ -155,47 +155,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="View\Config\View_Config.xaml.cs">
-      <DependentUpon>View_Config.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="View\Main\View_Main_Chart.xaml.cs">
-      <DependentUpon>View_Main_Chart.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="View\System\View_System.xaml.cs">
-      <DependentUpon>View_System.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="View\System\View_System_Config.xaml.cs">
-      <DependentUpon>View_System_Config.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="View\Config\Grid_Config_Detector.xaml">
+    <EmbeddedResource Update="View\System\View_System_Settings.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Config\Grid_Config_Inlet.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="View\Config\Grid_Config_Oven.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="View\Config\Grid_Config_Signal.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="View\Config\Grid_Config_Valve.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="View\Config\View_Config_Tab.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="View\Root\View_Reception.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="View\System\Child\Config\" />
-    <Folder Include="View\System\Child\Information\" />
   </ItemGroup>
 
 </Project>

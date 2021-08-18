@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.Grid_Config_Aux"
+             x:DataType="local:ViewModel_Config">
+    <ContentView.Resources>
+        <local:Aux4NameConverter x:Key="Aux4NameKey" />
+        <local:Aux4MaxConverter x:Key="Aux4MaxKey" />
+        <local:Aux4MinConverter x:Key="Aux4MinKey" />
+
+        <Style x:Key="captionKey" TargetType="Label">
+            <Setter Property="TextColor" Value="Silver" />
+            <Setter Property="FontSize"  Value="{StaticResource CaptionFontSizeKey}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="End" />
+        </Style>
+
+        <Style x:Key="groupKey" TargetType="Frame">
+            <Setter Property="Background" Value="{StaticResource GroupingFrameBackgroudKey}" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+
+        <ColumnDefinitionCollection x:Key="columnConfig">
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.2"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </ColumnDefinitionCollection>
+        <RowDefinitionCollection x:Key="rowSetup">
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="7" />
+            <RowDefinition Height="0.2" />
+            <RowDefinition Height="2" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="auto" />
+        </RowDefinitionCollection>
+
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="0" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollView>
+                <StackLayout Padding="10" Spacing="10" >
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="0.2" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Act(℃)"
+                                   Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="Set(℃)"
+                                   Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+
+                            <Label Text="Aux 1"
+                                   Grid.Row="2" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Temperature.Aux[0], StringFormat='{0:F1}'}" 
+                                                Grid.Row="2" Grid.Column="2" IsEnabled="False"
+                                                IsVisible="{Binding Configuration.AuxTemp[0], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxTemp.TempSet[0], StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxTemp.TempOnOff[1]}" Max="250" Min="0"
+                                                Grid.Row="2" Grid.Column="3" Caption="Aux 1"
+                                                IsEnabled="{Binding Configuration.AuxTemp[0], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="Aux 2"
+                                   Grid.Row="3" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Temperature.Aux[1], StringFormat='{0:F1}'}" 
+                                                Grid.Row="3" Grid.Column="2" IsEnabled="False"
+                                                IsVisible="{Binding Configuration.AuxTemp[1], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxTemp.TempSet[1], StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxTemp.TempOnOff[1]}" Max="250" Min="0"
+                                                Grid.Row="3" Grid.Column="3" Caption="Aux 2"
+                                                IsEnabled="{Binding Configuration.AuxTemp[1], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="Aux 3"
+                                   Grid.Row="4" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Temperature.Aux[2], StringFormat='{0:F1}'}" 
+                                                Grid.Row="4" Grid.Column="2" IsEnabled="False"
+                                                IsVisible="{Binding Configuration.AuxTemp[2], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxTemp.TempSet[2], StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxTemp.TempOnOff[2]}" Max="300" Min="0"
+                                                Grid.Row="4" Grid.Column="3" Caption="Aux 3"
+                                                IsEnabled="{Binding Configuration.AuxTemp[2], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="{Binding Configuration.Aux4Type, Converter={StaticResource Aux4NameKey}}"
+                                   Grid.Row="5" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Temperature.Aux[3], StringFormat='{0:F1}'}" 
+                                                Grid.Row="5" Grid.Column="2" IsEnabled="False"
+                                                IsVisible="{Binding Configuration.AuxTemp[2], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxTemp.TempSet[3], StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxTemp.TempOnOff[3]}" 
+                                               Max="{Binding Configuration.Aux4Type, Converter={StaticResource Aux4MaxKey}}" 
+                                               Min="{Binding Configuration.Aux4Type, Converter={StaticResource Aux4MinKey}}"
+                                                Grid.Row="5" Grid.Column="3" 
+                                               Caption="{Binding Configuration.Aux4Type, Converter={StaticResource Aux4NameKey}}"
+                                                IsEnabled="{Binding Configuration.AuxTemp[3], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="Aux 5"
+                                   Grid.Row="6" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Temperature.Aux[4], StringFormat='{0:F1}'}" 
+                                                Grid.Row="6" Grid.Column="2" IsEnabled="False"
+                                                IsVisible="{Binding Configuration.AuxTemp[4], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxTemp.TempSet[4], StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxTemp.TempOnOff[4]}" Max="250" Min="0"
+                                                Grid.Row="6" Grid.Column="3" Caption="Aux 5"
+                                                IsEnabled="{Binding Configuration.AuxTemp[4], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="Aux 6"
+                                   Grid.Row="7" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Temperature.Aux[5], StringFormat='{0:F1}'}" 
+                                                Grid.Row="7" Grid.Column="2" IsEnabled="False"
+                                                IsVisible="{Binding Configuration.AuxTemp[5], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxTemp.TempSet[5], StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxTemp.TempOnOff[5]}" Max="250" Min="0"
+                                                Grid.Row="7" Grid.Column="3" Caption="Aux 6"
+                                                IsEnabled="{Binding Configuration.AuxTemp[5], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="Aux 7"
+                                   Grid.Row="8" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Temperature.Aux[6], StringFormat='{0:F1}'}" 
+                                                Grid.Row="8" Grid.Column="2" IsEnabled="False"
+                                                IsVisible="{Binding Configuration.AuxTemp[6], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxTemp.TempSet[6], StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxTemp.TempOnOff[6]}" Max="250" Min="0"
+                                                Grid.Row="8" Grid.Column="3" Caption="Aux 7"
+                                                IsEnabled="{Binding Configuration.AuxTemp[6], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="Aux 8"
+                                   Grid.Row="9" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Temperature.Aux[7], StringFormat='{0:F1}'}" 
+                                                Grid.Row="9" Grid.Column="2" IsEnabled="False"
+                                                IsVisible="{Binding Configuration.AuxTemp[7], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxTemp.TempSet[7], StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxTemp.TempOnOff[7]}" Max="250" Min="0"
+                                                Grid.Row="9" Grid.Column="3" Caption="Aux 8"
+                                                IsEnabled="{Binding Configuration.AuxTemp[7], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="10"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+
+            <ScrollView Grid.Column="1">
+                <StackLayout Padding="10" Spacing="10" >
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="0" 
+                              RowDefinitions="{StaticResource rowSetup}" ColumnDefinitions="{StaticResource columnConfig}">
+
+                            <Label Text="Act"
+                                   Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(mL/min)"
+                                   Grid.Row="1"  Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="Set"
+                                   Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(mL/min)"
+                                   Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+
+                            <Label Text="AUX UPC1"
+                                   Grid.Row="5" Style="{StaticResource captionKey}" />
+                            <local:EnumPicker Title="AUX UPC1" Value="{Binding AuxUPC[0].AuxGas}" 
+                                              IsEnabled="{Binding Configuration.AuxAPC[0], Converter={StaticResource ByteToBooleanKey}}" 
+                                              Grid.Row="5" Grid.Column="2"  Grid.ColumnSpan="2"/>
+
+                            <Label Text="Flow 1"
+                                   Grid.Row="7" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Flow.AuxUPC1[0], StringFormat='{0:F1}'}" 
+                                                Grid.Row="7" Grid.Column="2" IsEnabled="False" 
+                                                IsVisible="{Binding Configuration.AuxAPC[0], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxUPC[0].FlowSet1, StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxUPC[0].FlowOnoff1}" Max="150" Min="0"
+                                                Grid.Row="7" Grid.Column="3" Caption="Flow 1" 
+                                               IsEnabled="{Binding Configuration.AuxAPC[0], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="Flow 2"
+                                   Grid.Row="9" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Flow.AuxUPC1[1], StringFormat='{0:F1}'}" 
+                                                Grid.Row="9" Grid.Column="2" IsEnabled="False" 
+                                                IsVisible="{Binding Configuration.AuxAPC[0], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxUPC[0].FlowSet2, StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxUPC[0].FlowOnoff2}" Max="150" Min="0"
+                                                Grid.Row="9" Grid.Column="3" Caption="Flow 2" 
+                                               IsEnabled="{Binding Configuration.AuxAPC[0], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="Flow 3"
+                                   Grid.Row="11" Style="{StaticResource captionKey}"/>
+                            <local:ValueEditor Value="{Binding State.Flow.AuxUPC1[2], StringFormat='{0:F1}'}" 
+                                                Grid.Row="11" Grid.Column="2" IsEnabled="False"
+                                                IsVisible="{Binding Configuration.AuxAPC[0], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxUPC[0].FlowSet3, StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxUPC[0].FlowOnoff3}" Max="150" Min="0"
+                                                Grid.Row="11" Grid.Column="3" Caption="Flow 3"
+                                               IsEnabled="{Binding Configuration.AuxAPC[0], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Row="3" Grid.ColumnSpan="4"/>
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="12"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="0" 
+                              RowDefinitions="{StaticResource rowSetup}" ColumnDefinitions="{StaticResource columnConfig}">
+
+                            <Label Text="Act"
+                                   Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(mL/min)"
+                                   Grid.Row="1"  Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="Set"
+                                   Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(mL/min)"
+                                   Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+
+                            <Label Text="AUX UPC2"
+                                   Grid.Row="5" Style="{StaticResource captionKey}" />
+                            <local:EnumPicker Title="AUX UPC2" Value="{Binding AuxUPC[1].AuxGas}" 
+                                              IsEnabled="{Binding Configuration.AuxAPC[1], Converter={StaticResource ByteToBooleanKey}}" 
+                                              Grid.Row="5" Grid.Column="2"  Grid.ColumnSpan="2"/>
+
+                            <Label Text="Flow 1"
+                                   Grid.Row="7" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Flow.AuxUPC2[0], StringFormat='{0:F1}'}" 
+                                                Grid.Row="7" Grid.Column="2" IsEnabled="False" 
+                                                IsVisible="{Binding Configuration.AuxAPC[1], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxUPC[1].FlowSet1, StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxUPC[1].FlowOnoff1}" Max="150" Min="0"
+                                                Grid.Row="7" Grid.Column="3" Caption="Flow 1" 
+                                               IsEnabled="{Binding Configuration.AuxAPC[1], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="Flow 2"
+                                   Grid.Row="9" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Flow.AuxUPC2[1], StringFormat='{0:F1}'}" 
+                                                Grid.Row="9" Grid.Column="2" IsEnabled="False" 
+                                                IsVisible="{Binding Configuration.AuxAPC[1], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxUPC[1].FlowSet2, StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxUPC[1].FlowOnoff2}" Max="150" Min="0"
+                                                Grid.Row="9" Grid.Column="3" Caption="Flow 2" 
+                                               IsEnabled="{Binding Configuration.AuxAPC[1], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="Flow 3"
+                                   Grid.Row="11" Style="{StaticResource captionKey}"/>
+                            <local:ValueEditor Value="{Binding State.Flow.AuxUPC2[2], StringFormat='{0:F1}'}" 
+                                                Grid.Row="11" Grid.Column="2" IsEnabled="False"
+                                                IsVisible="{Binding Configuration.AuxAPC[1], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxUPC[1].FlowSet3, StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxUPC[1].FlowOnoff3}" Max="150" Min="0"
+                                                Grid.Row="11" Grid.Column="3" Caption="Flow 3"
+                                               IsEnabled="{Binding Configuration.AuxAPC[1], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Row="3" Grid.ColumnSpan="4"/>
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="12"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="0" 
+                              RowDefinitions="{StaticResource rowSetup}" ColumnDefinitions="{StaticResource columnConfig}">
+
+                            <Label Text="Act"
+                                   Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(mL/min)"
+                                   Grid.Row="1"  Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="Set"
+                                   Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                            <Label Text="(mL/min)"
+                                   Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+
+                            <Label Text="AUX UPC3"
+                                   Grid.Row="5" Style="{StaticResource captionKey}" />
+                            <local:EnumPicker Title="AUX UPC1" Value="{Binding AuxUPC[2].AuxGas}" 
+                                              IsEnabled="{Binding Configuration.AuxAPC[2], Converter={StaticResource ByteToBooleanKey}}" 
+                                              Grid.Row="5" Grid.Column="2"  Grid.ColumnSpan="2"/>
+
+                            <Label Text="Flow 1"
+                                   Grid.Row="7" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Flow.AuxUPC3[0], StringFormat='{0:F1}'}" 
+                                                Grid.Row="7" Grid.Column="2" IsEnabled="False" 
+                                                IsVisible="{Binding Configuration.AuxAPC[2], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxUPC[2].FlowSet1, StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxUPC[2].FlowOnoff1}" Max="150" Min="0"
+                                                Grid.Row="7" Grid.Column="3" Caption="Flow 1" 
+                                               IsEnabled="{Binding Configuration.AuxAPC[2], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="Flow 2"
+                                   Grid.Row="9" Style="{StaticResource captionKey}" />
+                            <local:ValueEditor Value="{Binding State.Flow.AuxUPC3[1], StringFormat='{0:F1}'}" 
+                                                Grid.Row="9" Grid.Column="2" IsEnabled="False" 
+                                                IsVisible="{Binding Configuration.AuxAPC[2], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxUPC[2].FlowSet2, StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxUPC[2].FlowOnoff2}" Max="150" Min="0"
+                                                Grid.Row="9" Grid.Column="3" Caption="Flow 2" 
+                                               IsEnabled="{Binding Configuration.AuxAPC[2], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <Label Text="Flow 3"
+                                   Grid.Row="11" Style="{StaticResource captionKey}"/>
+                            <local:ValueEditor Value="{Binding State.Flow.AuxUPC3[2], StringFormat='{0:F1}'}" 
+                                                Grid.Row="11" Grid.Column="2" IsEnabled="False"
+                                                IsVisible="{Binding Configuration.AuxAPC[2], Converter={StaticResource ByteToBooleanKey}}" />
+                            <local:ValueEditor Value="{Binding AuxUPC[2].FlowSet3, StringFormat='{0:F1}'}"
+                                               Switch="{Binding AuxUPC[2].FlowOnoff3}" Max="150" Min="0"
+                                                Grid.Row="11" Grid.Column="3" Caption="Flow 3"
+                                               IsEnabled="{Binding Configuration.AuxAPC[2], Converter={StaticResource ByteToBooleanKey}}" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Row="3" Grid.ColumnSpan="4"/>
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="12"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

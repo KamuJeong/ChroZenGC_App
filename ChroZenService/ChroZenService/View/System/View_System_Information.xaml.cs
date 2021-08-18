@@ -23,5 +23,11 @@ namespace ChroZenService
 			await setButton.ScaleTo(1.0, 500, Easing.SpringIn);
 			settable.IsToggled = false;
         }
+
+        private async void OnSyncTapped(object sender, EventArgs e)
+        {
+			syncButton.Scale = 1.1;
+			await syncButton.ScaleTo(1.0, 500, Easing.SpringIn);
+		}
     }
 }

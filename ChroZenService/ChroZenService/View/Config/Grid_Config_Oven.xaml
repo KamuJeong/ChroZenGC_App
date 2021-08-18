@@ -38,114 +38,121 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <StackLayout Padding="10" Spacing="10" >
-                <Frame Style="{StaticResource groupKey}">
-                    <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
+            <ScrollView>
+                <StackLayout Padding="10" Spacing="10" >
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
 
-                        <Label Text="Maximum Temp"
+                            <Label Text="Maximum Temp"
                                Style="{StaticResource captionKey}" />
-                        <local:ValueEditor Value="{Binding Oven.MaxTemp, StringFormat='{0:F1}'}" 
+                            <local:ValueEditor Value="{Binding Oven.MaxTemp, StringFormat='{0:F1}'}" 
                                            Max="450" Min="-80" Caption="Maximum Temp" Unit="℃" 
                                            Grid.Column="2" Grid.ColumnSpan="3" UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
-                        <Label Text="Equilibrium Time" 
+                            <Label Text="Equilibrium Time" 
                                Grid.Row="1"  Style="{StaticResource captionKey}" />
-                        <local:ValueEditor Value="{Binding Oven.EquibTime, StringFormat='{0:F1}'}"
+                            <local:ValueEditor Value="{Binding Oven.EquibTime, StringFormat='{0:F1}'}"
                                            Max="9999" Min="0" Caption="Equilibrium Time" Unit="min"
                                            x:Name="unitWidth" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
-                        <Label Text="Auto Readyrun" 
+                            <Label Text="Auto Readyrun" 
                                Grid.Row="2"  Style="{StaticResource captionKey}" />
-                        <local:SwitchImageButton ON="{Binding Oven.AutoReadyRun}" 
+                            <local:SwitchImageButton ON="{Binding Oven.AutoReadyRun}" 
                                                  Grid.Row="2" Grid.Column="2"  Grid.ColumnSpan="3" />
 
-                        <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
-                    </Grid>
-                </Frame>
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
+                        </Grid>
+                    </Frame>
 
-                <Frame Style="{StaticResource groupKey}" >
-                    <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
+                    <Frame Style="{StaticResource groupKey}" 
+                           IsVisible="{Binding Configuration.IsCryogenicInstalled}">
+                        <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
 
-                        <Label Text="Cryo. Cooling"  
-                               Style="{StaticResource captionKey}" />
-                        <local:SwitchImageButton ON="{Binding Oven.Cryogenic}" 
+                            <Label Text="Cryo. Cooling"  
+                                    Style="{StaticResource captionKey}" />
+                            <local:SwitchImageButton ON="{Binding Oven.Cryogenic}" 
                                                  Grid.Column="2"  Grid.ColumnSpan="3"  />
-                        <Label Text="Cryo. Fast Cooling" 
-                               Grid.Row="1" Style="{StaticResource captionKey}"/>
-                        <local:SwitchImageButton ON="{Binding Oven.FastCryo}" 
-                                                 Grid.Row="1" Grid.Column="2"  Grid.ColumnSpan="3"/>
+                            <Label Text="Cryo. Fast Cooling" 
+                                Grid.Row="2" Style="{StaticResource captionKey}"/>
+                            <local:SwitchImageButton ON="{Binding Oven.FastCryo}" 
+                                                 Grid.Row="2" Grid.Column="2"  Grid.ColumnSpan="3"/>
 
-                        <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="2"/>                        
-                        
-                    </Grid>
-                </Frame>
+                            <Label Text="Coolant"
+                                   Grid.Row="3" Style="{StaticResource captionKey}" />
+                            <local:EnumPicker Title="Coolant" Value="{Binding Oven.Coolant}"
+                                              Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" />
 
-                <Frame Style="{StaticResource groupKey}">
-                    <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="4"/>
+                        </Grid>
+                    </Frame>
 
-                        <Label Text="Repeat Run" HorizontalOptions="Start" 
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Repeat Run" HorizontalOptions="Start" 
                                Style="{StaticResource captionKey}" />
-                        <local:SwitchImageButton ON="{Binding Oven.RunStart.OnOff}" 
+                            <local:SwitchImageButton ON="{Binding Oven.RunStart.OnOff}" 
                                                  Grid.Column="2"  Grid.ColumnSpan="3" />
-                        <Label Text="Number of Run" 
+                            <Label Text="Number of Run" 
                                Grid.Row="1"  Style="{StaticResource captionKey}" />
-                        <local:ValueEditor Value="{Binding Oven.RunStart.Count}" 
+                            <local:ValueEditor Value="{Binding Oven.RunStart.Count}" 
                                            Max="9999" Min="1" Caption="Number of Run" 
                                            Grid.Row="1" Grid.Column="2" IsEnabled="{Binding Oven.RunStart.OnOff}" />
-                        <Label Text="Cycle Time" 
+                            <Label Text="Cycle Time" 
                                Grid.Row="2" Style="{StaticResource captionKey}" />
-                        <local:ValueEditor Value="{Binding Oven.RunStart.CycleTime, StringFormat='{0:F1}'}" 
+                            <local:ValueEditor Value="{Binding Oven.RunStart.CycleTime, StringFormat='{0:F1}'}" 
                                            Max="9999" Min="0" Caption="Cycle Time" Unit="min"
                                            Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" IsEnabled="{Binding Oven.RunStart.OnOff}" 
                                            UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
 
-                        <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
-                    </Grid>
-                </Frame>
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
+                        </Grid>
+                    </Frame>
 
-                <Frame Style="{StaticResource groupKey}" >
-                    <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
+                    <Frame Style="{StaticResource groupKey}" >
+                        <Grid ColumnSpacing="10" RowSpacing="5" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
 
-                        <Label Text="Postrun" HorizontalOptions="Start" 
+                            <Label Text="Postrun" HorizontalOptions="Start" 
                                Style="{StaticResource captionKey}" />
-                        <local:SwitchImageButton ON="{Binding Oven.PostRun.OnOff}"
+                            <local:SwitchImageButton ON="{Binding Oven.PostRun.OnOff}"
                                                  Grid.Column="2"  Grid.ColumnSpan="3" />
-                        <Label Text="Postrun Temp" 
+                            <Label Text="Postrun Temp" 
                                Grid.Row="1"  Style="{StaticResource captionKey}" />
-                        <local:ValueEditor Value="{Binding Oven.PostRun.Temp, StringFormat='{0:F1}'}" 
+                            <local:ValueEditor Value="{Binding Oven.PostRun.Temp, StringFormat='{0:F1}'}" 
                                            Max="{Binding Oven.MaxTemp, StringFormat='{0:F1}'}" Min="-80" Caption="Postrun Temp"  Unit="℃"
                                            Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" IsEnabled="{Binding Oven.PostRun.OnOff}" 
                                            UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
-                        <Label Text="Postrun Time" 
+                            <Label Text="Postrun Time" 
                                Grid.Row="2" Style="{StaticResource captionKey}" />
-                        <local:ValueEditor Value="{Binding Oven.PostRun.Time, StringFormat='{0:F1}'}" 
+                            <local:ValueEditor Value="{Binding Oven.PostRun.Time, StringFormat='{0:F1}'}" 
                                            Max="9999" Min="0" Caption="Postrun Time" Unit="min"
                                            Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" IsEnabled="{Binding Oven.PostRun.OnOff}" 
                                            UnitWidth="{Binding Source={x:Reference unitWidth}, Path=UnitLabel.Width}"/>
 
-                        <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
-                    </Grid>
-                </Frame>
-            </StackLayout>
-
-
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="3"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
 
             <ScrollView Grid.Column="1">
                 <StackLayout  Padding="10" Spacing="10">

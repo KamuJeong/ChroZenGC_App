@@ -196,6 +196,14 @@
 
                         </Grid>
                     </Frame>
+                    <Frame Style="{StaticResource groupKey}">
+                        <StackLayout Orientation="Horizontal" Spacing="0" >
+                            <CheckBox IsChecked="{Binding Configuration.IsCryogenicInstalled}" />
+                            <Label Text="Cryogenic"
+                                    Style="{StaticResource captionKey}" />
+                        </StackLayout>
+                    </Frame>
+
 
                     <Label Text="Valve Configuration" 
                             Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
