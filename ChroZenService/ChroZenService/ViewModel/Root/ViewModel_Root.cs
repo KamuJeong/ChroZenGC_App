@@ -182,5 +182,26 @@ namespace ChroZenService
                 }
             }
         }
+
+        public ICommand StartCommand => new Command(OnStart);
+
+        private async void OnStart(object obj)
+        {
+            await Model.Send(new CommandWrapper(CommandCodes.Start));
+        }
+
+        public ICommand StopCommand => new Command(OnStop);
+
+        private async void OnStop(object obj)
+        {
+            await Model.Send(new CommandWrapper(CommandCodes.Stop));
+        }
+
+        public ICommand ReadyCommand => new Command(OnReady);
+
+        private async void OnReady(object obj)
+        {
+            await Model.Send(new CommandWrapper(CommandCodes.ReadyRun));
+        }
     }
 }

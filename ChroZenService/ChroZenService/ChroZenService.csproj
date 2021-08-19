@@ -154,10 +154,4 @@
     <ProjectReference Include="..\ChroZenGC Type\YC_ChroZenGC_Type.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="View\System\View_System_Settings.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-
 </Project>

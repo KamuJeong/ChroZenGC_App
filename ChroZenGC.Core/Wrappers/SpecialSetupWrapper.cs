@@ -91,7 +91,7 @@ namespace ChroZenGC.Core.Wrappers
         }
 
 
-        _ColumnConditionWrapper ColumnCondition { get; }
-        _RemoteAccessWrapper RemoteAccess { get; }
+        public _ColumnConditionWrapper ColumnCondition { get; }
+        public _RemoteAccessWrapper RemoteAccess { get; }
     }
 }

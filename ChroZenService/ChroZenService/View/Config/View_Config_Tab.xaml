@@ -7,8 +7,8 @@
              x:Name="This">
     <ContentView.Resources>
         <local:LastTabWidthConverter x:Key="LastTabWidthKey" />
-        
-        
+
+
     </ContentView.Resources>
     
     <ContentView.Content>
@@ -19,7 +19,7 @@
                 <RowDefinition Height="710*"/>
                 <RowDefinition Height="22*"/>
             </Grid.RowDefinitions>
-
+            
             <Grid Grid.Row="1" Margin="10, 0" ColumnSpacing="0">
                 <Grid.Resources>
                     <Style TargetType="Frame">

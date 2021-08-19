@@ -10,6 +10,7 @@ namespace ChroZenService
         public SwitchImageButton()
         {
             Source = SourceOFF;
+
             BackgroundColor = Color.Transparent;
             Aspect = Aspect.AspectFit;
             HorizontalOptions = LayoutOptions.Start;
@@ -18,14 +19,15 @@ namespace ChroZenService
             HeightRequest = (double)Application.Current.Resources["CaptionFontSizeKey"] * 1.5 + 4;
             WidthRequest = HeightRequest * 190.0 / 40.0;
 
-            var trigger = new Trigger(typeof(SwitchImageButton));
-            trigger.Property = ImageButton.IsEnabledProperty;
-            trigger.Value = false;
-            trigger.Setters.Add(new Setter { Property = ImageButton.SourceProperty, Value = Disable });
-            Triggers.Add(trigger);
+            //var trigger = new Trigger(typeof(SwitchImageButton));
+            //trigger.Property = ImageButton.IsEnabledProperty;
+            //trigger.Value = false;
+            //trigger.Setters.Add(new Setter { Property = ImageButton.SourceProperty, Value = Disable });
+            //Triggers.Add(trigger);
 
             Pressed += OnPressed;
         }
+
         private void OnPressed(object sender, EventArgs e)
         {
             Element element = this;
@@ -44,7 +46,6 @@ namespace ChroZenService
                 else
                     element = element.Parent;
             }
-
             ON = !ON;
         }
 

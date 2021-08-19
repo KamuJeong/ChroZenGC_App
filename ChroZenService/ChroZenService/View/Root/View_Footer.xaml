@@ -42,6 +42,7 @@
                 </Grid.ColumnDefinitions>
 
                 <ImageButton Grid.Column="0" Source="{local:ImageResource ChroZenService.Images.RunStart.png}" 
+                             Command="{Binding StartCommand}"
                              local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.RunStart_Pressed.png}" IsVisible="False">
                     <ImageButton.Triggers>
                         <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
@@ -54,6 +55,7 @@
                 </ImageButton>
 
                 <ImageButton Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.StopRun.png}" 
+                             Command="{Binding StopCommand}"
                          local:ImageButtonBehavior.SourcePressed="{local:ImageResource ChroZenService.Images.StopRun_Pressed.png}" >
                     <ImageButton.Triggers>
                         <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
@@ -68,7 +70,9 @@
                     </ImageButton.Triggers>
                 </ImageButton>
 
-                <ImageButton Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.ReadyRun.png}" local:ImageButtonBehavior.SourcePressed= "{local:ImageResource ChroZenService.Images.ReadyRun_Pressed.png}" IsVisible="False">
+                <ImageButton Grid.Column="2" Source="{local:ImageResource ChroZenService.Images.ReadyRun.png}" 
+                             Command="{Binding ReadyCommand}"
+                             local:ImageButtonBehavior.SourcePressed= "{local:ImageResource ChroZenService.Images.ReadyRun_Pressed.png}" IsVisible="False">
                     <ImageButton.Triggers>
                         <DataTrigger TargetType="ImageButton" Binding="{Binding Model.State.Mode}" Value="NotReady">
                             <Setter Property="IsVisible" Value="True" />

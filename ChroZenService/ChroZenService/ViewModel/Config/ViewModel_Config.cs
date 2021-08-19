@@ -54,8 +54,14 @@ namespace ChroZenService
 
             Oven.PropertyModified += OvenPropertyChanged;
             UpdateOvenProgram();
+
+            State.PropertyModified += StatePropertyModified;
         }
 
+        private void StatePropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            IsEditable = State.Mode switch { Modes.Ready => true, Modes.NotReady => true, Modes.NotConnected => true, _ => false };
+        }
 
         public bool IsEditable { get; set; } = true;
 

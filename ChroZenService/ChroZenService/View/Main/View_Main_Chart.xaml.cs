@@ -396,9 +396,9 @@ namespace ChroZenService
 
                 if (ActiveDetector != -1)
                 {
-                    paint.Color = SKColors.White;
+                    paint.Color = SKColors.Wheat;
                     paint.Style = SKPaintStyle.Stroke;
-                    paint.StrokeWidth = 2;
+                    paint.StrokeWidth = 5;
 
                     canvas.ClipRect(rect);
                     canvas.DrawPoints(SKPointMode.Lines,
@@ -407,7 +407,7 @@ namespace ChroZenService
                 }
 
                 paint.Style = SKPaintStyle.Stroke;
-                paint.Color = SKColors.Wheat;
+                paint.Color = SKColors.Orange;
                 paint.StrokeWidth = 2;
 
                 var x = convertX(rect, Points.LastOrDefault().Item1);

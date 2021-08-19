@@ -121,5 +121,19 @@ namespace ChroZenService
                                                                 .Any(n => object.Equals(n, e));
 
 
+        public ICommand ColumnCleanCommand => new Command(ColumnClean);
+
+        private async void ColumnClean(object obj)
+        {
+            switch (obj)
+            {
+                case string param when param == "Start":
+                    await Model.Send(new CommandWrapper(CommandCodes.ColumnCondition));
+                    break;
+                case string param when param == "Stop":
+                    await Model.Send(new CommandWrapper(CommandCodes.Stop));
+                    break;
+            }
+        }
     }
 }

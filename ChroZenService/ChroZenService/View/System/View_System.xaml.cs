@@ -27,7 +27,8 @@ namespace ChroZenService
         {
             InitView(1);
             await Task.Yield();
-
+            InitView(3);
+            await Task.Yield();
 
         }
 
@@ -50,6 +51,9 @@ namespace ChroZenService
                     break;
                 case 2:
                     view = Resolver.Resolve<View_System_Config>();
+                    break;
+                case 3:
+                    view = Resolver.Resolve<View_System_Settings>();
                     break;
 
             }
