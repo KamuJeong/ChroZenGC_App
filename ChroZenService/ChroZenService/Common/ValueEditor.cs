@@ -245,23 +245,28 @@ namespace ChroZenService
             }
         }
 
+        public bool Lockable { get; set; } = true;
+
         private void OnClicked()
         {
-            Element element = this;
-            while(element.BindingContext != null)
+            if (Lockable)
             {
-                var prop = element.BindingContext.GetType().GetProperty("IsEditable");
-                if (prop != null && prop.GetValue(element.BindingContext) is bool editable)
+                Element element = this;
+                while (element.BindingContext != null)
                 {
-                    if (editable)
+                    var prop = element.BindingContext.GetType().GetProperty("IsEditable");
+                    if (prop != null && prop.GetValue(element.BindingContext) is bool editable)
+                    {
+                        if (editable)
+                            break;
+                        else
+                            return;
+                    }
+                    if (element.Parent == null)
                         break;
                     else
-                        return;
+                        element = element.Parent;
                 }
-                if (element.Parent == null)
-                    break;
-                else
-                    element = element.Parent;
             }
 
             Navigation.PushModalAsync(new KeyPad(this), false);

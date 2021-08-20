@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Diagnostics_IgnitorAndValve">
   <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="674"/>
@@ -137,6 +137,6 @@
                 <local:UC_System_Calib_Settings_StartStopButton Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="false" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.START_IGNITOR_VALVE}"/>
                 <local:UC_System_Calib_Settings_StartStopButton Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Start" Background="Transparent" IsStarted="true" Margin="0,6,8,0" CornerRadius="5" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Diagnostics.ViewModel_System_DiagnosticsIgnitorAndValve.StartStopCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_DIAG_COMMAND_TYPE.STOP_IGNITOR_VALVE}"/>
             </Grid>
-        </AbsoluteLayout>
+        </AbsoluteLayout>-->
     </ContentView.Content>
 </ContentView>

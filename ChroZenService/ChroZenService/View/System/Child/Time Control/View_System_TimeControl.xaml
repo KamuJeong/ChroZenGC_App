@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_TimeControl">
     <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>
             <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" HeightRequest="716" Margin="0,10,0,10">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -432,6 +432,6 @@
                     <local:UC_System_TimeControl_Value_Label Grid.Row="20" Grid.Column="4" Text="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.fValue_20}"  Style="{StaticResource STYLE_LABEL_SYSTEM_SETTING_EDITOR}" TapGestureCommand="{Binding ViewModelSystemPage.ViewModel_System_TimeControl.SetCommand}" TapGestureCommandParameter="{x:Static local:ChroZenService_Const+E_KEY_PAD_SET_MEASURE_TYPE.TIMECONTROL_VAL_20}"/>
                 </Grid>
             </ScrollView>
-        </AbsoluteLayout>
+        </AbsoluteLayout>-->
     </ContentView.Content>
 </ContentView>

@@ -17,6 +17,7 @@ namespace ChroZenGC.Core
 
         public Model()
         {
+            Configuration.PropertyModified += ConfigurationPropertyModified;
             Oven.PropertyModified += OvenPropertyModified;
             Inlets[0].PropertyModified += FrontInletPropertyModified;
             Inlets[1].PropertyModified += CenternletPropertyModified;
@@ -34,6 +35,8 @@ namespace ChroZenGC.Core
             AuxUPC[2].PropertyModified += AuxUPC3PropertyModified;
             Special.PropertyModified += SpecialPropertyModified;
         }
+
+        private async void ConfigurationPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Configuration, 0, e);
 
         private async void SpecialPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Special, 0, e);
 

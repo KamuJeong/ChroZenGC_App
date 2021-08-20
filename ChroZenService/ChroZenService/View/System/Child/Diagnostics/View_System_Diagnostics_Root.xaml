@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Diagnostics_Root">
   <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>
             <Grid HeightRequest="703">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"/>
@@ -26,6 +26,6 @@
                 <Button Text="Power Monitor" Background="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_1}" Grid.Row="6" Style="{StaticResource STYLE_LABEL_SYSTEM_DIAGNOSTICS_ROOT_BUTTON}" Command="{Binding ViewModelSystemPage.SubMenuSelectCommand}" CommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.DIAG_POWER_MONITOR}"/> 
 
             </Grid>
-        </AbsoluteLayout>
+        </AbsoluteLayout>-->
     </ContentView.Content>
 </ContentView>

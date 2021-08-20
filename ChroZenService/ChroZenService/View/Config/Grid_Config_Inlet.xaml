@@ -384,7 +384,8 @@
                                                                Max="30" Min="0" Caption="{Binding Number, StringFormat='Rate {0}'}"
                                                                Grid.Column="1" IsVisible="{Binding Number, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Init}" />
                                             <local:ValueEditor Value="{Binding Step.FinalFlow, StringFormat='{0:F1}'}"  
-                                                               Max="{Binding Source={x:Reference This}, Path=BindingContext.MaxColumnFlow}" Min="0" Caption="{Binding Number, StringFormat='Final Flow {0}'}"
+                                                               Max="{Binding Source={x:Reference This}, Path=BindingContext.Type, Converter={StaticResource maxFlowKey}}"
+                                                               Min="0" Caption="{Binding Number, StringFormat='Final Flow {0}'}"
                                                                IsEnabled="{Binding Editable}"
                                                                Grid.Column="2" />
                                             <local:ValueEditor Value="{Binding Step.FinalTime, StringFormat='{0:F1}'}"

@@ -18,12 +18,30 @@ namespace ChroZenService
 
         public ViewModel_Config Model => (ViewModel_Config)BindingContext;
 
+        public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create("SelectedItem", typeof(int), typeof(View_Config),
+                                                                        defaultBindingMode: BindingMode.TwoWay, propertyChanged: SelectItemChanged);
+
+        private static void SelectItemChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is View_Config view)
+            {
+                view.Select((int)oldValue, (int)newValue);
+            }
+        }
+
+        public int SelectedItem
+        {
+            get => (int)GetValue(SelectedItemProperty);
+            set => SetValue(SelectedItemProperty, value);
+        }
+
         public View_Config(ViewModel_Config model)
         {
             InitializeComponent();
 
             BindingContext = model;
 
+            SetBinding(SelectedItemProperty, new Binding("SelectedItem"));
         }
 
         public async void PreInitialize()
@@ -149,52 +167,44 @@ namespace ChroZenService
             }
         }
 
-        public int SelectedItem
-        {
-            get => Model.SelectedItem;
-            set => Model.SelectedItem = value;
-        }
-
 
         private void OnSelectorClicked(object sender, EventArgs e)
         {
             if (sender is Button button)
             {
-                int select = (int)button.Parent.GetValue(Grid.RowProperty);
-
-                if (select != SelectedItem)
-                {
-                    var unselectedItems = selector.Children.Where(i => (int)i.GetValue(Grid.RowProperty) == SelectedItem)
-                                                            .Except(new Xamarin.Forms.View[] { topDeco, midDeco, botDeco });
-
-                    foreach (var item in unselectedItems)
-                    {
-                        DecorateSelectedItem(item, false);
-                    }
-
-                    topDeco.IsVisible = select == 1;
-                    midDeco.IsVisible = new int[] { 3, 4, 5, 7, 8, 9, 11, 12 }.Any(s => s == select);
-                    botDeco.IsVisible = select == 13;
-
-                    if (midDeco.IsVisible)
-                        midDeco.SetValue(Grid.RowProperty, select);
-
-                    var selectedItems = selector.Children.Where(i => (int)i.GetValue(Grid.RowProperty) == select)
-                                                            .Except(new Xamarin.Forms.View[] { topDeco, midDeco, botDeco });
-
-                    foreach (var item in selectedItems)
-                    {
-                        item.SetValue(Grid.RowProperty, 0);
-                        item.SetValue(Grid.RowProperty, select);
-
-                        DecorateSelectedItem(item, true);
-                    }
-
-                    SelectedItem = select;
-
-                    ShowView();
-                }
+                SelectedItem = (int)button.Parent.GetValue(Grid.RowProperty);
             }
+        }
+
+        private void Select(int oldValue, int newValue)
+        {
+            var unselectedItems = selector.Children.Where(i => (int)i.GetValue(Grid.RowProperty) == oldValue)
+                                        .Except(new Xamarin.Forms.View[] { topDeco, midDeco, botDeco });
+
+            foreach (var item in unselectedItems)
+            {
+                DecorateSelectedItem(item, false);
+            }
+
+
+            topDeco.IsVisible = newValue == 1;
+            midDeco.IsVisible = new int[] { 3, 4, 5, 7, 8, 9, 11, 12 }.Any(s => s == newValue);
+            botDeco.IsVisible = newValue == 13;
+
+            if (midDeco.IsVisible)
+                midDeco.SetValue(Grid.RowProperty, newValue);
+
+            var selectedItems = selector.Children.Where(i => (int)i.GetValue(Grid.RowProperty) == newValue)
+                                                    .Except(new Xamarin.Forms.View[] { topDeco, midDeco, botDeco });
+
+            foreach (var item in selectedItems)
+            {
+                item.SetValue(Grid.RowProperty, 0);
+                item.SetValue(Grid.RowProperty, newValue);
+
+                DecorateSelectedItem(item, true);
+            }
+            ShowView();
         }
 
         private void DecorateSelectedItem(BindableObject item, bool select)

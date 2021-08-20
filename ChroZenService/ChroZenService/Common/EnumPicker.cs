@@ -1,6 +1,8 @@
 ﻿using PropertyChanged;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -38,6 +40,8 @@ namespace ChroZenService
             {
                 if (newValue.GetType() != picker.enumType)
                 {
+                    picker.ClearValue(InputTransparentProperty);
+
                     picker.enumType = newValue.GetType();
                     picker.dictionaryEnum = new Dictionary<string, object>();
                     foreach (var e in Enum.GetValues(picker.enumType))
@@ -50,7 +54,6 @@ namespace ChroZenService
                     }
                     picker.ItemsSource = picker.dictionaryEnum.Keys.ToList();
                 }
-
                 int select = -1;
                 for (int i = 0; i < picker.dictionaryEnum.Values.Count; ++i)
                 {
@@ -95,25 +98,51 @@ namespace ChroZenService
             HorizontalOptions = LayoutOptions.FillAndExpand;
             HorizontalTextAlignment = TextAlignment.Center;
             TextColor = Color.White;
-            //FontAttributes = FontAttributes.Bold;
             FontSize = (double)Application.Current.Resources["DefaultFontSizeKey"];
             ScaleY = 1.2;
 
-            Element element = this;
-            while (element.BindingContext != null)
-            {
-                var prop = element.BindingContext.GetType().GetProperty("IsEditable");
-                if (prop != null && prop.GetValue(element.BindingContext) is bool editable)
-                {
-                    SetBinding(IsEnabledProperty, new Binding("IsEditable", source: element.BindingContext));
-                }
-                if (element.Parent == null)
-                    break;
-                else
-                    element = element.Parent;
-            }
-
             SelectedIndexChanged += OnSelectionChanged;
+        }
+
+        bool lockable = true;
+        public bool Lockable 
+        {
+            get => lockable;
+            set
+            {
+                lockable = value;
+                if (!lockable)
+                    ClearValue(InputTransparentProperty);
+                else
+                    OnPropertyChanged("Lockable");
+            }
+        }
+
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+
+            if (!IsSet(InputTransparentProperty))
+            {
+                Element element = this;
+                while (element != null)
+                {
+                    if (element.BindingContext != null)
+                    {
+                        var prop = element.BindingContext.GetType().GetProperty("IsEditable");
+                        if (prop != null && prop.GetValue(element.BindingContext) is bool)
+                        {
+                            SetBinding(InputTransparentProperty,
+                                new Binding("IsEditable",
+                                            source: element.BindingContext,
+                                            converter: new AreEqualConverter(),
+                                            converterParameter: "False"));
+                            break;
+                        }
+                    }
+                    element = element.Parent;
+                }
+            }
         }
 
         [SuppressPropertyChangedWarnings]

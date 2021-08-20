@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Calib_Root">
     <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>
             <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0"/>
@@ -28,7 +28,7 @@
                     <RowDefinition Height="50.2"/>
                     <RowDefinition Height="50.2"/>
                     <RowDefinition Height="30.6"/>
-                    <!--<RowDefinition Height="733"/>-->
+                    --><!--<RowDefinition Height="733"/>--><!--
                 </Grid.RowDefinitions>
                 <Image Grid.Row="0" Grid.RowSpan="17" Grid.Column="1" Source="right_bg.png" Aspect="Fill"/>
                 <Image Grid.Row="0" Grid.Column="1" Source="right_btn01.png" Aspect="AspectFill" ScaleX="1.225" ScaleY="1.075" Margin="13,3,-13,-8" VerticalOptions="Start" HorizontalOptions="Start" IsVisible="{Binding ViewModelSystemPage.SelectedSubMenu,Converter={StaticResource E_SYSTEM_SUB_MENU_TYPEToBoolConverter}, ConverterParameter={x:Static local:ChroZenService_Const+E_SYSTEM_SUB_MENU_TYPE.CALIB_OVEN}}"/>
@@ -201,6 +201,6 @@
                     </Label.Triggers>
                 </Label>
             </Grid>
-        </AbsoluteLayout>
+        </AbsoluteLayout>-->
     </ContentView.Content>
 </ContentView>

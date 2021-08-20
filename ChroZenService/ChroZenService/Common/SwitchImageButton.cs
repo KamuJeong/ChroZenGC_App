@@ -18,33 +18,31 @@ namespace ChroZenService
             Margin = new Thickness(2);
             HeightRequest = (double)Application.Current.Resources["CaptionFontSizeKey"] * 1.5 + 4;
             WidthRequest = HeightRequest * 190.0 / 40.0;
-
-            //var trigger = new Trigger(typeof(SwitchImageButton));
-            //trigger.Property = ImageButton.IsEnabledProperty;
-            //trigger.Value = false;
-            //trigger.Setters.Add(new Setter { Property = ImageButton.SourceProperty, Value = Disable });
-            //Triggers.Add(trigger);
-
             Pressed += OnPressed;
         }
 
+        public bool Lockable { get; set; } = true;
+
         private void OnPressed(object sender, EventArgs e)
         {
-            Element element = this;
-            while (element.BindingContext != null)
+            if (Lockable)
             {
-                var prop = element.BindingContext.GetType().GetProperty("IsEditable");
-                if (prop != null && prop.GetValue(element.BindingContext) is bool editable)
+                Element element = this;
+                while (element.BindingContext != null)
                 {
-                    if (editable)
+                    var prop = element.BindingContext.GetType().GetProperty("IsEditable");
+                    if (prop != null && prop.GetValue(element.BindingContext) is bool editable)
+                    {
+                        if (editable)
+                            break;
+                        else
+                            return;
+                    }
+                    if (element.Parent == null)
                         break;
                     else
-                        return;
+                        element = element.Parent;
                 }
-                if (element.Parent == null)
-                    break;
-                else
-                    element = element.Parent;
             }
             ON = !ON;
         }

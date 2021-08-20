@@ -13,7 +13,7 @@ namespace ChroZenGC.Core.Packets
 
     public enum ActuatorTypes : byte
     {
-        Air, Electric,
+        None, Air, Electric,
     }
 
     public enum ValveConnection : byte

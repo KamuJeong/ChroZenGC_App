@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Calib_AuxTemp">
     <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="168"/>
@@ -156,6 +156,6 @@
                 <local:UC_System_Calib_ResetButton Grid.Row="11" Grid.Column="0" Text="Reset" CornerRadius="10" ButtonMargin="18,0,2,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.ResetCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION4}"/>
                 <local:UC_System_Calib_ApplyButton Grid.Row="11" Grid.Column="1" Text="Apply" CornerRadius="10" ButtonMargin="15,0,4,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationAuxTemp1.ApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_AUXTEMP_RESET_APPLY_COMMAND_TYPE.TEMP_CALIBRATION4}"/>
             </Grid>
-        </AbsoluteLayout>
+        </AbsoluteLayout>-->
     </ContentView.Content>
 </ContentView>

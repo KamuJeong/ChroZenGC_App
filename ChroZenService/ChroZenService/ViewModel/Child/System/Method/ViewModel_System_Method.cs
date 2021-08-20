@@ -5,42 +5,42 @@ using System.Text;
 
 namespace ChroZenService
 {
-    public class ViewModel_System_Method : BindableNotifyBase
-    {
-        #region 생성자 & 이벤트 헨들러
+    //public class ViewModel_System_Method : BindableNotifyBase
+    //{
+    //    #region 생성자 & 이벤트 헨들러
 
-        public ViewModel_System_Method()
-        {
-            DefaultCommand = new RelayCommand(DefaultCommandAction);
-        }
+    //    public ViewModel_System_Method()
+    //    {
+    //        DefaultCommand = new RelayCommand(DefaultCommandAction);
+    //    }
 
-        #endregion 생성자 & 이벤트 헨들러
+    //    #endregion 생성자 & 이벤트 헨들러
 
-        #region Binding
+    //    #region Binding
 
-        #region Property
+    //    #region Property
 
 
 
-        #endregion Property
+    //    #endregion Property
 
-        #region Command
+    //    #region Command
 
-        #region DefaultCommand
-        public RelayCommand DefaultCommand { get; set; }
-        private void DefaultCommandAction(object param)
-        {
-            //TODO :             
-            Debug.WriteLine("DefaultCommand Fired");
-        }
-        #endregion DefaultCommand 
+    //    #region DefaultCommand
+    //    public RelayCommand DefaultCommand { get; set; }
+    //    private void DefaultCommandAction(object param)
+    //    {
+    //        //TODO :             
+    //        Debug.WriteLine("DefaultCommand Fired");
+    //    }
+    //    #endregion DefaultCommand 
 
-        #endregion Command
+    //    #endregion Command
 
-        #endregion Binding
+    //    #endregion Binding
 
-        #region Instance Func
+    //    #region Instance Func
 
-        #endregion Instance Func
-    }
+    //    #endregion Instance Func
+    //}
 }

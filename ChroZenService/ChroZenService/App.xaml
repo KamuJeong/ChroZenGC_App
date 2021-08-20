@@ -31,9 +31,13 @@
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
 
+        <Color x:Key="RootBackgroundKey" x:FactoryMethod="FromHex">
+            <x:Arguments>
+                <x:String>#ff2d2d37</x:String>
+            </x:Arguments>
+        </Color>
 
-
-        <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_T1">T1</x:String>
+        <!--<x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_T1">T1</x:String>
         <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_T2">T2</x:String>
         <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_SENSOR1">Sensor1</x:String>
         <x:String x:Key="STR_SYSTEMPAGE_CALIBRATION_ROW_TITLE_SENSOR2">Sensor2</x:String>
@@ -257,11 +261,7 @@
                 <x:String>#ff65627e</x:String>
             </x:Arguments>
         </Color>
-        <Color x:Key="CS_COLOR_ROOT_BACKGROUND" x:FactoryMethod="FromHex">
-            <x:Arguments>
-                <x:String>#ff2d2d37</x:String>
-            </x:Arguments>
-        </Color>
+
         <Color x:Key="CS_COLOR_BLACK_0" x:FactoryMethod="FromHex">
             <x:Arguments>
                 <x:String>#ff000000</x:String>
@@ -382,55 +382,55 @@
         </Style>
         <Style x:Key="STYLE_LABEL_CONFIG_SETTING_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <Setter Property="FontSize" Value="16"/>
-            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            --><!--<Setter Property="CornerRadius" Value="5"/>--><!--
             <Setter Property="Margin" Value="0,5,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_CONFIG_DET_CONFIG_SET_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <Setter Property="FontSize" Value="16"/>
-            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            --><!--<Setter Property="CornerRadius" Value="5"/>--><!--
             <Setter Property="Margin" Value="0,1,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_CONFIG_INLET_TEMPERATURE_SET_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <Setter Property="FontSize" Value="16"/>
-            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            --><!--<Setter Property="CornerRadius" Value="5"/>--><!--
             <Setter Property="Margin" Value="0,1,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_CONFIG_DET_SETTINGS_SET_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <Setter Property="FontSize" Value="16"/>
-            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            --><!--<Setter Property="CornerRadius" Value="5"/>--><!--
             <Setter Property="Margin" Value="0,1,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_CONFIG_AUX_TEMPERATURE_SET_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <Setter Property="FontSize" Value="16"/>
-            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            --><!--<Setter Property="CornerRadius" Value="5"/>--><!--
             <Setter Property="Margin" Value="0,1,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_CONFIG_OVEN_SETTING_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <Setter Property="FontSize" Value="16"/>
-            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            --><!--<Setter Property="CornerRadius" Value="5"/>--><!--
             <Setter Property="Margin" Value="0,1,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_CONFIG_VALVE_PROGRAM_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <Setter Property="FontSize" Value="16"/>
-            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            --><!--<Setter Property="CornerRadius" Value="5"/>--><!--
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_SETTING_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <Setter Property="FontSize" Value="16"/>
-            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            --><!--<Setter Property="CornerRadius" Value="5"/>--><!--
             <Setter Property="Margin" Value="0,5,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
@@ -622,7 +622,7 @@
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_TITLE_WHITE}"/>
         </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_CALIB_LABEL" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
-            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            --><!--<Setter Property="CornerRadius" Value="5"/>--><!--
             <Setter Property="Margin" Value="0,1,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_LABEL_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_LABEL_BACKGROUND_DARK_0}"/>
@@ -630,7 +630,7 @@
         </Style>
         <Style x:Key="STYLE_LABEL_SYSTEM_CALIB_EDITOR" TargetType="{x:Type local:UC_System_Calib_LabelBase}">
             <Setter Property="FontSize" Value="16"/>
-            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            --><!--<Setter Property="CornerRadius" Value="5"/>--><!--
             <Setter Property="Margin" Value="0,1,0,0"/>
             <Setter Property="TextColor" Value="{StaticResource CS_COLOR_SYSTEM_CALIBRATION_EDITOR_TEXTCOLOR}"/>
             <Setter Property="Background" Value="{StaticResource LGB_CONTROL_SYSTEM_EDITOR_BACKGROUND_BLUE_0}"/>
@@ -638,7 +638,7 @@
 
         <Style x:Key="STYLE_LABEL_SYSTEM_CALIB_TITLE" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="22"/>
-            <!--<Setter Property="CornerRadius" Value="5"/>-->
+            --><!--<Setter Property="CornerRadius" Value="5"/>--><!--
             <Setter Property="TextColor" Value="White"/>
             <Setter Property="FontAttributes" Value="Bold"/>
             <Setter Property="Margin" Value="18,0,0,0"/>
@@ -653,6 +653,6 @@
                    HeightRequest="50"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
-        </ControlTemplate>
+        </ControlTemplate>-->
     </Application.Resources>
 </Application>

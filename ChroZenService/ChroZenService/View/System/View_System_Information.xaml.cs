@@ -17,15 +17,9 @@ namespace ChroZenService
             InitializeComponent();
         }
 
-        private async void OnSetTapped(object sender, EventArgs e)
+        private void OnSetTapped(object sender, EventArgs e)
         {
             settable.IsToggled = false;
         }
-
-        //      private async void OnSyncTapped(object sender, EventArgs e)
-        //      {
-        //	syncButton.Scale = 1.1;
-        //	await syncButton.ScaleTo(1.0, 500, Easing.SpringIn);
-        //}
     }
 }

@@ -74,34 +74,34 @@
                             <Label Text="Set(℃)"
                                    Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
 
-                            <Label Text="Aux 1"
+                            <Label Text="AUX 1"
                                    Grid.Row="2" Style="{StaticResource captionKey}" />
                             <local:ValueEditor Value="{Binding State.Temperature.Aux[0], StringFormat='{0:F1}'}" 
                                                 Grid.Row="2" Grid.Column="2" IsEnabled="False"
                                                 IsVisible="{Binding Configuration.AuxTemp[0], Converter={StaticResource ByteToBooleanKey}}" />
                             <local:ValueEditor Value="{Binding AuxTemp.TempSet[0], StringFormat='{0:F1}'}"
                                                Switch="{Binding AuxTemp.TempOnOff[1]}" Max="250" Min="0"
-                                                Grid.Row="2" Grid.Column="3" Caption="Aux 1"
+                                                Grid.Row="2" Grid.Column="3" Caption="AUX 1"
                                                 IsEnabled="{Binding Configuration.AuxTemp[0], Converter={StaticResource ByteToBooleanKey}}" />
 
-                            <Label Text="Aux 2"
+                            <Label Text="AUX 2"
                                    Grid.Row="3" Style="{StaticResource captionKey}" />
                             <local:ValueEditor Value="{Binding State.Temperature.Aux[1], StringFormat='{0:F1}'}" 
                                                 Grid.Row="3" Grid.Column="2" IsEnabled="False"
                                                 IsVisible="{Binding Configuration.AuxTemp[1], Converter={StaticResource ByteToBooleanKey}}" />
                             <local:ValueEditor Value="{Binding AuxTemp.TempSet[1], StringFormat='{0:F1}'}"
                                                Switch="{Binding AuxTemp.TempOnOff[1]}" Max="250" Min="0"
-                                                Grid.Row="3" Grid.Column="3" Caption="Aux 2"
+                                                Grid.Row="3" Grid.Column="3" Caption="AUX 2"
                                                 IsEnabled="{Binding Configuration.AuxTemp[1], Converter={StaticResource ByteToBooleanKey}}" />
 
-                            <Label Text="Aux 3"
+                            <Label Text="AUX 3"
                                    Grid.Row="4" Style="{StaticResource captionKey}" />
                             <local:ValueEditor Value="{Binding State.Temperature.Aux[2], StringFormat='{0:F1}'}" 
                                                 Grid.Row="4" Grid.Column="2" IsEnabled="False"
                                                 IsVisible="{Binding Configuration.AuxTemp[2], Converter={StaticResource ByteToBooleanKey}}" />
                             <local:ValueEditor Value="{Binding AuxTemp.TempSet[2], StringFormat='{0:F1}'}"
                                                Switch="{Binding AuxTemp.TempOnOff[2]}" Max="300" Min="0"
-                                                Grid.Row="4" Grid.Column="3" Caption="Aux 3"
+                                                Grid.Row="4" Grid.Column="3" Caption="AUX 3"
                                                 IsEnabled="{Binding Configuration.AuxTemp[2], Converter={StaticResource ByteToBooleanKey}}" />
 
                             <Label Text="{Binding Configuration.Aux4Type, Converter={StaticResource Aux4NameKey}}"
@@ -117,44 +117,44 @@
                                                Caption="{Binding Configuration.Aux4Type, Converter={StaticResource Aux4NameKey}}"
                                                 IsEnabled="{Binding Configuration.AuxTemp[3], Converter={StaticResource ByteToBooleanKey}}" />
 
-                            <Label Text="Aux 5"
+                            <Label Text="AUX 5"
                                    Grid.Row="6" Style="{StaticResource captionKey}" />
                             <local:ValueEditor Value="{Binding State.Temperature.Aux[4], StringFormat='{0:F1}'}" 
                                                 Grid.Row="6" Grid.Column="2" IsEnabled="False"
                                                 IsVisible="{Binding Configuration.AuxTemp[4], Converter={StaticResource ByteToBooleanKey}}" />
                             <local:ValueEditor Value="{Binding AuxTemp.TempSet[4], StringFormat='{0:F1}'}"
                                                Switch="{Binding AuxTemp.TempOnOff[4]}" Max="250" Min="0"
-                                                Grid.Row="6" Grid.Column="3" Caption="Aux 5"
+                                                Grid.Row="6" Grid.Column="3" Caption="AUX 5"
                                                 IsEnabled="{Binding Configuration.AuxTemp[4], Converter={StaticResource ByteToBooleanKey}}" />
 
-                            <Label Text="Aux 6"
+                            <Label Text="AUX 6"
                                    Grid.Row="7" Style="{StaticResource captionKey}" />
                             <local:ValueEditor Value="{Binding State.Temperature.Aux[5], StringFormat='{0:F1}'}" 
                                                 Grid.Row="7" Grid.Column="2" IsEnabled="False"
                                                 IsVisible="{Binding Configuration.AuxTemp[5], Converter={StaticResource ByteToBooleanKey}}" />
                             <local:ValueEditor Value="{Binding AuxTemp.TempSet[5], StringFormat='{0:F1}'}"
                                                Switch="{Binding AuxTemp.TempOnOff[5]}" Max="250" Min="0"
-                                                Grid.Row="7" Grid.Column="3" Caption="Aux 6"
+                                                Grid.Row="7" Grid.Column="3" Caption="AUX 6"
                                                 IsEnabled="{Binding Configuration.AuxTemp[5], Converter={StaticResource ByteToBooleanKey}}" />
 
-                            <Label Text="Aux 7"
+                            <Label Text="AUX 7"
                                    Grid.Row="8" Style="{StaticResource captionKey}" />
                             <local:ValueEditor Value="{Binding State.Temperature.Aux[6], StringFormat='{0:F1}'}" 
                                                 Grid.Row="8" Grid.Column="2" IsEnabled="False"
                                                 IsVisible="{Binding Configuration.AuxTemp[6], Converter={StaticResource ByteToBooleanKey}}" />
                             <local:ValueEditor Value="{Binding AuxTemp.TempSet[6], StringFormat='{0:F1}'}"
                                                Switch="{Binding AuxTemp.TempOnOff[6]}" Max="250" Min="0"
-                                                Grid.Row="8" Grid.Column="3" Caption="Aux 7"
+                                                Grid.Row="8" Grid.Column="3" Caption="AUX 7"
                                                 IsEnabled="{Binding Configuration.AuxTemp[6], Converter={StaticResource ByteToBooleanKey}}" />
 
-                            <Label Text="Aux 8"
+                            <Label Text="AUX 8"
                                    Grid.Row="9" Style="{StaticResource captionKey}" />
                             <local:ValueEditor Value="{Binding State.Temperature.Aux[7], StringFormat='{0:F1}'}" 
                                                 Grid.Row="9" Grid.Column="2" IsEnabled="False"
                                                 IsVisible="{Binding Configuration.AuxTemp[7], Converter={StaticResource ByteToBooleanKey}}" />
                             <local:ValueEditor Value="{Binding AuxTemp.TempSet[7], StringFormat='{0:F1}'}"
                                                Switch="{Binding AuxTemp.TempOnOff[7]}" Max="250" Min="0"
-                                                Grid.Row="9" Grid.Column="3" Caption="Aux 8"
+                                                Grid.Row="9" Grid.Column="3" Caption="AUX 8"
                                                 IsEnabled="{Binding Configuration.AuxTemp[7], Converter={StaticResource ByteToBooleanKey}}" />
 
                             <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>

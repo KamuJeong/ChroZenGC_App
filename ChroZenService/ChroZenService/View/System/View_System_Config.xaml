@@ -102,7 +102,8 @@
                     <Label Text="AUX Configuration" 
                             Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
                     <Frame Style="{StaticResource groupKey}">
-                        <Grid ColumnSpacing="10" >
+                        <Grid ColumnSpacing="10" 
+                              InputTransparent="{Binding IsEditable, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -197,7 +198,8 @@
                         </Grid>
                     </Frame>
                     <Frame Style="{StaticResource groupKey}">
-                        <StackLayout Orientation="Horizontal" Spacing="0" >
+                        <StackLayout Orientation="Horizontal" Spacing="0" 
+                                     InputTransparent="{Binding IsEditable, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}">
                             <CheckBox IsChecked="{Binding Configuration.IsCryogenicInstalled}" />
                             <Label Text="Cryogenic"
                                     Style="{StaticResource captionKey}" />

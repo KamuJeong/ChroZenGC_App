@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Calib_Oven">
     <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="168"/>
@@ -58,6 +58,6 @@
 
 
             </Grid>
-        </AbsoluteLayout>
+        </AbsoluteLayout>-->
     </ContentView.Content>
 </ContentView>

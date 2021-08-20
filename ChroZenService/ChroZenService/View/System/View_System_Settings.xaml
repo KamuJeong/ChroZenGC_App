@@ -47,6 +47,7 @@
                         <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
                                                  Command="{Binding ColumnCleanCommand}" CommandParameter="Stop"
                                                  IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=ColumnCondition}"
+                                                 Lockable="False"
                                                  HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     <Frame Style="{StaticResource groupKey}">

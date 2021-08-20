@@ -12,6 +12,7 @@ namespace ChroZenService
         private Button BackgroundButton, RealButton;
         private Label ValueLabel;
 
+
         public static readonly BindableProperty TextProperty = BindableProperty.Create("Text", typeof(string), typeof(NormalButton), null, propertyChanged: TextChanged);
 
         private static void TextChanged(BindableObject bindable, object oldValue, object newValue)
@@ -26,6 +27,22 @@ namespace ChroZenService
         {
             get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
+        }
+
+        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create("FontSize", typeof(double), typeof(NormalButton), 0.0, propertyChanged: FontSizeChanged);
+
+        private static void FontSizeChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is NormalButton button)
+            {
+                button.ValueLabel.FontSize = (double)newValue;
+            }
+        }
+
+        public double FontSize
+        {
+            get => (double)GetValue(FontSizeProperty);
+            set => SetValue(FontSizeProperty, value);
         }
 
         public static readonly BindableProperty CommandProperty = BindableProperty.Create("Command", typeof(ICommand), typeof(NormalButton), null);
@@ -97,23 +114,28 @@ namespace ChroZenService
             PropertyChanged += Button_PropertyChanged;
         }
 
+        public bool Lockable { get; set; } = true;
+
         private async  void _Pressed(object sender, EventArgs e)
         {
-            Element element = this;
-            while (element.BindingContext != null)
+            if (Lockable)
             {
-                var prop = element.BindingContext.GetType().GetProperty("IsEditable");
-                if (prop != null && prop.GetValue(element.BindingContext) is bool editable)
+                Element element = this;
+                while (element.BindingContext != null)
                 {
-                    if (editable)
+                    var prop = element.BindingContext.GetType().GetProperty("IsEditable");
+                    if (prop != null && prop.GetValue(element.BindingContext) is bool editable)
+                    {
+                        if (editable)
+                            break;
+                        else
+                            return;
+                    }
+                    if (element.Parent == null)
                         break;
                     else
-                        return;
+                        element = element.Parent;
                 }
-                if (element.Parent == null)
-                    break;
-                else
-                    element = element.Parent;
             }
 
             Scale = 1.0;

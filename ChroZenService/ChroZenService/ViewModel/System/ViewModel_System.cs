@@ -22,6 +22,8 @@ namespace ChroZenService
 
         public ConfigurationWrapper Configuration => Model.Configuration;
 
+        public StateWrapper State => Model.State;
+
         public ViewModel_System(Model model, ViewModel_Root root)
         {
             Model = model;
@@ -32,7 +34,16 @@ namespace ChroZenService
             IPAddress = Model.Information.IPAddress;
             NetworkMask = Model.Information.NetworkMask;
             GateWay = Model.Information.GateWay;
+
+            State.PropertyModified += StatePropertyModified;
         }
+
+        private void StatePropertyModified(object sender, PropertyChangedEventArgs e)
+        {
+            IsEditable = State.Mode switch { Modes.Ready => true, Modes.NotReady => true, Modes.NotConnected => true, _ => false };
+        }
+
+        public bool IsEditable { get; set; } = true;
 
         private void OnInformationPropertyModified(object sender, PropertyChangedEventArgs e)
         {
@@ -48,7 +59,7 @@ namespace ChroZenService
 
         public ICommand SetNetworkCommand => new Command(OnSetNetwork);
 
-        private async  void OnSetNetwork(object obj)
+        private async void OnSetNetwork(object obj)
         {
             var information = new InformationWrapper();
             information.Version = "SetIP";
@@ -120,7 +131,6 @@ namespace ChroZenService
         public Predicate<Enum> DetectorFilter => (e) => !new List<DetectorTypes> { DetectorTypes.FPD_Not_used, DetectorTypes.NPD_Not_used, DetectorTypes.ECD }
                                                                 .Any(n => object.Equals(n, e));
 
-
         public ICommand ColumnCleanCommand => new Command(ColumnClean);
 
         private async void ColumnClean(object obj)
@@ -135,5 +145,30 @@ namespace ChroZenService
                     break;
             }
         }
+
+        public ICommand DiagStartCommand => new Command(DiagStart);
+
+        private async void DiagStart(object obj)
+        {
+            if (obj is string num)
+            {
+                await Model.Send(new DiagCommandWrapper(true, (DiagTarget)int.Parse(num)));
+            }
+        }
+
+        public ICommand DiagStopCommand => new Command(DiagStop);
+
+        private async void DiagStop(object obj)
+        {
+            if (obj is string num)
+            {
+                await Model.Send(new DiagCommandWrapper(false, (DiagTarget)int.Parse(num)));
+            }
+        }
+
+
+
+
+
     }
 }

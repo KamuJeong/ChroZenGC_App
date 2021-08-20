@@ -715,8 +715,8 @@ namespace ChroZenService
         {
             using (SKPaint paint = new SKPaint())
             {
-                SKColor colorStart = ((Color)App.Current.Resources["CS_COLOR_ROOT_BACKGROUND"]).ToSKColor();
-                SKColor colorEnd = ((Color)App.Current.Resources["CS_COLOR_BLACK_0"]).ToSKColor();
+                SKColor colorStart = ((Color)App.Current.Resources["RootBackgroundKey"]).ToSKColor();
+                SKColor colorEnd = SKColors.Black;
 
                 paint.Shader = SKShader.CreateLinearGradient(
                                     new SKPoint(rect.Left, rect.Top),

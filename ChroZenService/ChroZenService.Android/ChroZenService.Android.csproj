@@ -157,122 +157,122 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\btn_bot_02.png" />
+    <None Include="Resources\drawable\btn_bot_02.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\btn_bot_03.png" />
+    <None Include="Resources\drawable\btn_bot_03.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\home_center.png" />
+    <None Include="Resources\drawable\home_center.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\home_side1.png" />
+    <None Include="Resources\drawable\home_side1.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\home_side2.png" />
+    <None Include="Resources\drawable\home_side2.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\home_side3.png" />
+    <None Include="Resources\drawable\home_side3.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\monitor_error.jpg">
+    <None Include="Resources\drawable\monitor_error.jpg">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\bg.png">
+    <None Include="Resources\drawable\bg.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\bg_info.png">
+    <None Include="Resources\drawable\bg_info.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\btn_bot_01.png">
+    <None Include="Resources\drawable\btn_bot_01.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\btn_off.png">
+    <None Include="Resources\drawable\btn_off.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\btn_on.png">
+    <None Include="Resources\drawable\btn_on.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\calib_stop.jpg">
+    <None Include="Resources\drawable\calib_stop.jpg">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ico_01.png">
+    <None Include="Resources\drawable\ico_01.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ico_02.png">
+    <None Include="Resources\drawable\ico_02.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ico_03.png">
+    <None Include="Resources\drawable\ico_03.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\reset_20.png">
+    <None Include="Resources\drawable\reset_20.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\right_bg.png">
+    <None Include="Resources\drawable\right_bg.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\right_btn01.png">
+    <None Include="Resources\drawable\right_btn01.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\right_btn02.png">
+    <None Include="Resources\drawable\right_btn02.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\side_bot.png">
+    <None Include="Resources\drawable\side_bot.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\side_mid.png">
+    <None Include="Resources\drawable\side_mid.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\side_top.png">
+    <None Include="Resources\drawable\side_top.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\start.png">
+    <None Include="Resources\drawable\start.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\toggle_off.png">
+    <None Include="Resources\drawable\toggle_off.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\toggle_on.png">
+    <None Include="Resources\drawable\toggle_on.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash_screen.axml">

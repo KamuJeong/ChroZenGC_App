@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:Class="ChroZenService.View_System_Calib_DetCenter">
     <ContentView.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="53"/>
@@ -169,6 +169,6 @@
                 <local:UC_System_Calib_StartStopButton Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" Text="Start" CornerRadius="10" ButtonMargin="0,0,0,0"   InnerMargin="0,0,38,0" Margin="5,0,0,-8"    IconMargin="-12,0,0,-8" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.FlowStartCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.FLOW}"  IsStarted="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.bIsDoingFlowCalibration}"/>
                 <local:UC_System_Calib_ApplyButton Grid.Row="11" Grid.Column="4" Grid.ColumnSpan="2" Text="Apply" CornerRadius="10"     ButtonMargin="0,0,18,0"  IsSmall="True" InnerMargin="0,0,38,0"   Margin="-8,0,0,-10"   IconMargin="-12,0,0,-6" LabelMargin="-20,1,0,0" ClickCommand="{Binding ViewModelSystemPage.ViewModel_System_Calibration.ViewModel_System_CalibrationDetCenter.FlowApplyCommand}" ClickCommandParameter="{x:Static local:ChroZenService_Const+E_SYSTEM_CALIBRATION_DET_CONTROL_COMMAND_TYPE.FLOW}" />
             </Grid>
-        </AbsoluteLayout>
+        </AbsoluteLayout>-->
     </ContentView.Content>
 </ContentView>

@@ -9,10 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using YC_ChroZenGC_Type;
-using static ChroZenService.ChroZenService_Const;
-using static YC_ChroZenGC_Type.T_CHROZEN_GC_STATE;
-using static YC_ChroZenGC_Type.T_CHROZEN_GC_SYSTEM_CONFIG;
+
 
 namespace ChroZenService
 {
@@ -56,24 +53,24 @@ namespace ChroZenService
 
 
 
-        #region Binding
+        //#region Binding
 
-        #region Property
+        //#region Property
 
-        ViewModel_KeyPad _ViewModel_KeyPad = new ViewModel_KeyPad();
-        public ViewModel_KeyPad ViewModel_KeyPad { get { return _ViewModel_KeyPad; } set { if (_ViewModel_KeyPad != value) { _ViewModel_KeyPad = value; OnPropertyChanged("ViewModel_KeyPad"); } } }
+        //ViewModel_KeyPad _ViewModel_KeyPad = new ViewModel_KeyPad();
+        //public ViewModel_KeyPad ViewModel_KeyPad { get { return _ViewModel_KeyPad; } set { if (_ViewModel_KeyPad != value) { _ViewModel_KeyPad = value; OnPropertyChanged("ViewModel_KeyPad"); } } }
 
 
         //ViewModelConfigPage _ViewModelConfigPage = new ViewModelConfigPage();
         //public ViewModelConfigPage ViewModelConfigPage { get { return _ViewModelConfigPage; } set { if (_ViewModelConfigPage != value) { _ViewModelConfigPage = value; OnPropertyChanged("ViewModelConfigPage"); } } }
 
-        ViewModelSystemPage _ViewModelSystemPage = new ViewModelSystemPage();
-        public ViewModelSystemPage ViewModelSystemPage { get { return _ViewModelSystemPage; } set { if (_ViewModelSystemPage != value) { _ViewModelSystemPage = value; OnPropertyChanged("ViewModelSystemPage"); } } }
-        #endregion Property
+        //ViewModelSystemPage _ViewModelSystemPage = new ViewModelSystemPage();
+        //public ViewModelSystemPage ViewModelSystemPage { get { return _ViewModelSystemPage; } set { if (_ViewModelSystemPage != value) { _ViewModelSystemPage = value; OnPropertyChanged("ViewModelSystemPage"); } } }
+        //#endregion Property
 
 
 
-        #endregion Binding
+        //#endregion Binding
 
     }
 }

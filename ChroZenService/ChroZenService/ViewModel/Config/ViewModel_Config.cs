@@ -67,9 +67,7 @@ namespace ChroZenService
 
         public int SelectedItem { get; set; } = 1;
 
-
         // Oven setup
-
         public ObservableCollection<OvenProgramStep> OvenProgram { get; } = new ObservableCollection<OvenProgramStep>();
         public void UpdateOvenProgram()
         {
@@ -93,7 +91,7 @@ namespace ChroZenService
 
         private void OvenPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == "Binary" || e.PropertyName == nameof(_OvenProgramWrapper) + ">" + nameof(_OvenProgramWrapper.Rate))
+            if (e.PropertyName == "Binary" || e.PropertyName == nameof(_OvenProgramWrapper) + ">" + nameof(_OvenProgramWrapper.Rate))
             {
                 UpdateOvenProgram();
             }
