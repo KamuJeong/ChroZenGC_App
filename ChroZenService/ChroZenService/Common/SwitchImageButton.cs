@@ -66,7 +66,5 @@ namespace ChroZenService
         static private ImageSource SourceON { get; } = ImageSource.FromResource("ChroZenService.Images.btn_on.png");
 
         static private ImageSource SourceOFF { get; } = ImageSource.FromResource("ChroZenService.Images.btn_off.png");
-
-        static private ImageSource Disable { get; } = ImageSource.FromResource("ChroZenService.Images.DisabledSwitch.png");
     }
 }

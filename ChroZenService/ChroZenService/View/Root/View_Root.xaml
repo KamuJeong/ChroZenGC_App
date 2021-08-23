@@ -5,6 +5,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              x:Class="ChroZenService.View_Root"
+             x:DataType="local:ViewModel_Root"
             >
     <Grid RowSpacing="0" BackgroundColor="{StaticResource RootBackgroundKey}" >
         <Grid.RowDefinitions>
@@ -17,7 +18,7 @@
 
         <ContentView x:Name="Home" Grid.Row="1" IsVisible="true"/>
         <ContentView x:Name="Config" Grid.Row="1" IsVisible="False"/>
-        <ContentView x:Name="System" Grid.Row="1" IsVisible="False"/>
+        <ContentView x:Name="System" Grid.Row="1" IsVisible="{Binding System.IsInSystemMode, Mode=TwoWay}" />
         <ContentView Grid.Row="1">
             <ContentView.Triggers>
                 <DataTrigger TargetType="ContentView" Binding="{Binding IsConnected}" Value="True">

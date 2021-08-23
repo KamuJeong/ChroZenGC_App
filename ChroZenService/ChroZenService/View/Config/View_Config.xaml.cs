@@ -58,18 +58,21 @@ namespace ChroZenService
 
         public async void Initialize()
         {
-            for (int i = 0; i < 3; ++i)
+            for (int i = 0; i < 13; ++i)
             {
-                if (Model.Model.Configuration.InletType[i] != InletTypes.NotInstalled)
-                {
-                    InitView(3 + i);
-                    await Task.Yield();
-                }
-                if (Model.Model.Configuration.DetectorType[i] != DetectorTypes.NotInstalled)
-                {
-                    InitView(7 + i);
-                    await Task.Yield();
-                }
+                InitView(i);
+                await Task.Yield();
+
+                //if (Model.Model.Configuration.InletType[i] != InletTypes.NotInstalled)
+                //{
+                //    InitView(3 + i);
+                //    await Task.Yield();
+                //}
+                //if (Model.Model.Configuration.DetectorType[i] != DetectorTypes.NotInstalled)
+                //{
+                //    InitView(7 + i);
+                //    await Task.Yield();
+                //}
             }
         }
 

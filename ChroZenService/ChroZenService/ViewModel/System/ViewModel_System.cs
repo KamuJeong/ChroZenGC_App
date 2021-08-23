@@ -14,7 +14,7 @@ namespace ChroZenService
 {
     public class ViewModel_System : Observable
     {
-        public ViewModel_Root Root { get; }
+        public ViewModel_Root Root { get; set;  }
 
         public Model Model { get; }
 
@@ -24,10 +24,9 @@ namespace ChroZenService
 
         public StateWrapper State => Model.State;
 
-        public ViewModel_System(Model model, ViewModel_Root root)
+        public ViewModel_System(Model model)
         {
             Model = model;
-            Root = root;
 
             Model.Information.PropertyModified += OnInformationPropertyModified;
 
@@ -55,7 +54,38 @@ namespace ChroZenService
             }
         }
 
-        public int SelectedItem { get; set; } = 1;
+
+        private int selectedItem = 1;
+        public int SelectedItem
+        {
+            get => selectedItem;
+            set
+            {
+                selectedItem = value;
+                if (State.Mode == Modes.Diagnostics || State.Mode == Modes.Calibration)
+                {
+                    AbortTask();
+                }
+            }
+        }
+
+
+        private async void AbortTask() => await Model.Send(new CommandWrapper(CommandCodes.Stop));
+
+        private bool isInSystemMode = false;
+        public bool IsInSystemMode 
+        {
+            get => isInSystemMode;
+            set
+            {
+                isInSystemMode = value;
+                if (State.Mode == Modes.Diagnostics || State.Mode == Modes.Calibration)
+                {
+                    AbortTask();
+                }
+            }
+        }
+
 
         public ICommand SetNetworkCommand => new Command(OnSetNetwork);
 

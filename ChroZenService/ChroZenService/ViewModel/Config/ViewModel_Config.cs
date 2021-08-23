@@ -96,8 +96,6 @@ namespace ChroZenService
                 UpdateOvenProgram();
             }
         }
-
-
     }
 
     public class OvenProgramStep : Observable

@@ -2,6 +2,7 @@
 using ChroZenGC.Core.Wrappers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,59 @@ using Xamarin.Forms.Xaml;
 
 namespace ChroZenService
 {
+    public class NotInstalledToBlankConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            switch($"{value}")
+            {
+                case "NotInstalled":
+                case "None":
+                case "0":
+                    return "";
+            }
+            return null;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class AllTrueMultiConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values == null || !targetType.IsAssignableFrom(typeof(bool)))
+            {
+                return false;
+                // Alternatively, return BindableProperty.UnsetValue to use the binding FallbackValue
+            }
+
+            foreach (var value in values)
+            {
+                if (!(value is bool b))
+                {
+                    return false;
+                    // Alternatively, return BindableProperty.UnsetValue to use the binding FallbackValue
+                }
+                else if (!b)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class View_System_Diagnostics : ContentView
     {

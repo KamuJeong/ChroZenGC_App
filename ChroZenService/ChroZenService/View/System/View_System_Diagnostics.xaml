@@ -5,6 +5,10 @@
              x:Class="ChroZenService.View_System_Diagnostics"
              x:DataType="local:ViewModel_System">
     <ContentView.Resources>
+        <local:NotInstalledToBlankConverter x:Key="NotInstalledToBlankKey" />
+        <local:AllTrueMultiConverter x:Key="AllTrueKey" />
+
+
         <Style x:Key="captionKey" TargetType="Label">
             <Setter Property="TextColor" Value="Silver" />
             <Setter Property="FontSize"  Value="{StaticResource CaptionFontSizeKey}" />
@@ -74,11 +78,11 @@
                             <Label Text="Heater Test"
                                     Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
                             <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
-                                                 Command="{Binding DiagStartCommand}" CommandParameter="1"
+                                                 Command="{Binding DiagStartCommand}" CommandParameter="0"
                                                  IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Diagnostics}"
                                                  HorizontalOptions="EndAndExpand" />
                             <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
-                                                 Command="{Binding DiagStopCommand}" CommandParameter="1"
+                                                 Command="{Binding DiagStopCommand}" CommandParameter="0"
                                                  IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
                                                  Lockable="False"
                                                  HorizontalOptions="EndAndExpand" />
@@ -112,90 +116,76 @@
                                                Unit="℃" IsEnabled="False" Grid.Column="2" />
 
                                 <Label Text="Inlet Front Temp"
-                                       IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource EnumInstalledKey}}"
                                         Grid.Row="2" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Inlet[0], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource EnumInstalledKey}}"
+                                                Text="{Binding Configuration.InletType[0], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="2" Grid.Column="2" />
                                 <Label Text="Inlet Center Temp"
-                                       IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource EnumInstalledKey}}"
                                         Grid.Row="3" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Inlet[1], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource EnumInstalledKey}}"
+                                                Text="{Binding Configuration.InletType[1], Converter={StaticResource NotInstalledToBlankKey}}"
                                                Unit="℃" IsEnabled="False" Grid.Row="3" Grid.Column="2" />
                                 <Label Text="Inlet Rear Temp"
-                                       IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource EnumInstalledKey}}"
                                         Grid.Row="4" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Inlet[2], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource EnumInstalledKey}}"
+                                                Text="{Binding Configuration.InletType[2], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="4" Grid.Column="2" />
 
                                 <Label Text="Det Front Temp"
-                                       IsVisible="{Binding Configuration.DetectorType[0], Converter={StaticResource EnumInstalledKey}}"
                                         Grid.Row="6" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Detector[0], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.DetectorType[0], Converter={StaticResource EnumInstalledKey}}"
+                                                Text="{Binding Configuration.DetectorType[0], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="6" Grid.Column="2" />
                                 <Label Text="Det Center Temp"
-                                       IsVisible="{Binding Configuration.DetectorType[1], Converter={StaticResource EnumInstalledKey}}"
                                         Grid.Row="7" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Detector[1], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.DetectorType[1], Converter={StaticResource EnumInstalledKey}}"
+                                                Text="{Binding Configuration.DetectorType[1], Converter={StaticResource NotInstalledToBlankKey}}"
                                                Unit="℃" IsEnabled="False" Grid.Row="7" Grid.Column="2" />
                                 <Label Text="Det Rear Temp"
-                                       IsVisible="{Binding Configuration.DetectorType[2], Converter={StaticResource EnumInstalledKey}}"
                                         Grid.Row="8" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Detector[2], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.DetectorType[2], Converter={StaticResource EnumInstalledKey}}"
+                                                Text="{Binding Configuration.DetectorType[2], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="8" Grid.Column="2" />
 
                                 <Label Text="AUX 1 Temp"
-                                       IsVisible="{Binding Configuration.AuxTemp[0], Converter={StaticResource ByteToBooleanKey}}"
                                         Grid.Row="10" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Aux[0], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.AuxTemp[0], Converter={StaticResource ByteToBooleanKey}}"
+                                                Text="{Binding Configuration.AuxTemp[0], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="10" Grid.Column="2" />
                                 <Label Text="AUX 2 Temp"
-                                       IsVisible="{Binding Configuration.AuxTemp[1], Converter={StaticResource ByteToBooleanKey}}"
                                         Grid.Row="11" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Aux[1], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.AuxTemp[1], Converter={StaticResource ByteToBooleanKey}}"
+                                                Text="{Binding Configuration.AuxTemp[1], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="11" Grid.Column="2" />
                                 <Label Text="AUX 3 Temp"
-                                       IsVisible="{Binding Configuration.AuxTemp[2], Converter={StaticResource ByteToBooleanKey}}"
                                         Grid.Row="12" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Aux[2], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.AuxTemp[2], Converter={StaticResource ByteToBooleanKey}}"
+                                                Text="{Binding Configuration.AuxTemp[2], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="12" Grid.Column="2" />
                                 <Label Text="AUX 4 Temp"
-                                       IsVisible="{Binding Configuration.AuxTemp[3], Converter={StaticResource ByteToBooleanKey}}"
                                         Grid.Row="13" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Aux[3], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.AuxTemp[3], Converter={StaticResource ByteToBooleanKey}}"
+                                                Text="{Binding Configuration.AuxTemp[3], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="13" Grid.Column="2" />
                                 <Label Text="AUX 5 Temp"
-                                       IsVisible="{Binding Configuration.AuxTemp[4], Converter={StaticResource ByteToBooleanKey}}"
                                         Grid.Row="14" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Aux[4], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.AuxTemp[4], Converter={StaticResource ByteToBooleanKey}}"
+                                                Text="{Binding Configuration.AuxTemp[4], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="14" Grid.Column="2" />
                                 <Label Text="AUX 6 Temp"
-                                       IsVisible="{Binding Configuration.AuxTemp[5], Converter={StaticResource ByteToBooleanKey}}"
                                         Grid.Row="15" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Aux[5], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.AuxTemp[5], Converter={StaticResource ByteToBooleanKey}}"
+                                                Text="{Binding Configuration.AuxTemp[5], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="15" Grid.Column="2" />
                                 <Label Text="AUX 7 Temp"
-                                       IsVisible="{Binding Configuration.AuxTemp[6], Converter={StaticResource ByteToBooleanKey}}"
                                         Grid.Row="16" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Aux[6], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.AuxTemp[6], Converter={StaticResource ByteToBooleanKey}}"
+                                                Text="{Binding Configuration.AuxTemp[6], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="16" Grid.Column="2" />
                                 <Label Text="AUX 8 Temp"
-                                       IsVisible="{Binding Configuration.AuxTemp[7], Converter={StaticResource ByteToBooleanKey}}"
                                         Grid.Row="17" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Aux[7], StringFormat='{0:F1}'}"
-                                                IsVisible="{Binding Configuration.AuxTemp[7], Converter={StaticResource ByteToBooleanKey}}"
+                                                Text="{Binding Configuration.AuxTemp[7], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="17" Grid.Column="2" />
 
                                 <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="18"/>
@@ -203,9 +193,300 @@
                         </Frame>
                     </StackLayout>
                 </ScrollView>
-                
-                
-                
+
+                <ScrollView Grid.Row="2">
+                    <StackLayout Padding="10" Spacing="10" >
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label Text="Ignitor &amp; Valve"
+                                    Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                 Command="{Binding DiagStartCommand}" CommandParameter="1"
+                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 HorizontalOptions="EndAndExpand" />
+                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                 Command="{Binding DiagStopCommand}" CommandParameter="1"
+                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 Lockable="False"
+                                                 HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                        <Frame Style="{StaticResource groupKey}">
+                            <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Ignitor 1"
+                                    Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"
+                                               Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Ignitor 2"
+                                    Grid.Row="1" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"
+                                               Grid.Row="1" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Ignitor 3"
+                                    Grid.Row="2" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"
+                                               Grid.Row="2" Grid.Column="2" IsEnabled="False" />
+
+                                <Label Text="Valve 1"
+                                    Grid.Row="4" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="4" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Valve 2"
+                                    Grid.Row="5" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="5" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Valve 3"
+                                    Grid.Row="6" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="6" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Valve 4"
+                                    Grid.Row="7" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="7" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Valve 5"
+                                    Grid.Row="8" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="8" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Valve 6"
+                                    Grid.Row="9" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="9" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Valve 7"
+                                    Grid.Row="10" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="10" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Valve 8"
+                                    Grid.Row="11" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="11" Grid.Column="2" IsEnabled="False" />
+
+                                <Label Text="Fan 1"
+                                    Grid.Row="13" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="13" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Fan 2"
+                                    Grid.Row="14" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="14" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Fan 3"
+                                    Grid.Row="15" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="15" Grid.Column="2" IsEnabled="False" />
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+
+                <ScrollView Grid.Row="3">
+                    <StackLayout Padding="10" Spacing="10" >
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label Text="Ignitor &amp; Valve"
+                                    Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                 Command="{Binding DiagStartCommand}" CommandParameter="2"
+                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 HorizontalOptions="EndAndExpand" />
+                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                 Command="{Binding DiagStopCommand}" CommandParameter="2"
+                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 Lockable="False"
+                                                 HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                        <Frame Style="{StaticResource groupKey}">
+                            <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Start OUT(TP4)"
+                                    Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"
+                                               Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Ready OUT(TP6)"
+                                    Grid.Row="1" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"
+                                               Grid.Row="1" Grid.Column="2" IsEnabled="False" />
+                                
+                                <Label Text="Signal Out 1"
+                                    Grid.Row="3" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"
+                                               Grid.Row="3" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Signal Out 2"
+                                    Grid.Row="4" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="4" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Signal Out 3"
+                                    Grid.Row="5" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="5" Grid.Column="2" IsEnabled="False" />
+                                
+                                <Label Text="State LED"
+                                    Grid.Row="7" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="7" Grid.Column="2" IsEnabled="False" />
+                                <Label Text="Button LLED"
+                                    Grid.Row="8" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton ON="{Binding Model.State.Mode, Mode=OneWay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics }"                                                  
+                                               Grid.Row="8" Grid.Column="2" IsEnabled="False" />
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+
+                <ScrollView Grid.Row="4">
+                    <StackLayout Padding="10" Spacing="10" >
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label Text="UPC Valve Check"
+                                    Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                 Command="{Binding DiagStartCommand}" CommandParameter="3"
+                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 HorizontalOptions="EndAndExpand" />
+                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                 Command="{Binding DiagStopCommand}" CommandParameter="3"
+                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 Lockable="False"
+                                                 HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                        <Frame Style="{StaticResource groupKey}">
+                            <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Front Inlet Valve"
+                                    Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton Grid.Column="2" IsEnabled="False" >
+                                    <local:SwitchImageButton.ON>
+                                        <MultiBinding Converter="{StaticResource AllTrueKey}" Mode="OneWay">
+                                            <Binding Path="Model.State.Mode" Converter="{StaticResource AreEqualConverterKey}" ConverterParameter="Diagnostics" />
+                                            <Binding Path="Configuration.InletType[0]" Converter="{StaticResource EnumInstalledKey}" />
+                                        </MultiBinding>
+                                    </local:SwitchImageButton.ON>
+                                </local:SwitchImageButton>
+                                <Label Text="Center Inlet Valve"
+                                    Grid.Row="1" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton Grid.Row="1" Grid.Column="2" IsEnabled="False" >
+                                    <local:SwitchImageButton.ON>
+                                        <MultiBinding Converter="{StaticResource AllTrueKey}" Mode="OneWay">
+                                            <Binding Path="Model.State.Mode" Converter="{StaticResource AreEqualConverterKey}" ConverterParameter="Diagnostics" />
+                                            <Binding Path="Configuration.InletType[1]" Converter="{StaticResource EnumInstalledKey}" />
+                                        </MultiBinding>
+                                    </local:SwitchImageButton.ON>
+                                </local:SwitchImageButton>
+                                <Label Text="Center Inlet Valve"
+                                    Grid.Row="2" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton Grid.Row="2" Grid.Column="2" IsEnabled="False">
+                                    <local:SwitchImageButton.ON>
+                                        <MultiBinding Converter="{StaticResource AllTrueKey}" Mode="OneWay">
+                                            <Binding Path="Model.State.Mode" Converter="{StaticResource AreEqualConverterKey}" ConverterParameter="Diagnostics" />
+                                            <Binding Path="Configuration.InletType[2]" Converter="{StaticResource EnumInstalledKey}" />
+                                        </MultiBinding>
+                                    </local:SwitchImageButton.ON>
+                                </local:SwitchImageButton>
+
+                                <Label Text="Front Det Valve"
+                                    Grid.Row="4" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton Grid.Row="4" Grid.Column="2" IsEnabled="False">
+                                    <local:SwitchImageButton.ON>
+                                        <MultiBinding Converter="{StaticResource AllTrueKey}" Mode="OneWay">
+                                            <Binding Path="Model.State.Mode" Converter="{StaticResource AreEqualConverterKey}" ConverterParameter="Diagnostics" />
+                                            <Binding Path="Configuration.DetectorType[0]" Converter="{StaticResource EnumInstalledKey}" />
+                                        </MultiBinding>
+                                    </local:SwitchImageButton.ON>                                    
+                                </local:SwitchImageButton>
+                                <Label Text="Center Det Valve"
+                                    Grid.Row="5" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton Grid.Row="5" Grid.Column="2" IsEnabled="False">
+                                    <local:SwitchImageButton.ON>
+                                        <MultiBinding Converter="{StaticResource AllTrueKey}" Mode="OneWay">
+                                            <Binding Path="Model.State.Mode" Converter="{StaticResource AreEqualConverterKey}" ConverterParameter="Diagnostics" />
+                                            <Binding Path="Configuration.DetectorType[1]" Converter="{StaticResource EnumInstalledKey}" />
+                                        </MultiBinding>
+                                    </local:SwitchImageButton.ON>
+                                </local:SwitchImageButton>
+                                <Label Text="Center Det Valve"
+                                    Grid.Row="6" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton Grid.Row="6" Grid.Column="2" IsEnabled="False">
+                                    <local:SwitchImageButton.ON>
+                                        <MultiBinding Converter="{StaticResource AllTrueKey}" Mode="OneWay">
+                                            <Binding Path="Model.State.Mode" Converter="{StaticResource AreEqualConverterKey}" ConverterParameter="Diagnostics" />
+                                            <Binding Path="Configuration.DetectorType[2]" Converter="{StaticResource EnumInstalledKey}" />
+                                        </MultiBinding>
+                                    </local:SwitchImageButton.ON>
+                                </local:SwitchImageButton>
+
+                                <Label Text="AUX UPC 1 Valve"
+                                    Grid.Row="8" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton Grid.Row="8" Grid.Column="2" IsEnabled="False">
+                                    <local:SwitchImageButton.ON>
+                                        <MultiBinding Converter="{StaticResource AllTrueKey}" Mode="OneWay">
+                                            <Binding Path="Model.State.Mode" Converter="{StaticResource AreEqualConverterKey}" ConverterParameter="Diagnostics" />
+                                            <Binding Path="Configuration.AuxAPC[0]" Converter="{StaticResource EnumInstalledKey}" />
+                                        </MultiBinding>
+                                    </local:SwitchImageButton.ON>
+                                </local:SwitchImageButton>
+                                <Label Text="AUX UPC 2 Valve"
+                                    Grid.Row="9" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton Grid.Row="9" Grid.Column="2" IsEnabled="False">
+                                    <local:SwitchImageButton.ON>
+                                        <MultiBinding Converter="{StaticResource AllTrueKey}" Mode="OneWay">
+                                            <Binding Path="Model.State.Mode" Converter="{StaticResource AreEqualConverterKey}" ConverterParameter="Diagnostics" />
+                                            <Binding Path="Configuration.AuxAPC[1]" Converter="{StaticResource EnumInstalledKey}" />
+                                        </MultiBinding>
+                                    </local:SwitchImageButton.ON>
+                                </local:SwitchImageButton>
+                                <Label Text="AUX UPC 3 Valve"
+                                    Grid.Row="10" Style="{StaticResource captionKey}" />
+                                <local:SwitchImageButton Grid.Row="10" Grid.Column="2" IsEnabled="False">
+                                    <local:SwitchImageButton.ON>
+                                        <MultiBinding Converter="{StaticResource AllTrueKey}" Mode="OneWay">
+                                            <Binding Path="Model.State.Mode" Converter="{StaticResource AreEqualConverterKey}" ConverterParameter="Diagnostics" />
+                                            <Binding Path="Configuration.AuxAPC[2]" Converter="{StaticResource EnumInstalledKey}" />
+                                        </MultiBinding>
+                                    </local:SwitchImageButton.ON>
+                                </local:SwitchImageButton>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+
+
+
             </Grid>
         </Grid>
     </ContentView.Content>

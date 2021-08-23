@@ -10,7 +10,14 @@ namespace ChroZenService
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return $"{value}" != "NotInstalled";
+            switch ($"{value}")
+            {
+                case "NotInstalled":
+                case "None":
+                case "0":
+                    return false;
+            }
+            return true;
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

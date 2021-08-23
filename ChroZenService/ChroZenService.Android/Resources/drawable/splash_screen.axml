@@ -5,12 +5,10 @@
   </item>
   <item>
     <bitmap
-        android:src="@drawable/Splash_Img_Text"
+        android:src="@drawable/chrozen"
         android:tileMode="disabled"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:scaleType="center"
-        android:gravity="fill_horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         />
   </item>
 </layer-list>

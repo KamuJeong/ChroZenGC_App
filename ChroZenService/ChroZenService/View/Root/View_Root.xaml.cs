@@ -46,8 +46,8 @@ namespace ChroZenService
             var system = Resolver.Resolve<View_System>();
             System.Content = system;
 
-            config.PreInitialize();
-            system.PreInitialize();
+            //config.PreInitialize();
+            //system.PreInitialize();
         }
 
         private void OnHomeButtonClicked(object sender, EventArgs e)

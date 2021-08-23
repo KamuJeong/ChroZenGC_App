@@ -22,19 +22,20 @@ namespace ChroZenService
 
         public Model Model { get; }
 
+        public ViewModel_System System { get; }
+
         public string TimeTicker { get; set; }
 
         public int WatchdogTimer { get; set; }
 
         public bool IsActual { get; set; } = true;
 
-        public ViewModel_Root(Model model, DeviceIPFinder finder)
+        public ViewModel_Root(Model model, DeviceIPFinder finder, ViewModel_System system)
         {
             Model = model;
 
             Model.Configuration.PropertyModified += OnConfigurationModified;
             Model.State.PropertyModified += OnStateModified;
-
 
             IPFinder = finder;
             Device.StartTimer(TimeSpan.FromSeconds(1.0), () =>
@@ -61,6 +62,9 @@ namespace ChroZenService
 
                 return true;
             } );
+
+            System = system;
+            System.Root = this;
 
             OnRefreshReception(null);
         }
@@ -92,6 +96,10 @@ namespace ChroZenService
             IsRefreshing = false;
 
             DeviceInterface = null;
+
+
+            //Resolver.Resolve<View_Config>().PreInitialize();
+            //Resolver.Resolve<View_System>().PreInitialize();
         }
 
         public DeviceInterface DeviceInterface { get; set; }
@@ -144,13 +152,15 @@ namespace ChroZenService
 
             async Task Connect(string addr, string serial)
             {
+                Action FireNetworkBackgroudThread = () => networkManager.WaitAsync();
+
                 try
                 {
                     networkManager = new ChroZenGC.Core.Network.TCPManager(Model) { Host = addr };
                     await Task.WhenAny(Task.Delay(3000), networkManager.ConnectAsync());
                     if (networkManager.IsConnected)
                     {
-                        networkManager.WaitAsync();
+                        FireNetworkBackgroudThread();
 
                         await Model.Send(new InformationWrapper());
                         await Model.Request(Model.Information);

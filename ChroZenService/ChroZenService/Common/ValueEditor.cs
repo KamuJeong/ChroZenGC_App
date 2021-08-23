@@ -50,7 +50,7 @@ namespace ChroZenService
 
         private void UpdateValue()
         {
-            if (IsSet(TextProperty))
+            if (Text != null)
             {
                 ValueLabel.Text = Text;
             }
