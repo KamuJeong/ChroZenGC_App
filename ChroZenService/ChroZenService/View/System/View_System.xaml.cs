@@ -79,7 +79,7 @@ namespace ChroZenService
                 return;
             }
 
-            View view = null;
+            Xamarin.Forms.View view = null;
             switch (select)
             {
                 case 1:
@@ -93,6 +93,11 @@ namespace ChroZenService
                     break;
                 case 4:
                     view = Resolver.Resolve<View_System_Diagnostics>();
+                    break;
+
+
+                case 6:
+                    view = Resolver.Resolve<View_System_TimeControl>();
                     break;
 
             }

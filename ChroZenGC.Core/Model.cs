@@ -34,7 +34,10 @@ namespace ChroZenGC.Core
             AuxUPC[1].PropertyModified += AuxUPC2PropertyModified;
             AuxUPC[2].PropertyModified += AuxUPC3PropertyModified;
             Special.PropertyModified += SpecialPropertyModified;
+            TimeControl.PropertyModified += TimeControlPropertyModified;
         }
+
+        private async void TimeControlPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(TimeControl, 0, e);
 
         private async void ConfigurationPropertyModified(object sender, PropertyChangedEventArgs e) => await DelayedSend(Configuration, 0, e);
 
@@ -146,6 +149,10 @@ namespace ChroZenGC.Core
 
                     case DiagPowerCheckWrapper.PacketCode:
                         Assemble(DiagPowerCheck, buffer, header.SlotOffset, header.SlotSize);
+                        break;
+
+                    case TimeControlWrapper.PacketCode:
+                        Assemble(TimeControl, buffer, header.SlotOffset, header.SlotSize);
                         break;
                 }
             }
@@ -263,5 +270,7 @@ namespace ChroZenGC.Core
         public DiagSensorStateWrapper DiagSensor { get; } = new DiagSensorStateWrapper();
 
         public DiagPowerCheckWrapper DiagPowerCheck { get; } = new DiagPowerCheckWrapper();
+
+        public TimeControlWrapper TimeControl { get; } = new TimeControlWrapper();
     }
 }
