@@ -35,19 +35,14 @@ namespace ChroZenService
                 system.Clicked += OnSystemButtonClicked;
             }
 
+            Config.Content = Resolver.Resolve<View_Config>();
+            System.Content = Resolver.Resolve<View_System>();
             Initialize();
         }
     
-        private void Initialize()
+        public void Initialize()
         {
-            var config = Resolver.Resolve<View_Config>();
-            Config.Content = config;
-
-            var system = Resolver.Resolve<View_System>();
-            System.Content = system;
-
-            //config.PreInitialize();
-            //system.PreInitialize();
+            OnHomeButtonClicked(null, null);
         }
 
         private void OnHomeButtonClicked(object sender, EventArgs e)
