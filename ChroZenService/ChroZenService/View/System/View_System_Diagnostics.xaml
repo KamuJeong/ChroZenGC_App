@@ -115,33 +115,33 @@
                                 <local:ValueEditor Value="{Binding State.Temperature.Oven, StringFormat='{0:F1}'}"
                                                Unit="℃" IsEnabled="False" Grid.Column="2" />
 
-                                <Label Text="Inlet Front Temp"
+                                <Label Text="Front Inlet Temp"
                                         Grid.Row="2" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Inlet[0], StringFormat='{0:F1}'}"
                                                 Text="{Binding Configuration.InletType[0], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="2" Grid.Column="2" />
-                                <Label Text="Inlet Center Temp"
+                                <Label Text="Center Inlet Temp"
                                         Grid.Row="3" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Inlet[1], StringFormat='{0:F1}'}"
                                                 Text="{Binding Configuration.InletType[1], Converter={StaticResource NotInstalledToBlankKey}}"
                                                Unit="℃" IsEnabled="False" Grid.Row="3" Grid.Column="2" />
-                                <Label Text="Inlet Rear Temp"
+                                <Label Text="Rear Inlet Temp"
                                         Grid.Row="4" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Inlet[2], StringFormat='{0:F1}'}"
                                                 Text="{Binding Configuration.InletType[2], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="4" Grid.Column="2" />
 
-                                <Label Text="Det Front Temp"
+                                <Label Text="Front Det Temp"
                                         Grid.Row="6" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Detector[0], StringFormat='{0:F1}'}"
                                                 Text="{Binding Configuration.DetectorType[0], Converter={StaticResource NotInstalledToBlankKey}}"
                                                 Unit="℃" IsEnabled="False" Grid.Row="6" Grid.Column="2" />
-                                <Label Text="Det Center Temp"
+                                <Label Text="Center Det Temp"
                                         Grid.Row="7" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Detector[1], StringFormat='{0:F1}'}"
                                                 Text="{Binding Configuration.DetectorType[1], Converter={StaticResource NotInstalledToBlankKey}}"
                                                Unit="℃" IsEnabled="False" Grid.Row="7" Grid.Column="2" />
-                                <Label Text="Det Rear Temp"
+                                <Label Text="Rear Det Temp"
                                         Grid.Row="8" Style="{StaticResource captionKey}" />
                                 <local:ValueEditor Value="{Binding State.Temperature.Detector[2], StringFormat='{0:F1}'}"
                                                 Text="{Binding Configuration.DetectorType[2], Converter={StaticResource NotInstalledToBlankKey}}"
@@ -485,8 +485,389 @@
                     </StackLayout>
                 </ScrollView>
 
+                <ScrollView Grid.Row="5">
+                    <StackLayout Padding="10" Spacing="10" >
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label Text="UPC Sensor Check"
+                                    Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                 Command="{Binding DiagStartCommand}" CommandParameter="4"
+                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 HorizontalOptions="EndAndExpand" />
+                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                 Command="{Binding DiagStopCommand}" CommandParameter="4"
+                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 Lockable="False"
+                                                 HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                        <Frame Style="{StaticResource groupKey}">
+                            <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
 
+                                <Label Text="Front Inlet Sensor 1"
+                                        Grid.Row="0" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.InletSensors[0], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="0" Grid.Column="2" />
+                                <Label Text="Sensor 2"
+                                        Grid.Row="1" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.InletSensors[1], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                               IsEnabled="False" Grid.Row="1" Grid.Column="2" />
+                                <Label Text="Sensor 3"
+                                        Grid.Row="2" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.InletSensors[2], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="2" Grid.Column="2" />
+                                <Label Text="Center Inlet Sensor 1"
+                                        Grid.Row="3" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.InletSensors[3], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="3" Grid.Column="2" />
+                                <Label Text="Sensor 2"
+                                        Grid.Row="4" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.InletSensors[4], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                               IsEnabled="False" Grid.Row="4" Grid.Column="2" />
+                                <Label Text="Sensor 3"
+                                        Grid.Row="5" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.InletSensors[5], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="5" Grid.Column="2" />
+                                <Label Text="Rear Inlet Sensor 1"
+                                        Grid.Row="6" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.InletSensors[6], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="6" Grid.Column="2" />
+                                <Label Text="Sensor 2"
+                                        Grid.Row="7" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.InletSensors[7], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                               IsEnabled="False" Grid.Row="7" Grid.Column="2" />
+                                <Label Text="Sensor 3"
+                                        Grid.Row="8" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.InletSensors[8], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="8" Grid.Column="2" />
 
+                                <Label Text="Front Det Sensor 1"
+                                        Grid.Row="10" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.DetectorSensors[0], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.DetectorType[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="10" Grid.Column="2" />
+                                <Label Text="Sensor 2"
+                                        Grid.Row="11" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.DetectorSensors[1], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.DetectorType[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                               IsEnabled="False" Grid.Row="11" Grid.Column="2" />
+                                <Label Text="Sensor 3"
+                                        Grid.Row="12" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.DetectorSensors[2], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.DetectorType[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="12" Grid.Column="2" />
+                                <Label Text="Center Det Sensor 1"
+                                        Grid.Row="13" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.DetectorSensors[3], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.DetectorType[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="13" Grid.Column="2" />
+                                <Label Text="Sensor 2"
+                                        Grid.Row="14" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.DetectorSensors[4], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.DetectorType[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                               IsEnabled="False" Grid.Row="14" Grid.Column="2" />
+                                <Label Text="Sensor 3"
+                                        Grid.Row="15" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.DetectorSensors[5], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.DetectorType[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="15" Grid.Column="2" />
+                                <Label Text="Rear Det Sensor 1"
+                                        Grid.Row="16" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.DetectorSensors[6], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.DetectorType[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="16" Grid.Column="2" />
+                                <Label Text="Sensor 2"
+                                        Grid.Row="17" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.DetectorSensors[7], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.DetectorType[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                               IsEnabled="False" Grid.Row="17" Grid.Column="2" />
+                                <Label Text="Sensor 3"
+                                        Grid.Row="18" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.DetectorSensors[8], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.DetectorType[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="18" Grid.Column="2" />
+
+                                <Label Text="AUX UPC 1 Sensor 1"
+                                        Grid.Row="20" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.AuxSensors[0], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.AuxAPC[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="20" Grid.Column="2" />
+                                <Label Text="Sensor 2"
+                                        Grid.Row="21" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.AuxSensors[1], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.AuxAPC[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                               IsEnabled="False" Grid.Row="21" Grid.Column="2" />
+                                <Label Text="Sensor 3"
+                                        Grid.Row="22" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.AuxSensors[2], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.AuxAPC[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="22" Grid.Column="2" />
+                                <Label Text="AUX UPC 2 Sensor 1"
+                                        Grid.Row="23" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.AuxSensors[3], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.AuxAPC[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="23" Grid.Column="2" />
+                                <Label Text="Sensor 2"
+                                        Grid.Row="24" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.AuxSensors[4], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.AuxAPC[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                               IsEnabled="False" Grid.Row="24" Grid.Column="2" />
+                                <Label Text="Sensor 3"
+                                        Grid.Row="25" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.AuxSensors[5], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.AuxAPC[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="25" Grid.Column="2" />
+                                <Label Text="AUX UPC 3 Sensor 1"
+                                        Grid.Row="26" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.AuxSensors[6], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.AuxAPC[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="26" Grid.Column="2" />
+                                <Label Text="Sensor 2"
+                                        Grid.Row="27" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.AuxSensors[7], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.AuxAPC[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                               IsEnabled="False" Grid.Row="27" Grid.Column="2" />
+                                <Label Text="Sensor 3"
+                                        Grid.Row="28" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Sensor.AuxSensors[8], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.AuxAPC[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                IsEnabled="False" Grid.Row="28" Grid.Column="2" />
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+
+                <ScrollView Grid.Row="6">
+                    <StackLayout Padding="10" Spacing="10" >
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label Text="Power Monitor"
+                                    Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                 Command="{Binding DiagStartCommand}" CommandParameter="5"
+                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 HorizontalOptions="EndAndExpand" />
+                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                 Command="{Binding DiagStopCommand}" CommandParameter="5"
+                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 Lockable="False"
+                                                 HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                        <Frame Style="{StaticResource groupKey}">
+                            <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="10" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Main +5.0V"
+                                        Grid.Row="0" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Main_5V, StringFormat='{0:F3}'}"
+                                                Unit="V"  IsEnabled="False" Grid.Row="0" Grid.Column="2" />
+                                <Label Text="-5.0V"
+                                        Grid.Row="1" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Main_N5V, StringFormat='{0:F3}'}"
+                                                Unit="V" IsEnabled="False" Grid.Row="1" Grid.Column="2" />
+                                <Label Text="+12.0V"
+                                        Grid.Row="2" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Main_12V, StringFormat='{0:F3}'}"
+                                                Unit="V" IsEnabled="False" Grid.Row="2" Grid.Column="2" />
+                                <Label Text="+24.0V"
+                                        Grid.Row="3" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Main_24V, StringFormat='{0:F3}'}"
+                                                Unit="V" IsEnabled="False" Grid.Row="3" Grid.Column="2" />
+                                
+                                <Label Text="Front Inlet UPC +2.5V"
+                                        Grid.Row="5" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_2_5V[0], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="5" Grid.Column="2" />
+                                <Label Text="+3.3V"
+                                        Grid.Row="6" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_3_3V[0], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="6" Grid.Column="2" />
+                                <Label Text="+5.0V"
+                                        Grid.Row="7" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_5V[0], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="7" Grid.Column="2" />
+                                <Label Text="+24.0V"
+                                        Grid.Row="8" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_24V[0], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="8" Grid.Column="2" />
+                                <Label Text="Flow Sensor"
+                                        Grid.Row="9" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_Flow_Sensor[0], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="9" Grid.Column="2" />
+                                <Label Text="Pressure Sensor"
+                                        Grid.Row="10" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_Pressure_Sensor[0], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[0], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="10" Grid.Column="2" />
+
+                                <Label Text="Center Inlet UPC +2.5V"
+                                        Grid.Row="12" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_2_5V[1], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="12" Grid.Column="2" />
+                                <Label Text="+3.3V"
+                                        Grid.Row="13" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_3_3V[1], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="13" Grid.Column="2" />
+                                <Label Text="+5.0V"
+                                        Grid.Row="14" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_5V[1], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="14" Grid.Column="2" />
+                                <Label Text="+24.0V"
+                                        Grid.Row="15" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_24V[1], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="15" Grid.Column="2" />
+                                <Label Text="Flow Sensor"
+                                        Grid.Row="16" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_Flow_Sensor[1], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="16" Grid.Column="2" />
+                                <Label Text="Pressure Sensor"
+                                        Grid.Row="17" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_Pressure_Sensor[1], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[1], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="17" Grid.Column="2" />
+
+                                <Label Text="Rear Inlet UPC +2.5V"
+                                        Grid.Row="19" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_2_5V[2], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="19" Grid.Column="2" />
+                                <Label Text="+3.3V"
+                                        Grid.Row="20" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_3_3V[2], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="20" Grid.Column="2" />
+                                <Label Text="+5.0V"
+                                        Grid.Row="21" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_5V[2], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="21" Grid.Column="2" />
+                                <Label Text="+24.0V"
+                                        Grid.Row="22" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_24V[2], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="22" Grid.Column="2" />
+                                <Label Text="Flow Sensor"
+                                        Grid.Row="23" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_Flow_Sensor[2], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="23" Grid.Column="2" />
+                                <Label Text="Pressure Sensor"
+                                        Grid.Row="24" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Inlet_Pressure_Sensor[2], StringFormat='{0:F3}'}"
+                                                Text="{Binding Configuration.InletType[2], Converter={StaticResource NotInstalledToBlankKey}}"
+                                                Unit="V" IsEnabled="False" Grid.Row="24" Grid.Column="2" />
+
+                                <Label Text="Detector UPC +2.5V"
+                                        Grid.Row="26" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Det_2_5V, StringFormat='{0:F3}'}"
+                                                Unit="V" IsEnabled="False" Grid.Row="26" Grid.Column="2" />
+                                <Label Text="+3.3V"
+                                        Grid.Row="27" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Det_3_3V, StringFormat='{0:F3}'}"
+                                                Unit="V" IsEnabled="False" Grid.Row="27" Grid.Column="2" />
+                                <Label Text="Pressure Sensor"
+                                        Grid.Row="28" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Det_Pressure_Sensor, StringFormat='{0:F3}'}"
+                                                Unit="V" IsEnabled="False" Grid.Row="28" Grid.Column="2" />
+
+                                <Label Text="AUX UPC +2.5V"
+                                        Grid.Row="30" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Aux_2_5V, StringFormat='{0:F3}'}"
+                                                Unit="V" IsEnabled="False" Grid.Row="30" Grid.Column="2" />
+                                <Label Text="+3.3V"
+                                        Grid.Row="31" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Aux_3_3V, StringFormat='{0:F3}'}"
+                                                Unit="V" IsEnabled="False" Grid.Row="31" Grid.Column="2" />
+                                <Label Text="Pressure Sensor"
+                                        Grid.Row="32" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding Power.Aux_Pressure_Sensor, StringFormat='{0:F3}'}"
+                                                Unit="V" IsEnabled="False" Grid.Row="32" Grid.Column="2" />
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
             </Grid>
         </Grid>
     </ContentView.Content>

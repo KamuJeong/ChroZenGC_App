@@ -78,8 +78,7 @@ namespace ChroZenService
         {
             if(e.PropertyName == "Binary")
             {
-                Resolver.Resolve<View_Config>().Initialize();
-                Resolver.Resolve<View_System>().Initialize();
+                Resolver.Resolve<ViewModel_Main>().Center.Initialize();
             }
         }
 
@@ -97,9 +96,9 @@ namespace ChroZenService
 
             DeviceInterface = null;
 
-
-            //Resolver.Resolve<View_Config>().PreInitialize();
-            //Resolver.Resolve<View_System>().PreInitialize();
+            Resolver.Resolve<View_Config>().PreInitialize();
+            Resolver.Resolve<View_System>().PreInitialize();
+            Resolver.Resolve<View_Root>().Initialize();
         }
 
         public DeviceInterface DeviceInterface { get; set; }
@@ -121,6 +120,9 @@ namespace ChroZenService
         private async void OnConnected(object obj)
         {
             IPFinder.Stop();
+
+            Resolver.Resolve<View_Config>().Initialize();
+            Resolver.Resolve<View_System>().Initialize();
 
             IsActual = true;
 

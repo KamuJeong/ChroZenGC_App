@@ -72,20 +72,15 @@
                     <Button Grid.Row="5" Command="{Binding Center.Inlet}" CommandParameter="2" Text="{Binding Configuration.InletType[2], Converter={StaticResource EnumGapAdderKey}}" />
                     <Rectangle Grid.Row="6"></Rectangle>
 
-
-                    <StackLayout Grid.Row="{Binding Center.LeftGridRow}" Spacing="10" Margin="15, 0" VerticalOptions="Center">
+                    <StackLayout Spacing="10" Margin="15, 0" VerticalOptions="Center"
+                                IsVisible="{Binding Center.LeftGridRow, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=0}"
+                                Grid.Row="{Binding Center.LeftGridRow}" >
                         <StackLayout.Resources>
                             <Style TargetType="Label">
                                 <Setter Property="FontSize" Value="{StaticResource CaptionFontSizeKey}" />
                                 <Setter Property="TextColor" Value="Silver" />
                             </Style>
                         </StackLayout.Resources>
-                        
-                        <StackLayout.Triggers>
-                            <Trigger TargetType="StackLayout" Property="Grid.Row" Value="0">
-                                <Setter Property="IsVisible" Value="False" />
-                            </Trigger>
-                        </StackLayout.Triggers>
 
                         <Label Text="{Binding Center.InletGasType}"
                                TextColor="black" BackgroundColor="LightSlateGray" Padding="5,0" />
@@ -129,12 +124,7 @@
                         </Grid>
                     </StackLayout>
                 </Grid>
-
-
-                
-                
-                
-                
+           
                 <Image Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.home_center.png}" Aspect="Fill" />
                 <Grid Grid.Column="1" RowSpacing="0">
                     <Grid.RowDefinitions>
@@ -196,12 +186,7 @@
                     </Grid>
                     
                 </Grid>
-
                 
-                
-                
-                
-
                 <Image Grid.Column="2" Aspect="Fill" Source="{local:ImageResource ChroZenService.Images.home_side3.png}">
                     <Image.Triggers>
                         <DataTrigger TargetType="Image" Binding="{Binding Center.ActiveDetector}" Value="0">
@@ -239,18 +224,15 @@
                     <Button Grid.Row="5" Command="{Binding Center.Detector}" CommandParameter="2" Text="{Binding Configuration.DetectorType[2], Converter={StaticResource EnumGapAdderKey}}" />
                     <Rectangle Grid.Row="6"></Rectangle>
 
-                    <StackLayout Grid.Row="{Binding Center.RightGridRow}" Spacing="10" Margin="15, 0" VerticalOptions="Center">
+                    <StackLayout Spacing="10" Margin="15, 0" VerticalOptions="Center"
+                        IsVisible="{Binding Center.RightGridRow, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=0}"
+                        Grid.Row="{Binding Center.RightGridRow}" >
                         <StackLayout.Resources>
                             <Style TargetType="Label">
                                 <Setter Property="FontSize" Value="{StaticResource CaptionFontSizeKey}" />
                                 <Setter Property="TextColor" Value="Silver" />
                             </Style>
                         </StackLayout.Resources>
-                        <StackLayout.Triggers>
-                            <Trigger TargetType="StackLayout" Property="Grid.Row" Value="0">
-                                <Setter Property="IsVisible" Value="False" />
-                            </Trigger>
-                        </StackLayout.Triggers>
 
                         <Label Text="Flame OFF"  
                                TextColor="black" BackgroundColor="DimGray" Padding="5,0">

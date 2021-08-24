@@ -139,6 +139,14 @@ namespace ChroZenGC.Core
                     case SpecialSetupWrapper.PacketCode:
                         Assemble(Special, buffer, header.SlotOffset, header.SlotSize);
                         break;
+
+                    case DiagSensorStateWrapper.PacketCode:
+                        Assemble(DiagSensor, buffer, header.SlotOffset, header.SlotSize);
+                        break;
+
+                    case DiagPowerCheckWrapper.PacketCode:
+                        Assemble(DiagPowerCheck, buffer, header.SlotOffset, header.SlotSize);
+                        break;
                 }
             }
         }
@@ -251,5 +259,9 @@ namespace ChroZenGC.Core
         };
 
         public SpecialSetupWrapper Special { get; } = new SpecialSetupWrapper();
+
+        public DiagSensorStateWrapper DiagSensor { get; } = new DiagSensorStateWrapper();
+
+        public DiagPowerCheckWrapper DiagPowerCheck { get; } = new DiagPowerCheckWrapper();
     }
 }

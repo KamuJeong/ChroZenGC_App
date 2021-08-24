@@ -24,6 +24,10 @@ namespace ChroZenService
 
         public StateWrapper State => Model.State;
 
+        public DiagSensorStateWrapper Sensor => Model.DiagSensor;
+
+        public DiagPowerCheckWrapper Power => Model.DiagPowerCheck;
+
         public ViewModel_System(Model model)
         {
             Model = model;

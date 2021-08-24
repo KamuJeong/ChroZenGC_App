@@ -47,27 +47,37 @@ namespace ChroZenService
         {
             InitView(1);
             await Task.Yield();
-            //InitView(3);
-            //await Task.Yield();
-            //InitView(4);
         }
 
         public async void Initialize()
         {
-            for(int i=0; i<13; ++i)
+            for(int i=0; i<14; ++i)
             {
                 InitView(i);
                 await Task.Yield();
             }
 
-            //InitView(2);
-            //await Task.Yield();
+            SelectedItem = 1;
         }
 
         private void InitView(int select)
         {
+            void ScrollToTop(Element element)
+            {
+                foreach (var e in element.LogicalChildren)
+                {
+                    if (e is ScrollView scroll)
+                        scroll.ScrollToAsync(0, 0, false);
+
+                    ScrollToTop(e);
+                }
+            }
+
             if (Views.ContainsKey(select))
+            {
+                ScrollToTop(Views[select]);
                 return;
+            }
 
             View view = null;
             switch (select)

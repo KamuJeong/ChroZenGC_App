@@ -48,38 +48,41 @@ namespace ChroZenService
         {
             InitView(1);
             await Task.Yield();
-            InitView(11);
-            await Task.Yield();
-            InitView(12);
-            await Task.Yield();
-            InitView(13);
-            await Task.Yield();
         }
 
         public async void Initialize()
         {
-            for (int i = 0; i < 13; ++i)
+            for (int i = 0; i < 14; ++i)
             {
                 InitView(i);
                 await Task.Yield();
-
-                //if (Model.Model.Configuration.InletType[i] != InletTypes.NotInstalled)
-                //{
-                //    InitView(3 + i);
-                //    await Task.Yield();
-                //}
-                //if (Model.Model.Configuration.DetectorType[i] != DetectorTypes.NotInstalled)
-                //{
-                //    InitView(7 + i);
-                //    await Task.Yield();
-                //}
             }
+            SelectedItem = 1;
         }
 
         private void InitView(int select)
         {
+            void ScrollToTop(Element element)
+            {
+                foreach(var e in element.LogicalChildren)
+                {
+                    if (e is ScrollView scroll)
+                        scroll.ScrollToAsync(0, 0, false);
+
+                    ScrollToTop(e);
+                }
+            }
+
+
             if (Views.ContainsKey(select))
+            {
+                if(Views[select] is View_Config_Tab t)
+                {
+                    t.SelectedTabItem = select < 10 ? 1 : 0;
+                    ScrollToTop(t);
+                }
                 return;
+            }
 
             View_Config_Tab tab = null;
             switch (select)
