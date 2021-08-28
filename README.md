@@ -1,7 +1,7 @@
 # Introduction 
 This is the ChroZen GC controller app made with Xamarin.Form framework.  
 Its purpose was an emulation of the real ChroZen GC control panel.  
-So far, It supports only Andriod platform.
+So far, It supports only Android platform.
 
 # Screenshot
 ![Splash](ScreenShots/Splash.png) ![Reception](ScreenShots/reception.png) ![Main](ScreenShots/Main.png)  
