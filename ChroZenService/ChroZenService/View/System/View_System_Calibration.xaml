@@ -151,8 +151,15 @@
                                                    Min="-80" Max="450.0" Caption="T2 Measure" Grid.Row="3" Grid.Column="3"/>
                             </Grid>
                         </Frame>
-                        
- 
+
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="3">
+                            
+                            <Label Text="Created by KamuJeong" 
+                                   VerticalOptions="Start" FontAttributes="Italic"
+                                   Style="{StaticResource captionKey}" />
+                            <Image Source="{local:ImageResource Source=ChroZenService.Images.Kamu.png}" Aspect="AspectFit" HeightRequest="16" />
+                        </StackLayout>
                     </StackLayout>
                 </ScrollView>
                 

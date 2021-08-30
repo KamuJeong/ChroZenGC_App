@@ -131,6 +131,15 @@
                         <Button Grid.RowSpan="2" Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
                     </Grid>
 
+                    <Grid Grid.Row="7" ColumnSpacing="0" RowSpacing="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="About" VerticalOptions="Center" Style="{StaticResource SelectorButtonStyle}"/>
+                        <Button Grid.ColumnSpan="2" BackgroundColor="Transparent" Clicked="OnSelectorClicked" />
+                    </Grid>
+
                     <!--<Grid Grid.Row="5" ColumnSpacing="0" RowSpacing="0" 
                           IsVisible="{Binding Model.Configuration.InletType[2], Converter={StaticResource EnumInstalledKey}}">
                         <Grid.ColumnDefinitions>
