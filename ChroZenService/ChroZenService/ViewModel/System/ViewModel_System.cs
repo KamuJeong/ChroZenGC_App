@@ -28,9 +28,13 @@ namespace ChroZenService
 
         public DiagPowerCheckWrapper Power => Model.DiagPowerCheck;
 
-        public ViewModel_System(Model model)
+        public ViewModel_System_Calibration Calibration { get; }
+
+
+        public ViewModel_System(Model model, ViewModel_System_Calibration calib)
         {
             Model = model;
+            Calibration = calib;
 
             Model.Information.PropertyModified += OnInformationPropertyModified;
 

@@ -7,7 +7,7 @@ namespace ChroZenGC.Core.Packets
 {
     public enum TimeFunctions : byte
     {
-        AllOff, TempOff, FlowOff, DetOff, LoadMethod, Start, SetOven, None = 9
+        AllOff, TempOff, FlowOff, DetOff, Start = 5, SetOven, None = 9
     }
 
     [StructLayout(LayoutKind.Sequential)]

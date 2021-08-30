@@ -50,7 +50,7 @@
                 </Grid.RowDefinitions>
                 
                 <ScrollView>
-                    <StackLayout Margin="0,20,0,0" Spacing="20" >
+                    <StackLayout Margin="0,20,0,0" Spacing="15" >
                         <local:NormalButton x:Name="diag1" Text="Heater Test" 
                                             FontSize="{StaticResource ButtonFontSizeKey}"
                                             Clicked="DiagSelected" />

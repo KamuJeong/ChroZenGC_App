@@ -140,6 +140,8 @@ namespace ChroZenService
 
             Scale = 1.0;
 
+            await this.ScaleTo(0.9, 250, Easing.SpringIn);
+
             if (IsSet(CommandProperty))
             {
                 Command.Execute(CommandParameter);
@@ -147,7 +149,6 @@ namespace ChroZenService
 
             Clicked?.Invoke(this, new EventArgs());
 
-            await this.ScaleTo(0.9, 500, Easing.SpringIn);
         }
 
         private void Button_PropertyChanged(object sender, PropertyChangedEventArgs e)

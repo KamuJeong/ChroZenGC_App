@@ -17,4 +17,18 @@ namespace ChroZenGC.Core.Wrappers
             Packet.btSubCommand2 = sub2;
         }
     }
+
+    public class CalibCommandWrapper : PacketWrapper<CalibCommand>
+    {
+        public const uint PacketCode = 0x67520;
+        public override uint Code => PacketCode;
+
+        public CalibCommandWrapper(CommandCodes code, CalibActions action, CalibFunctions func, CalibTargets target)
+        {
+            Packet.command = code;
+            Packet.action = action;
+            Packet.function = func;
+            Packet.target = target;
+        }
+    }
 }

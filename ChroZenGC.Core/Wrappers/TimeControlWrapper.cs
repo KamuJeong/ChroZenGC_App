@@ -11,7 +11,7 @@ namespace ChroZenGC.Core.Wrappers
     {
         public _TimeProgramWrapper(INotifyPropertyChanged parent, ReferenceProvider<_TimeProgram> provider) : base(parent, provider)
         {
-
+            
         }
 
         public bool EveryDay
@@ -20,30 +20,65 @@ namespace ChroZenGC.Core.Wrappers
             set => Provider.bDaily = (byte)(value ? 1 : 0);
         }
 
-        public DateTime DateTime
+        public DateTime Date
         {
-            get => new DateTime(Provider.SysTime.wYear, Provider.SysTime.wMonth, Provider.SysTime.wDay,
-                                            Provider.SysTime.wHour, Provider.SysTime.wMinute, Provider.SysTime.wSecond);
+            get
+            {
+                try
+                {
+                    return new DateTime(Provider.SysTime.wYear, Provider.SysTime.wMonth, Provider.SysTime.wDay);
+                }
+                catch
+                {
+                    return new DateTime(2020, 1, 1);
+                }
+            }
             set
             {
                 Provider.SysTime.wYear = (ushort)value.Year;
                 Provider.SysTime.wMonth = (ushort)value.Month;
                 Provider.SysTime.wDay = (ushort)value.Day;
-                Provider.SysTime.wHour = (ushort)value.Hour;
-                Provider.SysTime.wMinute = (ushort)value.Minute;
-                Provider.SysTime.wSecond = (ushort)value.Second;
             }
         }
+
+        public TimeSpan Time
+        {
+            get
+            {
+                return new TimeSpan(Provider.SysTime.wHour, Provider.SysTime.wMinute, 0);
+            }
+            set
+            {
+                Provider.SysTime.wHour = (ushort)value.Hours;
+                Provider.SysTime.wMinute = (ushort)value.Minutes;
+                Provider.SysTime.wSecond = 0;
+            }
+        }
+
+
         public TimeFunctions Function
         {
             get => Provider.btFunction;
-            set => Provider.btFunction = value;
+            set
+            {
+                if(Provider.btFunction == TimeFunctions.None && value != TimeFunctions.None)
+                {
+                    Date = DateTime.Today;
+                    Time = DateTime.Now.TimeOfDay;
+                }
+                Provider.btFunction = value;
+            }
         }
 
         public float Value
         {
             get => Provider.fValue;
             set => Provider.fValue = value;
+        }
+
+        internal void Update()
+        {
+            OnPropertyChanged(null);
         }
     }
 
@@ -64,6 +99,29 @@ namespace ChroZenGC.Core.Wrappers
 
                 Program.Add(new _TimeProgramWrapper(this, () => ref Packet.Prgm[j]));
             }
+        }
+
+        protected override void OnPrePropertyModified(object sender, PropertyModifiedEventArgs args)
+        {
+            base.OnPrePropertyModified(sender, args);
+
+            if(args.PropertyName == "Binary")
+            {
+                foreach (var p in Program)
+                    p.Update();
+            }
+
+            foreach (var p in Program)
+            {
+                if(p.Function == TimeFunctions.None)
+                {
+                    p.EveryDay = false;
+                    p.Date = new DateTime(2020, 1, 1);
+                    p.Time = new TimeSpan(0, 0, 0);
+                    p.Value = 0;
+                }
+            }
+
         }
 
         public ObservableCollection<_TimeProgramWrapper> Program { get; } = new ObservableCollection<_TimeProgramWrapper>();

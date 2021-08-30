@@ -67,6 +67,15 @@ namespace ChroZenService
             System.Root = this;
 
             OnRefreshReception(null);
+
+            Device.StartTimer(TimeSpan.FromSeconds(1.0), () =>
+            {
+                Resolver.Resolve<View_Config>().PreInitialize();
+                Resolver.Resolve<View_System>().PreInitialize();
+                Resolver.Resolve<View_Root>().Initialize();
+
+                return false;
+            });
         }
 
         private void OnStateModified(object sender, PropertyChangedEventArgs e)
@@ -95,10 +104,6 @@ namespace ChroZenService
             IsRefreshing = false;
 
             DeviceInterface = null;
-
-            Resolver.Resolve<View_Config>().PreInitialize();
-            Resolver.Resolve<View_System>().PreInitialize();
-            Resolver.Resolve<View_Root>().Initialize();
         }
 
         public DeviceInterface DeviceInterface { get; set; }
@@ -179,6 +184,7 @@ namespace ChroZenService
                         await Model.Request(Model.Signals[2], 2);
                         await Model.Request(Model.Valve);
                         await Model.Request(Model.Special);
+                        await Model.Request(Model.TimeControl);
                     }
                     else
                     {

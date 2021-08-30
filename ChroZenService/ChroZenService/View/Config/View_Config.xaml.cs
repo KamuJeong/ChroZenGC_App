@@ -48,6 +48,12 @@ namespace ChroZenService
         {
             InitView(1);
             await Task.Yield();
+            InitView(11);
+            await Task.Yield();
+            InitView(12);
+            await Task.Yield();
+            InitView(13);
+            await Task.Yield();
         }
 
         public async void Initialize()

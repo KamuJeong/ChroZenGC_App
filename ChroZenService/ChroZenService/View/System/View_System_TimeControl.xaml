@@ -21,10 +21,10 @@
         </Style>
 
         <ColumnDefinitionCollection x:Key="columnProgram">
-            <ColumnDefinition Width="0.5*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="0.7*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="1.2*" />
+            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="1.2*" />
             <ColumnDefinition Width="0.8*" />
         </ColumnDefinitionCollection>
     </ContentView.Resources>
@@ -49,14 +49,14 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <Label Text="Date" 
-                                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
-                        <Label Text="Time" 
-                                   Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                        <Label Text="Date"
+                                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource captionKey}" />
+                        <Label Text="Time"
+                                   Grid.Row="0" Grid.Column="2" Style="{StaticResource captionKey}" />
                         <Label Text="Function" 
-                                   Grid.Row="0" Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                   Grid.Row="0" Grid.Column="3" Style="{StaticResource captionKey}" />
                         <Label Text="Val" 
-                                   Grid.Row="0" Grid.Column="4" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                   Grid.Row="0" Grid.Column="4" Style="{StaticResource captionKey}" />
 
                         <BoxView BackgroundColor="Silver" Grid.Row="2" Grid.ColumnSpan="5"/>
 
@@ -65,14 +65,26 @@
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <Grid x:DataType="wrapper:_TimeProgramWrapper" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
-                                        <CheckBox IsChecked="{Binding EveryDay}" Color="Silver" />
-                                        <DatePicker Grid.Column="1" Style="{StaticResource captionKey}"  VerticalOptions="CenterAndExpand" />
-                                        <TimePicker Grid.Column="2" Time="11:00" Style="{StaticResource captionKey}" />
-                                        <local:EnumPicker Title="Function" Value="{Binding Function}"
-                                                          ScaleY="1.0"      Grid.Column="3"/>
+                                        <CheckBox IsChecked="{Binding EveryDay}" 
+                                                  IsEnabled="{Binding Function, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                  Color="Silver" />
+                                        <Label Text="Everyday" 
+                                               IsVisible="{Binding EveryDay}" 
+                                               IsEnabled="{Binding Function, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                               Grid.Column="1" Style="{StaticResource captionKey}" />
+                                        <DatePicker Date="{Binding Date}" Format="d"
+                                                    IsEnabled="{Binding Function, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Grid.Column="1" IsVisible="{Binding EveryDay, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                                    Style="{StaticResource captionKey}"  VerticalOptions="CenterAndExpand" />
+                                        <TimePicker Time="{Binding Time}" Format="HH:mm"
+                                                    IsEnabled="{Binding Function, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=None}"
+                                                    Grid.Column="2" Style="{StaticResource captionKey}" />
+                                        <local:EnumPicker Title="Function" Value="{Binding Function}" Gap="True"
+                                                          ScaleY="1.0" Grid.Column="3"/>
                                         <local:ValueEditor Value="{Binding Value, StringFormat='{0:G}'}" 
-                                                               Caption="Value"
-                                                                Grid.Column="4" />
+                                                           IsEnabled="{Binding Function, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=SetOven}"
+                                                           Caption="Value"
+                                                           Grid.Column="4" />
 
                                     </Grid>
                                 </DataTemplate>

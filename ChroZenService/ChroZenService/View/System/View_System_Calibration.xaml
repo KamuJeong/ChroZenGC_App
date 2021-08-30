@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChroZenService.View_System_Calibration"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:DataType="local:ViewModel_System_Calibration">
+    <ContentView.Resources>
+        <Style x:Key="captionKey" TargetType="Label">
+            <Setter Property="TextColor" Value="Silver" />
+            <Setter Property="FontSize"  Value="{StaticResource CaptionFontSizeKey}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="End" />
+        </Style>
+
+        <Style x:Key="groupKey" TargetType="Frame">
+            <Setter Property="Background" Value="{StaticResource GroupingFrameBackgroudKey}" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+
+        <ColumnDefinitionCollection x:Key="columnConfig">
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.2"/>
+            <ColumnDefinition Width="0.5*"/>
+        </ColumnDefinitionCollection>
+
+        <ColumnDefinitionCollection x:Key="columnProgram">
+            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </ColumnDefinitionCollection>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="710*"/>
+                <RowDefinition Height="22*"/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="mainGrid" Grid.Row="2" RowSpacing="0" ColumnSpacing="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="0"/>
+                </Grid.RowDefinitions>
+
+                <ScrollView>
+                    <StackLayout Margin="0,20,0,0" Spacing="15" >
+                        <local:NormalButton x:Name="calib1" Text="Oven" 
+                                            FontSize="{StaticResource ButtonFontSizeKey}"
+                                            Clicked="CalibSelected" />
+                        <local:NormalButton x:Name="calib2" Text="Front Inlet" 
+                                            FontSize="{StaticResource ButtonFontSizeKey}"
+                                            IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource EnumInstalledKey}}"
+                                            Clicked="CalibSelected" />
+                        <local:NormalButton x:Name="calib3" Text="Center Inlet" 
+                                            FontSize="{StaticResource ButtonFontSizeKey}"
+                                            IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource EnumInstalledKey}}"
+                                            Clicked="CalibSelected" />
+                        <local:NormalButton x:Name="calib4" Text="Rear Inlet" 
+                                            FontSize="{StaticResource ButtonFontSizeKey}"
+                                            IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource EnumInstalledKey}}"
+                                            Clicked="CalibSelected" />
+                        <local:NormalButton x:Name="calib5" Text="Front Detector" 
+                                            FontSize="{StaticResource ButtonFontSizeKey}"
+                                            IsVisible="{Binding Configuration.DetectorType[0], Converter={StaticResource EnumInstalledKey}}"                                            
+                                            Clicked="CalibSelected" />
+                        <local:NormalButton x:Name="calib6" Text="Center Detector" 
+                                            FontSize="{StaticResource ButtonFontSizeKey}"
+                                            IsVisible="{Binding Configuration.DetectorType[1], Converter={StaticResource EnumInstalledKey}}"                                            
+                                            Clicked="CalibSelected" />
+                        <local:NormalButton x:Name="calib7" Text="Rear Detector" 
+                                            FontSize="{StaticResource ButtonFontSizeKey}"
+                                            IsVisible="{Binding Configuration.DetectorType[2], Converter={StaticResource EnumInstalledKey}}"                                            
+                                            Clicked="CalibSelected" />
+                        <local:NormalButton x:Name="calib8" Text="AUX UPC 1" 
+                                            FontSize="{StaticResource ButtonFontSizeKey}"
+                                            IsVisible="{Binding Configuration.AuxAPC[0], Converter={StaticResource EnumInstalledKey}}"                                            
+                                            Clicked="CalibSelected" />
+                        <local:NormalButton x:Name="calib9" Text="AUX UPC 2" 
+                                            FontSize="{StaticResource ButtonFontSizeKey}"
+                                            IsVisible="{Binding Configuration.AuxAPC[1], Converter={StaticResource EnumInstalledKey}}"                                            
+                                            Clicked="CalibSelected" />
+                        <local:NormalButton x:Name="calib10" Text="AUX UPC 3" 
+                                            FontSize="{StaticResource ButtonFontSizeKey}"
+                                            IsVisible="{Binding Configuration.AuxAPC[2], Converter={StaticResource EnumInstalledKey}}"                                            
+                                            Clicked="CalibSelected" />
+                        <local:NormalButton x:Name="calib11" Text="AUX Temp" 
+                                            FontSize="{StaticResource ButtonFontSizeKey}"
+                                            Clicked="CalibSelected" />
+                    </StackLayout>
+                </ScrollView>
+
+                <ScrollView Grid.Row="1">
+                    <StackLayout Padding="10" Spacing="10" >
+                        <Label Text="Oven Calibration"
+                                Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                        <StackLayout Orientation="Horizontal" Spacing="5">
+                            <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                            <Label Text="Temperature"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                        </StackLayout>
+
+
+                        <Frame Style="{StaticResource groupKey}">
+                            <Grid RowSpacing="5" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="0.2" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Act" 
+                                   Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                <Label Text="Set" 
+                                   Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                <Label Text="Measured" 
+                                   Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+
+                                <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>
+
+                                <Label Text="T1" 
+                                   Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding State.Temperature.Oven, StringFormat='{0:F1}'}" 
+                                                    Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                <local:ValueEditor Value="{Binding Oven.Set.Set1, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T1 Set" Grid.Row="2" Grid.Column="2"/>
+                                <local:ValueEditor Value="{Binding Oven.Set.Measure1, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T1 Measure" Grid.Row="2" Grid.Column="3"/>
+                                <Label Text="T2" 
+                                   Grid.Row="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                <local:ValueEditor Value="{Binding State.Temperature.Oven, StringFormat='{0:F1}'}" 
+                                                    Grid.Row="3" Grid.Column="1" IsEnabled="False" />
+                                <local:ValueEditor Value="{Binding Oven.Set.Set2, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T2 Set" Grid.Row="3" Grid.Column="2"/>
+                                <local:ValueEditor Value="{Binding Oven.Set.Measure2, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T2 Measure" Grid.Row="3" Grid.Column="3"/>
+                            </Grid>
+                        </Frame>
+                        
+ 
+                    </StackLayout>
+                </ScrollView>
+                
+                
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

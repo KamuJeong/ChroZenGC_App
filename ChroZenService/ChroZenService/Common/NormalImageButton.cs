@@ -75,14 +75,14 @@ namespace ChroZenService
 
             Scale = 1.0;
 
+            await this.ScaleTo(0.9, 250, Easing.SpringIn); ;
+
             if (IsSet(CommandProperty))
             {
                 Command.Execute(CommandParameter);
             }
 
             Clicked?.Invoke(sender, e);
-
-            await this.ScaleTo(0.9, 500, Easing.SpringIn); ;
         }
     }
 }

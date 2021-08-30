@@ -47,6 +47,15 @@ namespace ChroZenService
         {
             InitView(1);
             await Task.Yield();
+            //InitView(2);
+            //await Task.Yield();
+            //InitView(3);
+            //await Task.Yield();
+            //InitView(4);
+            //await Task.Yield();
+
+            //InitView(6);
+            //await Task.Yield();
         }
 
         public async void Initialize()
@@ -94,8 +103,10 @@ namespace ChroZenService
                 case 4:
                     view = Resolver.Resolve<View_System_Diagnostics>();
                     break;
-
-
+                case 5:
+                    view = Resolver.Resolve<View_System_Calibration>();
+                    view.BindingContext = Model.Calibration;
+                    break;
                 case 6:
                     view = Resolver.Resolve<View_System_TimeControl>();
                     break;
@@ -125,6 +136,9 @@ namespace ChroZenService
                     {
                         case 4:
                             (v as View_System_Diagnostics)?.GoHome();
+                            break;
+                        case 5:
+                            (v as View_System_Calibration)?.GoHome();
                             break;
                         default:
                             //(v as View_Config_Tab)?.SelectedTabItem = 1;
