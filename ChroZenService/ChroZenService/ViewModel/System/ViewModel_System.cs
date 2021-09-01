@@ -30,11 +30,14 @@ namespace ChroZenService
 
         public ViewModel_System_Calibration Calibration { get; }
 
+        public IAboutAppInfo About { get; }
 
-        public ViewModel_System(Model model, ViewModel_System_Calibration calib)
+
+        public ViewModel_System(Model model, ViewModel_System_Calibration calib, IAboutAppInfo about)
         {
             Model = model;
             Calibration = calib;
+            About = about;
 
             Model.Information.PropertyModified += OnInformationPropertyModified;
 
@@ -93,7 +96,6 @@ namespace ChroZenService
                 }
             }
         }
-
 
         public ICommand SetNetworkCommand => new Command(OnSetNetwork);
 
@@ -204,9 +206,17 @@ namespace ChroZenService
             }
         }
 
+        public ICommand CloseCommand => new Command(Disconnect);
 
-
-
-
+        private void Disconnect(object obj)
+        {
+            Root.networkManager?.Close();
+            if (Root.IsActual == false)
+            {
+                Root.IsActual = true;
+                Root.IsRefreshing = true;
+                Root.RefreshCommand.Execute(null);
+            }
+        }
     }
 }

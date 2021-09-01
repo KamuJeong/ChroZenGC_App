@@ -43,25 +43,28 @@ namespace ChroZenService
                 TimeTicker = DateTime.Now.ToString("T");
                 Model.Information.UpdateDateTime();
 
-                if (IsConnected && IsActual)
+                if (IsActual)
                 {
-                    if (++WatchdogTimer > 5)
+                    if (IsConnected)
                     {
-                        networkManager?.Close();
-                        WatchdogTimer = 0;
+                        if (++WatchdogTimer > 5)
+                        {
+                            networkManager?.Close();
+                            WatchdogTimer = 0;
+                        }
+                    }
+
+                    bool isConnected = IsConnected;
+                    IsConnected = networkManager != null ? networkManager.IsConnected : false;
+                    if (isConnected && !IsConnected)
+                    {
+                        IsRefreshing = true;
+                        OnRefreshReception(null);
                     }
                 }
 
-                bool isConnected = IsConnected;
-                IsConnected = networkManager != null ? networkManager.IsConnected : false;
-                if(isConnected && !IsConnected)
-                {
-                    IsRefreshing = true;
-                    OnRefreshReception(null);
-                }
-
                 return true;
-            } );
+            });
 
             System = system;
             System.Root = this;
@@ -115,8 +118,6 @@ namespace ChroZenService
             set
             {
                 isConnected = value;
-                if (!value)
-                    IsActual = true;
             }
         }
 
@@ -128,6 +129,7 @@ namespace ChroZenService
 
             Resolver.Resolve<View_Config>().Initialize();
             Resolver.Resolve<View_System>().Initialize();
+            Resolver.Resolve<View_Root>().Initialize();
 
             IsActual = true;
 
@@ -169,7 +171,11 @@ namespace ChroZenService
                     {
                         FireNetworkBackgroudThread();
 
-                        await Model.Send(new InformationWrapper());
+                        
+                        await Model.Send(new InformationWrapper
+                        {
+                            SerialNumber = $"{Resolver.Resolve<IAboutAppInfo>().Id.GetHashCode():X}"
+                        });
                         await Model.Request(Model.Information);
                         await Model.Request(Model.Configuration);
                         await Model.Request(Model.Oven);

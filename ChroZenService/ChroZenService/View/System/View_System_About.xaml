@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChroZenService"
+             x:Class="ChroZenService.View_System_About"
+             x:DataType="local:ViewModel_System">
+    <ContentView.Resources>
+        <Style x:Key="captionKey" TargetType="Label">
+            <Setter Property="TextColor" Value="Silver" />
+            <Setter Property="FontSize"  Value="{StaticResource CaptionFontSizeKey}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="End" />
+        </Style>
+
+        <Style x:Key="groupKey" TargetType="Frame">
+            <Setter Property="Background" Value="{StaticResource GroupingFrameBackgroudKey}" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+
+        <ColumnDefinitionCollection x:Key="columnConfig">
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="0.2"/>
+            <ColumnDefinition Width="0.5*"/>
+        </ColumnDefinitionCollection>
+
+        <ColumnDefinitionCollection x:Key="columnProgram">
+            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </ColumnDefinitionCollection>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="710*"/>
+                <RowDefinition Height="22*"/>
+            </Grid.RowDefinitions>
+            
+            <ScrollView Grid.Row="2">
+                <StackLayout Padding="10" Spacing="10" >
+                    <Label Text="ChroZen GC Control App" 
+                            Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+
+                    <Frame Style="{StaticResource groupKey}">
+                        <Grid ColumnSpacing="10" RowSpacing="10" ColumnDefinitions="{StaticResource columnConfig}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Package"
+                                    Style="{StaticResource captionKey}" />
+                            <Label Text="{Binding About.PackageName}"
+                                   Grid.Column="2"  HorizontalOptions="Start" Style="{StaticResource captionKey}" />
+
+                            <Label Text="Version" 
+                                    Grid.Row="1"  Style="{StaticResource captionKey}" />
+                            <Label Text="{Binding About.VersionNumber}"
+                                    Grid.Row="1" Grid.Column="2"  HorizontalOptions="Start" Style="{StaticResource captionKey}" />
+
+                            <Label Text="Build" 
+                                    Grid.Row="2"  Style="{StaticResource captionKey}" />
+                            <Label Text="{Binding About.BuildNumber}"
+                                    Grid.Row="2" Grid.Column="2"  HorizontalOptions="Start" Style="{StaticResource captionKey}" />
+
+                            <Label Text="ID" 
+                                    Grid.Row="3"  Style="{StaticResource captionKey}" />
+                            <Label Text="{Binding About.Id}"
+                                    Grid.Row="3" Grid.Column="2"  HorizontalOptions="Start" Style="{StaticResource captionKey}" />
+
+                            <BoxView BackgroundColor="Silver" Grid.Column="1" Grid.RowSpan="4"/>
+                        </Grid>
+                    </Frame>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="3">
+                        <Label Text="Created by KamuJeong" 
+                                   VerticalOptions="Start" FontAttributes="Italic"
+                                   Style="{StaticResource captionKey}" />
+                        <Image Source="{local:ImageResource Source=ChroZenService.Images.Kamu.png}" Aspect="AspectFit" HeightRequest="16" />
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+
+            <local:NormalButton Text="Disconnect" Command="{Binding CloseCommand}"
+                                HorizontalOptions="Fill" VerticalOptions="End" Grid.Row="2" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

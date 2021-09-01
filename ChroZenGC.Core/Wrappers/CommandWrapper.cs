@@ -21,6 +21,8 @@ namespace ChroZenGC.Core.Wrappers
     public class CalibCommandWrapper : PacketWrapper<CalibCommand>
     {
         public const uint PacketCode = 0x67520;
+        private CommandCodes commandCodes;
+
         public override uint Code => PacketCode;
 
         public CalibCommandWrapper(CommandCodes code, CalibActions action, CalibFunctions func, CalibTargets target)
@@ -29,6 +31,11 @@ namespace ChroZenGC.Core.Wrappers
             Packet.action = action;
             Packet.function = func;
             Packet.target = target;
+        }
+
+        public CalibCommandWrapper(CommandCodes commandCodes)
+        {
+            this.commandCodes = commandCodes;
         }
     }
 }

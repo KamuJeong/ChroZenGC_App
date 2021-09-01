@@ -5,6 +5,11 @@
              xmlns:local="clr-namespace:ChroZenService"
              x:DataType="local:ViewModel_System_Calibration">
     <ContentView.Resources>
+        <local:IsCapillaryConverter x:Key="isCapillaryKey" />
+        <local:SensorZeroConverter x:Key="SensorZeroKey" />
+        <local:ValveCalibConverter x:Key="ValveCalibKey" />
+        <local:SplitFlowConverter x:Key="SplitFlowKey" />
+
         <Style x:Key="captionKey" TargetType="Label">
             <Setter Property="TextColor" Value="Silver" />
             <Setter Property="FontSize"  Value="{StaticResource CaptionFontSizeKey}" />
@@ -26,7 +31,7 @@
         </ColumnDefinitionCollection>
 
         <ColumnDefinitionCollection x:Key="columnProgram">
-            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="0.8*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -56,7 +61,8 @@
                     <RowDefinition Height="0"/>
                     <RowDefinition Height="0"/>
                 </Grid.RowDefinitions>
-
+                
+                <!-- Main View -->
                 <ScrollView>
                     <StackLayout Margin="0,20,0,0" Spacing="15" >
                         <local:NormalButton x:Name="calib1" Text="Oven" 
@@ -104,66 +110,899 @@
                     </StackLayout>
                 </ScrollView>
 
+                <!-- Oven calibration -->
                 <ScrollView Grid.Row="1">
                     <StackLayout Padding="10" Spacing="10" >
                         <Label Text="Oven Calibration"
                                 Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
-                        <StackLayout Orientation="Horizontal" Spacing="5">
-                            <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
-                            <Label Text="Temperature"
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Temperature"
                                  TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
-                        </StackLayout>
+                            </StackLayout>
 
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="5" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="0.2" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
 
-                        <Frame Style="{StaticResource groupKey}">
-                            <Grid RowSpacing="5" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="0.2" />
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-
-                                <Label Text="Act" 
+                                    <Label Text="Act" 
                                    Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
-                                <Label Text="Set" 
+                                    <Label Text="Set" 
                                    Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
-                                <Label Text="Measured" 
+                                    <Label Text="Measured" 
                                    Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
 
-                                <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>
+                                    <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>
 
-                                <Label Text="T1" 
+                                    <Label Text="T1" 
                                    Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
-                                <local:ValueEditor Value="{Binding State.Temperature.Oven, StringFormat='{0:F1}'}" 
+                                    <local:ValueEditor Value="{Binding State.Temperature.Oven, StringFormat='{0:F1}'}" 
                                                     Grid.Row="2" Grid.Column="1" IsEnabled="False" />
-                                <local:ValueEditor Value="{Binding Oven.Set.Set1, StringFormat='{0:F1}'}" 
+                                    <local:ValueEditor Value="{Binding Oven.Set.Set1, StringFormat='{0:F1}'}" 
                                                    Min="-80" Max="450.0" Caption="T1 Set" Grid.Row="2" Grid.Column="2"/>
-                                <local:ValueEditor Value="{Binding Oven.Set.Measure1, StringFormat='{0:F1}'}" 
+                                    <local:ValueEditor Value="{Binding Oven.Set.Measure1, StringFormat='{0:F1}'}" 
                                                    Min="-80" Max="450.0" Caption="T1 Measure" Grid.Row="2" Grid.Column="3"/>
-                                <Label Text="T2" 
+                                    <Label Text="T2" 
                                    Grid.Row="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
-                                <local:ValueEditor Value="{Binding State.Temperature.Oven, StringFormat='{0:F1}'}" 
+                                    <local:ValueEditor Value="{Binding State.Temperature.Oven, StringFormat='{0:F1}'}" 
                                                     Grid.Row="3" Grid.Column="1" IsEnabled="False" />
-                                <local:ValueEditor Value="{Binding Oven.Set.Set2, StringFormat='{0:F1}'}" 
+                                    <local:ValueEditor Value="{Binding Oven.Set.Set2, StringFormat='{0:F1}'}" 
                                                    Min="-80" Max="450.0" Caption="T2 Set" Grid.Row="3" Grid.Column="2"/>
-                                <local:ValueEditor Value="{Binding Oven.Set.Measure2, StringFormat='{0:F1}'}" 
+                                    <local:ValueEditor Value="{Binding Oven.Set.Measure2, StringFormat='{0:F1}'}" 
                                                    Min="-80" Max="450.0" Caption="T2 Measure" Grid.Row="3" Grid.Column="3"/>
-                            </Grid>
-                        </Frame>
+                                </Grid>
+                            </Frame>
 
-
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="3">
-                            
-                            <Label Text="Created by KamuJeong" 
-                                   VerticalOptions="Start" FontAttributes="Italic"
-                                   Style="{StaticResource captionKey}" />
-                            <Image Source="{local:ImageResource Source=ChroZenService.Images.Kamu.png}" Aspect="AspectFit" HeightRequest="16" />
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                 Command="{Binding ApplyTempCommand}" CommandParameter="1" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                 Command="{Binding ResetTempCommand}" CommandParameter="1" />
+                            </StackLayout>
                         </StackLayout>
                     </StackLayout>
                 </ScrollView>
-                
-                
+
+                <!-- Front Inlet calibration -->
+                <ScrollView Grid.Row="2">
+                    <StackLayout Padding="10" Spacing="10" >
+                        <Label Text="Front Inlet Calibration"
+                                Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Temperature"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="5" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="0.2" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Act" 
+                                            Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Set" 
+                                            Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Measured" 
+                                            Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+
+                                    <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>
+
+                                    <Label Text="T1" 
+                                            Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Temperature.Inlet[0], StringFormat='{0:F1}'}" 
+                                                    Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding FrontInlet.Temp.Set1, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T1 Set" Grid.Row="2" Grid.Column="2"/>
+                                    <local:ValueEditor Value="{Binding FrontInlet.Temp.Measure1, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T1 Measure" Grid.Row="2" Grid.Column="3"/>
+                                    <Label Text="T2" 
+                                            Grid.Row="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Temperature.Inlet[0], StringFormat='{0:F1}'}" 
+                                                    Grid.Row="3" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding FrontInlet.Temp.Set2, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T2 Set" Grid.Row="3" Grid.Column="2"/>
+                                    <local:ValueEditor Value="{Binding FrontInlet.Temp.Measure2, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T2 Measure" Grid.Row="3" Grid.Column="3"/>
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                 Command="{Binding ApplyTempCommand}" CommandParameter="2" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                 Command="{Binding ResetTempCommand}" CommandParameter="2" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Sensor Zero"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label x:Name="total0" Text="Total"
+                                           IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Column"
+                                           IsVisible="{Binding Source={x:Reference total0}, Path=IsVisible, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                           Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource SensorZeroKey}, ConverterParameter=10}"
+                                                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" IsEnabled="False" />
+                                    <Label Text="Purge"
+                                           IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource SensorZeroKey}, ConverterParameter=11}" 
+                                                    IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" IsEnabled="False" />
+                                    <Label Text="Press" 
+                                           Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource SensorZeroKey}, ConverterParameter=12}" 
+                                                    Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" IsEnabled="False" />
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                         IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=SensZero}"
+                                                        Command="{Binding ApplySensorZeroCommand}" CommandParameter="2" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=SensZero}"
+                                                        Command="{Binding StopSensorZeroCommand}" CommandParameter="2" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=SensZero}"
+                                                        Command="{Binding StartSensorZeroCommand}" CommandParameter="2" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=SensZero}"
+                                                        Command="{Binding ResetSensorZeroCommand}" CommandParameter="2" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Valve"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Total"
+                                           IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Column"
+                                           IsVisible="{Binding Source={x:Reference total0}, Path=IsVisible, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                           Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding CalibState.FrontInletValveVoltage[0], StringFormat='{0:F1}'}"
+                                                    Unit="V" Grid.Row="0" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[0], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=0, StringFormat='{0:F1}'}"
+                                                    Grid.Row="0" Grid.Column="2" IsEnabled="False" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource ValveCalibKey}, ConverterParameter=10}" 
+                                                    Grid.Row="0" Grid.Column="3" IsEnabled="False" />
+
+                                    <Label Text="Purge"
+                                           IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding CalibState.FrontInletValveVoltage[1], StringFormat='{0:F1}'}"
+                                                     IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                     Unit="V" Grid.Row="1" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[0], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=1, StringFormat='{0:F1}'}"
+                                                    IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="1" Grid.Column="2" IsEnabled="False" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource ValveCalibKey}, ConverterParameter=11}" 
+                                                    IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="1" Grid.Column="3" IsEnabled="False" />
+
+                                    <Label Text="Column" 
+                                           IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding CalibState.FrontInletValveVoltage[2], StringFormat='{0:F1}'}"
+                                                     IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                     Unit="V" Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[0], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=2, StringFormat='{0:F1}'}"
+                                                    IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="2" Grid.Column="2" IsEnabled="False" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource ValveCalibKey}, ConverterParameter=12}" 
+                                                    IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="2" Grid.Column="3" IsEnabled="False" />
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Valve}"
+                                                        Command="{Binding ApplyValveCommand}" CommandParameter="2" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Valve}"
+                                                        Command="{Binding StopValveCommand}" CommandParameter="2" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Valve}"
+                                                        Command="{Binding StartValveCommand}" CommandParameter="2" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Valve}"
+                                                        Command="{Binding ResetValveCommand}" CommandParameter="2" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Flow"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="5" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="0.2" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Act" 
+                                        Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Set" 
+                                        Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Measured" 
+                                        Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+
+                                    <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>
+
+                                    <Label Text="Purge"
+                                           IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[0], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=1, StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                    <Label Text="Column"
+                                           IsVisible="{Binding Source={x:Reference total0}, Path=IsVisible, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                           Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[0], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=0, StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Source={x:Reference total0}, Path=IsVisible, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                                        Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding FrontInlet.FlowSet[0] , StringFormat='{0:F1}'}"
+                                                       Command="{Binding Flow1Command}" CommandParameter="2"
+                                                    Min="0" Caption="Flow1 Set" Grid.Row="2" Grid.Column="2" />
+                                    <local:ValueEditor Value="{Binding FrontInlet.FlowMeasure[0] , StringFormat='{0:F1}'}"
+                                                       Command="{Binding Flow1Command}" CommandParameter="2"
+                                                    Min="0" Caption="Flow1 Measure" Grid.Row="2" Grid.Column="3" />
+
+                                    <Label Text="Split"
+                                           IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[0], Mode=OneWay, Converter={StaticResource SplitFlowKey}, StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                        Grid.Row="3" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding FrontInlet.FlowSet[1] , StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                       Command="{Binding Flow2Command}" CommandParameter="2"
+                                                        Min="0" Caption="Flow2 Set" Grid.Row="3" Grid.Column="2" />
+                                    <local:ValueEditor Value="{Binding FrontInlet.FlowMeasure[1] , StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                       Command="{Binding Flow2Command}" CommandParameter="2"
+                                                        Min="0" Caption="Flow2 Measure" Grid.Row="3" Grid.Column="3" />                                    
+
+                                    <Label Text="Column" 
+                                           IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="4" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[0], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=2, StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                        Grid.Row="4" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding FrontInlet.FlowSet[2] , StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                       Command="{Binding Flow3Command}" CommandParameter="2"                                                       
+                                                        Min="0" Caption="Flow3 Set" Grid.Row="4" Grid.Column="2" />
+                                    <local:ValueEditor Value="{Binding FrontInlet.FlowMeasure[2] , StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[0], Converter={StaticResource isCapillaryKey}}"
+                                                       Command="{Binding Flow3Command}" CommandParameter="2"
+                                                       Min="0" Caption="Flow3 Measure" Grid.Row="4" Grid.Column="3" />
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Flow}"
+                                                        Command="{Binding ApplyFlowCommand}" CommandParameter="2" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Flow}"
+                                                        Command="{Binding StopFlowCommand}" CommandParameter="2" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Flow}"
+                                                        Command="{Binding StartFlowCommand}" CommandParameter="2" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Flow}"
+                                                        Command="{Binding ResetFlowCommand}" CommandParameter="2" />
+                            </StackLayout>
+                        </StackLayout>
+
+                    </StackLayout>
+                </ScrollView>
+
+                <!-- Center Inlet calibration -->
+                <ScrollView Grid.Row="3">
+                    <StackLayout Padding="10" Spacing="10" >
+                        <Label Text="Center Inlet Calibration"
+                                Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Temperature"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="5" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="0.2" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Act" 
+                                            Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Set" 
+                                            Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Measured" 
+                                            Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+
+                                    <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>
+
+                                    <Label Text="T1" 
+                                            Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Temperature.Inlet[1], StringFormat='{0:F1}'}" 
+                                                    Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding CenterInlet.Temp.Set1, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T1 Set" Grid.Row="2" Grid.Column="2"/>
+                                    <local:ValueEditor Value="{Binding CenterInlet.Temp.Measure1, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T1 Measure" Grid.Row="2" Grid.Column="3"/>
+                                    <Label Text="T2" 
+                                            Grid.Row="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Temperature.Inlet[1], StringFormat='{0:F1}'}" 
+                                                    Grid.Row="3" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding CenterInlet.Temp.Set2, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T2 Set" Grid.Row="3" Grid.Column="2"/>
+                                    <local:ValueEditor Value="{Binding CenterInlet.Temp.Measure2, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T2 Measure" Grid.Row="3" Grid.Column="3"/>
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                 Command="{Binding ApplyTempCommand}" CommandParameter="3" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                 Command="{Binding ResetTempCommand}" CommandParameter="3" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Sensor Zero"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label x:Name="total1" Text="Total"
+                                           IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Column"
+                                           IsVisible="{Binding Source={x:Reference total1}, Path=IsVisible, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                           Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource SensorZeroKey}, ConverterParameter=23}"
+                                                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" IsEnabled="False" />
+                                    <Label Text="Purge"
+                                           IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource SensorZeroKey}, ConverterParameter=24}" 
+                                                    IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" IsEnabled="False" />
+                                    <Label Text="Press" 
+                                           Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource SensorZeroKey}, ConverterParameter=25}" 
+                                                    Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" IsEnabled="False" />
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                         IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=SensZero}"
+                                                        Command="{Binding ApplySensorZeroCommand}" CommandParameter="3" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=SensZero}"
+                                                        Command="{Binding StopSensorZeroCommand}" CommandParameter="3" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=SensZero}"
+                                                        Command="{Binding StartSensorZeroCommand}" CommandParameter="3" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=SensZero}"
+                                                        Command="{Binding ResetSensorZeroCommand}" CommandParameter="3" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Valve"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Total"
+                                           IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Column"
+                                           IsVisible="{Binding Source={x:Reference total1}, Path=IsVisible, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                           Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding CalibState.CenterInletValveVoltage[0], StringFormat='{0:F1}'}"
+                                                    Unit="V" Grid.Row="0" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[1], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=0, StringFormat='{0:F1}'}"
+                                                    Grid.Row="0" Grid.Column="2" IsEnabled="False" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource ValveCalibKey}, ConverterParameter=23}" 
+                                                    Grid.Row="0" Grid.Column="3" IsEnabled="False" />
+
+                                    <Label Text="Purge"
+                                           IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding CalibState.CenterInletValveVoltage[1], StringFormat='{0:F1}'}"
+                                                     IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                     Unit="V" Grid.Row="1" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[1], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=1, StringFormat='{0:F1}'}"
+                                                    IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="1" Grid.Column="2" IsEnabled="False" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource ValveCalibKey}, ConverterParameter=24}" 
+                                                    IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="1" Grid.Column="3" IsEnabled="False" />
+
+                                    <Label Text="Column" 
+                                           IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding CalibState.CenterInletValveVoltage[2], StringFormat='{0:F1}'}"
+                                                     IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                     Unit="V" Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[1], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=2, StringFormat='{0:F1}'}"
+                                                    IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="2" Grid.Column="2" IsEnabled="False" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource ValveCalibKey}, ConverterParameter=25}" 
+                                                    IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="2" Grid.Column="3" IsEnabled="False" />
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Valve}"
+                                                        Command="{Binding ApplyValveCommand}" CommandParameter="3" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Valve}"
+                                                        Command="{Binding StopValveCommand}" CommandParameter="3" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Valve}"
+                                                        Command="{Binding StartValveCommand}" CommandParameter="3" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Valve}"
+                                                        Command="{Binding ResetValveCommand}" CommandParameter="3" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Flow"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="5" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="0.2" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Act" 
+                                        Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Set" 
+                                        Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Measured" 
+                                        Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+
+                                    <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>
+
+                                    <Label Text="Purge"
+                                           IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[1], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=1, StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                    <Label Text="Column"
+                                           IsVisible="{Binding Source={x:Reference total1}, Path=IsVisible, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                           Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[1], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=0, StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Source={x:Reference total1}, Path=IsVisible, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                                        Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding CenterInlet.FlowSet[0] , StringFormat='{0:F1}'}"
+                                                       Command="{Binding Flow1Command}" CommandParameter="3"
+                                                    Min="0" Caption="Flow1 Set" Grid.Row="2" Grid.Column="2" />
+                                    <local:ValueEditor Value="{Binding CenterInlet.FlowMeasure[0] , StringFormat='{0:F1}'}"
+                                                       Command="{Binding Flow1Command}" CommandParameter="3"
+                                                    Min="0" Caption="Flow1 Measure" Grid.Row="2" Grid.Column="3" />
+
+                                    <Label Text="Split"
+                                           IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[1], Mode=OneWay, Converter={StaticResource SplitFlowKey}, StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                        Grid.Row="3" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding CenterInlet.FlowSet[1] , StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                       Command="{Binding Flow2Command}" CommandParameter="3"
+                                                        Min="0" Caption="Flow2 Set" Grid.Row="3" Grid.Column="2" />
+                                    <local:ValueEditor Value="{Binding CenterInlet.FlowMeasure[1] , StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                       Command="{Binding Flow2Command}" CommandParameter="3"
+                                                        Min="0" Caption="Flow2 Measure" Grid.Row="3" Grid.Column="3" />
+
+                                    <Label Text="Column" 
+                                           IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="4" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[1], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=2, StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                        Grid.Row="4" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding CenterInlet.FlowSet[2] , StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                       Command="{Binding Flow3Command}" CommandParameter="3"                                                       
+                                                        Min="0" Caption="Flow3 Set" Grid.Row="4" Grid.Column="2" />
+                                    <local:ValueEditor Value="{Binding CenterInlet.FlowMeasure[2] , StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[1], Converter={StaticResource isCapillaryKey}}"
+                                                       Command="{Binding Flow3Command}" CommandParameter="3"
+                                                       Min="0" Caption="Flow3 Measure" Grid.Row="4" Grid.Column="3" />
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Flow}"
+                                                        Command="{Binding ApplyFlowCommand}" CommandParameter="3" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Flow}"
+                                                        Command="{Binding StopFlowCommand}" CommandParameter="3" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Flow}"
+                                                        Command="{Binding StartFlowCommand}" CommandParameter="3" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Flow}"
+                                                        Command="{Binding ResetFlowCommand}" CommandParameter="3" />
+                            </StackLayout>
+                        </StackLayout>
+
+                    </StackLayout>
+                </ScrollView>
+
+                <!-- Rear Inlet calibration -->
+                <ScrollView Grid.Row="4">
+                    <StackLayout Padding="10" Spacing="10" >
+                        <Label Text="Rear Inlet Calibration"
+                                Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Temperature"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="5" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="0.2" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Act" 
+                                            Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Set" 
+                                            Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Measured" 
+                                            Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+
+                                    <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>
+
+                                    <Label Text="T1" 
+                                            Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Temperature.Inlet[2], StringFormat='{0:F1}'}" 
+                                                    Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding RearInlet.Temp.Set1, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T1 Set" Grid.Row="2" Grid.Column="2"/>
+                                    <local:ValueEditor Value="{Binding RearInlet.Temp.Measure1, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T1 Measure" Grid.Row="2" Grid.Column="3"/>
+                                    <Label Text="T2" 
+                                            Grid.Row="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Temperature.Inlet[2], StringFormat='{0:F1}'}" 
+                                                    Grid.Row="3" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding RearInlet.Temp.Set2, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T2 Set" Grid.Row="3" Grid.Column="2"/>
+                                    <local:ValueEditor Value="{Binding RearInlet.Temp.Measure2, StringFormat='{0:F1}'}" 
+                                                   Min="-80" Max="450.0" Caption="T2 Measure" Grid.Row="3" Grid.Column="3"/>
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                 Command="{Binding ApplyTempCommand}" CommandParameter="4" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                 Command="{Binding ResetTempCommand}" CommandParameter="4" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Sensor Zero"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label x:Name="total2" Text="Total"
+                                           IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Column"
+                                           IsVisible="{Binding Source={x:Reference total2}, Path=IsVisible, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                           Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource SensorZeroKey}, ConverterParameter=36}"
+                                                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" IsEnabled="False" />
+                                    <Label Text="Purge"
+                                           IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource SensorZeroKey}, ConverterParameter=37}" 
+                                                    IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" IsEnabled="False" />
+                                    <Label Text="Press" 
+                                           Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource SensorZeroKey}, ConverterParameter=38}" 
+                                                    Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" IsEnabled="False" />
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                         IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=SensZero}"
+                                                        Command="{Binding ApplySensorZeroCommand}" CommandParameter="4" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=SensZero}"
+                                                        Command="{Binding StopSensorZeroCommand}" CommandParameter="4" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=SensZero}"
+                                                        Command="{Binding StartSensorZeroCommand}" CommandParameter="4" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=SensZero}"
+                                                        Command="{Binding ResetSensorZeroCommand}" CommandParameter="4" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Valve"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="0" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Total"
+                                           IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Column"
+                                           IsVisible="{Binding Source={x:Reference total2}, Path=IsVisible, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                           Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding CalibState.RearInletValveVoltage[0], StringFormat='{0:F1}'}"
+                                                    Unit="V" Grid.Row="0" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[2], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=0, StringFormat='{0:F1}'}"
+                                                    Grid.Row="0" Grid.Column="2" IsEnabled="False" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource ValveCalibKey}, ConverterParameter=36}" 
+                                                    Grid.Row="0" Grid.Column="3" IsEnabled="False" />
+
+                                    <Label Text="Purge"
+                                           IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding CalibState.RearInletValveVoltage[1], StringFormat='{0:F1}'}"
+                                                     IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                     Unit="V" Grid.Row="1" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[2], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=1, StringFormat='{0:F1}'}"
+                                                    IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="1" Grid.Column="2" IsEnabled="False" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource ValveCalibKey}, ConverterParameter=37}" 
+                                                    IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="1" Grid.Column="3" IsEnabled="False" />
+
+                                    <Label Text="Column" 
+                                           IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding CalibState.RearInletValveVoltage[2], StringFormat='{0:F1}'}"
+                                                     IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                     Unit="V" Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[2], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=2, StringFormat='{0:F1}'}"
+                                                    IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="2" Grid.Column="2" IsEnabled="False" />
+                                    <local:NormalButton Text="{Binding CalibState, Converter={StaticResource ValveCalibKey}, ConverterParameter=38}" 
+                                                    IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="2" Grid.Column="3" IsEnabled="False" />
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Valve}"
+                                                        Command="{Binding ApplyValveCommand}" CommandParameter="4" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Valve}"
+                                                        Command="{Binding StopValveCommand}" CommandParameter="4" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Valve}"
+                                                        Command="{Binding StartValveCommand}" CommandParameter="4" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Valve}"
+                                                        Command="{Binding ResetValveCommand}" CommandParameter="4" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Spacing="5">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <BoxView Margin="5,3,0,0" WidthRequest="3" HeightRequest="5" VerticalOptions="FillAndExpand" BackgroundColor="DimGray"/>
+                                <Label Text="Flow"
+                                 TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <Frame Style="{StaticResource groupKey}">
+                                <Grid RowSpacing="5" ColumnSpacing="5" ColumnDefinitions="{StaticResource columnProgram}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="0.2" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Act" 
+                                        Grid.Column="1" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Set" 
+                                        Grid.Column="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <Label Text="Measured" 
+                                        Grid.Column="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+
+                                    <BoxView BackgroundColor="Silver" Grid.Row="1" Grid.ColumnSpan="4"/>
+
+                                    <Label Text="Purge"
+                                           IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[2], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=1, StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                    Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                    <Label Text="Column"
+                                           IsVisible="{Binding Source={x:Reference total2}, Path=IsVisible, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                           Grid.Row="2" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[2], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=0, StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Source={x:Reference total2}, Path=IsVisible, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=False}"
+                                                        Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding RearInlet.FlowSet[0] , StringFormat='{0:F1}'}"
+                                                       Command="{Binding Flow1Command}" CommandParameter="4"
+                                                    Min="0" Caption="Flow1 Set" Grid.Row="2" Grid.Column="2" />
+                                    <local:ValueEditor Value="{Binding RearInlet.FlowMeasure[0] , StringFormat='{0:F1}'}"
+                                                       Command="{Binding Flow1Command}" CommandParameter="4"
+                                                    Min="0" Caption="Flow1 Measure" Grid.Row="2" Grid.Column="3" />
+
+                                    <Label Text="Split"
+                                           IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="3" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[2], Mode=OneWay, Converter={StaticResource SplitFlowKey}, StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                        Grid.Row="3" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding RearInlet.FlowSet[1] , StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                       Command="{Binding Flow2Command}" CommandParameter="4"
+                                                        Min="0" Caption="Flow2 Set" Grid.Row="3" Grid.Column="2" />
+                                    <local:ValueEditor Value="{Binding RearInlet.FlowMeasure[1] , StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                       Command="{Binding Flow2Command}" CommandParameter="4"
+                                                        Min="0" Caption="Flow2 Measure" Grid.Row="3" Grid.Column="3" />
+
+                                    <Label Text="Column" 
+                                           IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                           Grid.Row="4" HorizontalOptions="Center" Style="{StaticResource captionKey}" />
+                                    <local:ValueEditor Value="{Binding State.Flow.Inlets[2], Mode=OneWay, Converter={StaticResource FloatArrayPickerKey}, ConverterParameter=2, StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                        Grid.Row="4" Grid.Column="1" IsEnabled="False" />
+                                    <local:ValueEditor Value="{Binding RearInlet.FlowSet[2] , StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                       Command="{Binding Flow3Command}" CommandParameter="4"                                                       
+                                                        Min="0" Caption="Flow3 Set" Grid.Row="4" Grid.Column="2" />
+                                    <local:ValueEditor Value="{Binding RearInlet.FlowMeasure[2] , StringFormat='{0:F1}'}"
+                                                       IsVisible="{Binding Configuration.InletType[2], Converter={StaticResource isCapillaryKey}}"
+                                                       Command="{Binding Flow3Command}" CommandParameter="4"
+                                                       Min="0" Caption="Flow3 Measure" Grid.Row="4" Grid.Column="3" />
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Spacing="-5" FlowDirection="RightToLeft">
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.apply_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Flow}"
+                                                        Command="{Binding ApplyFlowCommand}" CommandParameter="4" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Flow}"
+                                                        Command="{Binding StopFlowCommand}" CommandParameter="4" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
+                                                         IsVisible="{Binding CurrentFunction, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Flow}"
+                                                        Command="{Binding StartFlowCommand}" CommandParameter="4" />
+                                <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.reset_s.png}"
+                                                        IsEnabled="{Binding CurrentFunction, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Flow}"
+                                                        Command="{Binding ResetFlowCommand}" CommandParameter="4" />
+                            </StackLayout>
+                        </StackLayout>
+
+                    </StackLayout>
+                </ScrollView>
             </Grid>
         </Grid>
     </ContentView.Content>

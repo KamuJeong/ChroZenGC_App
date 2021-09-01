@@ -1,4 +1,5 @@
 ﻿using ChroZenGC.Core.Network;
+using ChroZenGC.Core.Packets;
 using ChroZenGC.Core.Wrappers;
 using System;
 using System.Collections.Generic;
@@ -154,6 +155,10 @@ namespace ChroZenGC.Core
                     case TimeControlWrapper.PacketCode:
                         Assemble(TimeControl, buffer, header.SlotOffset, header.SlotSize);
                         break;
+
+                    case CalibStateWrapper.PacketCode:
+                        Assemble(CalibState, buffer, header.SlotOffset, header.SlotSize);
+                        break;
                 }
             }
         }
@@ -272,5 +277,7 @@ namespace ChroZenGC.Core
         public DiagPowerCheckWrapper DiagPowerCheck { get; } = new DiagPowerCheckWrapper();
 
         public TimeControlWrapper TimeControl { get; } = new TimeControlWrapper();
+
+        public CalibStateWrapper CalibState { get; } = new CalibStateWrapper();
     }
 }

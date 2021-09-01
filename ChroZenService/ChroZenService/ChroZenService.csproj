@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\apply_s.png" />
     <None Remove="Images\bg.png" />
     <None Remove="Images\bg_info.png" />
     <None Remove="Images\book_20.png" />
@@ -55,6 +56,7 @@
     <None Remove="Images\ReadyRun.png" />
     <None Remove="Images\ReadyRun_Pressed.png" />
     <None Remove="Images\reset_20.png" />
+    <None Remove="Images\reset_s.png" />
     <None Remove="Images\right_bg.png" />
     <None Remove="Images\right_btn01.png" />
     <None Remove="Images\right_btn02.png" />
@@ -76,6 +78,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Images\apply_s.png" />
     <EmbeddedResource Include="Images\bg.png" />
     <EmbeddedResource Include="Images\bg_info.png" />
     <EmbeddedResource Include="Images\book_20.png" />
@@ -120,6 +123,7 @@
     <EmbeddedResource Include="Images\ReadyRun.png" />
     <EmbeddedResource Include="Images\ReadyRun_Pressed.png" />
     <EmbeddedResource Include="Images\reset_20.png" />
+    <EmbeddedResource Include="Images\reset_s.png" />
     <EmbeddedResource Include="Images\right_bg.png" />
     <EmbeddedResource Include="Images\right_btn01.png" />
     <EmbeddedResource Include="Images\right_btn02.png" />
@@ -157,6 +161,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="View\System\View_System_About.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="View\System\View_System_Calibration.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

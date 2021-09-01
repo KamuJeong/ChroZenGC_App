@@ -9,6 +9,16 @@ using Xamarin.Forms;
 
 namespace ChroZenService
 {
+    public interface IAboutAppInfo
+    {
+        string PackageName { get; }
+        string VersionNumber { get; }
+        string BuildNumber { get; }
+
+        string Id { get; }
+    }
+
+
     public abstract class Bootstrapper
     {
         protected ContainerBuilder ContainerBuilder {  get; private set;  }

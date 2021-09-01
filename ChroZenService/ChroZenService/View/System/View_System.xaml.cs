@@ -47,15 +47,15 @@ namespace ChroZenService
         {
             InitView(1);
             await Task.Yield();
-            //InitView(2);
-            //await Task.Yield();
-            //InitView(3);
-            //await Task.Yield();
-            //InitView(4);
-            //await Task.Yield();
+            InitView(2);
+            await Task.Yield();
+            InitView(3);
+            await Task.Yield();
+            InitView(4);
+            await Task.Yield();
 
-            //InitView(6);
-            //await Task.Yield();
+            InitView(6);
+            await Task.Yield();
         }
 
         public async void Initialize()
@@ -109,6 +109,9 @@ namespace ChroZenService
                     break;
                 case 6:
                     view = Resolver.Resolve<View_System_TimeControl>();
+                    break;
+                case 7:
+                    view = Resolver.Resolve<View_System_About>();
                     break;
 
             }
@@ -177,7 +180,7 @@ namespace ChroZenService
             }
 
             topDeco.IsVisible = newValue == 1;
-            midDeco.IsVisible = new int[] { 2, 3, 4, 5, 6 }.Any(s => s == newValue);
+            midDeco.IsVisible = new int[] { 2, 3, 4, 5, 6, 7 }.Any(s => s == newValue);
 
             if (midDeco.IsVisible)
                 midDeco.SetValue(Grid.RowProperty, newValue);
