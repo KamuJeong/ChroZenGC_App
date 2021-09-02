@@ -77,15 +77,9 @@
                         <StackLayout Orientation="Horizontal" Spacing="10">
                             <Label Text="Heater Test"
                                     Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
-                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
-                                                 Command="{Binding DiagStartCommand}" CommandParameter="0"
-                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Diagnostics}"
-                                                 HorizontalOptions="EndAndExpand" />
-                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
-                                                 Command="{Binding DiagStopCommand}" CommandParameter="0"
-                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
-                                                 Lockable="False"
-                                                 HorizontalOptions="EndAndExpand" />
+                            <local:StartStopButton Command="{Binding DiagStartStopCommand}" CommandParameter="0"
+                                                 IsStarted="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                         <Frame Style="{StaticResource groupKey}">
                             <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
@@ -199,15 +193,9 @@
                         <StackLayout Orientation="Horizontal" Spacing="10">
                             <Label Text="Ignitor &amp; Valve"
                                     Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
-                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
-                                                 Command="{Binding DiagStartCommand}" CommandParameter="1"
-                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Diagnostics}"
-                                                 HorizontalOptions="EndAndExpand" />
-                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
-                                                 Command="{Binding DiagStopCommand}" CommandParameter="1"
-                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
-                                                 Lockable="False"
-                                                 HorizontalOptions="EndAndExpand" />
+                            <local:StartStopButton Command="{Binding DiagStartStopCommand}" CommandParameter="1"
+                                                 IsStarted="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                         <Frame Style="{StaticResource groupKey}">
                             <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
@@ -298,15 +286,9 @@
                         <StackLayout Orientation="Horizontal" Spacing="10">
                             <Label Text="Ignitor &amp; Valve"
                                     Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
-                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
-                                                 Command="{Binding DiagStartCommand}" CommandParameter="2"
-                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Diagnostics}"
-                                                 HorizontalOptions="EndAndExpand" />
-                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
-                                                 Command="{Binding DiagStopCommand}" CommandParameter="2"
-                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
-                                                 Lockable="False"
-                                                 HorizontalOptions="EndAndExpand" />
+                            <local:StartStopButton Command="{Binding DiagStartStopCommand}" CommandParameter="2"
+                                                 IsStarted="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                         <Frame Style="{StaticResource groupKey}">
                             <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
@@ -362,15 +344,9 @@
                         <StackLayout Orientation="Horizontal" Spacing="10">
                             <Label Text="UPC Valve Check"
                                     Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
-                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
-                                                 Command="{Binding DiagStartCommand}" CommandParameter="3"
-                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Diagnostics}"
-                                                 HorizontalOptions="EndAndExpand" />
-                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
-                                                 Command="{Binding DiagStopCommand}" CommandParameter="3"
-                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
-                                                 Lockable="False"
-                                                 HorizontalOptions="EndAndExpand" />
+                            <local:StartStopButton Command="{Binding DiagStartStopCommand}" CommandParameter="3"
+                                                 IsStarted="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                         <Frame Style="{StaticResource groupKey}">
                             <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
@@ -490,15 +466,9 @@
                         <StackLayout Orientation="Horizontal" Spacing="10">
                             <Label Text="UPC Sensor Check"
                                     Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
-                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
-                                                 Command="{Binding DiagStartCommand}" CommandParameter="4"
-                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Diagnostics}"
-                                                 HorizontalOptions="EndAndExpand" />
-                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
-                                                 Command="{Binding DiagStopCommand}" CommandParameter="4"
-                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
-                                                 Lockable="False"
-                                                 HorizontalOptions="EndAndExpand" />
+                            <local:StartStopButton Command="{Binding DiagStartStopCommand}" CommandParameter="4"
+                                                 IsStarted="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                         <Frame Style="{StaticResource groupKey}">
                             <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">
@@ -681,15 +651,9 @@
                         <StackLayout Orientation="Horizontal" Spacing="10">
                             <Label Text="Power Monitor"
                                     Margin="5,0" TextColor="Silver" FontSize="{StaticResource ButtonFontSizeKey}" FontAttributes="Bold" />
-                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.start.png}"
-                                                 Command="{Binding DiagStartCommand}" CommandParameter="5"
-                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreNotEqualConverterKey}, ConverterParameter=Diagnostics}"
-                                                 HorizontalOptions="EndAndExpand" />
-                            <local:NormalImageButton Source="{local:ImageResource Source=ChroZenService.Images.calib_stop.jpg}"
-                                                 Command="{Binding DiagStopCommand}" CommandParameter="5"
-                                                 IsVisible="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
-                                                 Lockable="False"
-                                                 HorizontalOptions="EndAndExpand" />
+                            <local:StartStopButton Command="{Binding DiagStartStopCommand}" CommandParameter="5"
+                                                 IsStarted="{Binding Model.State.Mode, Converter={StaticResource AreEqualConverterKey}, ConverterParameter=Diagnostics}"
+                                                 HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                         <Frame Style="{StaticResource groupKey}">
                             <Grid ColumnSpacing="10" RowSpacing="0" ColumnDefinitions="{StaticResource columnConfig}">

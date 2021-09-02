@@ -118,14 +118,14 @@ namespace ChroZenService
                     await model.Model.Send(new DiagCommandWrapper(false, DiagTarget.Heater));
                 }
 
-                for(int i=0; i<mainGrid.RowDefinitions.Count; ++i)
-                {
-                    mainGrid.RowDefinitions[i].Height = i == diag ? GridLength.Star : new GridLength(0);
-                }
-
-                foreach(var c in mainGrid.Children)
+                foreach (var c in mainGrid.Children)
                 {
                     c.IsVisible = (int)c.GetValue(Grid.RowProperty) == diag;
+                }
+
+                for (int i=0; i<mainGrid.RowDefinitions.Count; ++i)
+                {
+                    mainGrid.RowDefinitions[i].Height = i == diag ? GridLength.Star : new GridLength(0);
                 }
             }
         }

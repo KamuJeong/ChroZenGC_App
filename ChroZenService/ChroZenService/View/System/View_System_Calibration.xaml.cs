@@ -210,14 +210,14 @@ namespace ChroZenService
                     await model.Model.Send(new CommandWrapper(CommandCodes.Stop));
                 }
 
-                for (int i = 0; i < mainGrid.RowDefinitions.Count; ++i)
-                {
-                    mainGrid.RowDefinitions[i].Height = i == calib ? GridLength.Star : new GridLength(0);
-                }
-
                 foreach (var c in mainGrid.Children)
                 {
                     c.IsVisible = (int)c.GetValue(Grid.RowProperty) == calib;
+                }
+
+                for (int i = 0; i < mainGrid.RowDefinitions.Count; ++i)
+                {
+                    mainGrid.RowDefinitions[i].Height = i == calib ? GridLength.Star : new GridLength(0);
                 }
             }
         }

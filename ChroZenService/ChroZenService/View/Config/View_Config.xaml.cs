@@ -47,13 +47,13 @@ namespace ChroZenService
         public async void PreInitialize()
         {
             InitView(1);
-            await Task.Yield();
+            await Task.Delay(100);
             InitView(11);
-            await Task.Yield();
+            await Task.Delay(100);
             InitView(12);
-            await Task.Yield();
+            await Task.Delay(100);
             InitView(13);
-            await Task.Yield();
+            await Task.Delay(100);
         }
 
         public async void Initialize()

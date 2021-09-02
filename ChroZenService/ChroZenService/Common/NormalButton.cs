@@ -29,6 +29,22 @@ namespace ChroZenService
             set => SetValue(TextProperty, value);
         }
 
+        public static readonly BindableProperty HorizentalTextAlignmentProperty = BindableProperty.Create("HorizentalTextAlignment", typeof(TextAlignment), typeof(NormalButton), TextAlignment.Center, propertyChanged: HorizentalTextAlignmentChanged);
+
+        private static void HorizentalTextAlignmentChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is NormalButton button)
+            {
+                button.ValueLabel.HorizontalTextAlignment = (TextAlignment)newValue;
+            }
+        }
+
+        public TextAlignment HorizentalAlignment
+        {
+            get => (TextAlignment)GetValue(HorizentalTextAlignmentProperty);
+            set => SetValue(HorizentalTextAlignmentProperty, value);
+        }
+
         public static readonly BindableProperty FontSizeProperty = BindableProperty.Create("FontSize", typeof(double), typeof(NormalButton), 0.0, propertyChanged: FontSizeChanged);
 
         private static void FontSizeChanged(BindableObject bindable, object oldValue, object newValue)
@@ -44,6 +60,7 @@ namespace ChroZenService
             get => (double)GetValue(FontSizeProperty);
             set => SetValue(FontSizeProperty, value);
         }
+
 
         public static readonly BindableProperty CommandProperty = BindableProperty.Create("Command", typeof(ICommand), typeof(NormalButton), null);
         public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create("CommandParameter", typeof(object), typeof(NormalButton), null);

@@ -36,7 +36,8 @@
                     <RowDefinition Height="{Binding Center.Height}" />
                 </Grid.RowDefinitions>
                 
-                <Image Grid.Column="0" Aspect="Fill" Source="{local:ImageResource ChroZenService.Images.home_side3.png}">
+                <Image Source="{local:ImageResource ChroZenService.Images.home_side3.png}"
+                       Grid.Column="0" Aspect="Fill" >
                     <Image.Triggers>
                         <DataTrigger TargetType="Image" Binding="{Binding Center.ActiveInlet}" Value="0">
                             <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side1.png}" />
@@ -82,8 +83,11 @@
                             </Style>
                         </StackLayout.Resources>
 
-                        <Label Text="{Binding Center.InletGasType}"
-                               TextColor="black" BackgroundColor="LightSlateGray" Padding="5,0" />
+                        <local:NormalButton Text="{Binding Center.InletGasType}"
+                                            IsEnabled="False" Scale="1.0" FontSize="{StaticResource CaptionFontSizeKey}"/>
+
+                        <!--<Label Text="{Binding Center.InletGasType}"
+                               TextColor="black" BackgroundColor="LightSlateGray" Padding="5,0" />-->
 
                         <Grid RowSpacing="0">
                             <Grid.ColumnDefinitions>
@@ -103,8 +107,11 @@
                             <Label Text="psi" Grid.Row="1"  Grid.Column="1" />
                         </Grid>
 
-                        <Label Text="{Binding Center.APCMode, Converter={StaticResource EnumGapAdderKey}}"  
-                               TextColor="black" BackgroundColor="LightSlateGray" Padding="5,0" />
+                        <local:NormalButton Text="{Binding Center.APCMode, Converter={StaticResource EnumGapAdderKey}}"
+                                            IsEnabled="False" Scale="1.0" FontSize="{StaticResource CaptionFontSizeKey}"/>                        
+                        
+                        <!--<Label Text="{Binding Center.APCMode, Converter={StaticResource EnumGapAdderKey}}"  
+                               TextColor="black" BackgroundColor="LightSlateGray" Padding="5,0" />-->
 
                         <Grid IsVisible="True">
                             <Grid.ColumnDefinitions>
@@ -124,8 +131,9 @@
                         </Grid>
                     </StackLayout>
                 </Grid>
-           
-                <Image Grid.Column="1" Source="{local:ImageResource ChroZenService.Images.home_center.png}" Aspect="Fill" />
+
+                <Image Source="{local:ImageResource ChroZenService.Images.home_center.png}" 
+                       Grid.Column="1" Aspect="Fill" />
                 <Grid Grid.Column="1" RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="14*" />
@@ -187,7 +195,8 @@
                     
                 </Grid>
                 
-                <Image Grid.Column="2" Aspect="Fill" Source="{local:ImageResource ChroZenService.Images.home_side3.png}">
+                <Image Source="{local:ImageResource ChroZenService.Images.home_side3.png}"
+                       Grid.Column="2" Aspect="Fill" >
                     <Image.Triggers>
                         <DataTrigger TargetType="Image" Binding="{Binding Center.ActiveDetector}" Value="0">
                             <Setter Property="Source" Value="{local:ImageResource ChroZenService.Images.home_side1.png}" />

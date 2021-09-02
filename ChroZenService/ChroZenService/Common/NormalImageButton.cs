@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -53,6 +54,12 @@ namespace ChroZenService
 
         private async void _Pressed(object sender, EventArgs e)
         {
+            if(await OnPressed(sender, e))
+                Clicked?.Invoke(sender, e);
+        }
+
+        protected virtual async Task<bool> OnPressed(object sender, EventArgs e)
+        {
             if (Lockable)
             {
                 Element element = this;
@@ -64,7 +71,7 @@ namespace ChroZenService
                         if (editable)
                             break;
                         else
-                            return;
+                            return false;
                     }
                     if (element.Parent == null)
                         break;
@@ -82,7 +89,7 @@ namespace ChroZenService
                 Command.Execute(CommandParameter);
             }
 
-            Clicked?.Invoke(sender, e);
+            return true;
         }
     }
 }

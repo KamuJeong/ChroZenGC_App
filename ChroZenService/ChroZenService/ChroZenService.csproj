@@ -157,7 +157,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\ChroZenGC.Core\ChroZenGC.Core.csproj" />
-    <ProjectReference Include="..\ChroZenGC Type\YC_ChroZenGC_Type.csproj" />
   </ItemGroup>
 
   <ItemGroup>

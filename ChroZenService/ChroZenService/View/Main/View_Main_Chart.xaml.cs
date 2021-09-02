@@ -1,20 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ChroZenGC.Core.Packets;
-using ChroZenGC.Core.Wrappers;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using YC_ChroZenGC_Type;
-using static YC_ChroZenGC_Type.T_CHROZEN_GC_OVEN;
-using static YC_ChroZenGC_Type.T_CHROZEN_GC_STATE;
 
 namespace ChroZenService
 {

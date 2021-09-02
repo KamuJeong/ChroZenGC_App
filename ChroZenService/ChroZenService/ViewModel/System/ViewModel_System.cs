@@ -186,23 +186,16 @@ namespace ChroZenService
             }
         }
 
-        public ICommand DiagStartCommand => new Command(DiagStart);
+        public ICommand DiagStartStopCommand => new Command(DiagStartStop);
 
-        private async void DiagStart(object obj)
+        private async void DiagStartStop(object obj)
         {
-            if (obj is string num)
+            if(obj is ValueTuple<object, bool> tuple)
             {
-                await Model.Send(new DiagCommandWrapper(true, (DiagTarget)int.Parse(num)));
-            }
-        }
-
-        public ICommand DiagStopCommand => new Command(DiagStop);
-
-        private async void DiagStop(object obj)
-        {
-            if (obj is string num)
-            {
-                await Model.Send(new DiagCommandWrapper(false, (DiagTarget)int.Parse(num)));
+                if(!tuple.Item2)
+                    await Model.Send(new DiagCommandWrapper(true, (DiagTarget)int.Parse(tuple.Item1  as string)));
+                else
+                    await Model.Send(new DiagCommandWrapper(false, (DiagTarget)int.Parse(tuple.Item1 as string)));
             }
         }
 
